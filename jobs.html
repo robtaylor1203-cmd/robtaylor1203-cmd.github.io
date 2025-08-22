@@ -55,6 +55,7 @@
             const jobDetailsContainer = document.getElementById('job-details-container');
             let jobsData = []; // To store the jobs after fetching
 
+            // This function renders the details for a single job object
             const renderJobDetails = (job) => {
                 let responsibilitiesHtml = job.description.responsibilities.map(item => `<li>${item}</li>`).join('');
                 let qualificationsHtml = job.description.qualifications.map(item => `<li>${item}</li>`).join('');
@@ -74,17 +75,18 @@
                 `;
             };
 
+            // Fetch the job data from your new JSON file
             fetch('jobs.json')
                 .then(response => response.json())
                 .then(data => {
                     jobsData = data;
-                    jobListContainer.innerHTML = ''; // Clear "Loading..."
+                    jobListContainer.innerHTML = ''; // Clear "Loading..." message
 
-                    if (jobsData.length > 0) {
+                    if (jobsData && jobsData.length > 0) {
                         jobsData.forEach((job, index) => {
                             const jobCard = document.createElement('div');
                             jobCard.className = 'job-card';
-                            jobCard.dataset.index = index; // Use index to find job in our data array
+                            jobCard.dataset.index = index;
                             
                             jobCard.innerHTML = `
                                 <div class="job-card-header">
@@ -95,19 +97,17 @@
                                 <p class="job-snippet">${job.snippet}</p>
                             `;
 
+                            // Add the interactivity!
                             jobCard.addEventListener('click', () => {
-                                // Remove active class from any other card
                                 document.querySelectorAll('.job-card.active').forEach(card => card.classList.remove('active'));
-                                // Add active class to the clicked card
                                 jobCard.classList.add('active');
-                                // Render the details for this job
                                 renderJobDetails(job);
                             });
 
                             jobListContainer.appendChild(jobCard);
                         });
 
-                        // Show the first job's details by default and make it active
+                        // Show the first job's details by default and highlight it
                         if (jobListContainer.firstChild) {
                              jobListContainer.firstChild.classList.add('active');
                         }
