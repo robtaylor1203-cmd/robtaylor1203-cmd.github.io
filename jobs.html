@@ -38,57 +38,90 @@
     </div>
 
     <main class="jobs-container">
-        <div class="job-list-pane">
-            <div class="job-card active">
-                <div class="job-card-header">
-                    <h3 class="job-title">Head of Tea Buying</h3>
-                    <p class="company-name">The London Tea Company</p>
-                    <p class="location">London, England</p>
-                </div>
-                <p class="job-snippet">Seeking an experienced tea professional to lead our global sourcing and quality control team. Must have 10+ years of experience in the specialty tea industry...</p>
-            </div>
-            <div class="job-card">
-                <div class="job-card-header">
-                    <h3 class="job-title">Marketing Manager - Herbal Infusions</h3>
-                    <p class="company-name">Pukka Herbs</p>
-                    <p class="location">Bristol, England</p>
-                </div>
-                <p class="job-snippet">Join our dynamic marketing team to drive growth for our herbal wellness tea category. Experience in FMCG marketing is essential...</p>
-            </div>
-             <div class="job-card">
-                <div class="job-card-header">
-                    <h3 class="job-title">Tasting Room Associate (Part-Time)</h3>
-                    <p class="company-name">Rare Tea Co.</p>
-                    <p class="location">Remote</p>
-                </div>
-                <p class="job-snippet">We are looking for an enthusiastic individual to assist in our tasting room, preparing samples and engaging with wholesale clients...</p>
-            </div>
+        <div class="job-list-pane" id="job-list-container">
+            <p style="padding: 16px;">Loading jobs...</p>
         </div>
 
-        <div class="job-details-pane">
+        <div class="job-details-pane" id="job-details-container">
             <div class="job-details-content">
-                <h2 class="job-title-full">Head of Tea Buying</h2>
-                <p class="company-name-full">The London Tea Company &middot; London, England</p>
-                <button class="apply-button">Apply on Company Site</button>
-                <hr class="divider">
-                <h4>Job Description</h4>
-                <p>The London Tea Company is seeking an experienced and passionate Head of Tea Buying to lead our global sourcing and quality control team. This is a senior leadership role responsible for maintaining the exceptional quality of our existing tea portfolio while identifying new and exciting teas and botanicals from around the world.</p>
-                <h4>Responsibilities:</h4>
-                <ul>
-                    <li>Develop and execute the global sourcing strategy for all teas and herbal infusions.</li>
-                    <li>Manage relationships with tea gardens, estates, and suppliers worldwide.</li>
-                    <li>Lead the quality control and cupping team to ensure all products meet our high standards.</li>
-                    <li>Travel internationally to origin countries to meet with producers and inspect crops.</li>
-                </ul>
-                <h4>Qualifications:</h4>
-                <ul>
-                    <li>10+ years of experience in the specialty tea industry.</li>
-                    <li>Expert-level palate and tea tasting skills.</li>
-                    <li>Proven track record of international sourcing and supplier management.</li>
-                </ul>
+                <p>Select a job on the left to see details.</p>
             </div>
         </div>
     </main>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const jobListContainer = document.getElementById('job-list-container');
+            const jobDetailsContainer = document.getElementById('job-details-container');
+            let jobsData = []; // To store the jobs after fetching
 
+            const renderJobDetails = (job) => {
+                let responsibilitiesHtml = job.description.responsibilities.map(item => `<li>${item}</li>`).join('');
+                let qualificationsHtml = job.description.qualifications.map(item => `<li>${item}</li>`).join('');
+
+                jobDetailsContainer.innerHTML = `
+                    <div class="job-details-content">
+                        <h2 class="job-title-full">${job.title}</h2>
+                        <p class="company-name-full">${job.company} &middot; ${job.location}</p>
+                        <a href="${job.link}" target="_blank" rel="noopener noreferrer"><button class="apply-button">Apply on Company Site</button></a>
+                        <hr class="divider">
+                        <p>${job.description.intro}</p>
+                        <h4>Responsibilities:</h4>
+                        <ul>${responsibilitiesHtml}</ul>
+                        <h4>Qualifications:</h4>
+                        <ul>${qualificationsHtml}</ul>
+                    </div>
+                `;
+            };
+
+            fetch('jobs.json')
+                .then(response => response.json())
+                .then(data => {
+                    jobsData = data;
+                    jobListContainer.innerHTML = ''; // Clear "Loading..."
+
+                    if (jobsData.length > 0) {
+                        jobsData.forEach((job, index) => {
+                            const jobCard = document.createElement('div');
+                            jobCard.className = 'job-card';
+                            jobCard.dataset.index = index; // Use index to find job in our data array
+                            
+                            jobCard.innerHTML = `
+                                <div class="job-card-header">
+                                    <h3 class="job-title">${job.title}</h3>
+                                    <p class="company-name">${job.company}</p>
+                                    <p class="location">${job.location}</p>
+                                </div>
+                                <p class="job-snippet">${job.snippet}</p>
+                            `;
+
+                            jobCard.addEventListener('click', () => {
+                                // Remove active class from any other card
+                                document.querySelectorAll('.job-card.active').forEach(card => card.classList.remove('active'));
+                                // Add active class to the clicked card
+                                jobCard.classList.add('active');
+                                // Render the details for this job
+                                renderJobDetails(job);
+                            });
+
+                            jobListContainer.appendChild(jobCard);
+                        });
+
+                        // Show the first job's details by default and make it active
+                        if (jobListContainer.firstChild) {
+                             jobListContainer.firstChild.classList.add('active');
+                        }
+                        renderJobDetails(jobsData[0]);
+
+                    } else {
+                         jobListContainer.innerHTML = '<p style="padding: 16px;">No jobs found.</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching jobs data:', error);
+                    jobListContainer.innerHTML = '<p style="padding: 16px;">Error loading jobs.</p>';
+                });
+        });
+    </script>
 </body>
 </html>
