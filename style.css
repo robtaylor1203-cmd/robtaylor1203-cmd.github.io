@@ -50,13 +50,11 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 
 
 /* --- Jobs Page Styles (UPDATED) --- */
-.jobs-page { /* New style to control the whole page layout */
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    overflow: hidden; /* Prevent the main page from scrolling */
+.jobs-page { 
+    /* Removed fixed height styles to allow for natural page scroll */
+    background-color: #fff;
 }
-.filter-bar { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; flex-shrink: 0; }
+.filter-bar { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; }
 .filter-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 16px; padding: 6px 12px; font-size: 13px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
 .filter-chip:hover { border-color: #dadce0; }
 .jobs-container {
@@ -65,17 +63,28 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
     width: 100%;
     margin: 16px auto;
     gap: 16px;
-    flex-grow: 1; /* This makes the container fill the remaining vertical space */
-    min-height: 0; /* A flexbox trick to prevent overflow issues */
+    /* Removed height-related styles to allow container to grow */
 }
-.job-list-pane { width: 40%; max-width: 450px; border: 1px solid #dadce0; border-radius: 8px; overflow-y: auto; background-color: #fff; }
+.job-list-pane {
+    flex: 1; /* UPDATED: Make this pane take up 50% of the space */
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    background-color: #fff;
+    /* Removed overflow-y: auto to use main page scrollbar */
+}
 .job-card { padding: 16px; border-bottom: 1px solid #ebebeb; cursor: pointer; }
 .job-card:hover { background-color: #f8f9fa; }
 .job-card.active { background-color: #e8f0fe; border-left: 4px solid #1967d2; padding-left: 12px; }
 .job-card-header h3 { font-size: 16px; color: #1a0dab; margin: 0 0 4px 0; font-weight: 500; }
 .job-card-header p { font-size: 14px; margin: 0 0 4px 0; color: #3c4043; }
 .job-card .job-snippet { font-size: 13px; color: #5f6368; margin-top: 8px; }
-.job-details-pane { flex: 1; border: 1px solid #dadce0; border-radius: 8px; overflow-y: auto; background-color: #fff; }
+.job-details-pane {
+    flex: 1; /* UPDATED: Make this pane take up the other 50% of the space */
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    background-color: #fff;
+    /* Removed overflow-y: auto to use main page scrollbar */
+}
 .job-details-content { padding: 24px; }
 .job-title-full { font-size: 22px; font-weight: 500; margin: 0 0 8px 0; }
 .company-name-full { font-size: 16px; color: #5f6368; margin-bottom: 16px; }
@@ -92,7 +101,6 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
     .secondary-nav { display: none; }
     .news-item .article-image { width: 92px; height: 92px; }
     .news-item .main-link h3 { font-size: 18px; }
-    .jobs-page { height: auto; overflow: auto; } /* Revert to normal scrolling on mobile */
-    .jobs-container { flex-direction: column; height: auto; }
+    .jobs-container { flex-direction: column; height: auto; } /* Stack panes on mobile */
     .job-list-pane { width: 100%; max-width: none; }
 }
