@@ -65,10 +65,17 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 .job-card .job-snippet { font-size: 13px; color: #5f6368; margin-top: 8px; }
 .job-details-pane { flex: 3; position: sticky; top: 177px; height: calc(100vh - 193px); overflow-y: auto; border: 1px solid #dadce0; border-radius: 8px; }
 .job-details-content { padding: 24px; }
+.job-title-full { font-size: 22px; font-weight: 500; margin: 0 0 8px 0; }
+.company-name-full { font-size: 16px; color: #5f6368; margin-bottom: 16px; }
+.apply-button { background-color: #1a73e8; color: #fff; border: none; border-radius: 8px; padding: 12px 24px; font-size: 15px; font-weight: 500; cursor: pointer; } /* STYLE RESTORED */
+.apply-button:hover { background-color: #185abc; } /* STYLE RESTORED */
+.divider { border: 0; border-top: 1px solid #ebebeb; margin: 24px 0; }
+.job-details-content h4 { font-size: 16px; font-weight: 500; margin: 16px 0 8px 0; }
+.job-details-content ul { padding-left: 20px; margin: 0; line-height: 1.6; }
 
 
-/* --- Products Page Styles (UPDATED) --- */
-.products-page { background-color: #ffffff; } /* UPDATED to white */
+/* --- Products Page Styles --- */
+.products-page { background-color: #ffffff; }
 .product-grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; max-width: 1280px; margin: 0 auto; padding: 24px; }
 .product-card { background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
 .product-card:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
@@ -88,9 +95,9 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 
 /* --- Responsive Styles --- */
 @media (max-width: 900px) {
-    .jobs-container { flex-direction: column; }
-    .job-details-pane { position: static; height: auto; border: 1px solid #dadce0; border-radius: 8px; }
-    .job-list-pane { max-width: none; border: 1px solid #dadce0; border-radius: 8px; margin-bottom: 16px; }
+    .jobs-container, .products-container { flex-direction: column; }
+    .job-details-pane, .product-details-pane { position: static; height: auto; border: 1px solid #dadce0; border-radius: 8px; }
+    .job-list-pane, .product-list-pane { max-width: none; border: 1px solid #dadce0; border-radius: 8px; margin-bottom: 16px; }
 }
 @media (max-width: 768px) {
     .header-search-wrapper { display: none; }
