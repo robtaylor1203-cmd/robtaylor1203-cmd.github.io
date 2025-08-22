@@ -28,7 +28,7 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 .header-search-wrapper { flex-grow: 1; display: flex; justify-content: center; padding: 0 40px; }
 .header-search-bar { width: 100%; max-width: 720px; height: 44px; padding: 0 16px; font-size: 16px; border-radius: 24px; border: none; background-color: #f1f3f4; }
 .header-search-bar:focus { background-color: #fff; box-shadow: 0 1px 6px rgba(32,33,36,.1); outline: none; }
-.news-page .user-actions, .jobs-page .user-actions { position: static; }
+.news-page .user-actions, .jobs-page .user-actions, .products-page .user-actions { position: static; }
 .secondary-nav { max-width: 1280px; margin: 0 auto; }
 .secondary-nav ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 25px; height: 48px; align-items: center; }
 .secondary-nav a { font-size: 14px; color: #5f6368; padding-bottom: 8px; font-weight: 500; }
@@ -49,32 +49,21 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 .news-item .snippet { font-size: 14px; color: #4d5156; margin: 0; line-height: 1.5; }
 
 
-/* --- Jobs Page Styles (UPDATED) --- */
+/* --- Jobs Page Styles --- */
 .jobs-page { background-color: #fff; }
 .filter-bar { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; position: sticky; top: 112px; z-index: 99; }
 .filter-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 16px; padding: 6px 12px; font-size: 13px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
 .filter-chip:hover { border-color: #dadce0; }
 .jobs-container { display: flex; max-width: 1280px; width: 100%; margin: 0 auto; padding: 16px 24px; gap: 24px; align-items: flex-start; }
-.job-list-pane {
-    flex: 2;
-    max-width: 450px;
-    /* UPDATED: Border removed for a cleaner look */
-}
+.job-list-pane { flex: 2; max-width: 450px; border: 1px solid #dadce0; border-radius: 8px; }
 .job-card { padding: 16px; border-bottom: 1px solid #ebebeb; cursor: pointer; }
-.job-card:first-child { border-top: 1px solid #ebebeb; }
+.job-card:last-child { border-bottom: none; }
 .job-card:hover { background-color: #f8f9fa; }
 .job-card.active { background-color: #e8f0fe; }
 .job-card-header h3 { font-size: 16px; color: #1a0dab; margin: 0 0 4px 0; font-weight: 500; }
 .job-card-header p { font-size: 14px; margin: 0 0 4px 0; color: #3c4043; }
 .job-card .job-snippet { font-size: 13px; color: #5f6368; margin-top: 8px; }
-.job-details-pane {
-    flex: 3;
-    position: sticky;
-    top: 177px;
-    height: calc(100vh - 193px);
-    overflow-y: auto;
-    /* UPDATED: Border removed */
-}
+.job-details-pane { flex: 3; position: sticky; top: 177px; height: calc(100vh - 193px); overflow-y: auto; border: 1px solid #dadce0; border-radius: 8px; }
 .job-details-content { padding: 24px; }
 .job-title-full { font-size: 22px; font-weight: 500; margin: 0 0 8px 0; }
 .company-name-full { font-size: 16px; color: #5f6368; margin-bottom: 16px; }
@@ -85,11 +74,29 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 .job-details-content ul { padding-left: 20px; margin: 0; line-height: 1.6; }
 
 
-/* Responsive Styles */
+/* --- Products Page Styles --- */
+.products-page { background-color: #fff; }
+.products-container { display: flex; max-width: 1280px; width: 100%; margin: 16px auto; padding: 16px 24px; gap: 24px; align-items: flex-start; }
+.product-list-pane { flex: 2; max-width: 450px; border: 1px solid #dadce0; border-radius: 8px; }
+.product-card { display: flex; align-items: center; padding: 12px; border-bottom: 1px solid #ebebeb; cursor: pointer; }
+.product-card:last-child { border-bottom: none; }
+.product-card:hover { background-color: #f8f9fa; }
+.product-card.active { background-color: #e8f0fe; }
+.product-card-image { width: 64px; height: 64px; border-radius: 4px; object-fit: cover; margin-right: 16px; flex-shrink: 0; }
+.product-card-info h3 { font-size: 16px; margin: 0 0 4px 0; font-weight: 500; }
+.product-card-info p { font-size: 14px; margin: 0; color: #5f6368; }
+.product-details-pane { flex: 3; position: sticky; top: 177px; height: calc(100vh - 193px); overflow-y: auto; }
+.product-details-content { padding: 24px; }
+.product-image-full { width: 100%; max-width: 400px; height: auto; border-radius: 8px; margin: 0 auto 24px auto; display: block; }
+.product-title-full { font-size: 28px; font-weight: 500; margin: 0 0 8px 0; text-align: center; }
+.brand-name-full { font-size: 16px; color: #5f6368; margin-bottom: 24px; text-align: center; }
+
+
+/* --- Responsive Styles --- */
 @media (max-width: 900px) {
-    .jobs-container { flex-direction: column; }
-    .job-details-pane { position: static; height: auto; border: 1px solid #dadce0; border-radius: 8px; /* Add border back on mobile for clarity */ }
-    .job-list-pane { max-width: none; border: 1px solid #dadce0; border-radius: 8px; margin-bottom: 16px; /* Add border back on mobile */ }
+    .jobs-container, .products-container { flex-direction: column; }
+    .job-details-pane, .product-details-pane { position: static; height: auto; border: 1px solid #dadce0; border-radius: 8px; }
+    .job-list-pane, .product-list-pane { max-width: none; border: 1px solid #dadce0; border-radius: 8px; margin-bottom: 16px; }
 }
 @media (max-width: 768px) {
     .header-search-wrapper { display: none; }
