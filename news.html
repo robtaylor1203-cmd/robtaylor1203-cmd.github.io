@@ -31,9 +31,31 @@
         </nav>
     </header>
     <main class="page-container" id="news-container">
-        </main>
+    </main>
+
     <script>
-        // Your existing news.json script
+    // ------------------ NEWS ------------------
+    if (document.getElementById('news-container')) {
+        fetch('news.json')
+            .then(res => res.json())
+            .then(news => {
+                const container = document.getElementById('news-container');
+                news.forEach(item => {
+                    const el = document.createElement('li');
+                    el.className = 'news-item';
+                    el.innerHTML = `
+                        <a href="${item.link}" class="image-link"><img src="${item.image}" alt="${item.headline}" class="article-image"></a>
+                        <div class="text-content">
+                            <div class="source">${item.source}</div>
+                            <a href="${item.link}" class="main-link"><h3>${item.headline}</h3></a>
+                            <p class="snippet">${item.snippet}</p>
+                        </div>
+                    `;
+                    container.appendChild(el);
+                });
+            })
+            .catch(err => console.error('Error loading news:', err));
+    }
     </script>
 </body>
 </html>

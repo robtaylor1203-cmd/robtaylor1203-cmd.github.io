@@ -26,12 +26,32 @@
             </ul>
         </nav>
     </header>
-    <div class="filter-bar">
-        </div>
-    <main class="product-grid-container" id="product-grid">
-        </main>
+    <div class="filter-bar"></div>
+    <main class="product-grid-container" id="product-grid"></main>
+
     <script>
-        // Your existing products.json script
+    if (document.getElementById('product-grid')) {
+        fetch('products.json')
+            .then(res => res.json())
+            .then(products => {
+                const container = document.getElementById('product-grid');
+                products.forEach(product => {
+                    const el = document.createElement('div');
+                    el.className = 'product-card';
+                    el.innerHTML = `
+                        <img src="${product.image}" alt="${product.name}" style="width:100%; height:200px; object-fit:cover;">
+                        <div class="product-card-info">
+                            <h3>${product.name}</h3>
+                            <p>${product.brand} • ${product.type}</p>
+                            <p>${product.price}</p>
+                            <p>${product.snippet}</p>
+                        </div>
+                    `;
+                    container.appendChild(el);
+                });
+            })
+            .catch(err => console.error('Error loading products:', err));
+    }
     </script>
 </body>
 </html>
