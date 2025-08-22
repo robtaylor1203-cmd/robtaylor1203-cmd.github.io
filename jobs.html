@@ -26,8 +26,7 @@
             </ul>
         </nav>
     </header>
-    <main class="jobs-container" id="jobs-container">
-    </main>
+    <main class="jobs-container" id="jobs-container"></main>
 
     <script>
     if (document.getElementById('jobs-container')) {
@@ -67,12 +66,12 @@
                             <p><strong>Company:</strong> ${job.company}</p>
                             <p><strong>Location:</strong> ${job.location}</p>
                             <p><strong>Type:</strong> ${job.type}</p>
+                            <a href="${job.link}" class="apply-button" target="_blank">Apply Now</a>
                             <p>${job.description.intro}</p>
                             <h3>Responsibilities</h3>
                             <ul>${job.description.responsibilities.map(r => `<li>${r}</li>`).join('')}</ul>
                             <h3>Qualifications</h3>
                             <ul>${job.description.qualifications.map(q => `<li>${q}</li>`).join('')}</ul>
-                            <a href="${job.link}" target="_blank">Apply Now</a>
                         `;
                     });
 

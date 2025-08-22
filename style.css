@@ -11,16 +11,7 @@ a { text-decoration: none; color: inherit; }
 .user-actions svg { width: 24px; height: 24px; }
 .logo h1 { font-size: 92px; font-weight: 400; color: #4a4a4a; margin: 0; margin-bottom: 10px; letter-spacing: -1px; }
 .logo span { font-weight: 500; color: #2a2a2a; }
-
-/* NEW STYLE FOR THE STRAPLINE */
-.sub-logo {
-    font-size: 13px;
-    font-weight: 500;
-    color: #5f6368;
-    text-transform: uppercase;
-    letter-spacing: 9.5px; /* The magic for the spacing */
-    margin: 0 0 40px 9.5px; /* The left margin aligns it with the main logo text */
-}
+.sub-logo { font-size: 13px; font-weight: 500; color: #5f6368; text-transform: uppercase; letter-spacing: 9.5px; margin: 0 0 40px 9.5px; }
 
 .search-area { width: 100%; max-width: 584px; margin-bottom: 10px; }
 .search-bar { width: 100%; height: 46px; padding: 0 20px; font-size: 16px; border-radius: 24px; border: 1px solid #dfe1e5; }
@@ -30,7 +21,6 @@ a { text-decoration: none; color: inherit; }
 .main-nav a:hover { box-shadow: 0 1px 1px rgba(0,0,0,.1); background-color: #f1f3f4; }
 footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 
-
 /* --- Reusable Header Styles --- */
 .site-header { background-color: #fff; border-bottom: 1px solid #ebebeb; padding: 0 24px; position: sticky; top: 0; z-index: 100; flex-shrink: 0; }
 .header-top-bar { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: 1280px; margin: 0 auto; }
@@ -39,14 +29,13 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 .header-search-wrapper { flex-grow: 1; display: flex; justify-content: center; padding: 0 40px; }
 .header-search-bar { width: 100%; max-width: 720px; height: 44px; padding: 0 16px; font-size: 16px; border-radius: 24px; border: none; background-color: #f1f3f4; }
 .header-search-bar:focus { background-color: #fff; box-shadow: 0 1px 6px rgba(32,33,36,.1); outline: none; }
-.news-page .user-actions, .jobs-page .user-actions, .products-page .user-actions, .corporate-page .user-actions { position: absolute; } /* Keep icons top right on corporate page */
-.news-page .site-header .user-actions, .jobs-page .site-header .user-actions, .products-page .site-header .user-actions { position: static; } /* Override for other pages */
+.news-page .user-actions, .jobs-page .user-actions, .products-page .user-actions, .corporate-page .user-actions { position: absolute; }
+.news-page .site-header .user-actions, .jobs-page .site-header .user-actions, .products-page .site-header .user-actions { position: static; }
 .secondary-nav { max-width: 1280px; margin: 0 auto; }
 .secondary-nav ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 25px; height: 48px; align-items: center; }
 .secondary-nav a { font-size: 14px; color: #5f6368; padding-bottom: 8px; font-weight: 500; }
 .secondary-nav a.active { color: #1a73e8; border-bottom: 3px solid #1a73e8; }
 .secondary-nav a:not(.active):hover { color: #3c4043; }
-
 
 /* --- News Page Styles --- */
 .page-container { max-width: 1100px; margin: 0 auto; padding: 24px; }
@@ -61,7 +50,6 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 .news-item .main-link h3 { font-size: 20px; font-weight: 400; color: #1a0dab; margin: 0 0 4px 0; line-height: 1.4; }
 .news-item .main-link:hover h3 { text-decoration: underline; }
 .news-item .snippet { font-size: 14px; color: #4d5156; margin: 0; line-height: 1.5; }
-
 
 /* --- Jobs & Products Page Styles --- */
 .jobs-page, .products-page { background-color: #fff; }
@@ -79,16 +67,18 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 .job-card .job-snippet { font-size: 13px; color: #5f6368; margin-top: 8px; }
 .job-details-pane { flex: 3; position: sticky; top: 177px; height: calc(100vh - 193px); overflow-y: auto; border: 1px solid #dadce0; border-radius: 8px; }
 .job-details-content { padding: 24px; }
-.product-grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; max-width: 1280px; margin: 0 auto; padding: 24px; }
-.product-card { background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
-.product-card:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-.product-card-info { padding: 16px; border-top: 1px solid #ebebeb; flex-grow: 1; }
-/* ... other product styles ... */
+.apply-button {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 10px 18px;
+    background-color: #1a73e8;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+}
+.apply-button:hover { background-color: #1666c1; }
 
-/* --- Responsive Styles --- */
-@media (max-width: 900px) {
-    /* ... existing responsive styles ... */
-}
-@media (max-width: 768px) {
-    /* ... existing responsive styles ... */
-}
+.product-grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; max-width: 1280px; margin: 0 auto; padding: 24px; }
+.product-card { background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden

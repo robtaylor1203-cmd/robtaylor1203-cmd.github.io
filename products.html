@@ -36,6 +36,10 @@
             .then(products => {
                 const container = document.getElementById('product-grid');
                 products.forEach(product => {
+                    const starsFull = '★'.repeat(Math.floor(product.rating));
+                    const starsEmpty = '☆'.repeat(5 - Math.floor(product.rating));
+                    const starRating = `<p class="product-rating">${starsFull}${starsEmpty} (${product.reviewCount})</p>`;
+
                     const el = document.createElement('div');
                     el.className = 'product-card';
                     el.innerHTML = `
@@ -44,7 +48,7 @@
                             <h3>${product.name}</h3>
                             <p>${product.brand} • ${product.type}</p>
                             <p>${product.price}</p>
-                            <p>${product.snippet}</p>
+                            ${starRating}
                         </div>
                     `;
                     container.appendChild(el);
