@@ -68,7 +68,7 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 
 
 /* --- Products Page Styles (UPDATED) --- */
-.products-page { background-color: #f8f9fa; }
+.products-page { background-color: #ffffff; } /* UPDATED to white */
 .product-grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; max-width: 1280px; margin: 0 auto; padding: 24px; }
 .product-card { background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
 .product-card:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
