@@ -58,22 +58,12 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 .job-list-pane {
     flex: 2;
     max-width: 450px;
-    border: 1px solid #dadce0;
-    border-radius: 8px;
-    background-color: #fff;
+    /* UPDATED: Border removed for a cleaner look */
 }
-.job-card {
-    padding: 16px;
-    border-bottom: 1px solid #ebebeb; /* This creates the list style */
-    cursor: pointer;
-}
-.job-card:last-child {
-    border-bottom: none; /* Removes the line from the last item */
-}
+.job-card { padding: 16px; border-bottom: 1px solid #ebebeb; cursor: pointer; }
+.job-card:first-child { border-top: 1px solid #ebebeb; }
 .job-card:hover { background-color: #f8f9fa; }
-.job-card.active {
-    background-color: #e8f0fe;
-}
+.job-card.active { background-color: #e8f0fe; }
 .job-card-header h3 { font-size: 16px; color: #1a0dab; margin: 0 0 4px 0; font-weight: 500; }
 .job-card-header p { font-size: 14px; margin: 0 0 4px 0; color: #3c4043; }
 .job-card .job-snippet { font-size: 13px; color: #5f6368; margin-top: 8px; }
@@ -83,8 +73,7 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
     top: 177px;
     height: calc(100vh - 193px);
     overflow-y: auto;
-    border: 1px solid #dadce0;
-    border-radius: 8px;
+    /* UPDATED: Border removed */
 }
 .job-details-content { padding: 24px; }
 .job-title-full { font-size: 22px; font-weight: 500; margin: 0 0 8px 0; }
@@ -99,8 +88,8 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 /* Responsive Styles */
 @media (max-width: 900px) {
     .jobs-container { flex-direction: column; }
-    .job-details-pane { position: static; height: auto; }
-    .job-list-pane { max-width: none; }
+    .job-details-pane { position: static; height: auto; border: 1px solid #dadce0; border-radius: 8px; /* Add border back on mobile for clarity */ }
+    .job-list-pane { max-width: none; border: 1px solid #dadce0; border-radius: 8px; margin-bottom: 16px; /* Add border back on mobile */ }
 }
 @media (max-width: 768px) {
     .header-search-wrapper { display: none; }
