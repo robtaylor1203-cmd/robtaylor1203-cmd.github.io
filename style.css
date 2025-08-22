@@ -37,9 +37,9 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 .secondary-nav a.active { color: #1a73e8; border-bottom: 3px solid #1a73e8; }
 .secondary-nav a:not(.active):hover { color: #3c4043; }
 
-/* --- News Page Styles --- */
+/* --- News Page Styles (Revert to Original Layout) --- */
 .page-container { max-width: 1100px; margin: 0 auto; padding: 24px; }
-.news-list { list-style: none; padding: 0; border-top: 1px solid #ebebeb; display: flex; flex-direction: column; gap: 24px; }
+.news-list { list-style: none; padding: 0; border-top: 1px solid #ebebeb; }
 .news-item { display: flex; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid #ebebeb; }
 .news-item:first-child { padding-top: 0; }
 .news-item .image-link { margin-right: 24px; flex-shrink: 0; }
@@ -49,6 +49,7 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 .news-item .main-link h3 { font-size: 20px; font-weight: 400; color: #1a0dab; margin: 0 0 4px 0; line-height: 1.4; }
 .news-item .main-link:hover h3 { text-decoration: underline; }
 .news-item .snippet { font-size: 14px; color: #4d5156; margin: 0; line-height: 1.5; }
+
 
 /* --- Jobs & Products Page Styles --- */
 .jobs-page, .products-page { background-color: #fff; }
