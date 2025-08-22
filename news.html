@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tea Industry News - TeaTrade</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="page-container">
+        <header class="page-header">
+            <a href="index.html" class="home-link">
+                <h1>Tea<span>Trade</span></h1>
+            </a>
+            <h2>Tea Industry News</h2>
+        </header>
+        <main class="news-list" id="news-container">
+            <p id="loading-message">Loading latest news...</p>
+        </main>
+    </div>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const workerUrl = 'https://teatrade-news-scraper.rob-taylor1203.workers.dev';
+            const newsContainer = document.getElementById('news-container');
+            // This is the server-side rendering script
+            fetch(workerUrl)
+                .then(response => response.text())
+                .then(html => {
+                    newsContainer.innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error fetching news:', error);
+                    newsContainer.innerHTML = '<p>Sorry, there was an error loading the news.</p>';
+                });
+        });
+    </script>
+</body>
+</html>
