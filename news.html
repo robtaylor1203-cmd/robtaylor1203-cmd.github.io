@@ -23,52 +23,24 @@
         </div>
         <nav class="secondary-nav">
             <ul>
-                <li><a href="news.html" class="active">News</a></li>
-                <li><a href="#">Jobs</a></li>
-                <li><a href="#">Products</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="jobs.html" class="active">Jobs</a></li> <li><a href="#">Products</a></li>
                 <li><a href="#">About</a></li>
             </ul>
         </nav>
     </header>
-
     <main class="page-container" id="news-container">
-        <article class="news-item">
-            <a href="#" class="image-link">
-                <img class="article-image" src="https://placehold.co/124x124/f0f0f0/cccccc?text=TeaTrade" alt="Article Thumbnail">
-            </a>
-            <div class="text-content">
-                <div class="source">T Ching</div>
-                <a href="#" class="main-link">
-                    <h3>The Rise of Specialty Oolongs: A Deep Dive</h3>
-                    <p class="snippet">An exclusive interview with a Taiwanese Tea Master on the intricate processing behind high-mountain oolongs.</p>
-                </a>
-            </div>
-        </article>
-        <article class="news-item">
-            <a href="#" class="image-link">
-                <img class="article-image" src="https://placehold.co/124x124/f0f0f0/cccccc?text=TeaTrade" alt="Article Thumbnail">
-            </a>
-            <div class="text-content">
-                <div class="source">World Tea News</div>
-                <a href="#" class="main-link">
-                    <h3>Global Tea Production Forecast to Increase</h3>
-                    <p class="snippet">A new report suggests favorable weather conditions will lead to a significant uptick in black tea production.</p>
-                </a>
-            </div>
-        </article>
-        <article class="news-item">
-            <a href="#" class="image-link">
-                <img class="article-image" src="https://placehold.co/124x124/f0f0f0/cccccc?text=TeaTrade" alt="Article Thumbnail">
-            </a>
-            <div class="text-content">
-                <div class="source">The Grocer (UK)</div>
-                <a href="#" class="main-link">
-                    <h3>UK Importers Face New Logistical Hurdles</h3>
-                    <p class="snippet">Tea and coffee importers report significant delays and increased costs due to new customs checks at major ports.</p>
-                </a>
-            </div>
-        </article>
-    </main>
-
-    </body>
+        </main>
+    <script>
+        // Javascript remains the same
+        window.addEventListener('DOMContentLoaded', () => {
+            const workerUrl = 'https://teatrade-news-scraper.rob-taylor1203.workers.dev';
+            const newsContainer = document.getElementById('news-container');
+            fetch(workerUrl)
+                .then(response => response.text())
+                .then(html => { newsContainer.innerHTML = html; })
+                .catch(error => { console.error('Error fetching news:', error); newsContainer.innerHTML = '<p>Sorry, there was an error loading the news.</p>'; });
+        });
+    </script>
+</body>
 </html>
