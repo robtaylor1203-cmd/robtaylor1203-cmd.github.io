@@ -37,6 +37,19 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 .secondary-nav a.active { color: #1a73e8; border-bottom: 3px solid #1a73e8; }
 .secondary-nav a:not(.active):hover { color: #3c4043; }
 
+/* --- News Page Styles --- */
+.page-container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.news-list { list-style: none; padding: 0; border-top: 1px solid #ebebeb; display: flex; flex-direction: column; gap: 24px; }
+.news-item { display: flex; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid #ebebeb; }
+.news-item:first-child { padding-top: 0; }
+.news-item .image-link { margin-right: 24px; flex-shrink: 0; }
+.news-item .article-image { width: 124px; height: 124px; object-fit: cover; border-radius: 8px; background-color: #f0f0f0; }
+.news-item .text-content { flex: 1; }
+.news-item .source { font-size: 12px; font-weight: 400; color: #5f6368; margin-bottom: 4px; }
+.news-item .main-link h3 { font-size: 20px; font-weight: 400; color: #1a0dab; margin: 0 0 4px 0; line-height: 1.4; }
+.news-item .main-link:hover h3 { text-decoration: underline; }
+.news-item .snippet { font-size: 14px; color: #4d5156; margin: 0; line-height: 1.5; }
+
 /* --- Jobs & Products Page Styles --- */
 .jobs-page, .products-page { background-color: #fff; }
 .filter-bar { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; position: sticky; top: 112px; z-index: 99; }
@@ -68,13 +81,22 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 
 /* --- Product Grid --- */
 .product-grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; max-width: 1280px; margin: 0 auto; padding: 24px; }
-.product-card { background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.25s ease, box-shadow 0.25s ease; cursor: pointer; }
-.product-card:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
-.product-card-info { padding: 16px; flex-grow: 1; }
-.product-card-info h3 { font-size: 16px; margin: 0 0 6px 0; color: #1a0dab; }
-.product-card-info p { font-size: 14px; margin: 2px 0; color: #3c4043; }
-.product-rating { font-size: 14px; color: #fbbc04; margin-top: 6px; }
+.product-card { background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
+.product-card:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.product-card img { width: 100%; height: auto; }
+.product-card-info { padding: 16px; border-top: 1px solid #ebebeb; flex-grow: 1; }
+.product-name { font-weight: 500; margin: 0 0 4px 0; font-size: 16px; }
+.product-brand { font-size: 13px; color: #5f6368; margin-bottom: 8px; }
+.product-price { font-size: 14px; font-weight: 500; margin-bottom: 8px; }
+.product-rating { font-size: 13px; color: #3c4043; }
 
-/* --- Responsive Styles --- */
-@media (max-width: 900px) { .product-grid-container { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); } }
-@media (max-width: 768px) { .header-search-wrapper { padding: 0 20px; } }
+/* --- Responsive --- */
+@media (max-width: 900px) {
+    .news-item { flex-direction: column; align-items: flex-start; }
+    .news-item .image-link { margin-right: 0; margin-bottom: 12px; }
+    .jobs-container, .products-container { flex-direction: column; }
+}
+@media (max-width: 768px) {
+    .header-top-bar { flex-direction: column; height: auto; gap: 12px; }
+    .header-search-wrapper { padding: 0; width: 100%; }
+}
