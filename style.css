@@ -20,7 +20,7 @@ a { text-decoration: none; color: inherit; }
 footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 
 
-/* --- News Page Styles (New List Layout) --- */
+/* --- News Page Styles (With Tweaks) --- */
 .news-page {
     background-color: #fff; /* White background for the news page */
 }
@@ -40,7 +40,11 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
     max-width: 1280px;
     margin: 0 auto;
 }
-.header-logo h1 { font-size: 24px; font-weight: 400; margin: 0; }
+.header-logo h1 {
+    font-size: 28px; /* UPDATED: Made logo slightly larger */
+    font-weight: 400;
+    margin: 0;
+}
 .header-logo span { font-weight: 500; }
 .header-search-wrapper { flex-grow: 1; display: flex; justify-content: center; padding: 0 40px; }
 .header-search-bar { width: 100%; max-width: 720px; height: 44px; padding: 0 16px; font-size: 16px; border-radius: 24px; border: none; background-color: #f1f3f4; }
@@ -48,7 +52,7 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 .news-page .user-actions { position: static; } /* Put icons back in the flow on news page */
 
 .secondary-nav {
-    border-top: 1px solid #ebebeb;
+    /* UPDATED: Removed the top border line */
     max-width: 1280px;
     margin: 0 auto;
 }
