@@ -7,33 +7,68 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <div class="page-container">
-        <header class="page-header">
-            <a href="index.html" class="home-link">
+<body class="news-page">
+    <header class="site-header">
+        <div class="header-top-bar">
+            <a href="index.html" class="header-logo">
                 <h1>Tea<span>Trade</span></h1>
             </a>
-            <h2>Tea Industry News</h2>
-        </header>
-        <main class="news-list" id="news-container">
-            <p id="loading-message">Loading latest news...</p>
-        </main>
-    </div>
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const workerUrl = 'https://teatrade-news-scraper.rob-taylor1203.workers.dev';
-            const newsContainer = document.getElementById('news-container');
-            // This is the server-side rendering script
-            fetch(workerUrl)
-                .then(response => response.text())
-                .then(html => {
-                    newsContainer.innerHTML = html;
-                })
-                .catch(error => {
-                    console.error('Error fetching news:', error);
-                    newsContainer.innerHTML = '<p>Sorry, there was an error loading the news.</p>';
-                });
-        });
-    </script>
-</body>
+            <div class="header-search-wrapper">
+                <input type="text" class="header-search-bar" placeholder="Search news...">
+            </div>
+            <div class="user-actions">
+                <a href="#" title="Create Account"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="17" y1="11" x2="23" y2="11"></line></svg></a>
+                <a href="#" title="Sign In"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg></a>
+            </div>
+        </div>
+        <nav class="secondary-nav">
+            <ul>
+                <li><a href="news.html" class="active">News</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-container" id="news-container">
+        <article class="news-item">
+            <a href="#" class="image-link">
+                <img class="article-image" src="https://placehold.co/124x124/f0f0f0/cccccc?text=TeaTrade" alt="Article Thumbnail">
+            </a>
+            <div class="text-content">
+                <div class="source">T Ching</div>
+                <a href="#" class="main-link">
+                    <h3>The Rise of Specialty Oolongs: A Deep Dive</h3>
+                    <p class="snippet">An exclusive interview with a Taiwanese Tea Master on the intricate processing behind high-mountain oolongs.</p>
+                </a>
+            </div>
+        </article>
+        <article class="news-item">
+            <a href="#" class="image-link">
+                <img class="article-image" src="https://placehold.co/124x124/f0f0f0/cccccc?text=TeaTrade" alt="Article Thumbnail">
+            </a>
+            <div class="text-content">
+                <div class="source">World Tea News</div>
+                <a href="#" class="main-link">
+                    <h3>Global Tea Production Forecast to Increase</h3>
+                    <p class="snippet">A new report suggests favorable weather conditions will lead to a significant uptick in black tea production.</p>
+                </a>
+            </div>
+        </article>
+        <article class="news-item">
+            <a href="#" class="image-link">
+                <img class="article-image" src="https://placehold.co/124x124/f0f0f0/cccccc?text=TeaTrade" alt="Article Thumbnail">
+            </a>
+            <div class="text-content">
+                <div class="source">The Grocer (UK)</div>
+                <a href="#" class="main-link">
+                    <h3>UK Importers Face New Logistical Hurdles</h3>
+                    <p class="snippet">Tea and coffee importers report significant delays and increased costs due to new customs checks at major ports.</p>
+                </a>
+            </div>
+        </article>
+    </main>
+
+    </body>
 </html>
