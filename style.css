@@ -51,26 +51,38 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 
 /* --- Jobs Page Styles (UPDATED) --- */
 .jobs-page { background-color: #fff; }
-.filter-bar { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; position: sticky; top: 112px; /* Sticky header is 64+48=112px */ z-index: 99; }
+.filter-bar { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; position: sticky; top: 112px; z-index: 99; }
 .filter-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 16px; padding: 6px 12px; font-size: 13px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
 .filter-chip:hover { border-color: #dadce0; }
-.jobs-container { display: flex; max-width: 1280px; width: 100%; margin: 0 auto; padding: 16px 24px; gap: 16px; align-items: flex-start; /* Important for sticky positioning */ }
+.jobs-container { display: flex; max-width: 1280px; width: 100%; margin: 0 auto; padding: 16px 24px; gap: 16px; align-items: flex-start; }
 .job-list-pane {
-    flex: 2; /* UPDATED: This pane will be narrower */
+    flex: 2;
     max-width: 450px;
+    border: 1px solid #dadce0; /* Keep the outer container border */
+    border-radius: 8px;
+    background-color: #fff;
 }
-.job-card { padding: 16px; border: 1px solid #dadce0; border-radius: 8px; margin-bottom: 12px; cursor: pointer; }
-.job-card:hover { border-color: #9ab5e9; }
-.job-card.active { background-color: #e8f0fe; border-color: #1967d2; }
+.job-card {
+    padding: 16px;
+    border-bottom: 1px solid #ebebeb; /* UPDATED: Changed to list style */
+    cursor: pointer;
+}
+.job-card:last-child {
+    border-bottom: none; /* Remove border from the very last item in the list */
+}
+.job-card:hover { background-color: #f8f9fa; }
+.job-card.active {
+    background-color: #e8f0fe; /* UPDATED: Simplified active state */
+}
 .job-card-header h3 { font-size: 16px; color: #1a0dab; margin: 0 0 4px 0; font-weight: 500; }
 .job-card-header p { font-size: 14px; margin: 0 0 4px 0; color: #3c4043; }
 .job-card .job-snippet { font-size: 13px; color: #5f6368; margin-top: 8px; }
 .job-details-pane {
-    flex: 3; /* UPDATED: This pane will be wider */
-    position: sticky; /* UPDATED: This is the magic for the sticky effect */
-    top: 177px; /* UPDATED: Sticky header (112px) + filter bar (49px) + margin (16px) */
-    height: calc(100vh - 193px); /* UPDATED: Full screen height minus space for headers and margins */
-    overflow-y: auto; /* UPDATED: Makes only this pane scroll internally */
+    flex: 3;
+    position: sticky;
+    top: 177px;
+    height: calc(100vh - 193px);
+    overflow-y: auto;
     border: 1px solid #dadce0;
     border-radius: 8px;
 }
@@ -85,12 +97,9 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 
 
 /* Responsive Styles */
-@media (max-width: 900px) { /* Adjust breakpoint for this layout */
+@media (max-width: 900px) {
     .jobs-container { flex-direction: column; }
-    .job-details-pane { 
-        position: static; /* Turn off sticky on mobile */
-        height: auto; /* Let it grow naturally */
-    }
+    .job-details-pane { position: static; height: auto; }
     .job-list-pane { max-width: none; }
 }
 @media (max-width: 768px) {
