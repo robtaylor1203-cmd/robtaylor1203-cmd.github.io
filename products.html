@@ -51,7 +51,6 @@
             const renderProductDetails = (product) => {
                 let notesHtml = product.description.notes.map(item => `<li>${item}</li>`).join('');
                 let prepHtml = product.description.preparation.map(item => `<li>${item}</li>`).join('');
-
                 productDetailsContainer.innerHTML = `
                     <div class="product-details-content">
                         <img class="product-image-full" src="${product.image}" alt="${product.name}">
@@ -73,37 +72,23 @@
                 .then(data => {
                     productsData = data;
                     productListContainer.innerHTML = '';
-
                     if (productsData && productsData.length > 0) {
                         productsData.forEach((product, index) => {
                             const productCard = document.createElement('div');
                             productCard.className = 'product-card';
                             productCard.dataset.index = index;
-                            
-                            // --- THIS SECTION IS NOW CORRECTED ---
-                            productCard.innerHTML = `
-                                <img class="product-card-image" src="${product.image}" alt="${product.name}">
-                                <div class="product-card-info">
-                                    <h3 class="product-title">${product.name}</h3>
-                                    <p class="brand-name">${product.brand}</p>
-                                    <p class="product-snippet">${product.snippet}</p>
-                                </div>
-                            `;
-
+                            productCard.innerHTML = `<img class="product-card-image" src="${product.image}" alt="${product.name}"><div class="product-card-info"><h3 class="product-title">${product.name}</h3><p class="brand-name">${product.brand}</p><p class="product-snippet">${product.snippet}</p></div>`;
                             productCard.addEventListener('click', () => {
                                 document.querySelectorAll('.product-card.active').forEach(card => card.classList.remove('active'));
                                 productCard.classList.add('active');
                                 renderProductDetails(product);
                             });
-
                             productListContainer.appendChild(productCard);
                         });
-
                         if (productListContainer.firstChild) {
                              productListContainer.firstChild.classList.add('active');
                         }
                         renderProductDetails(productsData[0]);
-
                     } else {
                          productListContainer.innerHTML = '<p style="padding: 16px;">No products found.</p>';
                     }

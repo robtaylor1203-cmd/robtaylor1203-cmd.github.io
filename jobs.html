@@ -10,12 +10,8 @@
 <body class="jobs-page">
     <header class="site-header">
         <div class="header-top-bar">
-            <a href="index.html" class="header-logo">
-                <h1>Tea<span>Trade</span></h1>
-            </a>
-            <div class="header-search-wrapper">
-                <input type="text" class="header-search-bar" placeholder="Job title or keyword">
-            </div>
+            <a href="index.html" class="header-logo"><h1>Tea<span>Trade</span></h1></a>
+            <div class="header-search-wrapper"><input type="text" class="header-search-bar" placeholder="Job title or keyword"></div>
             <div class="user-actions">
                 <a href="#" title="Create Account"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="17" y1="11" x2="23" y2="11"></line></svg></a>
                 <a href="#" title="Sign In"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg></a>
@@ -39,13 +35,68 @@
 
     <main class="jobs-container">
         <div class="job-list-pane" id="job-list-container">
-            </div>
+            <p style="padding: 16px;">Loading jobs...</p>
+        </div>
         <div class="job-details-pane" id="job-details-container">
-            </div>
+            <div class="job-details-content"><p>Select a job on the left to see details.</p></div>
+        </div>
     </main>
     
     <script>
-        // Javascript remains the same
+        document.addEventListener('DOMContentLoaded', () => {
+            const jobListContainer = document.getElementById('job-list-container');
+            const jobDetailsContainer = document.getElementById('job-details-container');
+            let jobsData = []; 
+
+            const renderJobDetails = (job) => {
+                let responsibilitiesHtml = job.description.responsibilities.map(item => `<li>${item}</li>`).join('');
+                let qualificationsHtml = job.description.qualifications.map(item => `<li>${item}</li>`).join('');
+                jobDetailsContainer.innerHTML = `
+                    <div class="job-details-content">
+                        <h2 class="job-title-full">${job.title}</h2>
+                        <p class="company-name-full">${job.company} &middot; ${job.location}</p>
+                        <a href="${job.link}" target="_blank" rel="noopener noreferrer"><button class="apply-button">Apply on Company Site</button></a>
+                        <hr class="divider">
+                        <p>${job.description.intro}</p>
+                        <h4>Responsibilities:</h4>
+                        <ul>${responsibilitiesHtml}</ul>
+                        <h4>Qualifications:</h4>
+                        <ul>${qualificationsHtml}</ul>
+                    </div>
+                `;
+            };
+
+            fetch('jobs.json')
+                .then(response => response.json())
+                .then(data => {
+                    jobsData = data;
+                    jobListContainer.innerHTML = '';
+                    if (jobsData && jobsData.length > 0) {
+                        jobsData.forEach((job, index) => {
+                            const jobCard = document.createElement('div');
+                            jobCard.className = 'job-card';
+                            jobCard.dataset.index = index;
+                            jobCard.innerHTML = `<div class="job-card-header"><h3 class="job-title">${job.title}</h3><p class="company-name">${job.company}</p><p class="location">${job.location}</p></div><p class="job-snippet">${job.snippet}</p>`;
+                            jobCard.addEventListener('click', () => {
+                                document.querySelectorAll('.job-card.active').forEach(card => card.classList.remove('active'));
+                                jobCard.classList.add('active');
+                                renderJobDetails(job);
+                            });
+                            jobListContainer.appendChild(jobCard);
+                        });
+                        if (jobListContainer.firstChild) {
+                             jobListContainer.firstChild.classList.add('active');
+                        }
+                        renderJobDetails(jobsData[0]);
+                    } else {
+                         jobListContainer.innerHTML = '<p style="padding: 16px;">No jobs found.</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching jobs data:', error);
+                    jobListContainer.innerHTML = '<p style="padding: 16px;">Error loading jobs.</p>';
+                });
+        });
     </script>
 </body>
 </html>

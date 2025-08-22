@@ -38,6 +38,8 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 
 /* --- News Page Styles --- */
 .page-container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.page-title { font-size: 28px; font-weight: 400; margin: 10px 0 20px 0; color: #3c4043; }
+.news-list { list-style: none; padding: 0; border-top: 1px solid #ebebeb; }
 .news-item { display: flex; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid #ebebeb; }
 .news-item:first-child { padding-top: 0; }
 .news-item .image-link { margin-right: 24px; }
