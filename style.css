@@ -1,5 +1,10 @@
 /* --- Global Styles --- */
-body, html { margin: 0; font-family: 'Roboto', sans-serif; background-color: #f8f9fa; color: #202124; }
+body, html { 
+    margin: 0; 
+    font-family: 'Roboto', sans-serif; 
+    background-color: #ffffff; /* UPDATED: Changed to white */
+    color: #202124; 
+}
 a { text-decoration: none; color: inherit; }
 * { box-sizing: border-box; }
 
@@ -29,7 +34,11 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 .header-search-bar { width: 100%; max-width: 720px; height: 44px; padding: 0 16px; font-size: 16px; border-radius: 24px; border: none; background-color: #f1f3f4; }
 .header-search-bar:focus { background-color: #fff; box-shadow: 0 1px 6px rgba(32,33,36,.1); outline: none; }
 .news-page .user-actions, .jobs-page .user-actions { position: static; }
-.secondary-nav { border-top: 1px solid #ebebeb; max-width: 1280px; margin: 0 auto; }
+.secondary-nav {
+    /* UPDATED: Removed the top border line */
+    max-width: 1280px;
+    margin: 0 auto;
+}
 .secondary-nav ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 25px; height: 48px; align-items: center; }
 .secondary-nav a { font-size: 14px; color: #5f6368; padding-bottom: 8px; font-weight: 500; }
 .secondary-nav a.active { color: #1a73e8; border-bottom: 3px solid #1a73e8; }
@@ -70,3 +79,14 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 .divider { border: 0; border-top: 1px solid #ebebeb; margin: 24px 0; }
 .job-details-content h4 { font-size: 16px; font-weight: 500; margin: 16px 0 8px 0; }
 .job-details-content ul { padding-left: 20px; margin: 0; line-height: 1.6; }
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .header-search-wrapper { display: none; } /* Hide search on mobile header */
+    .secondary-nav { display: none; } /* Hide subnav on mobile */
+    .news-item .article-image { width: 92px; height: 92px; }
+    .news-item .main-link h3 { font-size: 18px; }
+    .jobs-container { flex-direction: column; height: auto; } /* Stack panes on mobile */
+    .job-list-pane { width: 100%; max-width: none; }
+}
