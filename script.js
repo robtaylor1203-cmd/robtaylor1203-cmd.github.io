@@ -2,31 +2,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Dynamic Header Scroll Logic ---
     const headerSecondary = document.querySelector('.header-secondary');
     
-    // Check if the element exists (it won't on the simple landing pages)
     if (headerSecondary) {
         let lastScrollTop = 0;
-        const scrollThreshold = 10; // Pixels to scroll before triggering
-        const headerPrimaryHeight = document.querySelector('.header-primary')?.offsetHeight || 56;
+        const scrollThreshold = 5; // How many pixels to scroll before we trigger the hide/show
 
         window.addEventListener('scroll', () => {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-            // Only apply the effect on mobile view
+            // Only apply this dynamic behavior on mobile screens
             if (window.innerWidth <= 900) {
                 if (Math.abs(scrollTop - lastScrollTop) <= scrollThreshold) {
-                    return; // Do nothing if scroll is too small
+                    return; // Do nothing if it's just a tiny scroll
                 }
 
-                if (scrollTop > lastScrollTop && scrollTop > headerPrimaryHeight) {
-                    // Scrolling Down
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    // If scrolling Down and past 100px from the top, hide the bar
                     headerSecondary.classList.add('is-hidden');
                 } else {
-                    // Scrolling Up
+                    // If scrolling Up, show the bar
                     headerSecondary.classList.remove('is-hidden');
                 }
             }
             
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         }, false);
     }
 });
