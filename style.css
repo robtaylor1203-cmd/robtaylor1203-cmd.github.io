@@ -3,7 +3,8 @@ body, html { margin: 0; font-family: 'Roboto', sans-serif; background-color: #ff
 a { text-decoration: none; color: inherit; }
 * { box-sizing: border-box; }
 
-/* --- Homepage & Corporate Page Styles --- */
+/* --- Homepage Styles --- */
+/* ... existing styles ... */
 .container { display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; text-align: center; padding: 20px; background-color: #ffffff; }
 .user-actions { position: absolute; top: 30px; right: 30px; display: flex; gap: 20px; }
 .user-actions a { color: #4a4a4a; }
@@ -22,21 +23,13 @@ a.logo-link { text-decoration: none; }
 footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 
 /* --- Reusable Header Styles --- */
+/* ... existing styles ... */
 .site-header { background-color: #fff; border-bottom: 1px solid #ebebeb; padding: 0 24px; position: sticky; top: 0; z-index: 100; flex-shrink: 0; }
 .header-top-bar { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: 1280px; margin: 0 auto; }
 .header-logo h1 { font-size: 28px; font-weight: 400; margin: 0; }
 .header-logo span { font-weight: 500; }
 .header-search-wrapper { flex-grow: 1; display: flex; justify-content: center; padding: 0 40px; }
-.header-search-bar {
-    width: 100%;
-    max-width: 720px;
-    height: 44px;
-    padding: 0 16px;
-    font-size: 16px;
-    border-radius: 24px;
-    background-color: #ffffff; /* UPDATED to white */
-    border: 1px solid #dfe1e5; /* ADDED for visibility */
-}
+.header-search-bar { width: 100%; max-width: 720px; height: 44px; padding: 0 16px; font-size: 16px; border-radius: 24px; background-color: #ffffff; border: 1px solid #dfe1e5; }
 .header-search-bar:focus { background-color: #fff; box-shadow: 0 1px 6px rgba(32,33,36,.1); outline: none; }
 .news-page .site-header .user-actions, .jobs-page .site-header .user-actions, .products-page .site-header .user-actions { position: static; }
 .secondary-nav { max-width: 1280px; margin: 0 auto; }
@@ -46,6 +39,7 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 .secondary-nav a:not(.active):hover { color: #3c4043; }
 
 /* --- News Page Styles --- */
+/* ... existing styles ... */
 .page-container { max-width: 1100px; margin: 0 auto; padding: 24px; }
 .page-title { font-size: 28px; font-weight: 400; margin: 10px 0 20px 0; color: #3c4043; }
 .news-list { list-style: none; padding: 0; }
@@ -60,6 +54,7 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 .news-item .snippet { font-size: 14px; color: #4d5156; margin: 0; line-height: 1.5; }
 
 /* --- Jobs Page Styles --- */
+/* ... existing styles ... */
 .jobs-page { background-color: #fff; }
 .filter-bar { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; position: sticky; top: 112px; z-index: 99; }
 .filter-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 16px; padding: 6px 12px; font-size: 13px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
@@ -70,28 +65,21 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 .job-card:first-child { border-top: 1px solid #ebebeb; }
 .job-card:hover { background-color: #f8f9fa; }
 .job-card.active { background-color: #e8f0fe; }
-.job-card-header h3 { font-size: 16px; color: #1a0dab; margin: 0 0 4px 0; font-weight: 500; }
-.job-card-header p { font-size: 14px; margin: 0 0 4px 0; color: #3c4043; }
-.job-card .job-snippet { font-size: 13px; color: #5f6368; margin-top: 8px; }
-.job-details-pane { flex: 3; position: sticky; top: 177px; height: calc(100vh - 193px); overflow-y: auto; }
+.job-details-pane { flex: 3; position: sticky; top: 177px; }
+.job-details-content-wrapper { height: calc(100vh - 193px); overflow-y: auto; border: 1px solid #dadce0; border-radius: 8px; }
 .job-details-content { padding: 24px; }
 .apply-button { background-color: #1a73e8; color: #fff; border: none; border-radius: 999px; padding: 12px 24px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background-color 0.2s; }
 .apply-button:hover { background-color: #185abc; }
-.divider { border: 0; border-top: 1px solid #ebebeb; margin: 24px 0; }
-.job-details-content h4 { font-size: 16px; font-weight: 500; margin: 16px 0 8px 0; }
-.job-details-content ul { padding-left: 20px; margin: 0; line-height: 1.6; }
 
 /* --- Products Page Styles --- */
+/* ... existing styles ... */
 .products-page { background-color: #ffffff; }
 .product-grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; max-width: 1280px; margin: 0 auto; padding: 24px; }
-.product-card { background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
+.product-card { background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; cursor: pointer; }
 .product-card:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
 .product-card-image-wrapper { width: 100%; padding-top: 100%; position: relative; background-color: #f8f9fa; }
 .product-card-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; padding: 8px; }
 .product-card-info { padding: 16px; border-top: 1px solid #ebebeb; flex-grow: 1; }
-.product-name { font-size: 16px; font-weight: 500; color: #202124; margin: 0 0 4px 0; }
-.product-brand { font-size: 14px; color: #5f6368; margin: 0 0 8px 0; }
-.product-price { font-size: 16px; font-weight: 700; color: #1a73e8; margin: 0 0 8px 0; }
 .product-reviews { display: flex; align-items: center; }
 .star-rating { font-size: 16px; position: relative; display: inline-block; }
 .star-rating::before { content: '★★★★★'; color: #dadce0; }
@@ -99,12 +87,65 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 .star-rating-filled::before { content: '★★★★★'; }
 .review-count { font-size: 12px; color: #5f6368; margin-left: 6px; }
 
-/* --- Responsive Styles --- */
+/* --- Mobile Modal (Pop-up) Styles --- */
 @media (max-width: 900px) {
-    .jobs-container, .products-container { flex-direction: column; }
-    .job-details-pane, .product-details-pane { position: static; height: auto; border: 1px solid #dadce0; border-radius: 8px; }
-    .job-list-pane, .product-list-pane { max-width: none; border: 1px solid #dadce0; border-radius: 8px; margin-bottom: 16px; }
+    .jobs-container { flex-direction: column; }
+    .job-details-pane {
+        display: none; /* Hide the details pane by default on mobile */
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 1000;
+        padding: 20px;
+        overflow-y: auto;
+    }
+    .job-details-pane.is-visible {
+        display: block; /* Show it when it gets the .is-visible class */
+    }
+    .job-details-content-wrapper {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 24px;
+        max-width: 600px;
+        margin: 40px auto;
+        position: relative;
+    }
+    .modal-close-button {
+        display: block;
+        position: absolute;
+        top: 10px; right: 15px;
+        font-size: 36px;
+        font-weight: bold;
+        color: #5f6368;
+        background: none;
+        border: none;
+        cursor: pointer;
+        line-height: 1;
+    }
+
+    .product-details-modal {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 1000;
+        padding: 20px;
+        overflow-y: auto;
+    }
+    .product-details-modal.is-visible {
+        display: block;
+    }
+    .product-details-content-wrapper {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 24px;
+        max-width: 400px;
+        margin: 40px auto;
+        position: relative;
+    }
+    .product-list-pane { max-width: none; }
 }
+
 @media (max-width: 768px) {
     .header-search-wrapper { display: none; }
     .secondary-nav { display: none; }
