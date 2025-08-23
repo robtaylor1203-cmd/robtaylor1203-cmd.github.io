@@ -92,12 +92,33 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
     .job-list-pane, .product-list-pane { max-width: none; border: 1px solid #dadce0; border-radius: 8px; margin-bottom: 16px; }
 }
 @media (max-width: 768px) {
-    .site-header { position: static; } 
-    .header-search-wrapper, .secondary-nav, .filter-bar { display: none; }
-    .news-item { flex-direction: column-reverse; }
-    .news-item .article-image { width: 100%; height: auto; margin-bottom: 15px; }
-    .news-item .text-content { margin-right: 0; }
-    .news-item .main-link h3 { font-size: 18px; }
-    .header-primary .user-actions { position: absolute; top: 50%; right: 16px; transform: translateY(-50%); }
-    .header-primary { height: 56px; }
+    /* Hide desktop-only elements */
+    .site-header {
+        position: static; /* Stop header from being sticky on very small screens to avoid layout issues */
+    }
+    .header-search-wrapper, .secondary-nav, .filter-bar { 
+        display: none; 
+    }
+    /* Stacks news items on mobile */
+    .news-item {
+        flex-direction: column-reverse;
+    }
+    .news-item .article-image {
+        width: 100%;
+        height: auto;
+        margin-bottom: 15px;
+    }
+    .news-item .text-content {
+        margin-right: 0;
+    }
+    .news-item .main-link h3 { 
+        font-size: 18px; 
+    }
+    /* Adjust header for mobile */
+    .header-top-bar {
+        height: 56px;
+    }
+    .header-logo h1 {
+        font-size: 22px;
+    }
 }
