@@ -1,50 +1,5 @@
 [
-  {
-    "name": "Organic Earl Grey",
-    "brand": "Mikinlor Group Select",
-    "type": "Black Tea",
-    "price": "£8.50",
-    "rating": 4.5,
-    "reviewCount": 128,
-    "link": "#",
-    "image": "images/product1.jpeg",
-    "snippet": "A classic bergamot-infused black tea, sourced from the finest organic estates in Sri Lanka. Bright, citrusy, and full-bodied.",
-    "description": {
-      "intro": "Our signature Organic Earl Grey is a timeless classic. We've selected a superb full-leaf organic black tea and infused it with the purest oil of bergamot to create a smooth, aromatic, and deeply satisfying cup.",
-      "notes": [ "Tasting Notes: Bright Citrus, Floral, Malt", "Origin: Dimbula, Sri Lanka", "Ingredients: Organic Black Tea, Natural Bergamot Oil" ],
-      "preparation": [ "Water Temperature: 100°C", "Steep Time: 3-5 minutes", "Serving Suggestion: Excellent on its own or with a slice of lemon." ]
-    }
-  },
-  {
-    "name": "Dragon Well (Longjing)",
-    "brand": "Hangzhou Tea Masters",
-    "type": "Green Tea",
-    "price": "£14.00",
-    "rating": 5,
-    "reviewCount": 92,
-    "link": "#",
-    "image": "images/product2.jpeg",
-    "snippet": "A pre-Qingming, premium grade Longjing green tea, renowned for its sweet, mellow, and nutty flavour profile.",
-    "description": {
-      "intro": "Experience one of China's most celebrated teas. Our Dragon Well (Longjing) is harvested in early spring before the Qingming festival, ensuring the most tender, flavourful leaves. The leaves are skillfully pan-fired in a wok to halt oxidation, creating its signature flat shape and complex, toasted aroma.",
-      "notes": [ "Tasting Notes: Toasted Chestnut, Sweet Grass, Buttery Smooth", "Origin: Hangzhou, Zhejiang, China", "Ingredients: Green Tea" ],
-      "preparation": [ "Water Temperature: 80°C", "Steep Time: 2-3 minutes", "Serving Suggestion: Perfect for multiple infusions." ]
-    }
-  },
-  {
-    "name": "High Mountain Oolong",
-    "brand": "Alishan Growers Collective",
-    "type": "Oolong Tea",
-    "price": "£18.50",
-    "rating": 4,
-    "reviewCount": 74,
-    "link": "#",
-    "image": "images/product3.jpeg",
-    "snippet": "A lightly oxidized oolong from the high mountains of Alishan, Taiwan, offering a creamy texture and floral aroma.",
-    "description": {
-      "intro": "Grown at altitudes above 1,000 meters in the famous Alishan region of Taiwan, this oolong is a true delight. The cool, misty climate produces leaves that are thick and rich in aromatic oils, which are skillfully processed to create a tea with a wonderfully creamy mouthfeel and notes of orchid and honey.",
-      "notes": [ "Tasting Notes: Cream, Orchid, Alpine Air", "Origin: Alishan, Taiwan", "Ingredients: Oolong Tea" ],
-      "preparation": [ "Water Temperature: 90°C", "Steep Time: 3-5 minutes (Gongfu style recommended)", "Serving Suggestion: Appreciate its evolving flavour over many steepings." ]
-    }
-  }
+  { "name": "Organic Earl Grey", "brand": "Mikinlor Group Select", "type": "Black Tea", "price": "£8.50", "rating": 4.5, "reviewCount": 128, "link": "#", "image": "images/product1.jpeg", "snippet": "A classic bergamot-infused black tea...", "description": { "intro": "Our signature Organic Earl Grey is a timeless classic...", "notes": [ "Tasting Notes: Bright Citrus, Floral, Malt", "Origin: Dimbula, Sri Lanka" ], "preparation": [ "Water Temperature: 100°C", "Steep Time: 3-5 minutes" ] } },
+  { "name": "Dragon Well (Longjing)", "brand": "Hangzhou Tea Masters", "type": "Green Tea", "price": "£14.00", "rating": 5, "reviewCount": 92, "link": "#", "image": "images/product2.jpeg", "snippet": "A pre-Qingming, premium grade Longjing green tea...", "description": { "intro": "Experience one of China's most celebrated teas...", "notes": [ "Tasting Notes: Toasted Chestnut, Sweet Grass, Buttery Smooth", "Origin: Hangzhou, China" ], "preparation": [ "Water Temperature: 80°C", "Steep Time: 2-3 minutes" ] } },
+  { "name": "High Mountain Oolong", "brand": "Alishan Growers Collective", "type": "Oolong Tea", "price": "£18.50", "rating": 4, "reviewCount": 74, "link": "#", "image": "images/product3.jpeg", "snippet": "A lightly oxidized oolong from the high mountains of Alishan, Taiwan...", "description": { "intro": "Grown at altitudes above 1,000 meters...", "notes": [ "Tasting Notes: Cream, Orchid, Alpine Air", "Origin: Alishan, Taiwan" ], "preparation": [ "Water Temperature: 90°C", "Steep Time: 3-5 minutes" ] } }
 ]

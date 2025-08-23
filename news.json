@@ -1,44 +1,8 @@
 [
-  {
-    "source": "Huffington Post UK",
-    "headline": "This Is The Number One Antioxidant Tea For Warding Off Dementia",
-    "snippet": "It turns out your daily cuppa does a lot more than just taste good.",
-    "link": "https://www.huffingtonpost.co.uk/entry/green-tea-antioxidant-dementia_uk_68a593b0e4b0a58e154240ec",
-    "image": "images/huffpost.jpeg"
-  },
-  {
-    "source": "Tea & Coffee Trade Journal",
-    "headline": "Global Tea Production to Experience a Dip in 2025",
-    "snippet": "The Food and Agriculture Organization of the United Nations (FAO) has projected a slight decline in global tea production for the year 2025...",
-    "link": "https://www.teaandcoffee.net/blog/37556/37522/",
-    "image": "images/teacoffee.jpeg"
-  },
-  {
-    "source": "The Argus",
-    "headline": "Brighton-founded Yalda iced tea receives great taste awards",
-    "snippet": "AN ICED tea company from Brighton has been recognised at a prestigious food and drink awards.",
-    "link": "https://www.theargus.co.uk/news/25398405.brighton-founded-yalda-iced-tea-receives-great-taste-awards/",
-    "image": "https://www.theargus.co.uk/resources/images/19220042/?type=article-full"
-  },
-  {
-    "source": "CGTN",
-    "headline": "From leaf to butter tea: Cao Aiping's aromatic life",
-    "snippet": "In the central Chinese city of Enshi, the air is often filled with a distinct fragrance, a unique blend of roasting tea leaves, savory butter, and toasted sesame...",
-    "link": "https://news.cgtn.com/news/2025-08-21/From-leaf-to-butter-tea-Cao-Aiping-1FZvWIOAn4I/p.html",
-    "image": "images/cgtn.jpeg"
-  },
-  {
-    "source": "The Independent",
-    "headline": "How Japan’s new Starbucks is putting a modern twist on a centuries-old tea tradition",
-    "snippet": "Visitors will be able to enjoy a modern take on Japanese tea at the new Starbucks store in Kagoshima...",
-    "link": "https://www.independent.co.uk/news/japan-japanese-tokyo-starbucks-kagoshima-b2812233.html",
-    "image": "images/independent.jpeg"
-  },
-  {
-    "source": "The Telegraph",
-    "headline": "Sen Soshitsu XV, Japanese tea master who had been a kamikaze pilot – obituary",
-    "snippet": "Sen Soshitsu XV, who has died aged 102, was the 15th-generation Grand Master of the Urasenke tea school...",
-    "link": "https://www.telegraph.co.uk/obituaries/2025/08/21/sen-soshitsu-xv-japanese-tea-master-kamikaze-pilot/",
-    "image": "images/telegraph.jpeg"
-  }
+  { "source": "Huffington Post UK", "headline": "This Is The Number One Antioxidant Tea For Warding Off Dementia", "snippet": "It turns out your daily cuppa does a lot more than just taste good.", "link": "https://www.huffingtonpost.co.uk/entry/green-tea-antioxidant-dementia_uk_68a593b0e4b0a58e154240ec", "image": "images/huffpost.jpeg" },
+  { "source": "Tea & Coffee Trade Journal", "headline": "Global Tea Production to Experience a Dip in 2025", "snippet": "The Food and Agriculture Organization of the United Nations (FAO) has projected a slight decline in global tea production...", "link": "https://www.teaandcoffee.net/blog/37556/37522/", "image": "images/teacoffee.jpeg" },
+  { "source": "The Argus", "headline": "Brighton-founded Yalda iced tea receives great taste awards", "snippet": "AN ICED tea company from Brighton has been recognised at a prestigious food and drink awards.", "link": "https://www.theargus.co.uk/news/25398405.brighton-founded-yalda-iced-tea-receives-great-taste-awards/", "image": "images/argus.jpeg" },
+  { "source": "CGTN", "headline": "From leaf to butter tea: Cao Aiping's aromatic life", "snippet": "In the central Chinese city of Enshi, the air is often filled with a distinct fragrance...", "link": "https://news.cgtn.com/news/2025-08-21/From-leaf-to-butter-tea-Cao-Aiping-1FZvWIOAn4I/p.html", "image": "images/cgtn.jpeg" },
+  { "source": "The Independent", "headline": "How Japan’s new Starbucks is putting a modern twist on a centuries-old tea tradition", "snippet": "Visitors will be able to enjoy a modern take on Japanese tea at the new Starbucks store in Kagoshima...", "link": "https://www.independent.co.uk/news/japan-japanese-tokyo-starbucks-kagoshima-b2812233.html", "image": "images/independent.jpeg" },
+  { "source": "The Telegraph", "headline": "Sen Soshitsu XV, Japanese tea master who had been a kamikaze pilot – obituary", "snippet": "Sen Soshitsu XV, who has died aged 102, was the 15th-generation Grand Master of the Urasenke tea school...", "link": "https://www.telegraph.co.uk/obituaries/2025-08-21/sen-soshitsu-xv-japanese-tea-master-kamikaze-pilot/", "image": "images/telegraph.jpeg" }
 ]
