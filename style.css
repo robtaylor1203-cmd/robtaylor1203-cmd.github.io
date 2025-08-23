@@ -17,9 +17,9 @@ a.logo-link { text-decoration: none; }
 .search-bar { width: 100%; height: 46px; padding: 0 20px; font-size: 16px; border-radius: 24px; border: 1px solid #dfe1e5; }
 .search-bar:hover, .search-bar:focus { border-color: #c5c7ca; box-shadow: 0 1px 6px rgba(32,33,36,.28); outline: none; }
 .main-nav ul { list-style: none; padding: 0; margin: 28px 0; display: flex; justify-content: center; gap: 20px; }
-.main-nav a { background-color: #f8f9fa; color: #3c40_43; font-size: 14px; padding: 8px 16px; border-radius: 4px; }
+.main-nav a { background-color: #f8f9fa; color: #3c4043; font-size: 14px; padding: 8px 16px; border-radius: 4px; }
 .main-nav a:hover { box-shadow: 0 1px 1px rgba(0,0,0,.1); background-color: #f1f3f4; }
-footer { font-size: 12px; color: #70757a; } /* Removed absolute positioning to work with new corporate page structure */
+footer { font-size: 12px; color: #70757a; } 
 
 /* --- Reusable Header Styles --- */
 .site-header { background-color: #fff; border-bottom: 1px solid #ebebeb; padding: 0 24px; position: sticky; top: 0; z-index: 100; flex-shrink: 0; }
@@ -50,27 +50,25 @@ footer { font-size: 12px; color: #70757a; } /* Removed absolute positioning to w
 .news-item .main-link:hover h3 { text-decoration: underline; }
 .news-item .snippet { font-size: 14px; color: #4d5156; margin: 0; line-height: 1.5; }
 
-/* --- Jobs & Products Page Styles --- */
-.jobs-page, .products-page { background-color: #fff; }
+/* --- Jobs Page Styles --- */
+.jobs-page { background-color: #fff; }
 .filter-bar { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; position: sticky; top: 112px; z-index: 99; }
 .filter-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 16px; padding: 6px 12px; font-size: 13px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
 .filter-chip:hover { border-color: #dadce0; }
-.jobs-container, .products-container { display: flex; max-width: 1280px; width: 100%; margin: 0 auto; padding: 16px 24px; gap: 24px; align-items: flex-start; }
-.job-list-pane { flex: 2; max-width: 450px; border: 1px solid #dadce0; border-radius: 8px; }
+.jobs-container { display: flex; max-width: 1280px; width: 100%; margin: 0 auto; padding: 16px 24px; gap: 24px; align-items: flex-start; }
+.job-list-pane { flex: 2; max-width: 450px; }
 .job-card { padding: 16px; border-bottom: 1px solid #ebebeb; cursor: pointer; }
-.job-card:last-child { border-bottom: none; }
+.job-card:first-child { border-top: 1px solid #ebebeb; }
 .job-card:hover { background-color: #f8f9fa; }
 .job-card.active { background-color: #e8f0fe; }
-.job-card-header h3 { font-size: 16px; color: #1a0dab; margin: 0 0 4px 0; font-weight: 500; }
-.job-card-header p { font-size: 14px; margin: 0 0 4px 0; color: #3c4043; }
-.job-card .job-snippet { font-size: 13px; color: #5f6368; margin-top: 8px; }
-.job-details-pane { flex: 3; position: sticky; top: 177px; height: calc(100vh - 193px); overflow-y: auto; border: 1px solid #dadce0; border-radius: 8px; }
+.job-details-pane { flex: 3; position: sticky; top: 177px; height: calc(100vh - 193px); overflow-y: auto; }
 .job-details-content { padding: 24px; }
 .apply-button { background-color: #1a73e8; color: #fff; border: none; border-radius: 999px; padding: 12px 24px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background-color 0.2s; }
 .apply-button:hover { background-color: #185abc; }
 .divider { border: 0; border-top: 1px solid #ebebeb; margin: 24px 0; }
-.job-details-content h4 { font-size: 16px; font-weight: 500; margin: 16px 0 8px 0; }
-.job-details-content ul { padding-left: 20px; margin: 0; line-height: 1.6; }
+
+/* --- Products Page Styles --- */
+.products-page { background-color: #ffffff; }
 .product-grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; max-width: 1280px; margin: 0 auto; padding: 24px; }
 .product-card { background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
 .product-card:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
@@ -94,8 +92,24 @@ footer { font-size: 12px; color: #70757a; } /* Removed absolute positioning to w
     .job-list-pane, .product-list-pane { max-width: none; border: 1px solid #dadce0; border-radius: 8px; margin-bottom: 16px; }
 }
 @media (max-width: 768px) {
-    .header-search-wrapper { display: none; }
-    .secondary-nav { display: none; }
-    .news-item .article-image { width: 92px; height: 92px; }
-    .news-item .main-link h3 { font-size: 18px; }
+    /* Hides desktop-only elements */
+    .header-search-wrapper, .secondary-nav { 
+        display: none; 
+    }
+
+    /* Stacks news items on mobile */
+    .news-item {
+        flex-direction: column-reverse;
+    }
+    .news-item .article-image {
+        width: 100%;
+        height: auto;
+        margin-bottom: 15px;
+    }
+    .news-item .text-content {
+        margin-right: 0;
+    }
+    .news-item .main-link h3 { 
+        font-size: 18px; 
+    }
 }
