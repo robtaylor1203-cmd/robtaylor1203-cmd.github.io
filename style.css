@@ -5,10 +5,10 @@ a { text-decoration: none; color: inherit; }
 
 /* --- Mobile-First Base Header Styles --- */
 .site-header { background-color: #fff; position: sticky; top: 0; z-index: 1000; }
-.header-primary { display: flex; align-items: center; justify-content: center; position: relative; height: 56px; padding: 0 16px; border-bottom: 1px solid #ebebeb; }
+.header-primary { display: flex; align-items: center; justify-content: flex-start; /* Logo left on mobile */ position: relative; height: 56px; padding: 0 16px; border-bottom: 1px solid #ebebeb; }
 .header-logo h1 { font-size: 22px; font-weight: 400; margin: 0; }
 .header-logo span { font-weight: 500; }
-.header-primary .user-actions { position: absolute; top: 50%; right: 16px; transform: translateY(-50%); display: flex; gap: 15px; }
+.user-actions { position: absolute; top: 50%; right: 16px; transform: translateY(-50%); display: flex; gap: 15px; }
 .user-actions svg { width: 24px; height: 24px; }
 .header-secondary { background-color: #fff; padding: 8px 16px; border-bottom: 1px solid #ebebeb; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: transform 0.3s ease-in-out, visibility 0.3s; }
 .header-secondary.is-hidden { transform: translateY(-100%); visibility: hidden; }
@@ -20,29 +20,25 @@ a { text-decoration: none; color: inherit; }
 .secondary-nav a { font-size: 14px; color: #5f6368; padding-bottom: 8px; font-weight: 500; white-space: nowrap; }
 .secondary-nav a.active { color: #1a73e8; border-bottom: 3px solid #1a73e8; }
 
-/* --- Homepage & Corporate Page Styles --- */
+/* --- Homepage & Corporate Page Specific Styles --- */
 .home, .corporate-page { display: flex; flex-direction: column; min-height: 100vh; }
-.home .site-header, .corporate-page .site-header { display: none; } /* Hide the mobile header structure on these pages */
+.home .site-header, .corporate-page .site-header { display: none; }
 .container { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
-.user-actions-desktop-home { display: none; } /* Hide desktop icons on mobile */
+.user-actions-desktop-home { display: flex; position: absolute; top: 30px; right: 30px; gap: 20px; }
 .logo h1 { font-size: 60px; font-weight: 400; color: #4a4a4a; margin: 0; margin-bottom: 10px; letter-spacing: -1px; }
 .sub-logo { font-size: 12px; font-weight: 500; color: #5f6368; text-transform: uppercase; letter-spacing: 8px; margin: -10px 0 30px 8px; }
 .search-area { width: 100%; max-width: 584px; }
-.main-nav ul { list-style: none; padding: 0; margin: 28px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.main-nav { margin-top: 28px; }
+.main-nav ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 .main-nav a { background-color: #f8f9fa; color: #3c4043; font-size: 14px; padding: 8px 16px; border-radius: 4px; }
 footer { font-size: 12px; color: #70757a; padding: 20px; text-align: center; flex-shrink: 0; }
 a.logo-link { text-decoration: none; }
 
-/* --- News, Jobs, Products Content Styles --- */
+/* --- Content Page General Styles --- */
 .page-container, .product-grid-container, .jobs-container { padding: 16px; }
 .page-title { font-size: 24px; font-weight: 400; margin: 0 0 16px 0; color: #3c4043; }
 .filter-bar { background-color: #fff; padding: 12px 16px; border-bottom: 1px solid #ebebeb; }
 .filter-chip { background-color: #e8eaed; border: 1px solid transparent; border-radius: 16px; padding: 6px 12px; font-size: 13px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
-.news-list { list-style: none; padding: 0; }
-.news-item { display: flex; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid #ebebeb; }
-.job-card { padding: 16px; border-bottom: 1px solid #ebebeb; cursor: pointer; }
-.product-grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
-.product-card { border: 1px solid #dadce0; border-radius: 8px; }
 
 /* --- Mobile Modal (Pop-up) Styles --- */
 .modal-close-button { display: block; position: absolute; top: 10px; right: 15px; font-size: 36px; font-weight: bold; color: #5f6368; background: none; border: none; cursor: pointer; line-height: 1; padding: 0; z-index: 1001;}
@@ -52,24 +48,31 @@ a.logo-link { text-decoration: none; }
 .job-list-pane { border: 1px solid #dadce0; border-radius: 8px; }
 .job-details-content, .product-details-content { padding: 24px; }
 .product-details-content-wrapper { max-width: 400px; }
-
+.news-list { list-style: none; padding: 0; }
+.news-item { display: flex; flex-direction: column-reverse; padding: 16px 0; border-bottom: 1px solid #ebebeb; }
+.news-item .article-image { width: 100%; height: auto; margin-bottom: 15px; border-radius: 8px; }
+.product-grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
+.product-card { border: 1px solid #dadce0; border-radius: 8px; }
 
 /* --- Desktop Styles (Media Query > 900px) --- */
 @media (min-width: 901px) {
-    .site-header { border-bottom: none; }
-    .header-primary { max-width: 1280px; margin: 0 auto; justify-content: space-between; height: 64px; padding: 0 24px; border-bottom: 1px solid #ebebeb;}
+    .site-header { padding: 0 24px; }
+    .header-primary { max-width: 1280px; margin: 0 auto; justify-content: space-between; height: 64px; }
     .header-logo h1 { font-size: 28px; }
     .header-primary .user-actions { position: static; transform: none; }
-    .header-secondary { transform: none !important; visibility: visible !important; padding: 0 24px; border-bottom: 1px solid #ebebeb; }
+    .header-secondary { transform: none !important; visibility: visible !important; padding: 0 24px; border-bottom: 1px solid #ebebeb; box-shadow: none; }
+    .mobile-search-bar-wrapper { display: none; }
     .header-search-wrapper { display: flex; flex-grow: 1; justify-content: center; padding: 0 40px; margin-bottom: 0; }
     .header-search-bar { width: 100%; max-width: 720px; height: 44px; background-color: #f1f3f4; border: 1px solid transparent; }
     .secondary-nav { max-width: 1280px; margin: 0 auto; }
     .secondary-nav ul { overflow-x: visible; }
     .home .site-header, .corporate-page .site-header { display: none; }
-    .home .user-actions-desktop-home, .corporate-page .user-actions { display: flex; position: absolute; top: 30px; right: 30px; }
+    .user-actions-desktop-home { display: flex; }
     .logo h1 { font-size: 92px; }
     .sub-logo { font-size: 13px; letter-spacing: 9.5px; margin: -10px 0 40px 9.5px; }
     .page-container { max-width: 1100px; }
+    .news-item { flex-direction: row; }
+    .news-item .article-image { width: 124px; margin-bottom: 0; margin-right: 24px; }
     .jobs-container { display: flex; max-width: 1280px; padding: 16px 24px; gap: 24px; align-items: flex-start; }
     .job-list-pane { flex: 2; max-width: 450px; }
     .job-details-pane { display: block; flex: 3; position: sticky; top: 128px; height: calc(100vh - 144px); overflow-y: auto; }
