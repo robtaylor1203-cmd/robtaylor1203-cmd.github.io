@@ -11,21 +11,8 @@ a { text-decoration: none; color: inherit; }
 .user-actions svg { width: 24px; height: 24px; }
 .logo h1 { font-size: 92px; font-weight: 400; color: #4a4a4a; margin: 0; margin-bottom: 10px; letter-spacing: -1px; }
 .logo span { font-weight: 500; color: #2a2a2a; }
-
-/* Makes the new logo link on the corporate page look correct */
-a.logo-link {
-    text-decoration: none;
-}
-
-.sub-logo {
-    font-size: 13px;
-    font-weight: 500;
-    color: #5f6368;
-    text-transform: uppercase;
-    letter-spacing: 9.5px; /* The magic for the spacing */
-    margin: 0 0 40px 9.5px; /* The left margin aligns it with the main logo text */
-}
-
+a.logo-link { text-decoration: none; }
+.sub-logo { font-size: 13px; font-weight: 500; color: #5f6368; text-transform: uppercase; letter-spacing: 9.5px; margin: 0 0 40px 9.5px; }
 .search-area { width: 100%; max-width: 584px; margin-bottom: 10px; }
 .search-bar { width: 100%; height: 46px; padding: 0 20px; font-size: 16px; border-radius: 24px; border: 1px solid #dfe1e5; }
 .search-bar:hover, .search-bar:focus { border-color: #c5c7ca; box-shadow: 0 1px 6px rgba(32,33,36,.28); outline: none; }
@@ -33,7 +20,6 @@ a.logo-link {
 .main-nav a { background-color: #f8f9fa; color: #3c4043; font-size: 14px; padding: 8px 16px; border-radius: 4px; }
 .main-nav a:hover { box-shadow: 0 1px 1px rgba(0,0,0,.1); background-color: #f1f3f4; }
 footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
-
 
 /* --- Reusable Header Styles --- */
 .site-header { background-color: #fff; border-bottom: 1px solid #ebebeb; padding: 0 24px; position: sticky; top: 0; z-index: 100; flex-shrink: 0; }
@@ -50,9 +36,47 @@ footer { position: absolute; bottom: 20px; font-size: 12px; color: #70757a; }
 .secondary-nav a.active { color: #1a73e8; border-bottom: 3px solid #1a73e8; }
 .secondary-nav a:not(.active):hover { color: #3c4043; }
 
-
 /* --- News Page Styles --- */
 .page-container { max-width: 1100px; margin: 0 auto; padding: 24px; }
 .page-title { font-size: 28px; font-weight: 400; margin: 10px 0 20px 0; color: #3c4043; }
 .news-list { list-style: none; padding: 0; border-top: 1px solid #ebebeb; }
-/* ... (rest of styles) ... */
+/* ... (rest of news styles) ... */
+
+/* --- Jobs Page Styles --- */
+.jobs-page { background-color: #fff; }
+.filter-bar { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; position: sticky; top: 112px; z-index: 99; }
+.filter-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 16px; padding: 6px 12px; font-size: 13px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
+.filter-chip:hover { border-color: #dadce0; }
+.jobs-container { display: flex; max-width: 1280px; width: 100%; margin: 0 auto; padding: 16px 24px; gap: 24px; align-items: flex-start; }
+.job-list-pane { flex: 2; max-width: 450px; border: 1px solid #dadce0; border-radius: 8px; }
+.job-card { padding: 16px; border-bottom: 1px solid #ebebeb; cursor: pointer; }
+.job-card:last-child { border-bottom: none; }
+.job-card:hover { background-color: #f8f9fa; }
+.job-card.active { background-color: #e8f0fe; }
+.job-details-pane { flex: 3; position: sticky; top: 177px; height: calc(100vh - 193px); overflow-y: auto; border: 1px solid #dadce0; border-radius: 8px; }
+.job-details-content { padding: 24px; }
+.apply-button {
+    background-color: #1a73e8;
+    color: #fff;
+    border: none;
+    border-radius: 999px; /* This creates the pill shape */
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.apply-button:hover {
+    background-color: #185abc;
+}
+/* ... (rest of jobs styles) ... */
+
+/* --- Products Page Styles --- */
+.products-page { background-color: #ffffff; }
+.product-grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; max-width: 1280px; margin: 0 auto; padding: 24px; }
+.product-card { background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
+.product-card:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+/* ... (rest of products styles) ... */
+
+/* --- Responsive Styles --- */
+/* ... (rest of responsive styles) ... */
