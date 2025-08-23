@@ -26,9 +26,23 @@
             </ul>
         </nav>
     </header>
-    <main class="page-container" id="news-container"></main>
+    <main class="page-container" id="news-container">
+        </main>
     <script>
-        //... page-specific script ...
+        document.addEventListener('DOMContentLoaded', () => {
+            const newsContainer = document.getElementById('news-container');
+            fetch('news.json').then(response => response.json()).then(articles => {
+                newsContainer.innerHTML = '';
+                if (articles && articles.length > 0) {
+                    articles.forEach(article => {
+                        const articleElement = document.createElement('article');
+                        articleElement.className = 'news-item';
+                        articleElement.innerHTML = `<a href="${article.link}" class="image-link" target="_blank" rel="noopener noreferrer"><img class="article-image" src="${article.image}" alt="Article Thumbnail"></a><div class="text-content"><div class="source">${article.source}</div><a href="${article.link}" class="main-link" target="_blank" rel="noopener noreferrer"><h3>${article.headline}</h3><p class="snippet">${article.snippet}</p></a></div>`;
+                        newsContainer.appendChild(articleElement);
+                    });
+                } else { newsContainer.innerHTML = '<p>No featured articles found.</p>'; }
+            }).catch(error => { console.error('Error fetching news:', error); newsContainer.innerHTML = '<p>Sorry, there was an error loading the news.</p>'; });
+        });
     </script>
 </body>
 </html>

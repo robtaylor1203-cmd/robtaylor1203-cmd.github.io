@@ -2,7 +2,6 @@
 body, html { margin: 0; font-family: 'Roboto', sans-serif; background-color: #ffffff; color: #202124; }
 a { text-decoration: none; color: inherit; }
 * { box-sizing: border-box; }
-
 /* --- Homepage & Corporate Page Styles --- */
 body.home, body.corporate-page { display: flex; flex-direction: column; min-height: 100vh; }
 .container { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
@@ -21,7 +20,6 @@ a.logo-link { text-decoration: none; }
 .main-nav a { background-color: #f8f9fa; color: #3c4043; font-size: 14px; padding: 8px 16px; border-radius: 4px; }
 .main-nav a:hover { box-shadow: 0 1px 1px rgba(0,0,0,.1); background-color: #f1f3f4; }
 footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; padding: 20px 0; flex-shrink: 0; }
-
 /* --- Reusable Header Styles --- */
 .site-header { background-color: #fff; border-bottom: 1px solid #ebebeb; padding: 0 24px; position: sticky; top: 0; z-index: 100; }
 .header-top-bar { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: 1280px; margin: 0 auto; }
@@ -36,7 +34,6 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .secondary-nav a { font-size: 14px; color: #5f6368; padding-bottom: 8px; font-weight: 500; }
 .secondary-nav a.active { color: #1a73e8; border-bottom: 3px solid #1a73e8; }
 .secondary-nav a:not(.active):hover { color: #3c4043; }
-
 /* --- News Page Styles --- */
 .page-container { max-width: 1100px; margin: 0 auto; padding: 24px; }
 .page-title { font-size: 28px; font-weight: 400; margin: 10px 0 20px 0; color: #3c4043; }
@@ -50,7 +47,6 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .news-item .main-link h3 { font-size: 20px; font-weight: 400; color: #1a0dab; margin: 0 0 4px 0; line-height: 1.4; }
 .news-item .main-link:hover h3 { text-decoration: underline; }
 .news-item .snippet { font-size: 14px; color: #4d5156; margin: 0; line-height: 1.5; }
-
 /* --- Jobs & Products Page Styles --- */
 .jobs-page, .products-page { background-color: #fff; }
 .filter-bar { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; position: sticky; top: 112px; z-index: 99; }
@@ -84,7 +80,6 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .star-rating-filled { position: absolute; top: 0; left: 0; white-space: nowrap; overflow: hidden; color: #fbbc04; }
 .star-rating-filled::before { content: '★★★★★'; }
 .review-count { font-size: 12px; color: #5f6368; margin-left: 6px; }
-
 /* --- Responsive Styles --- */
 @media (max-width: 900px) {
     .jobs-container, .products-container { flex-direction: column; }
