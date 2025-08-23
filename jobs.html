@@ -26,61 +26,56 @@
             </ul>
         </nav>
     </header>
-    <main class="jobs-container" id="jobs-container"></main>
-
+    <div class="filter-bar">
+        <button class="filter-chip">Full-time</button>
+        <button class="filter-chip">Part-time</button>
+        <button class="filter-chip">United Kingdom</button>
+    </div>
+    <main class="jobs-container">
+        <div class="job-list-pane" id="job-list-container"><p style="padding: 16px;">Loading jobs...</p></div>
+        <div class="job-details-pane" id="job-details-container"><div class="job-details-content"><p>Select a job on the left to see details.</p></div></div>
+    </main>
     <script>
-    if (document.getElementById('jobs-container')) {
-        const jobsContainer = document.getElementById('jobs-container');
-
-        const jobListPane = document.createElement('div');
-        jobListPane.className = 'job-list-pane';
-        const jobDetailsPane = document.createElement('div');
-        jobDetailsPane.className = 'job-details-pane';
-        const jobDetailsContent = document.createElement('div');
-        jobDetailsContent.className = 'job-details-content';
-        jobDetailsPane.appendChild(jobDetailsContent);
-
-        jobsContainer.appendChild(jobListPane);
-        jobsContainer.appendChild(jobDetailsPane);
-
-        fetch('jobs.json')
-            .then(res => res.json())
-            .then(jobs => {
-                jobs.forEach((job, index) => {
-                    const card = document.createElement('div');
-                    card.className = 'job-card';
-                    card.innerHTML = `
-                        <div class="job-card-header">
-                            <h3>${job.title}</h3>
-                            <p>${job.company} • ${job.location}</p>
-                        </div>
-                        <p class="job-snippet">${job.snippet}</p>
-                    `;
-
-                    card.addEventListener('click', () => {
-                        document.querySelectorAll('.job-card').forEach(c => c.classList.remove('active'));
-                        card.classList.add('active');
-
-                        jobDetailsContent.innerHTML = `
-                            <h2>${job.title}</h2>
-                            <p><strong>Company:</strong> ${job.company}</p>
-                            <p><strong>Location:</strong> ${job.location}</p>
-                            <p><strong>Type:</strong> ${job.type}</p>
-                            <a href="${job.link}" class="apply-button" target="_blank">Apply Now</a>
-                            <p>${job.description.intro}</p>
-                            <h3>Responsibilities</h3>
-                            <ul>${job.description.responsibilities.map(r => `<li>${r}</li>`).join('')}</ul>
-                            <h3>Qualifications</h3>
-                            <ul>${job.description.qualifications.map(q => `<li>${q}</li>`).join('')}</ul>
-                        `;
-                    });
-
-                    jobListPane.appendChild(card);
-                    if (index === 0) card.click();
+        document.addEventListener('DOMContentLoaded', () => {
+            const jobListContainer = document.getElementById('job-list-container');
+            const jobDetailsContainer = document.getElementById('job-details-container');
+            let jobsData = []; 
+            const renderJobDetails = (job) => {
+                let responsibilitiesHtml = job.description.responsibilities.map(item => `<li>${item}</li>`).join('');
+                let qualificationsHtml = job.description.qualifications.map(item => `<li>${item}</li>`).join('');
+                jobDetailsContainer.innerHTML = `<div class="job-details-content"><h2 class="job-title-full">${job.title}</h2><p class="company-name-full">${job.company} &middot; ${job.location}</p><a href="${job.link}" target="_blank" rel="noopener noreferrer"><button class="apply-button">Apply on Company Site</button></a><hr class="divider"><p>${job.description.intro}</p><h4>Responsibilities:</h4><ul>${responsibilitiesHtml}</ul><h4>Qualifications:</h4><ul>${qualificationsHtml}</ul></div>`;
+            };
+            fetch('jobs.json')
+                .then(response => response.json())
+                .then(data => {
+                    jobsData = data;
+                    jobListContainer.innerHTML = '';
+                    if (jobsData && jobsData.length > 0) {
+                        jobsData.forEach((job, index) => {
+                            const jobCard = document.createElement('div');
+                            jobCard.className = 'job-card';
+                            jobCard.dataset.index = index;
+                            jobCard.innerHTML = `<div class="job-card-header"><h3 class="job-title">${job.title}</h3><p class="company-name">${job.company}</p><p class="location">${job.location}</p></div><p class="job-snippet">${job.snippet}</p>`;
+                            jobCard.addEventListener('click', () => {
+                                document.querySelectorAll('.job-card.active').forEach(card => card.classList.remove('active'));
+                                jobCard.classList.add('active');
+                                renderJobDetails(job);
+                            });
+                            jobListContainer.appendChild(jobCard);
+                        });
+                        if (jobListContainer.firstChild) {
+                             jobListContainer.firstChild.classList.add('active');
+                        }
+                        renderJobDetails(jobsData[0]);
+                    } else {
+                         jobListContainer.innerHTML = '<p style="padding: 16px;">No jobs found.</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching jobs data:', error);
+                    jobListContainer.innerHTML = '<p style="padding: 16px;">Error loading jobs.</p>';
                 });
-            })
-            .catch(err => console.error('Error loading jobs:', err));
-    }
+        });
     </script>
 </body>
 </html>

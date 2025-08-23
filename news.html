@@ -30,58 +30,46 @@
             </ul>
         </nav>
     </header>
-
-    <main class="page-container" id="news-container">
-        <ul class="news-list">
-            <li class="news-item">
-                <a href="#" class="image-link"><img src="images/huffpost.jpeg" alt="" class="article-image"></a>
-                <div class="text-content">
-                    <div class="source">Huffington Post UK</div>
-                    <a href="#" class="main-link"><h3>This Is The Number One Antioxidant Tea For Warding Off Dementia</h3></a>
-                    <p class="snippet">It turns out your daily cuppa does a lot more than just taste good.</p>
-                </div>
-            </li>
-            <li class="news-item">
-                <a href="#" class="image-link"><img src="images/teacoffee.jpeg" alt="" class="article-image"></a>
-                <div class="text-content">
-                    <div class="source">Tea & Coffee Trade Journal</div>
-                    <a href="#" class="main-link"><h3>Global Tea Production to Experience a Dip in 2025</h3></a>
-                    <p class="snippet">The Food and Agriculture Organization of the United Nations (FAO) has projected a slight decline in global tea production for the year 2025...</p>
-                </div>
-            </li>
-            <li class="news-item">
-                <a href="#" class="image-link"><img src="https://www.theargus.co.uk/resources/images/19220042/?type=article-full" alt="" class="article-image"></a>
-                <div class="text-content">
-                    <div class="source">The Argus</div>
-                    <a href="#" class="main-link"><h3>Brighton-founded Yalda iced tea receives great taste awards</h3></a>
-                    <p class="snippet">AN ICED tea company from Brighton has been recognised at a prestigious food and drink awards.</p>
-                </div>
-            </li>
-            <li class="news-item">
-                <a href="#" class="image-link"><img src="images/cgtn.jpeg" alt="" class="article-image"></a>
-                <div class="text-content">
-                    <div class="source">CGTN</div>
-                    <a href="#" class="main-link"><h3>From leaf to butter tea: Cao Aiping's aromatic life</h3></a>
-                    <p class="snippet">In the central Chinese city of Enshi, the air is often filled with a distinct fragrance, a unique blend of roasting tea leaves, savory butter, and toasted sesame...</p>
-                </div>
-            </li>
-            <li class="news-item">
-                <a href="#" class="image-link"><img src="images/independent.jpeg" alt="" class="article-image"></a>
-                <div class="text-content">
-                    <div class="source">The Independent</div>
-                    <a href="#" class="main-link"><h3>How Japan’s new Starbucks is putting a modern twist on a centuries-old tea tradition</h3></a>
-                    <p class="snippet">Visitors will be able to enjoy a modern take on Japanese tea at the new Starbucks store in Kagoshima...</p>
-                </div>
-            </li>
-            <li class="news-item">
-                <a href="#" class="image-link"><img src="images/telegraph.jpeg" alt="" class="article-image"></a>
-                <div class="text-content">
-                    <div class="source">The Telegraph</div>
-                    <a href="#" class="main-link"><h3>Sen Soshitsu XV, Japanese tea master who had been a kamikaze pilot – obituary</h3></a>
-                    <p class="snippet">Sen Soshitsu XV, who has died aged 102, was the 15th-generation Grand Master of the Urasenke tea school...</p>
-                </div>
-            </li>
-        </ul>
+    <main class="page-container">
+        <h2 class="page-title">Featured News</h2>
+        <div class="news-list" id="news-container">
+            <p id="loading-message">Loading latest news...</p>
+        </div>
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const newsContainer = document.getElementById('news-container');
+            fetch('news.json')
+                .then(response => response.json())
+                .then(articles => {
+                    newsContainer.innerHTML = '';
+                    if (articles && articles.length > 0) {
+                        articles.forEach(article => {
+                            const articleElement = document.createElement('article');
+                            articleElement.className = 'news-item';
+                            articleElement.innerHTML = `
+                                <a href="${article.link}" class="image-link" target="_blank" rel="noopener noreferrer">
+                                    <img class="article-image" src="${article.image}" alt="Article Thumbnail">
+                                </a>
+                                <div class="text-content">
+                                    <div class="source">${article.source}</div>
+                                    <a href="${article.link}" class="main-link" target="_blank" rel="noopener noreferrer">
+                                        <h3>${article.headline}</h3>
+                                        <p class="snippet">${article.snippet}</p>
+                                    </a>
+                                </div>
+                            `;
+                            newsContainer.appendChild(articleElement);
+                        });
+                    } else {
+                        newsContainer.innerHTML = '<p>No featured articles found.</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching news:', error);
+                    newsContainer.innerHTML = '<p>Sorry, there was an error loading the news.</p>';
+                });
+        });
+    </script>
 </body>
 </html>
