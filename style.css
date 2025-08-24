@@ -52,10 +52,11 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .news-item .snippet { font-size: 14px; color: #4d5156; margin: 0; line-height: 1.5; }
 
 /* --- Jobs & Products Page Styles --- */
-.jobs-page, .products-page, .dashboard-page { background-color: #f8f9fa; }
-.filter-bar { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; position: sticky; top: 112px; z-index: 99; }
-.filter-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 16px; padding: 6px 12px; font-size: 13px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
-.filter-chip:hover { border-color: #dadce0; }
+.jobs-page, .products-page, .dashboard-page { background-color: #ffffff; } /* UPDATED to white */
+.filter-bar, .view-switcher { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; }
+.filter-chip, .view-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 16px; padding: 6px 12px; font-size: 13px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
+.filter-chip:hover, .view-chip:hover { border-color: #dadce0; }
+.view-chip.active { background-color: #e8f0fe; color: #1967d2; border-color: #d2e3fc; }
 .jobs-container, .products-container { display: flex; max-width: 1280px; width: 100%; margin: 0 auto; padding: 16px 24px; gap: 24px; align-items: flex-start; }
 .job-list-pane { flex: 2; max-width: 450px; border: 1px solid #dadce0; border-radius: 8px; }
 .job-card { padding: 16px; border-bottom: 1px solid #ebebeb; cursor: pointer; }
@@ -85,11 +86,7 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .star-rating-filled::before { content: '★★★★★'; }
 .review-count { font-size: 12px; color: #5f6368; margin-left: 6px; }
 
-/* --- Corporate Dashboard Styles (NEW) --- */
-.view-switcher { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; }
-.view-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 8px; padding: 8px 16px; font-size: 14px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
-.view-chip:hover { border-color: #dadce0; }
-.view-chip.active { background-color: #e8f0fe; color: #1967d2; border-color: #d2e3fc; }
+/* --- Corporate Dashboard Styles --- */
 .data-table { width: 100%; border-collapse: collapse; background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; margin-top: 24px; }
 .data-table th, .data-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #dadce0; }
 .data-table thead { background-color: #f8f9fa; }
@@ -112,6 +109,5 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
     .news-item .article-image { width: 100%; height: auto; margin-bottom: 15px; }
     .news-item .text-content { margin-right: 0; }
     .news-item .main-link h3 { font-size: 18px; }
-    .header-primary .user-actions { position: absolute; top: 50%; right: 16px; transform: translateY(-50%); }
-    .header-primary { height: 56px; }
+    .user-actions { position: absolute; top: 16px; right: 16px; }
 }
