@@ -60,7 +60,6 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Sample Data (we will replace this with a live database call later) ---
             const importData = [
                 { "import_date": "2025-07-01", "partner_country": "Kenya", "net_mass_kg": 4810230, "value_gbp": 12150900 },
                 { "import_date": "2025-07-01", "partner_country": "India", "net_mass_kg": 1985550, "value_gbp": 7995400 },
@@ -73,59 +72,43 @@
 
             const tableBody = document.getElementById('data-table-body');
             const headers = document.querySelectorAll('.data-table th');
-
-            // --- Function to render the table rows ---
             const renderTable = (data) => {
-                tableBody.innerHTML = ''; // Clear existing rows
+                tableBody.innerHTML = '';
                 data.forEach(item => {
                     const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${item.partner_country}</td>
-                        <td>${item.net_mass_kg.toLocaleString()}</td>
-                        <td>${item.value_gbp.toLocaleString()}</td>
-                    `;
+                    row.innerHTML = `<td>${item.partner_country}</td><td>${item.net_mass_kg.toLocaleString()}</td><td>${item.value_gbp.toLocaleString()}</td>`;
                     tableBody.appendChild(row);
                 });
             };
 
-            // --- Logic for sorting the table ---
             let sortDirection = {};
             headers.forEach(header => {
                 header.addEventListener('click', () => {
                     const sortKey = header.dataset.sort;
                     const direction = sortDirection[sortKey] === 'asc' ? 'desc' : 'asc';
-                    sortDirection = { [sortKey]: direction }; // Reset directions for other columns
-
+                    sortDirection = { [sortKey]: direction }; 
                     importData.sort((a, b) => {
                         if (a[sortKey] < b[sortKey]) return direction === 'asc' ? -1 : 1;
                         if (a[sortKey] > b[sortKey]) return direction === 'asc' ? 1 : -1;
                         return 0;
                     });
-
                     renderTable(importData);
                 });
             });
 
-            // --- Logic for switching views ---
             const views = document.querySelectorAll('.view-content');
             const buttons = document.querySelectorAll('.view-chip');
             buttons.forEach(button => {
                 button.addEventListener('click', () => {
                     buttons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
-                    
                     const viewId = button.id.replace('show-', '');
                     views.forEach(view => {
-                        if (view.id === viewId) {
-                            view.style.display = 'block';
-                        } else {
-                            view.style.display = 'none';
-                        }
+                        view.style.display = (view.id === viewId) ? 'block' : 'none';
                     });
                 });
             });
 
-            // --- Initial Render ---
             renderTable(importData);
         });
     </script>
