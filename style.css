@@ -90,13 +90,14 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .data-table { width: 100%; border-collapse: collapse; background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; margin-top: 24px; }
 .data-table th, .data-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #dadce0; }
 .data-table thead { background-color: #f8f9fa; }
-.data-table th { font-size: 14px; font-weight: 500; color: #5f6368; cursor: pointer; user-select: none; }
+.data-table th { font-size: 14px; font-weight: 500; color: #5f6368; cursor: pointer; user-select: none; display: flex; justify-content: space-between; align-items: center; }
 .data-table th:hover { background-color: #f1f3f4; }
 .data-table th.sort-asc, .data-table th.sort-desc { color: #202124; }
 .data-table tbody tr:last-child td { border-bottom: none; }
 .data-table tbody tr:hover { background-color: #f8f9fa; }
 .data-table td { font-size: 14px; }
-.sort-arrow { display: inline-block; margin-left: 8px; color: #1a73e8; }
+.sort-arrow { font-size: 1.1em; font-weight: bold; color: #1a73e8; }
+.chart-container { position: relative; height: 50vh; background-color: #fff; padding: 16px; border-radius: 8px; border: 1px solid #dadce0; margin-top: 16px;}
 
 /* --- Responsive Styles --- */
 @media (max-width: 900px) {
