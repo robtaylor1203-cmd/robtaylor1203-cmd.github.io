@@ -10,7 +10,7 @@
 <body class="dashboard-page">
     <header class="site-header">
         <div class="header-top-bar">
-            <a href="index.html" class="header-logo"><h1>Tea<span>Trade</span></h1></a>
+            <a href="corporate.html" class="header-logo"><h1>Tea<span>Trade</span></h1></a>
             <div class="header-search-wrapper"><input type="text" class="header-search-bar" placeholder="Search data..."></div>
             <div class="user-actions">
                 <a href="#" title="Create Account"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="17" y1="11" x2="23" y2="11"></line></svg></a>
@@ -60,6 +60,7 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- Sample Data (we will replace this with a live database call later) ---
             const importData = [
                 { "import_date": "2025-07-01", "partner_country": "Kenya", "net_mass_kg": 4810230, "value_gbp": 12150900 },
                 { "import_date": "2025-07-01", "partner_country": "India", "net_mass_kg": 1985550, "value_gbp": 7995400 },
@@ -72,6 +73,7 @@
 
             const tableBody = document.getElementById('data-table-body');
             const headers = document.querySelectorAll('.data-table th');
+            
             const renderTable = (data) => {
                 tableBody.innerHTML = '';
                 data.forEach(item => {
