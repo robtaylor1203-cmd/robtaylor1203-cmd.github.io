@@ -40,9 +40,9 @@
             <table class="data-table">
                 <thead>
                     <tr>
-                        <th data-sort="partner_country"><span>Country</span></th>
-                        <th data-sort="net_mass_kg"><span>Net Mass (kg)</span></th>
-                        <th data-sort="value_gbp"><span>Value (£ GBP)</span></th>
+                        <th data-sort="partner_country">Country</th>
+                        <th data-sort="net_mass_kg">Net Mass (kg)</th>
+                        <th data-sort="value_gbp">Value (£ GBP)</th>
                     </tr>
                 </thead>
                 <tbody id="data-table-body"></tbody>
@@ -80,31 +80,67 @@
             let myChart;
             let sortDirection = {};
 
-            const renderTable = (data) => { /* ... (table rendering logic is unchanged) ... */ };
-            const renderChart = (data) => { /* ... (chart rendering logic is unchanged) ... */ };
-            buttons.forEach(button => { /* ... (view switching logic is unchanged) ... */ });
+            const renderTable = (data) => {
+                tableBody.innerHTML = '';
+                data.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${item.partner_country}</td><td>${item.net_mass_kg.toLocaleString()}</td><td>${item.value_gbp.toLocaleString()}</td>`;
+                    tableBody.appendChild(row);
+                });
+            };
+
+            const renderChart = (data) => {
+                if (myChart) myChart.destroy();
+                const sortedData = [...data].sort((a, b) => b.value_gbp - a.value_gbp);
+                const labels = sortedData.map(item => item.partner_country);
+                const values = sortedData.map(item => item.value_gbp);
+                myChart = new Chart(chartCanvas, {
+                    type: 'bar',
+                    data: { labels: labels, datasets: [{ label: 'Import Value (£ GBP)', data: values, backgroundColor: 'rgba(26, 115, 232, 0.8)', borderColor: 'rgba(26, 115, 232, 1)', borderWidth: 1 }] },
+                    options: { scales: { y: { beginAtZero: true } }, responsive: true, maintainAspectRatio: false }
+                });
+            };
             
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    const viewId = button.id.replace('show-', '');
+                    views.forEach(view => { view.style.display = (view.id === viewId) ? 'block' : 'none'; });
+                    if (viewId === 'chart-view') { renderChart(importData); }
+                });
+            });
+
             headers.forEach(header => {
                 header.addEventListener('click', () => {
                     const sortKey = header.dataset.sort;
                     const direction = (sortDirection[sortKey] === 'asc') ? 'desc' : 'asc';
                     
-                    sortDirection = {}; 
+                    sortDirection = { [sortKey]: direction }; // Set new sort key and direction
+
+                    // Clear arrows from all other headers
                     headers.forEach(h => {
-                        h.classList.remove('sort-asc', 'sort-desc');
-                        const arrow = h.querySelector('.sort-arrow');
-                        if (arrow) arrow.remove();
+                        if (h !== header) {
+                           const oldArrow = h.querySelector('.sort-arrow');
+                           if (oldArrow) oldArrow.remove();
+                           h.classList.remove('sort-asc', 'sort-desc');
+                        }
                     });
 
-                    sortDirection[sortKey] = direction;
+                    // Set class on clicked header
+                    header.classList.remove('sort-asc', 'sort-desc');
                     header.classList.add(direction === 'asc' ? 'sort-asc' : 'sort-desc');
                     
-                    const arrowSpan = document.createElement('span');
-                    arrowSpan.className = 'sort-arrow';
+                    // Add or update arrow on clicked header
+                    let arrowSpan = header.querySelector('.sort-arrow');
+                    if (!arrowSpan) {
+                        arrowSpan = document.createElement('span');
+                        arrowSpan.className = 'sort-arrow';
+                        header.appendChild(arrowSpan);
+                    }
                     arrowSpan.innerHTML = direction === 'asc' ? '&uarr;' : '&darr;';
-                    // This is the only line changed in the sorting logic
-                    header.appendChild(arrowSpan); // Append arrow to the header
 
+                    // Sort data and re-render the table
                     importData.sort((a, b) => {
                         const valA = a[sortKey];
                         const valB = b[sortKey];
@@ -113,7 +149,6 @@
                         }
                         return direction === 'asc' ? valA - valB : valB - valA;
                     });
-                    
                     renderTable(importData);
                 });
             });

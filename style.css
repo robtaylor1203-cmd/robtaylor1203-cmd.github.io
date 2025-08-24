@@ -43,6 +43,13 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .news-list { list-style: none; padding: 0; }
 .news-item { display: flex; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid #ebebeb; }
 .news-item:first-child { border-top: 1px solid #ebebeb; padding-top: 24px; }
+.news-item .image-link { margin-right: 24px; }
+.news-item .article-image { width: 124px; height: 124px; object-fit: cover; border-radius: 8px; background-color: #f0f0f0; }
+.news-item .text-content { flex: 1; }
+.news-item .source { font-size: 12px; font-weight: 400; color: #5f6368; margin-bottom: 4px; }
+.news-item .main-link h3 { font-size: 20px; font-weight: 400; color: #1a0dab; margin: 0 0 4px 0; line-height: 1.4; }
+.news-item .main-link:hover h3 { text-decoration: underline; }
+.news-item .snippet { font-size: 14px; color: #4d5156; margin: 0; line-height: 1.5; }
 
 /* --- Jobs & Products Page Styles --- */
 .jobs-page, .products-page, .dashboard-page { background-color: #ffffff; }
@@ -60,38 +67,39 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .job-details-content { padding: 24px; }
 .apply-button { background-color: #1a73e8; color: #fff; border: none; border-radius: 999px; padding: 12px 24px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background-color 0.2s; }
 .apply-button:hover { background-color: #185abc; }
+.divider { border: 0; border-top: 1px solid #ebebeb; margin: 24px 0; }
+.job-details-content h4 { font-size: 16px; font-weight: 500; margin: 16px 0 8px 0; }
+.job-details-content ul { padding-left: 20px; margin: 0; line-height: 1.6; }
+.product-grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; max-width: 1280px; margin: 0 auto; padding: 24px; }
+.product-card { background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
+.product-card:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.product-card-image-wrapper { width: 100%; padding-top: 100%; position: relative; background-color: #f8f9fa; }
+.product-card-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; padding: 8px; }
+.product-card-info { padding: 16px; border-top: 1px solid #ebebeb; flex-grow: 1; }
+.product-name { font-size: 16px; font-weight: 500; color: #202124; margin: 0 0 4px 0; }
+.product-brand { font-size: 14px; color: #5f6368; margin: 0 0 8px 0; }
+.product-price { font-size: 16px; font-weight: 700; color: #1a73e8; margin: 0 0 8px 0; }
+.product-reviews { display: flex; align-items: center; }
+.star-rating { font-size: 16px; position: relative; display: inline-block; }
+.star-rating::before { content: '★★★★★'; color: #dadce0; }
+.star-rating-filled { position: absolute; top: 0; left: 0; white-space: nowrap; overflow: hidden; color: #fbbc04; }
+.star-rating-filled::before { content: '★★★★★'; }
+.review-count { font-size: 12px; color: #5f6368; margin-left: 6px; }
 
-/* --- Corporate Dashboard Styles (UPDATED) --- */
+/* --- Corporate Dashboard Styles --- */
 .chart-container { position: relative; height: 50vh; background-color: #fff; padding: 16px; border-radius: 8px; border: 1px solid #dadce0; margin-top: 16px;}
 .data-table { width: 100%; border-collapse: collapse; background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; margin-top: 24px; }
 .data-table th, .data-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #dadce0; }
 .data-table thead { background-color: #f8f9fa; }
-.data-table th {
-    font-size: 14px;
-    font-weight: 500;
-    color: #5f6368;
-    cursor: pointer;
-    user-select: none;
-    position: relative; /* UPDATED: This is the key for positioning the arrow */
-}
+.data-table th { font-size: 14px; font-weight: 500; color: #5f6368; cursor: pointer; user-select: none; position: relative; }
 .data-table th:hover { background-color: #f1f3f4; }
 .data-table th.sort-asc, .data-table th.sort-desc { color: #202124; }
 .data-table tbody tr:last-child td { border-bottom: none; }
 .data-table tbody tr:hover { background-color: #f8f9fa; }
 .data-table td { font-size: 14px; }
-.sort-arrow {
-    /* UPDATED: New positioning rules */
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.1em;
-    font-weight: bold;
-    color: #1a73e8;
-}
+.sort-arrow { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 1.1em; font-weight: bold; color: #1a73e8; }
 
 /* --- Responsive Styles --- */
-/* ... (All other styles remain the same) ... */
 @media (max-width: 900px) {
     .jobs-container, .products-container { flex-direction: column; }
     .job-details-pane, .product-details-pane { position: static; height: auto; border: 1px solid #dadce0; border-radius: 8px; }
