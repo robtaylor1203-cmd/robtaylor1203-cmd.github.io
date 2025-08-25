@@ -89,6 +89,7 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .review-count { font-size: 12px; color: #5f6368; margin-left: 6px; }
 
 /* --- Corporate Pages (Data Library & Dashboard) Styles --- */
+.data-library-page, .dashboard-page { background-color: #ffffff; }
 .data-library-page .page-container, .dashboard-page .page-container { background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; margin-top: 24px; margin-bottom: 24px; }
 .page-search-wrapper { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #ebebeb; }
 .page-search-bar { width: 100%; max-width: 400px; height: 44px; padding: 0 16px; font-size: 15px; border-radius: 8px; border: 1px solid #dadce0; }
@@ -99,8 +100,12 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .dataset-period { color: #5f6368; font-weight: 400; }
 .dataset-description { font-size: 14px; color: #4d5156; margin: 0 0 16px 0; line-height: 1.5; }
 .dataset-meta { font-size: 12px; color: #5f6368; display: flex; justify-content: space-between; }
+.view-switcher { background-color: #fff; padding: 12px 0; border-bottom: 1px solid #ebebeb; margin-bottom: 16px;}
+.view-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 8px; padding: 8px 16px; font-size: 14px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
+.view-chip:hover { border-color: #dadce0; }
+.view-chip.active { background-color: #e8f0fe; color: #1967d2; border-color: #d2e3fc; }
 .chart-container { position: relative; height: 60vh; background-color: #fff; padding: 16px; border-radius: 8px; margin-top: 16px;}
-.data-table { width: 100%; border-collapse: collapse; background-color: #fff; border: none; border-radius: 8px; overflow: hidden; margin-top: 16px; }
+.data-table { width: 100%; border-collapse: collapse; background-color: #fff; border-radius: 8px; overflow: hidden; }
 .data-table th, .data-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #dadce0; }
 .data-table thead { background-color: #f8f9fa; }
 .data-table th { font-size: 14px; font-weight: 500; color: #5f6368; cursor: pointer; user-select: none; position: relative; }
@@ -110,7 +115,7 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .data-table tbody tr:hover { background-color: #f8f9fa; }
 .data-table td { font-size: 14px; }
 .sort-arrow { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 1.1em; font-weight: bold; color: #1a73e8; }
-#map-container { height: 70vh; width: 100%; border-radius: 8px; margin-top: 16px; background-color: #f8f9fa; }
+#map-container { height: 70vh; width: 100%; border-radius: 8px; margin-top: 16px; background-color: #f8f9fa; border: 1px solid #dadce0;}
 
 /* --- Responsive Styles --- */
 @media (max-width: 900px) {
@@ -119,7 +124,7 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
     .job-list-pane, .product-list-pane { max-width: none; border: 1px solid #dadce0; border-radius: 8px; margin-bottom: 16px; }
 }
 @media (max-width: 768px) {
-    .site-header { position: static; }
+    .site-header { position: static; } 
     .header-search-wrapper, .secondary-nav, .filter-bar { display: none; }
     .news-item { flex-direction: column-reverse; }
     .news-item .article-image { width: 100%; height: auto; margin-bottom: 15px; }

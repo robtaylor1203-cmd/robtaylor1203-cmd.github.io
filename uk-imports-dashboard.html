@@ -124,7 +124,7 @@
                 }).addTo(myMap);
             };
 
-            // Main logic: Fetch data first, then set up all interactive elements
+            // Main logic starts here, after data is fetched
             fetch('uk-imports-july-2025.json')
                 .then(response => {
                     if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
@@ -134,7 +134,6 @@
                     currentData = importData;
                     renderTable(currentData);
 
-                    // Setup view switching buttons
                     buttons.forEach(button => {
                         button.addEventListener('click', () => {
                             buttons.forEach(btn => btn.classList.remove('active'));
@@ -155,7 +154,6 @@
                         });
                     });
 
-                    // Setup table sorting
                     headers.forEach(header => {
                         header.addEventListener('click', () => {
                             const sortKey = header.dataset.sort;
