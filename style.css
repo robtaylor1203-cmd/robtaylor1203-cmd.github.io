@@ -87,7 +87,6 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .review-count { font-size: 12px; color: #5f6368; margin-left: 6px; }
 
 /* --- Corporate Dashboard Styles --- */
-.chart-container { position: relative; height: 50vh; background-color: #fff; padding: 16px; border-radius: 8px; border: 1px solid #dadce0; margin-top: 16px;}
 .data-table { width: 100%; border-collapse: collapse; background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; margin-top: 24px; }
 .data-table th, .data-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #dadce0; }
 .data-table thead { background-color: #f8f9fa; }
@@ -98,6 +97,10 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .data-table tbody tr:hover { background-color: #f8f9fa; }
 .data-table td { font-size: 14px; }
 .sort-arrow { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 1.1em; font-weight: bold; color: #1a73e8; }
+.chart-container { position: relative; height: 60vh; background-color: #fff; padding: 16px; border-radius: 8px; border: 1px solid #dadce0; margin-top: 16px;}
+#map-container { height: 70vh; width: 100%; border: 1px solid #dadce0; border-radius: 8px; margin-top: 16px; background-color: #f8f9fa; }
+.leaflet-popup-content-wrapper { border-radius: 4px; }
+.leaflet-popup-content { font-family: 'Roboto', sans-serif; font-size: 14px; }
 
 /* --- Responsive Styles --- */
 @media (max-width: 900px) {
