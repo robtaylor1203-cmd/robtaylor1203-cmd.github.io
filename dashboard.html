@@ -64,6 +64,7 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- Data and Variables ---
             const importData = [
                 { "partner_country": "Kenya", "net_mass_kg": 4810230, "value_gbp": 12150900 },
                 { "partner_country": "India", "net_mass_kg": 1985550, "value_gbp": 7995400 },
@@ -73,94 +74,115 @@
                 { "partner_country": "United Republic of Tanzania", "net_mass_kg": 620400, "value_gbp": 1240800 },
                 { "partner_country": "Sri Lanka", "net_mass_kg": 310800, "value_gbp": 1950000 }
             ];
-
-            let myChart;
-            let myMap;
-            let geoJsonLayer;
-            let geoDataCache; // Cache for the map data
-
+            let myChart, myMap, geoJsonLayer, geoDataCache;
+            let sortDirection = {};
+            
+            // --- Element References ---
             const tableBody = document.getElementById('data-table-body');
             const headers = document.querySelectorAll('.data-table th');
-            
-            const renderTable = (data) => { /* ... table rendering logic ... */ };
-            const renderChart = (data) => { /* ... chart rendering logic ... */ };
+            const chartCanvas = document.getElementById('importChart');
+            const views = document.querySelectorAll('.view-content');
+            const buttons = document.querySelectorAll('.view-chip');
 
-            // --- CORRECTED function to render the map ---
-            const renderMap = (geoData, importData) => {
-                if (!myMap) { 
+            // --- Render Functions ---
+            const renderTable = (data) => {
+                tableBody.innerHTML = '';
+                data.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${item.partner_country}</td><td>${item.net_mass_kg.toLocaleString()}</td><td>${item.value_gbp.toLocaleString()}</td>`;
+                    tableBody.appendChild(row);
+                });
+            };
+
+            const renderChart = (data) => {
+                if (myChart) myChart.destroy();
+                const sortedData = [...data].sort((a, b) => b.value_gbp - a.value_gbp);
+                const labels = sortedData.map(item => item.partner_country);
+                const values = sortedData.map(item => item.value_gbp);
+                myChart = new Chart(chartCanvas, {
+                    type: 'bar',
+                    data: { labels: labels, datasets: [{ label: 'Import Value (£ GBP)', data: values, backgroundColor: 'rgba(26, 115, 232, 0.8)', borderColor: 'rgba(26, 115, 232, 1)', borderWidth: 1 }] },
+                    options: { scales: { y: { beginAtZero: true } }, responsive: true, maintainAspectRatio: false }
+                });
+            };
+
+            const renderMap = (geoData, data) => {
+                if (!myMap) {
                     myMap = L.map('map-container').setView([20, 0], 2);
-                    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-                        attribution: '&copy; OpenStreetMap &copy; CARTO'
-                    }).addTo(myMap);
+                    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { attribution: '&copy; OpenStreetMap &copy; CARTO' }).addTo(myMap);
                 } else {
-                    // This is the key fix: if map was hidden, its size is wrong. This recalculates it.
                     setTimeout(() => { myMap.invalidateSize() }, 10);
                 }
-                
                 if (geoJsonLayer) myMap.removeLayer(geoJsonLayer);
-
-                const dataLookup = new Map(importData.map(d => [d.partner_country, d]));
-
-                const getColor = (value) => {
-                    return value > 10000000 ? '#0d47a1' :
-                           value > 5000000  ? '#1976d2' :
-                           value > 2000000  ? '#2196f3' :
-                           value > 1000000  ? '#64b5f6' :
-                                              '#bbdefb';
-                };
-
+                const dataLookup = new Map(data.map(d => [d.partner_country, d]));
+                const getColor = (value) => value > 10000000 ? '#0d47a1' : value > 5000000  ? '#1976d2' : value > 2000000  ? '#2196f3' : value > 1000000  ? '#64b5f6' : '#bbdefb';
                 geoJsonLayer = L.geoJson(geoData, {
                     style: (feature) => {
                         const countryName = feature.properties.name;
-                        const data = dataLookup.get(countryName);
-                        return {
-                            fillColor: data ? getColor(data.value_gbp) : '#ECEFF1',
-                            weight: 1,
-                            opacity: 1,
-                            color: '#B0BEC5',
-                            fillOpacity: 0.7
-                        };
+                        const countryData = dataLookup.get(countryName);
+                        return { fillColor: countryData ? getColor(countryData.value_gbp) : '#ECEFF1', weight: 1, opacity: 1, color: '#B0BEC5', fillOpacity: 0.7 };
                     },
                     onEachFeature: (feature, layer) => {
                         const countryName = feature.properties.name;
-                        const data = dataLookup.get(countryName);
-                        if (data) {
-                            layer.bindPopup(`<strong>${countryName}</strong><br/>Value: £${data.value_gbp.toLocaleString()}<br/>Mass: ${data.net_mass_kg.toLocaleString()} kg`);
+                        const countryData = dataLookup.get(countryName);
+                        if (countryData) {
+                            layer.bindPopup(`<strong>${countryName}</strong><br/>Value: £${countryData.value_gbp.toLocaleString()}<br/>Mass: ${countryData.net_mass_kg.toLocaleString()} kg`);
                         }
                     }
                 }).addTo(myMap);
             };
 
-            const views = document.querySelectorAll('.view-content');
-            const buttons = document.querySelectorAll('.view-chip');
-
+            // --- Event Listeners ---
             buttons.forEach(button => {
                 button.addEventListener('click', () => {
                     buttons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
                     const viewId = button.id.replace('show-', '');
-                    
                     views.forEach(view => { view.style.display = (view.id === viewId) ? 'block' : 'none'; });
-                    
                     if (viewId === 'chart-view') renderChart(importData);
                     if (viewId === 'map-view') {
                         if (geoDataCache) {
-                            renderMap(geoDataCache, importData); // Use cached map data
+                            renderMap(geoDataCache, importData);
                         } else {
-                            fetch('countries.geojson')
-                                .then(res => res.json())
-                                .then(geoData => {
-                                    geoDataCache = geoData; // Cache the data
-                                    renderMap(geoData, importData);
-                                });
+                            fetch('countries.geojson').then(res => res.json()).then(geoData => {
+                                geoDataCache = geoData;
+                                renderMap(geoData, importData);
+                            }).catch(err => console.error("Failed to load map data.", err));
                         }
                     }
                 });
             });
-            
-            // ... (sorting logic is unchanged) ...
 
-            renderTable(importData); // Initial table render
+            headers.forEach(header => {
+                header.addEventListener('click', () => {
+                    const sortKey = header.dataset.sort;
+                    const direction = (sortDirection[sortKey] === 'asc') ? 'desc' : 'asc';
+                    sortDirection = { [sortKey]: direction };
+                    headers.forEach(h => {
+                        const arrow = h.querySelector('.sort-arrow');
+                        if (h !== header && arrow) arrow.remove();
+                        h.classList.remove('sort-asc', 'sort-desc');
+                    });
+                    header.classList.add(direction === 'asc' ? 'sort-asc' : 'sort-desc');
+                    let arrowSpan = header.querySelector('.sort-arrow');
+                    if (!arrowSpan) {
+                        arrowSpan = document.createElement('span');
+                        arrowSpan.className = 'sort-arrow';
+                        header.appendChild(arrowSpan);
+                    }
+                    arrowSpan.innerHTML = direction === 'asc' ? '&uarr;' : '&darr;';
+                    importData.sort((a, b) => {
+                        const valA = a[sortKey];
+                        const valB = b[sortKey];
+                        if (typeof valA === 'string') return direction === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+                        return direction === 'asc' ? valA - valB : valB - valA;
+                    });
+                    renderTable(importData);
+                });
+            });
+
+            // --- Initial Page Load ---
+            renderTable(importData);
         });
     </script>
 </body>
