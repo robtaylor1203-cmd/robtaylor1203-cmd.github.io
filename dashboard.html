@@ -64,6 +64,7 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- Data and Variables ---
             const importData = [
                 { "partner_country": "Kenya", "net_mass_kg": 4810230, "value_gbp": 12150900 },
                 { "partner_country": "India", "net_mass_kg": 1985550, "value_gbp": 7995400 },
@@ -73,13 +74,17 @@
                 { "partner_country": "United Republic of Tanzania", "net_mass_kg": 620400, "value_gbp": 1240800 },
                 { "partner_country": "Sri Lanka", "net_mass_kg": 310800, "value_gbp": 1950000 }
             ];
-
             let myChart, myMap, geoJsonLayer, geoDataCache;
             let sortDirection = {};
             
+            // --- Element References ---
             const tableBody = document.getElementById('data-table-body');
             const headers = document.querySelectorAll('.data-table th');
-            
+            const chartCanvas = document.getElementById('importChart');
+            const views = document.querySelectorAll('.view-content');
+            const buttons = document.querySelectorAll('.view-chip');
+
+            // --- Render Functions ---
             const renderTable = (data) => {
                 tableBody.innerHTML = '';
                 data.forEach(item => {
@@ -90,7 +95,6 @@
             };
 
             const renderChart = (data) => {
-                const chartCanvas = document.getElementById('importChart');
                 if (myChart) myChart.destroy();
                 const sortedData = [...data].sort((a, b) => b.value_gbp - a.value_gbp);
                 const labels = sortedData.map(item => item.partner_country);
@@ -107,8 +111,9 @@
                 if (!myMap) { 
                     myMap = L.map(mapContainer).setView([20, 0], 2);
                     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { attribution: '&copy; OpenStreetMap &copy; CARTO' }).addTo(myMap);
+                } else {
+                    setTimeout(() => { myMap.invalidateSize() }, 10);
                 }
-                
                 if (geoJsonLayer) myMap.removeLayer(geoJsonLayer);
                 const dataLookup = new Map(data.map(d => [d.partner_country, d]));
                 const getColor = (value) => value > 10000000 ? '#0d47a1' : value > 5000000  ? '#1976d2' : value > 2000000  ? '#2196f3' : value > 1000000  ? '#64b5f6' : '#bbdefb';
@@ -128,31 +133,30 @@
                 }).addTo(myMap);
             };
 
-            const views = document.querySelectorAll('.view-content');
-            const buttons = document.querySelectorAll('.view-chip');
-
+            // --- Event Listeners ---
             buttons.forEach(button => {
                 button.addEventListener('click', () => {
                     buttons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
                     const viewId = button.id.replace('show-', '');
-                    
                     views.forEach(view => { view.style.display = (view.id === viewId) ? 'block' : 'none'; });
-                    
                     if (viewId === 'chart-view') renderChart(importData);
                     if (viewId === 'map-view') {
-                        // More robust check: only initialize the map logic when the tab is clicked
                         if (geoDataCache) {
                             renderMap(geoDataCache, importData);
                         } else {
-                            fetch('countries.geojson')
-                                .then(res => res.json())
+                            const geoJsonUrl = 'https://robtaylor1203-cmd.github.io/countries.geojson';
+                            fetch(geoJsonUrl)
+                                .then(res => {
+                                    if (!res.ok) { throw new Error(`HTTP error! status: ${res.status}`); }
+                                    return res.json();
+                                })
                                 .then(geoData => {
                                     geoDataCache = geoData; 
                                     renderMap(geoData, importData);
                                 }).catch(err => {
                                     console.error("Failed to load map data.", err);
-                                    document.getElementById('map-container').innerHTML = '<p>Error: Could not load map data file.</p>';
+                                    document.getElementById('map-container').innerHTML = `<p>Error: Could not load map data file.</p>`;
                                 });
                         }
                     }
@@ -187,6 +191,7 @@
                 });
             });
 
+            // --- Initial Page Load ---
             renderTable(importData);
         });
     </script>
