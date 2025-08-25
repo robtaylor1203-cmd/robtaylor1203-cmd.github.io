@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UK Imports (July 2025) - TeaTrade</title>
+    <title>UK Imports Data - TeaTrade</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
@@ -66,15 +66,15 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            let currentData = [];
+            let myChart, myMap, geoJsonLayer, geoDataCache;
+            let sortDirection = {};
+            
             const tableBody = document.getElementById('data-table-body');
             const headers = document.querySelectorAll('.data-table th');
             const chartCanvas = document.getElementById('importChart');
             const views = document.querySelectorAll('.view-content');
             const buttons = document.querySelectorAll('.view-chip');
-            
-            let myChart, myMap, geoJsonLayer, geoDataCache;
-            let sortDirection = {};
-            let currentData = [];
 
             const renderTable = (data) => {
                 tableBody.innerHTML = '';
@@ -124,7 +124,7 @@
                 }).addTo(myMap);
             };
 
-            // Main logic starts here, after data is fetched
+            // Main logic: Fetch data first, then set up all interactive elements
             fetch('uk-imports-july-2025.json')
                 .then(response => {
                     if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
@@ -132,11 +132,9 @@
                 })
                 .then(importData => {
                     currentData = importData;
-                    
-                    // Initial render
                     renderTable(currentData);
 
-                    // Now that data is loaded, set up all the interactive elements
+                    // Setup view switching buttons
                     buttons.forEach(button => {
                         button.addEventListener('click', () => {
                             buttons.forEach(btn => btn.classList.remove('active'));
@@ -157,6 +155,7 @@
                         });
                     });
 
+                    // Setup table sorting
                     headers.forEach(header => {
                         header.addEventListener('click', () => {
                             const sortKey = header.dataset.sort;
@@ -187,7 +186,7 @@
                 })
                 .catch(error => {
                     console.error('Error fetching initial data:', error);
-                    tableBody.innerHTML = `<tr><td colspan="3" style="text-align: center; padding: 20px;">Error loading initial data.</td></tr>`;
+                    tableBody.innerHTML = `<tr><td colspan="3" style="text-align: center; padding: 20px;">Error loading initial data. Please check the JSON file.</td></tr>`;
                 });
         });
     </script>
