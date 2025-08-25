@@ -18,11 +18,10 @@
         </main>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // This script is identical to the July one, but fetches the JUNE data file
             fetch('uk-imports-june-2025.json')
                 .then(response => response.json())
                 .then(importData => {
-                    // All the rendering logic for table, chart, map goes here...
+                    // All rendering logic for table, chart, map for June data...
                 });
         });
     </script>

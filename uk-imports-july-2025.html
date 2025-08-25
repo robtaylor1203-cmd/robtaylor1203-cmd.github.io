@@ -12,17 +12,53 @@
 </head>
 <body class="dashboard-page">
     <header class="site-header">
-        </header>
+        <div class="header-top-bar">
+            <a href="corporate.html" class="header-logo"><h1>Tea<span>Trade</span></h1></a>
+            <div class="header-search-wrapper"><input type="text" class="header-search-bar" placeholder="Search data..."></div>
+            <div class="user-actions">
+                <a href="#" title="Create Account"><svg></svg></a>
+                <a href="#" title="Sign In"><svg></svg></a>
+            </div>
+        </div>
+        <nav class="secondary-nav">
+            <ul>
+                <li><a href="data.html" class="active">Data</a></li>
+                <li><a href="#">Market Reports</a></li>
+                <li><a href="#">Auctions</a></li>
+                <li><a href="#">Visuals</a></li>
+            </ul>
+        </nav>
+    </header>
     <main class="page-container">
         <h2 class="page-title">UK Tea Imports - July 2025</h2>
-        </main>
+        <div class="view-switcher">
+            <button id="show-table-view" class="view-chip active">Table View</button>
+            <button id="show-chart-view" class="view-chip">Chart View</button>
+            <button id="show-map-view" class="view-chip">Map View</button>
+        </div>
+        <div id="table-view" class="view-content"><table class="data-table"><thead><tr><th data-sort="partner_country">Country</th><th data-sort="net_mass_kg">Net Mass (kg)</th><th data-sort="value_gbp">Value (£ GBP)</th></tr></thead><tbody id="data-table-body"></tbody></table></div>
+        <div id="chart-view" class="view-content" style="display: none;"><div class="chart-container"><canvas id="importChart"></canvas></div></div>
+        <div id="map-view" class="view-content" style="display: none;"><div id="map-container"></div></div>
+    </main>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // This script is identical to the June one, but fetches the JULY data file
+            let myChart, myMap, geoJsonLayer, geoDataCache;
+            let sortDirection = {};
+            const tableBody = document.getElementById('data-table-body');
+            const headers = document.querySelectorAll('.data-table th');
+            const renderTable = (data) => { tableBody.innerHTML = ''; data.forEach(item => { const row = document.createElement('tr'); row.innerHTML = `<td>${item.partner_country}</td><td>${item.net_mass_kg.toLocaleString()}</td><td>${item.value_gbp.toLocaleString()}</td>`; tableBody.appendChild(row); }); };
+            const renderChart = (data) => { /* chart logic */ };
+            const renderMap = (geoData, data) => { /* map logic */ };
+            const views = document.querySelectorAll('.view-content');
+            const buttons = document.querySelectorAll('.view-chip');
+            buttons.forEach(button => { button.addEventListener('click', () => { /* view switching logic */ }); });
+            headers.forEach(header => { header.addEventListener('click', () => { /* sorting logic */ }); });
+            
             fetch('uk-imports-july-2025.json')
                 .then(response => response.json())
                 .then(importData => {
-                    // All the rendering logic for table, chart, map goes here...
+                    renderTable(importData); // Initial table render
+                    // Re-add event listeners that depend on the data
                 });
         });
     </script>
