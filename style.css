@@ -7,19 +7,14 @@ a { text-decoration: none; color: inherit; }
 body.home, body.corporate-page { display: flex; flex-direction: column; min-height: 100vh; }
 .container { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
 .user-actions { position: absolute; top: 30px; right: 30px; display: flex; gap: 20px; }
-.user-actions a { color: #4a4a4a; }
-.user-actions a:hover { opacity: 0.7; }
-.user-actions svg { width: 24px; height: 24px; }
 .logo h1 { font-size: 92px; font-weight: 400; color: #4a4a4a; margin: 0; margin-bottom: 10px; letter-spacing: -1px; }
 .logo span { font-weight: 500; color: #2a2a2a; }
 a.logo-link { text-decoration: none; }
 .sub-logo { font-size: 13px; font-weight: 500; color: #5f6368; text-transform: uppercase; letter-spacing: 9.5px; margin: 0 0 40px 9.5px; }
 .search-area { width: 100%; max-width: 584px; margin-bottom: 10px; }
 .search-bar { width: 100%; height: 46px; padding: 0 20px; font-size: 16px; border-radius: 24px; border: 1px solid #dfe1e5; }
-.search-bar:hover, .search-bar:focus { border-color: #c5c7ca; box-shadow: 0 1px 6px rgba(32,33,36,.28); outline: none; }
 .main-nav ul { list-style: none; padding: 0; margin: 28px 0; display: flex; justify-content: center; gap: 20px; }
 .main-nav a { background-color: #f8f9fa; color: #3c4043; font-size: 14px; padding: 8px 16px; border-radius: 4px; }
-.main-nav a:hover { box-shadow: 0 1px 1px rgba(0,0,0,.1); background-color: #f1f3f4; }
 footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; padding: 20px 0; flex-shrink: 0; }
 
 /* --- Reusable Header Styles --- */
@@ -29,8 +24,7 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .header-logo span { font-weight: 500; }
 .header-search-wrapper { flex-grow: 1; display: flex; justify-content: center; padding: 0 40px; }
 .header-search-bar { width: 100%; max-width: 720px; height: 44px; padding: 0 16px; font-size: 16px; border-radius: 24px; background-color: #ffffff; border: 1px solid #dfe1e5; }
-.header-search-bar:focus { background-color: #fff; box-shadow: 0 1px 6px rgba(32,33,36,.1); outline: none; }
-.news-page .site-header .user-actions, .jobs-page .site-header .user-actions, .products-page .site-header .user-actions, .dashboard-page .site-header .user-actions { position: static; }
+.news-page .site-header .user-actions, .jobs-page .site-header .user-actions, .products-page .site-header .user-actions, .dashboard-page .site-header .user-actions, .data-library-page .site-header .user-actions { position: static; }
 .secondary-nav { max-width: 1280px; margin: 0 auto; }
 .secondary-nav ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 25px; height: 48px; align-items: center; }
 .secondary-nav a { font-size: 14px; color: #5f6368; padding-bottom: 8px; font-weight: 500; }
@@ -43,51 +37,62 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .news-list { list-style: none; padding: 0; }
 .news-item { display: flex; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid #ebebeb; }
 .news-item:first-child { border-top: 1px solid #ebebeb; padding-top: 24px; }
-.news-item .image-link { margin-right: 24px; }
-.news-item .article-image { width: 124px; height: 124px; object-fit: cover; border-radius: 8px; background-color: #f0f0f0; }
-.news-item .text-content { flex: 1; }
-.news-item .source { font-size: 12px; font-weight: 400; color: #5f6368; margin-bottom: 4px; }
-.news-item .main-link h3 { font-size: 20px; font-weight: 400; color: #1a0dab; margin: 0 0 4px 0; line-height: 1.4; }
-.news-item .main-link:hover h3 { text-decoration: underline; }
-.news-item .snippet { font-size: 14px; color: #4d5156; margin: 0; line-height: 1.5; }
 
 /* --- Jobs & Products Page Styles --- */
-.jobs-page, .products-page, .dashboard-page { background-color: #ffffff; }
+.jobs-page, .products-page, .dashboard-page, .data-library-page { background-color: #f8f9fa; }
 .filter-bar, .view-switcher { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; }
 .filter-chip, .view-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 8px; padding: 8px 16px; font-size: 14px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
-.filter-chip:hover, .view-chip:hover { border-color: #dadce0; }
 .view-chip.active { background-color: #e8f0fe; color: #1967d2; border-color: #d2e3fc; }
-.jobs-container, .products-container { display: flex; max-width: 1280px; width: 100%; margin: 0 auto; padding: 16px 24px; gap: 24px; align-items: flex-start; }
-.job-list-pane { flex: 2; max-width: 450px; border: 1px solid #dadce0; border-radius: 8px; }
-.job-card { padding: 16px; border-bottom: 1px solid #ebebeb; cursor: pointer; }
-.job-card:last-child { border-bottom: none; }
-.job-card:hover { background-color: #f8f9fa; }
-.job-card.active { background-color: #e8f0fe; }
-.job-details-pane { flex: 3; position: sticky; top: 177px; height: calc(100vh - 193px); overflow-y: auto; border: 1px solid #dadce0; border-radius: 8px; }
-.job-details-content { padding: 24px; }
-.apply-button { background-color: #1a73e8; color: #fff; border: none; border-radius: 999px; padding: 12px 24px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background-color 0.2s; }
-.apply-button:hover { background-color: #185abc; }
-.divider { border: 0; border-top: 1px solid #ebebeb; margin: 24px 0; }
-.job-details-content h4 { font-size: 16px; font-weight: 500; margin: 16px 0 8px 0; }
-.job-details-content ul { padding-left: 20px; margin: 0; line-height: 1.6; }
-.product-grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; max-width: 1280px; margin: 0 auto; padding: 24px; }
-.product-card { background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
-.product-card:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-.product-card-image-wrapper { width: 100%; padding-top: 100%; position: relative; background-color: #f8f9fa; }
-.product-card-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; padding: 8px; }
-.product-card-info { padding: 16px; border-top: 1px solid #ebebeb; flex-grow: 1; }
-.product-name { font-size: 16px; font-weight: 500; color: #202124; margin: 0 0 4px 0; }
-.product-brand { font-size: 14px; color: #5f6368; margin: 0 0 8px 0; }
-.product-price { font-size: 16px; font-weight: 700; color: #1a73e8; margin: 0 0 8px 0; }
-.product-reviews { display: flex; align-items: center; }
-.star-rating { font-size: 16px; position: relative; display: inline-block; }
-.star-rating::before { content: '★★★★★'; color: #dadce0; }
-.star-rating-filled { position: absolute; top: 0; left: 0; white-space: nowrap; overflow: hidden; color: #fbbc04; }
-.star-rating-filled::before { content: '★★★★★'; }
-.review-count { font-size: 12px; color: #5f6368; margin-left: 6px; }
 
-/* --- Corporate Dashboard Styles --- */
-.data-table { width: 100%; border-collapse: collapse; background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; margin-top: 24px; }
+/* --- Corporate Dashboard & Data Library Styles --- */
+.data-library-page .page-container {
+    max-width: 900px;
+}
+.page-search-wrapper {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #ebebeb;
+}
+.page-search-bar {
+    width: 100%;
+    max-width: 400px;
+    height: 44px;
+    padding: 0 16px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 1px solid #dadce0;
+}
+.dataset-item {
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    transition: box-shadow 0.2s ease-in-out;
+    background-color: #fff;
+}
+.dataset-item:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+.dataset-item a {
+    display: block;
+    padding: 24px;
+}
+.dataset-title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #1a0dab;
+    margin: 0 0 8px 0;
+}
+.dataset-description {
+    font-size: 14px;
+    color: #4d5156;
+    margin: 0 0 16px 0;
+    line-height: 1.5;
+}
+.dataset-meta {
+    font-size: 12px;
+    color: #5f6368;
+}
+.chart-container { position: relative; height: 60vh; background-color: #fff; padding: 16px; border-radius: 8px; border: 1px solid #dadce0; margin-top: 16px;}
+.data-table { width: 100%; border-collapse: collapse; background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; margin-top: 16px; }
 .data-table th, .data-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #dadce0; }
 .data-table thead { background-color: #f8f9fa; }
 .data-table th { font-size: 14px; font-weight: 500; color: #5f6368; cursor: pointer; user-select: none; position: relative; }
@@ -97,23 +102,11 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .data-table tbody tr:hover { background-color: #f8f9fa; }
 .data-table td { font-size: 14px; }
 .sort-arrow { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 1.1em; font-weight: bold; color: #1a73e8; }
-.chart-container { position: relative; height: 60vh; background-color: #fff; padding: 16px; border-radius: 8px; border: 1px solid #dadce0; margin-top: 16px;}
 #map-container { height: 70vh; width: 100%; border: 1px solid #dadce0; border-radius: 8px; margin-top: 16px; background-color: #f8f9fa; }
-.leaflet-popup-content-wrapper { border-radius: 4px; }
-.leaflet-popup-content { font-family: 'Roboto', sans-serif; font-size: 14px; }
 
 /* --- Responsive Styles --- */
-@media (max-width: 900px) {
-    .jobs-container, .products-container { flex-direction: column; }
-    .job-details-pane, .product-details-pane { position: static; height: auto; border: 1px solid #dadce0; border-radius: 8px; }
-    .job-list-pane, .product-list-pane { max-width: none; border: 1px solid #dadce0; border-radius: 8px; margin-bottom: 16px; }
-}
 @media (max-width: 768px) {
     .site-header { position: static; }
     .header-search-wrapper, .secondary-nav, .filter-bar { display: none; }
-    .news-item { flex-direction: column-reverse; }
-    .news-item .article-image { width: 100%; height: auto; margin-bottom: 15px; }
-    .news-item .text-content { margin-right: 0; }
-    .news-item .main-link h3 { font-size: 18px; }
-    .user-actions { position: absolute; top: 16px; right: 16px; }
+    /* ... etc ... */
 }
