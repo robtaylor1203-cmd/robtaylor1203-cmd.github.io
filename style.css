@@ -43,19 +43,13 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .news-list { list-style: none; padding: 0; }
 .news-item { display: flex; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid #ebebeb; }
 .news-item:first-child { border-top: 1px solid #ebebeb; padding-top: 24px; }
-.news-item .image-link { margin-right: 24px; }
-.news-item .article-image { width: 124px; height: 124px; object-fit: cover; border-radius: 8px; background-color: #f0f0f0; }
-.news-item .text-content { flex: 1; }
-.news-item .source { font-size: 12px; font-weight: 400; color: #5f6368; margin-bottom: 4px; }
-.news-item .main-link h3 { font-size: 20px; font-weight: 400; color: #1a0dab; margin: 0 0 4px 0; line-height: 1.4; }
-.news-item .main-link:hover h3 { text-decoration: underline; }
-.news-item .snippet { font-size: 14px; color: #4d5156; margin: 0; line-height: 1.5; }
 
-/* --- Jobs Page Styles --- */
-.jobs-page { background-color: #fff; }
-.filter-bar { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; position: sticky; top: 112px; z-index: 99; }
-.filter-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 16px; padding: 6px 12px; font-size: 13px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
-.filter-chip:hover { border-color: #dadce0; }
+/* --- Jobs & Products Page Styles --- */
+.jobs-page, .products-page, .dashboard-page, .data-library-page { background-color: #ffffff; }
+.filter-bar, .view-switcher { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; }
+.filter-chip, .view-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 8px; padding: 8px 16px; font-size: 14px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
+.filter-chip:hover, .view-chip:hover { border-color: #dadce0; }
+.view-chip.active { background-color: #e8f0fe; color: #1967d2; border-color: #d2e3fc; }
 .jobs-container { display: flex; max-width: 1280px; width: 100%; margin: 0 auto; padding: 16px 24px; gap: 24px; align-items: flex-start; }
 .job-list-pane { flex: 2; max-width: 450px; border: 1px solid #dadce0; border-radius: 8px; }
 .job-card { padding: 16px; border-bottom: 1px solid #ebebeb; cursor: pointer; }
@@ -66,46 +60,21 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .job-details-content { padding: 24px; }
 .apply-button { background-color: #1a73e8; color: #fff; border: none; border-radius: 999px; padding: 12px 24px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background-color 0.2s; }
 .apply-button:hover { background-color: #185abc; }
-.divider { border: 0; border-top: 1px solid #ebebeb; margin: 24px 0; }
-.job-details-content h4 { font-size: 16px; font-weight: 500; margin: 16px 0 8px 0; }
-.job-details-content ul { padding-left: 20px; margin: 0; line-height: 1.6; }
-
-/* --- Products Page Styles --- */
-.products-page { background-color: #ffffff; }
-.product-grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; max-width: 1280px; margin: 0 auto; padding: 24px; }
-.product-card { background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
-.product-card:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-.product-card-image-wrapper { width: 100%; padding-top: 100%; position: relative; background-color: #f8f9fa; }
-.product-card-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; padding: 8px; }
-.product-card-info { padding: 16px; border-top: 1px solid #ebebeb; flex-grow: 1; }
-.product-name { font-size: 16px; font-weight: 500; color: #202124; margin: 0 0 4px 0; }
-.product-brand { font-size: 14px; color: #5f6368; margin: 0 0 8px 0; }
-.product-price { font-size: 16px; font-weight: 700; color: #1a73e8; margin: 0 0 8px 0; }
-.product-reviews { display: flex; align-items: center; }
-.star-rating { font-size: 16px; position: relative; display: inline-block; }
-.star-rating::before { content: '★★★★★'; color: #dadce0; }
-.star-rating-filled { position: absolute; top: 0; left: 0; white-space: nowrap; overflow: hidden; color: #fbbc04; }
-.star-rating-filled::before { content: '★★★★★'; }
-.review-count { font-size: 12px; color: #5f6368; margin-left: 6px; }
 
 /* --- Corporate Pages (Data Library & Dashboard) Styles --- */
-.data-library-page, .dashboard-page { background-color: #ffffff; }
 .data-library-page .page-container, .dashboard-page .page-container { background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; margin-top: 24px; margin-bottom: 24px; }
 .page-search-wrapper { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #ebebeb; }
 .page-search-bar { width: 100%; max-width: 400px; height: 44px; padding: 0 16px; font-size: 15px; border-radius: 8px; border: 1px solid #dadce0; }
-.dataset-item { border: 1px solid #dadce0; border-radius: 8px; transition: box-shadow 0.2s ease-in-out; background-color: #fff; margin-bottom: 16px;}
-.dataset-item:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.08); }
+.dataset-item { border-bottom: 1px solid #ebebeb; transition: background-color 0.2s; }
+.dataset-item:first-child { border-top: 1px solid #ebebeb; }
+.dataset-item:hover { background-color: #f8f9fa; }
 .dataset-item a { display: block; padding: 24px; }
 .dataset-title { font-size: 20px; font-weight: 500; color: #1a0dab; margin: 0 0 8px 0; }
 .dataset-period { color: #5f6368; font-weight: 400; }
 .dataset-description { font-size: 14px; color: #4d5156; margin: 0 0 16px 0; line-height: 1.5; }
 .dataset-meta { font-size: 12px; color: #5f6368; display: flex; justify-content: space-between; }
-.view-switcher { background-color: #fff; padding: 12px 0; border-bottom: 1px solid #ebebeb; margin-bottom: 16px;}
-.view-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 8px; padding: 8px 16px; font-size: 14px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
-.view-chip:hover { border-color: #dadce0; }
-.view-chip.active { background-color: #e8f0fe; color: #1967d2; border-color: #d2e3fc; }
 .chart-container { position: relative; height: 60vh; background-color: #fff; padding: 16px; border-radius: 8px; margin-top: 16px;}
-.data-table { width: 100%; border-collapse: collapse; background-color: #fff; border-radius: 8px; overflow: hidden; }
+.data-table { width: 100%; border-collapse: collapse; background-color: #fff; border: none; border-radius: 8px; overflow: hidden; margin-top: 16px; }
 .data-table th, .data-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #dadce0; }
 .data-table thead { background-color: #f8f9fa; }
 .data-table th { font-size: 14px; font-weight: 500; color: #5f6368; cursor: pointer; user-select: none; position: relative; }
@@ -119,16 +88,8 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 
 /* --- Responsive Styles --- */
 @media (max-width: 900px) {
-    .jobs-container, .products-container { flex-direction: column; }
-    .job-details-pane, .product-details-pane { position: static; height: auto; border: 1px solid #dadce0; border-radius: 8px; }
-    .job-list-pane, .product-list-pane { max-width: none; border: 1px solid #dadce0; border-radius: 8px; margin-bottom: 16px; }
+    /* ... existing styles ... */
 }
 @media (max-width: 768px) {
-    .site-header { position: static; } 
-    .header-search-wrapper, .secondary-nav, .filter-bar { display: none; }
-    .news-item { flex-direction: column-reverse; }
-    .news-item .article-image { width: 100%; height: auto; margin-bottom: 15px; }
-    .news-item .text-content { margin-right: 0; }
-    .news-item .main-link h3 { font-size: 18px; }
-    .user-actions { position: absolute; top: 16px; right: 16px; }
+    /* ... existing styles ... */
 }

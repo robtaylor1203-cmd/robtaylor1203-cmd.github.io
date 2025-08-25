@@ -47,7 +47,9 @@
                         <th data-sort="value_gbp">Value (£ GBP)</th>
                     </tr>
                 </thead>
-                <tbody id="data-table-body"></tbody>
+                <tbody id="data-table-body">
+                    <tr><td colspan="3" style="text-align: center; padding: 20px;">Loading data...</td></tr>
+                </tbody>
             </table>
         </div>
 
@@ -107,7 +109,6 @@
                 const dataLookup = new Map(data.map(d => [d.partner_country, d]));
                 const getColor = (value) => value > 10000000 ? '#0d47a1' : value > 5000000  ? '#1976d2' : value > 2000000  ? '#2196f3' : value > 1000000  ? '#64b5f6' : '#bbdefb';
                 
-                // Correction for Tanzania name mismatch
                 const geoTanzania = geoData.features.find(f => f.properties.name === "Tanzania");
                 if(geoTanzania) geoTanzania.properties.name = "United Republic of Tanzania";
 
@@ -127,7 +128,7 @@
                 }).addTo(myMap);
             };
 
-            // Main logic starts here: use async/await for cleaner flow
+            // Main logic: Fetch data first, then set up all interactive elements
             try {
                 const response = await fetch('uk-imports-july-2025.json');
                 if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
@@ -135,7 +136,6 @@
                 
                 renderTable(currentData);
 
-                // Now that data is loaded, set up all the interactive elements
                 buttons.forEach(button => {
                     button.addEventListener('click', () => {
                         buttons.forEach(btn => btn.classList.remove('active'));
