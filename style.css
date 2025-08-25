@@ -48,7 +48,6 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .jobs-page { background-color: #fff; }
 .filter-bar { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; position: sticky; top: 112px; z-index: 99; }
 .filter-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 16px; padding: 6px 12px; font-size: 13px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
-.filter-chip:hover { border-color: #dadce0; }
 .jobs-container { display: flex; max-width: 1280px; width: 100%; margin: 0 auto; padding: 16px 24px; gap: 24px; align-items: flex-start; }
 .job-list-pane { flex: 2; max-width: 450px; border: 1px solid #dadce0; border-radius: 8px; }
 .job-card { padding: 16px; border-bottom: 1px solid #ebebeb; cursor: pointer; }
@@ -107,6 +106,9 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 #map-container { height: 70vh; width: 100%; border-radius: 8px; margin-top: 16px; background-color: #f8f9fa; border: 1px solid #dadce0;}
 
 /* --- Responsive Styles --- */
+@media (max-width: 900px) {
+    /* ... existing responsive styles ... */
+}
 @media (max-width: 768px) {
     /* ... existing responsive styles ... */
 }
