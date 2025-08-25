@@ -13,8 +13,8 @@
             <a href="corporate.html" class="header-logo"><h1>Tea<span>Trade</span></h1></a>
             <div class="header-search-wrapper"><input type="text" class="header-search-bar" placeholder="Global site search..."></div>
             <div class="user-actions">
-                <a href="#" title="Create Account"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="17" y1="11" x2="23" y2="11"></line></svg></a>
-                <a href="#" title="Sign In"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg></a>
+                <a href="#" title="Create Account"><svg></svg></a>
+                <a href="#" title="Sign In"><svg></svg></a>
             </div>
         </div>
         <nav class="secondary-nav">
@@ -26,25 +26,22 @@
             </ul>
         </nav>
     </header>
-
     <main class="page-container">
         <h2 class="page-title">Data Library</h2>
         <div class="page-search-wrapper">
-            <input type="text" class="page-search-bar" placeholder="Search for a specific dataset (e.g. 'UK Imports')">
+            <input type="text" class="page-search-bar" placeholder="Search for a specific dataset...">
         </div>
-        <div class="data-list-container" id="data-list">
+        <div class="data-list-container" id="data-list-container">
             <p>Loading datasets...</p>
         </div>
     </main>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const dataListContainer = document.getElementById('data-list');
-
+            const dataListContainer = document.getElementById('data-list-container');
             fetch('data-library.json')
                 .then(response => response.json())
                 .then(datasets => {
-                    dataListContainer.innerHTML = ''; // Clear loading message
-
+                    dataListContainer.innerHTML = '';
                     if (datasets && datasets.length > 0) {
                         datasets.forEach(dataset => {
                             const item = document.createElement('div');
@@ -64,10 +61,6 @@
                     } else {
                         dataListContainer.innerHTML = '<p>No datasets found.</p>';
                     }
-                })
-                .catch(error => {
-                    console.error('Error fetching data library:', error);
-                    dataListContainer.innerHTML = '<p>Error loading datasets.</p>';
                 });
         });
     </script>

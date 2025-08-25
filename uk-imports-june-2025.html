@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UK Imports (June 2025) - TeaTrade</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dashboard-page">
+    <header class="site-header">
+        <div class="header-top-bar">
+            <a href="corporate.html" class="header-logo"><h1>Tea<span>Trade</span></h1></a>
+            <div class="header-search-wrapper"><input type="text" class="header-search-bar" placeholder="Search data..."></div>
+            <div class="user-actions">
+                <a href="#" title="Create Account"><svg></svg></a>
+                <a href="#" title="Sign In"><svg></svg></a>
+            </div>
+        </div>
+        <nav class="secondary-nav">
+            <ul>
+                <li><a href="data.html" class="active">Data</a></li>
+                <li><a href="#">Market Reports</a></li>
+                <li><a href="#">Auctions</a></li>
+                <li><a href="#">Visuals</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="page-container">
+        <h2 class="page-title">UK Tea Imports - June 2025</h2>
+        <div class="view-switcher">
+            <button class="view-chip active">Table View</button>
+            <button class="view-chip">Chart View</button>
+            <button class="view-chip">Map View</button>
+        </div>
+        <div id="table-view" class="view-content">
+            <p>Loading data...</p>
+        </div>
+        </main>
+    <script>
+        // This script would be a copy of the other dashboard's, 
+        // but it would fetch 'uk-imports-june-2025.json'
+    </script>
+</body>
+</html>
