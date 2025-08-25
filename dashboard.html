@@ -6,8 +6,6 @@
     <title>Data Dashboard - TeaTrade</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="dashboard-page">
@@ -42,9 +40,9 @@
             <table class="data-table">
                 <thead>
                     <tr>
-                        <th data-sort="partner_country"><span>Country</span></th>
-                        <th data-sort="net_mass_kg"><span>Net Mass (kg)</span></th>
-                        <th data-sort="value_gbp"><span>Value (£ GBP)</span></th>
+                        <th data-sort="partner_country">Country</th>
+                        <th data-sort="net_mass_kg">Net Mass (kg)</th>
+                        <th data-sort="value_gbp">Value (£ GBP)</th>
                     </tr>
                 </thead>
                 <tbody id="data-table-body"></tbody>
@@ -65,89 +63,93 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const importData = [
-                { "partner_country": "Kenya", "net_mass_kg": 4810230, "value_gbp": 12150900 },
-                { "partner_country": "India", "net_mass_kg": 1985550, "value_gbp": 7995400 },
-                { "partner_country": "Malawi", "net_mass_kg": 950100, "value_gbp": 1850200 },
-                { "partner_country": "China", "net_mass_kg": 430670, "value_gbp": 3120500 },
-                { "partner_country": "Rwanda", "net_mass_kg": 750300, "value_gbp": 1500600 },
-                { "partner_country": "Tanzania", "net_mass_kg": 620400, "value_gbp": 1240800 },
-                { "partner_country": "Sri Lanka", "net_mass_kg": 310800, "value_gbp": 1950000 }
+                { "import_date": "2025-07-01", "partner_country": "Kenya", "net_mass_kg": 4810230, "value_gbp": 12150900 },
+                { "import_date": "2025-07-01", "partner_country": "India", "net_mass_kg": 1985550, "value_gbp": 7995400 },
+                { "import_date": "2025-07-01", "partner_country": "Malawi", "net_mass_kg": 950100, "value_gbp": 1850200 },
+                { "import_date": "2025-07-01", "partner_country": "China", "net_mass_kg": 430670, "value_gbp": 3120500 },
+                { "import_date": "2025-07-01", "partner_country": "Rwanda", "net_mass_kg": 750300, "value_gbp": 1500600 },
+                { "import_date": "2025-07-01", "partner_country": "Tanzania", "net_mass_kg": 620400, "value_gbp": 1240800 },
+                { "import_date": "2025-07-01", "partner_country": "Sri Lanka", "net_mass_kg": 310800, "value_gbp": 1950000 }
             ];
 
-            let myChart;
-            let myMap;
-            let geoJsonLayer;
-
-            const renderTable = (data) => { /* ... table rendering logic ... */ };
-            const renderChart = (data) => { /* ... chart rendering logic ... */ };
-
-            // --- NEW function to render the map ---
-            const renderMap = (geoData, importData) => {
-                if (!myMap) { // Initialize map only once
-                    myMap = L.map('map-container').setView([20, 0], 2);
-                    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-                    }).addTo(myMap);
-                }
-                
-                if (geoJsonLayer) myMap.removeLayer(geoJsonLayer); // Remove old layer if it exists
-
-                const dataLookup = new Map(importData.map(d => [d.partner_country, d]));
-
-                const getColor = (value) => {
-                    return value > 10000000 ? '#0d47a1' :
-                           value > 5000000  ? '#1976d2' :
-                           value > 2000000  ? '#2196f3' :
-                           value > 1000000  ? '#64b5f6' :
-                                              '#bbdefb';
-                };
-
-                geoJsonLayer = L.geoJson(geoData, {
-                    style: (feature) => {
-                        const countryName = feature.properties.name;
-                        const data = dataLookup.get(countryName);
-                        return {
-                            fillColor: data ? getColor(data.value_gbp) : '#f5f5f5',
-                            weight: 1,
-                            opacity: 1,
-                            color: 'white',
-                            fillOpacity: 0.7
-                        };
-                    },
-                    onEachFeature: (feature, layer) => {
-                        const countryName = feature.properties.name;
-                        const data = dataLookup.get(countryName);
-                        if (data) {
-                            layer.bindPopup(`<strong>${countryName}</strong><br/>Value: £${data.value_gbp.toLocaleString()}<br/>Mass: ${data.net_mass_kg.toLocaleString()} kg`);
-                        }
-                    }
-                }).addTo(myMap);
-            };
-
-            // --- Event Listeners and Initial Load ---
+            const tableBody = document.getElementById('data-table-body');
+            const headers = document.querySelectorAll('.data-table th');
+            const chartCanvas = document.getElementById('importChart');
             const views = document.querySelectorAll('.view-content');
             const buttons = document.querySelectorAll('.view-chip');
+            let myChart;
+            let sortDirection = {};
 
+            const renderTable = (data) => {
+                tableBody.innerHTML = '';
+                data.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${item.partner_country}</td><td>${item.net_mass_kg.toLocaleString()}</td><td>${item.value_gbp.toLocaleString()}</td>`;
+                    tableBody.appendChild(row);
+                });
+            };
+
+            const renderChart = (data) => {
+                if (myChart) myChart.destroy();
+                const sortedData = [...data].sort((a, b) => b.value_gbp - a.value_gbp);
+                const labels = sortedData.map(item => item.partner_country);
+                const values = sortedData.map(item => item.value_gbp);
+                myChart = new Chart(chartCanvas, {
+                    type: 'bar',
+                    data: { labels: labels, datasets: [{ label: 'Import Value (£ GBP)', data: values, backgroundColor: 'rgba(26, 115, 232, 0.8)', borderColor: 'rgba(26, 115, 232, 1)', borderWidth: 1 }] },
+                    options: { scales: { y: { beginAtZero: true } }, responsive: true, maintainAspectRatio: false }
+                });
+            };
+            
             buttons.forEach(button => {
                 button.addEventListener('click', () => {
                     buttons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
                     const viewId = button.id.replace('show-', '');
-                    
-                    views.forEach(view => {
-                        view.style.display = (view.id === viewId) ? 'block' : 'none';
-                    });
-                    
-                    if (viewId === 'chart-view') renderChart(importData);
-                    if (viewId === 'map-view') {
-                        fetch('countries.geojson')
-                            .then(res => res.json())
-                            .then(geoData => renderMap(geoData, importData));
-                    }
+                    views.forEach(view => { view.style.display = (view.id === viewId) ? 'block' : 'none'; });
+                    if (viewId === 'chart-view') { renderChart(importData); }
                 });
             });
 
-            renderTable(importData); // Initial table render
+            headers.forEach(header => {
+                header.addEventListener('click', () => {
+                    const sortKey = header.dataset.sort;
+                    const direction = (sortDirection[sortKey] === 'asc') ? 'desc' : 'asc';
+                    
+                    sortDirection = { [sortKey]: direction }; 
+
+                    headers.forEach(h => {
+                        if (h !== header) {
+                           const oldArrow = h.querySelector('.sort-arrow');
+                           if (oldArrow) oldArrow.remove();
+                           h.classList.remove('sort-asc', 'sort-desc');
+                        }
+                    });
+
+                    header.classList.remove('sort-asc', 'sort-desc');
+                    header.classList.add(direction === 'asc' ? 'sort-asc' : 'sort-desc');
+                    
+                    let arrowSpan = header.querySelector('.sort-arrow');
+                    if (!arrowSpan) {
+                        arrowSpan = document.createElement('span');
+                        arrowSpan.className = 'sort-arrow';
+                        header.appendChild(arrowSpan);
+                    }
+                    arrowSpan.innerHTML = direction === 'asc' ? '&uarr;' : '&darr;';
+
+                    importData.sort((a, b) => {
+                        const valA = a[sortKey];
+                        const valB = b[sortKey];
+                        if (typeof valA === 'string') {
+                            return direction === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+                        }
+                        return direction === 'asc' ? valA - valB : valB - valA;
+                    });
+                    renderTable(importData);
+                });
+            });
+
+            renderTable(importData);
         });
     </script>
 </body>
