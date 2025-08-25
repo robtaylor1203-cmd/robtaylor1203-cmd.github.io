@@ -61,6 +61,10 @@
                     } else {
                         dataListContainer.innerHTML = '<p>No datasets found.</p>';
                     }
+                })
+                .catch(error => {
+                    console.error('Error fetching data library:', error);
+                    dataListContainer.innerHTML = '<p>Error loading datasets.</p>';
                 });
         });
     </script>

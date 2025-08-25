@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UK Imports (June 2025) - TeaTrade</title>
+    <title>UK Imports (July 2025) - TeaTrade</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
@@ -14,12 +14,12 @@
     <header class="site-header">
         </header>
     <main class="page-container">
-        <h2 class="page-title">UK Tea Imports - June 2025</h2>
+        <h2 class="page-title">UK Tea Imports - July 2025</h2>
         </main>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // This script is identical to the July one, but fetches the JUNE data file
-            fetch('uk-imports-june-2025.json')
+            // This script is identical to the June one, but fetches the JULY data file
+            fetch('uk-imports-july-2025.json')
                 .then(response => response.json())
                 .then(importData => {
                     // All the rendering logic for table, chart, map goes here...
