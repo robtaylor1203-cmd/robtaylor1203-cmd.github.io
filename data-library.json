@@ -1,0 +1,10 @@
+[
+  {
+    "title": "UK Monthly Tea Imports",
+    "description": "The latest official HMRC data for tea imports into the United Kingdom, broken down by country of origin, net mass, and value.",
+    "data_period": "July 2025",
+    "date_added": "2025-08-25",
+    "source": "HMRC",
+    "dashboard_link": "uk-imports-dashboard.html"
+  }
+]
