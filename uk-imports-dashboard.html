@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UK Imports Data - TeaTrade</title>
+    <title>UK Imports (July 2025) - TeaTrade</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
@@ -29,6 +29,7 @@
             </ul>
         </nav>
     </header>
+
     <main class="page-container">
         <h2 class="page-title">UK Tea Imports - July 2025</h2>
         <div class="view-switcher">
@@ -36,6 +37,7 @@
             <button id="show-chart-view" class="view-chip">Chart View</button>
             <button id="show-map-view" class="view-chip">Map View</button>
         </div>
+
         <div id="table-view" class="view-content">
             <table class="data-table">
                 <thead>
@@ -45,23 +47,35 @@
                         <th data-sort="value_gbp">Value (£ GBP)</th>
                     </tr>
                 </thead>
-                <tbody id="data-table-body"></tbody>
+                <tbody id="data-table-body">
+                    <tr><td colspan="3" style="text-align: center; padding: 20px;">Loading data...</td></tr>
+                </tbody>
             </table>
         </div>
+
         <div id="chart-view" class="view-content" style="display: none;">
-            <div class="chart-container"><canvas id="importChart"></canvas></div>
+            <div class="chart-container">
+                <canvas id="importChart"></canvas>
+            </div>
         </div>
+        
         <div id="map-view" class="view-content" style="display: none;">
             <div id="map-container"></div>
         </div>
     </main>
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const importData = [{"partner_country":"Kenya","net_mass_kg":4810230,"value_gbp":12150900},{"partner_country":"India","net_mass_kg":1985550,"value_gbp":7995400},{"partner_country":"Malawi","net_mass_kg":950100,"value_gbp":1850200},{"partner_country":"China","net_mass_kg":430670,"value_gbp":3120500},{"partner_country":"Rwanda","net_mass_kg":750300,"value_gbp":1500600},{"partner_country":"United Republic of Tanzania","net_mass_kg":620400,"value_gbp":1240800},{"partner_country":"Sri Lanka","net_mass_kg":310800,"value_gbp":1950000}];
-            let myChart, myMap, geoJsonLayer, geoDataCache;
-            let sortDirection = {};
             const tableBody = document.getElementById('data-table-body');
             const headers = document.querySelectorAll('.data-table th');
+            const chartCanvas = document.getElementById('importChart');
+            const views = document.querySelectorAll('.view-content');
+            const buttons = document.querySelectorAll('.view-chip');
+            
+            let myChart, myMap, geoJsonLayer, geoDataCache;
+            let sortDirection = {};
+            let currentData = [];
+
             const renderTable = (data) => {
                 tableBody.innerHTML = '';
                 data.forEach(item => {
@@ -70,8 +84,8 @@
                     tableBody.appendChild(row);
                 });
             };
+
             const renderChart = (data) => {
-                const chartCanvas = document.getElementById('importChart');
                 if (myChart) myChart.destroy();
                 const sortedData = [...data].sort((a, b) => b.value_gbp - a.value_gbp);
                 const labels = sortedData.map(item => item.partner_country);
@@ -82,6 +96,7 @@
                     options: { scales: { y: { beginAtZero: true } }, responsive: true, maintainAspectRatio: false }
                 });
             };
+
             const renderMap = (geoData, data) => {
                 const mapContainer = document.getElementById('map-container');
                 if (!myMap) { 
@@ -108,55 +123,72 @@
                     }
                 }).addTo(myMap);
             };
-            const views = document.querySelectorAll('.view-content');
-            const buttons = document.querySelectorAll('.view-chip');
-            buttons.forEach(button => {
-                button.addEventListener('click', () => {
-                    buttons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    const viewId = button.id.replace('show-', '');
-                    views.forEach(view => { view.style.display = (view.id === viewId) ? 'block' : 'none'; });
-                    if (viewId === 'chart-view') renderChart(importData);
-                    if (viewId === 'map-view') {
-                        if (geoDataCache) {
-                            renderMap(geoDataCache, importData);
-                        } else {
-                            fetch('countries.geojson').then(res => res.json()).then(geoData => {
-                                geoDataCache = geoData; 
-                                renderMap(geoData, importData);
-                            }).catch(err => { console.error("Failed to load map data.", err); document.getElementById('map-container').innerHTML = `<p>Error: Could not load map data file.</p>`; });
-                        }
-                    }
-                });
-            });
-            headers.forEach(header => {
-                header.addEventListener('click', () => {
-                    const sortKey = header.dataset.sort;
-                    const direction = (sortDirection[sortKey] === 'asc') ? 'desc' : 'asc';
-                    sortDirection = { [sortKey]: direction };
-                    headers.forEach(h => {
-                        const arrow = h.querySelector('.sort-arrow');
-                        if (h !== header && arrow) arrow.remove();
-                        h.classList.remove('sort-asc', 'sort-desc');
+
+            // Main logic starts here, after data is fetched
+            fetch('uk-imports-july-2025.json')
+                .then(response => {
+                    if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
+                    return response.json();
+                })
+                .then(importData => {
+                    currentData = importData;
+                    
+                    // Initial render
+                    renderTable(currentData);
+
+                    // Now that data is loaded, set up all the interactive elements
+                    buttons.forEach(button => {
+                        button.addEventListener('click', () => {
+                            buttons.forEach(btn => btn.classList.remove('active'));
+                            button.classList.add('active');
+                            const viewId = button.id.replace('show-', '');
+                            views.forEach(view => { view.style.display = (view.id === viewId) ? 'block' : 'none'; });
+                            if (viewId === 'chart-view') renderChart(currentData);
+                            if (viewId === 'map-view') {
+                                if (geoDataCache) {
+                                    renderMap(geoDataCache, currentData);
+                                } else {
+                                    fetch('countries.geojson').then(res => res.json()).then(geoData => {
+                                        geoDataCache = geoData; 
+                                        renderMap(geoData, currentData);
+                                    }).catch(err => { console.error("Failed to load map data.", err); document.getElementById('map-container').innerHTML = `<p>Error: Could not load map data file.</p>`; });
+                                }
+                            }
+                        });
                     });
-                    header.classList.add(direction === 'asc' ? 'sort-asc' : 'sort-desc');
-                    let arrowSpan = header.querySelector('.sort-arrow');
-                    if (!arrowSpan) {
-                        arrowSpan = document.createElement('span');
-                        arrowSpan.className = 'sort-arrow';
-                        header.appendChild(arrowSpan);
-                    }
-                    arrowSpan.innerHTML = direction === 'asc' ? '&uarr;' : '&darr;';
-                    importData.sort((a, b) => {
-                        const valA = a[sortKey];
-                        const valB = b[sortKey];
-                        if (typeof valA === 'string') return direction === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
-                        return direction === 'asc' ? valA - valB : valA - b[sortKey];
+
+                    headers.forEach(header => {
+                        header.addEventListener('click', () => {
+                            const sortKey = header.dataset.sort;
+                            const direction = (sortDirection[sortKey] === 'asc') ? 'desc' : 'asc';
+                            sortDirection = { [sortKey]: direction };
+                            headers.forEach(h => {
+                                const arrow = h.querySelector('.sort-arrow');
+                                if (h !== header && arrow) arrow.remove();
+                                h.classList.remove('sort-asc', 'sort-desc');
+                            });
+                            header.classList.add(direction === 'asc' ? 'sort-asc' : 'sort-desc');
+                            let arrowSpan = header.querySelector('.sort-arrow');
+                            if (!arrowSpan) {
+                                arrowSpan = document.createElement('span');
+                                arrowSpan.className = 'sort-arrow';
+                                header.appendChild(arrowSpan);
+                            }
+                            arrowSpan.innerHTML = direction === 'asc' ? '&uarr;' : '&darr;';
+                            currentData.sort((a, b) => {
+                                const valA = a[sortKey];
+                                const valB = b[sortKey];
+                                if (typeof valA === 'string') return direction === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+                                return direction === 'asc' ? valA - valB : valB - valA;
+                            });
+                            renderTable(currentData);
+                        });
                     });
-                    renderTable(importData);
+                })
+                .catch(error => {
+                    console.error('Error fetching initial data:', error);
+                    tableBody.innerHTML = `<tr><td colspan="3" style="text-align: center; padding: 20px;">Error loading initial data.</td></tr>`;
                 });
-            });
-            renderTable(importData);
         });
     </script>
 </body>
