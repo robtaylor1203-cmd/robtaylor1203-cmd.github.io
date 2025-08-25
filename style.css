@@ -2,7 +2,6 @@
 body, html { margin: 0; font-family: 'Roboto', sans-serif; background-color: #ffffff; color: #202124; }
 a { text-decoration: none; color: inherit; }
 * { box-sizing: border-box; }
-
 /* --- Homepage & Corporate Page Styles --- */
 body.home, body.corporate-page { display: flex; flex-direction: column; min-height: 100vh; }
 .container { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
@@ -21,7 +20,6 @@ a.logo-link { text-decoration: none; }
 .main-nav a { background-color: #f8f9fa; color: #3c4043; font-size: 14px; padding: 8px 16px; border-radius: 4px; }
 .main-nav a:hover { box-shadow: 0 1px 1px rgba(0,0,0,.1); background-color: #f1f3f4; }
 footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; padding: 20px 0; flex-shrink: 0; }
-
 /* --- Reusable Header Styles --- */
 .site-header { background-color: #fff; border-bottom: 1px solid #ebebeb; padding: 0 24px; position: sticky; top: 0; z-index: 100; }
 .header-top-bar { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: 1280px; margin: 0 auto; }
@@ -30,13 +28,12 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .header-search-wrapper { flex-grow: 1; display: flex; justify-content: center; padding: 0 40px; }
 .header-search-bar { width: 100%; max-width: 720px; height: 44px; padding: 0 16px; font-size: 16px; border-radius: 24px; background-color: #ffffff; border: 1px solid #dfe1e5; }
 .header-search-bar:focus { background-color: #fff; box-shadow: 0 1px 6px rgba(32,33,36,.1); outline: none; }
-.news-page .site-header .user-actions, .jobs-page .site-header .user-actions, .products-page .site-header .user-actions, .dashboard-page .site-header .user-actions, .data-library-page .site-header .user-actions { position: static; }
+.news-page .site-header .user-actions, .jobs-page .site-header .user-actions, .products-page .site-header .user-actions, .dashboard-page .site-header .user-actions { position: static; }
 .secondary-nav { max-width: 1280px; margin: 0 auto; }
 .secondary-nav ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 25px; height: 48px; align-items: center; }
 .secondary-nav a { font-size: 14px; color: #5f6368; padding-bottom: 8px; font-weight: 500; }
 .secondary-nav a.active { color: #1a73e8; border-bottom: 3px solid #1a73e8; }
 .secondary-nav a:not(.active):hover { color: #3c4043; }
-
 /* --- News Page Styles --- */
 .page-container { max-width: 1100px; margin: 0 auto; padding: 24px; }
 .page-title { font-size: 28px; font-weight: 400; margin: 10px 0 20px 0; color: #3c4043; }
@@ -50,14 +47,12 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .news-item .main-link h3 { font-size: 20px; font-weight: 400; color: #1a0dab; margin: 0 0 4px 0; line-height: 1.4; }
 .news-item .main-link:hover h3 { text-decoration: underline; }
 .news-item .snippet { font-size: 14px; color: #4d5156; margin: 0; line-height: 1.5; }
-
-/* --- Jobs & Products Page Styles --- */
-.jobs-page, .products-page, .dashboard-page, .data-library-page { background-color: #ffffff; }
-.filter-bar, .view-switcher { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; }
-.filter-chip, .view-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 8px; padding: 8px 16px; font-size: 14px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
-.filter-chip:hover, .view-chip:hover { border-color: #dadce0; }
-.view-chip.active { background-color: #e8f0fe; color: #1967d2; border-color: #d2e3fc; }
-.jobs-container, .products-container { display: flex; max-width: 1280px; width: 100%; margin: 0 auto; padding: 16px 24px; gap: 24px; align-items: flex-start; }
+/* --- Jobs Page Styles --- */
+.jobs-page { background-color: #fff; }
+.filter-bar { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; position: sticky; top: 112px; z-index: 99; }
+.filter-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 16px; padding: 6px 12px; font-size: 13px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
+.filter-chip:hover { border-color: #dadce0; }
+.jobs-container { display: flex; max-width: 1280px; width: 100%; margin: 0 auto; padding: 16px 24px; gap: 24px; align-items: flex-start; }
 .job-list-pane { flex: 2; max-width: 450px; border: 1px solid #dadce0; border-radius: 8px; }
 .job-card { padding: 16px; border-bottom: 1px solid #ebebeb; cursor: pointer; }
 .job-card:last-child { border-bottom: none; }
@@ -70,6 +65,8 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .divider { border: 0; border-top: 1px solid #ebebeb; margin: 24px 0; }
 .job-details-content h4 { font-size: 16px; font-weight: 500; margin: 16px 0 8px 0; }
 .job-details-content ul { padding-left: 20px; margin: 0; line-height: 1.6; }
+/* --- Products Page Styles --- */
+.products-page { background-color: #ffffff; }
 .product-grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; max-width: 1280px; margin: 0 auto; padding: 24px; }
 .product-card { background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
 .product-card:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
@@ -85,26 +82,6 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .star-rating-filled { position: absolute; top: 0; left: 0; white-space: nowrap; overflow: hidden; color: #fbbc04; }
 .star-rating-filled::before { content: '★★★★★'; }
 .review-count { font-size: 12px; color: #5f6368; margin-left: 6px; }
-
-/* --- Corporate Pages (Data Library & Dashboard) Styles --- */
-.data-library-page .page-container, .dashboard-page .page-container { background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; margin-top: 24px; margin-bottom: 24px; }
-.page-search-wrapper { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #ebebeb; }
-.page-search-bar { width: 100%; max-width: 400px; height: 44px; padding: 0 16px; font-size: 15px; border-radius: 8px; border: 1px solid #dadce0; }
-.dataset-item { border: 1px solid #dadce0; border-radius: 8px; transition: box-shadow 0.2s ease-in-out; background-color: #fff; margin-bottom: 16px;}
-.dataset-item:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.08); }
-.dataset-item a { display: block; padding: 24px; }
-.dataset-title { font-size: 20px; font-weight: 500; color: #1a0dab; margin: 0 0 8px 0; }
-.dataset-period { color: #5f6368; font-weight: 400; }
-.dataset-description { font-size: 14px; color: #4d5156; margin: 0 0 16px 0; line-height: 1.5; }
-.dataset-meta { font-size: 12px; color: #5f6368; display: flex; justify-content: space-between; }
-.chart-container { position: relative; height: 60vh; background-color: #fff; padding: 16px; border-radius: 8px; margin-top: 16px;}
-.data-table { width: 100%; border-collapse: collapse; background-color: #fff; border: none; border-radius: 8px; overflow: hidden; margin-top: 16px; }
-.data-table th, .data-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #dadce0; }
-.data-table thead { background-color: #f8f9fa; }
-.data-table th { font-size: 14px; font-weight: 500; color: #5f6368; cursor: pointer; user-select: none; position: relative; }
-.sort-arrow { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 1.1em; font-weight: bold; color: #1a73e8; }
-#map-container { height: 70vh; width: 100%; border-radius: 8px; margin-top: 16px; background-color: #f8f9fa; }
-
 /* --- Responsive Styles --- */
 @media (max-width: 900px) {
     .jobs-container, .products-container { flex-direction: column; }
@@ -112,7 +89,7 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
     .job-list-pane, .product-list-pane { max-width: none; border: 1px solid #dadce0; border-radius: 8px; margin-bottom: 16px; }
 }
 @media (max-width: 768px) {
-    .site-header { position: static; }
+    .site-header { position: static; } 
     .header-search-wrapper, .secondary-nav, .filter-bar { display: none; }
     .news-item { flex-direction: column-reverse; }
     .news-item .article-image { width: 100%; height: auto; margin-bottom: 15px; }
