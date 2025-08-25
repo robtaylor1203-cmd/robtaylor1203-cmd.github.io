@@ -31,7 +31,13 @@
     </header>
 
     <main class="page-container">
-        <h2 class="page-title">UK Tea Imports - July 2025</h2>
+        <div class="dashboard-header">
+            <h2 class="page-title">UK Tea Imports - July 2025</h2>
+            <div class="slicer-controls">
+                <button id="slice-by-value" class="slicer-button active" data-key="value_gbp" data-label="Import Value (£ GBP)">View by Value</button>
+                <button id="slice-by-mass" class="slicer-button" data-key="net_mass_kg" data-label="Import Mass (kg)">View by Mass</button>
+            </div>
+        </div>
         <div class="view-switcher">
             <button id="show-table-view" class="view-chip active">Table View</button>
             <button id="show-chart-view" class="view-chip">Chart View</button>
@@ -47,16 +53,12 @@
                         <th data-sort="value_gbp">Value (£ GBP)</th>
                     </tr>
                 </thead>
-                <tbody id="data-table-body">
-                    <tr><td colspan="3" style="text-align: center; padding: 20px;">Loading data...</td></tr>
-                </tbody>
+                <tbody id="data-table-body"></tbody>
             </table>
         </div>
 
         <div id="chart-view" class="view-content" style="display: none;">
-            <div class="chart-container">
-                <canvas id="importChart"></canvas>
-            </div>
+            <div class="chart-container"><canvas id="importChart"></canvas></div>
         </div>
         
         <div id="map-view" class="view-content" style="display: none;">
@@ -69,12 +71,14 @@
             let currentData = [];
             let myChart, myMap, geoJsonLayer, geoDataCache;
             let sortDirection = {};
-            
+            let currentSlice = { key: 'value_gbp', label: 'Import Value (£ GBP)' };
+
             const tableBody = document.getElementById('data-table-body');
             const headers = document.querySelectorAll('.data-table th');
             const chartCanvas = document.getElementById('importChart');
             const views = document.querySelectorAll('.view-content');
-            const buttons = document.querySelectorAll('.view-chip');
+            const viewButtons = document.querySelectorAll('.view-chip');
+            const slicerButtons = document.querySelectorAll('.slicer-button');
 
             const renderTable = (data) => {
                 tableBody.innerHTML = '';
@@ -87,12 +91,12 @@
 
             const renderChart = (data) => {
                 if (myChart) myChart.destroy();
-                const sortedData = [...data].sort((a, b) => b.value_gbp - a.value_gbp);
+                const sortedData = [...data].sort((a, b) => b[currentSlice.key] - a[currentSlice.key]);
                 const labels = sortedData.map(item => item.partner_country);
-                const values = sortedData.map(item => item.value_gbp);
+                const values = sortedData.map(item => item[currentSlice.key]);
                 myChart = new Chart(chartCanvas, {
                     type: 'bar',
-                    data: { labels: labels, datasets: [{ label: 'Import Value (£ GBP)', data: values, backgroundColor: 'rgba(26, 115, 232, 0.8)', borderColor: 'rgba(26, 115, 232, 1)', borderWidth: 1 }] },
+                    data: { labels: labels, datasets: [{ label: currentSlice.label, data: values, backgroundColor: 'rgba(26, 115, 232, 0.8)', borderColor: 'rgba(26, 115, 232, 1)', borderWidth: 1 }] },
                     options: { scales: { y: { beginAtZero: true } }, responsive: true, maintainAspectRatio: false }
                 });
             };
@@ -107,16 +111,23 @@
                 }
                 if (geoJsonLayer) myMap.removeLayer(geoJsonLayer);
                 const dataLookup = new Map(data.map(d => [d.partner_country, d]));
-                const getColor = (value) => value > 10000000 ? '#0d47a1' : value > 5000000  ? '#1976d2' : value > 2000000  ? '#2196f3' : value > 1000000  ? '#64b5f6' : '#bbdefb';
-                
+                const maxVal = Math.max(...data.map(d => d[currentSlice.key] || 0));
+                const getColor = (value) => {
+                    if (!value) return '#ECEFF1';
+                    const ratio = value / maxVal;
+                    if (ratio > 0.8) return '#0d47a1';
+                    if (ratio > 0.5) return '#1976d2';
+                    if (ratio > 0.2) return '#2196f3';
+                    if (ratio > 0.1) return '#64b5f6';
+                    return '#bbdefb';
+                };
                 const geoTanzania = geoData.features.find(f => f.properties.name === "Tanzania");
                 if(geoTanzania) geoTanzania.properties.name = "United Republic of Tanzania";
-
                 geoJsonLayer = L.geoJson(geoData, {
                     style: (feature) => {
                         const countryName = feature.properties.name;
                         const countryData = dataLookup.get(countryName);
-                        return { fillColor: countryData ? getColor(countryData.value_gbp) : '#ECEFF1', weight: 1, opacity: 1, color: '#B0BEC5', fillOpacity: 0.7 };
+                        return { fillColor: getColor(countryData ? countryData[currentSlice.key] : 0), weight: 1, opacity: 1, color: '#B0BEC5', fillOpacity: 0.7 };
                     },
                     onEachFeature: (feature, layer) => {
                         const countryName = feature.properties.name;
@@ -128,17 +139,31 @@
                 }).addTo(myMap);
             };
 
-            // Main logic: Fetch data first, then set up all interactive elements
+            const updateVisualizations = () => {
+                const activeView = document.querySelector('.view-chip.active').id.replace('show-', '');
+                if (activeView === 'chart-view') renderChart(currentData);
+                if (activeView === 'map-view' && geoDataCache) renderMap(geoDataCache, currentData);
+            };
+            
             try {
                 const response = await fetch('uk-imports-july-2025.json');
                 if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
                 currentData = await response.json();
-                
                 renderTable(currentData);
 
-                buttons.forEach(button => {
+                slicerButtons.forEach(button => {
                     button.addEventListener('click', () => {
-                        buttons.forEach(btn => btn.classList.remove('active'));
+                        slicerButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        currentSlice.key = button.dataset.key;
+                        currentSlice.label = button.dataset.label;
+                        updateVisualizations();
+                    });
+                });
+
+                viewButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        viewButtons.forEach(btn => btn.classList.remove('active'));
                         button.classList.add('active');
                         const viewId = button.id.replace('show-', '');
                         views.forEach(view => { view.style.display = (view.id === viewId) ? 'block' : 'none'; });
@@ -183,10 +208,9 @@
                         renderTable(currentData);
                     });
                 });
-
             } catch (error) {
                 console.error('Error fetching initial data:', error);
-                tableBody.innerHTML = `<tr><td colspan="3" style="text-align: center; padding: 20px;">Error loading initial data. Please check the JSON file.</td></tr>`;
+                tableBody.innerHTML = `<tr><td colspan="3">Error loading initial data. Please check the JSON file.</td></tr>`;
             }
         });
     </script>
