@@ -51,13 +51,12 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .news-item .main-link:hover h3 { text-decoration: underline; }
 .news-item .snippet { font-size: 14px; color: #4d5156; margin: 0; line-height: 1.5; }
 
-/* --- Jobs & Products Page Styles --- */
-.jobs-page, .products-page, .dashboard-page, .data-library-page { background-color: #ffffff; }
-.filter-bar, .view-switcher { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; }
-.filter-chip, .view-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 8px; padding: 8px 16px; font-size: 14px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
-.filter-chip:hover, .view-chip:hover { border-color: #dadce0; }
-.view-chip.active { background-color: #e8f0fe; color: #1967d2; border-color: #d2e3fc; }
-.jobs-container, .products-container { display: flex; max-width: 1280px; width: 100%; margin: 0 auto; padding: 16px 24px; gap: 24px; align-items: flex-start; }
+/* --- Jobs Page Styles --- */
+.jobs-page { background-color: #fff; }
+.filter-bar { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; position: sticky; top: 112px; z-index: 99; }
+.filter-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 16px; padding: 6px 12px; font-size: 13px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
+.filter-chip:hover { border-color: #dadce0; }
+.jobs-container { display: flex; max-width: 1280px; width: 100%; margin: 0 auto; padding: 16px 24px; gap: 24px; align-items: flex-start; }
 .job-list-pane { flex: 2; max-width: 450px; border: 1px solid #dadce0; border-radius: 8px; }
 .job-card { padding: 16px; border-bottom: 1px solid #ebebeb; cursor: pointer; }
 .job-card:last-child { border-bottom: none; }
@@ -70,6 +69,9 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .divider { border: 0; border-top: 1px solid #ebebeb; margin: 24px 0; }
 .job-details-content h4 { font-size: 16px; font-weight: 500; margin: 16px 0 8px 0; }
 .job-details-content ul { padding-left: 20px; margin: 0; line-height: 1.6; }
+
+/* --- Products Page Styles --- */
+.products-page { background-color: #ffffff; }
 .product-grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; max-width: 1280px; margin: 0 auto; padding: 24px; }
 .product-card { background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
 .product-card:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
@@ -117,7 +119,7 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
     .job-list-pane, .product-list-pane { max-width: none; border: 1px solid #dadce0; border-radius: 8px; margin-bottom: 16px; }
 }
 @media (max-width: 768px) {
-    .site-header { position: static; } 
+    .site-header { position: static; }
     .header-search-wrapper, .secondary-nav, .filter-bar { display: none; }
     .news-item { flex-direction: column-reverse; }
     .news-item .article-image { width: 100%; height: auto; margin-bottom: 15px; }
