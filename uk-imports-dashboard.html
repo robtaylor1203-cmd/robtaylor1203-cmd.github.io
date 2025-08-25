@@ -47,9 +47,7 @@
                         <th data-sort="value_gbp">Value (£ GBP)</th>
                     </tr>
                 </thead>
-                <tbody id="data-table-body">
-                    <tr><td colspan="3" style="text-align: center; padding: 20px;">Loading data...</td></tr>
-                </tbody>
+                <tbody id="data-table-body"></tbody>
             </table>
         </div>
 
@@ -65,7 +63,7 @@
     </main>
     
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
             let currentData = [];
             let myChart, myMap, geoJsonLayer, geoDataCache;
             let sortDirection = {};
@@ -108,6 +106,11 @@
                 if (geoJsonLayer) myMap.removeLayer(geoJsonLayer);
                 const dataLookup = new Map(data.map(d => [d.partner_country, d]));
                 const getColor = (value) => value > 10000000 ? '#0d47a1' : value > 5000000  ? '#1976d2' : value > 2000000  ? '#2196f3' : value > 1000000  ? '#64b5f6' : '#bbdefb';
+                
+                // Correction for Tanzania name mismatch
+                const geoTanzania = geoData.features.find(f => f.properties.name === "Tanzania");
+                if(geoTanzania) geoTanzania.properties.name = "United Republic of Tanzania";
+
                 geoJsonLayer = L.geoJson(geoData, {
                     style: (feature) => {
                         const countryName = feature.properties.name;
@@ -124,68 +127,67 @@
                 }).addTo(myMap);
             };
 
-            // Main logic starts here, after data is fetched
-            fetch('uk-imports-july-2025.json')
-                .then(response => {
-                    if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
-                    return response.json();
-                })
-                .then(importData => {
-                    currentData = importData;
-                    renderTable(currentData);
+            // Main logic starts here: use async/await for cleaner flow
+            try {
+                const response = await fetch('uk-imports-july-2025.json');
+                if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
+                currentData = await response.json();
+                
+                renderTable(currentData);
 
-                    buttons.forEach(button => {
-                        button.addEventListener('click', () => {
-                            buttons.forEach(btn => btn.classList.remove('active'));
-                            button.classList.add('active');
-                            const viewId = button.id.replace('show-', '');
-                            views.forEach(view => { view.style.display = (view.id === viewId) ? 'block' : 'none'; });
-                            if (viewId === 'chart-view') renderChart(currentData);
-                            if (viewId === 'map-view') {
-                                if (geoDataCache) {
-                                    renderMap(geoDataCache, currentData);
-                                } else {
-                                    fetch('countries.geojson').then(res => res.json()).then(geoData => {
-                                        geoDataCache = geoData; 
-                                        renderMap(geoData, currentData);
-                                    }).catch(err => { console.error("Failed to load map data.", err); document.getElementById('map-container').innerHTML = `<p>Error: Could not load map data file.</p>`; });
-                                }
+                // Now that data is loaded, set up all the interactive elements
+                buttons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        buttons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        const viewId = button.id.replace('show-', '');
+                        views.forEach(view => { view.style.display = (view.id === viewId) ? 'block' : 'none'; });
+                        if (viewId === 'chart-view') renderChart(currentData);
+                        if (viewId === 'map-view') {
+                            if (geoDataCache) {
+                                renderMap(geoDataCache, currentData);
+                            } else {
+                                fetch('countries.geojson').then(res => res.json()).then(geoData => {
+                                    geoDataCache = geoData; 
+                                    renderMap(geoData, currentData);
+                                }).catch(err => { console.error("Failed to load map data.", err); document.getElementById('map-container').innerHTML = `<p>Error: Could not load map data file.</p>`; });
                             }
-                        });
+                        }
                     });
-
-                    headers.forEach(header => {
-                        header.addEventListener('click', () => {
-                            const sortKey = header.dataset.sort;
-                            const direction = (sortDirection[sortKey] === 'asc') ? 'desc' : 'asc';
-                            sortDirection = { [sortKey]: direction };
-                            headers.forEach(h => {
-                                const arrow = h.querySelector('.sort-arrow');
-                                if (h !== header && arrow) arrow.remove();
-                                h.classList.remove('sort-asc', 'sort-desc');
-                            });
-                            header.classList.add(direction === 'asc' ? 'sort-asc' : 'sort-desc');
-                            let arrowSpan = header.querySelector('.sort-arrow');
-                            if (!arrowSpan) {
-                                arrowSpan = document.createElement('span');
-                                arrowSpan.className = 'sort-arrow';
-                                header.appendChild(arrowSpan);
-                            }
-                            arrowSpan.innerHTML = direction === 'asc' ? '&uarr;' : '&darr;';
-                            currentData.sort((a, b) => {
-                                const valA = a[sortKey];
-                                const valB = b[sortKey];
-                                if (typeof valA === 'string') return direction === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
-                                return direction === 'asc' ? valA - valB : valB - valA;
-                            });
-                            renderTable(currentData);
-                        });
-                    });
-                })
-                .catch(error => {
-                    console.error('Error fetching initial data:', error);
-                    tableBody.innerHTML = `<tr><td colspan="3" style="text-align: center; padding: 20px;">Error loading initial data. Please check the JSON file.</td></tr>`;
                 });
+
+                headers.forEach(header => {
+                    header.addEventListener('click', () => {
+                        const sortKey = header.dataset.sort;
+                        const direction = (sortDirection[sortKey] === 'asc') ? 'desc' : 'asc';
+                        sortDirection = { [sortKey]: direction };
+                        headers.forEach(h => {
+                            const arrow = h.querySelector('.sort-arrow');
+                            if (h !== header && arrow) arrow.remove();
+                            h.classList.remove('sort-asc', 'sort-desc');
+                        });
+                        header.classList.add(direction === 'asc' ? 'sort-asc' : 'sort-desc');
+                        let arrowSpan = header.querySelector('.sort-arrow');
+                        if (!arrowSpan) {
+                            arrowSpan = document.createElement('span');
+                            arrowSpan.className = 'sort-arrow';
+                            header.appendChild(arrowSpan);
+                        }
+                        arrowSpan.innerHTML = direction === 'asc' ? '&uarr;' : '&darr;';
+                        currentData.sort((a, b) => {
+                            const valA = a[sortKey];
+                            const valB = b[sortKey];
+                            if (typeof valA === 'string') return direction === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+                            return direction === 'asc' ? valA - valB : valB - valA;
+                        });
+                        renderTable(currentData);
+                    });
+                });
+
+            } catch (error) {
+                console.error('Error fetching initial data:', error);
+                tableBody.innerHTML = `<tr><td colspan="3" style="text-align: center; padding: 20px;">Error loading initial data. Please check the JSON file.</td></tr>`;
+            }
         });
     </script>
 </body>
