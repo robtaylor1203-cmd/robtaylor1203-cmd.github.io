@@ -163,7 +163,8 @@
             };
             
             try {
-                const response = await fetch(`../data/imports/${datasetFile}.json`);
+                // *** PATH UPDATED *** Changed from ../data/imports/ to ../Data/Imports/
+                const response = await fetch(`../Data/Imports/${datasetFile}.json`);
                 if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
                 currentData = await response.json();
                 renderTable(currentData);
@@ -189,6 +190,7 @@
                             if (geoDataCache) {
                                 renderMap(geoDataCache, currentData);
                             } else {
+                                // Assuming countries.geojson is in the root directory
                                 fetch('../countries.geojson').then(res => res.json()).then(geoData => {
                                     geoDataCache = geoData; 
                                     renderMap(geoData, currentData);
