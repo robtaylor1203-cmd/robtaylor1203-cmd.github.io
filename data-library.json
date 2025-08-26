@@ -5,7 +5,7 @@
     "data_period": "July 2025",
     "date_added": "2025-08-26",
     "source": "HMRC",
-    "dashboard_link": "dashboard.html?dataset=uk-imports-july-2025&title=UK+Tea+Imports+-+July+2025"
+    "dashboard_link": "Dashboards/dashboard.html?dataset=uk-imports-july-2025&title=UK+Tea+Imports+-+July+2025"
   },
   {
     "title": "UK Monthly Tea Imports",
@@ -13,6 +13,6 @@
     "data_period": "June 2025",
     "date_added": "2025-08-26",
     "source": "HMRC",
-    "dashboard_link": "dashboard.html?dataset=uk-imports-june-2025&title=UK+Tea+Imports+-+June+2025"
+    "dashboard_link": "Dashboards/dashboard.html?dataset=uk-imports-june-2025&title=UK+Tea+Imports+-+June+2025"
   }
 ]
