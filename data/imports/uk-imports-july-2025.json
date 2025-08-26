@@ -1,9 +1,0 @@
-[
-    { "partner_country": "Kenya", "net_mass_kg": 4810230, "value_gbp": 12150900 },
-    { "partner_country": "India", "net_mass_kg": 1985550, "value_gbp": 7995400 },
-    { "partner_country": "Malawi", "net_mass_kg": 950100, "value_gbp": 1850200 },
-    { "partner_country": "China", "net_mass_kg": 430670, "value_gbp": 3120500 },
-    { "partner_country": "Rwanda", "net_mass_kg": 750300, "value_gbp": 1500600 },
-    { "partner_country": "United Republic of Tanzania", "net_mass_kg": 620400, "value_gbp": 1240800 },
-    { "partner_country": "Sri Lanka", "net_mass_kg": 310800, "value_gbp": 1950000 }
-]
