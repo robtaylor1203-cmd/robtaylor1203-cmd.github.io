@@ -1,44 +1,65 @@
 [
   {
-    "source": "Huffington Post UK",
-    "headline": "This Is The Number One Antioxidant Tea For Warding Off Dementia",
-    "snippet": "It turns out your daily cuppa does a lot more than just taste good.",
-    "link": "https://www.huffingtonpost.co.uk/entry/green-tea-antioxidant-dementia_uk_68a593b0e4b0a58e154240ec",
-    "image": "images/huffpost.jpeg"
+    "source": "The Economic Times",
+    "headline": "Raw tea leaf prices crash 50% amid surging imports and weak export demand",
+    "snippet": "Prices of raw tea leaves produced by small tea growers crashed nearly 50% year-on-year in August to Rs 14 per kg due to rising imports of comparatively lower-priced tea from Kenya ...",
+    "link": "https://economictimes.indiatimes.com/news/economy/agriculture/raw-tea-leaf-prices-crash-50-amid-surging-imports-and-weak-export-demand/articleshow/123425143.cms",
+    "image": "images/news-general.svg"
   },
   {
-    "source": "Tea & Coffee Trade Journal",
-    "headline": "Global Tea Production to Experience a Dip in 2025",
-    "snippet": "The Food and Agriculture Organization of the United Nations (FAO) has projected a slight decline in global tea production for the year 2025...",
-    "link": "https://www.teaandcoffee.net/blog/37556/37522/",
-    "image": "images/teacoffee.jpeg"
+    "source": "The Economic Times",
+    "headline": "Matcha is now a global wellness trend but what makes this Japanese tea ceremony drink different from regular green tea?",
+    "snippet": "Once reserved for the quiet solemnity of Japanese tea ceremonies, matcha has leapt beyond its traditional roots to become a global wellness sensation.",
+    "link": "https://economictimes.indiatimes.com/magazines/panache/matcha-is-now-a-global-wellness-trend-but-what-makes-this-japanese-tea-ceremony-drink-different-from-regular-green-tea/articleshow/123501122.cms",
+    "image": "images/news-international.svg"
   },
   {
-    "source": "The Argus",
-    "headline": "Brighton-founded Yalda iced tea receives great taste awards",
-    "snippet": "AN ICED tea company from Brighton has been recognised at a prestigious food and drink awards.",
-    "link": "https://www.theargus.co.uk/news/25398405.brighton-founded-yalda-iced-tea-receives-great-taste-awards/",
-    "image": "images/argus.jpeg"
+    "source": "Tea Board India",
+    "headline": "Latest News | The Official Website of Tea Board India",
+    "snippet": "Notices & Circulars:- Standard Operating Procedure (SOP) for drawing of tea samples for checking compliance with Food Safety Standards. 12/08/2025 | Size : 1656.43KB, Format : .",
+    "link": "https://www.teaboard.gov.in/LATEST-NEWS",
+    "image": "images/news-industry.svg"
   },
   {
-    "source": "CGTN",
-    "headline": "From leaf to butter tea: Cao Aiping's aromatic life",
-    "snippet": "In the central Chinese city of Enshi, the air is often filled with a distinct fragrance, a unique blend of roasting tea leaves, savory butter, and toasted sesame...",
-    "link": "https://news.cgtn.com/news/2025-08-21/From-leaf-to-butter-tea-Cao-Aiping-1FZvWIOAn4I/p.html",
-    "image": "images/cgtn.jpeg"
+    "source": "Business Standard",
+    "headline": "Latest News Headlines, Videos and Photo Galleries on Tea industry",
+    "snippet": "Tea Industry  - Indian tea industry at crossroads as it battles multiple challenges: ITA. Indian Tea Association (ITA), a leading body of planters, on Wednesday said that the indus...",
+    "link": "https://www.business-standard.com/topic/tea-industry",
+    "image": "images/news-general.svg"
   },
   {
-    "source": "The Independent",
-    "headline": "How Japan’s new Starbucks is putting a modern twist on a centuries-old tea tradition",
-    "snippet": "Visitors will be able to enjoy a modern take on Japanese tea at the new Starbucks store in Kagoshima...",
-    "link": "https://www.independent.co.uk/news/japan-japanese-tokyo-starbucks-kagoshima-b2812233.html",
-    "image": "images/independent.jpeg"
+    "source": "Forbes & Walker",
+    "headline": "News & Events - Forbes & Walker Tea Brokers",
+    "snippet": "- Assam tea production hits by drought. Assam is currently reeling under a prolonged dry spell that has severely impacted both tea cultivation across the state.",
+    "link": "https://web.forbestea.com/news-and-events",
+    "image": "images/news-general.svg"
   },
   {
-    "source": "The Telegraph",
-    "headline": "Sen Soshitsu XV, Japanese tea master who had been a kamikaze pilot – obituary",
-    "snippet": "Sen Soshitsu XV, who has died aged 102, was the 15th-generation Grand Master of the Urasenke tea school...",
-    "link": "https://www.telegraph.co.uk/obituaries/2025-08-21/sen-soshitsu-xv-japanese-tea-master-kamikaze-pilot/",
-    "image": "images/telegraph.jpeg"
+    "source": "Forbes & Walker",
+    "headline": "Latest News - Forbes & Walker Tea Brokers",
+    "snippet": "- Taiwan launched first AI tea production line. Taiwan's launched its first AI-integrated black tea production line.",
+    "link": "https://web.forbestea.com/news-and-events/latest-news",
+    "image": "images/news-general.svg"
+  },
+  {
+    "source": "Assamtribune",
+    "headline": "45% surge in Kenyan imports leaves Assam tea planters in distress",
+    "snippet": "45% surge in Kenyan imports leaves Assam tea planters in distress. ... Tea industry experts warn of cheap blends hurting Indian tea's credibility and undercutting genuine producers...",
+    "link": "https://assamtribune.com/assam/45-surge-in-kenyan-imports-leaves-assam-tea-planters-in-distress-1589273",
+    "image": "images/news-general.svg"
+  },
+  {
+    "source": "Sentinelassam",
+    "headline": "Cheap Kenyan Imports Brew Trouble for Assam Tea Industry",
+    "snippet": "Cheap Kenyan Imports Brew Trouble for Assam Tea Industry. ... 45% rise in Kenyan tea imports fuels price crash and threatens Indian tea's reputation. Sentinel Digital Desk.",
+    "link": "https://www.sentinelassam.com/breakingnews/cheap-kenyan-imports-brew-trouble-for-assam-tea-industry",
+    "image": "images/news-industry.svg"
+  },
+  {
+    "source": "The Economic Times",
+    "headline": "Latest News & Videos, Photos about tea industry | The Economic Times - Page 1",
+    "snippet": "TEA INDUSTRY  - Which FMCG companies are poised to benefit most from recent GST changes? Abneesh Roy explains. GST rate reductions are likely to boost FMCG sector.",
+    "link": "https://economictimes.indiatimes.com/topic/tea-industry",
+    "image": "images/news-general.svg"
   }
 ]
