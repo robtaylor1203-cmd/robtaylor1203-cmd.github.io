@@ -29,7 +29,7 @@
     <main class="page-container">
         <h2 class="page-title">Data Library</h2>
         <div class="page-search-wrapper">
-            <input type="text" class="page-search-bar" placeholder="Search for a specific dataset (e.g. 'UK Imports')">
+            <input type="text" class="page-search-bar" placeholder="Search for a specific dataset...">
         </div>
         <div class="data-list-container" id="data-list-container">
             <p>Loading datasets...</p>
@@ -47,7 +47,7 @@
                             const item = document.createElement('div');
                             item.className = 'dataset-item';
                             item.innerHTML = `
-                                <a href="${dataset.dashboard_link}">
+                                <a href="dashboards/${dataset.dashboard_link}">
                                     <h3 class="dataset-title">${dataset.title} <span class="dataset-period">(${dataset.data_period})</span></h3>
                                     <p class="dataset-description">${dataset.description}</p>
                                     <div class="dataset-meta">
@@ -58,13 +58,7 @@
                             `;
                             dataListContainer.appendChild(item);
                         });
-                    } else {
-                        dataListContainer.innerHTML = '<p>No datasets found.</p>';
                     }
-                })
-                .catch(error => {
-                    console.error('Error fetching data library:', error);
-                    dataListContainer.innerHTML = '<p>Error loading datasets.</p>';
                 });
         });
     </script>
