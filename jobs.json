@@ -1,67 +1,117 @@
 [
   {
-    "title": "Head of Tea Buying",
-    "company": "The London Tea Company",
-    "location": "London, England",
-    "type": "Full-time",
-    "link": "#",
-    "snippet": "Seeking an experienced tea professional to lead our global sourcing and quality control team. Must have 10+ years of experience in the specialty tea industry...",
+    "title": "Trainee Tea Buyer",
+    "company": "TATA Consumer Products",
+    "location": "West London, UK",
+    "type": "Full-Time",
+    "link": "https://www.grb.uk.com/graduate-jobs/tata-trainee-tea-buyer-west-london-36497",
+    "snippet": "A rare opportunity to launch your career at the heart of the tea industry. Learn the art and science of tea tasting and gain in-depth knowledge of the global tea supply chain. Salary: £30k.",
     "description": {
-      "intro": "The London Tea Company is seeking an experienced and passionate Head of Tea Buying to lead our global sourcing and quality control team. This is a senior leadership role responsible for maintaining the exceptional quality of our existing tea portfolio while identifying new and exciting teas and botanicals from around the world.",
+      "intro": "Join one of the world's leading beverage companies. As a Trainee Tea Buyer, you'll become an integral part of the Tea Buying & Blending team. You'll learn the art and science of tea tasting, gain in-depth knowledge of the global tea supply chain, 'from bush to cup'. After five years of dedicated training, you'll be ready to manage your own origin as a qualified Tea Buyer.",
       "responsibilities": [
-        "Develop and execute the global sourcing strategy for all teas and herbal infusions.",
-        "Manage relationships with tea gardens, estates, and suppliers worldwide.",
-        "Lead the quality control and cupping team to ensure all products meet our high standards.",
-        "Travel internationally to origin countries to meet with producers and inspect crops."
+        "Taste up to 300 teas, fruit and herbal blends per day to develop expert sensory skills.",
+        "Support Buyers/Assistant Buyers in all aspects of the procurement process.",
+        "Analyse market trends and contribute to contract negotiations.",
+        "Collect and interpret data on global tea availability for strategic buying.",
+        "Manage and analyse large datasets using Excel and SAP."
       ],
       "qualifications": [
-        "10+ years of experience in the specialty tea industry.",
-        "Expert-level palate and tea tasting skills.",
-        "Proven track record of international sourcing and supplier management."
+        "A 2:2 in your chosen degree subject (non-grads are also encouraged to apply).",
+        "Strong analytical skills and comfort dealing with large data sets (Excel daily).",
+        "Strong planning, time management and organisation skills.",
+        "Excellent communication and interpersonal skills.",
+        "Cultural and commercial awareness; works well under pressure."
       ]
     }
   },
   {
-    "title": "Marketing Manager - Herbal Infusions",
-    "company": "Pukka Herbs",
-    "location": "Bristol, England",
-    "type": "Full-time",
-    "link": "#",
-    "snippet": "Join our dynamic marketing team to drive growth for our herbal wellness tea category. Experience in FMCG marketing is essential...",
+    "title": "Explore Careers at LIPTON Teas and Infusions",
+    "company": "LIPTON Teas and Infusions",
+    "location": "Global",
+    "type": "Various",
+    "link": "https://www.liptonteas.com/careers/job-offers/",
+    "snippet": "Join a committed team across the US, Europe, Africa, the Middle East and Asia, working across Marketing, Sales, Procurement, Research & Innovation.",
     "description": {
-      "intro": "Join our dynamic marketing team to drive growth for our herbal wellness tea category. As the Marketing Manager, you will be responsible for developing and implementing marketing campaigns that resonate with our health-conscious consumers.",
+      "intro": "We are looking for entrepreneurial spirit from people who share our passion for a better future. Join our committed team of almost 4,000 employees around the world. Check out our job opportunities: we might have your dream job! Visit the link to see the latest job openings and application instructions.",
       "responsibilities": [
-        "Create and manage multi-channel marketing campaigns.",
-        "Analyze market trends and consumer insights.",
-        "Collaborate with the product development team on new launches.",
-        "Manage the brand's digital presence, including social media and email marketing."
+        "Responsibilities vary by role. Please check the company careers page for current openings."
       ],
       "qualifications": [
-        "5+ years of brand marketing experience, preferably in the FMCG sector.",
-        "A passion for herbal wellness and sustainability.",
-        "Strong digital marketing skills."
+        "Qualifications vary by role. Please check the company careers page for current openings."
       ]
     }
   },
   {
-    "title": "Tasting Room Associate (Part-Time)",
-    "company": "Rare Tea Co.",
-    "location": "Remote",
-    "type": "Part-time",
-    "link": "#",
-    "snippet": "We are looking for an enthusiastic individual to assist in our tasting room, preparing samples and engaging with wholesale clients...",
+    "title": "Explore Careers at Twinings",
+    "company": "Twinings",
+    "location": "Andover, UK (HQ) & International",
+    "type": "Various",
+    "link": "https://twinings.co.uk/pages/careers-at-twinings",
+    "snippet": "A major international tea brand with a long heritage. Offers a wide range of corporate, supply chain, marketing, and R&D roles.",
     "description": {
-      "intro": "We are looking for an enthusiastic and knowledgeable individual to assist in our tasting room. This role is crucial for providing an exceptional experience to our wholesale clients and visitors.",
+      "intro": "If you want your career to flourish in a successful international business that does things a bit differently, you have come to the right place. For a company so steeped in heritage, you'll find our approach to work refreshingly forward-looking. Visit the link to see the latest job openings and application instructions.",
       "responsibilities": [
-        "Prepare and serve tea samples with precision.",
-        "Educate clients on the origin and unique qualities of our teas.",
-        "Maintain the cleanliness and organization of the tasting room.",
-        "Assist with inventory management and order processing."
+        "Responsibilities vary by role. Please check the company careers page for current openings."
       ],
       "qualifications": [
-        "A deep passion for and knowledge of specialty tea.",
-        "Excellent communication and customer service skills.",
-        "Ability to work flexible hours, including weekends."
+        "Qualifications vary by role. Please check the company careers page for current openings."
+      ]
+    }
+  },
+  {
+    "title": "Explore Careers at The Tea Makers of London",
+    "company": "The Tea Makers of London",
+    "location": "Dartford, Kent, UK",
+    "type": "Various",
+    "link": "https://www.theteamakers.co.uk/pages/careers",
+    "snippet": "A family-owned business specializing in single-origin estate teas. Roles often include e-commerce development (Shopify Plus), marketing, and packing operations.",
+    "description": {
+      "intro": "We are a family owned business, located just outside London. We specialise in single origin estate, fully traceable, exquisite teas and teaware. We are always looking for bright talent to join our growing team. Visit the link to see the latest job openings and application instructions.",
+      "responsibilities": [
+        "Responsibilities vary by role. Please check the company careers page for current openings."
+      ],
+      "qualifications": [
+        "Qualifications vary by role. Please check the company careers page for current openings."
+      ]
+    }
+  },
+  {
+    "title": "Explore Careers at Hälssen & Lyon",
+    "company": "Hälssen & Lyon",
+    "location": "Germany & International",
+    "type": "Various",
+    "link": "https://www.haelssen-lyon.com/company/careers/job-vacancies/",
+    "snippet": "One of Europe's leading B2B tea companies, family-owned since 1879. Offers opportunities for working in a very international environment, combining tradition and innovation.",
+    "description": {
+      "intro": "At Hälssen & Lyon, one of Europe's leading tea companies, the world of tea literally comes together under one roof. Hälssen & Lyon offers great opportunities for working in a very international environment built around the multi-faceted product of tea. Visit the link to see the latest job openings and application instructions.",
+      "responsibilities": [
+        "Responsibilities vary by role. Please check the company careers page for current openings."
+      ],
+      "qualifications": [
+        "Qualifications vary by role. Please check the company careers page for current openings."
+      ]
+    }
+  },
+  {
+    "title": "Sales Representatives (Commission Only)",
+    "company": "Flora Tea Company UK",
+    "location": "UK & Ireland (Various Regions)",
+    "type": "Contract/Commission",
+    "link": "https://www.floratea.com/careers/",
+    "snippet": "We are looking for regional sales representatives... to promote and sell our unique Flora Tea (Flowering Teas). Commission only, easy start, great products...",
+    "description": {
+      "intro": "Flora Tea Company UK Limited is looking for regional sales representatives across the UK and Ireland to promote and sell their unique Flowering Teas. This is a commission-only role targeting restaurants, hotels, tea houses, and independent stores.",
+      "responsibilities": [
+        "Promote and sell Flora Tea products in the designated region.",
+        "Develop retail distribution through specialist outlets and gift shops.",
+        "Demonstrate products and secure initial orders.",
+        "Build and maintain B2B relationships."
+      ],
+      "qualifications": [
+        "Willingness and passion to learn about the product range and brand.",
+        "Excellent communication and negotiation skills.",
+        "Previous strong selling background desired but not essential.",
+        "Good local knowledge."
       ]
     }
   }
