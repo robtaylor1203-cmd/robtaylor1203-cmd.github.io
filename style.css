@@ -49,18 +49,33 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .page-container { max-width: 1100px; margin: 0 auto; padding: 24px; }
 .page-title { font-size: 28px; font-weight: 400; margin: 10px 0 20px 0; color: #3c4043; }
 
-/* --- News Page Styles --- */
-/* (Styles remain largely the same as previous iteration) */
+/* --- News Page Styles (UPDATED LAYOUT) --- */
 .news-list { list-style: none; padding: 0; }
-.news-item { display: flex; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid #ebebeb; }
-.news-item:first-child { border-top: 1px solid #ebebeb; padding-top: 24px; }
-.news-item .image-link { margin-right: 24px; flex-shrink: 0; }
-.news-item .article-image { width: 124px; height: 124px; object-fit: cover; border-radius: 8px; background-color: #f0f0f0; }
-.news-item .text-content { flex: 1; }
-.news-item .source { font-size: 12px; font-weight: 400; color: #5f6368; margin-bottom: 4px; }
-.news-item .main-link h3 { font-size: 20px; font-weight: 400; color: #1a0dab; margin: 0 0 4px 0; line-height: 1.4; }
-.news-item .main-link:hover h3 { text-decoration: underline; }
-.news-item .snippet { font-size: 14px; color: #4d5156; margin: 0; line-height: 1.5; }
+.news-item { display: flex; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid #ebebeb; justify-content: space-between; gap: 20px; }
+.news-item:first-child { border-top: 1px solid #ebebeb; padding-top: 20px; }
+
+/* Image on the Right */
+.news-item .image-link { flex-shrink: 0; }
+.news-item .article-image { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; background-color: #f0f0f0; }
+
+/* Text on the Left */
+.news-item .text-content { flex: 1; display: flex; flex-direction: column; justify-content: space-between; height: 80px; /* Match image height */ }
+.news-item .source { font-size: 12px; font-weight: 400; color: #5f6368; order: 2; /* Source appears at the bottom */ }
+
+.news-item .main-link { order: 1; /* Headline/Snippet appears at the top */ }
+.news-item .main-link h3 { font-size: 16px; font-weight: 500; color: #202124; margin: 0; line-height: 1.3; 
+    /* Multi-line truncation for headline */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.news-item .main-link:hover h3 { text-decoration: underline; color: #1a0dab; }
+
+/* Snippet (Hidden in this compact view) */
+.news-item .snippet { display: none; }
+
 
 /* --- Jobs & Products Page Styles --- */
 .filter-bar { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; position: sticky; top: 112px; /* Height of top bar (64px) + secondary nav (48px) */ z-index: 99; display: flex; overflow-x: auto; white-space: nowrap; }
@@ -68,7 +83,6 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .filter-chip:hover { border-color: #dadce0; }
 
 /* --- Jobs Page Specific --- */
-/* (Styles remain largely the same, responsiveness handled in media queries) */
 .jobs-container { display: flex; max-width: 1280px; width: 100%; margin: 0 auto; padding: 16px 24px; gap: 24px; align-items: flex-start; }
 .job-list-pane { flex: 2; max-width: 450px; border: 1px solid #dadce0; border-radius: 8px; }
 .job-card { padding: 16px; border-bottom: 1px solid #ebebeb; cursor: pointer; }
@@ -84,7 +98,6 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .job-details-content ul { padding-left: 20px; margin: 0; line-height: 1.6; }
 
 /* --- Products Page Specific --- */
-/* (Styles remain largely the same) */
 .product-grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; max-width: 1280px; margin: 0 auto; padding: 24px; }
 .product-card { background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
 .product-card:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
@@ -129,13 +142,22 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .dataset-description { font-size: 14px; color: #4d5156; margin: 0 0 12px 0; line-height: 1.5; }
 .dataset-meta { font-size: 12px; color: #5f6368; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
-/* Dashboard Specific */
+/* Dashboard & Report Viewer Specific */
+.report-section h3 {
+    border-bottom: 2px solid #1a73e8;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
 .view-switcher { background-color: #fff; padding: 12px 0; border-bottom: 1px solid #ebebeb; margin-top: 16px; display: flex; overflow-x: auto; white-space: nowrap;}
 .view-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 8px; padding: 8px 16px; font-size: 14px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
 .view-chip.active { background-color: #e8f0fe; color: #1967d2; border-color: #d2e3fc; }
 .chart-container { position: relative; height: 60vh; background-color: #fff; padding: 16px; border-radius: 8px; margin-top: 16px;}
-.data-table { width: 100%; border-collapse: collapse; background-color: #fff; border-radius: 8px; overflow: hidden; }
-.data-table-container { overflow-x: auto; margin-top: 16px; }
+.data-table { width: 100%; border-collapse: collapse; background-color: #fff; }
+/* Added border/radius to the container for visual structure */
+.data-table-container { overflow-x: auto; /* margin-top: 16px; */ border: 1px solid #dadce0; border-radius: 8px;}
 .data-table th, .data-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #dadce0; }
 .data-table thead { background-color: #f8f9fa; }
 .data-table th { font-size: 14px; font-weight: 500; color: #5f6368; cursor: pointer; user-select: none; position: relative; }
@@ -165,12 +187,14 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
     .jobs-container { flex-direction: column; }
     .job-details-pane { position: static; height: auto; margin-top: 16px; }
     .job-list-pane { max-width: none; margin-bottom: 16px; }
-    .filter-bar { top: 64px; /* Only the top bar is visible when scrolling */ }
-
+    
     /* Mobile Navigation Implementation */
     .mobile-menu-toggle { display: block; }
     .header-search-wrapper { display: none; } /* Hide search bar on mobile header */
     
+    /* Adjust sticky elements for mobile header height */
+     .filter-bar { top: 64px; } 
+
     .secondary-nav { 
         position: absolute; 
         top: 64px; /* Height of the top bar */
@@ -211,11 +235,9 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
     .logo h1 { font-size: 72px; }
     .sub-logo { letter-spacing: 5px; margin: 0 0 30px 5px; }
     
-    /* News Layout Adjustment */
-    .news-item { flex-direction: column-reverse; align-items: stretch; }
-    .news-item .image-link { margin-right: 0; margin-top: 16px; }
-    .news-item .article-image { width: 100%; height: auto; aspect-ratio: 16/9; }
-    .news-item .main-link h3 { font-size: 18px; }
+    /* News Layout Adjustment (UPDATED) */
+    .news-item { gap: 16px; }
+    .news-item .main-link h3 { font-size: 15px; }
 
     /* Dashboard/Data Library Adjustments */
     .dashboard-header { flex-direction: column; align-items: stretch; }
