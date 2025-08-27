@@ -19,13 +19,18 @@
                 <a href="#" title="Create Account"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="17" y1="11" x2="23" y2="11"></line></svg></a>
                 <a href="#" title="Sign In"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg></a>
             </div>
+            <!-- ADDED: Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
         </div>
         <nav class="secondary-nav">
             <ul>
+                <!-- UPDATED: Links to new pages (using ../) -->
                 <li><a href="../data.html" class="active">Data</a></li>
-                <li><a href="#">Market Reports</a></li>
+                <li><a href="../market-reports.html">Market Reports</a></li>
                 <li><a href="#">Auctions</a></li>
-                <li><a href="#">Visuals</a></li>
+                <li><a href="../visuals.html">Visuals</a></li>
             </ul>
         </nav>
     </header>
@@ -44,19 +49,22 @@
             <button id="show-map-view" class="view-chip">Map View</button>
         </div>
 
+        <!-- UPDATED: Wrapped table in a container for responsive scrolling -->
         <div id="table-view" class="view-content">
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th data-sort="partner_country">Country</th>
-                        <th data-sort="net_mass_kg">Net Mass (kg)</th>
-                        <th data-sort="value_gbp">Value (£ GBP)</th>
-                    </tr>
-                </thead>
-                <tbody id="data-table-body">
-                    <tr><td colspan="3" style="text-align: center; padding: 20px;">Loading data...</td></tr>
-                </tbody>
-            </table>
+            <div class="data-table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th data-sort="partner_country">Country</th>
+                            <th data-sort="net_mass_kg">Net Mass (kg)</th>
+                            <th data-sort="value_gbp">Value (£ GBP)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data-table-body">
+                        <tr><td colspan="3" style="text-align: center; padding: 20px;">Loading data...</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div id="chart-view" class="view-content" style="display: none;">
@@ -69,6 +77,7 @@
     </main>
     
     <script>
+        // (Existing Dashboard JavaScript logic remains the same)
         document.addEventListener('DOMContentLoaded', async () => {
             const params = new URLSearchParams(window.location.search);
             const datasetFile = params.get('dataset');
@@ -124,6 +133,7 @@
                     myMap = L.map(mapContainer).setView([20, 0], 2);
                     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { attribution: '&copy; OpenStreetMap &copy; CARTO' }).addTo(myMap);
                 } else {
+                    // Invalidate size when the map tab becomes visible
                     setTimeout(() => { myMap.invalidateSize() }, 10);
                 }
                 if (geoJsonLayer) myMap.removeLayer(geoJsonLayer);
@@ -138,8 +148,10 @@
                     if (ratio > 0.1) return '#64b5f6';
                     return '#bbdefb';
                 };
+                // Handle known discrepancies between trade data names and GeoJSON names
                 const geoTanzania = geoData.features.find(f => f.properties.name === "Tanzania");
                 if(geoTanzania) geoTanzania.properties.name = "United Republic of Tanzania";
+                
                 geoJsonLayer = L.geoJson(geoData, {
                     style: (feature) => {
                         const countryName = feature.properties.name;
@@ -163,7 +175,6 @@
             };
             
             try {
-                // *** PATH UPDATED *** Changed from ../data/imports/ to ../Data/Imports/
                 const response = await fetch(`../Data/Imports/${datasetFile}.json`);
                 if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
                 currentData = await response.json();
@@ -190,7 +201,6 @@
                             if (geoDataCache) {
                                 renderMap(geoDataCache, currentData);
                             } else {
-                                // Assuming countries.geojson is in the root directory
                                 fetch('../countries.geojson').then(res => res.json()).then(geoData => {
                                     geoDataCache = geoData; 
                                     renderMap(geoData, currentData);
@@ -233,5 +243,7 @@
             }
         });
     </script>
+    <!-- ADDED: script.js link (using ../) -->
+    <script src="../script.js"></script>
 </body>
 </html>
