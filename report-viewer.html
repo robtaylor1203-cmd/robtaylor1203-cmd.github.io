@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Report Viewer - TeaTrade</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="market-reports-page">
+    <header class="site-header">
+        <div class="header-top-bar">
+            <a href="corporate.html" class="header-logo"><h1>Tea<span>Trade</span></h1></a>
+            <div class="header-search-wrapper"><input type="text" class="header-search-bar" placeholder="Global site search..."></div>
+            <div class="user-actions">
+                <a href="#" title="Create Account"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="17" y1="11" x2="23" y2="11"></line></svg></a>
+                <a href="#" title="Sign In"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg></a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+        <nav class="secondary-nav">
+            <ul>
+                <li><a href="data.html">Data</a></li>
+                <li><a href="market-reports.html" class="active">Market Reports</a></li>
+                <li><a href="#">Auctions</a></li>
+                <li><a href="visuals.html">Visuals</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="page-container">
+        <div class="dashboard-header">
+            <h2 class="page-title" id="report-title">Loading Report...</h2>
+        </div>
+        <p id="report-meta" style="margin-bottom: 16px; color: #5f6368;"></p>
+
+        <div id="report-content" style="display: none;">
+            
+            <section class="report-section" style="margin-bottom: 32px;">
+                <h3>Market Summary</h3>
+                <p id="market-comment"></p>
+                <p><strong>Quality:</strong> <span id="quality-comment"></span></p>
+            </section>
+
+            <section class="report-section" style="margin-bottom: 32px;">
+                <h3>Auction Offerings</h3>
+                <div class="data-table-container">
+                    <table class="data-table" id="offerings-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Lots</th>
+                                <th>Quantity (kgs)</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="report-section" style="margin-bottom: 32px;">
+                <h3 id="price-quotations-title">Price Quotations</h3>
+                <div class="data-table-container">
+                    <table class="data-table" id="prices-table">
+                        <thead>
+                            <tr>
+                                <th>Elevation</th>
+                                <th>Category/Region</th>
+                                <th>Grade</th>
+                                <th>Current (Low-High)</th>
+                                <th>Previous (Low-High)</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+        <div id="loading-indicator">Loading data...</div>
+    </main>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const params = new URLSearchParams(window.location.search);
+            const datasetFile = params.get('dataset');
+            
+            if (!datasetFile) {
+                document.getElementById('report-title').textContent = 'Error: No report selected.';
+                document.getElementById('loading-indicator').style.display = 'none';
+                return;
+            }
+
+            try {
+                // Fetch data from the new directory structure
+                const response = await fetch(`Data/Market_Reports/${datasetFile}.json`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const reportData = await response.json();
+                renderReport(reportData);
+                document.getElementById('loading-indicator').style.display = 'none';
+                document.getElementById('report-content').style.display = 'block';
+
+            } catch (error) {
+                console.error('Error fetching report data:', error);
+                document.getElementById('report-title').textContent = 'Error loading report.';
+                document.getElementById('loading-indicator').textContent = `Could not load the dataset: ${datasetFile}.json`;
+            }
+        });
+
+        const formatNumber = (num) => {
+            // Handle null/undefined and format numbers
+            return (num !== null && num !== undefined) ? num.toLocaleString() : 'N/A';
+        };
+
+        const formatPriceRange = (min, max) => {
+             if (min === null && max === null) return 'N/A';
+             return `${formatNumber(min)} - ${formatNumber(max)}`;
+        }
+
+        const renderReport = (data) => {
+            const meta = data.metadata;
+            const summary = data.summary;
+
+            // Metadata and Title
+            document.getElementById('report-title').textContent = `${meta.auction_centre} Auction Report - Week ${meta.week_number} (${meta.year})`;
+            document.getElementById('report-meta').textContent = `Sale No: ${meta.sale_number} | Dates: ${meta.sale_date_start} to ${meta.sale_date_end} | Broker: ${meta.broker}`;
+            document.getElementById('price-quotations-title').textContent = `Price Quotations (${meta.currency}/kg)`;
+
+            // Summary Comments
+            document.getElementById('market-comment').textContent = summary.market_comment;
+            document.getElementById('quality-comment').textContent = summary.quality_comment;
+
+            // Render Offerings
+            const offeringsTableBody = document.querySelector('#offerings-table tbody');
+            let totalLots = 0;
+            let totalKgs = 0;
+            data.offerings.forEach(item => {
+                totalLots += item.lots;
+                totalKgs += item.quantity_kg;
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.category}</td>
+                    <td>${formatNumber(item.lots)}</td>
+                    <td>${formatNumber(item.quantity_kg)}</td>
+                `;
+                offeringsTableBody.appendChild(row);
+            });
+            // Add Totals row
+            const totalRow = document.createElement('tr');
+            totalRow.style.fontWeight = 'bold';
+             totalRow.innerHTML = `
+                    <td>TOTAL</td>
+                    <td>${formatNumber(totalLots)}</td>
+                    <td>${formatNumber(totalKgs)}</td>
+                `;
+            offeringsTableBody.appendChild(totalRow);
+
+
+            // Render Price Quotations (Unified Table)
+            const pricesTableBody = document.querySelector('#prices-table tbody');
+            data.price_quotations.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.elevation}</td>
+                    <td>${item.category}</td>
+                    <td>${item.grade}</td>
+                    <td>${formatPriceRange(item.current_min, item.current_max)}</td>
+                    <td>${formatPriceRange(item.previous_min, item.previous_max)}</td>
+                `;
+                pricesTableBody.appendChild(row);
+            });
+
+            // Note: International summaries are extracted but not yet rendered in this basic viewer.
+        };
+    </script>
+</body>
+</html>
