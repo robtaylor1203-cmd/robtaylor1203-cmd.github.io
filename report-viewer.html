@@ -29,49 +29,50 @@
             </ul>
         </nav>
     </header>
+
     <main class="page-container">
         <div class="dashboard-header">
             <h2 class="page-title" id="report-title">Loading Report...</h2>
         </div>
-        <p id="report-meta" style="margin-bottom: 16px; color: #5f6368;"></p>
+        <p id="report-meta" style="margin-bottom: 24px; color: #5f6368;"></p>
 
         <div id="report-content" style="display: none;">
             
-            <section class="report-section" style="margin-bottom: 32px;">
-                <h3>Market Summary</h3>
+            <!-- Summary Statistics Cards -->
+            <div class="stat-cards-container" id="summary-stats"></div>
+
+            <!-- Summary Section -->
+            <section class="report-section" id="summary-section">
+                <h3>Market Commentary</h3>
                 <p id="market-comment"></p>
-                <p><strong>Quality:</strong> <span id="quality-comment"></span></p>
+                <p id="quality-wrapper" style="display: none;"><strong>Quality:</strong> <span id="quality-comment"></span></p>
             </section>
 
-            <section class="report-section" style="margin-bottom: 32px;">
-                <h3>Auction Offerings</h3>
+            <!-- Offerings by Grade/Category (Dynamic) -->
+            <section class="report-section" id="offerings-grade-section" style="display: none;">
+                <h3>Auction Offerings (by Category/Grade)</h3>
                 <div class="data-table-container">
-                    <table class="data-table" id="offerings-table">
-                        <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th>Lots</th>
-                                <th>Quantity (kgs)</th>
-                            </tr>
-                        </thead>
+                    <table class="data-table" id="offerings-grade-table">
+                        <thead></thead>
                         <tbody></tbody>
                     </table>
                 </div>
             </section>
 
-            <section class="report-section" style="margin-bottom: 32px;">
+             <!-- Offerings by Country (Conditional - e.g., Mombasa) -->
+             <section class="report-section" id="country-breakdown-section" style="display: none;">
+                <h3>Offerings vs. Sold (by Country)</h3>
+                <div class="comparison-grid" id="country-breakdown-tables">
+                    <!-- Dynamic Year-over-Year tables inserted here -->
+                </div>
+            </section>
+
+            <!-- Price Quotations Section (Dynamic) -->
+            <section class="report-section" id="prices-section">
                 <h3 id="price-quotations-title">Price Quotations</h3>
                 <div class="data-table-container">
                     <table class="data-table" id="prices-table">
-                        <thead>
-                            <tr>
-                                <th>Elevation</th>
-                                <th>Category/Region</th>
-                                <th>Grade</th>
-                                <th>Current (Low-High)</th>
-                                <th>Previous (Low-High)</th>
-                            </tr>
-                        </thead>
+                        <thead></thead>
                         <tbody></tbody>
                     </table>
                 </div>
@@ -81,6 +82,226 @@
     </main>
     <script src="script.js"></script>
     <script>
+        // --- Utility Functions ---
+        const formatNumber = (num, decimals = 0) => {
+            if (num === null || num === undefined) return 'N/A';
+            return num.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+        };
+
+        const formatPriceRange = (min, max) => {
+             if (min === null && max === null) return 'N/A';
+             return `${formatNumber(min)} - ${formatNumber(max)}`;
+        }
+
+        // Calculates the average change between previous and current price ranges
+        const calculateChange = (current_min, current_max, previous_min, previous_max) => {
+            if (previous_min == null || previous_max == null || current_min == null || current_max == null) {
+                return { html: 'N/A', hasData: false };
+            }
+
+            const prevAvg = (previous_min + previous_max) / 2;
+            const currAvg = (current_min + current_max) / 2;
+            
+            if (prevAvg === 0) return { html: 'N/A', hasData: false };
+
+            const change = currAvg - prevAvg;
+            const percentageChange = (change / prevAvg) * 100;
+
+            let html = '';
+            // Define a threshold (e.g., 0.5%) to count as movement
+            if (percentageChange > 0.5) {
+                html = `<span class="price-change price-up">&uarr; ${percentageChange.toFixed(1)}%</span>`;
+            } else if (percentageChange < -0.5) {
+                html = `<span class="price-change price-down">&darr; ${Math.abs(percentageChange).toFixed(1)}%</span>`;
+            } else {
+                html = `<span class="price-change price-stable">Stable</span>`;
+            }
+            return { html, hasData: true };
+        };
+
+        // --- Rendering Functions ---
+
+        const renderMetadata = (meta) => {
+            document.getElementById('report-title').textContent = `${meta.auction_centre} Auction Report - Week ${meta.week_number} (${meta.year})`;
+            document.getElementById('report-meta').textContent = `Sale No: ${meta.sale_number} | Dates: ${meta.sale_date_start} to ${meta.sale_date_end} | Broker: ${meta.broker}`;
+            document.getElementById('price-quotations-title').textContent = `Price Quotations (${meta.currency}/kg)`;
+        };
+
+        const renderSummaryStats = (summary) => {
+            const container = document.getElementById('summary-stats');
+            container.innerHTML = ''; 
+
+            const stats = [
+                { label: 'Total Quantity (Kgs)', value: summary.total_quantity_kg },
+                // Handle both Colombo (lots) and Mombasa (packages)
+                { label: summary.total_lots ? 'Total Lots' : 'Total Packages', value: summary.total_lots || summary.total_packages },
+                { label: 'Unsold (%)', value: summary.percent_unsold, decimals: 2 },
+                { label: 'Reprints (Kgs)', value: summary.reprints_quantity_kg }
+            ];
+
+            stats.forEach(stat => {
+                if (stat.value !== undefined && stat.value !== null) {
+                    const card = document.createElement('div');
+                    card.className = 'stat-card';
+                    card.innerHTML = `
+                        <span class="stat-value">${formatNumber(stat.value, stat.decimals || 0)}</span>
+                        <span class="stat-label">${stat.label}</span>
+                    `;
+                    container.appendChild(card);
+                }
+            });
+        };
+
+        const renderSummary = (summary) => {
+            document.getElementById('market-comment').textContent = summary.market_comment;
+            if (summary.quality_comment) {
+                document.getElementById('quality-comment').textContent = summary.quality_comment;
+                document.getElementById('quality-wrapper').style.display = 'block';
+            }
+        };
+
+        const renderOfferingsByGrade = (data) => {
+            // Handle Colombo-style (offerings) or Mombasa-style (offerings_by_grade)
+            const offeringsData = data.offerings || data.offerings_by_grade;
+
+            if (!offeringsData || offeringsData.length === 0) return;
+
+            const section = document.getElementById('offerings-grade-section');
+            section.style.display = 'block';
+            const table = document.getElementById('offerings-grade-table');
+            
+            // Determine structure dynamically
+            const firstItem = offeringsData[0];
+            const hasLots = firstItem.hasOwnProperty('lots');
+            const hasPackages = firstItem.hasOwnProperty('packages');
+            const hasUnsold = firstItem.hasOwnProperty('percent_unsold');
+
+            // Generate Headers
+            const thead = table.querySelector('thead');
+            let headerHtml = '<tr><th>Category</th>';
+            if (hasLots) headerHtml += '<th>Lots</th>';
+            if (hasPackages) headerHtml += '<th>Packages</th>';
+            headerHtml += '<th>Quantity (Kgs)</th>';
+            if (hasUnsold) headerHtml += '<th>% Unsold</th>';
+            headerHtml += '</tr>';
+            thead.innerHTML = headerHtml;
+
+            // Generate Rows
+            const tbody = table.querySelector('tbody');
+            offeringsData.forEach(item => {
+                let rowHtml = `<tr><td>${item.category}</td>`;
+                if (hasLots) rowHtml += `<td>${formatNumber(item.lots)}</td>`;
+                if (hasPackages) rowHtml += `<td>${formatNumber(item.packages)}</td>`;
+                rowHtml += `<td>${formatNumber(item.quantity_kg)}</td>`;
+                if (hasUnsold) rowHtml += `<td>${item.percent_unsold !== null ? item.percent_unsold.toFixed(2) + '%' : 'N/A'}</td>`;
+                rowHtml += '</tr>';
+                tbody.innerHTML += rowHtml;
+            });
+        };
+
+
+        const renderCountryBreakdown = (breakdownData) => {
+            if (!breakdownData || Object.keys(breakdownData).length === 0) return;
+
+            const section = document.getElementById('country-breakdown-section');
+            section.style.display = 'block';
+            const container = document.getElementById('country-breakdown-tables');
+
+            const renderTable = (yearData, year) => {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'comparison-year-block';
+                wrapper.innerHTML = `<h4 class="comparison-year-header">Year ${year}</h4>`;
+                
+                const tableContainer = document.createElement('div');
+                tableContainer.className = 'data-table-container';
+                const table = document.createElement('table');
+                table.className = 'data-table';
+                
+                table.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>Country</th>
+                            <th>Offered (Kgs)</th>
+                            <th>Sold (Kgs)</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                `;
+                
+                const tbody = table.querySelector('tbody');
+                yearData.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${item.country}</td>
+                        <td>${formatNumber(item.offered_kg)}</td>
+                        <td>${formatNumber(item.sold_kg)}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+                tableContainer.appendChild(table);
+                wrapper.appendChild(tableContainer);
+                return wrapper;
+            };
+
+            // Sort years descending (Current first, then Previous)
+            const years = Object.keys(breakdownData).sort((a, b) => b - a);
+            years.forEach(year => {
+                if (breakdownData[year] && breakdownData[year].length > 0) {
+                    container.appendChild(renderTable(breakdownData[year], year));
+                }
+            });
+        };
+
+        const renderPriceQuotations = (quotations) => {
+            if (!quotations || quotations.length === 0) return;
+
+            const table = document.getElementById('prices-table');
+            
+            // Determine dynamic structure
+            const firstItem = quotations[0];
+            const classifierHeader = firstItem.hasOwnProperty('elevation') ? 'Elevation' : (firstItem.hasOwnProperty('type') ? 'Type' : null);
+            
+            // Check if previous prices exist globally in the dataset
+            const hasPrevious = quotations.some(item => item.previous_min !== undefined || item.previous_max !== undefined);
+
+            // Generate Headers
+            const thead = table.querySelector('thead');
+            let headerHtml = '<tr>';
+            if (classifierHeader) headerHtml += `<th>${classifierHeader}</th>`;
+            headerHtml += '<th>Category/Region</th><th>Grade</th><th>Current Range</th>';
+            if (hasPrevious) {
+                headerHtml += '<th>Previous Range</th><th class="change-cell-header">Change</th>';
+            }
+            headerHtml += '</tr>';
+            thead.innerHTML = headerHtml;
+
+            // Generate Rows
+            const tbody = table.querySelector('tbody');
+            quotations.forEach(item => {
+                const row = document.createElement('tr');
+                
+                if (classifierHeader) {
+                    const classifierValue = item.elevation || item.type;
+                    row.innerHTML += `<td>${classifierValue}</td>`;
+                }
+                
+                row.innerHTML += `
+                    <td>${item.category}</td>
+                    <td>${item.grade}</td>
+                    <td>${formatPriceRange(item.current_min, item.current_max)}</td>
+                `;
+                
+                if (hasPrevious) {
+                    const change = calculateChange(item.current_min, item.current_max, item.previous_min, item.previous_max);
+                    row.innerHTML += `<td>${formatPriceRange(item.previous_min, item.previous_max)}</td>`;
+                    row.innerHTML += `<td class="change-cell">${change.html}</td>`;
+                }
+                tbody.appendChild(row);
+            });
+        };
+
+
+        // --- Main Execution ---
         document.addEventListener('DOMContentLoaded', async () => {
             const params = new URLSearchParams(window.location.search);
             const datasetFile = params.get('dataset');
@@ -92,88 +313,30 @@
             }
 
             try {
-                // Fetch data from the new directory structure
+                // Ensure the path uses the correct underscore format
                 const response = await fetch(`Data/Market_Reports/${datasetFile}.json`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const reportData = await response.json();
-                renderReport(reportData);
+                
+                // Call rendering functions
+                renderMetadata(reportData.metadata);
+                renderSummaryStats(reportData.summary);
+                renderSummary(reportData.summary);
+                renderOfferingsByGrade(reportData);
+                renderCountryBreakdown(reportData.offerings_by_country);
+                renderPriceQuotations(reportData.price_quotations);
+
                 document.getElementById('loading-indicator').style.display = 'none';
                 document.getElementById('report-content').style.display = 'block';
 
             } catch (error) {
                 console.error('Error fetching report data:', error);
                 document.getElementById('report-title').textContent = 'Error loading report.';
-                document.getElementById('loading-indicator').textContent = `Could not load the dataset: ${datasetFile}.json`;
+                document.getElementById('loading-indicator').textContent = `Could not load the dataset: ${datasetFile}.json. Error: ${error.message}`;
             }
         });
-
-        const formatNumber = (num) => {
-            // Handle null/undefined and format numbers
-            return (num !== null && num !== undefined) ? num.toLocaleString() : 'N/A';
-        };
-
-        const formatPriceRange = (min, max) => {
-             if (min === null && max === null) return 'N/A';
-             return `${formatNumber(min)} - ${formatNumber(max)}`;
-        }
-
-        const renderReport = (data) => {
-            const meta = data.metadata;
-            const summary = data.summary;
-
-            // Metadata and Title
-            document.getElementById('report-title').textContent = `${meta.auction_centre} Auction Report - Week ${meta.week_number} (${meta.year})`;
-            document.getElementById('report-meta').textContent = `Sale No: ${meta.sale_number} | Dates: ${meta.sale_date_start} to ${meta.sale_date_end} | Broker: ${meta.broker}`;
-            document.getElementById('price-quotations-title').textContent = `Price Quotations (${meta.currency}/kg)`;
-
-            // Summary Comments
-            document.getElementById('market-comment').textContent = summary.market_comment;
-            document.getElementById('quality-comment').textContent = summary.quality_comment;
-
-            // Render Offerings
-            const offeringsTableBody = document.querySelector('#offerings-table tbody');
-            let totalLots = 0;
-            let totalKgs = 0;
-            data.offerings.forEach(item => {
-                totalLots += item.lots;
-                totalKgs += item.quantity_kg;
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${item.category}</td>
-                    <td>${formatNumber(item.lots)}</td>
-                    <td>${formatNumber(item.quantity_kg)}</td>
-                `;
-                offeringsTableBody.appendChild(row);
-            });
-            // Add Totals row
-            const totalRow = document.createElement('tr');
-            totalRow.style.fontWeight = 'bold';
-             totalRow.innerHTML = `
-                    <td>TOTAL</td>
-                    <td>${formatNumber(totalLots)}</td>
-                    <td>${formatNumber(totalKgs)}</td>
-                `;
-            offeringsTableBody.appendChild(totalRow);
-
-
-            // Render Price Quotations (Unified Table)
-            const pricesTableBody = document.querySelector('#prices-table tbody');
-            data.price_quotations.forEach(item => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${item.elevation}</td>
-                    <td>${item.category}</td>
-                    <td>${item.grade}</td>
-                    <td>${formatPriceRange(item.current_min, item.current_max)}</td>
-                    <td>${formatPriceRange(item.previous_min, item.previous_max)}</td>
-                `;
-                pricesTableBody.appendChild(row);
-            });
-
-            // Note: International summaries are extracted but not yet rendered in this basic viewer.
-        };
     </script>
 </body>
 </html>
