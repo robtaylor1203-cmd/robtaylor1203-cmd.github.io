@@ -1,0 +1,56 @@
+[
+  {
+    "title": "Mombasa Auction Report - Week 34, 2025",
+    "description": "Detailed analysis of prices and demand for Kenyan, Rwandan, and Ugandan teas at the Mombasa auction.",
+    "year": 2025,
+    "week_number": 34,
+    "auction_centre": "Mombasa",
+    "source": "Tea Brokers East Africa",
+    "report_link": "#"
+  },
+  {
+    "title": "Kolkata Auction Summary - Week 34, 2025",
+    "description": "Summary of Assam and Darjeeling offerings in Kolkata. Strong demand for orthodox varieties.",
+    "year": 2025,
+    "week_number": 34,
+    "auction_centre": "Kolkata",
+    "source": "J Thomas & Co.",
+    "report_link": "#"
+  },
+  {
+    "title": "Colombo Auction Report - Week 34, 2025",
+    "description": "Overview of the Colombo tea auction, highlighting strong performance of high-growns.",
+    "year": 2025,
+    "week_number": 34,
+    "auction_centre": "Colombo",
+    "source": "Forbes & Walker",
+    "report_link": "#"
+  },
+  {
+    "title": "Mombasa Auction Report - Week 33, 2025",
+    "description": "Analysis of the previous week's trading in Mombasa. Noted decrease in prices for lower grade CTCs.",
+    "year": 2025,
+    "week_number": 33,
+    "auction_centre": "Mombasa",
+    "source": "Tea Brokers East Africa",
+    "report_link": "#"
+  },
+  {
+    "title": "Limbe Market Analysis - Week 30, 2025",
+    "description": "Report on the Limbe (Malawi) tea market conditions.",
+    "year": 2025,
+    "week_number": 30,
+    "auction_centre": "Limbe",
+    "source": "Van Rees",
+    "report_link": "#"
+  },
+    {
+    "title": "Mombasa Historical Report - Week 34, 2024",
+    "description": "A look back at the market conditions in Mombasa during the same week last year.",
+    "year": 2024,
+    "week_number": 34,
+    "auction_centre": "Mombasa",
+    "source": "Tea Brokers East Africa",
+    "report_link": "#"
+  }
+]

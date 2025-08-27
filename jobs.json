@@ -1,26 +1,22 @@
 [
   {
     "title": "Trainee Tea Buyer",
-    "company": "TATA Consumer Products",
+    "company": "TATA Consumer Products (via GRB)",
     "location": "West London, UK",
     "type": "Full-Time",
     "link": "https://www.grb.uk.com/graduate-jobs/tata-trainee-tea-buyer-west-london-36497",
-    "snippet": "A rare opportunity to launch your career at the heart of the tea industry. Learn the art and science of tea tasting and gain in-depth knowledge of the global tea supply chain. Salary: £30k.",
+    "snippet": "A rare opportunity to launch a career at the heart of the tea industry. Learn the art and science of tea tasting and the global supply chain. Salary: £30k.",
     "description": {
-      "intro": "Join one of the world's leading beverage companies. As a Trainee Tea Buyer, you'll become an integral part of the Tea Buying & Blending team. You'll learn the art and science of tea tasting, gain in-depth knowledge of the global tea supply chain, 'from bush to cup'. After five years of dedicated training, you'll be ready to manage your own origin as a qualified Tea Buyer.",
+      "intro": "Join one of the world's leading beverage companies. As a Trainee Tea Buyer, you'll become an integral part of the Tea Buying & Blending team. After five years of dedicated training, you'll be ready to manage your own origin.",
       "responsibilities": [
-        "Taste up to 300 teas, fruit and herbal blends per day to develop expert sensory skills.",
-        "Support Buyers/Assistant Buyers in all aspects of the procurement process.",
-        "Analyse market trends and contribute to contract negotiations.",
-        "Collect and interpret data on global tea availability for strategic buying.",
-        "Manage and analyse large datasets using Excel and SAP."
+        "Taste up to 300 teas, fruit and herbal blends per day.",
+        "Support Buyers/Assistant Buyers in the procurement process.",
+        "Analyse market trends and contribute to contract negotiations."
       ],
       "qualifications": [
-        "A 2:2 in your chosen degree subject (non-grads are also encouraged to apply).",
-        "Strong analytical skills and comfort dealing with large data sets (Excel daily).",
-        "Strong planning, time management and organisation skills.",
-        "Excellent communication and interpersonal skills.",
-        "Cultural and commercial awareness; works well under pressure."
+        "A 2:2 degree or equivalent experience.",
+        "Strong analytical skills (Excel daily).",
+        "Excellent communication and interpersonal skills."
       ]
     }
   },
@@ -29,89 +25,151 @@
     "company": "LIPTON Teas and Infusions",
     "location": "Global",
     "type": "Various",
-    "link": "https://www.liptonteas.com/careers/job-offers/",
-    "snippet": "Join a committed team across the US, Europe, Africa, the Middle East and Asia, working across Marketing, Sales, Procurement, Research & Innovation.",
+    "link": "https://www.linkedin.com/company/lipton-teas/jobs/",
+    "snippet": "Join a global team working across Marketing, Sales, Procurement, and R&D. Check the LinkedIn Jobs page for the latest listings.",
     "description": {
-      "intro": "We are looking for entrepreneurial spirit from people who share our passion for a better future. Join our committed team of almost 4,000 employees around the world. Check out our job opportunities: we might have your dream job! Visit the link to see the latest job openings and application instructions.",
+      "intro": "Visit the LIPTON Teas and Infusions careers portal to view the latest job openings and application instructions.",
       "responsibilities": [
-        "Responsibilities vary by role. Please check the company careers page for current openings."
+        "Varies by role. Please check the company careers page."
       ],
       "qualifications": [
-        "Qualifications vary by role. Please check the company careers page for current openings."
+        "Varies by role. Please check the company careers page."
       ]
     }
   },
   {
-    "title": "Explore Careers at Twinings",
-    "company": "Twinings",
-    "location": "Andover, UK (HQ) & International",
+    "title": "Explore Careers at Twinings (Ovo Careers)",
+    "company": "Twinings (Ovo Careers)",
+    "location": "UK & International",
     "type": "Various",
-    "link": "https://twinings.co.uk/pages/careers-at-twinings",
-    "snippet": "A major international tea brand with a long heritage. Offers a wide range of corporate, supply chain, marketing, and R&D roles.",
+    "link": "https://twiningsovocareers.pinpointhq.com/#js-careers-jobs-block",
+    "snippet": "Explore roles at Twinings and Ovaltine via the Pinpoint platform. A wide range of corporate, supply chain, and marketing roles available.",
     "description": {
-      "intro": "If you want your career to flourish in a successful international business that does things a bit differently, you have come to the right place. For a company so steeped in heritage, you'll find our approach to work refreshingly forward-looking. Visit the link to see the latest job openings and application instructions.",
+      "intro": "Visit the Twinings (Ovo Careers) careers portal to view the latest job openings and application instructions.",
       "responsibilities": [
-        "Responsibilities vary by role. Please check the company careers page for current openings."
+        "Varies by role. Please check the company careers page."
       ],
       "qualifications": [
-        "Qualifications vary by role. Please check the company careers page for current openings."
+        "Varies by role. Please check the company careers page."
+      ]
+    }
+  },
+  {
+    "title": "Explore Careers at Bettys & Taylors Group",
+    "company": "Bettys & Taylors Group",
+    "location": "Harrogate, UK",
+    "type": "Various",
+    "link": "https://careers.bettysandtaylors.co.uk/",
+    "snippet": "Home of Yorkshire Tea and Taylors of Harrogate. Explore careers in Harrogate and beyond, spanning various departments.",
+    "description": {
+      "intro": "Visit the Bettys & Taylors Group careers portal to view the latest job openings and application instructions.",
+      "responsibilities": [
+        "Varies by role. Please check the company careers page."
+      ],
+      "qualifications": [
+        "Varies by role. Please check the company careers page."
+      ]
+    }
+  },
+  {
+    "title": "Explore Careers at Bird & Blend Tea Co.",
+    "company": "Bird & Blend Tea Co.",
+    "location": "UK (Various)",
+    "type": "Various",
+    "link": "https://www.birdandblendtea.com/pages/jobs",
+    "snippet": "An independent tea company frequently hiring for retail (Mixologists/Store Managers) and head office roles.",
+    "description": {
+      "intro": "Visit the Bird & Blend Tea Co. careers portal to view the latest job openings and application instructions.",
+      "responsibilities": [
+        "Varies by role. Please check the company careers page."
+      ],
+      "qualifications": [
+        "Varies by role. Please check the company careers page."
       ]
     }
   },
   {
     "title": "Explore Careers at The Tea Makers of London",
     "company": "The Tea Makers of London",
-    "location": "Dartford, Kent, UK",
+    "location": "Dartford, UK",
     "type": "Various",
     "link": "https://www.theteamakers.co.uk/pages/careers",
-    "snippet": "A family-owned business specializing in single-origin estate teas. Roles often include e-commerce development (Shopify Plus), marketing, and packing operations.",
+    "snippet": "Explore current opportunities at The Tea Makers of London. Roles may include marketing, sales, operations, tea buying, and R&D.",
     "description": {
-      "intro": "We are a family owned business, located just outside London. We specialise in single origin estate, fully traceable, exquisite teas and teaware. We are always looking for bright talent to join our growing team. Visit the link to see the latest job openings and application instructions.",
+      "intro": "Visit the The Tea Makers of London careers portal to view the latest job openings and application instructions.",
       "responsibilities": [
-        "Responsibilities vary by role. Please check the company careers page for current openings."
+        "Varies by role. Please check the company careers page."
       ],
       "qualifications": [
-        "Qualifications vary by role. Please check the company careers page for current openings."
+        "Varies by role. Please check the company careers page."
       ]
     }
   },
   {
-    "title": "Explore Careers at Hälssen & Lyon",
-    "company": "Hälssen & Lyon",
-    "location": "Germany & International",
+    "title": "Explore Careers at Brew Tea Company",
+    "company": "Brew Tea Company",
+    "location": "Manchester, UK",
     "type": "Various",
-    "link": "https://www.haelssen-lyon.com/company/careers/job-vacancies/",
-    "snippet": "One of Europe's leading B2B tea companies, family-owned since 1879. Offers opportunities for working in a very international environment, combining tradition and innovation.",
+    "link": "https://www.brewteacompany.co.uk/pages/work-here",
+    "snippet": "Explore current opportunities at Brew Tea Company. Roles may include marketing, sales, operations, tea buying, and R&D.",
     "description": {
-      "intro": "At Hälssen & Lyon, one of Europe's leading tea companies, the world of tea literally comes together under one roof. Hälssen & Lyon offers great opportunities for working in a very international environment built around the multi-faceted product of tea. Visit the link to see the latest job openings and application instructions.",
+      "intro": "Visit the Brew Tea Company careers portal to view the latest job openings and application instructions.",
       "responsibilities": [
-        "Responsibilities vary by role. Please check the company careers page for current openings."
+        "Varies by role. Please check the company careers page."
       ],
       "qualifications": [
-        "Qualifications vary by role. Please check the company careers page for current openings."
+        "Varies by role. Please check the company careers page."
       ]
     }
   },
   {
-    "title": "Sales Representatives (Commission Only)",
-    "company": "Flora Tea Company UK",
-    "location": "UK & Ireland (Various Regions)",
-    "type": "Contract/Commission",
-    "link": "https://www.floratea.com/careers/",
-    "snippet": "We are looking for regional sales representatives... to promote and sell our unique Flora Tea (Flowering Teas). Commission only, easy start, great products...",
+    "title": "Explore Careers at Tealeaves",
+    "company": "Tealeaves",
+    "location": "Global",
+    "type": "Various",
+    "link": "https://www.tealeaves.com/pages/careers",
+    "snippet": "Explore current opportunities at Tealeaves. Roles may include marketing, sales, operations, tea buying, and R&D.",
     "description": {
-      "intro": "Flora Tea Company UK Limited is looking for regional sales representatives across the UK and Ireland to promote and sell their unique Flowering Teas. This is a commission-only role targeting restaurants, hotels, tea houses, and independent stores.",
+      "intro": "Visit the Tealeaves careers portal to view the latest job openings and application instructions.",
       "responsibilities": [
-        "Promote and sell Flora Tea products in the designated region.",
-        "Develop retail distribution through specialist outlets and gift shops.",
-        "Demonstrate products and secure initial orders.",
-        "Build and maintain B2B relationships."
+        "Varies by role. Please check the company careers page."
       ],
       "qualifications": [
-        "Willingness and passion to learn about the product range and brand.",
-        "Excellent communication and negotiation skills.",
-        "Previous strong selling background desired but not essential.",
-        "Good local knowledge."
+        "Varies by role. Please check the company careers page."
+      ]
+    }
+  },
+  {
+    "title": "Explore Careers at Shibui Tea",
+    "company": "Shibui Tea",
+    "location": "Edinburgh, UK",
+    "type": "Various",
+    "link": "https://www.shibui-tea.co.uk/pages/vacancies",
+    "snippet": "Explore current opportunities at Shibui Tea. Roles may include marketing, sales, operations, tea buying, and R&D.",
+    "description": {
+      "intro": "Visit the Shibui Tea careers portal to view the latest job openings and application instructions.",
+      "responsibilities": [
+        "Varies by role. Please check the company careers page."
+      ],
+      "qualifications": [
+        "Varies by role. Please check the company careers page."
+      ]
+    }
+  },
+  {
+    "title": "Search Tea Industry Jobs on LinkedIn (UK)",
+    "company": "Various (via LinkedIn)",
+    "location": "United Kingdom",
+    "type": "Various",
+    "link": "https://www.linkedin.com/jobs/search/?keywords=Tea&location=United%20Kingdom",
+    "snippet": "Browse the latest tea-related job postings across the UK on LinkedIn. Filter by location, experience level, and job function.",
+    "description": {
+      "intro": "LinkedIn is a primary resource for finding professional roles. Use this link to access a pre-filtered search for 'Tea' related jobs in the UK.",
+      "responsibilities": [
+        "Varies by role."
+      ],
+      "qualifications": [
+        "Varies by role."
       ]
     }
   }

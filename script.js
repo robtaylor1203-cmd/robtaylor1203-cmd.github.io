@@ -1,27 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Dynamic Header Scroll Logic ---
-    const headerSecondary = document.querySelector('.header-secondary');
-    
-    if (headerSecondary) {
-        let lastScrollTop = 0;
-        const scrollThreshold = 10; // Pixels to scroll before triggering
-        const headerPrimaryHeight = document.querySelector('.header-primary')?.offsetHeight || 56;
+    // --- Mobile Menu Toggle Logic ---
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const secondaryNav = document.querySelector('.secondary-nav');
 
-        window.addEventListener('scroll', () => {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-            if (window.innerWidth <= 900) {
-                if (Math.abs(scrollTop - lastScrollTop) <= scrollThreshold) {
-                    return; 
-                }
-                if (scrollTop > lastScrollTop && scrollTop > headerPrimaryHeight) {
-                    headerSecondary.classList.add('is-hidden');
-                } else {
-                    headerSecondary.classList.remove('is-hidden');
-                }
+    if (menuToggle && secondaryNav) {
+        menuToggle.addEventListener('click', () => {
+            secondaryNav.classList.toggle('is-active');
+            const isOpen = secondaryNav.classList.contains('is-active');
+            menuToggle.setAttribute('aria-expanded', isOpen);
+            // Change the icon when open/closed (Hamburger to X)
+            if (isOpen) {
+                menuToggle.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
+            } else {
+                menuToggle.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
             }
-            
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-        }, false);
+        });
     }
 });
