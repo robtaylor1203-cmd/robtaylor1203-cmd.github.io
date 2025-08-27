@@ -27,13 +27,22 @@
     "report_link": "#"
   },
   {
+    "title": "Colombo Auction Report - Week 33, 2025",
+    "description": "Forbes & Walker report for Sale No. 33 (26th/27th August 2025). Total offerings: 5,195,301 kgs. Good general demand.",
+    "year": 2025,
+    "week_number": 33,
+    "auction_centre": "Colombo",
+    "source": "Forbes & Walker",
+    "report_link": "report-viewer.html?dataset=Colombo_FW_W33_2025"
+  },
+  {
     "title": "Mombasa Auction Report - Week 33, 2025",
-    "description": "Analysis of the previous week's trading in Mombasa. Noted decrease in prices for lower grade CTCs.",
+    "description": "ATB Ltd report for Sale No. 33 (2025-08-18 to 2025-08-19). Total offerings: 10,271,565 kgs. Good general demand prevailed.",
     "year": 2025,
     "week_number": 33,
     "auction_centre": "Mombasa",
-    "source": "Tea Brokers East Africa",
-    "report_link": "#"
+    "source": "ATB Ltd",
+    "report_link": "report-viewer.html?dataset=Mombasa_ATB_W33_2025"
   },
   {
     "title": "Limbe Market Analysis - Week 30, 2025",
@@ -44,7 +53,7 @@
     "source": "Van Rees",
     "report_link": "#"
   },
-    {
+  {
     "title": "Mombasa Historical Report - Week 34, 2024",
     "description": "A look back at the market conditions in Mombasa during the same week last year.",
     "year": 2024,
