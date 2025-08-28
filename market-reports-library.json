@@ -32,17 +32,26 @@
     "year": 2025,
     "week_number": 33,
     "auction_centre": "Colombo",
-    "source": "Forbes & Walker",
+    "source": "Forbes & Walker Tea Brokers (PVT) LTD",
     "report_link": "report-viewer.html?dataset=Colombo_FW_W33_2025"
   },
   {
     "title": "Mombasa Auction Report - Week 33, 2025",
-    "description": "ATB Ltd report for Sale No. 33 (2025-08-18 to 2025-08-19). Total offerings: 10,271,565 kgs. Good general demand prevailed.",
+    "description": "ATB Ltd report for Sale No. 33 (18th/19th August 2025). Total offerings: 10,271,565 kgs. Good general demand prevailed; 32.13% remained unsold.",
     "year": 2025,
     "week_number": 33,
     "auction_centre": "Mombasa",
     "source": "ATB Ltd",
     "report_link": "report-viewer.html?dataset=Mombasa_ATB_W33_2025"
+  },
+  {
+    "title": "Kolkata Auction Synopsis - Week 32, 2025",
+    "description": "J Thomas & Co. report for Sale No. 32. CTC: Good demand. Liquoring Assams tended irregularly easier. Orthodox: Strong demand.",
+    "year": 2025,
+    "week_number": 32,
+    "auction_centre": "Kolkata",
+    "source": "J Thomas & Company Private Limited",
+    "report_link": "report-viewer.html?dataset=Kolkata_JT_W32_2025"
   },
   {
     "title": "Limbe Market Analysis - Week 30, 2025",

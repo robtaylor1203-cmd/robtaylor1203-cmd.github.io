@@ -49,47 +49,77 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .page-container { max-width: 1100px; margin: 0 auto; padding: 24px; }
 .page-title { font-size: 28px; font-weight: 400; margin: 10px 0 20px 0; color: #3c4043; }
 
-/* --- News Page Styles (UPDATED LAYOUT) --- */
+/* --- News Page Styles (Compact Google News Style) --- */
 .news-list { list-style: none; padding: 0; }
-.news-item { display: flex; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid #ebebeb; justify-content: space-between; gap: 20px; }
-.news-item:first-child { border-top: 1px solid #ebebeb; padding-top: 20px; }
+.news-item {
+    display: flex;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #ebebeb;
+}
+.news-item:first-child {
+    padding-top: 0;
+}
 
-/* Image on the Right */
-.news-item .image-link { flex-shrink: 0; }
-.news-item .article-image { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; background-color: #f0f0f0; }
+.news-item .image-link {
+    margin-left: 16px; /* Image on the right */
+    flex-shrink: 0;
+    order: 2; /* Ensure image is second in visual order */
+}
 
-/* Text on the Left */
-.news-item .text-content { flex: 1; display: flex; flex-direction: column; justify-content: space-between; height: 80px; /* Match image height */ }
-.news-item .source { font-size: 12px; font-weight: 400; color: #5f6368; order: 2; /* Source appears at the bottom */ }
+.news-item .article-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+}
 
-.news-item .main-link { order: 1; /* Headline/Snippet appears at the top */ }
-.news-item .main-link h3 { font-size: 16px; font-weight: 500; color: #202124; margin: 0; line-height: 1.3; 
-    /* Multi-line truncation for headline */
+.news-item .text-content {
+    flex: 1;
+    order: 1; /* Ensure text is first in visual order */
+    min-width: 0; /* Allow flex item to shrink */
+}
+
+.news-item .source { font-size: 12px; font-weight: 400; color: #5f6368; margin-bottom: 4px; }
+.news-item .main-link h3 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #202124;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+    /* Truncation for clean layout */
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    text-overflow: ellipsis;
 }
 .news-item .main-link:hover h3 { text-decoration: underline; color: #1a0dab; }
-
-/* Snippet (Hidden in this compact view) */
-.news-item .snippet { display: none; }
+.news-item .snippet {
+    font-size: 13px;
+    color: #4d5156;
+    margin: 0;
+    line-height: 1.4;
+     /* Truncation for clean layout */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
 
 
 /* --- Jobs & Products Page Styles --- */
-.filter-bar { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; position: sticky; top: 112px; /* Height of top bar (64px) + secondary nav (48px) */ z-index: 99; display: flex; overflow-x: auto; white-space: nowrap; }
+.filter-bar { background-color: #fff; padding: 12px 24px; border-bottom: 1px solid #ebebeb; position: sticky; top: 112px; z-index: 99; display: flex; overflow-x: auto; white-space: nowrap; }
 .filter-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 16px; padding: 6px 12px; font-size: 13px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
 .filter-chip:hover { border-color: #dadce0; }
 
-/* --- Jobs Page Specific --- */
 .jobs-container { display: flex; max-width: 1280px; width: 100%; margin: 0 auto; padding: 16px 24px; gap: 24px; align-items: flex-start; }
 .job-list-pane { flex: 2; max-width: 450px; border: 1px solid #dadce0; border-radius: 8px; }
 .job-card { padding: 16px; border-bottom: 1px solid #ebebeb; cursor: pointer; }
 .job-card:last-child { border-bottom: none; }
 .job-card:hover { background-color: #f8f9fa; }
 .job-card.active { background-color: #e8f0fe; }
-.job-details-pane { flex: 3; position: sticky; top: 177px; /* Height of header + filter bar */ height: calc(100vh - 193px); overflow-y: auto; border: 1px solid #dadce0; border-radius: 8px; }
+.job-details-pane { flex: 3; position: sticky; top: 177px; height: calc(100vh - 193px); overflow-y: auto; border: 1px solid #dadce0; border-radius: 8px; }
 .job-details-content { padding: 24px; }
 .apply-button { background-color: #1a73e8; color: #fff; border: none; border-radius: 999px; padding: 12px 24px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background-color 0.2s; }
 .apply-button:hover { background-color: #185abc; }
@@ -97,7 +127,6 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .job-details-content h4 { font-size: 16px; font-weight: 500; margin: 16px 0 8px 0; }
 .job-details-content ul { padding-left: 20px; margin: 0; line-height: 1.6; }
 
-/* --- Products Page Specific --- */
 .product-grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; max-width: 1280px; margin: 0 auto; padding: 24px; }
 .product-card { background-color: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
 .product-card:hover { transform: scale(1.03); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
@@ -143,34 +172,62 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .dataset-meta { font-size: 12px; color: #5f6368; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
 /* Dashboard & Report Viewer Specific */
-.report-section {
-    margin-bottom: 40px;
-}
-.report-section h3 {
-    border-bottom: 2px solid #1a73e8;
-    padding-bottom: 8px;
-    margin-bottom: 16px;
-    font-size: 20px;
-    font-weight: 500;
-}
-
 .view-switcher { background-color: #fff; padding: 12px 0; border-bottom: 1px solid #ebebeb; margin-top: 16px; display: flex; overflow-x: auto; white-space: nowrap;}
 .view-chip { background-color: #f1f3f4; border: 1px solid #f1f3f4; border-radius: 8px; padding: 8px 16px; font-size: 14px; font-weight: 500; color: #3c4043; margin-right: 8px; cursor: pointer; }
 .view-chip.active { background-color: #e8f0fe; color: #1967d2; border-color: #d2e3fc; }
 .chart-container { position: relative; height: 60vh; background-color: #fff; padding: 16px; border-radius: 8px; margin-top: 16px;}
 .data-table { width: 100%; border-collapse: collapse; background-color: #fff; }
-/* Added border/radius to the container for visual structure */
-.data-table-container { overflow-x: auto; /* margin-top: 16px; */ border: 1px solid #dadce0; border-radius: 8px;}
+.data-table-container { overflow-x: auto; margin-top: 16px; border: 1px solid #dadce0; border-radius: 8px;}
 .data-table th, .data-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #dadce0; }
 .data-table thead { background-color: #f8f9fa; }
 .data-table th { font-size: 14px; font-weight: 500; color: #5f6368; cursor: pointer; user-select: none; position: relative; }
 .data-table th:hover { background-color: #f1f3f4; }
 .data-table th.sort-asc, .data-table th.sort-desc { color: #202124; }
 .data-table tbody tr:last-child td { border-bottom: none; }
+.data-table tfoot tr td { border-bottom: none; }
 .data-table tbody tr:hover { background-color: #f8f9fa; }
 .data-table td { font-size: 14px; }
 .sort-arrow { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 1.1em; font-weight: bold; color: #1a73e8; }
 #map-container { height: 70vh; width: 100%; border-radius: 8px; margin-top: 16px; background-color: #f8f9fa; border: 1px solid #dadce0;}
+
+/* Report Viewer Enhancements (NEW) */
+.report-section { margin-bottom: 40px; }
+.report-section h3 { border-bottom: 2px solid #1a73e8; padding-bottom: 8px; margin-bottom: 16px; font-size: 20px; font-weight: 500; }
+.report-section h4 { font-size: 16px; font-weight: 500; margin-top: 20px; margin-bottom: 10px; color: #3c4043; }
+
+/* Stat Cards (e.g., Mombasa/Colombo Summary) */
+.stat-cards-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.stat-card { background-color: #f8f9fa; border: 1px solid #dadce0; border-radius: 8px; padding: 16px; text-align: center; }
+.stat-value { font-size: 24px; font-weight: 500; color: #202124; display: block; margin-bottom: 4px; }
+.stat-label { font-size: 14px; color: #5f6368; }
+
+/* Comparison Grid (e.g., Mombasa YoY Country Breakdown) */
+.comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+/* Commentary Grid (e.g., Kolkata) */
+.commentary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.commentary-card { border: 1px solid #dadce0; border-radius: 8px; padding: 16px; background-color: #f8f9fa; }
+.commentary-card h4 { margin-top: 0; color: #1a73e8; font-size: 18px; }
+
+/* Specialized Table Styling (e.g., Kolkata Stats) */
+.data-table.stats-table th { text-align: center; padding: 8px 10px; }
+.data-table.stats-table td { text-align: right; padding: 8px 10px; }
+.data-table.stats-table td:first-child { text-align: left; font-weight: 500; }
+
+/* Multi-level header styling */
+.header-main { border-bottom: 2px solid #dadce0; }
+.header-sub { font-weight: normal; font-size: 0.85em; }
+
+.diff-positive { color: #1e8e3e; font-weight: 500; }
+.diff-negative { color: #d93025; font-weight: 500; }
+
+/* Distribution Charts (e.g., Kolkata) */
+.distribution-container { display: flex; flex-wrap: wrap; gap: 24px; }
+.distribution-block { flex: 1; min-width: 300px; padding: 16px; border: 1px solid #dadce0; border-radius: 8px; }
+
+/* International Summary (e.g. Colombo) */
+.international-summary-item { margin-bottom: 24px; padding: 16px; border: 1px solid #dadce0; border-radius: 8px; }
+
 
 /* --- Visuals Page Styles --- */
 .visuals-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
@@ -182,79 +239,6 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
 .visual-card-title { font-size: 18px; font-weight: 500; color: #202124; margin: 0 0 8px 0; line-height: 1.4; }
 .visual-card-meta { font-size: 12px; color: #5f6368; }
 
-/* --- Report Viewer Enhancements --- */
-
-/* Summary Stat Cards */
-.stat-cards-container {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 32px;
-    flex-wrap: wrap;
-}
-.stat-card {
-    background-color: #f8f9fa;
-    border: 1px solid #dadce0;
-    border-radius: 8px;
-    padding: 16px;
-    flex: 1;
-    min-width: 150px;
-}
-.stat-value {
-    font-size: 24px;
-    font-weight: 500;
-    color: #202124;
-    display: block;
-    margin-bottom: 4px;
-}
-.stat-label {
-    font-size: 14px;
-    color: #5f6368;
-}
-
-/* Price Change Visualization */
-.price-change {
-    font-size: 13px;
-    font-weight: 500;
-    padding: 4px 8px;
-    border-radius: 4px;
-    display: inline-block;
-    white-space: nowrap;
-}
-
-.price-up {
-    color: #188038; /* Green for increase */
-    background-color: #e6f4ea;
-}
-
-.price-down {
-    color: #d93025; /* Red for decrease */
-    background-color: #fce8e6;
-}
-
-.price-stable {
-    color: #5f6368;
-    background-color: #f1f3f4;
-}
-
-/* Ensure change cells align right */
-.change-cell, .change-cell-header {
-    text-align: right;
-}
-
-/* Grid for Year-over-Year comparison (e.g., Country Breakdown) */
-.comparison-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-}
-
-.comparison-year-block h4 {
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: 12px;
-    color: #3c4043;
-}
-
 
 /* --- Responsive Styles --- */
 
@@ -263,14 +247,12 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
     .jobs-container { flex-direction: column; }
     .job-details-pane { position: static; height: auto; margin-top: 16px; }
     .job-list-pane { max-width: none; margin-bottom: 16px; }
-    
+    .filter-bar { top: 64px; /* Only the top bar is visible when scrolling */ }
+
     /* Mobile Navigation Implementation */
     .mobile-menu-toggle { display: block; }
     .header-search-wrapper { display: none; } /* Hide search bar on mobile header */
     
-    /* Adjust sticky elements for mobile header height */
-     .filter-bar { top: 64px; } 
-
     .secondary-nav { 
         position: absolute; 
         top: 64px; /* Height of the top bar */
@@ -299,11 +281,9 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
     }
     .secondary-nav li:last-child a { border-bottom: none; }
     .secondary-nav a.active { border-bottom: none; color: #1a73e8; }
-
-    /* Stack comparison tables on smaller screens */
-    .comparison-grid {
-        grid-template-columns: 1fr; 
-    }
+    
+    /* Report Viewer Responsiveness */
+    .comparison-grid { grid-template-columns: 1fr; }
 }
 
 /* Small devices (Phones, 600px and down) */
@@ -316,9 +296,13 @@ footer { font-size: 12px; color: #70757a; width: 100%; text-align: center; paddi
     .logo h1 { font-size: 72px; }
     .sub-logo { letter-spacing: 5px; margin: 0 0 30px 5px; }
     
-    /* News Layout Adjustment (UPDATED) */
-    .news-item { gap: 16px; }
-    .news-item .main-link h3 { font-size: 15px; }
+    /* News Layout Adjustment (Mobile view for compact style) */
+     .news-item .image-link {
+         margin-left: 16px;
+     }
+     .news-item .main-link h3 {
+         font-size: 16px;
+     }
 
     /* Dashboard/Data Library Adjustments */
     .dashboard-header { flex-direction: column; align-items: stretch; }
