@@ -41,9 +41,13 @@
             
             <div class="stat-cards-container" id="summary-stats"></div>
 
+            <section class="report-section" id="global-stats-section" style="display: none;">
+                <h3>Global Statistics</h3>
+                </section>
+
             <section class="report-section" id="volume-visualization-section" style="display: none;">
                 <h3>Volume Analysis</h3>
-                <div class="distribution-container">
+                <div class="distribution-container" id="volume-visualization-container">
                     <div class="distribution-block" id="offerings-chart-block" style="display: none;">
                         <h4>Offerings Breakdown (kg)</h4>
                         <div style="position: relative; height: 300px;"><canvas id="offeringsChart"></canvas></div>
@@ -74,6 +78,11 @@
                         <tbody></tbody>
                     </table>
                 </div>
+            </section>
+
+            <section class="report-section" id="auction-offerings-multi-section" style="display: none;">
+                 <h3>Auction Offerings Comparison</h3>
+                 <div class="comparison-grid" id="auction-offerings-multi-container"></div>
             </section>
 
             <section class="report-section" id="offerings-grade-section" style="display: none;">
@@ -114,7 +123,7 @@
             </section>
 
             <section class="report-section" id="price-distribution-section" style="display: none;">
-                 <h3>Price Distribution Analysis (% of Teas Sold) - Sale <span id="sale-dist"></span></h3>
+                 <h3 id="price-distribution-title">Price Distribution Analysis (% of Teas Sold)</h3>
                  <div class="distribution-container" id="distribution-container"></div>
             </section>
 
@@ -133,16 +142,14 @@
     <script src="script.js"></script>
     <script>
         // --- Configuration ---
-        // Colors suitable for a modern financial aesthetic
         const CHART_COLORS = {
             primary: 'rgba(26, 115, 232, 0.8)', // Blue
             secondary: 'rgba(128, 178, 247, 0.8)', // Lighter Blue
-            accent1: 'rgba(251, 188, 4, 0.8)', // Yellow
-            accent2: 'rgba(52, 168, 83, 0.8)', // Green
-            neutral: 'rgba(160, 160, 160, 0.8)' // Grey
+            accent1: 'rgba(251, 188, 4, 0.8)', 
+            accent2: 'rgba(52, 168, 83, 0.8)', 
+            neutral: 'rgba(160, 160, 160, 0.8)'
         };
 
-        // Reusable base options for bar charts
         const CHART_OPTIONS_BAR = {
             responsive: true,
             maintainAspectRatio: false,
@@ -171,21 +178,129 @@
              return `${formatNumber(min, 2)} - ${formatNumber(max, 2)}`;
         }
 
-        const formatDiff = (num) => {
+        const formatDiff = (num, decimals = 2) => {
             if (num === null || num === undefined) return 'N/A';
-            const formatted = formatCurrency(num);
+            const formatted = formatNumber(num, decimals);
             const className = num > 0 ? 'diff-positive' : (num < 0 ? 'diff-negative' : '');
-            return `<span class="${className}">${formatted}</span>`;
+             // Add +/- sign explicitly for non-zero values
+            const sign = num > 0 ? '+' : ''; 
+            return `<span class="${className}">${sign}${formatted}</span>`;
         }
 
         // --- Rendering Functions (Modularized by Data Type) ---
+
+        // Renderer for Global Statistics (Contemporary Brokers style)
+        const renderGlobalStatistics = (globalStats, meta) => {
+            if (!globalStats || Object.keys(globalStats).length === 0) return;
+
+            const section = document.getElementById('global-stats-section');
+            section.style.display = 'block';
+
+            // World Crop Comparison
+            if (globalStats.world_crop_comparison) {
+                const comparison = globalStats.world_crop_comparison;
+                const wrapper = document.createElement('div');
+                wrapper.style.marginBottom = '24px';
+                wrapper.innerHTML = `<h4>World Crop Comparison (M.Kg)</h4>`;
+
+                // Visualization
+                const chartWrapper = document.createElement('div');
+                chartWrapper.className = 'distribution-block';
+                chartWrapper.style.marginBottom = '16px';
+                const canvasId = 'worldCropChart';
+                chartWrapper.innerHTML = `<div style="position: relative; height: 350px;"><canvas id="${canvasId}"></canvas></div>`;
+                section.appendChild(chartWrapper); // Append chart directly to section
+
+                const ctx = chartWrapper.querySelector(`#${canvasId}`).getContext('2d');
+                // Filter out the total row for the chart data, include major regions
+                const chartData = comparison.filter(item => item.region !== 'TOTAL' && item.region !== 'ALL INDIA');
+                const labels = chartData.map(item => item.region);
+                const currentYearValues = chartData.map(item => item.current_year_todate);
+                const previousYearValues = chartData.map(item => item.previous_year_todate);
+
+                const options = JSON.parse(JSON.stringify(CHART_OPTIONS_BAR));
+                options.scales.y.title.text = 'Volume (M.Kg) To Date';
+                options.plugins.legend.display = true;
+
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: `${meta.year-1} To Date`,
+                                data: previousYearValues,
+                                backgroundColor: CHART_COLORS.secondary,
+                            },
+                            {
+                                label: `${meta.year} To Date`,
+                                data: currentYearValues,
+                                backgroundColor: CHART_COLORS.primary,
+                            }
+                        ]
+                    },
+                    options: options
+                });
+
+                // Table
+                const tableContainer = document.createElement('div');
+                tableContainer.className = 'data-table-container';
+                
+                const table = document.createElement('table');
+                table.className = 'data-table stats-table';
+                
+                // Header
+                table.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th rowspan="2" class="header-main">Region</th>
+                            <th rowspan="2" class="header-main">Month</th>
+                            <th colspan="2" class="header-main">${meta.year}</th>
+                            <th colspan="2" class="header-main">${meta.year-1}</th>
+                            <th rowspan="2" class="header-main">+/- To Date</th>
+                        </tr>
+                        <tr>
+                            <th class="header-sub">Monthly</th>
+                            <th class="header-sub">To Date</th>
+                            <th class="header-sub">Monthly</th>
+                            <th class="header-sub">To Date</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                `;
+                
+                const tbody = table.querySelector('tbody');
+                comparison.forEach(item => {
+                    const row = document.createElement('tr');
+                     if (item.region === "TOTAL" || item.region === "ALL INDIA") {
+                        row.style.fontWeight = 'bold';
+                        row.style.backgroundColor = '#f1f3f4';
+                    }
+                    row.innerHTML = `
+                        <td>${item.region}</td>
+                        <td>${item.month || ''}</td>
+                        <td>${formatNumber(item.current_year_monthly, 1)}</td>
+                        <td>${formatNumber(item.current_year_todate, 1)}</td>
+                        <td>${formatNumber(item.previous_year_monthly, 1)}</td>
+                        <td>${formatNumber(item.previous_year_todate, 1)}</td>
+                        <td>${formatDiff(item.difference_todate, 1)}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+                
+                tableContainer.appendChild(table);
+                wrapper.appendChild(tableContainer);
+                section.appendChild(wrapper);
+            }
+        };
+
 
         // Renderer for General Summary (Colombo/Mombasa style)
         const renderGeneralSummary = (summary) => {
             if (!summary) return;
             
             const statsContainer = document.getElementById('summary-stats');
-            statsContainer.innerHTML = '';
+            // statsContainer.innerHTML = ''; 
 
             const stats = [
                 { label: 'Total Quantity (kg)', value: summary.total_quantity_kg, format: 0 },
@@ -217,6 +332,74 @@
                 document.getElementById('quality-comment').textContent = summary.quality_comment;
             }
         };
+
+        // Renderer for Multi-Center Auction Offerings (Contemporary Brokers style)
+        const renderAuctionOfferingsMultiCenter = (offeringsData, meta) => {
+             if (!offeringsData || Object.keys(offeringsData).length === 0) return;
+
+             const section = document.getElementById('auction-offerings-multi-section');
+             const container = document.getElementById('auction-offerings-multi-container');
+             section.style.display = 'block';
+
+             const renderOfferingsTable = (data, title, metric = "Packages") => {
+                 if (!data || data.length === 0) return;
+
+                 const wrapper = document.createElement('div');
+                wrapper.style.marginBottom = '24px';
+                wrapper.innerHTML = `<h4>${title} (${metric})</h4>`;
+                
+                const tableContainer = document.createElement('div');
+                tableContainer.className = 'data-table-container';
+                
+                const table = document.createElement('table');
+                table.className = 'data-table stats-table';
+                
+                // Header
+                table.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th rowspan="2" class="header-main">Type</th>
+                            <th colspan="2" class="header-main">This Week</th>
+                            <th colspan="2" class="header-main">To Date</th>
+                        </tr>
+                        <tr>
+                            <th class="header-sub">${meta.year}</th>
+                            <th class="header-sub">${meta.year-1}</th>
+                            <th class="header-sub">${meta.year}</th>
+                            <th class="header-sub">${meta.year-1}</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                `;
+                
+                const tbody = table.querySelector('tbody');
+                data.forEach(item => {
+                    const row = document.createElement('tr');
+                     if (item.type === "Total") {
+                        row.style.fontWeight = 'bold';
+                        row.style.backgroundColor = '#f1f3f4';
+                    }
+                    row.innerHTML = `
+                        <td>${item.type}</td>
+                        <td>${formatNumber(item.current_weekly)}</td>
+                        <td>${formatNumber(item.previous_weekly)}</td>
+                        <td>${formatNumber(item.current_todate)}</td>
+                        <td>${formatNumber(item.previous_todate)}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+                
+                tableContainer.appendChild(table);
+                wrapper.appendChild(tableContainer);
+                container.appendChild(wrapper);
+             };
+
+             // Render tables for each center found in the data
+             for (const [center, data] of Object.entries(offeringsData)) {
+                 renderOfferingsTable(data, center);
+             }
+        };
+
 
         // Renderer for Offerings by Grade/Category (Colombo/Mombasa style)
         const renderOfferingsByGrade = (data) => {
@@ -279,7 +462,7 @@
                 }
             }
 
-            // Render Visualization (ENHANCED)
+            // Render Visualization
             document.getElementById('volume-visualization-section').style.display = 'block';
             document.getElementById('offerings-chart-block').style.display = 'block';
             const ctx = document.getElementById('offeringsChart').getContext('2d');
@@ -287,7 +470,6 @@
             const labels = offerings.map(item => item.category);
             const values = offerings.map(item => item.quantity_kg);
 
-            // Use the reusable options and customize as needed
             const options = JSON.parse(JSON.stringify(CHART_OPTIONS_BAR)); 
             options.scales.y.title.text = 'Quantity (kg)';
 
@@ -358,8 +540,7 @@
                 container.appendChild(wrapper);
             });
 
-            // Render Visualization (ENHANCED)
-            // Focus visualization on the current year data
+            // Render Visualization
             const currentYearData = countryData[meta.year];
             if (currentYearData) {
                 document.getElementById('volume-visualization-section').style.display = 'block';
@@ -372,7 +553,7 @@
 
                 const options = JSON.parse(JSON.stringify(CHART_OPTIONS_BAR));
                 options.scales.y.title.text = 'Quantity (kg)';
-                options.plugins.legend.display = true; // Enable legend for comparison
+                options.plugins.legend.display = true;
 
                 new Chart(ctx, {
                     type: 'bar',
@@ -431,7 +612,7 @@
             });
         };
         
-        // Renderer for Commentary Grid (Kolkata style)
+        // Renderer for Commentary Grid (Kolkata/Contemporary style)
         const renderCommentaryGrid = (commentary) => {
             if (!commentary || Object.keys(commentary).length === 0) return;
 
@@ -441,20 +622,40 @@
 
             for (const category in commentary) {
                 const item = commentary[category];
-                if (item.market || item.buying) {
+                // Handle both detailed (market/buying) and simple (just text string) structures
+                
+                let marketText = null;
+                let buyingText = null;
+
+                if (typeof item === 'string') {
+                    // Simple structure (e.g., Contemporary Buying Commentary)
+                    marketText = item;
+                } else if (typeof item === 'object' && item !== null) {
+                     // Detailed structure (e.g., J Thomas Commentary)
+                    marketText = item.market;
+                    buyingText = item.buying;
+                }
+
+                if (marketText || buyingText) {
                     const card = document.createElement('div');
                     card.className = 'commentary-card';
-                    card.innerHTML = `
-                        <h4>${category}</h4>
-                        <p><strong>Market:</strong> ${item.market || 'N/A'}</p>
-                        <p><strong>Buying:</strong> ${item.buying || 'N/A'}</p>
-                    `;
+                    let contentHtml = `<h4>${category}</h4>`;
+                    // If it's the detailed structure, label the sections
+                    if (buyingText) {
+                        if (marketText) contentHtml += `<p><strong>Market:</strong> ${marketText}</p>`;
+                        contentHtml += `<p><strong>Buying:</strong> ${buyingText}</p>`;
+                    } else {
+                        // Otherwise just display the text
+                         contentHtml += `<p>${marketText}</p>`;
+                    }
+                    
+                    card.innerHTML = contentHtml;
                     container.appendChild(card);
                 }
             }
         };
 
-        // Renderer for Auction Averages Comparison (Kolkata style)
+        // Renderer for Auction Averages Comparison (Kolkata/Contemporary Brokers style)
         const renderAveragesComparison = (comparison, meta) => {
             if (!comparison || comparison.length === 0) return;
             
@@ -466,48 +667,97 @@
             const tbody = table.querySelector('tbody');
             tbody.innerHTML = '';
 
-            // Multi-level Header (Assumes 2025/26 structure)
-            thead.innerHTML = `
-                <thead>
-                    <tr>
-                        <th rowspan="2" class="header-main">Category</th>
-                        <th colspan="3" class="header-main">Current Sale (2025/26)</th>
-                        <th colspan="3" class="header-main">To Date Averages</th>
-                    </tr>
-                    <tr>
-                        <th class="header-sub">Avg (S${meta.sale_number})</th>
-                        <th class="header-sub">Avg (S${meta.sale_number - 1})</th>
-                        <th class="header-sub">+/-</th>
-                        <th class="header-sub">2025/26</th>
-                        <th class="header-sub">2024/25</th>
-                        <th class="header-sub">2023/24</th>
-                    </tr>
-                </thead>
-            `;
-
-            comparison.forEach(item => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${item.category}</td>
-                    <td>${formatCurrency(item.current_sale_avg_25_26)}</td>
-                    <td>${formatCurrency(item.previous_sale_avg_25_26)}</td>
-                    <td>${formatDiff(item.diff_25_26)}</td>
-                    <td>${formatCurrency(item.ytd_avg_25_26)}</td>
-                    <td>${formatCurrency(item.ytd_avg_24_25)}</td>
-                    <td>${formatCurrency(item.ytd_avg_23_24)}</td>
+            // Detect format: Kolkata (J Thomas) vs Contemporary Brokers
+            const isJThomasFormat = comparison.some(item => item.hasOwnProperty('current_sale_avg_25_26'));
+            
+            if (isJThomasFormat) {
+                // J Thomas Format (Multi-level Header)
+                thead.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th rowspan="2" class="header-main">Category</th>
+                            <th colspan="3" class="header-main">Current Sale (2025/26)</th>
+                            <th colspan="3" class="header-main">To Date Averages</th>
+                        </tr>
+                        <tr>
+                            <th class="header-sub">Avg (S${meta.sale_number})</th>
+                            <th class="header-sub">Avg (S${meta.sale_number - 1})</th>
+                            <th class="header-sub">+/-</th>
+                            <th class="header-sub">2025/26</th>
+                            <th class="header-sub">2024/25</th>
+                            <th class="header-sub">2023/24</th>
+                        </tr>
+                    </thead>
                 `;
-                tbody.appendChild(row);
-            });
+
+                comparison.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${item.category}</td>
+                        <td>${formatCurrency(item.current_sale_avg_25_26)}</td>
+                        <td>${formatCurrency(item.previous_sale_avg_25_26)}</td>
+                        <td>${formatDiff(item.diff_25_26)}</td>
+                        <td>${formatCurrency(item.ytd_avg_25_26)}</td>
+                        <td>${formatCurrency(item.ytd_avg_24_25)}</td>
+                        <td>${formatCurrency(item.ytd_avg_23_24)}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            } else {
+                // Contemporary Brokers Format (Simple comparison)
+                 thead.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>Centre</th>
+                            <th>Type</th>
+                            <th>${meta.year} Avg</th>
+                            <th>${meta.year-1} Avg</th>
+                            <th>Difference</th>
+                        </tr>
+                    </thead>
+                `;
+                 comparison.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${item.centre}</td>
+                        <td>${item.type}</td>
+                        <td>${formatCurrency(item.current_avg)}</td>
+                        <td>${formatCurrency(item.previous_avg)}</td>
+                        <td>${formatDiff(item.difference)}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            }
         };
 
-         // Renderer for Price Distribution (Kolkata style)
+         // Renderer for Price Distribution (Kolkata/Contemporary Brokers style)
         const renderPriceDistribution = (distribution, meta) => {
             if (!distribution || Object.keys(distribution).length === 0) return;
 
             document.getElementById('price-distribution-section').style.display = 'block';
-            document.getElementById('sale-dist').textContent = meta.sale_number;
             const container = document.getElementById('distribution-container');
             container.innerHTML = '';
+
+            // Detect format and available periods dynamically
+            const firstCategory = Object.values(distribution)[0];
+            const firstRange = firstCategory ? Object.values(firstCategory)[0] : {};
+            
+            // Identify available keys using flexible naming conventions
+            const saleKey = Object.keys(firstRange).find(k => k.startsWith('Sale_'));
+            const ytdCurrentKey = Object.keys(firstRange).find(k => k.includes(`${meta.year%100}_${(meta.year+1)%100}`));
+            const ytdPreviousKey = Object.keys(firstRange).find(k => k.includes(`${(meta.year-1)%100}_${meta.year%100}`));
+
+            // Determine visualization strategy: prioritize comparison if multiple periods exist
+            const periods = [saleKey, ytdCurrentKey, ytdPreviousKey].filter(Boolean);
+            const visualizationType = periods.length > 1 ? 'comparison' : 'single';
+
+            // Update Title
+            let titleText = "Price Distribution Analysis (% of Teas Sold)";
+            if (visualizationType === 'single' && saleKey) {
+                 titleText += ` - ${saleKey.replace('_', ' ')}`;
+            }
+            document.getElementById('price-distribution-title').textContent = titleText;
+
 
             for (const [category, ranges] of Object.entries(distribution)) {
                  if (!ranges || Object.keys(ranges).length === 0) continue;
@@ -516,27 +766,46 @@
                 chartWrapper.className = 'distribution-block';
 
                 const canvasId = `chart-${category.replace(/[^a-zA-Z0-9]/g, '-')}`;
-                chartWrapper.innerHTML = `<h4>${category.replace('_', ' ')}</h4><div style="position: relative; height: 250px;"><canvas id="${canvasId}"></canvas></div>`;
+                chartWrapper.innerHTML = `<h4>${category.replace(/_/g, ' ')}</h4><div style="position: relative; height: 250px;"><canvas id="${canvasId}"></canvas></div>`;
                 container.appendChild(chartWrapper);
 
                 const ctx = document.getElementById(canvasId).getContext('2d');
                 const labels = Object.keys(ranges);
-                const currentSaleKey = `Sale_${meta.sale_number}`;
-                const values = Object.values(ranges).map(r => r[currentSaleKey]);
+                
+                let datasets = [];
 
-                // Use the reusable options and customize
+                // Build datasets dynamically based on available periods
+                if (ytdPreviousKey) {
+                     datasets.push({
+                        label: ytdPreviousKey.replace(/_/g, '/').replace('YTD/', ''),
+                        data: Object.values(ranges).map(r => r[ytdPreviousKey]),
+                        backgroundColor: CHART_COLORS.neutral,
+                    });
+                }
+                if (ytdCurrentKey) {
+                     datasets.push({
+                        label: ytdCurrentKey.replace(/_/g, '/').replace('YTD/', ''),
+                        data: Object.values(ranges).map(r => r[ytdCurrentKey]),
+                        backgroundColor: CHART_COLORS.secondary,
+                    });
+                }
+                if (saleKey) {
+                     datasets.push({
+                        label: saleKey.replace('_', ' '),
+                        data: Object.values(ranges).map(r => r[saleKey]),
+                        backgroundColor: CHART_COLORS.primary,
+                    });
+                }
+                
                 const options = JSON.parse(JSON.stringify(CHART_OPTIONS_BAR));
                 options.scales.y.title.text = 'Percentage (%)';
+                options.plugins.legend.display = visualizationType === 'comparison' || periods.length > 1; 
 
                 new Chart(ctx, {
                     type: 'bar',
                     data: {
                         labels: labels,
-                        datasets: [{
-                            label: `% Sold (Sale ${meta.sale_number})`,
-                            data: values,
-                            backgroundColor: CHART_COLORS.primary,
-                        }]
+                        datasets: datasets
                     },
                     options: options
                 });
@@ -626,7 +895,6 @@
             const tbody = table.querySelector('tbody');
             tbody.innerHTML = '';
 
-            // Header (Assumes Current Year vs Previous Year)
             const currentYear = meta.year;
             const previousYear = currentYear - 1;
 
@@ -663,7 +931,7 @@
             });
         };
 
-         // Renderer for International Summaries (Specific to Colombo)
+         // Renderer for International Summaries (Colombo style)
         const renderInternationalSummaries = (summaries) => {
              const section = document.getElementById('international-section');
              const container = document.getElementById('international-container');
@@ -717,42 +985,63 @@
             const meta = data.metadata;
 
             // 1. Metadata and Title
-            document.getElementById('report-title').textContent = `${meta.auction_centre} Auction Report - Week ${meta.week_number} (${meta.year})`;
-            let metaText = `Sale No: ${meta.sale_number} | Dates: ${meta.sale_date_start} to ${meta.sale_date_end} | Broker: ${meta.broker}`;
+            // Use specific title if available (e.g., Contemporary Brokers), otherwise default
+            const title = meta.report_title || `${meta.auction_centre || meta.region} Auction Report`;
+            document.getElementById('report-title').textContent = `${title} - Week ${meta.week_number} (${meta.year})`;
+            
+            let metaText = `Broker: ${meta.broker}`;
+            if (meta.sale_number) {
+                metaText += ` | Sale No: ${meta.sale_number}`;
+            }
+            if (meta.sale_date_start && meta.sale_date_end) {
+                 metaText += ` | Dates: ${meta.sale_date_start} to ${meta.sale_date_end}`;
+            } else if (meta.date_end) {
+                 metaText += ` | Week Ending: ${meta.date_end}`;
+            }
+           
             if (meta.currency) {
                 metaText += ` | Currency: ${meta.currency}`;
             }
             document.getElementById('report-meta').textContent = metaText;
 
-            // 2. Commentary and Summary
+            // 2. Global Statistics (NEW)
+            renderGlobalStatistics(data.global_statistics, meta);
+
+            // 3. Commentary and Summary
             if (data.commentary) {
                 renderCommentaryGrid(data.commentary);
-            } else if (data.summary) {
+            } 
+            if (data.summary) {
+                 // Render general summary only if specific commentary grid wasn't already rendered
                 renderGeneralSummary(data.summary);
             }
 
-            // 3. Offerings and Volume Analysis
+            // 4. Offerings and Volume Analysis
             renderOfferingsByGrade(data);
             renderOfferingsByCountry(data.offerings_by_country, meta);
 
-            // 4. Prices and Statistics
+            // 5. Prices and Statistics
             renderPriceQuotations(data.price_quotations, meta.currency);
             
-            // Handle statistical summaries (Kolkata/Asia Siyaka style)
+            // Handle statistical summaries (Kolkata/Asia Siyaka/Contemporary style)
             if (data.statistical_summaries) {
                 const stats = data.statistical_summaries;
                 renderAveragesComparison(stats.auction_averages_comparison, meta);
                 renderPriceDistribution(stats.price_distribution_analysis, meta);
                 renderDetailedStatistics(stats.offer_sold_statistics, meta);
                 renderQuantityComparison(stats.quantity_sold_comparison, meta);
+                renderAuctionOfferingsMultiCenter(stats.auction_offerings_packages, meta); // NEW
             }
             
-            // 5. International Summaries
+            // 6. International Summaries
             renderInternationalSummaries(data.international_summaries);
         };
 
         // --- Data Loading ---
         document.addEventListener('DOMContentLoaded', async () => {
+            // Clear previous stats container on load
+            document.getElementById('summary-stats').innerHTML = '';
+
             const params = new URLSearchParams(window.location.search);
             const datasetFile = params.get('dataset');
             
