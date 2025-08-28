@@ -1,5 +1,14 @@
 [
   {
+    "title": "India Regional Summary (Contemporary Brokers) - Week 34, 2025",
+    "description": "Comprehensive statistical summary of North & South Indian auctions (Kolkata, Guwahati, Siliguri) and World Crop comparison. WKE 23-08-2025.",
+    "year": 2025,
+    "week_number": 34,
+    "auction_centre": "Regional Summary",
+    "source": "Contemporary Brokers",
+    "report_link": "report-viewer.html?dataset=India_CB_W34_2025"
+  },
+  {
     "title": "Mombasa Auction Report - Week 34, 2025",
     "description": "Detailed analysis of prices and demand for Kenyan, Rwandan, and Ugandan teas at the Mombasa auction.",
     "year": 2025,
