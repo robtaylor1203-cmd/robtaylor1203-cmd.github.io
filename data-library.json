@@ -1,18 +1,50 @@
 [
   {
-    "title": "UK Monthly Tea Imports",
-    "description": "Official HMRC data for tea imports into the United Kingdom, broken down by country of origin, net mass, and value.",
-    "data_period": "July 2025",
-    "date_added": "2025-08-26",
-    "source": "HMRC",
-    "dashboard_link": "Dashboards/dashboard.html?dataset=uk-imports-july-2025&title=UK+Tea+Imports+-+July+2025"
+    "title": "Global Production & Sales Statistics (Aggregated)",
+    "description": "Consolidated year-to-date production volumes (M.Kg) and sales channel analysis (Kg). Aggregated automatically from broker reports.",
+    "period": "YTD 2025 (Updated Weekly)",
+    "source": "Multiple Brokers (Automated)",
+    "tags": ["Global", "Production", "Volume", "Statistics", "Sales Channels"],
+    "link": "data.html?dataset=global_statistics"
   },
   {
-    "title": "UK Monthly Tea Imports",
-    "description": "Official HMRC data for tea imports into the United Kingdom for the month of June 2025.",
-    "data_period": "June 2025",
-    "date_added": "2025-08-26",
+    "title": "UK Tea Imports - July 2025",
+    "description": "Detailed breakdown of UK tea imports by origin, volume (kg), and value (£) for July 2025.",
+    "period": "July 2025",
     "source": "HMRC",
-    "dashboard_link": "Dashboards/dashboard.html?dataset=uk-imports-june-2025&title=UK+Tea+Imports+-+June+2025"
+    "tags": ["UK", "Imports", "Trade Data", "HMRC"],
+    "link": "data.html?dataset=uk-imports-july-2025"
+  },
+  {
+    "title": "UK Tea Imports - June 2025",
+    "description": "Detailed breakdown of UK tea imports by origin, volume (kg), and value (£) for June 2025.",
+    "period": "June 2025",
+    "source": "HMRC",
+    "tags": ["UK", "Imports", "Trade Data", "HMRC"],
+    "link": "data.html?dataset=uk-imports-june-2025"
+  },
+  {
+    "title": "Historical Auction Prices - Mombasa 2024",
+    "description": "Weekly average prices for key grades (BP1, PF1) at the Mombasa auction throughout 2024.",
+    "period": "2024",
+    "source": "Tea Brokers East Africa",
+    "tags": ["Mombasa", "Prices", "Historical", "Africa"],
+    "link": "#"
+  },
+  {
+    "title": "Global Tea Production Statistics 2023",
+    "description": "Annual tea production figures for the top 15 producing countries in 2023.",
+    "period": "2023",
+    "source": "International Tea Committee (ITC)",
+    "tags": ["Global", "Production", "Statistics", "ITC"],
+    "link": "#"
+  },
+  {
+    "title": "EU Import Regulations for Tea (Update 2025)",
+    "description": "Summary of the latest EU regulations concerning MRLs (Maximum Residue Limits) for tea imports.",
+    "period": "Q1 2025",
+    "source": "EU Commission",
+    "tags": ["EU", "Regulations", "MRL", "Compliance"],
+    "link": "#"
   }
 ]
