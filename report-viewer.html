@@ -41,6 +41,20 @@
             
             <div class="stat-cards-container" id="summary-stats"></div>
 
+            <section class="report-section" id="volume-visualization-section" style="display: none;">
+                <h3>Volume Analysis</h3>
+                <div class="distribution-container">
+                    <div class="distribution-block" id="offerings-chart-block" style="display: none;">
+                        <h4>Offerings Breakdown (kg)</h4>
+                        <div style="position: relative; height: 300px;"><canvas id="offeringsChart"></canvas></div>
+                    </div>
+                    <div class="distribution-block" id="country-chart-block" style="display: none;">
+                         <h4>Offered vs Sold by Country (kg)</h4>
+                        <div style="position: relative; height: 300px;"><canvas id="countryChart"></canvas></div>
+                    </div>
+                </div>
+            </section>
+
             <section class="report-section" id="summary-section" style="display: none;">
                 <h3>Market Commentary</h3>
                 <p id="market-comment"></p>
@@ -50,6 +64,16 @@
             <section class="report-section" id="commentary-grid-section" style="display: none;">
                  <h3>Market Synopsis & Buying Analysis</h3>
                 <div class="commentary-grid" id="commentary-container"></div>
+            </section>
+
+            <section class="report-section" id="quantity-comparison-section" style="display: none;">
+                <h3>Quantity Sold Comparison (kg)</h3>
+                 <div class="data-table-container">
+                    <table class="data-table stats-table" id="quantity-comparison-table">
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </section>
 
             <section class="report-section" id="offerings-grade-section" style="display: none;">
@@ -63,7 +87,7 @@
                 </div>
             </section>
 
-             <section class="report-section" id="country-breakdown-section" style="display: none;">
+            <section class="report-section" id="country-breakdown-section" style="display: none;">
                 <h3>Offerings vs. Sold (by Country)</h3>
                 <div class="comparison-grid" id="country-breakdown-tables">
                     </div>
@@ -89,7 +113,7 @@
                 </div>
             </section>
 
-             <section class="report-section" id="price-distribution-section" style="display: none;">
+            <section class="report-section" id="price-distribution-section" style="display: none;">
                  <h3>Price Distribution Analysis (% of Teas Sold) - Sale <span id="sale-dist"></span></h3>
                  <div class="distribution-container" id="distribution-container"></div>
             </section>
@@ -108,9 +132,34 @@
     </main>
     <script src="script.js"></script>
     <script>
+        // --- Configuration ---
+        // Colors suitable for a modern financial aesthetic
+        const CHART_COLORS = {
+            primary: 'rgba(26, 115, 232, 0.8)', // Blue
+            secondary: 'rgba(128, 178, 247, 0.8)', // Lighter Blue
+            accent1: 'rgba(251, 188, 4, 0.8)', // Yellow
+            accent2: 'rgba(52, 168, 83, 0.8)', // Green
+            neutral: 'rgba(160, 160, 160, 0.8)' // Grey
+        };
+
+        // Reusable base options for bar charts
+        const CHART_OPTIONS_BAR = {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: { display: true, text: 'Value' }
+                },
+                x: {
+                    ticks: { autoSkip: false, maxRotation: 45, minRotation: 45 }
+                }
+            },
+            plugins: { legend: { display: false } }
+        };
+
         // --- Utility Functions ---
         const formatNumber = (num, decimals = 0) => {
-            // Check for NaN explicitly as well as null/undefined
             if (num === null || num === undefined || isNaN(num)) return 'N/A';
             return num.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
         };
@@ -119,7 +168,6 @@
 
         const formatPriceRange = (min, max) => {
              if ((min === null || min === undefined) && (max === null || max === undefined)) return 'N/A';
-             // Use 2 decimal places for currency/prices (assuming LKR/INR/USC)
              return `${formatNumber(min, 2)} - ${formatNumber(max, 2)}`;
         }
 
@@ -135,11 +183,9 @@
         // Renderer for General Summary (Colombo/Mombasa style)
         const renderGeneralSummary = (summary) => {
             if (!summary) return;
-            document.getElementById('summary-section').style.display = 'block';
             
-            // Stat Cards (Mombasa/Colombo style)
             const statsContainer = document.getElementById('summary-stats');
-            statsContainer.innerHTML = ''; // Clear previous stats
+            statsContainer.innerHTML = '';
 
             const stats = [
                 { label: 'Total Quantity (kg)', value: summary.total_quantity_kg, format: 0 },
@@ -160,10 +206,13 @@
                 }
             });
 
-
-            // Text Comments
-            document.getElementById('market-comment').textContent = summary.market_comment || 'N/A';
+            if (summary.market_comment) {
+                 document.getElementById('summary-section').style.display = 'block';
+                 document.getElementById('market-comment').textContent = summary.market_comment;
+            }
+           
             if (summary.quality_comment) {
+                document.getElementById('summary-section').style.display = 'block';
                 document.getElementById('quality-wrapper').style.display = 'block';
                 document.getElementById('quality-comment').textContent = summary.quality_comment;
             }
@@ -171,7 +220,6 @@
 
         // Renderer for Offerings by Grade/Category (Colombo/Mombasa style)
         const renderOfferingsByGrade = (data) => {
-            // Handles both 'offerings' (Colombo) and 'offerings_by_grade' (Mombasa) keys
             const offerings = data.offerings || data.offerings_by_grade;
             const summary = data.summary;
 
@@ -185,18 +233,15 @@
             tbody.innerHTML = '';
             tfoot.innerHTML = '';
 
-            // Determine headers based on available data keys
             const hasLots = offerings.some(item => item.lots !== undefined);
             const hasPackages = offerings.some(item => item.packages !== undefined);
             const hasUnsold = offerings.some(item => item.percent_unsold !== undefined);
 
-            // Update title based on content
             if (hasLots) {
                  document.getElementById('offerings-grade-title').textContent = "Auction Offerings (by Category)";
             } else if (hasPackages) {
                  document.getElementById('offerings-grade-title').textContent = "Auction Offerings (by Grade Type)";
             }
-
 
             let headerHtml = '<tr><th>Category</th>';
             if (hasLots) headerHtml += '<th>Lots</th>';
@@ -206,7 +251,6 @@
             headerHtml += '</tr>';
             thead.innerHTML = headerHtml;
 
-            // Populate rows
             offerings.forEach(item => {
                 let rowHtml = `<tr><td>${item.category}</td>`;
                 if (hasLots) rowHtml += `<td>${formatNumber(item.lots)}</td>`;
@@ -217,7 +261,6 @@
                 tbody.innerHTML += rowHtml;
             });
 
-            // Totals (Dynamic footer)
             if (summary) {
                 let footCells = [`<td>TOTAL</td>`];
                 if (hasLots && summary.total_lots) footCells.push(`<td>${formatNumber(summary.total_lots)}</td>`);
@@ -225,30 +268,52 @@
                 
                 if (summary.total_quantity_kg) footCells.push(`<td>${formatNumber(summary.total_quantity_kg)}</td>`);
                 
-                // Only show total % unsold if the column exists and the total value exists
                 if (hasUnsold && summary.percent_unsold !== undefined) {
                     footCells.push(`<td>${formatNumber(summary.percent_unsold, 2)}%</td>`);
                 }
 
                  tfoot.innerHTML = `<tr style="font-weight: bold; background-color: #f1f3f4;">${footCells.join('')}</tr>`;
 
-                // Handle Colombo Reprints
                 if (summary.reprints_lots) {
-                     // Assuming reprints only have lots and kg (Colombo style)
                      tfoot.innerHTML += `<tr style="font-style: italic; color: #5f6368;"><td>Re-Prints</td><td>${formatNumber(summary.reprints_lots)}</td><td>${formatNumber(summary.reprints_quantity_kg)}</td></tr>`;
                 }
             }
+
+            // Render Visualization (ENHANCED)
+            document.getElementById('volume-visualization-section').style.display = 'block';
+            document.getElementById('offerings-chart-block').style.display = 'block';
+            const ctx = document.getElementById('offeringsChart').getContext('2d');
+            
+            const labels = offerings.map(item => item.category);
+            const values = offerings.map(item => item.quantity_kg);
+
+            // Use the reusable options and customize as needed
+            const options = JSON.parse(JSON.stringify(CHART_OPTIONS_BAR)); 
+            options.scales.y.title.text = 'Quantity (kg)';
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Quantity (kg)',
+                        data: values,
+                        backgroundColor: CHART_COLORS.primary,
+                    }]
+                },
+                options: options
+            });
         };
 
         // Renderer for Offerings by Country (Mombasa style)
-        const renderOfferingsByCountry = (countryData) => {
+        const renderOfferingsByCountry = (countryData, meta) => {
             if (!countryData || Object.keys(countryData).length === 0) return;
             
             document.getElementById('country-breakdown-section').style.display = 'block';
             const container = document.getElementById('country-breakdown-tables');
             container.innerHTML = '';
 
-            const years = Object.keys(countryData).sort((a, b) => b - a); // Current year first
+            const years = Object.keys(countryData).sort((a, b) => b - a);
 
             years.forEach(year => {
                 const data = countryData[year];
@@ -292,6 +357,43 @@
                 wrapper.appendChild(tableContainer);
                 container.appendChild(wrapper);
             });
+
+            // Render Visualization (ENHANCED)
+            // Focus visualization on the current year data
+            const currentYearData = countryData[meta.year];
+            if (currentYearData) {
+                document.getElementById('volume-visualization-section').style.display = 'block';
+                document.getElementById('country-chart-block').style.display = 'block';
+                const ctx = document.getElementById('countryChart').getContext('2d');
+
+                const labels = currentYearData.map(item => item.country);
+                const offeredValues = currentYearData.map(item => item.offered_kg);
+                const soldValues = currentYearData.map(item => item.sold_kg);
+
+                const options = JSON.parse(JSON.stringify(CHART_OPTIONS_BAR));
+                options.scales.y.title.text = 'Quantity (kg)';
+                options.plugins.legend.display = true; // Enable legend for comparison
+
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Offered (kg)',
+                                data: offeredValues,
+                                backgroundColor: CHART_COLORS.secondary,
+                            },
+                            {
+                                label: 'Sold (kg)',
+                                data: soldValues,
+                                backgroundColor: CHART_COLORS.primary,
+                            }
+                        ]
+                    },
+                    options: options
+                });
+            }
         };
 
         // Renderer for Price Quotations (Colombo/Mombasa style)
@@ -306,7 +408,6 @@
             const tbody = table.querySelector('tbody');
             tbody.innerHTML = '';
 
-            // Determine headers based on available data keys (dynamic adaptation)
             const hasElevation = quotations.some(item => item.elevation !== undefined);
             const hasCategory = quotations.some(item => item.category !== undefined);
             const hasPrevious = quotations.some(item => item.previous_min !== undefined || item.previous_max !== undefined);
@@ -319,7 +420,6 @@
             headerHtml += '</tr>';
             thead.innerHTML = headerHtml;
 
-            // Populate rows
             quotations.forEach(item => {
                 let rowHtml = '<tr>';
                 if (hasElevation) rowHtml += `<td>${item.elevation}</td>`;
@@ -366,7 +466,7 @@
             const tbody = table.querySelector('tbody');
             tbody.innerHTML = '';
 
-            // Multi-level Header (Assumes 2025/26 structure based on provided data)
+            // Multi-level Header (Assumes 2025/26 structure)
             thead.innerHTML = `
                 <thead>
                     <tr>
@@ -385,7 +485,6 @@
                 </thead>
             `;
 
-            // Populate rows
             comparison.forEach(item => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -413,20 +512,21 @@
             for (const [category, ranges] of Object.entries(distribution)) {
                  if (!ranges || Object.keys(ranges).length === 0) continue;
 
-                // Create wrapper and canvas for the chart
                 const chartWrapper = document.createElement('div');
                 chartWrapper.className = 'distribution-block';
 
                 const canvasId = `chart-${category.replace(/[^a-zA-Z0-9]/g, '-')}`;
-                // Added responsive height container for the chart
                 chartWrapper.innerHTML = `<h4>${category.replace('_', ' ')}</h4><div style="position: relative; height: 250px;"><canvas id="${canvasId}"></canvas></div>`;
                 container.appendChild(chartWrapper);
 
                 const ctx = document.getElementById(canvasId).getContext('2d');
                 const labels = Object.keys(ranges);
-                // Using the specific sale number key (e.g., Sale_32)
                 const currentSaleKey = `Sale_${meta.sale_number}`;
                 const values = Object.values(ranges).map(r => r[currentSaleKey]);
+
+                // Use the reusable options and customize
+                const options = JSON.parse(JSON.stringify(CHART_OPTIONS_BAR));
+                options.scales.y.title.text = 'Percentage (%)';
 
                 new Chart(ctx, {
                     type: 'bar',
@@ -435,23 +535,10 @@
                         datasets: [{
                             label: `% Sold (Sale ${meta.sale_number})`,
                             data: values,
-                            backgroundColor: 'rgba(26, 115, 232, 0.8)',
+                            backgroundColor: CHART_COLORS.primary,
                         }]
                     },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false, // Allow chart to fill container height
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                title: { display: true, text: 'Percentage (%)' }
-                            },
-                            x: {
-                                ticks: { autoSkip: false, maxRotation: 45, minRotation: 45 }
-                            }
-                        },
-                        plugins: { legend: { display: false } }
-                    }
+                    options: options
                 });
             }
         };
@@ -497,12 +584,10 @@
                 const tbody = table.querySelector('tbody');
                 details.forEach(item => {
                     const row = document.createElement('tr');
-                     // Apply bold style for total rows
                     if (item.Grade.includes("TOTAL")) {
                         row.style.fontWeight = 'bold';
                         row.style.backgroundColor = '#f1f3f4';
                     }
-                    // Adding left borders to separate the sections visually
                     row.innerHTML = `
                         <td>${item.Grade}</td>
                         <td style="border-left: 2px solid #dadce0;">${formatNumber(item.This_Sale.Offered)}</td>
@@ -526,12 +611,58 @@
                 section.appendChild(wrapper);
             };
 
-            // Render tables for each category present in the statistics object
             if (statistics.CTC_Dust) renderDetailTable(statistics.CTC_Dust, "CTC & Dust");
             if (statistics.Orthodox) renderDetailTable(statistics.Orthodox, "Orthodox");
             if (statistics.Darjeeling) renderDetailTable(statistics.Darjeeling, "Darjeeling");
         };
         
+        // Renderer for Quantity Sold Comparison (Asia Siyaka style)
+        const renderQuantityComparison = (comparison, meta) => {
+             if (!comparison || comparison.length === 0) return;
+
+            document.getElementById('quantity-comparison-section').style.display = 'block';
+            const table = document.getElementById('quantity-comparison-table');
+            const thead = table.querySelector('thead');
+            const tbody = table.querySelector('tbody');
+            tbody.innerHTML = '';
+
+            // Header (Assumes Current Year vs Previous Year)
+            const currentYear = meta.year;
+            const previousYear = currentYear - 1;
+
+            thead.innerHTML = `
+                <thead>
+                    <tr>
+                        <th rowspan="2" class="header-main">Category</th>
+                        <th colspan="2" class="header-main">${currentYear}</th>
+                        <th colspan="2" class="header-main">${previousYear}</th>
+                    </tr>
+                    <tr>
+                        <th class="header-sub">Weekly</th>
+                        <th class="header-sub">To Date</th>
+                        <th class="header-sub">Weekly</th>
+                        <th class="header-sub">To Date</th>
+                    </tr>
+                </thead>
+            `;
+
+            comparison.forEach(item => {
+                const row = document.createElement('tr');
+                 if (item.category.includes("Total")) {
+                        row.style.fontWeight = 'bold';
+                        row.style.backgroundColor = '#f1f3f4';
+                    }
+                row.innerHTML = `
+                    <td>${item.category}</td>
+                    <td>${formatNumber(item.weekly_current_year)}</td>
+                    <td>${formatNumber(item.todate_current_year)}</td>
+                    <td>${formatNumber(item.weekly_previous_year)}</td>
+                    <td>${formatNumber(item.todate_previous_year)}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        };
+
          // Renderer for International Summaries (Specific to Colombo)
         const renderInternationalSummaries = (summaries) => {
              const section = document.getElementById('international-section');
@@ -550,7 +681,6 @@
                                        <p style="font-size: 13px; color: #5f6368;">${summary.date || ''}</p>
                                        <p>${summary.summary || 'Summary not available.'}</p>`;
                     
-                    // If structured data exists (like Mombasa CTC inside Colombo report), render tables
                     if (summary.structured_data && summary.structured_data.currency) {
                         contentHtml += `<p><strong>Quotations (${summary.structured_data.currency}):</strong></p>`;
                         
@@ -594,31 +724,30 @@
             }
             document.getElementById('report-meta').textContent = metaText;
 
-            // 2. Commentary and Summary (Dynamically choose renderer)
-            // Kolkata style (commentary grid)
+            // 2. Commentary and Summary
             if (data.commentary) {
                 renderCommentaryGrid(data.commentary);
-            } 
-            // Colombo/Mombasa style (general summary text and stats)
-            else if (data.summary) {
+            } else if (data.summary) {
                 renderGeneralSummary(data.summary);
             }
 
-            // 3. Offerings (Dynamically choose renderer)
+            // 3. Offerings and Volume Analysis
             renderOfferingsByGrade(data);
-            renderOfferingsByCountry(data.offerings_by_country);
+            renderOfferingsByCountry(data.offerings_by_country, meta);
 
-            // 4. Prices and Statistics (Dynamically choose renderer)
+            // 4. Prices and Statistics
             renderPriceQuotations(data.price_quotations, meta.currency);
             
-            // Handle Kolkata-style statistical summaries if present
+            // Handle statistical summaries (Kolkata/Asia Siyaka style)
             if (data.statistical_summaries) {
-                renderAveragesComparison(data.statistical_summaries.auction_averages_comparison, meta);
-                renderPriceDistribution(data.statistical_summaries.price_distribution_analysis, meta);
-                renderDetailedStatistics(data.statistical_summaries.offer_sold_statistics, meta);
+                const stats = data.statistical_summaries;
+                renderAveragesComparison(stats.auction_averages_comparison, meta);
+                renderPriceDistribution(stats.price_distribution_analysis, meta);
+                renderDetailedStatistics(stats.offer_sold_statistics, meta);
+                renderQuantityComparison(stats.quantity_sold_comparison, meta);
             }
             
-            // 5. International Summaries (If present - e.g. Colombo)
+            // 5. International Summaries
             renderInternationalSummaries(data.international_summaries);
         };
 
