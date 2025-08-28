@@ -1,0 +1,95 @@
+{
+  "last_updated": "2025-08-29",
+  "current_year": 2025,
+  "previous_year": 2024,
+  "note": "Data reflects the 'To Date' volume reported by the source up to the month or date indicated.",
+  "production_statistics_mkg": [
+    {
+      "region": "North India",
+      "as_of_month": "June",
+      "current_year_todate": 352.8,
+      "previous_year_todate": 313.7,
+      "difference": 39.1,
+      "source": "Contemporary Brokers W34"
+    },
+    {
+      "region": "South India",
+      "as_of_month": "June",
+      "current_year_todate": 116.9,
+      "previous_year_todate": 100.4,
+      "difference": 16.5,
+      "source": "Contemporary Brokers W34"
+    },
+    {
+      "region": "Sri Lanka",
+      "as_of_month": "July",
+      "current_year_todate": 156.2,
+      "previous_year_todate": 150.2,
+      "difference": 6.0,
+      "source": "Contemporary Brokers W34"
+    },
+    {
+      "region": "Kenya",
+      "as_of_month": "June",
+      "current_year_todate": 283.2,
+      "previous_year_todate": 321.1,
+      "difference": -37.9,
+      "source": "Contemporary Brokers W34"
+    },
+    {
+      "region": "Malawi",
+      "as_of_month": "June",
+      "current_year_todate": 31.4,
+      "previous_year_todate": 33.2,
+      "difference": -1.8,
+      "source": "Contemporary Brokers W34"
+    },
+    {
+      "region": "Tanzania",
+      "as_of_month": "March",
+      "current_year_todate": 3.8,
+      "previous_year_todate": 6.8,
+      "difference": -3.0,
+      "source": "Contemporary Brokers W34"
+    },
+    {
+      "region": "Rwanda",
+      "as_of_month": "June",
+      "current_year_todate": 22.3,
+      "previous_year_todate": 24.9,
+      "difference": -2.6,
+      "source": "Contemporary Brokers W34"
+    },
+    {
+      "region": "Bangladesh",
+      "as_of_month": "June",
+      "current_year_todate": 17.7,
+      "previous_year_todate": 24.6,
+      "difference": -6.9,
+      "source": "Contemporary Brokers W34"
+    }
+  ],
+  "sales_channel_statistics_kg": {
+    "Sri Lanka": {
+      "as_of_date": "2025-08-20",
+      "source": "Asia Siyaka W34",
+      "channels": [
+        {
+          "channel": "Private Sale",
+          "current_year_todate": 6745149.0,
+          "previous_year_todate": 4104102.0
+        },
+        {
+          "channel": "Public Auction",
+          "current_year_todate": 156950187.0,
+          "previous_year_todate": 148304008.0
+        },
+        {
+          "channel": "Forward Contracts",
+          "current_year_todate": 1571231.0,
+          "previous_year_todate": 1337070.0
+        }
+      ]
+    }
+  }
+}
