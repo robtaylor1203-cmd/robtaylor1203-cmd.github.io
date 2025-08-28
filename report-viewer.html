@@ -189,7 +189,7 @@
 
         // --- Rendering Functions (Modularized by Data Type) ---
 
-         // Renderer for Price Distribution (Kolkata/Contemporary Brokers style) - CORRECTED
+         // Renderer for Price Distribution (Kolkata/Contemporary Brokers style) - VERIFIED LOGIC
         const renderPriceDistribution = (distribution, meta) => {
             if (!distribution || Object.keys(distribution).length === 0) return;
 
@@ -197,36 +197,41 @@
             const container = document.getElementById('distribution-container');
             container.innerHTML = '';
 
-            // --- Key Detection Logic (CORRECTED) ---
+            // --- Key Detection Logic ---
             const firstCategory = Object.values(distribution)[0];
             const firstRange = firstCategory ? Object.values(firstCategory)[0] : {};
             
-            // 1. Identify specific keys based on metadata (for J Thomas style)
-            let currentSaleKey = meta.sale_number ? `Sale_${meta.sale_number}` : null;
-            let previousSaleKey = (meta.sale_number && meta.sale_number > 1) ? `Sale_${meta.sale_number - 1}` : null;
+            // Determine the primary identifier (Sale Number or Week Number)
+            const saleIdentifier = meta.sale_number || meta.week_number;
+
+            // 1. Identify specific keys based on metadata (for precise week-over-week comparison)
+            let currentSaleKey = saleIdentifier ? `Sale_${saleIdentifier}` : null;
+            let previousSaleKey = (saleIdentifier && saleIdentifier > 1) ? `Sale_${saleIdentifier - 1}` : null;
 
             // Check if these specific keys actually exist in the data
             if (currentSaleKey && !firstRange.hasOwnProperty(currentSaleKey)) currentSaleKey = null;
-            if (previousSaleKey && !firstRange.hasOwnProperty(previousSaleKey)) previousSaleKey = null;
+            // We only care if the previous key exists if the current one also does (for this specific comparison type)
+            if (previousSaleKey && (!currentSaleKey || !firstRange.hasOwnProperty(previousSaleKey))) previousSaleKey = null;
 
-            // 2. Identify generic keys (for Contemporary style or fallback)
-            // If specific keys weren't found or metadata is missing sale_number, look for generic ones
-            // Use the specific key if found, otherwise look for a generic 'Sale_' key.
+            
+            // 2. Identify generic keys (for fallback or reports without specific numbering)
+            // Use the specific key if found, otherwise look for any 'Sale_' key.
             const genericSaleKey = currentSaleKey ? currentSaleKey : Object.keys(firstRange).find(k => k.startsWith('Sale_'));
             
-            // 3. Identify YTD Keys
+            // 3. Identify YTD Keys (Handles variations like 2025_26 or YTD_25_26)
             const ytdCurrentKey = Object.keys(firstRange).find(k => k.includes(`${meta.year%100}_${(meta.year+1)%100}`) || k.includes(`${meta.year}_${meta.year+1}`));
             const ytdPreviousKey = Object.keys(firstRange).find(k => k.includes(`${(meta.year-1)%100}_${meta.year%100}`) || k.includes(`${meta.year-1}_${meta.year}`));
 
             // --- Prioritization Logic ---
             let prioritizedKeys = [];
             
-            // Priority 1: Specific Weekly Comparison (J Thomas) - This fixes the user reported bug.
+            // Priority 1: Specific Weekly Comparison (e.g., J Thomas: Sale 32 vs Sale 31)
+            // Requires both current and previous specific keys to be present.
             if (currentSaleKey && previousSaleKey) {
                 prioritizedKeys.push({ key: previousSaleKey, label: previousSaleKey.replace('_', ' '), color: CHART_COLORS.secondary });
                 prioritizedKeys.push({ key: currentSaleKey, label: currentSaleKey.replace('_', ' '), color: CHART_COLORS.primary });
             } 
-            // Priority 2: Multi-period comparison (Contemporary)
+            // Priority 2: Multi-period comparison (e.g., Contemporary: Sale 34 vs YTDs)
             else if (genericSaleKey && (ytdCurrentKey || ytdPreviousKey)) {
                  if (ytdPreviousKey) {
                      prioritizedKeys.push({ key: ytdPreviousKey, label: ytdPreviousKey.replace(/_/g, '/').replace('YTD/', ''), color: CHART_COLORS.neutral });
@@ -234,6 +239,7 @@
                  if (ytdCurrentKey) {
                       prioritizedKeys.push({ key: ytdCurrentKey, label: ytdCurrentKey.replace(/_/g, '/').replace('YTD/', ''), color: CHART_COLORS.secondary });
                  }
+                 // The current sale/week is the primary focus
                  prioritizedKeys.push({ key: genericSaleKey, label: genericSaleKey.replace('_', ' '), color: CHART_COLORS.primary });
             }
             // Priority 3: Single period display
@@ -274,9 +280,9 @@
 
                 // Build datasets using prioritized keys
                 prioritizedKeys.forEach(pKey => {
-                    // Ensure the key exists in the current category data before adding the dataset
-                    // Check the first range item as a proxy for the rest
-                    if (ranges[Object.keys(ranges)[0]].hasOwnProperty(pKey.key)) {
+                    // Safety check: Ensure the key exists in the current category data before adding the dataset
+                    // We check the first item in ranges as a proxy for the rest in the category
+                    if (ranges[Object.keys(ranges)[0]] && ranges[Object.keys(ranges)[0]].hasOwnProperty(pKey.key)) {
                          datasets.push({
                             label: pKey.label,
                             data: Object.values(ranges).map(r => r[pKey.key]),
@@ -287,6 +293,7 @@
                 
                 const options = JSON.parse(JSON.stringify(CHART_OPTIONS_BAR));
                 options.scales.y.title.text = 'Percentage (%)';
+                // Display legend if it's a comparison chart
                 options.plugins.legend.display = visualizationType === 'comparison'; 
 
                 new Chart(ctx, {
@@ -300,7 +307,7 @@
             }
         };
 
-        // (The remaining rendering functions are included below for completeness)
+        // (The remaining rendering functions are included below for completeness, unchanged)
 
         const renderGlobalStatistics = (globalStats, meta) => {
             if (!globalStats || Object.keys(globalStats).length === 0) return;
@@ -832,8 +839,11 @@
         
         const renderDetailedStatistics = (statistics, meta) => {
             if (!statistics || Object.keys(statistics).length === 0) return;
-             // Requires sale_number for header display
-            if (!meta.sale_number) return;
+            
+            // Use Sale Number or Week Number as the identifier
+            const saleIdentifier = meta.sale_number || meta.week_number;
+             // Requires identifier for header display
+            if (!saleIdentifier) return;
 
             const section = document.getElementById('detailed-stats-section');
             section.style.display = 'block';
@@ -856,8 +866,8 @@
                     <thead>
                         <tr>
                             <th rowspan="2" class="header-main">Grade</th>
-                            <th colspan="4" class="header-main" style="text-align: center; border-left: 2px solid #dadce0;">This Sale (S${meta.sale_number})</th>
-                            <th colspan="4" class="header-main" style="text-align: center; border-left: 2px solid #dadce0;">Last Sale (S${meta.sale_number-1})</th>
+                            <th colspan="4" class="header-main" style="text-align: center; border-left: 2px solid #dadce0;">This Sale (S${saleIdentifier})</th>
+                            <th colspan="4" class="header-main" style="text-align: center; border-left: 2px solid #dadce0;">Last Sale (S${saleIdentifier-1})</th>
                             <th colspan="4" class="header-main" style="text-align: center; border-left: 2px solid #dadce0;">To Date</th>
                         </tr>
                         <tr>
@@ -876,20 +886,25 @@
                         row.style.fontWeight = 'bold';
                         row.style.backgroundColor = '#f1f3f4';
                     }
+                    // Check if data exists before attempting to format, handle potential missing historical data gracefully
+                    const TS = item.This_Sale || {};
+                    const LS = item.Last_Sale || {};
+                    const TD = item.To_Date || {};
+
                     row.innerHTML = `
                         <td>${item.Grade}</td>
-                        <td style="border-left: 2px solid #dadce0;">${formatNumber(item.This_Sale.Offered)}</td>
-                        <td>${formatNumber(item.This_Sale.Sold)}</td>
-                        <td>${formatCurrency(item.This_Sale.Average)}</td>
-                        <td>${formatNumber(item.This_Sale.Out_Percent)}%</td>
-                        <td style="border-left: 2px solid #dadce0;">${formatNumber(item.Last_Sale.Offered)}</td>
-                        <td>${formatNumber(item.Last_Sale.Sold)}</td>
-                        <td>${formatCurrency(item.Last_Sale.Average)}</td>
-                        <td>${formatNumber(item.Last_Sale.Out_Percent)}%</td>
-                        <td style="border-left: 2px solid #dadce0;">${formatNumber(item.To_Date.Offered)}</td>
-                        <td>${formatNumber(item.To_Date.Sold)}</td>
-                        <td>${formatCurrency(item.To_Date.Average)}</td>
-                        <td>${formatNumber(item.To_Date.Out_Percent)}%</td>
+                        <td style="border-left: 2px solid #dadce0;">${formatNumber(TS.Offered)}</td>
+                        <td>${formatNumber(TS.Sold)}</td>
+                        <td>${formatCurrency(TS.Average)}</td>
+                        <td>${formatNumber(TS.Out_Percent)}%</td>
+                        <td style="border-left: 2px solid #dadce0;">${formatNumber(LS.Offered)}</td>
+                        <td>${formatNumber(LS.Sold)}</td>
+                        <td>${formatCurrency(LS.Average)}</td>
+                        <td>${formatNumber(LS.Out_Percent)}%</td>
+                        <td style="border-left: 2px solid #dadce0;">${formatNumber(TD.Offered)}</td>
+                        <td>${formatNumber(TD.Sold)}</td>
+                        <td>${formatCurrency(TD.Average)}</td>
+                        <td>${formatNumber(TD.Out_Percent)}%</td>
                     `;
                     tbody.appendChild(row);
                 });

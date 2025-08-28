@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visuals - TeaTrade</title>
+    <title>Visuals & Insights - TeaTrade</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="visuals-page">
     <header class="site-header">
@@ -29,37 +30,155 @@
             </ul>
         </nav>
     </header>
+
     <main class="page-container">
-        <h2 class="page-title">Data Visualizations</h2>
-        
-        <div class="visuals-grid" id="visuals-container">
-            
-            <!-- Sample Card 1 (Replace src with actual image paths when available) -->
-            <a href="#" class="visual-card">
-                <div class="visual-card-image-wrapper">
-                    <img src="https://placehold.co/600x338/34a853/ffffff?text=Global+Trade+Flows" alt="Visualization Thumbnail" class="visual-card-image" loading="lazy">
-                </div>
-                <div class="visual-card-info">
-                    <h3 class="visual-card-title">Mapping the Global Flow of Tea (2025)</h3>
-                    <p class="visual-card-meta">August 28, 2025 | Source: HMRC, ITC</p>
-                </div>
-            </a>
-
-            <!-- Sample Card 2 -->
-            <a href="#" class="visual-card">
-                <div class="visual-card-image-wrapper">
-                     <img src="https://placehold.co/600x338/1a73e8/ffffff?text=Price+Volatility" alt="Visualization Thumbnail" class="visual-card-image" loading="lazy">
-                </div>
-                <div class="visual-card-info">
-                    <h3 class="visual-card-title">The Price Volatility of Kenyan CTC</h3>
-                    <p class="visual-card-meta">August 20, 2025 | Source: Mombasa Auction</p>
-                </div>
-            </a>
-            
-            <!-- Add more visualization cards here -->
-
+        <div class="dashboard-header">
+            <h2 class="page-title">Visual Insights</h2>
         </div>
+        
+        <section class="report-section">
+            <h3>Key Grade Price Tracker (CTC PF1 Best/Good)</h3>
+            <p style="color: #5f6368; margin-bottom: 16px;">Tracking the USD-normalized midpoint price for CTC PF1 (Best/Good quality) across major global auction centers.</p>
+            
+            <div class="distribution-block" style="padding: 24px;">
+                <div style="position: relative; height: 400px;">
+                    <canvas id="keyGradeTrackerChart"></canvas>
+                </div>
+            </div>
+             <p style="font-size: 12px; color: #70757a; margin-top: 8px;">Note: Prices are normalized to USD based on exchange rates as of 29th August 2025 (LKR/USD: 0.003305; INR/USD: 0.011416).</p>
+        </section>
+
+        <section class="report-section">
+            <h3>More Visualizations Coming Soon</h3>
+            <div class="visuals-grid">
+                <a href="#" class="visual-card">
+                    <div class="visual-card-image-wrapper" style="background-color: #e8f0fe;">
+                        </div>
+                    <div class="visual-card-info">
+                        <div class="visual-card-title">UK Import Analysis (Volume vs Value)</div>
+                        <div class="visual-card-meta">Source: HMRC | Updated Monthly</div>
+                    </div>
+                </a>
+                 <a href="#" class="visual-card">
+                    <div class="visual-card-image-wrapper" style="background-color: #fef7e0;">
+                         </div>
+                    <div class="visual-card-info">
+                        <div class="visual-card-title">Global Production Tracker (YTD)</div>
+                        <div class="visual-card-meta">Source: Broker Reports, ITC | Updated Weekly</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
     </main>
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Data Normalized to USD (Midpoints calculated from W32-W34 reports)
+            // Calculations:
+            // Mombasa W33: (2.45+3.72)/2 = 3.085 USD
+            // Kolkata W32: 285 INR * 0.011416 = 3.254 USD
+            // Colombo W33: 1390 LKR * 0.003305 = 4.594 USD
+            // Colombo W34: 1205 LKR * 0.003305 = 3.983 USD
+            
+            const priceData = {
+                labels: ["Week 32", "Week 33", "Week 34"],
+                datasets: [
+                    {
+                        label: 'Mombasa',
+                        data: [null, 3.085, null], 
+                        borderColor: 'rgba(52, 168, 83, 1)', // Green
+                        backgroundColor: 'rgba(52, 168, 83, 0.1)',
+                        tension: 0.1,
+                        fill: true,
+                    },
+                    {
+                        label: 'Kolkata',
+                        // Note: We currently only have W32 data for Kolkata (J Thomas) and W34 (Contemporary) does not provide grade-level breakdown.
+                        data: [3.254, null, null], 
+                        borderColor: 'rgba(251, 188, 4, 1)', // Yellow
+                        backgroundColor: 'rgba(251, 188, 4, 0.1)',
+                        tension: 0.1,
+                        fill: true,
+                    },
+                    {
+                        label: 'Colombo (Unorthodox/CTC)',
+                        data: [null, 4.594, 3.983], 
+                        borderColor: 'rgba(26, 115, 232, 1)', // Blue
+                        backgroundColor: 'rgba(26, 115, 232, 0.1)',
+                        tension: 0.1,
+                        fill: true,
+                    }
+                ]
+            };
+
+            const config = {
+                type: 'line',
+                data: priceData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'CTC PF1 (Best/Good) Price Comparison (USD/kg)'
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                             callbacks: {
+                                // Format the tooltip value as currency
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        // Format with 3 decimal places for precision
+                                        label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 3 }).format(context.parsed.y);
+                                    }
+                                    return label;
+                                }
+                            }
+                        },
+                    },
+                    hover: {
+                        mode: 'nearest',
+                        intersect: true
+                    },
+                    scales: {
+                        x: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Auction Week (2025)'
+                            }
+                        },
+                        y: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Price (USD/kg)'
+                            },
+                            // Set a reasonable minimum/maximum range based on the data
+                            min: 2.5,
+                            max: 5.0,
+                             ticks: {
+                                // Format the Y-axis ticks as currency
+                                callback: function(value, index, values) {
+                                    return '$' + value.toFixed(2);
+                                }
+                            }
+                        }
+                    },
+                    // This option connects lines across null data points (where data is missing for a week)
+                    spanGaps: true, 
+                }
+            };
+
+            const ctx = document.getElementById('keyGradeTrackerChart').getContext('2d');
+            new Chart(ctx, config);
+        });
+    </script>
 </body>
 </html>
