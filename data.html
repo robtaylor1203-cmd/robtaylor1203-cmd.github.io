@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Library - TeaTrade</title>
+    <title>Data - TeaTrade</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="data-library-page">
     <header class="site-header">
@@ -32,17 +33,27 @@
 
     <main class="page-container">
         <div class="dashboard-header">
-            <h2 class="page-title" id="data-title">Loading Dataset...</h2>
+            <h2 class="page-title" id="data-title">Loading...</h2>
         </div>
+        
+        <div class="page-search-wrapper" id="library-search-wrapper" style="display: none;">
+            <input type="text" id="data-search-bar" class="page-search-bar" placeholder="Search datasets, sources, or tags...">
+        </div>
+
         <p id="data-meta" style="margin-bottom: 24px; color: #5f6368;"></p>
 
-        <div id="data-content" style="display: none;">
+        <div id="data-content">
             </div>
         <div id="loading-indicator">Loading data...</div>
     </main>
-    <script src="script.js"></script>
+    <script src="script.js"></script> 
     <script>
-        // --- Utility Functions ---
+        // --- Configuration ---
+        const CHART_COLORS = {
+            primary: 'rgba(26, 115, 232, 0.9)', // Blue
+        };
+
+        // --- Utility Functions (Shared) ---
          const formatNumber = (num, decimals = 0) => {
             if (num === null || num === undefined || isNaN(num)) return 'N/A';
             return num.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
@@ -58,14 +69,89 @@
             return `<span class="${className}">${sign}${formatted}</span>`;
         }
 
-        // --- Rendering Functions ---
+        // =====================================================
+        // === Library Mode Functions (When no dataset is selected) ===
+        // =====================================================
+        
+        let allDatasets = [];
+
+        async function initializeLibraryMode() {
+            document.getElementById('data-title').textContent = 'Data Library';
+            document.title = 'Data Library - TeaTrade';
+            document.getElementById('library-search-wrapper').style.display = 'block'; // Show the search bar
+            document.getElementById('loading-indicator').textContent = 'Loading datasets...';
+
+            try {
+                const response = await fetch('data-library.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                allDatasets = await response.json();
+                allDatasets.sort((a, b) => a.title.localeCompare(b.title));
+                renderDataList(allDatasets);
+                setupSearch();
+                document.getElementById('loading-indicator').style.display = 'none';
+            } catch (error) {
+                console.error("Error fetching data library:", error);
+                document.getElementById('loading-indicator').textContent = 'Error loading datasets. Please try again later.';
+            }
+        }
+
+        function renderDataList(datasets) {
+            const container = document.getElementById('data-content');
+            container.innerHTML = '';
+
+            if (datasets.length === 0) {
+                container.innerHTML = '<p>No datasets found matching your criteria.</p>';
+                return;
+            }
+
+            datasets.forEach(dataset => {
+                const item = document.createElement('div');
+                item.className = 'dataset-item';
+
+                // The link points back to this same page (data.html) with the dataset parameter
+                item.innerHTML = `
+                    <a href="${dataset.link}">
+                        <h3 class="dataset-title">${dataset.title} <span class="dataset-period">(${dataset.period})</span></h3>
+                        <p class="dataset-description">${dataset.description}</p>
+                        <div class="dataset-meta">
+                            <span>Source: ${dataset.source}</span>
+                            <span>Tags: ${dataset.tags.join(', ')}</span>
+                        </div>
+                    </a>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function setupSearch() {
+            const searchBar = document.getElementById('data-search-bar');
+            searchBar.addEventListener('keyup', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredDatasets = allDatasets.filter(dataset => {
+                    return dataset.title.toLowerCase().includes(searchTerm) ||
+                           dataset.description.toLowerCase().includes(searchTerm) ||
+                           dataset.source.toLowerCase().includes(searchTerm) ||
+                           dataset.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+                });
+                renderDataList(filteredDatasets);
+            });
+        }
+
+
+        // =====================================================
+        // === Data Viewer Mode Functions (When dataset is selected) ===
+        // =====================================================
 
         // Renderer for Global Statistics (Aggregated)
         const renderGlobalStatistics = (data) => {
             document.getElementById('data-title').textContent = 'Global Production & Sales Statistics (Aggregated)';
+            document.title = 'Global Statistics - TeaTrade';
             document.getElementById('data-meta').textContent = `Last Updated: ${data.last_updated} | Source: Multiple Brokers (Automated)`;
 
             const content = document.getElementById('data-content');
+            content.innerHTML = ''; // Clear content
             
             // 1. Production Statistics
             if (data.production_statistics_mkg && data.production_statistics_mkg.length > 0) {
@@ -83,7 +169,7 @@
                 table.innerHTML = `
                     <thead>
                         <tr>
-                            <th class="header-main">Region</th>
+                            <th class="header-main" style="text-align: left;">Region</th>
                             <th class="header-main">As Of</th>
                             <th class="header-main">${data.current_year} (YTD)</th>
                             <th class="header-main">${data.previous_year} (YTD)</th>
@@ -99,10 +185,11 @@
                 let totalPrevious = 0;
 
                 data.production_statistics_mkg.forEach(item => {
-                    totalCurrent += item.current_year_todate;
-                    totalPrevious += item.previous_year_todate;
+                    totalCurrent += item.current_year_todate || 0;
+                    totalPrevious += item.previous_year_todate || 0;
 
                     const row = document.createElement('tr');
+                    // Ensure alignment matches the CSS rules (first column left, others right for stats-table)
                     row.innerHTML = `
                         <td>${item.region}</td>
                         <td>${item.as_of_month}</td>
@@ -138,7 +225,7 @@
                 section.innerHTML = '<h3>Sales Channel Statistics (Kg)</h3>';
 
                 const comparisonGrid = document.createElement('div');
-                comparisonGrid.className = 'comparison-grid'; // Use grid for multiple regions if available
+                comparisonGrid.className = 'comparison-grid';
 
                 for (const [region, stats] of Object.entries(data.sales_channel_statistics_kg)) {
                     const wrapper = document.createElement('div');
@@ -153,7 +240,7 @@
                     table.innerHTML = `
                         <thead>
                             <tr>
-                                <th class="header-main">Channel</th>
+                                <th class="header-main" style="text-align: left;">Channel</th>
                                 <th class="header-main">${data.current_year} (YTD)</th>
                                 <th class="header-main">${data.previous_year} (YTD)</th>
                                 <th class="header-main">Difference</th>
@@ -167,9 +254,9 @@
                     let totalPrevious = 0;
 
                     stats.channels.forEach(item => {
-                        totalCurrent += item.current_year_todate;
-                        totalPrevious += item.previous_year_todate;
-                        const difference = item.current_year_todate - item.previous_year_todate;
+                        totalCurrent += item.current_year_todate || 0;
+                        totalPrevious += item.previous_year_todate || 0;
+                        const difference = (item.current_year_todate || 0) - (item.previous_year_todate || 0);
 
                         const row = document.createElement('tr');
                         row.innerHTML = `
@@ -200,42 +287,126 @@
             }
         };
 
-        // Renderer for HMRC Data (Existing functionality preserved)
-        const renderHMRCData = (data) => {
-            document.getElementById('data-title').textContent = `UK Tea Imports - ${data.metadata.month} ${data.metadata.year}`;
-            document.getElementById('data-meta').textContent = `Source: ${data.metadata.source} | Commodity Code: ${data.metadata.commodity_code}`;
-            
+         // Renderer for UK Imports (Handles array structure and adds visualization)
+        const renderUKImports = (data, datasetName) => {
+             // Extract month/year from the dataset name
+            const titleParts = datasetName.replace('uk-imports-', '').replace('.json', '').split('-');
+            const month = titleParts[0].charAt(0).toUpperCase() + titleParts[0].slice(1);
+            const year = titleParts[1];
+
+            document.getElementById('data-title').textContent = `UK Tea Imports - ${month} ${year}`;
+            document.title = `UK Imports ${month} ${year} - TeaTrade`;
+            document.getElementById('data-meta').textContent = `Source: HMRC | Units: Kilograms (Kg) and GBP (£)`;
+
             const content = document.getElementById('data-content');
+            content.innerHTML = ''; // Clear previous content
+
+            // Ensure data is sorted by volume descending
+            data.sort((a, b) => (b.net_mass_kg || 0) - (a.net_mass_kg || 0));
+
+            // Visualization (Chart)
+            const chartSection = document.createElement('section');
+            chartSection.className = 'report-section';
+            // Using distribution-block styling (from style.css) for consistency
+            chartSection.innerHTML = '<h3>Top 10 Suppliers by Volume</h3><div class="distribution-block" style="position: relative; height: 400px;"><canvas id="importsChart"></canvas></div>';
+            content.appendChild(chartSection);
             
-            // Add Table
+            // Data Table
+            const section = document.createElement('section');
+            section.className = 'report-section';
+            section.innerHTML = '<h3>Detailed Import Data</h3>';
+
             const tableContainer = document.createElement('div');
             tableContainer.className = 'data-table-container';
             const table = document.createElement('table');
-            table.className = 'data-table';
+            table.className = 'data-table stats-table';
+            
+             // Header
              table.innerHTML = `
                 <thead>
                     <tr>
-                        <th>Country</th>
-                        <th>Volume (kg)</th>
-                        <th>Value (£)</th>
+                        <th class="header-main" style="text-align: left;">Partner Country</th>
+                        <th class="header-main">Net Mass (Kg)</th>
+                        <th class="header-main">Value (GBP £)</th>
+                        <th class="header-main">Avg Price (£/Kg)</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
+                <tfoot></tfoot>
             `;
             
             const tbody = table.querySelector('tbody');
-            data.imports.forEach(item => {
+            let totalMass = 0;
+            let totalValue = 0;
+
+            data.forEach(item => {
+                // Handle potential missing data points gracefully
+                const mass = item.net_mass_kg || 0;
+                const value = item.value_gbp || 0;
+
+                totalMass += mass;
+                totalValue += value;
+                const avgPrice = (value && mass) ? (value / mass) : 0;
+
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td>${item.country}</td>
-                    <td>${formatNumber(item.volume_kg)}</td>
-                    <td>${formatCurrency(item.value_gbp)}</td>
+                    <td>${item.partner_country}</td>
+                    <td>${formatNumber(mass)}</td>
+                    <td>${formatNumber(value)}</td>
+                    <td>${formatCurrency(avgPrice)}</td>
                 `;
                 tbody.appendChild(row);
             });
+
+            // Footer (Totals)
+            const tfoot = table.querySelector('tfoot');
+            const totalAvgPrice = totalMass > 0 ? totalValue / totalMass : 0;
+            tfoot.innerHTML = `
+                 <tr style="font-weight: bold; background-color: #f1f3f4;">
+                    <td>TOTAL</td>
+                    <td>${formatNumber(totalMass)}</td>
+                    <td>${formatNumber(totalValue)}</td>
+                    <td>${formatCurrency(totalAvgPrice)}</td>
+                </tr>
+            `;
             
             tableContainer.appendChild(table);
-            content.appendChild(tableContainer);
+            section.appendChild(tableContainer);
+            content.appendChild(section);
+
+            // Generate Chart
+            renderImportsChart(data);
+        };
+
+        const renderImportsChart = (data) => {
+            const top10 = data.slice(0, 10);
+            const ctx = document.getElementById('importsChart').getContext('2d');
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: top10.map(item => item.partner_country),
+                    datasets: [{
+                        label: 'Net Mass (Kg)',
+                        data: top10.map(item => item.net_mass_kg || 0),
+                        backgroundColor: CHART_COLORS.primary,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Volume (Kg)' }
+                        },
+                        x: {
+                             ticks: { autoSkip: false, maxRotation: 45, minRotation: 45 }
+                        }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
         };
 
 
@@ -244,57 +415,65 @@
             const params = new URLSearchParams(window.location.search);
             const datasetName = params.get('dataset');
             
+            // === THE FIX: Initialize Library Mode if no dataset is specified ===
             if (!datasetName) {
-                // If no dataset is selected, redirect to the data library listing (or show an error)
-                document.getElementById('data-title').textContent = 'Please select a dataset.';
-                document.getElementById('loading-indicator').style.display = 'none';
-                // Optional: Redirect back if this page is only meant for viewing data
-                // window.location.href = 'data-library-listing.html'; 
+                initializeLibraryMode();
                 return;
+            }
+            // ===================================================================
+
+            // If a dataset IS specified, proceed to initialize Data Viewer Mode.
+            document.getElementById('data-title').textContent = 'Loading Dataset...';
+
+            // Function to fetch data (Handles file path variations)
+            async function fetchData(name) {
+                // Define potential paths based on conventions
+                let path = `${name}.json`;
+                if (name.startsWith('uk-imports')) {
+                    // Try the structured path first if applicable
+                    path = `Data/Imports/${name}.json`;
+                } 
+
+                try {
+                    let response = await fetch(path);
+
+                    // If structured path fails (404) AND it wasn't the default path, try the root directory
+                    if (!response.ok && path !== `${name}.json`) {
+                        console.warn(`Failed to fetch from structured path: ${path}. Trying root.`);
+                        response = await fetch(`${name}.json`);
+                    }
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return await response.json();
+                } catch (error) {
+                    throw new Error(`Could not locate data file for ${name}. Error: ${error.message}`);
+                }
             }
 
             try {
-                const data = await loadData(datasetName);
-                renderData(datasetName, data);
+                const datasetData = await fetchData(datasetName);
                 
+                // Orchestrate the rendering based on the dataset name
+                if (datasetName === 'global_statistics') {
+                    renderGlobalStatistics(datasetData);
+                } else if (datasetName.startsWith('uk-imports')) {
+                    // UK imports data is provided as an array
+                    renderUKImports(datasetData, datasetName);
+                } else {
+                    throw new Error('Unknown dataset format or renderer not implemented.');
+                }
+                
+                // Hide loading indicator
                 document.getElementById('loading-indicator').style.display = 'none';
-                document.getElementById('data-content').style.display = 'block';
 
             } catch (error) {
-                console.error('Error fetching dataset:', error);
+                console.error('Error loading dataset:', error);
                 document.getElementById('data-title').textContent = 'Error loading dataset.';
-                document.getElementById('loading-indicator').textContent = `Could not load the dataset: ${datasetName}.json. Error: ${error.message}`;
+                document.getElementById('loading-indicator').textContent = `Error: ${error.message}`;
             }
         });
-
-        async function loadData(datasetName) {
-            let filePath;
-            // Determine the file path based on the dataset name conventions
-            if (datasetName.startsWith('uk-imports')) {
-                filePath = `Data/Imports/${datasetName}.json`;
-            } else if (datasetName === 'global_statistics') {
-                filePath = `Data/${datasetName}.json`;
-            } else {
-                // Fallback for other potential datasets
-                 filePath = `Data/${datasetName}.json`;
-            }
-
-            const response = await fetch(filePath);
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            return await response.json();
-        }
-
-        function renderData(datasetName, data) {
-            // Call the appropriate renderer based on the dataset name
-            if (datasetName.startsWith('uk-imports')) {
-                renderHMRCData(data);
-            } else if (datasetName === 'global_statistics') {
-                renderGlobalStatistics(data);
-            } else {
-                document.getElementById('data-title').textContent = 'Viewer not configured for this dataset.';
-            }
-        }
-
     </script>
 </body>
 </html>
