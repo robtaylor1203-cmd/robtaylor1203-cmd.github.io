@@ -189,126 +189,7 @@
 
         // --- Rendering Functions (Modularized by Data Type) ---
 
-         // Renderer for Price Distribution (Kolkata/Contemporary Brokers style) - VERIFIED LOGIC
-        const renderPriceDistribution = (distribution, meta) => {
-            if (!distribution || Object.keys(distribution).length === 0) return;
-
-            document.getElementById('price-distribution-section').style.display = 'block';
-            const container = document.getElementById('distribution-container');
-            container.innerHTML = '';
-
-            // --- Key Detection Logic ---
-            const firstCategory = Object.values(distribution)[0];
-            const firstRange = firstCategory ? Object.values(firstCategory)[0] : {};
-            
-            // Determine the primary identifier (Sale Number or Week Number)
-            const saleIdentifier = meta.sale_number || meta.week_number;
-
-            // 1. Identify specific keys based on metadata (for precise week-over-week comparison)
-            let currentSaleKey = saleIdentifier ? `Sale_${saleIdentifier}` : null;
-            let previousSaleKey = (saleIdentifier && saleIdentifier > 1) ? `Sale_${saleIdentifier - 1}` : null;
-
-            // Check if these specific keys actually exist in the data
-            if (currentSaleKey && !firstRange.hasOwnProperty(currentSaleKey)) currentSaleKey = null;
-            // We only care if the previous key exists if the current one also does (for this specific comparison type)
-            if (previousSaleKey && (!currentSaleKey || !firstRange.hasOwnProperty(previousSaleKey))) previousSaleKey = null;
-
-            
-            // 2. Identify generic keys (for fallback or reports without specific numbering)
-            // Use the specific key if found, otherwise look for any 'Sale_' key.
-            const genericSaleKey = currentSaleKey ? currentSaleKey : Object.keys(firstRange).find(k => k.startsWith('Sale_'));
-            
-            // 3. Identify YTD Keys (Handles variations like 2025_26 or YTD_25_26)
-            const ytdCurrentKey = Object.keys(firstRange).find(k => k.includes(`${meta.year%100}_${(meta.year+1)%100}`) || k.includes(`${meta.year}_${meta.year+1}`));
-            const ytdPreviousKey = Object.keys(firstRange).find(k => k.includes(`${(meta.year-1)%100}_${meta.year%100}`) || k.includes(`${meta.year-1}_${meta.year}`));
-
-            // --- Prioritization Logic ---
-            let prioritizedKeys = [];
-            
-            // Priority 1: Specific Weekly Comparison (e.g., J Thomas: Sale 32 vs Sale 31)
-            // Requires both current and previous specific keys to be present.
-            if (currentSaleKey && previousSaleKey) {
-                prioritizedKeys.push({ key: previousSaleKey, label: previousSaleKey.replace('_', ' '), color: CHART_COLORS.secondary });
-                prioritizedKeys.push({ key: currentSaleKey, label: currentSaleKey.replace('_', ' '), color: CHART_COLORS.primary });
-            } 
-            // Priority 2: Multi-period comparison (e.g., Contemporary: Sale 34 vs YTDs)
-            else if (genericSaleKey && (ytdCurrentKey || ytdPreviousKey)) {
-                 if (ytdPreviousKey) {
-                     prioritizedKeys.push({ key: ytdPreviousKey, label: ytdPreviousKey.replace(/_/g, '/').replace('YTD/', ''), color: CHART_COLORS.neutral });
-                 }
-                 if (ytdCurrentKey) {
-                      prioritizedKeys.push({ key: ytdCurrentKey, label: ytdCurrentKey.replace(/_/g, '/').replace('YTD/', ''), color: CHART_COLORS.secondary });
-                 }
-                 // The current sale/week is the primary focus
-                 prioritizedKeys.push({ key: genericSaleKey, label: genericSaleKey.replace('_', ' '), color: CHART_COLORS.primary });
-            }
-            // Priority 3: Single period display
-            else {
-                const keyToUse = genericSaleKey || ytdCurrentKey || ytdPreviousKey;
-                if (keyToUse) {
-                     prioritizedKeys.push({ key: keyToUse, label: keyToUse.replace(/_/g, ' ').replace('YTD/', ''), color: CHART_COLORS.primary });
-                }
-            }
-
-            if (prioritizedKeys.length === 0) return; // No data found with recognized keys
-
-            const visualizationType = prioritizedKeys.length > 1 ? 'comparison' : 'single';
-
-            // Update Title
-            let titleText = "Price Distribution Analysis (% of Teas Sold)";
-            if (visualizationType === 'single' && prioritizedKeys[0].key.startsWith('Sale_')) {
-                 titleText += ` - ${prioritizedKeys[0].label}`;
-            }
-            document.getElementById('price-distribution-title').textContent = titleText;
-
-
-            // --- Rendering Loop ---
-            for (const [category, ranges] of Object.entries(distribution)) {
-                 if (!ranges || Object.keys(ranges).length === 0) continue;
-
-                const chartWrapper = document.createElement('div');
-                chartWrapper.className = 'distribution-block';
-
-                const canvasId = `chart-${category.replace(/[^a-zA-Z0-9]/g, '-')}`;
-                chartWrapper.innerHTML = `<h4>${category.replace(/_/g, ' ')}</h4><div style="position: relative; height: 250px;"><canvas id="${canvasId}"></canvas></div>`;
-                container.appendChild(chartWrapper);
-
-                const ctx = document.getElementById(canvasId).getContext('2d');
-                const labels = Object.keys(ranges);
-                
-                let datasets = [];
-
-                // Build datasets using prioritized keys
-                prioritizedKeys.forEach(pKey => {
-                    // Safety check: Ensure the key exists in the current category data before adding the dataset
-                    // We check the first item in ranges as a proxy for the rest in the category
-                    if (ranges[Object.keys(ranges)[0]] && ranges[Object.keys(ranges)[0]].hasOwnProperty(pKey.key)) {
-                         datasets.push({
-                            label: pKey.label,
-                            data: Object.values(ranges).map(r => r[pKey.key]),
-                            backgroundColor: pKey.color,
-                        });
-                    }
-                });
-                
-                const options = JSON.parse(JSON.stringify(CHART_OPTIONS_BAR));
-                options.scales.y.title.text = 'Percentage (%)';
-                // Display legend if it's a comparison chart
-                options.plugins.legend.display = visualizationType === 'comparison'; 
-
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: labels,
-                        datasets: datasets
-                    },
-                    options: options
-                });
-            }
-        };
-
-        // (The remaining rendering functions are included below for completeness, unchanged)
-
+        // Renderer for Global Statistics (Contemporary Brokers style)
         const renderGlobalStatistics = (globalStats, meta) => {
             if (!globalStats || Object.keys(globalStats).length === 0) return;
 
@@ -320,18 +201,18 @@
                 const comparison = globalStats.world_crop_comparison;
                 const wrapper = document.createElement('div');
                 wrapper.style.marginBottom = '24px';
-                
+                wrapper.innerHTML = `<h4>World Crop Comparison (M.Kg)</h4>`;
 
                 // Visualization
                 const chartWrapper = document.createElement('div');
                 chartWrapper.className = 'distribution-block';
                 chartWrapper.style.marginBottom = '16px';
                 const canvasId = 'worldCropChart';
-                // Add the H4 inside the chart block for better grouping
-                chartWrapper.innerHTML = `<h4>World Crop Comparison (M.Kg)</h4><div style="position: relative; height: 350px;"><canvas id="${canvasId}"></canvas></div>`;
-                section.appendChild(chartWrapper);
+                chartWrapper.innerHTML = `<div style="position: relative; height: 350px;"><canvas id="${canvasId}"></canvas></div>`;
+                section.appendChild(chartWrapper); // Append chart directly to section
 
                 const ctx = chartWrapper.querySelector(`#${canvasId}`).getContext('2d');
+                // Filter out the total row for the chart data, include major regions
                 const chartData = comparison.filter(item => item.region !== 'TOTAL' && item.region !== 'ALL INDIA');
                 const labels = chartData.map(item => item.region);
                 const currentYearValues = chartData.map(item => item.current_year_todate);
@@ -408,15 +289,18 @@
                 });
                 
                 tableContainer.appendChild(table);
-                // Append the table container directly to the section, after the chart
-                section.appendChild(tableContainer);
+                wrapper.appendChild(tableContainer);
+                section.appendChild(wrapper);
             }
         };
 
+
+        // Renderer for General Summary (Colombo/Mombasa style)
         const renderGeneralSummary = (summary) => {
             if (!summary) return;
             
             const statsContainer = document.getElementById('summary-stats');
+            // statsContainer.innerHTML = ''; // Keep existing content if other renderers add stats
 
             const stats = [
                 { label: 'Total Quantity (kg)', value: summary.total_quantity_kg, format: 0 },
@@ -449,6 +333,7 @@
             }
         };
 
+        // Renderer for Multi-Center Auction Offerings (Contemporary Brokers style)
         const renderAuctionOfferingsMultiCenter = (offeringsData, meta) => {
              if (!offeringsData || Object.keys(offeringsData).length === 0) return;
 
@@ -515,6 +400,8 @@
              }
         };
 
+
+        // Renderer for Offerings by Grade/Category (Colombo/Mombasa style)
         const renderOfferingsByGrade = (data) => {
             const offerings = data.offerings || data.offerings_by_grade;
             const summary = data.summary;
@@ -571,7 +458,19 @@
                  tfoot.innerHTML = `<tr style="font-weight: bold; background-color: #f1f3f4;">${footCells.join('')}</tr>`;
 
                 if (summary.reprints_lots) {
-                     tfoot.innerHTML += `<tr style="font-style: italic; color: #5f6368;"><td>Re-Prints</td><td>${formatNumber(summary.reprints_lots)}</td><td>${formatNumber(summary.reprints_quantity_kg)}</td></tr>`;
+                     // Assuming standard Colombo structure for reprints (Lots, Quantity). Need to ensure column alignment.
+                     let reprintHtml = `<tr style="font-style: italic; color: #5f6368;"><td>Re-Prints</td>`;
+                     
+                     if (hasLots) reprintHtml += `<td>${formatNumber(summary.reprints_lots)}</td>`;
+                     if (hasPackages) reprintHtml += `<td>N/A</td>`; // Assuming reprints don't usually list packages separately if lots are present
+                     
+                     reprintHtml += `<td>${formatNumber(summary.reprints_quantity_kg)}</td>`;
+
+                     if (hasUnsold) {
+                        reprintHtml += `<td></td>`;
+                     }
+                     reprintHtml += `</tr>`;
+                     tfoot.innerHTML += reprintHtml;
                 }
             }
 
@@ -600,6 +499,7 @@
             });
         };
 
+        // Renderer for Offerings by Country (Mombasa style)
         const renderOfferingsByCountry = (countryData, meta) => {
             if (!countryData || Object.keys(countryData).length === 0) return;
             
@@ -653,7 +553,8 @@
             });
 
             // Render Visualization
-            const currentYearData = countryData[meta.year];
+            // Ensure meta.year exists before trying to access data[meta.year]
+            const currentYearData = meta.year ? countryData[meta.year] : null;
             if (currentYearData) {
                 document.getElementById('volume-visualization-section').style.display = 'block';
                 document.getElementById('country-chart-block').style.display = 'block';
@@ -689,6 +590,7 @@
             }
         };
 
+        // Renderer for Price Quotations (Colombo/Mombasa style)
         const renderPriceQuotations = (quotations, currency) => {
             if (!quotations || quotations.length === 0) return;
 
@@ -723,6 +625,7 @@
             });
         };
         
+        // Renderer for Commentary Grid (Kolkata/Contemporary style)
         const renderCommentaryGrid = (commentary) => {
             if (!commentary || Object.keys(commentary).length === 0) return;
 
@@ -732,13 +635,16 @@
 
             for (const category in commentary) {
                 const item = commentary[category];
+                // Handle both detailed (market/buying) and simple (just text string) structures
                 
                 let marketText = null;
                 let buyingText = null;
 
                 if (typeof item === 'string') {
+                    // Simple structure (e.g., Contemporary Buying Commentary)
                     marketText = item;
                 } else if (typeof item === 'object' && item !== null) {
+                     // Detailed structure (e.g., J Thomas Commentary)
                     marketText = item.market;
                     buyingText = item.buying;
                 }
@@ -747,10 +653,12 @@
                     const card = document.createElement('div');
                     card.className = 'commentary-card';
                     let contentHtml = `<h4>${category}</h4>`;
+                    // If it's the detailed structure, label the sections
                     if (buyingText) {
                         if (marketText) contentHtml += `<p><strong>Market:</strong> ${marketText}</p>`;
                         contentHtml += `<p><strong>Buying:</strong> ${buyingText}</p>`;
                     } else {
+                        // Otherwise just display the text
                          contentHtml += `<p>${marketText}</p>`;
                     }
                     
@@ -760,6 +668,7 @@
             }
         };
 
+        // Renderer for Auction Averages Comparison (Kolkata/Contemporary Brokers style)
         const renderAveragesComparison = (comparison, meta) => {
             if (!comparison || comparison.length === 0) return;
             
@@ -772,12 +681,13 @@
             tbody.innerHTML = '';
 
             // Detect format: Kolkata (J Thomas) vs Contemporary Brokers
+            // Assuming 'current_sale_avg_25_26' is specific to the J Thomas format based on previous context
             const isJThomasFormat = comparison.some(item => item.hasOwnProperty('current_sale_avg_25_26'));
             
             if (isJThomasFormat) {
                 // J Thomas Format (Multi-level Header)
-                // Requires sale_number for header display
-                if (!meta.sale_number) return; 
+                // Assuming 2025/26 structure based on previous context
+                if (!meta.sale_number) return; // This format requires a sale number
 
                 thead.innerHTML = `
                     <thead>
@@ -811,20 +721,25 @@
                     tbody.appendChild(row);
                 });
             } else {
-                // Contemporary Brokers Format (Simple comparison)
+                // Contemporary Brokers Format (Simple comparison across centers)
                  thead.innerHTML = `
                     <thead>
                         <tr>
-                            <th>Centre</th>
-                            <th>Type</th>
-                            <th>${meta.year} Avg</th>
-                            <th>${meta.year-1} Avg</th>
-                            <th>Difference</th>
+                            <th class="header-main">Centre</th>
+                            <th class="header-main">Type</th>
+                            <th class="header-main">Current Avg (${meta.year})</th>
+                            <th class="header-main">Previous Avg (${meta.year-1})</th>
+                            <th class="header-main">Difference</th>
                         </tr>
                     </thead>
                 `;
-                 comparison.forEach(item => {
+
+                comparison.forEach(item => {
                     const row = document.createElement('tr');
+                     if (item.type === "ALL") {
+                        row.style.fontWeight = 'bold';
+                        row.style.backgroundColor = '#f8f9fa';
+                    }
                     row.innerHTML = `
                         <td>${item.centre}</td>
                         <td>${item.type}</td>
@@ -836,14 +751,113 @@
                 });
             }
         };
-        
+
+         // Renderer for Price Distribution (Kolkata/Contemporary style)
+        const renderPriceDistribution = (distribution, meta) => {
+            if (!distribution || Object.keys(distribution).length === 0) return;
+
+            document.getElementById('price-distribution-section').style.display = 'block';
+            const container = document.getElementById('distribution-container');
+            container.innerHTML = '';
+
+            // Determine if this is J Thomas (single sale comparison) or Contemporary (multi-period comparison)
+            // We check the keys within the first data point of the first category.
+            const firstCategory = Object.values(distribution)[0];
+            const firstDataPoint = firstCategory ? Object.values(firstCategory)[0] : {};
+
+            // J Thomas format uses Sale_X, Contemporary uses Sale_X (for week) AND YTD_YY_YY
+            // Assuming 'YTD_25_26' is the key for the current YTD based on context.
+            const isJThomasFormat = meta.sale_number && firstDataPoint.hasOwnProperty(`Sale_${meta.sale_number}`) && !firstDataPoint.hasOwnProperty('YTD_25_26');
+            const isContemporaryFormat = firstDataPoint.hasOwnProperty('YTD_25_26'); 
+
+
+            if (isJThomasFormat) {
+                 // J Thomas Format
+                document.getElementById('price-distribution-title').textContent = `Price Distribution Analysis (% Sold) - Sale ${meta.sale_number}`;
+            } else if (isContemporaryFormat) {
+                // Contemporary Format
+                 document.getElementById('price-distribution-title').textContent = `Price Distribution Analysis (% Sold) - Week ${meta.week_number} vs YTD`;
+            }
+           
+
+            for (const [category, ranges] of Object.entries(distribution)) {
+                 if (!ranges || Object.keys(ranges).length === 0) continue;
+
+                const chartWrapper = document.createElement('div');
+                chartWrapper.className = 'distribution-block';
+
+                const canvasId = `chart-${category.replace(/[^a-zA-Z0-9]/g, '-')}`;
+                // Adjust height slightly if it's a multi-bar chart for better readability
+                const chartHeight = (isContemporaryFormat) ? 280 : 250;
+                chartWrapper.innerHTML = `<h4>${category.replace(/_/g, ' ')}</h4><div style="position: relative; height: ${chartHeight}px;"><canvas id="${canvasId}"></canvas></div>`;
+                container.appendChild(chartWrapper);
+
+                const ctx = document.getElementById(canvasId).getContext('2d');
+                const labels = Object.keys(ranges);
+                
+                const datasets = [];
+
+                if (isJThomasFormat) {
+                    // J Thomas (Single Bar)
+                    const currentSaleKey = `Sale_${meta.sale_number}`;
+                    const values = Object.values(ranges).map(r => r[currentSaleKey]);
+                    datasets.push({
+                        label: `Sale ${meta.sale_number}`,
+                        data: values,
+                        backgroundColor: CHART_COLORS.primary,
+                    });
+                } else if (isContemporaryFormat) {
+                    // Contemporary (Grouped Bar)
+                    const currentWeekKey = `Sale_${meta.week_number}`;
+                    const currentYTDKey = 'YTD_25_26';
+                    const previousYTDKey = 'YTD_24_25';
+
+                    const currentWeekValues = Object.values(ranges).map(r => r[currentWeekKey]);
+                    const currentYTDValues = Object.values(ranges).map(r => r[currentYTDKey]);
+                    const previousYTDValues = Object.values(ranges).map(r => r[previousYTDKey]);
+
+
+                    datasets.push({
+                        label: `YTD ${meta.year-1}`,
+                        data: previousYTDValues,
+                        backgroundColor: CHART_COLORS.neutral,
+                    });
+                     datasets.push({
+                        label: `YTD ${meta.year}`,
+                        data: currentYTDValues,
+                        backgroundColor: CHART_COLORS.secondary,
+                    });
+                    datasets.push({
+                        label: `Week ${meta.week_number}`,
+                        data: currentWeekValues,
+                        backgroundColor: CHART_COLORS.primary,
+                    });
+                   
+                }
+
+                // Use the reusable options and customize
+                const options = JSON.parse(JSON.stringify(CHART_OPTIONS_BAR));
+                options.scales.y.title.text = 'Percentage (%)';
+                // Show legend if there are multiple datasets (grouped bar)
+                if (datasets.length > 1) {
+                    options.plugins.legend.display = true;
+                }
+
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: datasets
+                    },
+                    options: options
+                });
+            }
+        };
+
+        // Renderer for Detailed Offer/Sold Statistics (Kolkata style)
         const renderDetailedStatistics = (statistics, meta) => {
             if (!statistics || Object.keys(statistics).length === 0) return;
-            
-            // Use Sale Number or Week Number as the identifier
-            const saleIdentifier = meta.sale_number || meta.week_number;
-             // Requires identifier for header display
-            if (!saleIdentifier) return;
+            if (!meta.sale_number) return; // Requires sale number for headers
 
             const section = document.getElementById('detailed-stats-section');
             section.style.display = 'block';
@@ -866,8 +880,8 @@
                     <thead>
                         <tr>
                             <th rowspan="2" class="header-main">Grade</th>
-                            <th colspan="4" class="header-main" style="text-align: center; border-left: 2px solid #dadce0;">This Sale (S${saleIdentifier})</th>
-                            <th colspan="4" class="header-main" style="text-align: center; border-left: 2px solid #dadce0;">Last Sale (S${saleIdentifier-1})</th>
+                            <th colspan="4" class="header-main" style="text-align: center; border-left: 2px solid #dadce0;">This Sale (S${meta.sale_number})</th>
+                            <th colspan="4" class="header-main" style="text-align: center; border-left: 2px solid #dadce0;">Last Sale (S${meta.sale_number-1})</th>
                             <th colspan="4" class="header-main" style="text-align: center; border-left: 2px solid #dadce0;">To Date</th>
                         </tr>
                         <tr>
@@ -886,25 +900,20 @@
                         row.style.fontWeight = 'bold';
                         row.style.backgroundColor = '#f1f3f4';
                     }
-                    // Check if data exists before attempting to format, handle potential missing historical data gracefully
-                    const TS = item.This_Sale || {};
-                    const LS = item.Last_Sale || {};
-                    const TD = item.To_Date || {};
-
                     row.innerHTML = `
                         <td>${item.Grade}</td>
-                        <td style="border-left: 2px solid #dadce0;">${formatNumber(TS.Offered)}</td>
-                        <td>${formatNumber(TS.Sold)}</td>
-                        <td>${formatCurrency(TS.Average)}</td>
-                        <td>${formatNumber(TS.Out_Percent)}%</td>
-                        <td style="border-left: 2px solid #dadce0;">${formatNumber(LS.Offered)}</td>
-                        <td>${formatNumber(LS.Sold)}</td>
-                        <td>${formatCurrency(LS.Average)}</td>
-                        <td>${formatNumber(LS.Out_Percent)}%</td>
-                        <td style="border-left: 2px solid #dadce0;">${formatNumber(TD.Offered)}</td>
-                        <td>${formatNumber(TD.Sold)}</td>
-                        <td>${formatCurrency(TD.Average)}</td>
-                        <td>${formatNumber(TD.Out_Percent)}%</td>
+                        <td style="border-left: 2px solid #dadce0;">${formatNumber(item.This_Sale.Offered)}</td>
+                        <td>${formatNumber(item.This_Sale.Sold)}</td>
+                        <td>${formatCurrency(item.This_Sale.Average)}</td>
+                        <td>${formatNumber(item.This_Sale.Out_Percent)}%</td>
+                        <td style="border-left: 2px solid #dadce0;">${formatNumber(item.Last_Sale.Offered)}</td>
+                        <td>${formatNumber(item.Last_Sale.Sold)}</td>
+                        <td>${formatCurrency(item.Last_Sale.Average)}</td>
+                        <td>${formatNumber(item.Last_Sale.Out_Percent)}%</td>
+                        <td style="border-left: 2px solid #dadce0;">${formatNumber(item.To_Date.Offered)}</td>
+                        <td>${formatNumber(item.To_Date.Sold)}</td>
+                        <td>${formatCurrency(item.To_Date.Average)}</td>
+                        <td>${formatNumber(item.To_Date.Out_Percent)}%</td>
                     `;
                     tbody.appendChild(row);
                 });
@@ -919,6 +928,7 @@
             if (statistics.Darjeeling) renderDetailTable(statistics.Darjeeling, "Darjeeling");
         };
         
+        // Renderer for Quantity Sold Comparison (Asia Siyaka style)
         const renderQuantityComparison = (comparison, meta) => {
              if (!comparison || comparison.length === 0) return;
 
@@ -928,6 +938,7 @@
             const tbody = table.querySelector('tbody');
             tbody.innerHTML = '';
 
+            // Header (Assumes Current Year vs Previous Year)
             const currentYear = meta.year;
             const previousYear = currentYear - 1;
 
@@ -964,6 +975,7 @@
             });
         };
 
+         // Renderer for International Summaries (Specific to Colombo)
         const renderInternationalSummaries = (summaries) => {
              const section = document.getElementById('international-section');
              const container = document.getElementById('international-container');
@@ -1017,43 +1029,49 @@
             const meta = data.metadata;
 
             // 1. Metadata and Title
-            const title = meta.report_title || `${meta.auction_centre || meta.region} Auction Report`;
-            document.getElementById('report-title').textContent = `${title} - Week ${meta.week_number} (${meta.year})`;
+            // Use specific report title if available (e.g., Contemporary), otherwise generate standard title
+            const titlePrefix = meta.report_title || `${meta.auction_centre || meta.region} Auction Report`;
+            document.getElementById('report-title').textContent = `${titlePrefix} - Week ${meta.week_number} (${meta.year})`;
             
             let metaText = `Broker: ${meta.broker}`;
-            if (meta.sale_number) {
-                metaText += ` | Sale No: ${meta.sale_number}`;
+            if (meta.sale_number) metaText += ` | Sale No: ${meta.sale_number}`;
+            
+            // Determine the best date representation
+            const startDate = meta.sale_date_start;
+            const endDate = meta.sale_date_end || meta.date_end;
+
+            if (startDate && endDate && startDate !== endDate) {
+                metaText += ` | Dates: ${startDate} to ${endDate}`;
+            } else if (endDate) {
+                 metaText += ` | Date: ${endDate}`;
             }
-            if (meta.sale_date_start && meta.sale_date_end) {
-                 metaText += ` | Dates: ${meta.sale_date_start} to ${meta.sale_date_end}`;
-            } else if (meta.date_end) {
-                 metaText += ` | Week Ending: ${meta.date_end}`;
-            }
-           
+
             if (meta.currency) {
                 metaText += ` | Currency: ${meta.currency}`;
             }
             document.getElementById('report-meta').textContent = metaText;
 
-            // 2. Global Statistics
+            // 2. Global Statistics (e.g., Contemporary World Crop)
             renderGlobalStatistics(data.global_statistics, meta);
 
             // 3. Commentary and Summary
             if (data.commentary) {
                 renderCommentaryGrid(data.commentary);
             } 
+            // Only render general summary if commentary grid is not present, or if specific summary fields exist
             if (data.summary) {
-                renderGeneralSummary(data.summary);
+                 renderGeneralSummary(data.summary);
             }
 
             // 4. Offerings and Volume Analysis
             renderOfferingsByGrade(data);
             renderOfferingsByCountry(data.offerings_by_country, meta);
+           
 
             // 5. Prices and Statistics
             renderPriceQuotations(data.price_quotations, meta.currency);
             
-            // Handle statistical summaries
+            // Handle statistical summaries (Kolkata/Asia Siyaka/Contemporary style)
             if (data.statistical_summaries) {
                 const stats = data.statistical_summaries;
                 renderAveragesComparison(stats.auction_averages_comparison, meta);
@@ -1069,9 +1087,11 @@
 
         // --- Data Loading ---
         document.addEventListener('DOMContentLoaded', async () => {
-            // Clear previous stats container on load
-            document.getElementById('summary-stats').innerHTML = '';
-
+            // Initialize mobile menu toggle (ensure script.js is loaded and defines this function)
+             if (typeof initializeMobileMenu === 'function') {
+                initializeMobileMenu();
+            }
+            
             const params = new URLSearchParams(window.location.search);
             const datasetFile = params.get('dataset');
             

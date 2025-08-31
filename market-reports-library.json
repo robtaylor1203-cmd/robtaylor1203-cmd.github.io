@@ -1,10 +1,10 @@
 [
   {
-    "title": "India Regional Summary (Contemporary Brokers) - Week 34, 2025",
-    "description": "Comprehensive statistical summary of North & South Indian auctions (Kolkata, Guwahati, Siliguri) and World Crop comparison. WKE 23-08-2025.",
+    "title": "North India Market Report (Contemporary) - Week 34, 2025",
+    "description": "Contemporary Brokers regional summary for Week 34 (Ending 23rd August 2025). Includes statistics for Kolkata, Guwahati, Siliguri, South India, and World Crop comparison.",
     "year": 2025,
     "week_number": 34,
-    "auction_centre": "Regional Summary",
+    "auction_centre": "India (Regional)",
     "source": "Contemporary Brokers",
     "report_link": "report-viewer.html?dataset=India_CB_W34_2025"
   },
@@ -24,15 +24,6 @@
     "week_number": 34,
     "auction_centre": "Kolkata",
     "source": "J Thomas & Co.",
-    "report_link": "#"
-  },
-  {
-    "title": "Colombo Auction Report - Week 34, 2025",
-    "description": "Overview of the Colombo tea auction, highlighting strong performance of high-growns.",
-    "year": 2025,
-    "week_number": 34,
-    "auction_centre": "Colombo",
-    "source": "Forbes & Walker",
     "report_link": "#"
   },
   {
@@ -90,4 +81,3 @@
     "report_link": "#"
   }
 ]
-
