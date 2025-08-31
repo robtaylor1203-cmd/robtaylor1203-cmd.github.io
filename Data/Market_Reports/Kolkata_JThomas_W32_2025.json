@@ -2,11 +2,13 @@
   "metadata": {
     "source": "J Thomas & Company Private Limited",
     "auction_centre": "Kolkata",
+    "country": "India",
     "currency": "INR",
     "sale_number": 32,
     "year": 2025
   },
   "summary": {},
   "market_synopsis": {},
-  "auction_averages_comparison": []
+  "auction_averages_comparison": [],
+  "price_distribution": {}
 }
