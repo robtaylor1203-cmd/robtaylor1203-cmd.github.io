@@ -88,15 +88,6 @@
     "auction_centre": "Mombasa",
     "source": "Tea Brokers East Africa",
     "report_link": "#"
-  },
-  {
-    "title": "Kolkata Auction Summary (J Thomas & Co.) - Week 32, 2025",
-    "description": "Summary of Assam and Darjeeling offerings, auction averages, and market synopsis for Sale 32.",
-    "year": 2025,
-    "week_number": 32,
-    "auction_centre": "Kolkata",
-    "source": "J Thomas & Co.",
-    "report_link": "report-viewer.html?dataset=Kolkata_JThomas_W32_2025"
   }
-
 ]
+
