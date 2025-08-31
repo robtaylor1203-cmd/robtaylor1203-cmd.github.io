@@ -42,7 +42,6 @@
             <div class="stat-cards-container" id="summary-stats"></div>
 
             <section class="report-section" id="global-stats-section" style="display: none;">
-                <h3>Global Statistics</h3>
                 </section>
 
             <section class="report-section" id="volume-visualization-section" style="display: none;">
@@ -81,8 +80,6 @@
             </section>
 
             <section class="report-section" id="auction-offerings-multi-section" style="display: none;">
-                 <h3>Auction Offerings Comparison</h3>
-                 <div class="comparison-grid" id="auction-offerings-multi-container"></div>
             </section>
 
             <section class="report-section" id="offerings-grade-section" style="display: none;">
@@ -189,7 +186,7 @@
 
         // --- Rendering Functions (Modularized by Data Type) ---
 
-         // Renderer for Price Distribution (Kolkata/Contemporary Brokers style) - VERIFIED LOGIC
+         // Renderer for Price Distribution (Kolkata/Contemporary Brokers style)
         const renderPriceDistribution = (distribution, meta) => {
             if (!distribution || Object.keys(distribution).length === 0) return;
 
@@ -199,36 +196,31 @@
 
             // --- Key Detection Logic ---
             const firstCategory = Object.values(distribution)[0];
-            // Handle case where category might be empty
             if (!firstCategory) return; 
 
             const firstRange = Object.values(firstCategory)[0];
-             // Handle case where range might be empty
             if (!firstRange) return;
             
             // Determine the primary identifier (Sale Number or Week Number)
             const saleIdentifier = meta.sale_number || meta.week_number;
 
-            // 1. Identify specific keys based on metadata (for precise week-over-week comparison)
+            // 1. Identify specific keys
             let currentSaleKey = saleIdentifier ? `Sale_${saleIdentifier}` : null;
             let previousSaleKey = (saleIdentifier && saleIdentifier > 1) ? `Sale_${saleIdentifier - 1}` : null;
 
-            // Check if these specific keys actually exist in the data
             if (currentSaleKey && !firstRange.hasOwnProperty(currentSaleKey)) currentSaleKey = null;
-            // We only care if the previous key exists if the current one also does (for this specific comparison type)
             if (previousSaleKey && (!currentSaleKey || !firstRange.hasOwnProperty(previousSaleKey))) previousSaleKey = null;
 
             
-            // 2. Identify generic keys (for fallback or reports without specific numbering)
-            // Use the specific key if found, otherwise look for any 'Sale_' key.
+            // 2. Identify generic keys
             const genericSaleKey = currentSaleKey ? currentSaleKey : Object.keys(firstRange).find(k => k.startsWith('Sale_'));
             
-            // 3. Identify YTD Keys (Handles variations like 2025_26 or YTD_25_26)
-            // Ensure meta.year is available before attempting to generate keys
+            // 3. Identify YTD Keys
             let ytdCurrentKey = null;
             let ytdPreviousKey = null;
 
-            if (meta.year) {
+            // Check if meta.year is a valid number before calculating keys
+            if (meta.year && typeof meta.year === 'number') {
                 ytdCurrentKey = Object.keys(firstRange).find(k => k.includes(`${meta.year%100}_${(meta.year+1)%100}`) || k.includes(`${meta.year}_${meta.year+1}`));
                 ytdPreviousKey = Object.keys(firstRange).find(k => k.includes(`${(meta.year-1)%100}_${meta.year%100}`) || k.includes(`${meta.year-1}_${meta.year}`));
             }
@@ -237,13 +229,12 @@
             // --- Prioritization Logic ---
             let prioritizedKeys = [];
             
-            // Priority 1: Specific Weekly Comparison (e.g., J Thomas: Sale 32 vs Sale 31)
-            // Requires both current and previous specific keys to be present.
+            // Priority 1: Specific Weekly Comparison
             if (currentSaleKey && previousSaleKey) {
                 prioritizedKeys.push({ key: previousSaleKey, label: previousSaleKey.replace('_', ' '), color: CHART_COLORS.secondary });
                 prioritizedKeys.push({ key: currentSaleKey, label: currentSaleKey.replace('_', ' '), color: CHART_COLORS.primary });
             } 
-            // Priority 2: Multi-period comparison (e.g., Contemporary: Sale 34 vs YTDs)
+            // Priority 2: Multi-period comparison
             else if (genericSaleKey && (ytdCurrentKey || ytdPreviousKey)) {
                  if (ytdPreviousKey) {
                      prioritizedKeys.push({ key: ytdPreviousKey, label: ytdPreviousKey.replace(/_/g, '/').replace('YTD/', ''), color: CHART_COLORS.neutral });
@@ -251,7 +242,6 @@
                  if (ytdCurrentKey) {
                       prioritizedKeys.push({ key: ytdCurrentKey, label: ytdCurrentKey.replace(/_/g, '/').replace('YTD/', ''), color: CHART_COLORS.secondary });
                  }
-                 // The current sale/week is the primary focus
                  prioritizedKeys.push({ key: genericSaleKey, label: genericSaleKey.replace('_', ' '), color: CHART_COLORS.primary });
             }
             // Priority 3: Single period display
@@ -263,7 +253,6 @@
             }
 
             if (prioritizedKeys.length === 0) {
-                console.warn("No recognized keys found for Price Distribution data.");
                 return;
             }
 
@@ -293,15 +282,13 @@
                 
                 let datasets = [];
 
-                // Build datasets using prioritized keys
+                // Build datasets
                 prioritizedKeys.forEach(pKey => {
-                    // Safety check: Ensure the key exists in the specific range data before mapping
                     const dataPoints = labels.map(label => {
                         const rangeData = ranges[label];
                         return (rangeData && rangeData[pKey.key] !== undefined) ? rangeData[pKey.key] : null;
                     });
 
-                    // Only add the dataset if it contains non-null data
                     if (dataPoints.some(dp => dp !== null)) {
                         datasets.push({
                             label: pKey.label,
@@ -323,7 +310,7 @@
                             y: {
                                 beginAtZero: true,
                                 title: { display: true, text: 'Percentage (%)' },
-                                max: 100 // Percentage scale
+                                max: 100
                             },
                             x: {
                                 title: { display: true, text: 'Price Range (INR)' }
@@ -331,7 +318,7 @@
                         },
                         plugins: { 
                             legend: { 
-                                display: visualizationType === 'comparison', // Show legend only for comparisons
+                                display: visualizationType === 'comparison',
                                 position: 'top'
                             } 
                         }
@@ -341,13 +328,16 @@
         };
 
 
-        // Renderer for Global Statistics (e.g., World Crop Comparison) - VERIFIED LOGIC
+        // Renderer for Global Statistics (e.g., World Crop Comparison)
         const renderGlobalStatistics = (globalStats) => {
             if (!globalStats || !globalStats.world_crop_comparison || globalStats.world_crop_comparison.length === 0) return;
 
             const section = document.getElementById('global-stats-section');
             section.style.display = 'block';
             
+            // Clear previous content and add main title
+            section.innerHTML = '<h3>Global Statistics</h3>';
+
             const title = document.createElement('h4');
             title.textContent = 'World Crop Comparison (M.Kg)';
             section.appendChild(title);
@@ -356,14 +346,13 @@
             tableContainer.className = 'data-table-container';
             
             const table = document.createElement('table');
-            table.className = 'data-table stats-table'; // Apply stats-table for right alignment
+            table.className = 'data-table stats-table';
 
             // Header (Dynamic Year detection)
             const currentYear = new Date().getFullYear(); // Fallback year
-            // Assuming the first entry has valid data for comparison structure if available
             const comparisonData = globalStats.world_crop_comparison[0];
 
-            // Determine column headers based on available data keys
+            // Determine column headers
             let headers = ['Region', 'Month'];
             if (comparisonData.hasOwnProperty('current_year_todate')) headers.push(`${currentYear} (YTD)`);
             if (comparisonData.hasOwnProperty('previous_year_todate')) headers.push(`${currentYear-1} (YTD)`);
@@ -374,7 +363,6 @@
             headers.forEach((headerText, index) => {
                 const th = document.createElement('th');
                 th.className = 'header-main';
-                // Left align Region and Month
                 if (index < 2) th.style.textAlign = 'left'; 
                 th.textContent = headerText;
                 headerRow.appendChild(th);
@@ -387,17 +375,17 @@
             globalStats.world_crop_comparison.forEach(item => {
                 const row = document.createElement('tr');
                 
-                // Region (Left aligned)
+                // Region
                 const tdRegion = document.createElement('td');
                 tdRegion.textContent = item.region;
                 row.appendChild(tdRegion);
 
-                // Month (Left aligned)
+                // Month
                 const tdMonth = document.createElement('td');
                 tdMonth.textContent = item.month || 'N/A';
                 row.appendChild(tdMonth);
 
-                // Data columns (Right aligned by CSS class 'stats-table')
+                // Data columns
                 if (item.hasOwnProperty('current_year_todate')) {
                     const tdCY = document.createElement('td');
                     tdCY.textContent = formatNumber(item.current_year_todate, 1);
@@ -431,7 +419,7 @@
         };
 
 
-        // Renderer for Auction Averages Comparison (Kolkata Style) - VERIFIED LOGIC
+        // Renderer for Auction Averages Comparison (Kolkata Style)
         const renderAveragesComparison = (averages, metadata) => {
             if (!averages || averages.length === 0) return;
 
@@ -443,18 +431,22 @@
             const sale_num = metadata.sale_number;
             const current_year = metadata.year;
             
-            // Determine if we have enough data for detailed comparison vs simple YTD
+            // Determine if we have enough data for detailed comparison
             const hasDetailedWeekly = averages[0].hasOwnProperty('current_week_avg') && averages[0].hasOwnProperty('previous_week_avg');
 
             // Header
             let headerHTML = `<tr><th class="header-main" style="text-align: left;">Category</th>`;
 
-            if (hasDetailedWeekly && sale_num) {
+            if (hasDetailedWeekly && sale_num && current_year) {
                  headerHTML += `<th class="header-main" colspan="3">${current_year} Weekly Comparison</th>`;
                  headerHTML += `<th class="header-main" colspan="3">${current_year-1} Weekly Comparison</th>`;
             }
             
-            headerHTML += `<th class="header-main" colspan="3">Year-to-Date Averages</th></tr>`;
+            // Check if YTD data exists before adding header
+            if (averages[0].hasOwnProperty('ytd_avg_current')) {
+                 headerHTML += `<th class="header-main" colspan="3">Year-to-Date Averages</th>`;
+            }
+            headerHTML += `</tr>`;
             
             // Sub-Header
             headerHTML += `<tr><th class="header-sub"></th>`;
@@ -467,9 +459,17 @@
             }
 
             // YTD
-            // Use the years provided in the data if available, otherwise calculate
-            const ytd_years = averages[0].ytd_years || [current_year, current_year-1, current_year-2];
-            headerHTML += `<th class="header-sub">${ytd_years[0]}</th><th class="header-sub">${ytd_years[1]}</th><th class="header-sub">${ytd_years[2]}</th></tr>`;
+            if (averages[0].hasOwnProperty('ytd_avg_current')) {
+                // Use robust year calculation with fallbacks
+                const fallback_year = new Date().getFullYear();
+                const ytd_years = averages[0].ytd_years || [current_year || fallback_year, (current_year-1) || fallback_year-1, (current_year-2) || fallback_year-2];
+                 // Ensure we have 3 years, even if some are undefined
+                while (ytd_years.length < 3) {
+                    ytd_years.push(undefined);
+                }
+                
+                headerHTML += `<th class="header-sub">${ytd_years[0] || 'N/A'}</th><th class="header-sub">${ytd_years[1] || 'N/A'}</th><th class="header-sub">${ytd_years[2] || 'N/A'}</th></tr>`;
+            }
 
             table.querySelector('thead').innerHTML = headerHTML;
 
@@ -489,16 +489,18 @@
                 }
 
                 // YTD
-                rowHTML += `<td>${formatCurrency(item.ytd_avg_current)}</td>`;
-                rowHTML += `<td>${formatCurrency(item.ytd_avg_prev1)}</td>`;
-                rowHTML += `<td>${formatCurrency(item.ytd_avg_prev2)}</td></tr>`;
+                if (item.hasOwnProperty('ytd_avg_current')) {
+                    rowHTML += `<td>${formatCurrency(item.ytd_avg_current)}</td>`;
+                    rowHTML += `<td>${formatCurrency(item.ytd_avg_prev1)}</td>`;
+                    rowHTML += `<td>${formatCurrency(item.ytd_avg_prev2)}</td></tr>`;
+                }
                 
                 tbody.innerHTML += rowHTML;
             });
         };
 
         
-        // Renderer for Market Synopsis/Buying Analysis Grid (Kolkata Style) - VERIFIED LOGIC
+        // Renderer for Market Synopsis/Buying Analysis Grid (Kolkata Style)
         const renderCommentaryGrid = (synopsis) => {
             if (!synopsis || Object.keys(synopsis).length === 0) return;
 
@@ -507,21 +509,24 @@
             let isEmpty = true;
 
             for (const [category, content] of Object.entries(synopsis)) {
-                // Check if there is meaningful content before rendering the block
-                if ((content.market_report && content.market_report.trim() !== '') || 
-                    (content.buying_analysis && content.buying_analysis.trim() !== '')) {
-                    
+                // Ensure 'content' itself exists before accessing properties
+                if (!content) continue;
+
+                const report = content.market_report ? content.market_report.trim() : '';
+                const analysis = content.buying_analysis ? content.buying_analysis.trim() : '';
+
+                if (report || analysis) {
                     isEmpty = false;
                     const block = document.createElement('div');
                     block.className = 'commentary-block';
 
                     let blockHTML = `<h4>${category}</h4>`;
                     
-                    if (content.market_report && content.market_report.trim() !== '') {
-                        blockHTML += `<p><strong>Market Report:</strong> ${content.market_report}</p>`;
+                    if (report) {
+                        blockHTML += `<p><strong>Market Report:</strong> ${report}</p>`;
                     }
-                    if (content.buying_analysis && content.buying_analysis.trim() !== '') {
-                         blockHTML += `<p><strong>Buying Analysis:</strong> ${content.buying_analysis}</p>`;
+                    if (analysis) {
+                         blockHTML += `<p><strong>Buying Analysis:</strong> ${analysis}</p>`;
                     }
 
                     block.innerHTML = blockHTML;
@@ -535,7 +540,7 @@
         };
 
 
-        // Renderer for Quantity Sold Comparison (Colombo Style) - VERIFIED LOGIC
+        // Renderer for Quantity Sold Comparison (Colombo Style)
         const renderQuantityComparison = (comparison, metadata) => {
             if (!comparison || comparison.length === 0) return;
 
@@ -544,14 +549,15 @@
             const tbody = table.querySelector('tbody');
             tbody.innerHTML = '';
 
-            const current_year = metadata.year;
+            // Provide default year if missing
+            const current_year = metadata.year || new Date().getFullYear();
 
             // Header
             table.querySelector('thead').innerHTML = `
                 <tr>
                     <th class="header-main" rowspan="2" style="text-align: left;">Channel</th>
-                    <th class="header-main" colspan="2">${current_year}</th>
-                    <th class="header-main" colspan="2">${current_year-1}</th>
+                    <th class="header-main" colspan="2">${current_year || 'Current Year'}</th>
+                    <th class="header-main" colspan="2">${(current_year-1) || 'Previous Year'}</th>
                 </tr>
                 <tr>
                     <th class="header-sub">Weekly</th>
@@ -583,7 +589,7 @@
         };
 
         
-        // Renderer for Offerings by Grade (Mombasa/Colombo Style) - VERIFIED LOGIC
+        // Renderer for Offerings by Grade (Mombasa/Colombo Style)
         const renderOfferingsByGrade = (offerings, metadata) => {
             if (!offerings || offerings.length === 0) return;
 
@@ -594,7 +600,7 @@
             tbody.innerHTML = '';
             tfoot.innerHTML = '';
 
-            // Determine Headers based on available data keys (Lots/Pkgs and Quantity)
+            // Determine Headers
             let headers = ['Category'];
             const firstItem = offerings[0];
             
@@ -607,7 +613,6 @@
             const thead = table.querySelector('thead');
             let headerRowHTML = '<tr>';
             headers.forEach((header, index) => {
-                // Left align category, right align others
                 const align = index === 0 ? 'left' : 'right';
                 headerRowHTML += `<th class="header-main" style="text-align: ${align};">${header}</th>`;
             });
@@ -617,7 +622,7 @@
             let totalLots = 0;
             let totalPackages = 0;
             let totalQuantity = 0;
-            let totalUnsoldWeighted = 0; // For calculating average unsold %
+            let totalUnsoldWeighted = 0;
 
             // Render Body
             offerings.forEach(item => {
@@ -640,7 +645,6 @@
                 }
                 if (item.hasOwnProperty('percent_unsold')) {
                     const unsold = item.percent_unsold;
-                    // Calculate weighted contribution for average unsold percentage
                     if (unsold !== null && item.quantity_kg) {
                         totalUnsoldWeighted += (unsold * item.quantity_kg);
                     }
@@ -663,7 +667,6 @@
                 footerHTML += `<td style="text-align: right;">${formatNumber(totalQuantity)}</td>`;
             }
             if (headers.includes('% Unsold')) {
-                // Calculate the weighted average unsold percentage
                 const avgUnsold = totalQuantity > 0 ? (totalUnsoldWeighted / totalQuantity) : 0;
                 footerHTML += `<td style="text-align: right;">${formatNumber(avgUnsold, 2)}%</td>`;
             }
@@ -673,35 +676,31 @@
         };
 
         
-        // Renderer for Multi-Center Offerings (Contemporary Brokers Style) - VERIFIED LOGIC
+        // Renderer for Multi-Center Offerings (Contemporary Brokers Style)
+        // IMPROVED: Ensures clean separation of Pkgs and M.Kg sections.
         const renderMultiCenterOfferings = (multiCenterData, metricLabel) => {
              if (!multiCenterData || Object.keys(multiCenterData).length === 0) return;
 
             const section = document.getElementById('auction-offerings-multi-section');
             section.style.display = 'block';
 
-            const container = document.getElementById('auction-offerings-multi-container');
-            // Avoid appending duplicate tables if rendering updates
-            if (!document.getElementById(`multi-center-title-${metricLabel}`)) {
-                const title = document.createElement('h4');
-                title.id = `multi-center-title-${metricLabel}`;
-                title.textContent = `Offerings Comparison (${metricLabel})`;
-                // Insert the title before the grid container if it's the first metric
-                if (container.children.length === 0) {
-                    section.insertBefore(title, container);
-                } else {
-                    // Otherwise append if we are adding the second metric (e.g., M.Kg after Pkgs)
-                    section.appendChild(title);
-                }
-            }
-            
+            // Create the title for this metric
+            const title = document.createElement('h3');
+            title.textContent = `Auction Offerings Comparison (${metricLabel})`;
+            section.appendChild(title);
+
+            // Create the grid container for this metric
+            const container = document.createElement('div');
+            container.className = 'comparison-grid';
+            section.appendChild(container);
+
 
             for (const [center, data] of Object.entries(multiCenterData)) {
                 const wrapper = document.createElement('div');
                 wrapper.className = 'comparison-block';
 
                 const table = document.createElement('table');
-                table.className = 'data-table stats-table'; // Use stats-table for alignment
+                table.className = 'data-table stats-table';
 
                 // Header
                 table.innerHTML = `
@@ -750,11 +749,10 @@
 
         // --- Visualization Functions (Charts) ---
 
-        // Visualization for Offerings by Grade (Doughnut Chart) - VERIFIED LOGIC
+        // Visualization for Offerings by Grade (Doughnut Chart)
         const renderOfferingsChart = (offerings) => {
             if (!offerings || offerings.length === 0) return;
 
-            // Filter out categories with zero quantity and the 'TOTAL' row if present
             const filteredData = offerings.filter(item => item.quantity_kg > 0 && item.category.toLowerCase() !== 'total');
             
             if (filteredData.length === 0) return;
@@ -766,7 +764,6 @@
             const labels = filteredData.map(item => item.category);
             const data = filteredData.map(item => item.quantity_kg);
 
-            // Generate dynamic colors (example using a predefined palette subset)
             const colors = [
                 CHART_COLORS.primary, CHART_COLORS.secondary, CHART_COLORS.accent1, 
                 CHART_COLORS.accent2, CHART_COLORS.neutral,
@@ -811,18 +808,26 @@
             });
         };
 
-        // --- Main Orchestration Function ---
+        // =================================================================
+        // === CRITICAL FIX: Main Orchestration Function (Resilient Rendering)
+        // =================================================================
         const renderReport = (data) => {
-            const meta = data.metadata;
-            const summary = data.summary;
+            // Initialize meta and summary safely. If they don't exist in data, default to an empty object.
+            const meta = data.metadata || {};
+            const summary = data.summary || {};
 
             // 1. Set Title and Metadata
-            const identifier = meta.sale_number ? `Sale ${meta.sale_number}` : (meta.auction_number ? `Auction ${meta.auction_number}` : (meta.week_number ? `Week ${meta.week_number}` : ''));
-            const title = `${meta.auction_centre} Market Report - ${identifier}, ${meta.year}`;
+            // Use fallback values if specific metadata is missing
+            const identifier = meta.sale_number ? `Sale ${meta.sale_number}` : (meta.auction_number ? `Auction ${meta.auction_number}` : (meta.week_number ? `Week ${meta.week_number}` : 'Report'));
+            const year = meta.year || 'N/A';
+            const centre = meta.auction_centre || 'Unknown Centre';
+
+            const title = `${centre} Market Report - ${identifier}, ${year}`;
+            
             document.getElementById('report-title').textContent = title;
             document.title = title + ' - TeaTrade';
 
-            let metaText = `Source: ${meta.source} | Country: ${meta.country}`;
+            let metaText = `Source: ${meta.source || 'N/A'} | Country: ${meta.country || 'N/A'}`;
             if (meta.date) {
                 metaText += ` | Date: ${meta.date}`;
             }
@@ -832,6 +837,7 @@
             document.getElementById('report-meta').textContent = metaText;
 
             // 2. Render Summary Statistics (Stat Cards)
+            // This section now safely accesses 'summary' properties.
             const statsContainer = document.getElementById('summary-stats');
             statsContainer.innerHTML = ''; // Clear previous stats
 
@@ -848,7 +854,8 @@
                  statsContainer.innerHTML += `<div class="stat-card"><h4>% Unsold</h4><p>${formatNumber(summary.percent_unsold, 1)}%</p></div>`;
             }
              if (summary.average_price) {
-                 statsContainer.innerHTML += `<div class="stat-card"><h4>Average Price (${meta.currency})</h4><p>${formatCurrency(summary.average_price)}</p></div>`;
+                 const currency = meta.currency || 'USD';
+                 statsContainer.innerHTML += `<div class="stat-card"><h4>Average Price (${currency})</h4><p>${formatCurrency(summary.average_price)}</p></div>`;
             }
 
             // 3. Render Commentary
@@ -856,6 +863,7 @@
                 document.getElementById('summary-section').style.display = 'block';
                 document.getElementById('market-comment').textContent = data.market_commentary;
             }
+            // Safely access summary quality comment
             if (summary.quality_comment) {
                 document.getElementById('quality-wrapper').style.display = 'block';
                 document.getElementById('quality-comment').textContent = summary.quality_comment;
@@ -869,7 +877,9 @@
             renderAveragesComparison(data.auction_averages_comparison, meta);
             renderPriceDistribution(data.price_distribution, meta);
 
-            // 5. Render Multi-Center Tables (Specific handling for multiple metrics)
+            // 5. Render Multi-Center Tables
+            // Clear the section first to ensure clean rendering
+            document.getElementById('auction-offerings-multi-section').innerHTML = '';
             renderMultiCenterOfferings(data.auction_offerings_multi_center_pkgs, 'Pkgs');
             renderMultiCenterOfferings(data.auction_offerings_multi_center_mkg, 'M.Kg');
 
@@ -880,7 +890,7 @@
 
         
         // =================================================================
-        // === UPDATED: Data Loading and Orchestration (Handles new paths) ===
+        // === Data Loading and Orchestration (Handles new paths) ===
         // =================================================================
 
         // Function to fetch data (Handles file path variations for Market Reports)
@@ -896,7 +906,7 @@
 
                 // If structured path fails (e.g., 404 Not Found), try the root directory
                 if (!response.ok) {
-                    console.warn(`File not found in structured path: ${structuredPath}. Trying root path.`);
+                    console.warn(`File not found in structured path: ${structuredPath}. Trying root path: ${rootPath}`);
                     response = await fetch(rootPath);
                 }
 
@@ -924,16 +934,22 @@
                 // Use the new fetchData function
                 const reportData = await fetchData(datasetName);
                 
+                 if (!reportData) {
+                    throw new Error("Loaded data is empty or invalid.");
+                }
+
+                // Render the report using the resilient renderReport function
                 renderReport(reportData);
 
                 document.getElementById('loading-indicator').style.display = 'none';
                 document.getElementById('report-content').style.display = 'block';
 
             } catch (error) {
-                console.error('Error loading report:', error);
+                // Catch errors during both loading AND rendering
+                console.error('Error loading or rendering report:', error);
                 document.getElementById('report-title').textContent = 'Error loading report.';
                 // Display a user-friendly error message
-                document.getElementById('loading-indicator').textContent = `An error occurred while loading the data. Details: ${error.message}`;
+                document.getElementById('loading-indicator').textContent = `An error occurred while loading or rendering the data. Details: ${error.message}`;
             }
         });
     </script>
