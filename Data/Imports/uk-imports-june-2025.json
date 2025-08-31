@@ -1,9 +1,27 @@
-[
-    { "partner_country": "Kenya", "net_mass_kg": 4750100, "value_gbp": 11995200 },
-    { "partner_country": "India", "net_mass_kg": 2105400, "value_gbp": 8150300 },
-    { "partner_country": "Malawi", "net_mass_kg": 890600, "value_gbp": 1750900 },
-    { "partner_country": "China", "net_mass_kg": 410200, "value_gbp": 2980100 },
-    { "partner_country": "Rwanda", "net_mass_kg": 720800, "value_gbp": 1480400 },
-    { "partner_country": "United Republic of Tanzania", "net_mass_kg": 650300, "value_gbp": 1310500 },
-    { "partner_country": "Sri Lanka", "net_mass_kg": 295100, "value_gbp": 1895000 }
-]
+{
+  "metadata": {
+    "year": 2025,
+    "month": 6,
+    "source": "HMRC Overseas Trade Statistics",
+    "currency": "GBP",
+    "date_published": "2025-07-15"
+  },
+  "imports": [
+    {"year": 2025, "month": 6, "tea_type": "Black Tea (Fermented)", "country_of_origin": "Kenya", "net_mass_kg": 1850000, "statistical_value_gbp": 4625000},
+    {"year": 2025, "month": 6, "tea_type": "Black Tea (Fermented)", "country_of_origin": "India", "net_mass_kg": 950000, "statistical_value_gbp": 3325000},
+    {"year": 2025, "month": 6, "tea_type": "Black Tea (Fermented)", "country_of_origin": "Sri Lanka", "net_mass_kg": 450000, "statistical_value_gbp": 1800000},
+    {"year": 2025, "month": 6, "tea_type": "Black Tea (Fermented)", "country_of_origin": "Malawi", "net_mass_kg": 300000, "statistical_value_gbp": 600000},
+    {"year": 2025, "month": 6, "tea_type": "Black Tea (Fermented)", "country_of_origin": "Tanzania", "net_mass_kg": 250000, "statistical_value_gbp": 550000},
+    {"year": 2025, "month": 6, "tea_type": "Black Tea (Fermented)", "country_of_origin": "Rwanda", "net_mass_kg": 200000, "statistical_value_gbp": 600000},
+    {"year": 2025, "month": 6, "tea_type": "Black Tea (Fermented)", "country_of_origin": "Argentina", "net_mass_kg": 150000, "statistical_value_gbp": 300000},
+    {"year": 2025, "month": 6, "tea_type": "Black Tea (Fermented)", "country_of_origin": "Indonesia", "net_mass_kg": 100000, "statistical_value_gbp": 250000},
+    {"year": 2025, "month": 6, "tea_type": "Black Tea (Fermented)", "country_of_origin": "Uganda", "net_mass_kg": 80000, "statistical_value_gbp": 160000},
+    {"year": 2025, "month": 6, "tea_type": "Black Tea (Fermented)", "country_of_origin": "Vietnam", "net_mass_kg": 70000, "statistical_value_gbp": 140000},
+    {"year": 2025, "month": 6, "tea_type": "Black Tea (Fermented)", "country_of_origin": "Poland (Packing)", "net_mass_kg": 500000, "statistical_value_gbp": 2000000},
+    {"year": 2025, "month": 6, "tea_type": "Black Tea (Fermented)", "country_of_origin": "UAE (Packing)", "net_mass_kg": 300000, "statistical_value_gbp": 1200000},
+    {"year": 2025, "month": 6, "tea_type": "Green Tea (Not Fermented)", "country_of_origin": "China", "net_mass_kg": 600000, "statistical_value_gbp": 2400000},
+    {"year": 2025, "month": 6, "tea_type": "Green Tea (Not Fermented)", "country_of_origin": "Japan", "net_mass_kg": 150000, "statistical_value_gbp": 900000},
+    {"year": 2025, "month": 6, "tea_type": "Green Tea (Not Fermented)", "country_of_origin": "Vietnam", "net_mass_kg": 100000, "statistical_value_gbp": 300000},
+    {"year": 2025, "month": 6, "tea_type": "Green Tea (Not Fermented)", "country_of_origin": "India", "net_mass_kg": 50000, "statistical_value_gbp": 200000}
+  ]
+}
