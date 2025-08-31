@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UK Tea Import Analysis - TeaTrade Visuals</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="visuals-page">
+    <header class="site-header">
+        <div class="header-top-bar">
+            <a href="corporate.html" class="header-logo"><h1>Tea<span>Trade</span></h1></a>
+            <div class="header-search-wrapper"><input type="text" class="header-search-bar" placeholder="Global site search..."></div>
+            <div class="user-actions">
+                <a href="#" title="Create Account"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="17" y1="11" x2="23" y2="11"></line></svg></a>
+                <a href="#" title="Sign In"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg></a>
+            </div>
+             <button class="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+        <nav class="secondary-nav">
+            <ul>
+                <li><a href="data.html">Data</a></li>
+                <li><a href="market-reports.html">Market Reports</a></li>
+                <li><a href="#">Auctions</a></li>
+                <li><a href="visuals.html" class="active">Visuals</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-container">
+        <div class="dashboard-header">
+            <h2 class="page-title">UK Tea Import Analysis</h2>
+        </div>
+        <p style="margin-bottom: 24px; color: #5f6368;">Source: HMRC Overseas Trade Statistics</p>
+
+        <div class="filter-controls-wrapper">
+            <div class="filter-group">
+                <label for="filter-year" class="filter-label">Year</label>
+                <select id="filter-year" class="filter-dropdown"></select>
+            </div>
+            <div class="filter-group">
+                <label for="filter-month" class="filter-label">Period</label>
+                <select id="filter-month" class="filter-dropdown">
+                    <option value="YTD">Year-to-Date (YTD)</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="filter-type" class="filter-label">Tea Type</label>
+                <select id="filter-type" class="filter-dropdown">
+                    <option value="ALL">All Tea Types</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="visualization-content" style="display: none;">
+            <div class="distribution-container">
+                <div class="distribution-block">
+                    <h4>Top 10 Suppliers by Value (GBP)</h4>
+                    <div style="position: relative; height: 400px;"><canvas id="valueChart"></canvas></div>
+                </div>
+                <div class="distribution-block">
+                    <h4>Top 10 Suppliers by Volume (Kg)</h4>
+                    <div style="position: relative; height: 400px;"><canvas id="volumeChart"></canvas></div>
+                </div>
+            </div>
+        </div>
+        <div id="loading-indicator">Loading visualization data...</div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // --- Configuration ---
+        const CHART_COLORS = {
+            primary: 'rgba(26, 115, 232, 0.9)', // Blue for Value
+            secondary: 'rgba(52, 168, 83, 0.9)', // Green for Volume
+        };
+
+        // Standard options for horizontal bar charts (best for rankings)
+        const CHART_OPTIONS_HORIZONTAL_BAR = {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                x: { beginAtZero: true, title: { display: true, text: 'Value' } },
+            }
+        };
+
+        // List of known data files (Browser security prevents dynamic directory listing)
+        // This list must be updated as new import files are added.
+        const DATA_FILES = [
+            'Data/Imports/uk-imports-june-2025.json',
+            'Data/Imports/uk-imports-july-2025.json'
+        ];
+
+        let GLOBAL_DATA = [];
+        let valueChartInstance = null;
+        let volumeChartInstance = null;
+
+        // --- Data Loading and Processing ---
+        async function loadAndProcessData() {
+            try {
+                // Fetch all files concurrently
+                const fetchPromises = DATA_FILES.map(file => fetch(file).then(response => {
+                    if (!response.ok) throw new Error(`Failed to load ${file}`);
+                    return response.json();
+                }));
+
+                const datasets = await Promise.all(fetchPromises);
+                
+                // Combine all loaded datasets into one master array. 
+                // We assume the standardized structure has the data array under the 'imports' key.
+                GLOBAL_DATA = datasets.flatMap(data => data.imports || []);
+                
+                if (GLOBAL_DATA.length === 0) {
+                    throw new Error("No data available.");
+                }
+
+                // Setup the UI
+                const filters = extractFilters(GLOBAL_DATA);
+                populateFilters(filters);
+                updateVisualizations();
+
+                document.getElementById('loading-indicator').style.display = 'none';
+                document.getElementById('visualization-content').style.display = 'block';
+
+
+            } catch (error) {
+                console.error("Error loading data:", error);
+                document.getElementById('loading-indicator').textContent = `Error loading visualization data: ${error.message}`;
+            }
+        }
+
+        // Determine available filter options from the loaded data
+        function extractFilters(data) {
+            const years = [...new Set(data.map(item => item.year))].sort((a, b) => b - a);
+            const months = [...new Set(data.map(item => item.month))].sort((a, b) => a - b);
+            const types = [...new Set(data.map(item => item.tea_type))].sort();
+            return { years, months, types };
+        }
+
+        // --- UI Updates ---
+        function populateFilters({ years, months, types }) {
+            const yearSelect = document.getElementById('filter-year');
+            const monthSelect = document.getElementById('filter-month');
+            const typeSelect = document.getElementById('filter-type');
+
+            // Populate Years (defaults to most recent)
+            years.forEach(year => {
+                const option = new Option(year, year);
+                yearSelect.add(option);
+            });
+
+            // Populate Months (mapping numbers to names)
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            months.forEach(monthNum => {
+                 // Ensure monthNum is treated as a number for the index lookup
+                const num = parseInt(monthNum, 10);
+                if (num >= 1 && num <= 12) {
+                    const option = new Option(monthNames[num - 1], num);
+                    monthSelect.add(option);
+                }
+            });
+
+            // Populate Types
+            types.forEach(type => {
+                const option = new Option(type, type);
+                typeSelect.add(option);
+            });
+
+            // Add event listeners for changes
+            yearSelect.addEventListener('change', updateVisualizations);
+            monthSelect.addEventListener('change', updateVisualizations);
+            typeSelect.addEventListener('change', updateVisualizations);
+        }
+
+        // --- Visualization Logic ---
+        function updateVisualizations() {
+            const selectedYear = document.getElementById('filter-year').value;
+            const selectedMonth = document.getElementById('filter-month').value;
+            const selectedType = document.getElementById('filter-type').value;
+
+            // 1. Filter the data based on selections
+            let filteredData = GLOBAL_DATA.filter(item => item.year == selectedYear);
+
+            if (selectedMonth !== "YTD") {
+                filteredData = filteredData.filter(item => item.month == selectedMonth);
+            }
+            // If YTD is selected, we use all data for the selected year (already filtered).
+
+            if (selectedType !== "ALL") {
+                filteredData = filteredData.filter(item => item.tea_type === selectedType);
+            }
+
+            // 2. Aggregate the filtered data
+            const aggregatedData = aggregateByCountry(filteredData);
+            
+            // 3. Render the charts
+            renderCharts(aggregatedData);
+        }
+
+        // Process data into totals per country
+        function aggregateByCountry(data) {
+            const aggregation = {};
+            data.forEach(item => {
+                const country = item.country_of_origin;
+                if (!aggregation[country]) {
+                    aggregation[country] = { country: country, value_gbp: 0, volume_kg: 0 };
+                }
+                // Ensure values are treated as numbers and handle potential nulls/undefined
+                aggregation[country].value_gbp += Number(item.statistical_value_gbp) || 0;
+                aggregation[country].volume_kg += Number(item.net_mass_kg) || 0;
+            });
+            return Object.values(aggregation);
+        }
+
+        function renderCharts(data) {
+            // 1. Value Chart
+            // We use the spread operator [...] to clone the data before sorting, preventing mutation of the original array.
+            const top10Value = [...data].sort((a, b) => b.value_gbp - a.value_gbp).slice(0, 10);
+            const valueLabels = top10Value.map(item => item.country);
+            const valueData = top10Value.map(item => item.value_gbp);
+
+            // Clone options and customize
+            const valueOptions = JSON.parse(JSON.stringify(CHART_OPTIONS_HORIZONTAL_BAR));
+            valueOptions.scales.x.title.text = 'Value (GBP)';
+
+            // Destroy existing instance before creating a new one
+            if (valueChartInstance) valueChartInstance.destroy();
+            valueChartInstance = new Chart(document.getElementById('valueChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: valueLabels,
+                    datasets: [{
+                        label: 'Value (GBP)',
+                        data: valueData,
+                        backgroundColor: CHART_COLORS.primary,
+                    }]
+                },
+                options: valueOptions
+            });
+
+            // 2. Volume Chart
+            const top10Volume = [...data].sort((a, b) => b.volume_kg - a.volume_kg).slice(0, 10);
+            const volumeLabels = top10Volume.map(item => item.country);
+            const volumeData = top10Volume.map(item => item.volume_kg);
+
+            const volumeOptions = JSON.parse(JSON.stringify(CHART_OPTIONS_HORIZONTAL_BAR));
+            volumeOptions.scales.x.title.text = 'Volume (Kg)';
+
+            if (volumeChartInstance) volumeChartInstance.destroy();
+            volumeChartInstance = new Chart(document.getElementById('volumeChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: volumeLabels,
+                    datasets: [{
+                        label: 'Volume (Kg)',
+                        data: volumeData,
+                        backgroundColor: CHART_COLORS.secondary,
+                    }]
+                },
+                options: volumeOptions
+            });
+        }
+
+        // Initialize the visualization upon page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize mobile menu (from script.js)
+             if (typeof initializeMobileMenu === 'function') {
+                initializeMobileMenu();
+            }
+            loadAndProcessData();
+        });
+    </script>
+</body>
+</html>
