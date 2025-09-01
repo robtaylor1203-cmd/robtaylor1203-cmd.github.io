@@ -6,28 +6,26 @@
     <title>Data Dashboard - TeaTrade</title>
     <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body class="dashboard-page">
     <header class="site-header">
         <div class="header-top-bar">
-            <a href="../corporate.html" class="header-logo"><h1>Tea<span>Trade</span></h1></a>
-            <div class="header-search-wrapper"><input type="text" class="header-search-bar" placeholder="Search data..."></div>
+             <a href="../corporate.html" class="header-logo"><h1>Tea<span>Trade</span></h1></a>
+            <div class="header-search-wrapper"><input type="text" class="header-search-bar" placeholder="Global site search..."></div>
             <div class="user-actions">
                 <a href="#" title="Create Account"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="17" y1="11" x2="23" y2="11"></line></svg></a>
                 <a href="#" title="Sign In"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg></a>
             </div>
-            <!-- ADDED: Mobile Menu Toggle -->
-            <button class="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+             <button class="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
         </div>
         <nav class="secondary-nav">
             <ul>
-                <!-- UPDATED: Links to new pages (using ../) -->
-                <li><a href="../data.html" class="active">Data</a></li>
+                 <li><a href="../data.html" class="active">Data</a></li>
                 <li><a href="../market-reports.html">Market Reports</a></li>
                 <li><a href="#">Auctions</a></li>
                 <li><a href="../visuals.html">Visuals</a></li>
@@ -39,211 +37,366 @@
         <div class="dashboard-header">
             <h2 class="page-title" id="dashboard-title">Loading Dataset...</h2>
             <div class="slicer-controls">
-                <button class="slicer-button active" data-key="value_gbp" data-label="Import Value (£ GBP)">View by Value</button>
-                <button class="slicer-button" data-key="net_mass_kg" data-label="Import Mass (kg)">View by Mass</button>
+                <button class="slicer-button active" data-metric="net_mass_kg">Volume (Kg)</button>
+                <button class="slicer-button" data-metric="statistical_value_gbp">Value (£)</button>
             </div>
         </div>
+        <p id="dashboard-meta" style="margin-bottom: 16px; color: #5f6368;"></p>
+
         <div class="view-switcher">
-            <button id="show-table-view" class="view-chip active">Table View</button>
-            <button id="show-chart-view" class="view-chip">Chart View</button>
-            <button id="show-map-view" class="view-chip">Map View</button>
+            <button class="view-chip active" data-view="chart">Chart View</button>
+            <button class="view-chip" data-view="table">Data Table</button>
+            <button class="view-chip" data-view="map">Map View</button>
         </div>
 
-        <!-- UPDATED: Wrapped table in a container for responsive scrolling -->
-        <div id="table-view" class="view-content">
-            <div class="data-table-container">
-                <table class="data-table">
+        <div id="chart-view" class="view-content">
+            <div class="chart-container">
+                <canvas id="dataChart"></canvas>
+            </div>
+        </div>
+        
+        <div id="table-view" class="view-content" style="display: none;">
+             <div class="data-table-container">
+                <table class="data-table" id="dataTable">
                     <thead>
                         <tr>
-                            <th data-sort="partner_country">Country</th>
-                            <th data-sort="net_mass_kg">Net Mass (kg)</th>
-                            <th data-sort="value_gbp">Value (£ GBP)</th>
+                            <th data-sort="country_of_origin">Country</th>
+                            <th data-sort="tea_type">Type</th>
+                            <th data-sort="net_mass_kg">Volume (Kg)</th>
+                            <th data-sort="statistical_value_gbp">Value (£)</th>
                         </tr>
                     </thead>
-                    <tbody id="data-table-body">
-                        <tr><td colspan="3" style="text-align: center; padding: 20px;">Loading data...</td></tr>
-                    </tbody>
+                    <tbody></tbody>
                 </table>
             </div>
         </div>
 
-        <div id="chart-view" class="view-content" style="display: none;">
-            <div class="chart-container"><canvas id="importChart"></canvas></div>
-        </div>
-        
         <div id="map-view" class="view-content" style="display: none;">
             <div id="map-container"></div>
         </div>
     </main>
-    
+    <script src="../script.js"></script>
     <script>
-        // (Existing Dashboard JavaScript logic remains the same)
-        document.addEventListener('DOMContentLoaded', async () => {
-            const params = new URLSearchParams(window.location.search);
-            const datasetFile = params.get('dataset');
-            const pageTitle = params.get('title');
-            const dashboardTitleEl = document.getElementById('dashboard-title');
+        let currentData = [];
+        let currentMetric = 'net_mass_kg';
+        let currentView = 'chart';
+        let chartInstance = null;
+        let mapInstance = null;
+        let geojsonData = null;
+        let sortState = { column: null, direction: 'asc' };
 
-            if (pageTitle) {
-                const titleText = pageTitle.replace(/\+/g, ' ');
-                dashboardTitleEl.textContent = titleText;
-                document.title = titleText + " - TeaTrade";
-            }
-            if (!datasetFile) {
-                dashboardTitleEl.textContent = 'Error: No dataset selected.';
-                return;
-            }
+        const metricLabels = {
+            net_mass_kg: 'Volume (Kg)',
+            statistical_value_gbp: 'Value (£)'
+        };
 
-            let currentData = [];
-            let myChart, myMap, geoJsonLayer, geoDataCache;
-            let sortDirection = {};
-            let currentSlice = { key: 'value_gbp', label: 'Import Value (£ GBP)' };
-
-            const tableBody = document.getElementById('data-table-body');
-            const headers = document.querySelectorAll('.data-table th');
-            const chartCanvas = document.getElementById('importChart');
-            const views = document.querySelectorAll('.view-content');
-            const viewButtons = document.querySelectorAll('.view-chip');
-            const slicerButtons = document.querySelectorAll('.slicer-button');
-
-            const renderTable = (data) => {
-                tableBody.innerHTML = '';
-                data.forEach(item => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `<td>${item.partner_country}</td><td>${item.net_mass_kg.toLocaleString()}</td><td>${item.value_gbp.toLocaleString()}</td>`;
-                    tableBody.appendChild(row);
-                });
-            };
-
-            const renderChart = (data) => {
-                if (myChart) myChart.destroy();
-                const sortedData = [...data].sort((a, b) => b[currentSlice.key] - a[currentSlice.key]);
-                const labels = sortedData.map(item => item.partner_country);
-                const values = sortedData.map(item => item[currentSlice.key]);
-                myChart = new Chart(chartCanvas, {
-                    type: 'bar',
-                    data: { labels: labels, datasets: [{ label: currentSlice.label, data: values, backgroundColor: 'rgba(26, 115, 232, 0.8)', borderColor: 'rgba(26, 115, 232, 1)', borderWidth: 1 }] },
-                    options: { scales: { y: { beginAtZero: true } }, responsive: true, maintainAspectRatio: false }
-                });
-            };
-
-            const renderMap = (geoData, data) => {
-                const mapContainer = document.getElementById('map-container');
-                if (!myMap) { 
-                    myMap = L.map(mapContainer).setView([20, 0], 2);
-                    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { attribution: '&copy; OpenStreetMap &copy; CARTO' }).addTo(myMap);
-                } else {
-                    // Invalidate size when the map tab becomes visible
-                    setTimeout(() => { myMap.invalidateSize() }, 10);
-                }
-                if (geoJsonLayer) myMap.removeLayer(geoJsonLayer);
-                const dataLookup = new Map(data.map(d => [d.partner_country, d]));
-                const maxVal = Math.max(...data.map(d => d[currentSlice.key] || 0));
-                const getColor = (value) => {
-                    if (!value) return '#ECEFF1';
-                    const ratio = value / maxVal;
-                    if (ratio > 0.8) return '#0d47a1';
-                    if (ratio > 0.5) return '#1976d2';
-                    if (ratio > 0.2) return '#2196f3';
-                    if (ratio > 0.1) return '#64b5f6';
-                    return '#bbdefb';
-                };
-                // Handle known discrepancies between trade data names and GeoJSON names
-                const geoTanzania = geoData.features.find(f => f.properties.name === "Tanzania");
-                if(geoTanzania) geoTanzania.properties.name = "United Republic of Tanzania";
-                
-                geoJsonLayer = L.geoJson(geoData, {
-                    style: (feature) => {
-                        const countryName = feature.properties.name;
-                        const countryData = dataLookup.get(countryName);
-                        return { fillColor: getColor(countryData ? countryData[currentSlice.key] : 0), weight: 1, opacity: 1, color: '#B0BEC5', fillOpacity: 0.7 };
-                    },
-                    onEachFeature: (feature, layer) => {
-                        const countryName = feature.properties.name;
-                        const countryData = dataLookup.get(countryName);
-                        if (countryData) {
-                            layer.bindPopup(`<strong>${countryName}</strong><br/>Value: £${countryData.value_gbp.toLocaleString()}<br/>Mass: ${countryData.net_mass_kg.toLocaleString()} kg`);
-                        }
-                    }
-                }).addTo(myMap);
-            };
-
-            const updateVisualizations = () => {
-                const activeView = document.querySelector('.view-chip.active').id.replace('show-', '');
-                if (activeView === 'chart-view') renderChart(currentData);
-                if (activeView === 'map-view' && geoDataCache) renderMap(geoDataCache, currentData);
-            };
-            
+        async function fetchData(datasetFile) {
             try {
+                // FIX 1: Updated path to look up one directory (../)
                 const response = await fetch(`../Data/Imports/${datasetFile}.json`);
-                if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
-                currentData = await response.json();
-                renderTable(currentData);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const jsonData = await response.json();
 
-                slicerButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        slicerButtons.forEach(btn => btn.classList.remove('active'));
-                        button.classList.add('active');
-                        currentSlice.key = button.dataset.key;
-                        currentSlice.label = button.dataset.label;
-                        updateVisualizations();
-                    });
-                });
+                // FIX 2: Access the 'imports' array and metadata object
+                if (!jsonData.imports || !Array.isArray(jsonData.imports)) {
+                     throw new Error("Data format is incorrect. Expected an 'imports' array.");
+                }
+                
+                // Ensure we are working with the array so that .sort() works later
+                currentData = jsonData.imports; 
+                const meta = jsonData.metadata;
 
-                viewButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        viewButtons.forEach(btn => btn.classList.remove('active'));
-                        button.classList.add('active');
-                        const viewId = button.id.replace('show-', '');
-                        views.forEach(view => { view.style.display = (view.id === viewId) ? 'block' : 'none'; });
-                        if (viewId === 'chart-view') renderChart(currentData);
-                        if (viewId === 'map-view') {
-                            if (geoDataCache) {
-                                renderMap(geoDataCache, currentData);
-                            } else {
-                                fetch('../countries.geojson').then(res => res.json()).then(geoData => {
-                                    geoDataCache = geoData; 
-                                    renderMap(geoData, currentData);
-                                }).catch(err => { console.error("Failed to load map data.", err); document.getElementById('map-container').innerHTML = `<p>Error: Could not load map data file.</p>`; });
+                // Update Titles and Metadata
+                const monthNames = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                const title = meta ? `UK Imports - ${monthNames[meta.month]} ${meta.year}` : 'Data Dashboard';
+                document.getElementById('dashboard-title').textContent = title;
+                
+                const metaText = meta ? `Source: ${meta.source} | Published: ${meta.date_published}` : '';
+                document.getElementById('dashboard-meta').textContent = metaText;
+
+                // Load GeoJSON data if not already loaded (FIX: Updated path ../)
+                if (!geojsonData) {
+                    const geoResponse = await fetch('../countries.geojson');
+                    if (geoResponse.ok) {
+                         geojsonData = await geoResponse.json();
+                    }
+                }
+
+                updateView();
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                document.getElementById('dashboard-title').textContent = 'Error loading dataset.';
+                document.getElementById('dashboard-meta').textContent = `Error: ${error.message}`;
+            }
+        }
+
+        // --- (The JavaScript functions: updateView, renderChart, renderTable, renderMap, handleSort, initializeMap, getStyle, onEachFeature, formatNumber are included below) ---
+
+        function updateView() {
+            document.querySelectorAll('.view-content').forEach(el => el.style.display = 'none');
+            document.getElementById(`${currentView}-view`).style.display = 'block';
+
+            if (currentView === 'chart') {
+                renderChart();
+            } else if (currentView === 'table') {
+                // Reset sort state when switching to table view initially if no sort is applied
+                if (!sortState.column) {
+                     document.querySelectorAll('.sort-arrow').forEach(el => el.remove());
+                     document.querySelectorAll('th').forEach(el => el.classList.remove('sort-asc', 'sort-desc'));
+                     renderTable(currentData);
+                } else {
+                    // If already sorted, re-render the sorted data
+                     const sortedData = sortData(currentData, sortState.column, sortState.direction);
+                     renderTable(sortedData);
+                }
+               
+            } else if (currentView === 'map') {
+                renderMap();
+            }
+        }
+
+        function renderChart() {
+            // Aggregate data by country for the chart
+            const aggregation = {};
+            currentData.forEach(item => {
+                const country = item.country_of_origin;
+                if (!aggregation[country]) {
+                    aggregation[country] = { country: country, value: 0 };
+                }
+                aggregation[country].value += Number(item[currentMetric]) || 0;
+            });
+
+            const chartData = Object.values(aggregation).sort((a, b) => b.value - a.value);
+            const labels = chartData.map(item => item.country);
+            const data = chartData.map(item => item.value);
+
+            const ctx = document.getElementById('dataChart').getContext('2d');
+
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+
+            chartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: metricLabels[currentMetric],
+                        data: data,
+                        backgroundColor: currentMetric === 'net_mass_kg' ? 'rgba(52, 168, 83, 0.8)' : 'rgba(26, 115, 232, 0.8)',
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: metricLabels[currentMetric]
                             }
                         }
-                    });
-                });
-
-                headers.forEach(header => {
-                    header.addEventListener('click', () => {
-                        const sortKey = header.dataset.sort;
-                        const direction = (sortDirection[sortKey] === 'asc') ? 'desc' : 'asc';
-                        sortDirection = { [sortKey]: direction };
-                        headers.forEach(h => {
-                            const arrow = h.querySelector('.sort-arrow');
-                            if (h !== header && arrow) arrow.remove();
-                            h.classList.remove('sort-asc', 'sort-desc');
-                        });
-                        header.classList.add(direction === 'asc' ? 'sort-asc' : 'sort-desc');
-                        let arrowSpan = header.querySelector('.sort-arrow');
-                        if (!arrowSpan) {
-                            arrowSpan = document.createElement('span');
-                            arrowSpan.className = 'sort-arrow';
-                            header.appendChild(arrowSpan);
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
                         }
-                        arrowSpan.innerHTML = direction === 'asc' ? '&uarr;' : '&darr;';
-                        currentData.sort((a, b) => {
-                            const valA = a[sortKey];
-                            const valB = b[sortKey];
-                            if (typeof valA === 'string') return direction === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
-                            return direction === 'asc' ? valA - valB : valB - valA;
-                        });
-                        renderTable(currentData);
-                    });
-                });
-            } catch (error) {
-                console.error('Error fetching initial data:', error);
-                tableBody.innerHTML = `<tr><td colspan="3" style="text-align: center; padding: 20px;">Error loading dataset: ${datasetFile}.json</td></tr>`;
+                    }
+                }
+            });
+        }
+
+         function formatNumber(num, metric = null) {
+            if (num === null || num === undefined) return 'N/A';
+            const decimals = (metric === 'statistical_value_gbp') ? 2 : 0;
+            return num.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+        }
+
+        function renderTable(data) {
+            const tbody = document.querySelector('#dataTable tbody');
+            tbody.innerHTML = '';
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.country_of_origin}</td>
+                    <td>${item.tea_type}</td>
+                    <td>${formatNumber(item.net_mass_kg, 'net_mass_kg')}</td>
+                    <td>${formatNumber(item.statistical_value_gbp, 'statistical_value_gbp')}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function sortData(data, column, direction) {
+            return [...data].sort((a, b) => {
+                let valA = a[column];
+                let valB = b[column];
+
+                // Handle numeric sorting for specific columns
+                if (column === 'net_mass_kg' || column === 'statistical_value_gbp') {
+                    valA = Number(valA) || 0;
+                    valB = Number(valB) || 0;
+                }
+
+                if (valA < valB) return direction === 'asc' ? -1 : 1;
+                if (valA > valB) return direction === 'asc' ? 1 : -1;
+                return 0;
+            });
+        }
+
+         function handleSort(event) {
+            const column = event.target.dataset.sort;
+            if (!column) return;
+
+            if (sortState.column === column) {
+                sortState.direction = sortState.direction === 'asc' ? 'desc' : 'asc';
+            } else {
+                sortState.column = column;
+                sortState.direction = 'asc';
             }
+
+            // Remove existing arrows and classes
+            document.querySelectorAll('.sort-arrow').forEach(el => el.remove());
+            document.querySelectorAll('th').forEach(el => el.classList.remove('sort-asc', 'sort-desc'));
+
+            // Add new arrow and class
+            const arrow = document.createElement('span');
+            arrow.className = 'sort-arrow';
+            arrow.textContent = sortState.direction === 'asc' ? '↑' : '↓';
+            event.target.appendChild(arrow);
+            event.target.classList.add(sortState.direction === 'asc' ? 'sort-asc' : 'sort-desc');
+
+            // Sort the data (currentData is guaranteed to be an array now)
+            const sortedData = sortData(currentData, sortState.column, sortState.direction);
+
+            renderTable(sortedData);
+        }
+
+
+        // --- Map Functions (Leaflet.js) ---
+         function initializeMap() {
+            if (mapInstance) return;
+            if (!document.getElementById('map-container')) return;
+
+            mapInstance = L.map('map-container').setView([20, 0], 2); // Center map globally
+             L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 10,
+                minZoom: 2
+            }).addTo(mapInstance);
+        }
+
+        function renderMap() {
+            if (!geojsonData) {
+                console.warn("GeoJSON data not available for map rendering.");
+                return;
+            }
+            initializeMap();
+
+            // Clear previous layers
+            mapInstance.eachLayer(layer => {
+                if (!!layer.toGeoJSON) { // Check if it's a geojson layer
+                    mapInstance.removeLayer(layer);
+                }
+            });
+
+            // Aggregate data by country for the map
+            const aggregation = {};
+            let maxValue = 0;
+            currentData.forEach(item => {
+                // Standardize country names for mapping (simple mapping for key origins)
+                let country = item.country_of_origin;
+                if (country === "Poland (Packing)") country = "Poland";
+                if (country === "UAE (Packing)") country = "United Arab Emirates";
+
+                if (!aggregation[country]) {
+                    aggregation[country] = 0;
+                }
+                const value = Number(item[currentMetric]) || 0;
+                aggregation[country] += value;
+                if (aggregation[country] > maxValue) {
+                    maxValue = aggregation[country];
+                }
+            });
+
+            // Function to determine color based on value
+            const getStyle = (feature) => {
+                const countryName = feature.properties.name;
+                const value = aggregation[countryName] || 0;
+                const intensity = maxValue > 0 ? (value / maxValue) : 0;
+
+                // Use a color scale (e.g., green for volume, blue for value)
+                const baseColor = currentMetric === 'net_mass_kg' ? '#34a853' : '#1a73e8';
+
+                return {
+                    fillColor: baseColor,
+                    weight: 1,
+                    opacity: 1,
+                    color: '#666',
+                    fillOpacity: intensity * 0.9 // Scale opacity based on intensity
+                };
+            };
+
+            // Function to bind popups
+            const onEachFeature = (feature, layer) => {
+                const countryName = feature.properties.name;
+                const value = aggregation[countryName];
+                if (value) {
+                    layer.bindPopup(`<b>${countryName}</b><br>${metricLabels[currentMetric]}: ${formatNumber(value, currentMetric)}`);
+                }
+            };
+
+            L.geoJson(geojsonData, {
+                style: getStyle,
+                onEachFeature: onEachFeature,
+                filter: feature => aggregation.hasOwnProperty(feature.properties.name) // Only show countries we have data for
+            }).addTo(mapInstance);
+        }
+
+
+        // --- Event Listeners ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize mobile menu (from script.js)
+            if (typeof initializeMobileMenu === 'function') {
+                initializeMobileMenu();
+            }
+            
+            const params = new URLSearchParams(window.location.search);
+            const datasetFile = params.get('dataset');
+            
+            if (datasetFile) {
+                fetchData(datasetFile);
+            } else {
+                document.getElementById('dashboard-title').textContent = 'Error: No dataset selected.';
+            }
+
+            // Metric slicer logic
+            document.querySelectorAll('.slicer-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    document.querySelectorAll('.slicer-button').forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    currentMetric = button.dataset.metric;
+                    updateView(); // Re-render the current view with the new metric
+                });
+            });
+
+            // View switcher logic
+            document.querySelectorAll('.view-chip').forEach(button => {
+                button.addEventListener('click', () => {
+                    document.querySelectorAll('.view-chip').forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    currentView = button.dataset.view;
+                    updateView();
+                });
+            });
+
+             // Table sort logic
+            document.querySelector('#dataTable thead').addEventListener('click', handleSort);
         });
     </script>
-    <!-- ADDED: script.js link (using ../) -->
-    <script src="../script.js"></script>
 </body>
 </html>
