@@ -1,5 +1,32 @@
 [
   {
+    "title": "Limbe Auction Report - Week 35, 2025",
+    "description": "Limbe Auction report for Sale No. 35 (27th August 2025). Total offerings: 4,740 packages. Continued selective demand at irregular rates.",
+    "year": 2025,
+    "week_number": 35,
+    "auction_centre": "Limbe",
+    "source": "Limbe Auction (General)",
+    "report_link": "report-viewer.html?dataset=Limbe_W35_2025"
+  },
+  {
+    "title": "Jakarta Auction Report - Week 35, 2025",
+    "description": "L. Elink Schuurman report for Sale No. 33 (27th August 2025). Total offerings: 214,440 kgs. Better demand with 71% sold.",
+    "year": 2025,
+    "week_number": 35,
+    "auction_centre": "Jakarta",
+    "source": "L. ELINK SCHUURMAN (THEE) B.V.",
+    "report_link": "report-viewer.html?dataset=Jakarta_LES_W33_2025"
+  },
+  {
+    "title": "Mombasa Auction Report (ITBB) - Week 34, 2025",
+    "description": "ITBB report for Sale No. 34 (27th August 2025). Good demand at irregular rates. Average price: $1.97.",
+    "year": 2025,
+    "week_number": 34,
+    "auction_centre": "Mombasa",
+    "source": "INTERNATIONAL TEA BUYING & BLENDING (ITBB)",
+    "report_link": "report-viewer.html?dataset=Mombasa_ITBB_W34_2025"
+  },
+  {
     "title": "North India Market Report (Contemporary) - Week 34, 2025",
     "description": "Contemporary Brokers regional summary for Week 34 (Ending 23rd August 2025). Includes statistics for Kolkata, Guwahati, Siliguri, South India, and World Crop comparison.",
     "year": 2025,
@@ -7,24 +34,6 @@
     "auction_centre": "India (Regional)",
     "source": "Contemporary Brokers",
     "report_link": "report-viewer.html?dataset=India_CB_W34_2025"
-  },
-  {
-    "title": "Mombasa Auction Report - Week 34, 2025",
-    "description": "Detailed analysis of prices and demand for Kenyan, Rwandan, and Ugandan teas at the Mombasa auction.",
-    "year": 2025,
-    "week_number": 34,
-    "auction_centre": "Mombasa",
-    "source": "Tea Brokers East Africa",
-    "report_link": "#"
-  },
-  {
-    "title": "Kolkata Auction Summary - Week 34, 2025",
-    "description": "Summary of Assam and Darjeeling offerings in Kolkata. Strong demand for orthodox varieties.",
-    "year": 2025,
-    "week_number": 34,
-    "auction_centre": "Kolkata",
-    "source": "J Thomas & Co.",
-    "report_link": "#"
   },
   {
     "title": "Colombo Auction Report (Asia Siyaka) - Week 34, 2025",
@@ -61,23 +70,5 @@
     "auction_centre": "Kolkata",
     "source": "J Thomas & Company Private Limited",
     "report_link": "report-viewer.html?dataset=Kolkata_JT_W32_2025"
-  },
-  {
-    "title": "Limbe Market Analysis - Week 30, 2025",
-    "description": "Report on the Limbe (Malawi) tea market conditions.",
-    "year": 2025,
-    "week_number": 30,
-    "auction_centre": "Limbe",
-    "source": "Van Rees",
-    "report_link": "#"
-  },
-  {
-    "title": "Mombasa Historical Report - Week 34, 2024",
-    "description": "A look back at the market conditions in Mombasa during the same week last year.",
-    "year": 2024,
-    "week_number": 34,
-    "auction_centre": "Mombasa",
-    "source": "Tea Brokers East Africa",
-    "report_link": "#"
   }
 ]
