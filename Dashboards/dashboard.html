@@ -92,10 +92,10 @@
 
         async function fetchData(datasetFile) {
             try {
-                // CRITICAL FIX 1: Path must go up one level (../)
+                // CRITICAL FIX 1: Path must go up one level (../) (Resolves 404 Error)
                 const response = await fetch(`../Data/Imports/${datasetFile}.json`);
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}. Could not find ${datasetFile}.json`);
+                    throw new Error(`HTTP error! status: ${response.status}. Could not find ${datasetFile}.json at ../Data/Imports/`);
                 }
                 const jsonData = await response.json();
 
@@ -145,7 +145,7 @@
             }
         }
 
-        // [The remaining JavaScript functions (updateView, renderChart, formatNumber, renderTable, sortData, handleSort, initializeMap, renderMap, EventListeners) are included below for completeness.]
+        // [The remaining JavaScript functions (updateView, renderChart, formatNumber, renderTable, sortData, handleSort, initializeMap, renderMap, EventListeners) are included below]
 
         function updateView() {
             document.querySelectorAll('.view-content').forEach(el => el.style.display = 'none');
