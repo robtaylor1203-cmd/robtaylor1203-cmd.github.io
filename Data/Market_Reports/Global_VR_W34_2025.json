@@ -1,0 +1,127 @@
+{
+  "metadata": {
+    "broker": "Van Rees",
+    "region": "Global Summary",
+    "report_title": "Weekly Tea Market Report",
+    "week_number": 34,
+    "year": 2025,
+    "date_start": "2025-08-25",
+    "date_end": "2025-08-31"
+  },
+  "summary": {
+    "market_comment": "The prospect of lower crops in East Africa due to cooler weather is maintaining prices, although resistance to current levels is noted. The global supply remains healthy, driven by strong output in India and Sri Lanka. Overall demand is subdued, influenced by economic uncertainties and geopolitical conflicts."
+  },
+  "international_summaries": [
+    {
+      "centre": "MOMBASA",
+      "date": "25-27 August 2025",
+      "summary": "Strong demand for the 10.4m kgs on offer. Prices were firm to dearer, following quality. Increased activity from Pakistan, Yemen, and Middle Eastern buyers. Kazakhstan and Russia were selective. 14% of the offering remained unsold.",
+      "structured_data": {
+        "currency": "USD",
+        "ctc_leaf_grades": [
+          {"category": "Best", "grade": "BP1", "low": 2.80, "high": 4.80},
+          {"category": "Good/Medium", "grade": "BP1", "low": 2.10, "high": 2.75},
+          {"category": "Best", "grade": "PF1", "low": 2.35, "high": 2.70},
+          {"category": "Good/Medium", "grade": "PF1", "low": 2.15, "high": 2.45}
+        ],
+        "ctc_dust_grades": [
+          {"category": "Best", "grade": "PD", "low": 2.40, "high": 2.85},
+          {"category": "Good/Medium", "grade": "PD", "low": 2.25, "high": 2.55},
+          {"category": "Best", "grade": "D1", "low": 2.30, "high": 2.75},
+          {"category": "Good/Medium", "grade": "D1", "low": 2.10, "high": 2.45}
+        ]
+      }
+    },
+    {
+      "centre": "COLOMBO",
+      "date": "26-27 August 2025",
+      "summary": "Fair demand for the 5.2m kgs offered. High/Medium Growns: BOP/BOPF firm to dearer. Low Growns: Well-made teas firm, others easier. Strong demand from Turkey, Iraq, and Saudi Arabia. Russia and Iran were active.",
+       "structured_data": {
+        "currency": "USD (Approx)",
+        "orthodox_grades": [
+          {"category": "High Grown", "grade": "BOP", "low": 2.00, "high": 2.30},
+          {"category": "High Grown", "grade": "BOPF", "low": 2.10, "high": 2.40},
+          {"category": "Low Grown", "grade": "OP/OPA", "low": 1.80, "high": 2.50},
+          {"category": "Low Grown", "grade": "Pekoe", "low": 2.20, "high": 2.80},
+          {"category": "Low Grown", "grade": "FBOP", "low": 2.50, "high": 3.50}
+        ]
+      }
+    },
+    {
+      "centre": "NORTH INDIA",
+      "date": "Week 34, 2025",
+      "summary": "Good demand. CTC: Best Assams firm, Dooars easier. Orthodox: Strong demand, especially for tippy grades. Increased internal demand and strong export interest from the Middle East.",
+       "structured_data": {
+        "currency": "USD (Approx)",
+        "ctc_grades": [
+          {"category": "Best Assam", "grade": "BOP", "low": 2.50, "high": 3.20},
+          {"category": "Best Assam", "grade": "BOPSM", "low": 2.60, "high": 3.30},
+          {"category": "Dooars", "grade": "BOP", "low": 1.80, "high": 2.20},
+          {"category": "Dooars", "grade": "BOPSM", "low": 1.90, "high": 2.30}
+        ],
+         "orthodox_grades": [
+          {"category": "Assam", "grade": "GFBOP", "low": 3.00, "high": 4.50},
+          {"category": "Assam", "grade": "TGBOP", "low": 3.50, "high": 5.50}
+        ]
+      }
+    },
+     {
+      "centre": "SOUTH INDIA",
+      "date": "Week 34, 2025",
+      "summary": "Fair demand. CTC: Prices irregular, following quality. Orthodox: Strong demand for high-elevation teas. Active buying from regional packeters and some export inquiry.",
+       "structured_data": {
+        "currency": "USD (Approx)",
+        "ctc_grades": [
+          {"category": "Nilgiri", "grade": "BOP", "low": 2.00, "high": 2.50},
+          {"category": "Kerala", "grade": "BOP", "low": 1.70, "high": 2.10}
+        ],
+         "orthodox_grades": [
+          {"category": "Nilgiri High Elevation", "grade": "FBOP", "low": 2.80, "high": 3.80}
+        ]
+      }
+    },
+    {
+      "centre": "MALAWI",
+      "date": "27 August 2025",
+      "summary": "Selective demand for the limited offerings. Prices were generally steady. Main interest from regional buyers.",
+       "structured_data": {
+        "currency": "USD",
+        "ctc_grades": [
+          {"category": "Main Grades", "grade": "BP1", "low": 1.30, "high": 1.50},
+          {"category": "Main Grades", "grade": "PF1", "low": 1.20, "high": 1.40}
+        ]
+      }
+    },
+    {
+      "centre": "JAKARTA",
+      "date": "27 August 2025",
+      "summary": "Better demand. Java Orthodox: Prices firm to dearer. Sumatra Orthodox: Steady. CTC: Irregular. Increased activity from local buyers and some Middle Eastern interest.",
+      "structured_data": {
+        "currency": "USD",
+        "orthodox_grades": [
+          {"category": "Java", "grade": "BOP", "low": 1.75, "high": 1.95},
+          {"category": "Java", "grade": "BOPF", "low": 1.70, "high": 1.90},
+           {"category": "Sumatra", "grade": "BOP", "low": 1.80, "high": 2.00}
+        ],
+         "ctc_grades": [
+          {"category": "Java/Sumatra", "grade": "BP1", "low": 1.70, "high": 1.90}
+        ]
+      }
+    },
+    {
+      "centre": "VIETNAM",
+      "date": "August 2025",
+      "summary": "Moderate demand. Orthodox: Prices steady for better quality lots. CTC: Firm. Main markets include Pakistan and the Middle East.",
+      "structured_data": {
+        "currency": "USD",
+        "orthodox_grades": [
+          {"category": "North Vietnam", "grade": "OP", "low": 1.50, "high": 1.80},
+          {"category": "North Vietnam", "grade": "FBOP", "low": 1.60, "high": 2.00}
+        ],
+         "ctc_grades": [
+          {"category": "Vietnam", "grade": "BP1", "low": 1.65, "high": 1.85}
+        ]
+      }
+    }
+  ]
+}
