@@ -1,0 +1,49 @@
+name: Market Report Harvester
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  # Runs automatically on a schedule (e.g., every day at 07:00 UTC)
+  schedule:
+    - cron: '0 7 * * *' 
+
+# A workflow run is made up of one or more jobs
+jobs:
+  harvest:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks
+    steps:
+      # Checks-out your repository so the job can access it
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Sets up Python on the runner
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # Installs the necessary Python libraries
+      - name: Install dependencies
+        run: pip install -r backend-scraper/requirements.txt
+
+      # Runs the Harvester script (from the root of the repository)
+      - name: Run Harvester script
+        run: python backend-scraper/harvester.py
+
+      # Commits the newly downloaded reports from the Inbox folder
+      - name: Commit new reports
+        run: |
+          git config --global user.name 'TeaTrade-Harvester-Bot'
+          git config --global user.email 'actions@github.com'
+          # Check if there are new files in the Inbox
+          if [ -n "$(git status Inbox/ --porcelain)" ]; then
+            git add Inbox/
+            git commit -m "Automated: Harvested new market reports"
+            git push
+          else
+            echo "No new reports found in Inbox. Skipping commit."
+          fi
