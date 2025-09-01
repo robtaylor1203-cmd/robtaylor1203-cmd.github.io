@@ -1,0 +1,37 @@
+{
+  "metadata": {
+    "broker": "Ceylon Tea Brokers PLC",
+    "auction_centre": "Colombo",
+    "country": "Sri Lanka",
+    "currency": "LKR",
+    "sale_number": 35,
+    "week_number": 35,
+    "year": 2025,
+    "sale_date_start": "2025-09-03",
+    "sale_date_end": "2025-09-04"
+  },
+  "summary": {
+    "total_quantity_kg": 5300000,
+    "market_comment": "This week's auction offerings totaled 5.3 M/Kgs. There was good demand. Ex-Estate offerings comprised 0.8 M/Kgs. Quality showed further improvement. Best Western BOP/BOPFs - gained following quality. Below Best category - BOPs irregular, BOPFs firm to dearer. Plainer sorts - firm. Nuwara Eliyas - irregular. Uda Pussellawas and Uvas - firm to dearer.",
+    "quality_comment": "Quality of teas showed further improvement."
+  },
+  "offerings": [
+    {"category": "Ex-Estate", "quantity_kg": 800000},
+    {"category": "Low Grown (Leafy)", "quantity_kg": 2200000},
+    {"category": "Low Grown (Tippy/Small Leaf)", "quantity_kg": 1350000},
+    {"category": "High & Medium (Tippy)", "quantity_kg": 250000},
+    {"category": "Off Grades/Dust", "quantity_kg": 700000}
+  ],
+  "price_quotations": [
+    {"elevation": "Western High Grown", "grade": "BOP Best", "current_min": 760.0, "current_max": 810.0},
+    {"elevation": "Western High Grown", "grade": "BOPF Best", "current_min": 790.0, "current_max": 830.0},
+    {"elevation": "Nuwara Eliya", "grade": "BOP", "current_min": 810.0, "current_max": 860.0},
+    {"elevation": "Nuwara Eliya", "grade": "BOPF", "current_min": 860.0, "current_max": 910.0},
+    {"elevation": "Uda Pussellawa", "grade": "BOP", "current_min": 630.0, "current_max": 660.0},
+    {"elevation": "Uda Pussellawa", "grade": "BOPF", "current_min": 660.0, "current_max": 690.0},
+    {"elevation": "Uva", "grade": "BOP", "current_min": 710.0, "current_max": 760.0},
+    {"elevation": "Uva", "grade": "BOPF", "current_min": 760.0, "current_max": 810.0},
+    {"elevation": "Low Grown (Tippy)", "grade": "FBOP", "current_min": 910.0, "current_max": 1110.0},
+    {"elevation": "Low Grown (Leafy)", "grade": "OP1", "current_min": 1210.0, "current_max": 1510.0}
+  ]
+}

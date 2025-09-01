@@ -1,0 +1,28 @@
+{
+  "metadata": {
+    "broker": "National Brokers Ltd (NBL)",
+    "auction_centre": "Chittagong",
+    "country": "Bangladesh",
+    "currency": "BDT",
+    "sale_number": 35,
+    "week_number": 35,
+    "year": 2025,
+    "sale_date_start": "2025-09-02",
+    "sale_date_end": "2025-09-02"
+  },
+  "summary": {
+    "total_lots": 1200,
+    "total_quantity_kg": 3500000,
+    "market_comment": "CTC LEAF: Offerings totaled 3.5 M/Kgs. There was strong demand. Good liquoring teas met with strong competition and advanced sharply. Medium varieties saw good interest and were firm to dearer. Plainer sorts were steady. Blenders were the mainstay of the market, supported by Loose Tea buyers. CTC DUST: Good demand. Prices advanced following quality. Strong competition from all sections of the trade."
+  },
+  "price_quotations": [
+    {"category": "CTC Leaf", "grade": "BOP Good", "current_min": 210.0, "current_max": 220.0},
+    {"category": "CTC Leaf", "grade": "BOP Medium", "current_min": 200.0, "current_max": 205.0},
+    {"category": "CTC Leaf", "grade": "GBOP Good", "current_min": 215.0, "current_max": 225.0},
+    {"category": "CTC Leaf", "grade": "OF Good", "current_min": 205.0, "current_max": 215.0},
+    {"category": "CTC Leaf", "grade": "PF Good", "current_min": 200.0, "current_max": 210.0},
+    {"category": "CTC Dust", "grade": "RD Good", "current_min": 230.0, "current_max": 240.0},
+    {"category": "CTC Dust", "grade": "PD Good", "current_min": 235.0, "current_max": 245.0},
+    {"category": "CTC Dust", "grade": "CD Good", "current_min": 240.0, "current_max": 250.0}
+  ]
+}
