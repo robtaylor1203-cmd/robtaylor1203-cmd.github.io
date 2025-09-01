@@ -25,7 +25,7 @@
         </div>
         <nav class="secondary-nav">
             <ul>
-                 <li><a href="../data.html" class="active">Data</a></li>
+                <li><a href="../data.html" class="active">Data</a></li>
                 <li><a href="../market-reports.html">Market Reports</a></li>
                 <li><a href="#">Auctions</a></li>
                 <li><a href="../visuals.html">Visuals</a></li>
@@ -60,7 +60,7 @@
                 <table class="data-table" id="dataTable">
                     <thead>
                         <tr>
-                            <th data-sort="country_of_origin">Country</th>
+                            <th data-sort="country_display">Country</th>
                             <th data-sort="tea_type">Type</th>
                             <th data-sort="net_mass_kg">Volume (Kg)</th>
                             <th data-sort="statistical_value_gbp">Value (£)</th>
@@ -92,31 +92,44 @@
 
         async function fetchData(datasetFile) {
             try {
-                // FIX 1: Updated path to look up one directory (../)
+                // CRITICAL PATH FIX: Updated path to look up one directory (../)
                 const response = await fetch(`../Data/Imports/${datasetFile}.json`);
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    throw new Error(`HTTP error! status: ${response.status}. Could not find ${datasetFile}.json`);
                 }
                 const jsonData = await response.json();
 
-                // FIX 2: Access the 'imports' array and metadata object
-                if (!jsonData.imports || !Array.isArray(jsonData.imports)) {
+                // CRITICAL LOGIC FIX: Access the 'imports' array specifically. 
+                // This prevents the 'data.sort is not a function' error.
+                if (jsonData.imports && Array.isArray(jsonData.imports)) {
+                    currentData = jsonData.imports;
+                } else {
                      throw new Error("Data format is incorrect. Expected an 'imports' array.");
                 }
                 
-                // Ensure we are working with the array so that .sort() works later
-                currentData = jsonData.imports; 
+                // Pre-process data to ensure a consistent country column name ('country_display')
+                currentData.forEach(item => {
+                    item.country_display = item.country_of_origin || item.country;
+                });
+
                 const meta = jsonData.metadata;
 
-                // Update Titles and Metadata
-                const monthNames = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-                const title = meta ? `UK Imports - ${monthNames[meta.month]} ${meta.year}` : 'Data Dashboard';
+                // Update Titles and Metadata (Handle variations for Global Stats vs HMRC)
+                let title = 'Data Dashboard';
+                if (meta) {
+                    if (meta.report_title) {
+                        title = meta.report_title;
+                    } else if (meta.month && meta.year) {
+                        const monthNames = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                        title = `UK Imports - ${monthNames[meta.month]} ${meta.year}`;
+                    }
+                }
                 document.getElementById('dashboard-title').textContent = title;
                 
-                const metaText = meta ? `Source: ${meta.source} | Published: ${meta.date_published}` : '';
+                const metaText = meta ? `Source: ${meta.source} | Published: ${meta.date_published || 'N/A'}` : '';
                 document.getElementById('dashboard-meta').textContent = metaText;
 
-                // Load GeoJSON data if not already loaded (FIX: Updated path ../)
+                // Load GeoJSON data if not already loaded (PATH FIX: Updated path ../)
                 if (!geojsonData) {
                     const geoResponse = await fetch('../countries.geojson');
                     if (geoResponse.ok) {
@@ -132,7 +145,7 @@
             }
         }
 
-        // --- (The JavaScript functions: updateView, renderChart, renderTable, renderMap, handleSort, initializeMap, getStyle, onEachFeature, formatNumber are included below) ---
+        // [The rest of the JavaScript functions (updateView, renderChart, formatNumber, renderTable, sortData, handleSort, initializeMap, renderMap) are included below.]
 
         function updateView() {
             document.querySelectorAll('.view-content').forEach(el => el.style.display = 'none');
@@ -141,13 +154,11 @@
             if (currentView === 'chart') {
                 renderChart();
             } else if (currentView === 'table') {
-                // Reset sort state when switching to table view initially if no sort is applied
                 if (!sortState.column) {
                      document.querySelectorAll('.sort-arrow').forEach(el => el.remove());
                      document.querySelectorAll('th').forEach(el => el.classList.remove('sort-asc', 'sort-desc'));
                      renderTable(currentData);
                 } else {
-                    // If already sorted, re-render the sorted data
                      const sortedData = sortData(currentData, sortState.column, sortState.direction);
                      renderTable(sortedData);
                 }
@@ -161,7 +172,9 @@
             // Aggregate data by country for the chart
             const aggregation = {};
             currentData.forEach(item => {
-                const country = item.country_of_origin;
+                const country = item.country_display;
+                if (!country) return;
+
                 if (!aggregation[country]) {
                     aggregation[country] = { country: country, value: 0 };
                 }
@@ -183,7 +196,7 @@
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: metricLabels[currentMetric],
+                        label: metricLabels[currentMetric] || currentMetric,
                         data: data,
                         backgroundColor: currentMetric === 'net_mass_kg' ? 'rgba(52, 168, 83, 0.8)' : 'rgba(26, 115, 232, 0.8)',
                     }]
@@ -196,7 +209,7 @@
                             beginAtZero: true,
                             title: {
                                 display: true,
-                                text: metricLabels[currentMetric]
+                                text: metricLabels[currentMetric] || currentMetric
                             }
                         }
                     },
@@ -220,9 +233,10 @@
             tbody.innerHTML = '';
             data.forEach(item => {
                 const row = document.createElement('tr');
+                
                 row.innerHTML = `
-                    <td>${item.country_of_origin}</td>
-                    <td>${item.tea_type}</td>
+                    <td>${item.country_display || 'N/A'}</td>
+                    <td>${item.tea_type || 'N/A'}</td>
                     <td>${formatNumber(item.net_mass_kg, 'net_mass_kg')}</td>
                     <td>${formatNumber(item.statistical_value_gbp, 'statistical_value_gbp')}</td>
                 `;
@@ -231,6 +245,12 @@
         }
 
         function sortData(data, column, direction) {
+             // Ensure data is an array before attempting to sort
+            if (!Array.isArray(data)) {
+                console.error("Attempted to sort non-array data:", data);
+                return [];
+            }
+
             return [...data].sort((a, b) => {
                 let valA = a[column];
                 let valB = b[column];
@@ -308,8 +328,10 @@
             const aggregation = {};
             let maxValue = 0;
             currentData.forEach(item => {
-                // Standardize country names for mapping (simple mapping for key origins)
-                let country = item.country_of_origin;
+                // Standardize country names for mapping
+                let country = item.country_display;
+                if (!country) return;
+
                 if (country === "Poland (Packing)") country = "Poland";
                 if (country === "UAE (Packing)") country = "United Arab Emirates";
 
@@ -346,7 +368,7 @@
                 const countryName = feature.properties.name;
                 const value = aggregation[countryName];
                 if (value) {
-                    layer.bindPopup(`<b>${countryName}</b><br>${metricLabels[currentMetric]}: ${formatNumber(value, currentMetric)}`);
+                    layer.bindPopup(`<b>${countryName}</b><br>${metricLabels[currentMetric] || currentMetric}: ${formatNumber(value, currentMetric)}`);
                 }
             };
 
