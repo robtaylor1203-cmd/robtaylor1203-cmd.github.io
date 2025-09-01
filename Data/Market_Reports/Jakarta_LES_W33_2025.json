@@ -1,0 +1,56 @@
+{
+  "metadata": {
+    "broker": "L. ELINK SCHUURMAN (THEE) B.V.",
+    "auction_centre": "Jakarta",
+    "country": "Indonesia",
+    "currency": "USc",
+    "exchange_rate_note": "Rp 16.340/USD",
+    "sale_number": 33,
+    "week_number": 35,
+    "year": 2025,
+    "sale_date_start": "2025-08-27",
+    "sale_date_end": "2025-08-27"
+  },
+  "summary": {
+    "total_packages": 4000,
+    "total_quantity_kg": 214440,
+    "sold_packages": 2920,
+    "sold_quantity_kg": 152180,
+    "percent_sold": 71.0,
+    "market_comment": "Better demand this week with 71% sold from 4.000 packages (214.440 kgs) offered this week. The Rupiah was recorded at Rp 16.340/USD. Sumatra -BOP.I dearer by up to 6c, BOP dearer by up to 5c, BOPF steady to dearer, PF steady, BT steady tending easier, Fann.II steady. Java - PTPN 1 Regional 2 (ex PTPN 8) mostly sold privately. PTPN 9- Largely unsold. CTC-Sumatra & Java - Steady for the most part, Fann easier when sold."
+  },
+  "buyer_activity": [
+    {"buyer": "Unitan Sejahtera Sejati", "packages": 680, "quantity_kg": 35820, "market_share_percent": 23.54},
+    {"buyer": "Trijasa Prima International", "packages": 700, "quantity_kg": 31820, "market_share_percent": 20.91},
+    {"buyer": "Padakersa", "packages": 360, "quantity_kg": 21220, "market_share_percent": 13.94},
+    {"buyer": "Agrijaya", "packages": 400, "quantity_kg": 21000, "market_share_percent": 13.80},
+    {"buyer": "Yoosuf Akbani", "packages": 240, "quantity_kg": 14780, "market_share_percent": 9.71},
+    {"buyer": "Van Rees Indonesia", "packages": 140, "quantity_kg": 6900, "market_share_percent": 4.53},
+    {"buyer": "Chakra", "packages": 120, "quantity_kg": 6600, "market_share_percent": 4.34},
+    {"buyer": "Unilever Indonesia", "packages": 80, "quantity_kg": 4400, "market_share_percent": 2.89},
+    {"buyer": "Trigaluh Berjaya", "packages": 80, "quantity_kg": 3200, "market_share_percent": 2.10},
+    {"buyer": "Cassa", "packages": 40, "quantity_kg": 2240, "market_share_percent": 1.47},
+    {"buyer": "Meniti", "packages": 40, "quantity_kg": 2200, "market_share_percent": 1.45},
+    {"buyer": "CV Prima", "packages": 40, "quantity_kg": 2000, "market_share_percent": 1.31}
+  ],
+  "price_quotations": [
+    {"category": "JAVA ORTHODOX", "grade": "BOP.I", "current_min": 180.0, "current_max": 200.0},
+    {"category": "JAVA ORTHODOX", "grade": "BOP", "current_min": 175.0, "current_max": 195.0},
+    {"category": "JAVA ORTHODOX", "grade": "BOPF", "current_min": 170.0, "current_max": 190.0},
+    {"category": "JAVA ORTHODOX", "grade": "PF", "current_min": 165.0, "current_max": 185.0},
+    {"category": "JAVA ORTHODOX", "grade": "BT", "current_min": 150.0, "current_max": 170.0},
+    {"category": "JAVA ORTHODOX", "grade": "Fann.II", "current_min": 160.0, "current_max": 180.0},
+    {"category": "JAVA ORTHODOX", "grade": "Dust", "current_min": 155.0, "current_max": 175.0},
+    {"category": "SUMATRA ORTHODOX", "grade": "BOP.I", "current_min": 185.0, "current_max": 205.0},
+    {"category": "SUMATRA ORTHODOX", "grade": "BOP", "current_min": 180.0, "current_max": 200.0},
+    {"category": "SUMATRA ORTHODOX", "grade": "BOPF", "current_min": 175.0, "current_max": 195.0},
+    {"category": "SUMATRA ORTHODOX", "grade": "PF", "current_min": 170.0, "current_max": 190.0},
+    {"category": "SUMATRA ORTHODOX", "grade": "BT", "current_min": 155.0, "current_max": 175.0},
+    {"category": "SUMATRA ORTHODOX", "grade": "Fann.II", "current_min": 165.0, "current_max": 185.0},
+    {"category": "SUMATRA ORTHODOX", "grade": "Dust", "current_min": 160.0, "current_max": 180.0},
+    {"category": "CTC", "grade": "BP1", "current_min": 170.0, "current_max": 190.0},
+    {"category": "CTC", "grade": "PF1", "current_min": 165.0, "current_max": 185.0},
+    {"category": "CTC", "grade": "PD", "current_min": 160.0, "current_max": 180.0},
+    {"category": "CTC", "grade": "Fann", "current_min": 155.0, "current_max": 175.0}
+  ]
+}
