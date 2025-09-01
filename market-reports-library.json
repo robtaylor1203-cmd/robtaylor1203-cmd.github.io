@@ -115,5 +115,14 @@
     "auction_centre": "Kolkata",
     "source": "J Thomas & Company Private Limited",
     "report_link": "report-viewer.html?dataset=Kolkata_JT_W32_2025"
+  },
+  {
+    "title": "Mombasa Market Report (ATB) - Week of 2025-08-26",
+    "description": "A good general demand prevailed for the 190,460 packages on offer.",
+    "year": 2025,
+    "week_number": 35,
+    "auction_centre": "Mombasa",
+    "source": "Associated Tea Brokers (ATB)",
+    "report_link": "report-viewer.html?dataset=Mombasa_ATB_W35_2025"
   }
 ]
