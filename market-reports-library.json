@@ -1,16 +1,52 @@
 [
   {
-    "title": "Global Market Report (Van Rees) - Week 34, 2025",
-    "description": "Van Rees weekly global summary (Week 34, ending 31st August 2025). Covers Mombasa, Colombo, North/South India, Malawi, Jakarta, and Vietnam. Prices maintained in East Africa; healthy global supply.",
+    "title": "Colombo Auction Report (CTB) - Week 35, 2025",
+    "description": "Ceylon Tea Brokers report for Sale No. 35 (3rd/4th September 2025). Total offerings: 5.3 M/Kgs. Good demand; quality showed further improvement.",
     "year": 2025,
-    "week_number": 34,
-    "auction_centre": "Global Summary",
-    "source": "Van Rees",
-    "report_link": "report-viewer.html?dataset=Global_VR_W34_2025"
+    "week_number": 35,
+    "auction_centre": "Colombo",
+    "source": "Ceylon Tea Brokers PLC",
+    "report_link": "report-viewer.html?dataset=Colombo_CTB_W35_2025"
+  },
+  {
+    "title": "Colombo Auction Report (Forbes & Walker) - Week 35, 2025",
+    "description": "Forbes & Walker report for Sale No. 35 (3rd/4th September 2025). Total offerings: 5.3 M/Kgs. Good demand; quality improved. Best Westerns firm to dearer.",
+    "year": 2025,
+    "week_number": 35,
+    "auction_centre": "Colombo",
+    "source": "Forbes & Walker Tea Brokers (PVT) LTD",
+    "report_link": "report-viewer.html?dataset=Colombo_FW_W35_2025"
+  },
+  {
+    "title": "Chittagong Auction Report (NBL) - Week 35, 2025",
+    "description": "National Brokers Ltd report for Sale No. 35 (2nd September 2025). Total offerings: 3.5 M/Kgs. Strong demand; good liquoring teas advanced sharply.",
+    "year": 2025,
+    "week_number": 35,
+    "auction_centre": "Chittagong",
+    "source": "National Brokers Ltd (NBL)",
+    "report_link": "report-viewer.html?dataset=Chittagong_NBL_W35_2025"
+  },
+  {
+    "title": "Mombasa Auction Report (TBEA) - Week 35, 2025",
+    "description": "TBEA report for Sale No. 35 (1st-3rd September 2025). Total offerings: 13,350,878 kgs. Good general demand; 12.84% unsold.",
+    "year": 2025,
+    "week_number": 35,
+    "auction_centre": "Mombasa",
+    "source": "Tea Brokers East Africa Ltd (TBEA)",
+    "report_link": "report-viewer.html?dataset=Mombasa_TBEA_W35_2025"
+  },
+   {
+    "title": "Mombasa Auction Summary (EATTA) - Week 35, 2025",
+    "description": "EATTA summary for Sale No. 35. Good general demand prevailed. Average price: $2.15.",
+    "year": 2025,
+    "week_number": 35,
+    "auction_centre": "Mombasa",
+    "source": "East African Tea Trade Association (EATTA)",
+    "report_link": "report-viewer.html?dataset=Mombasa_EATTA_W35_2025"
   },
   {
     "title": "Limbe Auction Report - Week 35, 2025",
-    "description": "Limbe Auction report for Sale No. 35 (27th August 2025). Total offerings: 4,740 packages. Continued selective demand at irregular rates.",
+    "description": "Limbe Auction report for Sale No. 35 (27th August 2025). Continued selective demand.",
     "year": 2025,
     "week_number": 35,
     "auction_centre": "Limbe",
@@ -18,8 +54,8 @@
     "report_link": "report-viewer.html?dataset=Limbe_W35_2025"
   },
   {
-    "title": "Jakarta Auction Report - Week 35, 2025",
-    "description": "L. Elink Schuurman report for Sale No. 33 (27th August 2025). Total offerings: 214,440 kgs. Better demand with 71% sold.",
+    "title": "Jakarta Auction Report (LES) - Week 35, 2025",
+    "description": "L. Elink Schuurman report for Sale No. 33 (27th August 2025). Better demand with 71% sold.",
     "year": 2025,
     "week_number": 35,
     "auction_centre": "Jakarta",
@@ -27,8 +63,17 @@
     "report_link": "report-viewer.html?dataset=Jakarta_LES_W33_2025"
   },
   {
+    "title": "Global Market Report (Van Rees) - Week 34, 2025",
+    "description": "Van Rees weekly global summary (Week 34, ending 31st August 2025).",
+    "year": 2025,
+    "week_number": 34,
+    "auction_centre": "Global Summary",
+    "source": "Van Rees",
+    "report_link": "report-viewer.html?dataset=Global_VR_W34_2025"
+  },
+  {
     "title": "Mombasa Auction Report (ITBB) - Week 34, 2025",
-    "description": "ITBB report for Sale No. 34 (27th August 2025). Good demand at irregular rates. Average price: $1.97.",
+    "description": "ITBB report for Sale No. 34 (27th August 2025). Good demand at irregular rates.",
     "year": 2025,
     "week_number": 34,
     "auction_centre": "Mombasa",
@@ -37,7 +82,7 @@
   },
   {
     "title": "North India Market Report (Contemporary) - Week 34, 2025",
-    "description": "Contemporary Brokers regional summary for Week 34 (Ending 23rd August 2025). Includes statistics for Kolkata, Guwahati, Siliguri, South India, and World Crop comparison.",
+    "description": "Contemporary Brokers regional summary for Week 34 (Ending 23rd August 2025).",
     "year": 2025,
     "week_number": 34,
     "auction_centre": "India (Regional)",
@@ -46,7 +91,7 @@
   },
   {
     "title": "Colombo Auction Report (Asia Siyaka) - Week 34, 2025",
-    "description": "Asia Siyaka report for Sale No. 32 (19th/20th August 2025). Total Quantity Sold: 5,191,319 kgs.",
+    "description": "Asia Siyaka report for Sale No. 32 (19th/20th August 2025).",
     "year": 2025,
     "week_number": 34,
     "auction_centre": "Colombo",
@@ -54,17 +99,8 @@
     "report_link": "report-viewer.html?dataset=Colombo_AS_W34_2025"
   },
   {
-    "title": "Colombo Auction Report (Forbes & Walker) - Week 33, 2025",
-    "description": "Forbes & Walker report for Sale No. 33 (26th/27th August 2025). Total offerings: 5,195,301 kgs. Good general demand.",
-    "year": 2025,
-    "week_number": 33,
-    "auction_centre": "Colombo",
-    "source": "Forbes & Walker Tea Brokers (PVT) LTD",
-    "report_link": "report-viewer.html?dataset=Colombo_FW_W33_2025"
-  },
-  {
     "title": "Mombasa Auction Report (ATB) - Week 33, 2025",
-    "description": "ATB Ltd report for Sale No. 33 (18th/19th August 2025). Total offerings: 10,271,565 kgs. Good general demand prevailed; 32.13% remained unsold.",
+    "description": "ATB Ltd report for Sale No. 33 (18th/19th August 2025).",
     "year": 2025,
     "week_number": 33,
     "auction_centre": "Mombasa",
@@ -73,7 +109,7 @@
   },
   {
     "title": "Kolkata Auction Synopsis (J Thomas) - Week 32, 2025",
-    "description": "J Thomas & Co. report for Sale No. 32. CTC: Good demand. Liquoring Assams tended irregularly easier. Orthodox: Strong demand.",
+    "description": "J Thomas & Co. report for Sale No. 32.",
     "year": 2025,
     "week_number": 32,
     "auction_centre": "Kolkata",
