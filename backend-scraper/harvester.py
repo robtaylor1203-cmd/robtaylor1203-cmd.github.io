@@ -1,152 +1,137 @@
-import requests
-from bs4 import BeautifulSoup
-import re
-import logging
 import os
+import requests
 from datetime import datetime
-from urllib.parse import urljoin
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
-# Configure basic logging for GitHub Actions output
-logging.basicConfig(level=logging.INFO, format='%(levelname)s - %(message)s')
+# --- Configuration ---
+INBOX_PATH = "Inbox"
 
-class ReportHarvester:
-    """
-    Acquires the latest market reports from target broker websites.
-    """
-    def __init__(self, inbox_dir="Inbox"):
-        self.session = requests.Session()
-        self.session.headers.update({
-            # Identify the bot professionally
-            'User-Agent': 'TeaTrade-Harvester/1.0 (https://teatrade.co.uk; contact@teatrade.co.uk)'
-        })
-        # Define the directory relative to the repository root
-        self.inbox_dir = inbox_dir
-        # Ensure the Inbox directory exists
-        if not os.path.exists(inbox_dir):
-            os.makedirs(inbox_dir)
-            logging.info(f"Created Inbox directory: {inbox_dir}")
+# --- Helper Function ---
+def download_file(url, folder, filename):
+    """Downloads a file from a URL into a specified folder and filename."""
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+    
+    filepath = os.path.join(folder, filename)
+    
+    # Check if the file already exists to avoid re-downloading
+    if os.path.exists(filepath):
+        print(f"Skipping download, {filename} already exists in Inbox.")
+        return
 
-    def run(self):
-        logging.info("Starting TeaTrade Report Harvester...")
+    try:
+        response = requests.get(url, stream=True)
+        response.raise_for_status() # Raise an exception for bad status codes
+        with open(filepath, 'wb') as f:
+            for chunk in response.iter_content(chunk_size=8192):
+                f.write(chunk)
+        print(f"Successfully downloaded {filename}")
+    except requests.exceptions.RequestException as e:
+        print(f"Error downloading {url}: {e}")
+
+def setup_driver():
+    """Sets up the automated web browser for Selenium."""
+    options = Options()
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    return webdriver.Chrome(options=options)
+
+# --- Adapter for ATB Ltd. ---
+def harvest_atb():
+    print("\n--- Checking ATB Ltd. ---")
+    url = "https://www.atbltd.com/Docs/current_market_report"
+    filename = f"ATB_Report_{datetime.now().strftime('%Y-%m-%d')}.pdf" # Create a unique name
+    download_file(url, INBOX_PATH, filename)
+
+# --- Adapter for TBEA ---
+def harvest_tbea():
+    print("\n--- Checking TBEA ---")
+    driver = setup_driver()
+    try:
+        driver.get("https://www.tbeal.net/tbea-market-report/")
+        # Wait for the main content to be present
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CLASS_NAME, "elementor-widget-container"))
+        )
+        # Find all links that contain 'WEEKLY-TEA-MARKET-REPORT' in their href
+        report_links = driver.find_elements(By.PARTIAL_LINK_TEXT, "WEEKLY TEA MARKET REPORT")
+        if report_links:
+            latest_link = report_links[0] # Assume the first one is the latest
+            report_url = latest_link.get_attribute('href')
+            # Create a unique filename from the link text
+            filename = f"TBEA_Report_{latest_link.text.replace(' ', '_')}.pdf"
+            print(f"Found TBEA link: {report_url}")
+            download_file(report_url, INBOX_PATH, filename)
+        else:
+            print("No TBEA report links found on the page.")
+    except Exception as e:
+        print(f"An error occurred while harvesting TBEA: {e}")
+    finally:
+        driver.quit()
+
+# --- Adapter for Forbes & Walker ---
+def harvest_forbes_walker():
+    print("\n--- Checking Forbes & Walker ---")
+    driver = setup_driver()
+    try:
+        driver.get("https://web.forbestea.com/market-reports")
+        # Let the page and JS load
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.ID, "year"))
+        )
         
-        # Define the scraping targets and their respective methods
-        targets = {
-            "TBEA": self.scrape_tbea,
-            "CeylonTeaBrokers": self.scrape_ceylon_tea_brokers,
-            "ForbesWalker": self.scrape_forbes_walker,
-            # Note: EATTA often requires complex interaction; NBL (Bangladesh) deferred for V2.
-        }
+        # Select the latest year
+        year_dropdown = Select(driver.find_element(By.ID, "year"))
+        latest_year = year_dropdown.options[1].text # options[0] is 'Select Year'
+        year_dropdown.select_by_visible_text(latest_year)
+        print(f"Selected year: {latest_year}")
 
-        for name, method in targets.items():
-            try:
-                logging.info(f"Scanning {name}...")
-                report_info = method()
-                if report_info:
-                    self.download_report(report_info)
-                else:
-                    logging.warning(f"Could not find the latest report for {name}.")
-            except Exception as e:
-                logging.error(f"Error harvesting {name}: {e}")
-
-        logging.info("Harvester finished.")
-
-    def sanitize_filename(self, title):
-        """Cleans the title to create a safe filename."""
-        # Remove unsafe characters and limit length
-        filename = re.sub(r'[<>:"/\\|?*]', '', title)
-        filename = filename.replace(' ', '_')[:150]
-        return filename
-
-    def download_report(self, report_info):
-        """Downloads the report file into the Inbox."""
-        url = report_info['url']
-        title = report_info['title']
-        source = report_info['source']
+        # Wait for month dropdown to populate
+        WebDriverWait(driver, 10).until(
+            lambda d: len(Select(d.find_element(By.ID, "month")).options) > 1
+        )
         
-        # Determine file extension (assuming PDF for most brokers)
-        extension = os.path.splitext(url)[1]
-        if not extension or len(extension) > 5:
-            extension = ".pdf" 
+        # Select the latest month
+        month_dropdown = Select(driver.find_element(By.ID, "month"))
+        latest_month = month_dropdown.options[1].text
+        month_dropdown.select_by_visible_text(latest_month)
+        print(f"Selected month: {latest_month}")
 
-        filename = f"{source}_{self.sanitize_filename(title)}{extension}"
-        filepath = os.path.join(self.inbox_dir, filename)
-
-        # Check if file already exists (to prevent re-downloading the same report)
-        if os.path.exists(filepath):
-            logging.info(f"Report already exists, skipping download: {filename}")
-            return
-
-        try:
-            logging.info(f"Downloading report from {url}...")
-            response = self.session.get(url, stream=True)
-            response.raise_for_status()
-            
-            with open(filepath, 'wb') as f:
-                for chunk in response.iter_content(chunk_size=8192):
-                    f.write(chunk)
-            logging.info(f"Successfully downloaded and saved to: {filepath}")
-        except Exception as e:
-            logging.error(f"Failed to download report from {url}: {e}")
-
-    # --- Scraper Implementations ---
-
-    def scrape_tbea(self):
-        # Scrapes https://www.tbeal.net/tbea-market-report/
-        BASE_URL = "https://www.tbeal.net/tbea-market-report/"
-        response = self.session.get(BASE_URL)
-        response.raise_for_status()
-        soup = BeautifulSoup(response.content, 'html.parser')
-        report_regex = re.compile(r"Market Report.*Sale\s*\d+", re.IGNORECASE)
-
-        # Find the first matching link (assuming it's the latest)
-        for link in soup.find_all('a', href=True):
-            text = link.get_text(strip=True)
-            if report_regex.search(text) and '.pdf' in link['href'].lower():
-                report_url = urljoin(BASE_URL, link['href'])
-                return {"source": "TBEA", "title": text, "url": report_url}
-        return None
-
-    def scrape_ceylon_tea_brokers(self):
-        # Scrapes https://ceylonteabrokers.com/all-market-reports/
-        BASE_URL = "https://ceylonteabrokers.com/all-market-reports/"
-        response = self.session.get(BASE_URL)
-        response.raise_for_status()
-        soup = BeautifulSoup(response.content, 'html.parser')
-        report_regex = re.compile(r"Weekly Tea Market Report", re.IGNORECASE)
-
-        for link in soup.find_all('a', href=True):
-            text = link.get_text(strip=True)
-            if report_regex.search(text) and '.pdf' in link['href'].lower():
-                # Filter out noise links
-                if "adobe" in text.lower() or "reader" in text.lower():
-                    continue
-                report_url = urljoin(BASE_URL, link['href'])
-                return {"source": "CTB", "title": text, "url": report_url}
-        return None
-
-    def scrape_forbes_walker(self):
-        # Scrapes https://web.forbestea.com/market-reports using their API endpoint
-        # API endpoint is more reliable than HTML scraping
-        API_URL = "https://web.forbestea.com/api/reports?page=1&search=&year=&category_id="
-        logging.info(f"Querying Forbes & Walker API: {API_URL}")
+        # Find the search button and click it
+        search_button = driver.find_element(By.XPATH, "//button[contains(text(), 'Search')]")
+        search_button.click()
+        print("Searching for reports...")
         
-        response = self.session.get(API_URL)
-        response.raise_for_status()
-        data = response.json()
+        # Wait for the report links to appear
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, "//a[contains(@href, '.pdf')]"))
+        )
+        
+        report_links = driver.find_elements(By.XPATH, "//a[contains(@href, '.pdf')]")
+        if report_links:
+            # Assuming the first link is the one we want
+            report_url = report_links[0].get_attribute('href')
+            filename = f"Forbes_Walker_{latest_year}_{latest_month}.pdf"
+            print(f"Found Forbes & Walker link: {report_url}")
+            download_file(report_url, INBOX_PATH, filename)
+        else:
+            print("No Forbes & Walker report links found after search.")
 
-        # The API returns a list of reports; the first item is the latest
-        if 'data' in data and data['data']:
-            latest_report = data['data'][0]
-            title = latest_report.get('title', 'ForbesWalker_Market_Report')
-            # The URL is nested within the 'file' object
-            report_url = latest_report.get('file', {}).get('url')
-            
-            if report_url:
-                 return {"source": "ForbesWalker", "title": title, "url": report_url}
-        return None
+    except Exception as e:
+        print(f"An error occurred while harvesting Forbes & Walker: {e}")
+    finally:
+        driver.quit()
 
-# Entry point for the script
+# --- Main Execution ---
 if __name__ == "__main__":
-    # The script expects to run from the root of the repository (default for GitHub Actions).
-    harvester = ReportHarvester(inbox_dir="Inbox")
-    harvester.run()
+    print("Starting Market Report Harvester...")
+    harvest_atb()
+    harvest_tbea()
+    harvest_forbes_walker()
+    print("\nHarvester run complete.")
