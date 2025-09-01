@@ -1,5 +1,14 @@
 [
   {
+    "title": "Global Market Report (Van Rees) - Week 34, 2025",
+    "description": "Van Rees weekly global summary (Week 34, ending 31st August 2025). Covers Mombasa, Colombo, North/South India, Malawi, Jakarta, and Vietnam. Prices maintained in East Africa; healthy global supply.",
+    "year": 2025,
+    "week_number": 34,
+    "auction_centre": "Global Summary",
+    "source": "Van Rees",
+    "report_link": "report-viewer.html?dataset=Global_VR_W34_2025"
+  },
+  {
     "title": "Limbe Auction Report - Week 35, 2025",
     "description": "Limbe Auction report for Sale No. 35 (27th August 2025). Total offerings: 4,740 packages. Continued selective demand at irregular rates.",
     "year": 2025,
