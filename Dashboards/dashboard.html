@@ -13,7 +13,7 @@
 <body class="dashboard-page">
     <header class="site-header">
         <div class="header-top-bar">
-             <a href="../corporate.html" class="header-logo"><h1>Tea<span>Trade</span></h1></a>
+            <a href="../corporate.html" class="header-logo"><h1>Tea<span>Trade</span></h1></a>
             <div class="header-search-wrapper"><input type="text" class="header-search-bar" placeholder="Global site search..."></div>
             <div class="user-actions">
                 <a href="#" title="Create Account"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="17" y1="11" x2="23" y2="11"></line></svg></a>
@@ -92,29 +92,29 @@
 
         async function fetchData(datasetFile) {
             try {
-                // CRITICAL PATH FIX: Updated path to look up one directory (../)
+                // CRITICAL FIX 1: Path must go up one level (../)
                 const response = await fetch(`../Data/Imports/${datasetFile}.json`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}. Could not find ${datasetFile}.json`);
                 }
                 const jsonData = await response.json();
 
-                // CRITICAL LOGIC FIX: Access the 'imports' array specifically. 
-                // This prevents the 'data.sort is not a function' error.
+                // CRITICAL FIX 2: Access the 'imports' array specifically. 
+                // This resolves the 'data.sort is not a function' error.
                 if (jsonData.imports && Array.isArray(jsonData.imports)) {
                     currentData = jsonData.imports;
                 } else {
                      throw new Error("Data format is incorrect. Expected an 'imports' array.");
                 }
                 
-                // Pre-process data to ensure a consistent country column name ('country_display')
+                // Pre-process data for consistency
                 currentData.forEach(item => {
                     item.country_display = item.country_of_origin || item.country;
                 });
 
                 const meta = jsonData.metadata;
 
-                // Update Titles and Metadata (Handle variations for Global Stats vs HMRC)
+                // Update Titles and Metadata
                 let title = 'Data Dashboard';
                 if (meta) {
                     if (meta.report_title) {
@@ -129,7 +129,7 @@
                 const metaText = meta ? `Source: ${meta.source} | Published: ${meta.date_published || 'N/A'}` : '';
                 document.getElementById('dashboard-meta').textContent = metaText;
 
-                // Load GeoJSON data if not already loaded (PATH FIX: Updated path ../)
+                // Load GeoJSON data (CRITICAL FIX 1: Path ../)
                 if (!geojsonData) {
                     const geoResponse = await fetch('../countries.geojson');
                     if (geoResponse.ok) {
@@ -145,7 +145,7 @@
             }
         }
 
-        // [The rest of the JavaScript functions (updateView, renderChart, formatNumber, renderTable, sortData, handleSort, initializeMap, renderMap) are included below.]
+        // [The remaining JavaScript functions (updateView, renderChart, formatNumber, renderTable, sortData, handleSort, initializeMap, renderMap, EventListeners) are included below for completeness.]
 
         function updateView() {
             document.querySelectorAll('.view-content').forEach(el => el.style.display = 'none');
@@ -289,7 +289,7 @@
             event.target.appendChild(arrow);
             event.target.classList.add(sortState.direction === 'asc' ? 'sort-asc' : 'sort-desc');
 
-            // Sort the data (currentData is guaranteed to be an array now)
+            // Sort the data
             const sortedData = sortData(currentData, sortState.column, sortState.direction);
 
             renderTable(sortedData);
@@ -351,7 +351,7 @@
                 const value = aggregation[countryName] || 0;
                 const intensity = maxValue > 0 ? (value / maxValue) : 0;
 
-                // Use a color scale (e.g., green for volume, blue for value)
+                // Use a color scale
                 const baseColor = currentMetric === 'net_mass_kg' ? '#34a853' : '#1a73e8';
 
                 return {
@@ -359,7 +359,7 @@
                     weight: 1,
                     opacity: 1,
                     color: '#666',
-                    fillOpacity: intensity * 0.9 // Scale opacity based on intensity
+                    fillOpacity: intensity * 0.9
                 };
             };
 
@@ -375,14 +375,14 @@
             L.geoJson(geojsonData, {
                 style: getStyle,
                 onEachFeature: onEachFeature,
-                filter: feature => aggregation.hasOwnProperty(feature.properties.name) // Only show countries we have data for
+                filter: feature => aggregation.hasOwnProperty(feature.properties.name)
             }).addTo(mapInstance);
         }
 
 
         // --- Event Listeners ---
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize mobile menu (from script.js)
+            // Initialize mobile menu
             if (typeof initializeMobileMenu === 'function') {
                 initializeMobileMenu();
             }
@@ -402,7 +402,7 @@
                     document.querySelectorAll('.slicer-button').forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
                     currentMetric = button.dataset.metric;
-                    updateView(); // Re-render the current view with the new metric
+                    updateView();
                 });
             });
 
