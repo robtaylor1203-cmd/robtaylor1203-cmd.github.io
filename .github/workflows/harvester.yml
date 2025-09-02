@@ -1,4 +1,4 @@
-name: Market Report Harvester V3
+name: Market Report Harvester V3.1
 
 # Controls when the workflow will run
 on:
@@ -23,16 +23,16 @@ jobs:
         with:
           python-version: '3.11'
           
-      # NEW V3: Sets up Chrome AND the matching ChromeDriver reliably
-      - name: Setup ChromeDriver
-        uses: SeleniumHQ/setup-chromedriver@v1
+      # THE FIX: Using the correct, reliable action to install Chrome
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
 
       # Installs the Python libraries
       - name: Install dependencies
         run: pip install -r backend-scraper/requirements.txt
 
-      # Runs the V3 Harvester script
-      - name: Run Harvester V3 script
+      # Runs the Harvester script
+      - name: Run Harvester V3.1 script
         run: python backend-scraper/harvester.py
 
       # Commits the newly downloaded reports from the Inbox folder
@@ -44,7 +44,7 @@ jobs:
           if [ -n "$(git status Inbox/ --porcelain)" ]; then
             echo "New reports found. Committing..."
             git add Inbox/
-            git commit -m "Automated: Harvested new market reports (V3)"
+            git commit -m "Automated: Harvested new market reports (V3.1)"
             git push
           else
             echo "No new reports found in Inbox. Skipping commit."
