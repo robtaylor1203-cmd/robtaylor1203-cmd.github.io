@@ -7,23 +7,25 @@ from urllib.parse import urljoin, urlparse, parse_qs
 
 # Selenium imports
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
+# FIX: Import webdriver_manager for reliable driver setup
+from webdriver_manager.chrome import ChromeDriverManager
 
-# Configure basic logging with timestamp
+# Configure basic logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-class ReportHarvesterV3:
+class ReportHarvesterV3_1:
     """
     Acquires the latest market reports using a resilient hybrid approach.
-    Focuses on extracting direct links rather than complex interactions.
     """
     def __init__(self, inbox_dir="Inbox"):
         self.session = requests.Session()
         self.session.headers.update({
-            'User-Agent': 'TeaTrade-Harvester/3.0 (Resilient; https://teatrade.co.uk)'
+            'User-Agent': 'TeaTrade-Harvester/3.1 (Stable; https://teatrade.co.uk)'
         })
         self.inbox_dir = inbox_dir
         self.driver = None
@@ -34,24 +36,26 @@ class ReportHarvesterV3:
         logging.info(f"Download directory set to: {self.download_dir}")
 
     def initialize_driver(self):
-        """Initializes Selenium WebDriver (Headless Chrome)."""
+        """Initializes Selenium WebDriver using webdriver_manager for stability."""
         if self.driver:
             return self.driver
 
-        logging.info("Initializing Headless Chrome WebDriver (CI/CD Mode)...")
+        logging.info("Initializing Headless Chrome WebDriver (Stable Mode)...")
         chrome_options = Options()
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
         
         try:
-            # V3 Simplified initialization: ChromeDriver is expected to be in the PATH 
-            # (thanks to the GitHub Action SeleniumHQ/setup-chromedriver).
-            self.driver = webdriver.Chrome(options=chrome_options)
+            # V3.1 FIX: Use ChromeDriverManager to install/locate the correct driver binary
+            service = Service(ChromeDriverManager().install())
+            self.driver = webdriver.Chrome(service=service, options=chrome_options)
         except Exception as e:
             logging.error(f"Failed to initialize WebDriver: {e}")
             raise
         return self.driver
+
+    # [The rest of the Python script (close_driver, run, download_report, sanitize_filename, and all scraper implementations) remains the same as V3. Included below for completeness.]
 
     def close_driver(self):
         if self.driver:
@@ -60,9 +64,8 @@ class ReportHarvesterV3:
             self.driver = None
 
     def run(self):
-        logging.info("Starting TeaTrade Report Harvester (V3)...")
+        logging.info("Starting TeaTrade Report Harvester (V3.1)...")
         
-        # Define targets and methods
         targets = {
             "TBEA (Resilient Scan)": self.scrape_tbea_resilient,
             "CeylonTeaBrokers (Dynamic)": self.scrape_ceylon_tea_brokers_dynamic,
@@ -125,22 +128,19 @@ class ReportHarvesterV3:
     # --- Scraper Implementations ---
 
     def scrape_tbea_resilient(self):
-        # V3 Strategy for TBEA: Scan all links and find the highest sale number. Avoids clicking tabs.
+        # Strategy: Scan all links and find the highest sale number. Avoids clicking tabs.
         BASE_URL = "https://www.tbeal.net/tbea-market-report/"
         driver = self.initialize_driver()
         driver.get(BASE_URL)
 
         try:
-            # Wait for the main content area to ensure the page has loaded
             WebDriverWait(driver, 15).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, ".elementor-widget-container"))
             )
 
-            # Regex to capture the Sale Number
             report_regex = re.compile(r"Market Report.*Sale\s*(\d+)", re.IGNORECASE)
             found_reports = []
 
-            # Scan ALL links on the page, regardless of which tab they are in
             links = driver.find_elements(By.TAG_NAME, "a")
             for link in links:
                 text = link.text.strip()
@@ -149,15 +149,17 @@ class ReportHarvesterV3:
                 if href and '.pdf' in href.lower():
                     match = report_regex.search(text)
                     if match:
-                        sale_number = int(match.group(1))
-                        found_reports.append({
-                            "sale": sale_number,
-                            "title": text,
-                            "url": urljoin(BASE_URL, href)
-                        })
+                        try:
+                            sale_number = int(match.group(1))
+                            found_reports.append({
+                                "sale": sale_number,
+                                "title": text,
+                                "url": urljoin(BASE_URL, href)
+                            })
+                        except ValueError:
+                            continue # Handle cases where the number isn't an integer
 
             if found_reports:
-                # Sort by sale number descending and return the latest
                 latest_report = sorted(found_reports, key=lambda x: x['sale'], reverse=True)[0]
                 logging.info(f"Found latest TBEA report: Sale {latest_report['sale']}")
                 return {"source": "TBEA", "title": latest_report['title'], "url": latest_report['url']}
@@ -167,7 +169,7 @@ class ReportHarvesterV3:
         return None
 
     def scrape_ceylon_tea_brokers_dynamic(self):
-        # V3 Strategy for CTB: Use flexible XPath to locate the main report button.
+        # Strategy: Use flexible XPath to locate the main report button.
         BASE_URL = "https://ceylonteabrokers.com/market-reports/"
         driver = self.initialize_driver()
         driver.get(BASE_URL)
@@ -176,7 +178,7 @@ class ReportHarvesterV3:
             WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
 
             # Flexible XPath: Look for a link ending in .pdf that contains the word 'report' (case-insensitive)
-            latest_report_button = WebDriverWait(driver, 10).until(
+            latest_report_button = WebDriverWait(driver, 20).until(
                 EC.visibility_of_element_located((By.XPATH, "//a[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'report') and substring(@href, string-length(@href) - 3) = '.pdf']"))
             )
             
@@ -195,7 +197,7 @@ class ReportHarvesterV3:
         return None
 
     def scrape_atb_ltd_iframe_extraction(self):
-        # V3 Strategy for ATB: Extract the direct PDF URL from the iframe source, bypassing the viewer interaction.
+        # Strategy: Extract the direct PDF URL from the iframe source, bypassing the viewer interaction.
         BASE_URL = "https://www.atbltd.com/Docs/current_market_report"
         driver = self.initialize_driver()
         driver.get(BASE_URL)
@@ -233,11 +235,11 @@ class ReportHarvesterV3:
 
 
     def scrape_forbes_walker_api(self):
-        # Strategy: Use the reliable backend API. Bypasses the dropdowns entirely.
+        # Strategy: Use the reliable backend API.
         API_URL = "https://web.forbestea.com/api/reports?page=1&search=&year=&category_id="
         logging.info(f"Querying Forbes & Walker API: {API_URL}")
         
-        # Use requests session for API calls (no Selenium needed)
+        # Use requests session for API calls
         response = self.session.get(API_URL)
         if not response.ok:
             logging.error(f"Forbes Walker API request failed: {response.status_code}")
@@ -245,7 +247,6 @@ class ReportHarvesterV3:
             
         data = response.json()
 
-        # The API returns a list of reports; the first item is the latest
         if 'data' in data and data['data']:
             latest_report = data['data'][0]
             title = latest_report.get('title', 'ForbesWalker_Market_Report')
@@ -257,5 +258,5 @@ class ReportHarvesterV3:
 
 # Entry point for the script
 if __name__ == "__main__":
-    harvester = ReportHarvesterV3(inbox_dir="Inbox")
+    harvester = ReportHarvesterV3_1(inbox_dir="Inbox")
     harvester.run()
