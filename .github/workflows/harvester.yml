@@ -1,4 +1,4 @@
-name: Market Report Harvester V5
+name: Market Report Harvester V6
 
 # Controls when the workflow will run
 on:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   # Runs automatically every day at 07:00 UTC
   schedule:
-    - cron: '0 7 * * *'
+    - cron: '0 7 * * *' 
 
 jobs:
   harvest:
@@ -22,13 +22,17 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          
+      # CRITICAL: Install Chrome for Selenium using the reliable action
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
 
-      # Installs the Python libraries (requests, beautifulsoup4)
+      # Installs the Python libraries
       - name: Install dependencies
         run: pip install -r backend-scraper/requirements.txt
 
-      # Runs the V5 Harvester script
-      - name: Run Harvester V5 script
+      # Runs the Harvester script
+      - name: Run Harvester V6 script
         run: python backend-scraper/harvester.py
 
       # Commits the newly downloaded reports from the Inbox folder
@@ -40,7 +44,7 @@ jobs:
           if [ -n "$(git status Inbox/ --porcelain)" ]; then
             echo "New reports found. Committing..."
             git add Inbox/
-            git commit -m "Automated: Harvested new market reports (V5)"
+            git commit -m "Automated: Harvested new market reports (V6)"
             git push
           else
             echo "No new reports found in Inbox. Skipping commit."
