@@ -1,37 +1,38 @@
-name: Market Report Harvester
+name: Market Report Harvester V2
 
 # Controls when the workflow will run
 on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-  # Runs automatically on a schedule (e.g., every day at 07:00 UTC)
+  # Runs automatically every day at 07:00 UTC
   schedule:
     - cron: '0 7 * * *' 
 
-# A workflow run is made up of one or more jobs
 jobs:
   harvest:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks
     steps:
-      # Checks-out your repository so the job can access it
+      # Checks-out your repository
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      # Sets up Python on the runner
+      # Sets up Python
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.11'
+          
+      # NEW: Sets up Google Chrome for Selenium using a dedicated Action
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
 
-      # Installs the necessary Python libraries
+      # Installs the Python libraries (including Selenium and webdriver-manager)
       - name: Install dependencies
         run: pip install -r backend-scraper/requirements.txt
 
-      # Runs the Harvester script (from the root of the repository)
-      - name: Run Harvester script
+      # Runs the Enhanced Harvester script
+      - name: Run Harvester V2 script
         run: python backend-scraper/harvester.py
 
       # Commits the newly downloaded reports from the Inbox folder
@@ -41,8 +42,9 @@ jobs:
           git config --global user.email 'actions@github.com'
           # Check if there are new files in the Inbox
           if [ -n "$(git status Inbox/ --porcelain)" ]; then
+            echo "New reports found. Committing..."
             git add Inbox/
-            git commit -m "Automated: Harvested new market reports"
+            git commit -m "Automated: Harvested new market reports (V2)"
             git push
           else
             echo "No new reports found in Inbox. Skipping commit."
