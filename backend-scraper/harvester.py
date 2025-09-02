@@ -2,103 +2,82 @@ import requests
 import re
 import logging
 import os
-import time
 from datetime import datetime
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse, parse_qs
 
 # Selenium imports
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
-# webdriver_manager handles the driver binaries automatically
-from webdriver_manager.chrome import ChromeDriverManager
 
-# Configure basic logging
-logging.basicConfig(level=logging.INFO, format='%(levelname)s - %(message)s')
+# Configure basic logging with timestamp
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-class ReportHarvesterV2:
+class ReportHarvesterV3:
     """
-    Acquires the latest market reports using a hybrid approach (Static API and Dynamic Selenium Scraping).
+    Acquires the latest market reports using a resilient hybrid approach.
+    Focuses on extracting direct links rather than complex interactions.
     """
     def __init__(self, inbox_dir="Inbox"):
         self.session = requests.Session()
         self.session.headers.update({
-            'User-Agent': 'TeaTrade-Harvester/2.0 (Dynamic; https://teatrade.co.uk)'
+            'User-Agent': 'TeaTrade-Harvester/3.0 (Resilient; https://teatrade.co.uk)'
         })
         self.inbox_dir = inbox_dir
-        self.driver = None # Selenium WebDriver instance
+        self.driver = None
 
-        # Ensure the Inbox directory exists and get its absolute path for Selenium downloads
         if not os.path.exists(inbox_dir):
             os.makedirs(inbox_dir)
         self.download_dir = os.path.abspath(inbox_dir)
         logging.info(f"Download directory set to: {self.download_dir}")
 
     def initialize_driver(self):
-        """Initializes the Selenium WebDriver for dynamic scraping."""
+        """Initializes Selenium WebDriver (Headless Chrome)."""
         if self.driver:
             return self.driver
 
-        logging.info("Initializing Headless Chrome WebDriver...")
+        logging.info("Initializing Headless Chrome WebDriver (CI/CD Mode)...")
         chrome_options = Options()
-        # Essential arguments for running headless in GitHub Actions
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
-        chrome_options.add_argument(f"user-agent={self.session.headers['User-Agent']}")
         
-        # Configure download preferences for sites like ATB Ltd interaction
-        prefs = {
-            "download.default_directory": self.download_dir,
-            "download.prompt_for_download": False,
-            "plugins.always_open_pdf_externally": True
-        }
-        chrome_options.add_experimental_option("prefs", prefs)
-
-        # Use webdriver_manager to install and manage ChromeDriver
         try:
-            # Use the Chrome version installed by the GitHub Action setup-chrome
-            service = Service(ChromeDriverManager().install())
-            self.driver = webdriver.Chrome(service=service, options=chrome_options)
+            # V3 Simplified initialization: ChromeDriver is expected to be in the PATH 
+            # (thanks to the GitHub Action SeleniumHQ/setup-chromedriver).
+            self.driver = webdriver.Chrome(options=chrome_options)
         except Exception as e:
             logging.error(f"Failed to initialize WebDriver: {e}")
             raise
         return self.driver
 
     def close_driver(self):
-        """Closes the Selenium WebDriver."""
         if self.driver:
             logging.info("Closing WebDriver.")
             self.driver.quit()
             self.driver = None
 
     def run(self):
-        logging.info("Starting TeaTrade Report Harvester (V2)...")
+        logging.info("Starting TeaTrade Report Harvester (V3)...")
         
         # Define targets and methods
         targets = {
-            "TBEA (Dynamic)": self.scrape_tbea_dynamic,
+            "TBEA (Resilient Scan)": self.scrape_tbea_resilient,
             "CeylonTeaBrokers (Dynamic)": self.scrape_ceylon_tea_brokers_dynamic,
             "ForbesWalker (API)": self.scrape_forbes_walker_api,
-            "ATB Ltd (Dynamic Interaction)": self.scrape_atb_ltd,
+            "ATB Ltd (Iframe Extraction)": self.scrape_atb_ltd_iframe_extraction,
         }
 
         for name, method in targets.items():
             try:
                 logging.info(f"--- Scanning {name} ---")
-                # Methods for TBEA, CTB, ForbesWalker return report_info (URL based)
-                # Method for ATB handles download directly via browser interaction
-                if name != "ATB Ltd (Dynamic Interaction)":
-                    report_info = method()
-                    if report_info:
-                        self.download_report(report_info)
-                    else:
-                        logging.warning(f"Could not find the latest report for {name}.")
+                report_info = method()
+                if report_info:
+                    self.download_report(report_info)
                 else:
-                    method() # ATB handles its own download process
+                    logging.warning(f"Could not find the latest report for {name}.")
 
             except Exception as e:
                 logging.error(f"Error harvesting {name}: {e}", exc_info=True)
@@ -113,14 +92,16 @@ class ReportHarvesterV2:
         return filename.replace(' ', '_')[:150]
 
     def download_report(self, report_info):
-        """Downloads report from a direct URL (Used by TBEA, CTB, ForbesWalker)."""
+        """Downloads report from a direct URL using requests."""
         url = report_info['url']
         title = report_info['title']
         source = report_info['source']
         
-        extension = os.path.splitext(url.split('?')[0])[1] # Handle URLs with parameters
+        # Determine extension reliably
+        parsed_url = urlparse(url)
+        extension = os.path.splitext(parsed_url.path)[1]
         if not extension or len(extension) > 5 or 'aspx' in extension.lower():
-             extension = ".pdf" # Default assumption if URL is obscure
+             extension = ".pdf" # Default assumption
 
         filename = f"{source}_{self.sanitize_filename(title)}{extension}"
         filepath = os.path.join(self.download_dir, filename)
@@ -131,7 +112,6 @@ class ReportHarvesterV2:
 
         try:
             logging.info(f"Downloading report from {url}...")
-            # Use the requests session for standard downloads
             response = self.session.get(url, stream=True)
             response.raise_for_status()
             
@@ -142,159 +122,122 @@ class ReportHarvesterV2:
         except Exception as e:
             logging.error(f"Failed to download report from {url}: {e}")
 
-    # --- Dynamic Scraper Implementations (Selenium) ---
+    # --- Scraper Implementations ---
 
-    def scrape_tbea_dynamic(self):
-        # Handles https://www.tbeal.net/tbea-market-report/
-        # Clicks the latest year tab and finds the latest report link.
+    def scrape_tbea_resilient(self):
+        # V3 Strategy for TBEA: Scan all links and find the highest sale number. Avoids clicking tabs.
         BASE_URL = "https://www.tbeal.net/tbea-market-report/"
         driver = self.initialize_driver()
         driver.get(BASE_URL)
 
         try:
-            # Wait for the year tabs (e.g., "2025") to load and be clickable
+            # Wait for the main content area to ensure the page has loaded
             WebDriverWait(driver, 15).until(
-                EC.element_to_be_clickable((By.CSS_SELECTOR, ".elementor-tabs-wrapper .elementor-tab-title"))
-            )
-            
-            # Find the latest year tab (assuming the first visible one is the latest)
-            latest_year_tab = driver.find_elements(By.CSS_SELECTOR, ".elementor-tabs-wrapper .elementor-tab-title")[0]
-            logging.info(f"Interacting with TBEA tab: {latest_year_tab.text}")
-            
-            # Click the tab if it's not already active
-            if "elementor-active" not in latest_year_tab.get_attribute("class"):
-                latest_year_tab.click()
-
-            # Wait for the content area to update after the click
-            active_content = WebDriverWait(driver, 10).until(
-                 EC.visibility_of_element_located((By.CSS_SELECTOR, ".elementor-tabs-content-wrapper .elementor-tab-content[aria-hidden='false']"))
+                EC.presence_of_element_located((By.CSS_SELECTOR, ".elementor-widget-container"))
             )
 
-            # Find the latest report link within the active area
-            report_regex = re.compile(r"Market Report.*Sale\s*\d+", re.IGNORECASE)
-            
-            links = active_content.find_elements(By.TAG_NAME, "a")
+            # Regex to capture the Sale Number
+            report_regex = re.compile(r"Market Report.*Sale\s*(\d+)", re.IGNORECASE)
+            found_reports = []
+
+            # Scan ALL links on the page, regardless of which tab they are in
+            links = driver.find_elements(By.TAG_NAME, "a")
             for link in links:
                 text = link.text.strip()
                 href = link.get_attribute("href")
-                if href and report_regex.search(text):
-                     report_url = urljoin(BASE_URL, href)
-                     return {"source": "TBEA", "title": text, "url": report_url}
-        
+                
+                if href and '.pdf' in href.lower():
+                    match = report_regex.search(text)
+                    if match:
+                        sale_number = int(match.group(1))
+                        found_reports.append({
+                            "sale": sale_number,
+                            "title": text,
+                            "url": urljoin(BASE_URL, href)
+                        })
+
+            if found_reports:
+                # Sort by sale number descending and return the latest
+                latest_report = sorted(found_reports, key=lambda x: x['sale'], reverse=True)[0]
+                logging.info(f"Found latest TBEA report: Sale {latest_report['sale']}")
+                return {"source": "TBEA", "title": latest_report['title'], "url": latest_report['url']}
+
         except Exception as e:
-            logging.error(f"Dynamic interaction failed on TBEA: {e}")
-            return None
+            logging.error(f"Resilient scan failed on TBEA: {e}")
+        return None
 
     def scrape_ceylon_tea_brokers_dynamic(self):
-        # Handles https://ceylonteabrokers.com/market-reports/
-        # Locates the specific button designated for the latest report.
+        # V3 Strategy for CTB: Use flexible XPath to locate the main report button.
         BASE_URL = "https://ceylonteabrokers.com/market-reports/"
         driver = self.initialize_driver()
         driver.get(BASE_URL)
 
         try:
-            # Wait for the page to stabilize
-            WebDriverWait(driver, 15).until(
-                EC.presence_of_element_located((By.TAG_NAME, "body"))
-            )
+            WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
 
-            # Identify the prominent button element that links to the latest report.
-            # We use XPath to find links containing specific text and ending in .pdf
+            # Flexible XPath: Look for a link ending in .pdf that contains the word 'report' (case-insensitive)
             latest_report_button = WebDriverWait(driver, 10).until(
-                EC.visibility_of_element_located((By.XPATH, "//a[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'weekly tea market report') and contains(@href, '.pdf')]"))
+                EC.visibility_of_element_located((By.XPATH, "//a[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'report') and substring(@href, string-length(@href) - 3) = '.pdf']"))
             )
             
             report_url = latest_report_button.get_attribute("href")
             title_text = latest_report_button.text.strip()
             
-            # Use a generic title if the button text isn't descriptive
+            # Fallback title
             if not title_text or len(title_text) < 10:
                  title_text = f"CTB_Weekly_Report_{datetime.now().strftime('%Y%m%d')}"
-
 
             if report_url:
                  return {"source": "CTB", "title": title_text, "url": report_url}
 
         except Exception as e:
             logging.error(f"Dynamic interaction failed on Ceylon Tea Brokers: {e}")
-            return None
+        return None
 
-    def scrape_atb_ltd(self):
-        # Handles https://www.atbltd.com/Docs/current_market_report
-        # Interacts with the embedded PDF viewer to trigger the download.
+    def scrape_atb_ltd_iframe_extraction(self):
+        # V3 Strategy for ATB: Extract the direct PDF URL from the iframe source, bypassing the viewer interaction.
         BASE_URL = "https://www.atbltd.com/Docs/current_market_report"
         driver = self.initialize_driver()
         driver.get(BASE_URL)
 
         try:
-            # The report is embedded in an iframe. We must switch context to the iframe.
-            logging.info("Switching to ATB iframe context...")
-            WebDriverWait(driver, 20).until(
-                # Wait for the iframe that contains the viewer application
-                EC.frame_to_be_available_and_switch_to_it((By.CSS_SELECTOR, "iframe[src*='Viewer']"))
+            logging.info("Locating ATB iframe...")
+            # Wait for the iframe that contains the viewer application
+            iframe = WebDriverWait(driver, 20).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, "iframe[src*='Viewer']"))
             )
             
-            # Wait for the download button within the iframe viewer controls
-            logging.info("Locating download button within the viewer...")
-            download_button = WebDriverWait(driver, 20).until(
-                # Look for common viewer download button selectors
-                EC.element_to_be_clickable((By.CSS_SELECTOR, "button[title='Download'], button#download, button[data-action='download']"))
-            )
-            
-            logging.info("Attempting to click ATB download button...")
-            
-            # Get initial file count in the Inbox
-            initial_files = set(os.listdir(self.download_dir))
-            
-            download_button.click()
-            
-            # Wait for the download to complete (Monitoring the download directory)
-            logging.info("Waiting for download to complete (max 90s)...")
-            timeout = 90
-            start_time = time.time()
-            downloaded_file = None
+            iframe_src = iframe.get_attribute("src")
+            logging.info(f"Extracted iframe src: {iframe_src}")
 
-            # Monitor the directory for the new file
-            while time.time() - start_time < timeout:
-                current_files = set(os.listdir(self.download_dir))
-                new_files = current_files - initial_files
+            # The PDF path is embedded in a query parameter (e.g., ?file=...)
+            parsed_src = urlparse(iframe_src)
+            query_params = parse_qs(parsed_src.query)
+            
+            # Common parameter names for embedded viewers
+            pdf_path = query_params.get('file', [None])[0] or query_params.get('src', [None])[0]
+
+            if pdf_path:
+                # Construct the absolute URL to the PDF
+                direct_pdf_url = urljoin(BASE_URL, pdf_path)
+                logging.info(f"Constructed direct PDF URL: {direct_pdf_url}")
                 
-                # Check if a new file has appeared and is not a temporary download file
-                if new_files:
-                    potential_file = new_files.pop()
-                    if not potential_file.endswith('.crdownload') and not potential_file.endswith('.tmp'):
-                        downloaded_file = potential_file
-                        break
-                time.sleep(1)
-
-            if downloaded_file:
-                # Rename the file to a standard format
-                new_filename = f"ATB_Market_Report_{datetime.now().strftime('%Y%m%d')}{os.path.splitext(downloaded_file)[1]}"
-                os.rename(os.path.join(self.download_dir, downloaded_file), os.path.join(self.download_dir, new_filename))
-                logging.info(f"Successfully downloaded ATB report: {new_filename}")
+                title = f"ATB_Market_Report_{datetime.now().strftime('%Y%m%d')}"
+                return {"source": "ATB", "title": title, "url": direct_pdf_url}
             else:
-                logging.error("ATB download timed out or failed.")
+                logging.error("Could not extract PDF path from iframe src.")
 
         except Exception as e:
-            logging.error(f"Dynamic interaction failed on ATB Ltd: {e}")
-        finally:
-             # Ensure we switch back to the main content context
-            try:
-                if self.driver:
-                    self.driver.switch_to.default_content()
-            except:
-                pass
+            logging.error(f"Iframe extraction failed on ATB Ltd: {e}")
+        return None
 
-
-    # --- API/Static Scraper Implementations ---
 
     def scrape_forbes_walker_api(self):
-        # Handles https://web.forbestea.com/market-reports using their API
-        # This site does not require Selenium as the API provides the data directly.
+        # Strategy: Use the reliable backend API. Bypasses the dropdowns entirely.
         API_URL = "https://web.forbestea.com/api/reports?page=1&search=&year=&category_id="
         logging.info(f"Querying Forbes & Walker API: {API_URL}")
         
-        # Use requests session for API calls
+        # Use requests session for API calls (no Selenium needed)
         response = self.session.get(API_URL)
         if not response.ok:
             logging.error(f"Forbes Walker API request failed: {response.status_code}")
@@ -302,6 +245,7 @@ class ReportHarvesterV2:
             
         data = response.json()
 
+        # The API returns a list of reports; the first item is the latest
         if 'data' in data and data['data']:
             latest_report = data['data'][0]
             title = latest_report.get('title', 'ForbesWalker_Market_Report')
@@ -313,6 +257,5 @@ class ReportHarvesterV2:
 
 # Entry point for the script
 if __name__ == "__main__":
-    # The script expects to run from the root of the repository.
-    harvester = ReportHarvesterV2(inbox_dir="Inbox")
+    harvester = ReportHarvesterV3(inbox_dir="Inbox")
     harvester.run()
