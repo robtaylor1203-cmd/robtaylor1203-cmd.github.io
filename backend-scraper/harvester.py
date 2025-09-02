@@ -4,28 +4,32 @@ import logging
 import os
 from datetime import datetime
 from urllib.parse import urljoin, urlparse, parse_qs
+import time
 
 # Selenium imports
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
+# Import Select for dropdown interaction
+from selenium.webdriver.support.ui import WebDriverWait, Select 
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
-# FIX: Import webdriver_manager for reliable driver setup
 from webdriver_manager.chrome import ChromeDriverManager
 
 # Configure basic logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-class ReportHarvesterV3_1:
+# V4 Configuration: Increased timeouts for resilience
+DYNAMIC_TIMEOUT = 60 
+
+class ReportHarvesterV4:
     """
-    Acquires the latest market reports using a resilient hybrid approach.
+    Acquires the latest market reports with extreme resilience strategies.
     """
     def __init__(self, inbox_dir="Inbox"):
         self.session = requests.Session()
         self.session.headers.update({
-            'User-Agent': 'TeaTrade-Harvester/3.1 (Stable; https://teatrade.co.uk)'
+            'User-Agent': 'TeaTrade-Harvester/4.0 (Resilient; https://teatrade.co.uk)'
         })
         self.inbox_dir = inbox_dir
         self.driver = None
@@ -36,26 +40,27 @@ class ReportHarvesterV3_1:
         logging.info(f"Download directory set to: {self.download_dir}")
 
     def initialize_driver(self):
-        """Initializes Selenium WebDriver using webdriver_manager for stability."""
+        """Initializes Selenium WebDriver (Headless Chrome)."""
         if self.driver:
             return self.driver
 
-        logging.info("Initializing Headless Chrome WebDriver (Stable Mode)...")
+        logging.info("Initializing Headless Chrome WebDriver (V4)...")
         chrome_options = Options()
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
+        # V4 FIX: Ensure window size is sufficient for complex layouts
+        chrome_options.add_argument("--window-size=1920,1080") 
         
         try:
-            # V3.1 FIX: Use ChromeDriverManager to install/locate the correct driver binary
             service = Service(ChromeDriverManager().install())
             self.driver = webdriver.Chrome(service=service, options=chrome_options)
+            # Set a global implicit wait as a fallback
+            self.driver.implicitly_wait(10) 
         except Exception as e:
             logging.error(f"Failed to initialize WebDriver: {e}")
             raise
         return self.driver
-
-    # [The rest of the Python script (close_driver, run, download_report, sanitize_filename, and all scraper implementations) remains the same as V3. Included below for completeness.]
 
     def close_driver(self):
         if self.driver:
@@ -64,12 +69,13 @@ class ReportHarvesterV3_1:
             self.driver = None
 
     def run(self):
-        logging.info("Starting TeaTrade Report Harvester (V3.1)...")
+        logging.info("Starting TeaTrade Report Harvester (V4)...")
         
         targets = {
             "TBEA (Resilient Scan)": self.scrape_tbea_resilient,
             "CeylonTeaBrokers (Dynamic)": self.scrape_ceylon_tea_brokers_dynamic,
-            "ForbesWalker (API)": self.scrape_forbes_walker_api,
+            # V4 Change: ForbesWalker switched from API to Dynamic due to 404 errors
+            "ForbesWalker (Dynamic Dropdown)": self.scrape_forbes_walker_dynamic,
             "ATB Ltd (Iframe Extraction)": self.scrape_atb_ltd_iframe_extraction,
         }
 
@@ -89,22 +95,20 @@ class ReportHarvesterV3_1:
         logging.info("Harvester finished.")
 
     # --- Utility Functions ---
-
+    
     def sanitize_filename(self, title):
         filename = re.sub(r'[<>:"/\\|?*]', '', title)
         return filename.replace(' ', '_')[:150]
 
     def download_report(self, report_info):
-        """Downloads report from a direct URL using requests."""
         url = report_info['url']
         title = report_info['title']
         source = report_info['source']
         
-        # Determine extension reliably
         parsed_url = urlparse(url)
         extension = os.path.splitext(parsed_url.path)[1]
         if not extension or len(extension) > 5 or 'aspx' in extension.lower():
-             extension = ".pdf" # Default assumption
+             extension = ".pdf"
 
         filename = f"{source}_{self.sanitize_filename(title)}{extension}"
         filepath = os.path.join(self.download_dir, filename)
@@ -115,7 +119,8 @@ class ReportHarvesterV3_1:
 
         try:
             logging.info(f"Downloading report from {url}...")
-            response = self.session.get(url, stream=True)
+            # Increase timeout for the download request itself
+            response = self.session.get(url, stream=True, timeout=120) 
             response.raise_for_status()
             
             with open(filepath, 'wb') as f:
@@ -125,25 +130,28 @@ class ReportHarvesterV3_1:
         except Exception as e:
             logging.error(f"Failed to download report from {url}: {e}")
 
-    # --- Scraper Implementations ---
+    # --- Scraper Implementations (V4 Resilience Enhancements) ---
 
     def scrape_tbea_resilient(self):
-        # Strategy: Scan all links and find the highest sale number. Avoids clicking tabs.
+        # Strategy: Scan all links, find the highest sale number. Increased timeouts.
         BASE_URL = "https://www.tbeal.net/tbea-market-report/"
         driver = self.initialize_driver()
         driver.get(BASE_URL)
 
         try:
-            WebDriverWait(driver, 15).until(
+            # V4: Increased timeout
+            WebDriverWait(driver, DYNAMIC_TIMEOUT).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, ".elementor-widget-container"))
             )
 
             report_regex = re.compile(r"Market Report.*Sale\s*(\d+)", re.IGNORECASE)
             found_reports = []
 
+            # Scan ALL links
             links = driver.find_elements(By.TAG_NAME, "a")
             for link in links:
-                text = link.text.strip()
+                # V4: Use get_attribute('textContent') for more reliable text extraction
+                text = link.get_attribute('textContent').strip()
                 href = link.get_attribute("href")
                 
                 if href and '.pdf' in href.lower():
@@ -157,7 +165,7 @@ class ReportHarvesterV3_1:
                                 "url": urljoin(BASE_URL, href)
                             })
                         except ValueError:
-                            continue # Handle cases where the number isn't an integer
+                            continue
 
             if found_reports:
                 latest_report = sorted(found_reports, key=lambda x: x['sale'], reverse=True)[0]
@@ -165,27 +173,25 @@ class ReportHarvesterV3_1:
                 return {"source": "TBEA", "title": latest_report['title'], "url": latest_report['url']}
 
         except Exception as e:
-            logging.error(f"Resilient scan failed on TBEA: {e}")
+            logging.error(f"Resilient scan failed on TBEA (Timeout likely): {e}")
         return None
 
     def scrape_ceylon_tea_brokers_dynamic(self):
-        # Strategy: Use flexible XPath to locate the main report button.
+        # Strategy: Use flexible XPath. Increased timeouts.
         BASE_URL = "https://ceylonteabrokers.com/market-reports/"
         driver = self.initialize_driver()
         driver.get(BASE_URL)
 
         try:
-            WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
-
-            # Flexible XPath: Look for a link ending in .pdf that contains the word 'report' (case-insensitive)
-            latest_report_button = WebDriverWait(driver, 20).until(
+            # V4: Increased timeout and wait for visibility
+            latest_report_button = WebDriverWait(driver, DYNAMIC_TIMEOUT).until(
                 EC.visibility_of_element_located((By.XPATH, "//a[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'report') and substring(@href, string-length(@href) - 3) = '.pdf']"))
             )
             
             report_url = latest_report_button.get_attribute("href")
-            title_text = latest_report_button.text.strip()
+            # V4: Use get_attribute('textContent')
+            title_text = latest_report_button.get_attribute('textContent').strip()
             
-            # Fallback title
             if not title_text or len(title_text) < 10:
                  title_text = f"CTB_Weekly_Report_{datetime.now().strftime('%Y%m%d')}"
 
@@ -193,34 +199,31 @@ class ReportHarvesterV3_1:
                  return {"source": "CTB", "title": title_text, "url": report_url}
 
         except Exception as e:
-            logging.error(f"Dynamic interaction failed on Ceylon Tea Brokers: {e}")
+            logging.error(f"Dynamic interaction failed on Ceylon Tea Brokers (Timeout likely): {e}")
         return None
 
     def scrape_atb_ltd_iframe_extraction(self):
-        # Strategy: Extract the direct PDF URL from the iframe source, bypassing the viewer interaction.
+        # Strategy: Extract direct PDF URL from the iframe. Increased timeouts.
         BASE_URL = "https://www.atbltd.com/Docs/current_market_report"
         driver = self.initialize_driver()
         driver.get(BASE_URL)
 
         try:
             logging.info("Locating ATB iframe...")
-            # Wait for the iframe that contains the viewer application
-            iframe = WebDriverWait(driver, 20).until(
+            # V4: Increased timeout
+            iframe = WebDriverWait(driver, DYNAMIC_TIMEOUT).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, "iframe[src*='Viewer']"))
             )
             
             iframe_src = iframe.get_attribute("src")
             logging.info(f"Extracted iframe src: {iframe_src}")
 
-            # The PDF path is embedded in a query parameter (e.g., ?file=...)
             parsed_src = urlparse(iframe_src)
             query_params = parse_qs(parsed_src.query)
             
-            # Common parameter names for embedded viewers
             pdf_path = query_params.get('file', [None])[0] or query_params.get('src', [None])[0]
 
             if pdf_path:
-                # Construct the absolute URL to the PDF
                 direct_pdf_url = urljoin(BASE_URL, pdf_path)
                 logging.info(f"Constructed direct PDF URL: {direct_pdf_url}")
                 
@@ -230,33 +233,90 @@ class ReportHarvesterV3_1:
                 logging.error("Could not extract PDF path from iframe src.")
 
         except Exception as e:
-            logging.error(f"Iframe extraction failed on ATB Ltd: {e}")
+            logging.error(f"Iframe extraction failed on ATB Ltd (Timeout likely): {e}")
         return None
 
 
-    def scrape_forbes_walker_api(self):
-        # Strategy: Use the reliable backend API.
-        API_URL = "https://web.forbestea.com/api/reports?page=1&search=&year=&category_id="
-        logging.info(f"Querying Forbes & Walker API: {API_URL}")
-        
-        # Use requests session for API calls
-        response = self.session.get(API_URL)
-        if not response.ok:
-            logging.error(f"Forbes Walker API request failed: {response.status_code}")
-            return None
-            
-        data = response.json()
+    def scrape_forbes_walker_dynamic(self):
+        # V4 Strategy: Interact with dropdowns dynamically because the API failed (404 error).
+        BASE_URL = "https://web.forbestea.com/market-reports"
+        driver = self.initialize_driver()
+        driver.get(BASE_URL)
 
-        if 'data' in data and data['data']:
-            latest_report = data['data'][0]
-            title = latest_report.get('title', 'ForbesWalker_Market_Report')
-            report_url = latest_report.get('file', {}).get('url')
+        try:
+            logging.info("Interacting with Forbes & Walker dropdowns...")
             
-            if report_url:
-                 return {"source": "ForbesWalker", "title": title, "url": report_url}
+            # 1. Wait for and select the Year
+            # The year dropdown ID is identified as 'year'
+            year_select_element = WebDriverWait(driver, DYNAMIC_TIMEOUT).until(
+                EC.element_to_be_clickable((By.ID, "year"))
+            )
+            year_select = Select(year_select_element)
+            
+            # Select the latest year (assuming the first option is the latest)
+            latest_year_option = year_select.options[0]
+            if not latest_year_option.get_attribute("value"): # Handle potential empty first option
+                 latest_year_option = year_select.options[1]
+
+            latest_year = latest_year_option.get_attribute("value")
+            logging.info(f"Selecting Year: {latest_year}")
+            
+            # Use JavaScript execution to ensure the change event fires reliably in headless mode
+            driver.execute_script("arguments[0].value = arguments[1]; arguments[0].dispatchEvent(new Event('change'));", year_select_element, latest_year)
+            
+            # 2. Wait for the Report dropdown to update
+            # The report dropdown ID is identified as 'report_id'
+            time.sleep(5) # Explicit wait for AJAX update (crucial for dropdown synchronization)
+            report_select_element = WebDriverWait(driver, DYNAMIC_TIMEOUT).until(
+                EC.element_to_be_clickable((By.ID, "report_id"))
+            )
+            report_select = Select(report_select_element)
+
+            # Wait until the options list has populated after the year change
+            WebDriverWait(driver, DYNAMIC_TIMEOUT).until(
+                lambda d: len(report_select.options) > 1
+            )
+
+            # 3. Select the latest report
+            latest_report_option = report_select.options[0]
+            if not latest_report_option.get_attribute("value"):
+                latest_report_option = report_select.options[1]
+
+            title = latest_report_option.text.strip()
+            report_id = latest_report_option.get_attribute("value")
+            logging.info(f"Selecting Report: {title} (ID: {report_id})")
+            
+            # Select the report
+            driver.execute_script("arguments[0].value = arguments[1]; arguments[0].dispatchEvent(new Event('change'));", report_select_element, report_id)
+
+            # 4. Trigger the download. The site uses a form submission tied to a button/link.
+            # The submit button is often styled as a link 'a.btn-gradient'
+            submit_button = WebDriverWait(driver, DYNAMIC_TIMEOUT).until(
+                 EC.element_to_be_clickable((By.CSS_SELECTOR, "a.btn-gradient, button[type='submit']"))
+            )
+            
+            logging.info("Submitting form to access report...")
+            # Use JavaScript click for robustness
+            driver.execute_script("arguments[0].click();", submit_button)
+
+            # 5. Capture the resulting URL. The browser navigates to the PDF URL.
+            WebDriverWait(driver, DYNAMIC_TIMEOUT).until(
+                 lambda d: d.current_url != BASE_URL and ("pdf" in d.current_url.lower() or "download" in d.current_url.lower())
+            )
+            
+            final_url = driver.current_url
+            logging.info(f"Captured final report URL: {final_url}")
+
+            if final_url and final_url != BASE_URL:
+                 return {"source": "ForbesWalker", "title": title, "url": final_url}
+            else:
+                logging.error("Forbes & Walker navigation did not result in a report URL.")
+
+        except Exception as e:
+            logging.error(f"Dynamic navigation failed on Forbes & Walker: {e}")
         return None
 
 # Entry point for the script
 if __name__ == "__main__":
-    harvester = ReportHarvesterV3_1(inbox_dir="Inbox")
+    harvester = ReportHarvesterV4(inbox_dir="Inbox")
     harvester.run()
