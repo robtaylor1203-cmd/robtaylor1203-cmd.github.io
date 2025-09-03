@@ -12,8 +12,8 @@
     "sale_date_end": "2025-08-27"
   },
   "summary": {
-    "total_packages": 4000,
-    "total_quantity_kg": 214440,
+    "offered_packages": 4000,
+    "offered_quantity_kg": 214440,
     "sold_packages": 2920,
     "sold_quantity_kg": 152180,
     "percent_sold": 71.0,
