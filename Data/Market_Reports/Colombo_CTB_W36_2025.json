@@ -1,0 +1,41 @@
+{
+  "metadata": {
+    "broker": "Ceylon Tea Brokers PLC",
+    "auction_centre": "Colombo",
+    "country": "Sri Lanka",
+    "currency": "LKR",
+    "sale_number": 36,
+    "week_number": 36,
+    "year": 2025,
+    "sale_date_start": "2025-09-09",
+    "sale_date_end": "2025-09-10"
+  },
+  "summary": {
+    "total_quantity_kg": 6150000,
+    "market_comment": "A total of 6.15 M/Kgs came under the hammer this week. Demand was fair. Ex-Estate offerings amounted to 0.9 M/Kgs. Western High Grown BOPs were irregular, while BOPFs gained on last. Nuwara Eliya BOPs were firm. Low Growns saw good demand, with firm prices for Leafy grades.",
+    "quality_comment": "Overall quality of Ex-Estate teas showed a marginal improvement."
+  },
+  "offerings": [
+    {"category": "Ex-Estate", "quantity_kg": 900000},
+    {"category": "Low Grown (Leafy)", "quantity_kg": 2400000},
+    {"category": "Low Grown (Tippy/Small Leaf)", "quantity_kg": 1500000},
+    {"category": "High & Medium (Tippy)", "quantity_kg": 650000},
+    {"category": "Off Grades/Dusts", "quantity_kg": 700000}
+  ],
+  "price_quotations": [
+    {"elevation": "Western High", "grade": "BOP", "current_min": 740.0, "current_max": 800.0},
+    {"elevation": "Western High", "grade": "BOPF", "current_min": 790.0, "current_max": 840.0},
+    {"elevation": "Nuwara Eliya", "grade": "BOP", "current_min": 810.0, "current_max": 850.0},
+    {"elevation": "Nuwara Eliya", "grade": "BOPF", "current_min": 850.0, "current_max": 900.0},
+    {"elevation": "Uva", "grade": "BOP", "current_min": 710.0, "current_max": 760.0},
+    {"elevation": "Uva", "grade": "BOPF", "current_min": 750.0, "current_max": 800.0},
+    {"elevation": "Western Medium", "grade": "BOP", "current_min": 650.0, "current_max": 700.0},
+    {"elevation": "Western Medium", "grade": "FBOP", "current_min": 800.0, "current_max": 880.0},
+    {"elevation": "Low Grown", "grade": "OP1", "current_min": 1200.0, "current_max": 1550.0},
+    {"elevation": "Low Grown", "grade": "OPA", "current_min": 960.0, "current_max": 1120.0},
+    {"elevation": "Low Grown", "grade": "PEKOE", "current_min": 1150.0, "current_max": 1350.0},
+    {"elevation": "Low Grown", "grade": "BOP1", "current_min": 900.0, "current_max": 980.0},
+    {"elevation": "Low Grown", "grade": "FBOP", "current_min": 920.0, "current_max": 1150.0},
+    {"elevation": "Low Grown", "grade": "FBOPF1", "current_min": 880.0, "current_max": 1020.0}
+  ]
+}
