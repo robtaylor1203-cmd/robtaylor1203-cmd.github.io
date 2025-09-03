@@ -1,32 +1,251 @@
 {
   "metadata": {
-    "broker": "Forbes & Walker Tea Brokers (PVT) LTD",
+    "broker": "Forbes & Walker Tea Brokers (Pvt) LTD",
     "auction_centre": "Colombo",
     "country": "Sri Lanka",
-    "currency": "LKR",
-    "sale_number": 35,
+    "sale_number": 34,
     "week_number": 35,
     "year": 2025,
-    "sale_date_start": "2025-09-03",
-    "sale_date_end": "2025-09-04"
+    "sale_date_start": "2025-09-01",
+    "sale_date_end": "2025-09-02",
+    "previous_sale_date_start": "2025-08-26",
+    "previous_sale_date_end": "2025-08-27",
+    "currency": "LKR"
   },
   "summary": {
-    "total_quantity_kg": 5300000,
-    "reprints_quantity_kg": 58000,
-    "market_comment": "Total offerings this week recorded 5.3 M/Kgs. There was good demand. Ex-Estate offerings totaled 0.8 M/Kgs. Quality showed further improvement. Best Westerns - BOPs firm to dearer, BOPFs gained. Below Best - BOPs irregular, BOPFs firm to dearer. Plainer sorts - firm. Nuwara Eliyas - irregular. Uda Pussellawas - firm. Uvas - firm to dearer.",
-    "quality_comment": "Quality of offerings showed further improvement."
+    "total_lots": 10619,
+    "total_quantity_kg": 5105188,
+    "reprints_lots": 947,
+    "reprints_quantity_kg": 488259,
+    "quality_comment": "Overall, marginally lower to last.",
+    "market_comment": "This week's auction offerings totalled 5.10 M/Kgs. There was good general demand. Ex-Estate offerings comprised of 0.64 M/Kgs. Overall quality of teas was marginally lower to last. Best Westerns - select invoices gained substantially following special inquiry, whilst the others were irregular and often lower. Teas in the Below Best category declined, whilst the Plainer sorts were barely steady. Nuwara Eliyas gained fairly substantially. Uda Pussellawas were irregular. Uva - seasonal teas continued to sell well at attractive levels, whilst the others were irregular. High and Medium Grown CTCs - BP1s were irregular. PF1s - Best sorts gained, whilst the others were irregular and often lower. Low Grown CTCs - BP1s were firm. PF1s gained. Low Growns comprised of 2.20 M/Kgs in the Leafy/Tippy catalogues. There was fair demand at lower levels. In the Leafy catalogue, select Best BOP1/OP1s were fully firm to selectively dearer, whilst the others and teas in the Below Best and cleaner teas at the bottom were mostly lower. Others and poorer sorts too declined. OPs were mostly lower. OPAs declined. Pekoe/Pekoe1s were irregular and mostly lower. In the Tippy catalogue, FBOPs were irregular. FF1s declined. In the Premium catalogue, there was good demand and prices were generally firm to dearer."
   },
   "offerings": [
-    {"category": "Low Grown (Leafy/Tippy)", "lots": 6900, "quantity_kg": 3500000},
-    {"category": "High Grown", "lots": 2600, "quantity_kg": 800000},
-    {"category": "Medium Grown", "lots": 1600, "quantity_kg": 450000},
-    {"category": "Off Grades/Dust", "lots": 1300, "quantity_kg": 550000}
+    {
+      "category": "Ex Estate",
+      "lots": 672,
+      "quantity_kg": 644791
+    },
+    {
+      "category": "Main Sale - High & Medium",
+      "lots": 1381,
+      "quantity_kg": 575134
+    },
+    {
+      "category": "Main Sale - Low Grown Leafy",
+      "lots": 1982,
+      "quantity_kg": 745328
+    },
+    {
+      "category": "Main Sale - Low Grown Semi Leafy",
+      "lots": 1529,
+      "quantity_kg": 585943
+    },
+    {
+      "category": "Main Sale - Low Grown Tippy/Small Leaf",
+      "lots": 1954,
+      "quantity_kg": 822197
+    },
+    {
+      "category": "Main Sale - Premium Flowery",
+      "lots": 113,
+      "quantity_kg": 41187
+    },
+    {
+      "category": "Off Grade/BOP1A",
+      "lots": 2367,
+      "quantity_kg": 1286791
+    },
+    {
+      "category": "Dust",
+      "lots": 621,
+      "quantity_kg": 413645
+    }
   ],
   "price_quotations": [
-    {"elevation": "Western High Grown", "grade": "BOP Best", "current_min": 760.0, "current_max": 810.0, "previous_min": 750.0, "previous_max": 800.0},
-    {"elevation": "Western High Grown", "grade": "BOPF Best", "current_min": 790.0, "current_max": 830.0, "previous_min": 780.0, "previous_max": 820.0},
-    {"elevation": "Nuwara Eliya", "grade": "BOP", "current_min": 810.0, "current_max": 860.0, "previous_min": 800.0, "previous_max": 850.0},
-    {"elevation": "Uda Pussellawa", "grade": "BOP", "current_min": 630.0, "current_max": 660.0, "previous_min": 620.0, "previous_max": 650.0},
-    {"elevation": "Uva", "grade": "BOP", "current_min": 710.0, "current_max": 760.0, "previous_min": 700.0, "previous_max": 750.0}
+    {"elevation": "High Grown", "grade": "BOP", "category": "Best Westerns", "current_min": 1320.0, "current_max": 1450.0, "previous_min": 1260.0, "previous_max": 1380.0},
+    {"elevation": "High Grown", "grade": "BOP", "category": "Below Best Westerns", "current_min": 1220.0, "current_max": 1300.0, "previous_min": 1200.0, "previous_max": 1240.0},
+    {"elevation": "High Grown", "grade": "BOP", "category": "Plainer Westerns", "current_min": 1100.0, "current_max": 1180.0, "previous_min": 1100.0, "previous_max": 1180.0},
+    {"elevation": "High Grown", "grade": "BOP", "category": "Nuwara Eliyas", "current_min": 1350.0, "current_max": 1450.0, "previous_min": 1250.0, "previous_max": 1350.0},
+    {"elevation": "High Grown", "grade": "BOP", "category": "Brighter Uda Pussellawas", "current_min": 1180.0, "current_max": 1220.0, "previous_min": 1160.0, "previous_max": 1200.0},
+    {"elevation": "High Grown", "grade": "BOP", "category": "Other Uda Pussellawas", "current_min": 1080.0, "current_max": 1120.0, "previous_min": 1080.0, "previous_max": 1140.0},
+    {"elevation": "High Grown", "grade": "BOP", "category": "Best Uvas", "current_min": 1400.0, "current_max": 1550.0, "previous_min": 1400.0, "previous_max": 1500.0},
+    {"elevation": "High Grown", "grade": "BOP", "category": "Other Uvas", "current_min": 1200.0, "current_max": 1300.0, "previous_min": 1200.0, "previous_max": 1280.0},
+    {"elevation": "High Grown", "grade": "BOPF", "category": "Best Westerns", "current_min": 1240.0, "current_max": 1350.0, "previous_min": 1200.0, "previous_max": 1300.0},
+    {"elevation": "High Grown", "grade": "BOPF", "category": "Below Best Westerns", "current_min": 1160.0, "current_max": 1220.0, "previous_min": 1140.0, "previous_max": 1180.0},
+    {"elevation": "High Grown", "grade": "BOPF", "category": "Plainer Westerns", "current_min": 1080.0, "current_max": 1140.0, "previous_min": 1080.0, "previous_max": 1120.0},
+    {"elevation": "High Grown", "grade": "BOPF", "category": "Nuwara Eliyas", "current_min": 1250.0, "current_max": 1350.0, "previous_min": 1150.0, "previous_max": 1250.0},
+    {"elevation": "High Grown", "grade": "BOPF", "category": "Brighter Uda Pussellawas", "current_min": 1140.0, "current_max": 1180.0, "previous_min": 1120.0, "previous_max": 1160.0},
+    {"elevation": "High Grown", "grade": "BOPF", "category": "Other Uda Pussellawas", "current_min": 1040.0, "current_max": 1100.0, "previous_min": 1040.0, "previous_max": 1100.0},
+    {"elevation": "High Grown", "grade": "BOPF", "category": "Best Uvas", "current_min": 1300.0, "current_max": 1450.0, "previous_min": 1300.0, "previous_max": 1400.0},
+    {"elevation": "High Grown", "grade": "BOPF", "category": "Other Uvas", "current_min": 1150.0, "current_max": 1250.0, "previous_min": 1150.0, "previous_max": 1250.0},
+    {"elevation": "Medium Grown", "grade": "BOP", "category": "Best", "current_min": 1100.0, "current_max": 1200.0, "previous_min": 1100.0, "previous_max": 1180.0},
+    {"elevation": "Medium Grown", "grade": "BOP", "category": "Below Best", "current_min": 980.0, "current_max": 1050.0, "previous_min": 980.0, "previous_max": 1080.0},
+    {"elevation": "Medium Grown", "grade": "BOP", "category": "Others", "current_min": 860.0, "current_max": 940.0, "previous_min": 880.0, "previous_max": 960.0},
+    {"elevation": "Medium Grown", "grade": "BOPF", "category": "Best", "current_min": 1040.0, "current_max": 1120.0, "previous_min": 1020.0, "previous_max": 1100.0},
+    {"elevation": "Medium Grown", "grade": "BOPF", "category": "Below Best", "current_min": 940.0, "current_max": 1000.0, "previous_min": 940.0, "previous_max": 1000.0},
+    {"elevation": "Medium Grown", "grade": "BOPF", "category": "Others", "current_min": 820.0, "current_max": 900.0, "previous_min": 840.0, "previous_max": 920.0},
+    {"elevation": "Medium Grown", "grade": "FBOP", "category": "Best", "current_min": 1250.0, "current_max": 1450.0, "previous_min": 1250.0, "previous_max": 1400.0},
+    {"elevation": "Medium Grown", "grade": "FBOP", "category": "Below Best", "current_min": 1100.0, "current_max": 1200.0, "previous_min": 1100.0, "previous_max": 1200.0},
+    {"elevation": "Medium Grown", "grade": "FBOP", "category": "Others", "current_min": 950.0, "current_max": 1050.0, "previous_min": 950.0, "previous_max": 1050.0},
+    {"elevation": "Medium Grown", "grade": "PEK/PEK1", "category": "Best", "current_min": 1200.0, "current_max": 1300.0, "previous_min": 1200.0, "previous_max": 1300.0},
+    {"elevation": "Medium Grown", "grade": "PEK/PEK1", "category": "Below Best", "current_min": 1100.0, "current_max": 1150.0, "previous_min": 1100.0, "previous_max": 1180.0},
+    {"elevation": "Medium Grown", "grade": "PEK/PEK1", "category": "Others", "current_min": 950.0, "current_max": 1050.0, "previous_min": 980.0, "previous_max": 1080.0},
+    {"elevation": "Unorthodox (CTC)", "grade": "BP 1 (High)", "category": "Best", "current_min": 940.0, "current_max": 1000.0, "previous_min": 960.0, "previous_max": 1020.0},
+    {"elevation": "Unorthodox (CTC)", "grade": "BP 1 (High)", "category": "Others", "current_min": 820.0, "current_max": 900.0, "previous_min": 840.0, "previous_max": 920.0},
+    {"elevation": "Unorthodox (CTC)", "grade": "BP 1 (Medium)", "category": "Best", "current_min": 840.0, "current_max": 900.0, "previous_min": 860.0, "previous_max": 920.0},
+    {"elevation": "Unorthodox (CTC)", "grade": "BP 1 (Medium)", "category": "Others", "current_min": 760.0, "current_max": 820.0, "previous_min": 780.0, "previous_max": 840.0},
+    {"elevation": "Unorthodox (CTC)", "grade": "BP 1 (Low)", "category": "Best", "current_min": 1040.0, "current_max": 1100.0, "previous_min": 1020.0, "previous_max": 1080.0},
+    {"elevation": "Unorthodox (CTC)", "grade": "BP 1 (Low)", "category": "Others", "current_min": 900.0, "current_max": 1000.0, "previous_min": 880.0, "previous_max": 980.0},
+    {"elevation": "Unorthodox (CTC)", "grade": "PF 1 (High)", "category": "Best", "current_min": 1140.0, "current_max": 1220.0, "previous_min": 1100.0, "previous_max": 1180.0},
+    {"elevation": "Unorthodox (CTC)", "grade": "PF 1 (High)", "category": "Others", "current_min": 960.0, "current_max": 1080.0, "previous_min": 980.0, "previous_max": 1080.0},
+    {"elevation": "Unorthodox (CTC)", "grade": "PF 1 (Medium)", "category": "Best", "current_min": 980.0, "current_max": 1060.0, "previous_min": 960.0, "previous_max": 1040.0},
+    {"elevation": "Unorthodox (CTC)", "grade": "PF 1 (Medium)", "category": "Others", "current_min": 860.0, "current_max": 940.0, "previous_min": 880.0, "previous_max": 940.0},
+    {"elevation": "Unorthodox (CTC)", "grade": "PF 1 (Low)", "category": "Best", "current_min": 1280.0, "current_max": 1380.0, "previous_min": 1240.0, "previous_max": 1340.0},
+    {"elevation": "Unorthodox (CTC)", "grade": "PF 1 (Low)", "category": "Others", "current_min": 1050.0, "current_max": 1200.0, "previous_min": 1000.0, "previous_max": 1150.0},
+    {"elevation": "Low Grown", "grade": "OP 1", "category": "Select Best", "current_min": 2300.0, "current_max": 2700.0, "previous_min": 2300.0, "previous_max": 2750.0},
+    {"elevation": "Low Grown", "grade": "OP 1", "category": "Best", "current_min": 1800.0, "current_max": 2200.0, "previous_min": 1800.0, "previous_max": 2200.0},
+    {"elevation": "Low Grown", "grade": "OP 1", "category": "Below Best", "current_min": 1500.0, "current_max": 1700.0, "previous_min": 1500.0, "previous_max": 1700.0},
+    {"elevation": "Low Grown", "grade": "OP 1", "category": "Stalky", "current_min": 1200.0, "current_max": 1400.0, "previous_min": 1200.0, "previous_max": 1400.0},
+    {"elevation": "Low Grown", "grade": "BOP 1", "category": "Select Best", "current_min": 2200.0, "current_max": 2600.0, "previous_min": 2200.0, "previous_max": 2650.0},
+    {"elevation": "Low Grown", "grade": "BOP 1", "category": "Best", "current_min": 1700.0, "current_max": 2100.0, "previous_min": 1700.0, "previous_max": 2100.0},
+    {"elevation": "Low Grown", "grade": "BOP 1", "category": "Below Best", "current_min": 1400.0, "current_max": 1600.0, "previous_min": 1400.0, "previous_max": 1600.0},
+    {"elevation": "Low Grown", "grade": "BOP 1", "category": "Bottom", "current_min": 1200.0, "current_max": 1300.0, "previous_min": 1200.0, "previous_max": 1300.0},
+    {"elevation": "Low Grown", "grade": "OP", "category": "Best", "current_min": 1550.0, "current_max": 1650.0, "previous_min": 1600.0, "previous_max": 1700.0},
+    {"elevation": "Low Grown", "grade": "OP", "category": "Below Best", "current_min": 1350.0, "current_max": 1500.0, "previous_min": 1400.0, "previous_max": 1550.0},
+    {"elevation": "Low Grown", "grade": "OP", "category": "Bottom", "current_min": 1150.0, "current_max": 1300.0, "previous_min": 1200.0, "previous_max": 1350.0},
+    {"elevation": "Low Grown", "grade": "OPA", "category": "Best", "current_min": 1450.0, "current_max": 1550.0, "previous_min": 1500.0, "previous_max": 1600.0},
+    {"elevation": "Low Grown", "grade": "OPA", "category": "Below Best", "current_min": 1300.0, "current_max": 1400.0, "previous_min": 1350.0, "previous_max": 1450.0},
+    {"elevation": "Low Grown", "grade": "OPA", "category": "Bottom", "current_min": 1100.0, "current_max": 1250.0, "previous_min": 1150.0, "previous_max": 1300.0},
+    {"elevation": "Low Grown", "grade": "PEKOE", "category": "Select Best", "current_min": 1700.0, "current_max": 1900.0, "previous_min": 1750.0, "previous_max": 1950.0},
+    {"elevation": "Low Grown", "grade": "PEKOE", "category": "Best", "current_min": 1550.0, "current_max": 1650.0, "previous_min": 1600.0, "previous_max": 1700.0},
+    {"elevation": "Low Grown", "grade": "PEKOE", "category": "Below Best", "current_min": 1400.0, "current_max": 1500.0, "previous_min": 1450.0, "previous_max": 1550.0},
+    {"elevation": "Low Grown", "grade": "PEKOE", "category": "Bottom", "current_min": 1250.0, "current_max": 1350.0, "previous_min": 1300.0, "previous_max": 1400.0},
+    {"elevation": "Low Grown", "grade": "PEKOE 1", "category": "Select Best", "current_min": 1700.0, "current_max": 1900.0, "previous_min": 1750.0, "previous_max": 1950.0},
+    {"elevation": "Low Grown", "grade": "PEKOE 1", "category": "Best", "current_min": 1550.0, "current_max": 1650.0, "previous_min": 1600.0, "previous_max": 1700.0},
+    {"elevation": "Low Grown", "grade": "PEKOE 1", "category": "Below Best", "current_min": 1400.0, "current_max": 1500.0, "previous_min": 1450.0, "previous_max": 1550.0},
+    {"elevation": "Low Grown", "grade": "PEKOE 1", "category": "Bottom", "current_min": 1250.0, "current_max": 1350.0, "previous_min": 1300.0, "previous_max": 1400.0},
+    {"elevation": "Low Grown", "grade": "FBOP", "category": "Select Best", "current_min": 1800.0, "current_max": 2100.0, "previous_min": 1800.0, "previous_max": 2150.0},
+    {"elevation": "Low Grown", "grade": "FBOP", "category": "Best", "current_min": 1600.0, "current_max": 1750.0, "previous_min": 1600.0, "previous_max": 1750.0},
+    {"elevation": "Low Grown", "grade": "FBOP", "category": "Below Best", "current_min": 1400.0, "current_max": 1550.0, "previous_min": 1400.0, "previous_max": 1550.0},
+    {"elevation": "Low Grown", "grade": "FBOP", "category": "Bottom", "current_min": 1200.0, "current_max": 1350.0, "previous_min": 1200.0, "previous_max": 1350.0},
+    {"elevation": "Low Grown", "grade": "FBOPF 1", "category": "Select Best", "current_min": 1700.0, "current_max": 1950.0, "previous_min": 1700.0, "previous_max": 2000.0},
+    {"elevation": "Low Grown", "grade": "FBOPF 1", "category": "Best", "current_min": 1550.0, "current_max": 1650.0, "previous_min": 1550.0, "previous_max": 1650.0},
+    {"elevation": "Low Grown", "grade": "FBOPF 1", "category": "Below Best", "current_min": 1350.0, "current_max": 1500.0, "previous_min": 1350.0, "previous_max": 1500.0},
+    {"elevation": "Low Grown", "grade": "FBOPF 1", "category": "Bottom", "current_min": 1150.0, "current_max": 1300.0, "previous_min": 1150.0, "previous_max": 1300.0},
+    {"elevation": "Low Grown", "grade": "FBOPF", "category": "Select Best", "current_min": 1600.0, "current_max": 1800.0, "previous_min": 1600.0, "previous_max": 1850.0},
+    {"elevation": "Low Grown", "grade": "FBOPF", "category": "Best", "current_min": 1450.0, "current_max": 1550.0, "previous_min": 1450.0, "previous_max": 1550.0},
+    {"elevation": "Low Grown", "grade": "FBOPF", "category": "Below Best", "current_min": 1300.0, "current_max": 1400.0, "previous_min": 1300.0, "previous_max": 1400.0},
+    {"elevation": "Low Grown", "grade": "FBOPF", "category": "Bottom", "current_min": 1100.0, "current_max": 1250.0, "previous_min": 1100.0, "previous_max": 1250.0},
+    {"elevation": "Low Grown", "grade": "BOP", "category": "Best", "current_min": 1300.0, "current_max": 1450.0, "previous_min": 1300.0, "previous_max": 1450.0},
+    {"elevation": "Low Grown", "grade": "BOP", "category": "Below Best", "current_min": 1150.0, "current_max": 1250.0, "previous_min": 1150.0, "previous_max": 1250.0},
+    {"elevation": "Low Grown", "grade": "BOP", "category": "Bottom", "current_min": 1000.0, "current_max": 1100.0, "previous_min": 1000.0, "previous_max": 1100.0},
+    {"elevation": "Low Grown", "grade": "BOPF", "category": "Best", "current_min": 1250.0, "current_max": 1400.0, "previous_min": 1250.0, "previous_max": 1400.0},
+    {"elevation": "Low Grown", "grade": "BOPF", "category": "Below Best", "current_min": 1100.0, "current_max": 1200.0, "previous_min": 1100.0, "previous_max": 1200.0},
+    {"elevation": "Low Grown", "grade": "BOPF", "category": "Bottom", "current_min": 950.0, "current_max": 1050.0, "previous_min": 950.0, "previous_max": 1050.0},
+    {"elevation": "Off Grades", "grade": "BP", "category": "Liquoring", "current_min": 820.0, "current_max": 900.0, "previous_min": 840.0, "previous_max": 920.0},
+    {"elevation": "Off Grades", "grade": "FNGS 1/FNGS", "category": "Best", "current_min": 1040.0, "current_max": 1120.0, "previous_min": 1060.0, "previous_max": 1140.0},
+    {"elevation": "Off Grades", "grade": "FNGS 1/FNGS", "category": "Below Best", "current_min": 960.0, "current_max": 1020.0, "previous_min": 980.0, "previous_max": 1040.0},
+    {"elevation": "Off Grades", "grade": "FNGS 1/FNGS", "category": "Bottom", "current_min": 860.0, "current_max": 920.0, "previous_min": 880.0, "previous_max": 940.0},
+    {"elevation": "Off Grades", "grade": "BOP 1A", "category": "Best", "current_min": 1140.0, "current_max": 1200.0, "previous_min": 1160.0, "previous_max": 1220.0},
+    {"elevation": "Off Grades", "grade": "BOP 1A", "category": "Below Best", "current_min": 1060.0, "current_max": 1120.0, "previous_min": 1080.0, "previous_max": 1140.0},
+    {"elevation": "Off Grades", "grade": "BOP 1A", "category": "Bottom", "current_min": 960.0, "current_max": 1020.0, "previous_min": 980.0, "previous_max": 1040.0},
+    {"elevation": "Dusts", "grade": "DUST 1", "category": "Best Westerns", "current_min": 1300.0, "current_max": 1400.0, "previous_min": 1250.0, "previous_max": 1350.0},
+    {"elevation": "Dusts", "grade": "DUST 1", "category": "Below Best Westerns", "current_min": 1200.0, "current_max": 1280.0, "previous_min": 1150.0, "previous_max": 1220.0},
+    {"elevation": "Dusts", "grade": "DUST 1", "category": "Plainer Westerns", "current_min": 1100.0, "current_max": 1180.0, "previous_min": 1050.0, "previous_max": 1120.0},
+    {"elevation": "Dusts", "grade": "DUST 1", "category": "Nuwara Eliyas", "current_min": 1250.0, "current_max": 1350.0, "previous_min": 1150.0, "previous_max": 1250.0},
+    {"elevation": "Dusts", "grade": "DUST 1", "category": "Uda Pussellawas", "current_min": 1100.0, "current_max": 1180.0, "previous_min": 1050.0, "previous_max": 1120.0},
+    {"elevation": "Dusts", "grade": "DUST 1", "category": "Best Uvas", "current_min": 1300.0, "current_max": 1400.0, "previous_min": 1250.0, "previous_max": 1350.0},
+    {"elevation": "Dusts", "grade": "DUST 1", "category": "Other Uvas", "current_min": 1150.0, "current_max": 1250.0, "previous_min": 1100.0, "previous_max": 1200.0},
+    {"elevation": "Dusts", "grade": "DUST 1", "category": "Best Mediums", "current_min": 1120.0, "current_max": 1200.0, "previous_min": 1080.0, "previous_max": 1160.0},
+    {"elevation": "Dusts", "grade": "DUST 1", "category": "Other Mediums", "current_min": 1000.0, "current_max": 1080.0, "previous_min": 960.0, "previous_max": 1040.0},
+    {"elevation": "Dusts", "grade": "DUST 1 (CTC)", "category": "Best (High & Medium)", "current_min": 1160.0, "current_max": 1240.0, "previous_min": 1120.0, "previous_max": 1200.0},
+    {"elevation": "Dusts", "grade": "DUST 1 (CTC)", "category": "Others (High & Medium)", "current_min": 1000.0, "current_max": 1100.0, "previous_min": 960.0, "previous_max": 1060.0},
+    {"elevation": "Dusts", "grade": "DUST 1 (CTC)", "category": "Best (Low)", "current_min": 1340.0, "current_max": 1420.0, "previous_min": 1300.0, "previous_max": 1380.0},
+    {"elevation": "Dusts", "grade": "DUST 1 (CTC)", "category": "Others (Low)", "current_min": 1100.0, "current_max": 1250.0, "previous_min": 1050.0, "previous_max": 1200.0},
+    {"elevation": "Dusts", "grade": "DUST 1 (LG)", "category": "Best", "current_min": 1300.0, "current_max": 1400.0, "previous_min": 1250.0, "previous_max": 1350.0},
+    {"elevation": "Dusts", "grade": "DUST 1 (LG)", "category": "Below Best", "current_min": 1150.0, "current_max": 1250.0, "previous_min": 1100.0, "previous_max": 1200.0},
+    {"elevation": "Dusts", "grade": "DUST 1 (LG)", "category": "Bottom", "current_min": 1000.0, "current_max": 1100.0, "previous_min": 950.0, "previous_max": 1050.0}
+  ],
+  "international_summaries": [
+    {
+      "centre": "MOMBASA",
+      "sale_no": 35,
+      "date": "01ST AND 02ND SEPTEMBER 2025",
+      "summary": "Good general demand for the 124,320 packages (8,277,056.00 kilos) on offer with 22.57% remaining unsold.",
+      "structured_data": {
+        "currency": "USC",
+        "ctc_leaf_grades": [
+          {"category": "Best", "grade": "BP1", "low": 200.0, "high": 472.0},
+          {"category": "Good", "grade": "BP1", "low": 190.0, "high": 285.0},
+          {"category": "Good Medium", "grade": "BP1", "low": 150.0, "high": 342.0},
+          {"category": "Medium", "grade": "BP1", "low": 120.0, "high": 200.0},
+          {"category": "Lower Medium", "grade": "BP1", "low": 90.0, "high": 144.0},
+          {"category": "Plainer", "grade": "BP1", "low": 84.0, "high": 110.0},
+          {"category": "Best", "grade": "PF1", "low": 210.0, "high": 401.0},
+          {"category": "Good", "grade": "PF1", "low": 200.0, "high": 290.0},
+          {"category": "Good Medium", "grade": "PF1", "low": 170.0, "high": 394.0},
+          {"category": "Medium", "grade": "PF1", "low": 120.0, "high": 215.0},
+          {"category": "Lower Medium", "grade": "PF1", "low": 96.0, "high": 130.0},
+          {"category": "Plainer", "grade": "PF1", "low": 86.0, "high": 115.0}
+        ],
+        "ctc_dust_grades": [
+          {"category": "Best", "grade": "PDUST", "low": 230.0, "high": 338.0},
+          {"category": "Good", "grade": "PDUST", "low": 215.0, "high": 280.0},
+          {"category": "Good Medium", "grade": "PDUST", "low": 165.0, "high": 334.0},
+          {"category": "Medium", "grade": "PDUST", "low": 110.0, "high": 185.0},
+          {"category": "Lower Medium", "grade": "PDUST", "low": 90.0, "high": 124.0},
+          {"category": "Plainer", "grade": "PDUST", "low": 84.0, "high": 110.0},
+          {"category": "Best", "grade": "DUST1", "low": 235.0, "high": 354.0},
+          {"category": "Good", "grade": "DUST1", "low": 220.0, "high": 285.0},
+          {"category": "Good Medium", "grade": "DUST1", "low": 160.0, "high": 337.0},
+          {"category": "Medium", "grade": "DUST1", "low": 105.0, "high": 180.0},
+          {"category": "Lower Medium", "grade": "DUST1", "low": 92.0, "high": 120.0},
+          {"category": "Plainer", "grade": "DUST1", "low": 85.0, "high": 112.0}
+        ]
+      }
+    },
+    {
+      "centre": "BANGLADESH",
+      "sale_no": 18,
+      "date": "01ST SEPTEMBER 2025",
+      "summary": "Good demand at firm to slightly dearer rates."
+    },
+    {
+      "centre": "MALAWI",
+      "sale_no": 36,
+      "date": "02ND SEPTEMBER 2025",
+      "summary": "Fair demand."
+    },
+    {
+      "centre": "KOLKATA",
+      "sale_no": 35,
+      "date": "26TH/27TH AUGUST 2025",
+      "summary": "CTC/Dust - Good demand at irregular rates around last levels. Orthodox - Good demand at firm to dearer rates."
+    },
+    {
+      "centre": "JAKARTA",
+      "sale_no": 35,
+      "date": "03RD SEPTEMBER 2025",
+      "summary": "Good demand at barely steady rates."
+    },
+    {
+      "centre": "SILIGURI",
+      "sale_no": 35,
+      "date": "28TH/29TH AUGUST 2025",
+      "summary": "CTC/Dust - Good demand at irregular rates following quality."
+    },
+    {
+      "centre": "GUWAHATI",
+      "sale_no": 35,
+      "date": "28TH/29TH AUGUST 2025",
+      "summary": "CTC/Dust - Good demand at irregular rates following quality."
+    },
+    {
+      "centre": "COCHIN",
+      "sale_no": 35,
+      "date": "28TH/29TH AUGUST 2025",
+      "summary": "CTC/Dust - Good demand at irregular rates. Orthodox - Good demand at firm to dearer rates."
+    }
   ]
 }
