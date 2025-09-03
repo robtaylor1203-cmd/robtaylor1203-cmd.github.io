@@ -8,7 +8,7 @@
     "sale_date_end": "2025-09-02",
     "prompt_date": "2025-09-15",
     "currency": "USD",
-    "data_sources": ["Mombasa Auction Transaction Data", "Combrok Ltd", "Atlas Tea Brokers", "Tea Brokers East Africa", "Centreline Tea Brokers"]
+    "data_sources": ["Mombasa Auction Transaction Data", "Combrok Ltd", "Atlas Tea Brokers", "TBEA", "Centreline"]
   },
   "summary": {
     "total_offered_kg": 7694424.0,
@@ -78,15 +78,7 @@
     {"buyer": "Afghanistan (Various)", "volume_kg": 300000, "market_share": 5.03},
     {"buyer": "Yemen/Middle East", "volume_kg": 250000, "market_share": 4.19},
     {"buyer": "UK/Ireland (Selective)", "volume_kg": 200000, "market_share": 3.35},
-    {"buyer": "CIS States (Selective)", "volume_kg": 150000, "market_share": 2.51},
-    {"buyer": "ABBAS TRADERS LTD", "volume_kg": 100000, "market_share": 1.68},
-    {"buyer": "DEVCHAND KESHAVJI (KENYA) LTD", "volume_kg": 95000, "market_share": 1.59},
-    {"buyer": "EMPIRE KENYA (EPZ) LTD", "volume_kg": 90000, "market_share": 1.51},
-    {"buyer": "MOMBASA COFFEE LTD", "volume_kg": 85000, "market_share": 1.42},
-    {"buyer": "AL-EMIR LTD", "volume_kg": 50000, "market_share": 0.84},
-    {"buyer": "Sudan (Quiet)", "volume_kg": 30000, "market_share": 0.50},
-    {"buyer": "Iran (Quiet)", "volume_kg": 10000, "market_share": 0.17},
-    {"buyer": "Others (Local/Misc)", "volume_kg": 304857, "market_share": 5.11}
+    {"buyer": "CIS States (Selective)", "volume_kg": 150000, "market_share": 2.51}
   ],
   "factory_performance": [
     {"mark": "Gatare", "country": "Rwanda", "average_price": 3.85, "top_grade": "BP1", "top_price": 4.72},
@@ -94,44 +86,7 @@
     {"mark": "Kimunye", "country": "Kenya", "average_price": 3.45, "top_grade": "DUST1", "top_price": 3.54},
     {"mark": "Gacharage", "country": "Kenya", "average_price": 3.40, "top_grade": "PF1", "top_price": 3.48},
     {"mark": "Githongo", "country": "Kenya", "average_price": 3.38, "top_grade": "PF1", "top_price": 3.46},
-    {"mark": "Imenti", "country": "Kenya", "average_price": 3.35, "top_grade": "PF1", "top_price": 3.66},
-    {"mark": "Mungania", "country": "Kenya", "average_price": 3.34, "top_grade": "PF1", "top_price": 3.40},
-    {"mark": "Kiegoi", "country": "Kenya", "average_price": 3.33, "top_grade": "PD", "top_price": 3.34},
-    {"mark": "Kinoro", "country": "Kenya", "average_price": 3.31, "top_grade": "PF1", "top_price": 3.38},
-    {"mark": "Rukuriri", "country": "Kenya", "average_price": 3.28, "top_grade": "PF1", "top_price": 3.36},
-    {"mark": "Kathangariri", "country": "Kenya", "average_price": 3.27, "top_grade": "PF1", "top_price": 3.34},
-    {"mark": "Ikumbi", "country": "Kenya", "average_price": 3.26, "top_grade": "PF1", "top_price": 3.33},
-    {"mark": "Kagwe", "country": "Kenya", "average_price": 3.22, "top_grade": "PF1", "top_price": 3.34},
-    {"mark": "Mata", "country": "Rwanda", "average_price": 3.20, "top_grade": "BP1", "top_price": 3.50},
-    {"mark": "Gisakura", "country": "Rwanda", "average_price": 3.18, "top_grade": "BP1", "top_price": 3.40},
-    {"mark": "Kambaa", "country": "Kenya", "average_price": 3.15, "top_grade": "PF1", "top_price": 3.35},
-    {"mark": "Nshili Kivu", "country": "Rwanda", "average_price": 3.12, "top_grade": "BP1", "top_price": 3.30},
-    {"mark": "Weru", "country": "Kenya", "average_price": 3.05, "top_grade": "PF1", "top_price": 3.12},
-    {"mark": "Gitugi", "country": "Kenya", "average_price": 3.04, "top_grade": "PF1", "top_price": 3.10},
-    {"mark": "Ragati", "country": "Kenya", "average_price": 3.02, "top_grade": "PF1", "top_price": 3.32},
-    {"mark": "Karongi", "country": "Rwanda", "average_price": 3.00, "top_grade": "BP1", "top_price": 3.20},
-    {"mark": "Theta", "country": "Kenya", "average_price": 2.99, "top_grade": "PF1", "top_price": 3.20},
-    {"mark": "Mataara", "country": "Kenya", "average_price": 2.95, "top_grade": "PF1", "top_price": 3.14},
-    {"mark": "Thumaita", "country": "Kenya", "average_price": 2.88, "top_grade": "PF1", "top_price": 3.26},
-    {"mark": "Ndarugu", "country": "Kenya", "average_price": 2.85, "top_grade": "PF1", "top_price": 3.15},
-    {"mark": "Muganza-Kivu", "country": "Rwanda", "average_price": 2.80, "top_grade": "PD", "top_price": 2.80},
-    {"mark": "Gachege", "country": "Kenya", "average_price": 2.76, "top_grade": "PF1", "top_price": 3.02},
-    {"mark": "Ijenda", "country": "Burundi", "average_price": 2.50, "top_grade": "PD", "top_price": 2.50},
-    {"mark": "Momul", "country": "Kenya", "average_price": 2.45, "top_grade": "PF1", "top_price": 2.58},
-    {"mark": "Michi", "country": "Kenya", "average_price": 2.30, "top_grade": "PF1", "top_price": 2.34},
-    {"mark": "Motigo", "country": "Kenya", "average_price": 2.10, "top_grade": "PF1", "top_price": 2.15},
-    {"mark": "Litein", "country": "Kenya", "average_price": 1.95, "top_grade": "PF1", "top_price": 2.03},
-    {"mark": "Chelal", "country": "Kenya", "average_price": 1.90, "top_grade": "PF1", "top_price": 2.11},
-    {"mark": "Tirgaga", "country": "Kenya", "average_price": 1.80, "top_grade": "BP1", "top_price": 1.80},
-    {"mark": "Ogembo", "country": "Kenya", "average_price": 1.75, "top_grade": "PD", "top_price": 1.90},
-    {"mark": "Boito", "country": "Kenya", "average_price": 1.70, "top_grade": "BP1", "top_price": 1.70},
-    {"mark": "Arroket", "country": "Kenya", "average_price": 1.55, "top_grade": "PD", "top_price": 1.63},
-    {"mark": "Sian", "country": "Kenya", "average_price": 1.25, "top_grade": "PD", "top_price": 1.25},
-    {"mark": "Tea-Max Fresh", "country": "Kenya", "average_price": 1.24, "top_grade": "PD", "top_price": 1.25},
-    {"mark": "Kyamuhunga", "country": "Uganda", "average_price": 1.20, "top_grade": "PD", "top_price": 1.28},
-    {"mark": "Ankole", "country": "Uganda", "average_price": 1.05, "top_grade": "PD", "top_price": 1.06},
-    {"mark": "Mwenge", "country": "Uganda", "average_price": 0.95, "top_grade": "PD", "top_price": 0.95},
-    {"mark": "Kibale", "country": "Uganda", "average_price": 0.84, "top_grade": "PD", "top_price": 0.86}
+    {"mark": "Imenti", "country": "Kenya", "average_price": 3.35, "top_grade": "PF1", "top_price": 3.66}
   ],
   "upcoming_offerings": {
     "sale_36": {
@@ -141,8 +96,7 @@
         {"country": "Kenya", "packages": 76540},
         {"country": "Uganda", "packages": 14740},
         {"country": "Rwanda", "packages": 5560},
-        {"country": "Burundi", "packages": 620},
-        {"country": "Tanzania", "packages": 0}
+        {"country": "Burundi", "packages": 620}
       ]
     },
     "sale_37": {
@@ -152,8 +106,7 @@
         {"country": "Kenya", "packages": 73020},
         {"country": "Uganda", "packages": 15200},
         {"country": "Rwanda", "packages": 6300},
-        {"country": "Burundi", "packages": 1540},
-        {"country": "Tanzania", "packages": 0}
+        {"country": "Burundi", "packages": 1540}
       ]
     }
   }
