@@ -1,5 +1,24 @@
 [
   {
+    "title": "MOMBASA CONSOLIDATED REPORT - Week 35, 2025",
+    "description": "Authoritative consolidated report for Sale 35 (1st/2nd Sept 2025). Synthesized from transaction data, multiple broker reports, weather data, and upcoming offerings. Total Offered: 7,694,424 kg. Auction Avg: $1.95.",
+    "year": 2025,
+    "week_number": 35,
+    "auction_centre": "Mombasa",
+    "source": "TeaTrade Consolidated",
+    "report_link": "auction-viewer.html?dataset=Mombasa_Consolidated_W35_2025",
+    "highlight": true
+  },
+  {
+    "title": "Colombo Auction Report (Forbes & Walker) - Week 35, 2025",
+    "description": "Forbes & Walker report for Sale No. 34 (1st/2nd September 2025). Total offerings: 5,105,188 kgs. Good general demand. Best Westerns irregular; Uva seasonal teas sold well.",
+    "year": 2025,
+    "week_number": 35,
+    "auction_centre": "Colombo",
+    "source": "Forbes & Walker Tea Brokers (PVT) LTD",
+    "report_link": "report-viewer.html?dataset=Colombo_FW_W35_2025"
+  },
+  {
     "title": "Limbe Auction Report (General) - Week 35, 2025",
     "description": "General report for Sale No. 35 (27th August 2025). Fair demand for the 977,064 kilos on offer.",
     "year": 2025,
