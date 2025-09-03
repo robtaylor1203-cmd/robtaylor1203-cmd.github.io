@@ -1,93 +1,93 @@
 [
   {
-    "title": "MOMBASA CONSOLIDATED REPORT - Week 35, 2025",
-    "description": "Authoritative consolidated report for Sale 35 (1st/2nd Sept 2025). Synthesized from transaction data, multiple broker reports, weather data, and upcoming offerings. Total Offered: 7,694,424 kg. Auction Avg: $1.95.",
+    "title": "Mombasa Consolidated Report - Week 35, 2025",
+    "description": "Authoritative consolidated report for Sale 35 (1st/2nd Sept 2025). Synthesized from transaction data, multiple brokers, and weather data. Total Offered: 7,694,424 kg. Auction Avg: $1.95.",
     "year": 2025,
     "week_number": 35,
     "auction_centre": "Mombasa",
     "source": "TeaTrade Consolidated",
-    "report_link": "auction-viewer.html?dataset=Mombasa_Consolidated_W35_2025",
+    "report_link": "report-viewer.html?dataset=Mombasa_Consolidated_W35_2025",
     "highlight": true
   },
   {
-    "title": "Colombo Auction Report (Forbes & Walker) - Week 35, 2025",
-    "description": "Forbes & Walker report for Sale No. 34 (1st/2nd September 2025). Total offerings: 5,105,188 kgs. Good general demand. Best Westerns irregular; Uva seasonal teas sold well.",
+    "title": "Colombo Consolidated Report - Week 35, 2025",
+    "description": "Consolidated report for Sale 34 (1st/2nd Sept 2025). Total offerings: 5.10 M/Kgs. Good general demand. Best Westerns irregular; Uva seasonal teas sold well. [Source: F&W]",
     "year": 2025,
     "week_number": 35,
     "auction_centre": "Colombo",
-    "source": "Forbes & Walker Tea Brokers (PVT) LTD",
-    "report_link": "report-viewer.html?dataset=Colombo_FW_W35_2025"
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Colombo_Consolidated_W35_2025"
   },
   {
-    "title": "Limbe Auction Report (General) - Week 35, 2025",
-    "description": "General report for Sale No. 35 (27th August 2025). Fair demand for the 977,064 kilos on offer.",
+    "title": "Limbe Consolidated Report - Week 35, 2025",
+    "description": "Consolidated report for Sale 35 (27th Aug 2025). Fair demand for the 977,064 kilos on offer. Overall absorption similar to last sale. [Source: General]",
     "year": 2025,
     "week_number": 35,
     "auction_centre": "Limbe",
-    "source": "General",
-    "report_link": "report-viewer.html?dataset=Limbe_GEN_W35_2025"
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Limbe_Consolidated_W35_2025"
   },
   {
-    "title": "North India Market Report (Contemporary) - Week 34, 2025",
-    "description": "Contemporary Brokers regional summary for Week 34 (Ending 23rd August 2025). Includes statistics for Kolkata, Guwahati, Siliguri, South India, and World Crop comparison.",
+    "title": "India Regional Consolidated Report - Week 34, 2025",
+    "description": "Regional summary for Week 34 (Ending 23rd Aug 2025). Includes statistics for Kolkata, Guwahati, Siliguri, and South India, plus World Crop comparison. [Source: Contemporary]",
     "year": 2025,
     "week_number": 34,
     "auction_centre": "India (Regional)",
-    "source": "Contemporary Brokers",
-    "report_link": "report-viewer.html?dataset=India_CB_W34_2025"
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=India_Consolidated_W34_2025"
   },
   {
-    "title": "Mombasa Auction Report (ITBB) - Week 34, 2025",
-    "description": "ITBB report for Sale No. 34 (27th August 2025). Good demand at irregular rates. Analysis of comparative averages.",
+    "title": "Mombasa Consolidated Report - Week 34, 2025",
+    "description": "Consolidated report for Sale 34 (27th Aug 2025). Good demand at irregular rates. Auction Avg: $1.97. [Source: ITBB]",
     "year": 2025,
     "week_number": 34,
     "auction_centre": "Mombasa",
-    "source": "ITBB",
-    "report_link": "report-viewer.html?dataset=Mombasa_ITBB_W34_2025"
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Mombasa_Consolidated_W34_2025"
   },
   {
-    "title": "Colombo Auction Report (Asia Siyaka) - Week 34, 2025",
-    "description": "Asia Siyaka report for Sale No. 32 (19th/20th August 2025). Total Quantity Sold: 5,191,319 kgs.",
+    "title": "Colombo Consolidated Report - Week 34, 2025",
+    "description": "Consolidated report for Sale 32 (19th/20th Aug 2025). Total Quantity Sold: 5.19 M/Kgs. Auction Avg: LKR 1404.86. Good general demand. [Source: Asia Siyaka]",
     "year": 2025,
     "week_number": 34,
     "auction_centre": "Colombo",
-    "source": "Asia Siyaka Commodities PLC",
-    "report_link": "report-viewer.html?dataset=Colombo_AS_W34_2025"
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Colombo_Consolidated_W34_2025"
   },
   {
-    "title": "Colombo Auction Report (Forbes & Walker) - Week 33, 2025",
-    "description": "Forbes & Walker report for Sale No. 33 (26th/27th August 2025). Total offerings: 5,195,301 kgs. Good general demand.",
+    "title": "Colombo Consolidated Report - Week 33, 2025",
+    "description": "Consolidated report for Sale 33 (26th/27th Aug 2025). Total offerings: 5.19 M/Kgs. Good general demand. [Source: F&W]",
     "year": 2025,
     "week_number": 33,
     "auction_centre": "Colombo",
-    "source": "Forbes & Walker Tea Brokers (PVT) LTD",
-    "report_link": "report-viewer.html?dataset=Colombo_FW_W33_2025"
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Colombo_Consolidated_W33_2025"
   },
   {
-    "title": "Mombasa Auction Report (ATB) - Week 33, 2025",
-    "description": "ATB Ltd report for Sale No. 33 (18th/19th August 2025). Total offerings: 10,271,565 kgs. Good general demand prevailed; 32.13% remained unsold.",
+    "title": "Mombasa Consolidated Report - Week 33, 2025",
+    "description": "Consolidated report for Sale 33 (18th/19th Aug 2025). Total offerings: 10.27 M/Kgs. Good general demand prevailed; 32.13% remained unsold. [Source: ATB]",
     "year": 2025,
     "week_number": 33,
     "auction_centre": "Mombasa",
-    "source": "ATB Ltd",
-    "report_link": "report-viewer.html?dataset=Mombasa_ATB_W33_2025"
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Mombasa_Consolidated_W33_2025"
   },
   {
-    "title": "Jakarta Auction Report (LES) - Week 33, 2025",
-    "description": "L. Elink Schuurman report for Sale 33 (27th August 2025). Better demand with 71% sold. Includes detailed buyer activity.",
+    "title": "Jakarta Consolidated Report - Week 33, 2025",
+    "description": "Consolidated report for Sale 33 (27th Aug 2025). Better demand with 71% sold. Includes detailed buyer activity. [Source: LES]",
     "year": 2025,
     "week_number": 33,
     "auction_centre": "Jakarta",
-    "source": "L. Elink Schuurman",
-    "report_link": "report-viewer.html?dataset=Jakarta_LES_W33_2025"
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Jakarta_Consolidated_W33_2025"
   },
   {
-    "title": "Kolkata Auction Synopsis (J Thomas) - Week 32, 2025",
-    "description": "J Thomas & Co. report for Sale No. 32. CTC: Good demand. Liquoring Assams tended irregularly easier. Orthodox: Strong demand.",
+    "title": "Kolkata Consolidated Report - Week 32, 2025",
+    "description": "Consolidated report for Sale 32. CTC: Good demand. Liquoring Assams tended irregularly easier. Orthodox: Strong demand. [Source: J Thomas]",
     "year": 2025,
     "week_number": 32,
     "auction_centre": "Kolkata",
-    "source": "J Thomas & Company Private Limited",
-    "report_link": "report-viewer.html?dataset=Kolkata_JT_W32_2025"
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Kolkata_Consolidated_W32_2025"
   }
 ]
