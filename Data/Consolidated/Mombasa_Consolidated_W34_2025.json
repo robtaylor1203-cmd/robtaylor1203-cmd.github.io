@@ -1,0 +1,25 @@
+{
+  "metadata": {
+    "auction_centre": "Mombasa",
+    "country": "Kenya",
+    "sale_number": 34,
+    "week_number": 34,
+    "year": 2025,
+    "sale_date_start": "2025-08-27",
+    "sale_date_end": "2025-08-27",
+    "currency": "USD",
+    "data_sources": ["INTERNATIONAL TEA BUYING & BLENDING (ITBB)"]
+  },
+  "summary": {
+    "auction_average_price": 1.97,
+    "commentary_synthesized": "Good demand at irregular rates. [Source: ITBB]"
+  },
+  "comparative_analysis": {
+    "auction_average_yoy": {
+      "avg_2025": 1.97,
+      "avg_2024": 2.06,
+      "ytd_2025": 2.02,
+      "ytd_2024": 2.10
+    }
+  }
+}

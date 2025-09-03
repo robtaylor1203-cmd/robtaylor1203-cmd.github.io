@@ -1,0 +1,62 @@
+{
+  "metadata": {
+    "auction_centre": "Colombo",
+    "country": "Sri Lanka",
+    "sale_number": 32,
+    "week_number": 34,
+    "year": 2025,
+    "sale_date_start": "2025-08-19",
+    "sale_date_end": "2025-08-20",
+    "currency": "LKR",
+    "data_sources": ["Asia Siyaka Commodities PLC"]
+  },
+  "summary": {
+    "total_offered_kg": 5582155,
+    "total_sold_kg": 5191319,
+    "auction_average_price": 1404.86,
+    "commentary_synthesized": "Auction quantity 5.58 MnKg. Good general demand. HIGH GROWN: BOP/BOPF firm to dearer. NUWARA ELIYA: BOP/BOPF much dearer. UDA PUSSELLAWA: BOP/BOPF firm. UVA: BOP/BOPF firm to dearer. CTC: High/Mid PF1/BP1 firm. Low Grown PF1 firm, BP1 easier. LOW GROWN: Leafy grades firm to dearer. Tippy grades met with strong demand, firm to dearer. Premium Flowery grades strong demand. [Source: Asia Siyaka]"
+  },
+  "volume_analysis": {
+     "by_grade_detailed": [
+      {"category": "Low Grown Leafy", "quantity_kg": 1745083},
+      {"category": "Tippy", "quantity_kg": 910298},
+      {"category": "High Grown", "quantity_kg": 874921},
+      {"category": "Medium", "quantity_kg": 737770},
+      {"category": "Off Grades", "quantity_kg": 873291},
+      {"category": "Dust", "quantity_kg": 440792}
+    ]
+  },
+  "comparative_analysis": {
+      "generic_tables": [
+          {
+              "title": "Quantity Sold Comparison (kg)",
+              "headers": [
+                  [
+                      {"label": "Category", "class": "header-main", "rowspan": 2},
+                      {"label": "2025", "class": "header-main", "colspan": 2},
+                      {"label": "2024", "class": "header-main", "colspan": 2}
+                  ],
+                  [
+                      {"label": "Weekly", "class": "header-sub"},
+                      {"label": "To Date", "class": "header-sub"},
+                      {"label": "Weekly", "class": "header-sub"},
+                      {"label": "To Date", "class": "header-sub"}
+                  ]
+              ],
+              "data_keys": [
+                  {"key": "category"},
+                  {"key": "weekly_current_year", "format": "number"},
+                  {"key": "todate_current_year", "format": "number"},
+                  {"key": "weekly_previous_year", "format": "number"},
+                  {"key": "todate_previous_year", "format": "number"}
+              ],
+              "rows": [
+                {"category": "High Grown", "weekly_current_year": 824921, "todate_current_year": 30297398, "weekly_previous_year": 917924, "todate_previous_year": 32197476},
+                {"category": "Medium Grown", "weekly_current_year": 687770, "todate_current_year": 24179384, "weekly_previous_year": 769473, "todate_previous_year": 25479385},
+                {"category": "Low Grown", "weekly_current_year": 3678628, "todate_current_year": 101187479, "weekly_previous_year": 3917474, "todate_previous_year": 105479385},
+                {"category": "Total", "weekly_current_year": 5191319, "todate_current_year": 155664261, "weekly_previous_year": 5604871, "todate_previous_year": 163156246, "is_total": true}
+              ]
+          }
+      ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "auction_centre": "Colombo",
+    "country": "Sri Lanka",
+    "sale_number": 33,
+    "week_number": 33,
+    "year": 2025,
+    "sale_date_start": "2025-08-26",
+    "sale_date_end": "2025-08-27",
+    "currency": "LKR",
+    "data_sources": ["Forbes & Walker Tea Brokers (PVT) LTD"]
+  },
+  "summary": {
+    "total_lots": 10883,
+    "total_offered_kg": 5195301,
+    "commentary_synthesized": "Good general demand for the 5.19 M/Kgs. Quality marginally lower. [Ex-Estate: 0.68 M/Kgs] Best Westerns firm to dearer. Below Best irregular. Plainer sorts firm. Nuwara Eliyas gained. Uda Pussellawas irregular. Uva seasonal teas sold well, others irregular. [CTC] H&M BP1s irregular/easier. PF1s firm to dearer. LG BP1s irregular. PF1s firm/dearer. [Low Grown: 2.2 M/Kgs] Fair demand. Select Best BOP1/OP1s firm/dearer, Below Best easier. OPs/OPAs irregular. Pekoe bold irregular, Pekoe1s firm/dearer. FBOPs/FF1s irregular. Premium catalogue good demand. [Source: F&W]"
+  },
+  "volume_analysis": {
+    "by_grade_detailed": [
+      {"category": "Ex Estate", "lots": 721, "quantity_kg": 684398},
+      {"category": "Main Sale - High & Medium", "lots": 1411, "quantity_kg": 598374},
+      {"category": "Main Sale - Low Grown Leafy", "lots": 2019, "quantity_kg": 754983},
+      {"category": "Main Sale - Low Grown Semi Leafy", "lots": 1599, "quantity_kg": 601983},
+      {"category": "Main Sale - Low Grown Tippy/Small Leaf", "lots": 2001, "quantity_kg": 839483},
+      {"category": "Main Sale - Premium Flowery", "lots": 119, "quantity_kg": 43895},
+      {"category": "Off Grade/BOP1A", "lots": 2399, "quantity_kg": 1299483},
+      {"category": "Dust", "lots": 614, "quantity_kg": 399483},
+      {"category": "Re-Prints (Excluded from Total)", "lots": 998, "quantity_kg": 501938}
+    ]
+  },
+  "upcoming_offerings": {
+        "sale_34": {
+            "date": "2025-09-02/03",
+            "total_m_kgs": 5.1,
+            "by_elevation": [
+                {"elevation": "High", "m_kgs": 0.6},
+                {"elevation": "Medium", "m_kgs": 0.6},
+                {"elevation": "Low", "m_kgs": 2.2},
+                {"elevation": "Other", "m_kgs": 1.7}
+            ]
+        }
+    }
+}
