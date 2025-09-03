@@ -1,0 +1,83 @@
+{
+  "metadata": {
+    "broker": "Combrok Limited",
+    "auction_centre": "Mombasa",
+    "sale_number": 35,
+    "week_number": 35,
+    "year": 2025,
+    "sale_date_start": "2025-09-01",
+    "sale_date_end": "2025-09-02",
+    "currency": "USC"
+  },
+  "summary": {
+    "total_packages_offered": 124320,
+    "total_kgs_offered": 8000000,
+    "percent_unsold": 22,
+    "market_comment": "There was generally good demand for the fresh offerings, with prices mainly following quality for the 8Mkgs (124,320 packages) on offer, 22% of these remained unsold."
+  },
+  "market_commentary_by_grade": [
+    {"grade": "BP1", "comment": "The Flavory BP1s registered less demand and eased by USC 10-60, and sometimes more. The Brighter and colory types were selective and irregular, ranging from firm to USC 77 dearer and easier by USC 64, with many out lots registered. The Medium and Plainer types were well absorbed at firm to USC 18 easier, with a few improved invoices dearer by a few cents."},
+    {"grade": "PF1", "comment": "The Flavory and Brighter PF1s maintained good absorption at barely firm to USC 18 dearer. The Colory types registered improved demand at firm to USC 9 dearer and up to USC 17 easier, though several reprinted invoices remained unsold. The Medium and Plainer types were well absorbed at irregular levels, with prices ranging from firm to USC 15 dearer and easier by a similar margin."},
+    {"grade": "PDUST", "comment": "The Flavory PDUSTs held firm to USC 11 dearer, while brighter types gained USC 8-40 dearer, with minimal invoices neglected. The Colory types met fair demand at firm to USC 15 dearer, though a few lines eased by a similar margin and reprinted invoices were mainly neglected. The Medium types were barely firm to USC 15 dearer, but a few lines eased by USC 10 on average. The Plainer types sold at firm to USC 11 lower, with several out lots registered."},
+    {"grade": "DUST1", "comment": "The Brighter and Colory DUST1s met good demand at firm to USC 18 dearer and sometimes more. Other categories were firm to 12 USC lower, with several lines remaining unsold."},
+    {"grade": "Secondary", "comment": "The BPs were mainly firm to USC 8 dearer and sometimes more, though a few lines lost value by the same margin. The PFs were well absorbed at firm to USC 15 easier while DUSTs and Fannings were irregular, ranging from firm to USC 26 dearer to USC 18 easier, with fewer out lots. BMFs maintained good absorption on the last levels."}
+  ],
+  "highest_prices": [
+    {"mark": "Gatare", "country": "Rwanda", "grade": "BP1", "price_usc": 472},
+    {"mark": "Mununga", "country": "Kenya", "grade": "PF1", "price_usc": 401},
+    {"mark": "Gatare", "country": "Rwanda", "grade": "PDUST", "price_usc": 338},
+    {"mark": "Kimunye", "country": "Kenya", "grade": "DUST1", "price_usc": 354}
+  ],
+  "package_statistics_by_grade": [
+    {"grade": "BPI", "total_sold": 10840, "withdrawn": 80, "unsold": 9720, "percent_unsold": 47.3, "grand_total": 20560},
+    {"grade": "PFI", "total_sold": 37460, "withdrawn": 240, "unsold": 6040, "percent_unsold": 13.9, "grand_total": 43500},
+    {"grade": "PD", "total_sold": 27280, "withdrawn": 160, "unsold": 9960, "percent_unsold": 26.7, "grand_total": 37240},
+    {"grade": "DUSTI", "total_sold": 7460, "withdrawn": 40, "unsold": 1760, "percent_unsold": 19.1, "grand_total": 9220},
+    {"grade": "BP", "total_sold": 1360, "withdrawn": 0, "unsold": 40, "percent_unsold": 2.9, "grand_total": 1400},
+    {"grade": "PF", "total_sold": 1960, "withdrawn": 0, "unsold": 180, "percent_unsold": 8.4, "grand_total": 2140},
+    {"grade": "DUST", "total_sold": 2500, "withdrawn": 180, "unsold": 180, "percent_unsold": 6.7, "grand_total": 2680},
+    {"grade": "FNGS", "total_sold": 4040, "withdrawn": 0, "unsold": 160, "percent_unsold": 3.8, "grand_total": 4200},
+    {"grade": "BMF", "total_sold": 3360, "withdrawn": 0, "unsold": 20, "percent_unsold": 0.6, "grand_total": 3380}
+  ],
+  "country_price_analysis": [
+    {"country": "KENYA", "ytd_avg_2024": 220, "ytd_avg_2025": 211, "sale_avg_2024": 212, "sale_avg_2025": 202, "grades": {"BP1": 191, "PFI": 221, "PD": 192, "D1": 218, "BP": 135, "PF": 124}},
+    {"country": "UGANDA", "ytd_avg_2024": 80, "ytd_avg_2025": 103, "sale_avg_2024": 94, "sale_avg_2025": 99, "grades": {"BP1": 114, "PFI": 106, "PD": 104, "D1": 102, "BP": 98, "PF": 96}},
+    {"country": "BURUNDI", "ytd_avg_2024": 174, "ytd_avg_2025": 163, "sale_avg_2024": 172, "sale_avg_2025": 219, "grades": {"BP1": 211, "PFI": null, "PD": 230, "D1": null, "BP": null, "PF": null}},
+    {"country": "TANZANIA", "ytd_avg_2024": 75, "ytd_avg_2025": 117, "sale_avg_2024": 66, "sale_avg_2025": 129, "grades": {"BP1": 125, "PFI": 133, "PD": null, "D1": null, "BP": null, "PF": null}},
+    {"country": "RWANDA", "ytd_avg_2024": 284, "ytd_avg_2025": 283, "sale_avg_2024": 305, "sale_avg_2025": 297, "grades": {"BP1": 301, "PFI": 312, "PD": 294, "D1": 300, "BP": 244, "PF": 190}}
+  ],
+  "sales_volume_by_country": [
+    {"country": "KENYA", "current_sale_kgs": 5303553, "last_year_sale_kgs": 4886048, "ytd_kgs": 259079054, "last_ytd_kgs": 270393600.50, "variance": -11314546.50},
+    {"country": "UGANDA", "current_sale_kgs": 779594, "last_year_sale_kgs": 656356, "ytd_kgs": 33679983.50, "last_ytd_kgs": 37081425.50, "variance": -3401442.00},
+    {"country": "BURUNDI", "current_sale_kgs": 12756, "last_year_sale_kgs": 50055, "ytd_kgs": 982032, "last_ytd_kgs": 2245817, "variance": -1263785.00},
+    {"country": "TANZANIA", "current_sale_kgs": 4712, "last_year_sale_kgs": 2156, "ytd_kgs": 2291328.40, "last_ytd_kgs": 3119741, "variance": -828412.60},
+    {"country": "RWANDA", "current_sale_kgs": 351556, "last_year_sale_kgs": 441528, "ytd_kgs": 20157079, "last_ytd_kgs": 22092256.50, "variance": -1935177.50}
+  ],
+  "historical_monthly_data": [
+    {"year": 2025, "month": "Jan", "kgs": 39900000, "usc": 215},
+    {"year": 2025, "month": "Feb", "kgs": 43600000, "usc": 215},
+    {"year": 2025, "month": "Mar", "kgs": 40300000, "usc": 215},
+    {"year": 2025, "month": "Apr", "kgs": 47700000, "usc": 201},
+    {"year": 2025, "month": "May", "kgs": 37500000, "usc": 187},
+    {"year": 2025, "month": "Jun", "kgs": 40300000, "usc": 192},
+    {"year": 2025, "month": "Jul", "kgs": 30900000, "usc": 196},
+    {"year": 2025, "month": "Aug", "kgs": 27700000, "usc": 203},
+    {"year": 2025, "month": "Sep", "kgs": 6400000, "usc": 195}
+  ],
+  "upcoming_sales_offering": [
+    {"sale_number": 36, "country": "KENYA", "packages": 94540, "kgs": 6573521},
+    {"sale_number": 36, "country": "UGANDA", "packages": 14860, "kgs": 879538},
+    {"sale_number": 36, "country": "RWANDA", "packages": 7760, "kgs": 537224},
+    {"sale_number": 36, "country": "BURUNDI", "packages": 3981, "kgs": 186623},
+    {"sale_number": 36, "country": "TANZANIA", "packages": 40, "kgs": 2395}
+  ],
+  "weather_report": {
+    "kenya": "During the week under review, both East and West of Rift tea-growing areas experienced partly sunny mornings followed by cloudy afternoons and light showers in some regions. The crop intake slightly increased, averaging 40-80 tons for most factories.",
+    "uganda": [
+      {"location": "Fort portal", "temp_min_c": 17, "temp_max_c": 26, "rainfall_mm": 37},
+      {"location": "Hoima", "temp_min_c": 17, "temp_max_c": 27, "rainfall_mm": 38},
+      {"location": "Bushenyi", "temp_min_c": 16, "temp_max_c": 26, "rainfall_mm": 4},
+      {"location": "Kibale", "temp_min_c": 18, "temp_max_c": 29, "rainfall_mm": 8}
+    ]
+  }
+}
