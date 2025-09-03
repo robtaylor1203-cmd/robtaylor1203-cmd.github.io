@@ -1,0 +1,55 @@
+{
+  "metadata": {
+    "report_title": "South India Consolidated Report (Cochin, Coonoor, Coimbatore)",
+    "auction_centre": "South India",
+    "week_number": 34,
+    "year": 2025,
+    "sale_date_end": "2025-08-23",
+    "currency": "INR",
+    "data_sources": ["Contemporary Brokers"]
+  },
+  "summary": {
+    "commentary_synthesized": "SOUTH INDIA OVERVIEW: COIMBATORE CTC - Good demand, dearer by INR 2-3. COONOOR CTC - Good demand, firm to dearer. COCHIN CTC - Good demand, irregular and sometimes easier. COCHIN ORTH - Strong demand, firm to dearer. [Source: Contemporary]"
+  },
+  "forecast_analysis": [
+      {
+          "factor": "Overall Market Trend",
+          "sentiment": "Positive",
+          "outlook": "Firm to dearer trend likely to continue.",
+          "analysis": "Favourable weather has led to 'Above Normal' crops. Despite this, demand across all three centers is 'Good' to 'Strong'. Most categories are reported as firm or dearer, with only Cochin CTC showing some irregularity. Significant YoY price increases across all centers support a positive outlook."
+      }
+  ],
+  "comparative_analysis": {
+      "generic_tables": [
+          {
+              "title": "South India Auction Averages (INR/kg)",
+              "headers": [
+                  [
+                      {"label": "Centre", "class": "header-main"},
+                      {"label": "Type", "class": "header-main"},
+                      {"label": "Current Avg (2025)", "class": "header-main"},
+                      {"label": "Previous Avg (2024)", "class": "header-main"},
+                      {"label": "Difference", "class": "header-main"}
+                  ]
+              ],
+              "data_keys": [
+                  {"key": "centre"},
+                  {"key": "type"},
+                  {"key": "current_avg", "format": "currency"},
+                  {"key": "previous_avg", "format": "currency"},
+                  {"key": "difference", "format": "diff"}
+              ],
+              "rows": [
+                {"centre": "Cochin", "type": "CTC", "current_avg": 153.34, "previous_avg": 132.41, "difference": 20.93},
+                {"centre": "Cochin", "type": "ORTH", "current_avg": 211.16, "previous_avg": 178.93, "difference": 32.23},
+                {"centre": "Cochin", "type": "ALL", "current_avg": 169.33, "previous_avg": 146.84, "difference": 22.49, "is_total": true},
+                {"centre": "Coonoor", "type": "ALL", "current_avg": 146.42, "previous_avg": 119.52, "difference": 26.90, "is_total": true},
+                {"centre": "Coimbatore", "type": "ALL", "current_avg": 144.57, "previous_avg": 119.90, "difference": 24.67, "is_total": true}
+              ]
+          }
+      ]
+  },
+  "weather_analysis": [
+      {"region": "South India", "conditions": "Favourable weather conditions. Crop: Above Normal."}
+  ]
+}

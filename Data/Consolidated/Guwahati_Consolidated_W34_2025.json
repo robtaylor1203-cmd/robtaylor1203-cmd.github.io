@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "auction_centre": "Guwahati",
+    "country": "India",
+    "week_number": 34,
+    "year": 2025,
+    "sale_date_end": "2025-08-23",
+    "currency": "INR",
+    "data_sources": ["Contemporary Brokers"]
+  },
+  "summary": {
+    "auction_average_price": 212.05,
+    "commentary_synthesized": "GUWAHATI: CTC - Strong demand. Good liquoring sorts firm to dearer. Remainder irregular following quality. [Source: Contemporary]"
+  },
+  "forecast_analysis": [
+      {
+          "factor": "Demand and Pricing",
+          "sentiment": "Positive",
+          "outlook": "Firm market expected for quality teas.",
+          "analysis": "Demand is characterized as 'Strong', particularly for good liquoring sorts which are firm to dearer. Despite 'Above Normal' crop levels in Assam, the average price shows a significant YoY increase (+INR 32.09), suggesting robust absorption."
+      }
+  ],
+  "comparative_analysis": {
+    "auction_average_yoy": {
+      "avg_2025": 212.05,
+      "avg_2024": 179.96
+    }
+  },
+  "weather_analysis": [
+      {"region": "Assam", "conditions": "Favourable weather conditions. Crop: Above Normal."}
+  ]
+}

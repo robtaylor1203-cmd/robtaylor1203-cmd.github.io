@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "auction_centre": "Siliguri",
+    "country": "India",
+    "week_number": 34,
+    "year": 2025,
+    "sale_date_end": "2025-08-23",
+    "currency": "INR",
+    "data_sources": ["Contemporary Brokers"]
+  },
+  "summary": {
+    "auction_average_price": 192.42,
+    "commentary_synthesized": "SILIGURI: CTC - Fair demand. Prices irregular following quality. [Source: Contemporary]"
+  },
+   "forecast_analysis": [
+      {
+          "factor": "Demand and Pricing",
+          "sentiment": "Neutral",
+          "outlook": "Market expected to remain irregular.",
+          "analysis": "Demand is only 'Fair' and prices are 'Irregular'. While the YoY average is up significantly (+INR 34.36), the current high crop volumes ('Above Normal' in Dooars) may temper immediate price gains, leading to continued volatility based on quality."
+      }
+  ],
+  "comparative_analysis": {
+    "auction_average_yoy": {
+      "avg_2025": 192.42,
+      "avg_2024": 158.06
+    }
+  },
+  "weather_analysis": [
+      {"region": "Dooars", "conditions": "Favourable weather conditions. Crop: Above Normal."}
+  ]
+}
