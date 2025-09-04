@@ -109,6 +109,15 @@
     "report_link": "report-viewer.html?dataset=Jakarta_Consolidated_W33_2025"
   },
   {
+    "title": "Colombo Consolidated Report - Week 32, 2025",
+    "description": "Consolidated analysis for Sale No. 32 (19th/20th August 2025). Synthesized data from Forbes & Walker, Asia Siyaka, and TMR. Total offerings: 5.5 M/Kgs. Fair demand for Low Growns; improved activity for High/Mid Growns. Uva seasonal run continues.",
+    "year": 2025,
+    "week_number": 32,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Colombo_Consolidated_W32_2025"
+  },
+  {
     "title": "Kolkata Consolidated Report - Week 32, 2025",
     "description": "Consolidated report for Sale 32. CTC: Good demand. Liquoring Assams tended irregularly easier. Orthodox: Strong demand.",
     "year": 2025,
