@@ -29,8 +29,8 @@
       {
           "factor": "Crop Production & Weather",
           "sentiment": "Neutral",
-          "outlook": "Stable production expected, though recent monthly decline noted.",
-          "analysis": "July production declined 8% YoY. However, YTD production remains positive (+5.97 M/Kgs vs 2024). Weather forecast predicts scattered showers nationwide. Notably, Low Grown crop intake increased recently (13th-18th August), while others maintained intake."
+          "outlook": "Stable production expected, despite recent monthly decline.",
+          "analysis": "July production declined 8% YoY. However, YTD production remains positive (+5.97 M/Kgs vs 2024). Weather forecast (21st-27th Aug) predicts scattered showers nationwide. Notably, Low Grown crop intake increased recently (13th-18th August), while others maintained intake."
       },
       {
           "factor": "Seasonal Quality (Uva)",
