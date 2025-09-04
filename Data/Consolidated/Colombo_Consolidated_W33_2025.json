@@ -8,13 +8,33 @@
     "sale_date_start": "2025-08-26",
     "sale_date_end": "2025-08-27",
     "currency": "LKR",
-    "data_sources": ["Forbes & Walker Tea Brokers (PVT) LTD"]
+    "data_sources": ["Forbes & Walker Tea Brokers (PVT) LTD", "Ceylon Tea Market Report"]
   },
   "summary": {
     "total_lots": 10883,
     "total_offered_kg": 5195301,
-    "commentary_synthesized": "Good general demand for the 5.19 M/Kgs. Quality marginally lower. [Ex-Estate: 0.68 M/Kgs] Best Westerns firm to dearer. Below Best irregular. Plainer sorts firm. Nuwara Eliyas gained. Uda Pussellawas irregular. Uva seasonal teas sold well, others irregular. [CTC] H&M BP1s irregular/easier. PF1s firm to dearer. LG BP1s irregular. PF1s firm/dearer. [Low Grown: 2.2 M/Kgs] Fair demand. Select Best BOP1/OP1s firm/dearer, Below Best easier. OPs/OPAs irregular. Pekoe bold irregular, Pekoe1s firm/dearer. FBOPs/FF1s irregular. Premium catalogue good demand. [Source: F&W]"
+    "commentary_synthesized": "Good general demand for the 5.19 M/Kgs. Overall quality was marginally lower. [Ex-Estate: 0.68 M/Kgs] Best Westerns firm to dearer. Below Best irregular. Plainer sorts firm. Nuwara Eliyas gained. Uda Pussellawas irregular. Uva seasonal teas sold well, others irregular. [CTC] H&M BP1s irregular/easier. PF1s firm to dearer. LG BP1s irregular. PF1s firm/dearer. [Low Grown: 2.2 M/Kgs] Fair demand. Select Best BOP1/OP1s firm/dearer, Below Best easier. OPs/OPAs irregular. Pekoe bold irregular, Pekoe1s firm/dearer. FBOPs/FF1s irregular. Premium catalogue good demand. [Source: F&W]"
   },
+  "forecast_analysis": [
+      {
+          "factor": "Crop Production Impact",
+          "sentiment": "Neutral",
+          "outlook": "Stable supply expected, supporting current price levels.",
+          "analysis": "July production showed a slight decrease YoY (-1.52 M/Kgs), bringing the YTD total closely in line with 2024 (+1.10 M/Kgs). High Grown production remains slightly down YTD. This stability in supply suggests prices are unlikely to face significant downward pressure from oversupply in the immediate short term."
+      },
+      {
+          "factor": "Export Demand",
+          "sentiment": "Positive",
+          "outlook": "Strong international demand supporting the market.",
+          "analysis": "Exports for July increased significantly YoY (+2.47 M/Kgs), and the total export value remains strong. Strong international demand is helping absorb the available volume and supporting auction prices, particularly for Low Growns."
+      },
+      {
+          "factor": "High Grown Market",
+          "sentiment": "Mixed",
+          "outlook": "Selective demand prioritizing quality.",
+          "analysis": "While Best Westerns and Nuwara Eliyas showed gains (WoW movement approx +LKR 30-100), the overall quality was reported as marginally lower. The market remains irregular for Below Best categories, indicating high selectivity from buyers."
+      }
+  ],
   "volume_analysis": {
     "by_grade_detailed": [
       {"category": "Ex Estate", "lots": 721, "quantity_kg": 684398},
@@ -28,6 +48,127 @@
       {"category": "Re-Prints (Excluded from Total)", "lots": 998, "quantity_kg": 501938}
     ]
   },
+  "comparative_analysis": {
+      "generic_tables": [
+          {
+              "title": "Auction Averages (LKR/kg) - YoY Comparison",
+               "headers": [
+                        [
+                            {"label": "Elevation", "class": "header-main", "rowspan": 2},
+                            {"label": "Current Sale (S33)", "class": "header-main", "colspan": 3},
+                            {"label": "Year-to-Date Average", "class": "header-main", "colspan": 3}
+                        ],
+                        [
+                            {"label": "2025", "class": "header-sub"},
+                            {"label": "2024", "class": "header-sub"},
+                            {"label": "2023", "class": "header-sub"},
+                            {"label": "2025", "class": "header-sub"},
+                            {"label": "2024", "class": "header-sub"},
+                            {"label": "2023", "class": "header-sub"}
+                        ]
+                    ],
+               "data_keys": [
+                  {"key": "elevation"},
+                  {"key": "sale_2025", "format": "currency"},
+                  {"key": "sale_2024", "format": "currency"},
+                  {"key": "sale_2023", "format": "currency"},
+                  {"key": "ytd_2025", "format": "currency"},
+                  {"key": "ytd_2024", "format": "currency"},
+                  {"key": "ytd_2023", "format": "currency"}
+              ],
+              "rows": [
+                {"elevation": "High", "sale_2025": 1235.85, "sale_2024": 1185.29, "sale_2023": 1384.55, "ytd_2025": 1215.65, "ytd_2024": 1165.45, "ytd_2023": 1355.90},
+                {"elevation": "Medium", "sale_2025": 1125.40, "sale_2024": 1080.60, "sale_2023": 1210.35, "ytd_2025": 1105.30, "ytd_2024": 1050.20, "ytd_2023": 1180.60},
+                {"elevation": "Low", "sale_2025": 1550.90, "sale_2024": 1490.75, "sale_2023": 1615.80, "ytd_2025": 1530.45, "ytd_2024": 1470.85, "ytd_2023": 1590.25},
+                {"elevation": "Total", "sale_2025": 1405.15, "sale_2024": 1345.90, "sale_2023": 1495.65, "ytd_2025": 1385.80, "ytd_2024": 1325.50, "ytd_2023": 1465.70, "is_total": true}
+              ]
+          },
+          {
+              "title": "Sri Lanka Tea Production (M/Kgs) - July YTD",
+               "headers": [
+                        [
+                            {"label": "Elevation", "class": "header-main"},
+                            {"label": "Month 2025", "class": "header-main"},
+                            {"label": "Month 2024", "class": "header-main"},
+                            {"label": "Difference", "class": "header-main"},
+                            {"label": "YTD 2025", "class": "header-main"},
+                            {"label": "YTD 2024", "class": "header-main"},
+                            {"label": "Difference", "class": "header-main"}
+                        ]
+                    ],
+               "data_keys": [
+                  {"key": "elevation"},
+                  {"key": "month_2025", "format": "number", "decimals": 2},
+                  {"key": "month_2024", "format": "number", "decimals": 2},
+                  {"key": "diff_month", "format": "diff", "decimals": 2},
+                  {"key": "ytd_2025", "format": "number", "decimals": 2},
+                  {"key": "ytd_2024", "format": "number", "decimals": 2},
+                  {"key": "diff_ytd", "format": "diff", "decimals": 2}
+              ],
+              "rows": [
+                {"elevation": "High", "month_2025": 4.54, "month_2024": 4.86, "diff_month": -0.32, "ytd_2025": 35.45, "ytd_2024": 36.12, "diff_ytd": -0.67},
+                {"elevation": "Medium", "month_2025": 3.12, "month_2024": 3.45, "diff_month": -0.33, "ytd_2025": 25.67, "ytd_2024": 25.10, "diff_ytd": 0.57},
+                {"elevation": "Low", "month_2025": 12.65, "month_2024": 13.52, "diff_month": -0.87, "ytd_2025": 99.85, "ytd_2024": 98.65, "diff_ytd": 1.20},
+                {"elevation": "Total", "month_2025": 20.31, "month_2024": 21.83, "diff_month": -1.52, "ytd_2025": 160.97, "ytd_2024": 159.87, "diff_ytd": 1.10, "is_total": true}
+              ]
+          },
+          {
+              "title": "Sri Lanka Tea Exports (M/Kgs) - July",
+               "headers": [
+                        [
+                            {"label": "Category", "class": "header-main"},
+                            {"label": "2025 Volume", "class": "header-main"},
+                            {"label": "2024 Volume", "class": "header-main"},
+                            {"label": "Difference", "class": "header-main"},
+                            {"label": "2025 Value (LKR Mn)", "class": "header-main"},
+                            {"label": "2024 Value (LKR Mn)", "class": "header-main"}
+                        ]
+                    ],
+               "data_keys": [
+                  {"key": "category"},
+                  {"key": "vol_2025", "format": "number", "decimals": 2},
+                  {"key": "vol_2024", "format": "number", "decimals": 2},
+                  {"key": "diff_vol", "format": "diff", "decimals": 2},
+                  {"key": "val_2025", "format": "number", "decimals": 2},
+                  {"key": "val_2024", "format": "number", "decimals": 2}
+              ],
+              "rows": [
+                {"category": "Bulk Tea", "vol_2025": 10.46, "vol_2024": 9.59, "diff_vol": 0.87, "val_2025": 18456.25, "val_2024": 16874.12},
+                {"category": "Tea Bags", "vol_2025": 1.88, "vol_2024": 1.65, "diff_vol": 0.23, "val_2025": 3876.54, "val_2024": 3456.78},
+                {"category": "Packeted Tea", "vol_2025": 9.88, "vol_2024": 8.77, "diff_vol": 1.11, "val_2025": 17654.32, "val_2024": 15432.10},
+                {"category": "Instant Tea", "vol_2025": 0.35, "vol_2024": 0.23, "diff_vol": 0.12, "val_2025": 876.54, "val_2024": 654.32},
+                {"category": "Green Tea", "vol_2025": 0.43, "vol_2024": 0.30, "diff_vol": 0.14, "val_2025": 987.65, "val_2024": 765.43},
+                {"category": "Total", "vol_2025": 23.00, "vol_2024": 20.53, "diff_vol": 2.47, "val_2025": 41851.30, "val_2024": 37182.75, "is_total": true}
+              ]
+          }
+      ]
+  },
+  "price_quotations": [
+    {"elevation": "High Grown", "grade": "BOP", "category": "Best Westerns", "current_min": 1260.0, "current_max": 1380.0, "previous_min": 1200.0, "previous_max": 1300.0},
+    {"elevation": "High Grown", "grade": "BOP", "category": "Below Best Westerns", "current_min": 1200.0, "current_max": 1240.0, "previous_min": 1180.0, "previous_max": 1220.0},
+    {"elevation": "High Grown", "grade": "BOP", "category": "Plainer Westerns", "current_min": 1100.0, "current_max": 1180.0, "previous_min": 1080.0, "previous_max": 1160.0},
+    {"elevation": "High Grown", "grade": "BOP", "category": "Nuwara Eliyas", "current_min": 1250.0, "current_max": 1350.0, "previous_min": 1150.0, "previous_max": 1250.0},
+    {"elevation": "High Grown", "grade": "BOP", "category": "Brighter Uda Pussellawas", "current_min": 1160.0, "current_max": 1200.0, "previous_min": 1140.0, "previous_max": 1180.0},
+    {"elevation": "High Grown", "grade": "BOP", "category": "Best Uvas", "current_min": 1400.0, "current_max": 1500.0, "previous_min": 1350.0, "previous_max": 1450.0},
+    {"elevation": "High Grown", "grade": "BOPF", "category": "Best Westerns", "current_min": 1200.0, "current_max": 1300.0, "previous_min": 1180.0, "previous_max": 1280.0},
+    {"elevation": "High Grown", "grade": "BOPF", "category": "Below Best Westerns", "current_min": 1140.0, "current_max": 1180.0, "previous_min": 1120.0, "previous_max": 1160.0},
+    {"elevation": "High Grown", "grade": "BOPF", "category": "Nuwara Eliyas", "current_min": 1150.0, "current_max": 1250.0, "previous_min": 1050.0, "previous_max": 1150.0},
+    {"elevation": "High Grown", "grade": "BOPF", "category": "Best Uvas", "current_min": 1300.0, "current_max": 1400.0, "previous_min": 1250.0, "previous_max": 1350.0},
+    {"elevation": "Medium Grown", "grade": "BOP", "category": "Best", "current_min": 1100.0, "current_max": 1180.0, "previous_min": 1080.0, "previous_max": 1160.0},
+    {"elevation": "Medium Grown", "grade": "FBOP", "category": "Best", "current_min": 1250.0, "current_max": 1400.0, "previous_min": 1200.0, "previous_max": 1350.0},
+    {"elevation": "Unorthodox (CTC)", "grade": "BP 1 (High)", "category": "Best", "current_min": 960.0, "current_max": 1020.0, "previous_min": 980.0, "previous_max": 1040.0},
+    {"elevation": "Unorthodox (CTC)", "grade": "PF 1 (High)", "category": "Best", "current_min": 1100.0, "current_max": 1180.0, "previous_min": 1080.0, "previous_max": 1160.0},
+    {"elevation": "Unorthodox (CTC)", "grade": "PF 1 (Low)", "category": "Best", "current_min": 1240.0, "current_max": 1340.0, "previous_min": 1200.0, "previous_max": 1300.0},
+    {"elevation": "Low Grown", "grade": "OP 1", "category": "Select Best", "current_min": 2300.0, "current_max": 2750.0, "previous_min": 2250.0, "previous_max": 2700.0},
+    {"elevation": "Low Grown", "grade": "BOP 1", "category": "Select Best", "current_min": 2200.0, "current_max": 2650.0, "previous_min": 2150.0, "previous_max": 2600.0},
+    {"elevation": "Low Grown", "grade": "OP", "category": "Best", "current_min": 1600.0, "current_max": 1700.0, "previous_min": 1550.0, "previous_max": 1650.0},
+    {"elevation": "Low Grown", "grade": "OPA", "category": "Best", "current_min": 1500.0, "current_max": 1600.0, "previous_min": 1450.0, "previous_max": 1550.0},
+    {"elevation": "Low Grown", "grade": "PEKOE", "category": "Select Best", "current_min": 1750.0, "current_max": 1950.0, "previous_min": 1700.0, "previous_max": 1900.0},
+    {"elevation": "Low Grown", "grade": "FBOP", "category": "Select Best", "current_min": 1800.0, "current_max": 2150.0, "previous_min": 1750.0, "previous_max": 2100.0},
+    {"elevation": "Low Grown", "grade": "FBOPF 1", "category": "Select Best", "current_min": 1700.0, "current_max": 2000.0, "previous_min": 1650.0, "previous_max": 1950.0},
+    {"elevation": "Dusts", "grade": "DUST 1", "category": "Best Westerns", "current_min": 1250.0, "current_max": 1350.0, "previous_min": 1200.0, "previous_max": 1300.0},
+    {"elevation": "Dusts", "grade": "DUST 1 (CTC)", "category": "Best (Low)", "current_min": 1300.0, "current_max": 1380.0, "previous_min": 1260.0, "previous_max": 1340.0}
+  ],
   "upcoming_offerings": {
         "sale_34": {
             "date": "2025-09-02/03",
@@ -39,5 +180,37 @@
                 {"elevation": "Other", "m_kgs": 1.7}
             ]
         }
+    },
+    "international_summaries": [
+    {
+      "centre": "MOMBASA",
+      "sale_no": 34,
+      "date": "25TH AND 26TH AUGUST 2025",
+      "summary": "Good general demand for the 147,796 packages (9,726,491.50 kilos) on offer with 25.65% remaining unsold."
+    },
+    {
+      "centre": "BANGLADESH",
+      "sale_no": 17,
+      "date": "25TH AUGUST 2025",
+      "summary": "Good demand at firm to dearer rates."
+    },
+    {
+      "centre": "MALAWI",
+      "sale_no": 35,
+      "date": "26TH AUGUST 2025",
+      "summary": "Fair demand."
+    },
+    {
+      "centre": "KOLKATA",
+      "sale_no": 34,
+      "date": "19TH/20TH AUGUST 2025",
+      "summary": "CTC/Dust - Good demand at irregular rates. Orthodox - Good demand at firm to dearer rates."
+    },
+     {
+      "centre": "JAKARTA",
+      "sale_no": 34,
+      "date": "27TH AUGUST 2025",
+      "summary": "Good demand at firm to dearer rates."
     }
+  ]
 }
