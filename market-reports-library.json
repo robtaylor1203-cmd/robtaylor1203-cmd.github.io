@@ -1,5 +1,15 @@
 [
   {
+    "title": "Mombasa Consolidated Monthly Report - August 2025",
+    "description": "A consolidated summary of the Mombasa auctions for August 2025, including monthly averages, offerings, and regional production statistics. Total Offered: 777,699 packages. Auction Avg: $2.06.",
+    "year": 2025,
+    "week_number": 35,
+    "auction_centre": "Mombasa",
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Mombasa_Consolidated_August_2025",
+    "highlight": true
+  },
+  {
     "title": "Mombasa Consolidated Report - Week 35, 2025",
     "description": "Authoritative consolidated report for Sale 35 (1st/2nd Sept 2025). Synthesized from transaction data, multiple brokers, and weather data. Total Offered: 7.69 M/Kg. Auction Avg: $1.95.",
     "year": 2025,
@@ -107,15 +117,6 @@
     "auction_centre": "Jakarta",
     "source": "TeaTrade Consolidated",
     "report_link": "report-viewer.html?dataset=Jakarta_Consolidated_W33_2025"
-  },
-  {
-    "title": "Colombo Consolidated Report - Week 32, 2025",
-    "description": "Consolidated analysis for Sale No. 32 (19th/20th August 2025). Synthesized data from Forbes & Walker, Asia Siyaka, and TMR. Total offerings: 5.5 M/Kgs. Fair demand for Low Growns; improved activity for High/Mid Growns. Uva seasonal run continues.",
-    "year": 2025,
-    "week_number": 32,
-    "auction_centre": "Colombo",
-    "source": "TeaTrade Consolidated",
-    "report_link": "report-viewer.html?dataset=Colombo_Consolidated_W32_2025"
   },
   {
     "title": "Kolkata Consolidated Report - Week 32, 2025",
