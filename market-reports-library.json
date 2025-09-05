@@ -119,6 +119,15 @@
     "report_link": "report-viewer.html?dataset=Jakarta_Consolidated_W33_2025"
   },
   {
+    "title": "Colombo Consolidated Report - Week 32, 2025",
+    "description": "Consolidated report for Sale 32 (19th/20th Aug 2025). Total offerings: 5.19 M/Kgs. Good general demand.",
+    "year": 2025,
+    "week_number": 32,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Colombo_Consolidated_W32_2025"
+  },
+  {
     "title": "Kolkata Consolidated Report - Week 32, 2025",
     "description": "Consolidated report for Sale 32. CTC: Good demand. Liquoring Assams tended irregularly easier. Orthodox: Strong demand.",
     "year": 2025,
