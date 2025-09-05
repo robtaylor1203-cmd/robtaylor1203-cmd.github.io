@@ -1,1 +1,129 @@
-{ "reports": [ { "title": "Colombo Consolidated Report - Week 32, 2025", "filename": "Colombo_Consolidated_W32_2025.json", "auction_center": "Colombo", "week": "32", "year": "2025", "summary": "Gold-standard market summary for Colombo auctions, week 32, 2025." } ] }
+[
+  {
+    "title": "Mombasa Consolidated Report - Week 35, 2025",
+    "description": "Authoritative consolidated report for Sale 35 (1st/2nd Sept 2025). Synthesized from transaction data, multiple brokers, and weather data. Total Offered: 7.69 M/Kg. Auction Avg: $1.95.",
+    "year": 2025,
+    "week_number": 35,
+    "auction_centre": "Mombasa",
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Mombasa_Consolidated_W35_2025",
+    "highlight": true
+  },
+  {
+    "title": "Colombo Consolidated Report - Week 35, 2025",
+    "description": "Consolidated report for Sale 34 (1st/2nd Sept 2025). Total offerings: 5.10 M/Kgs. Good general demand. Best Westerns irregular; Uva seasonal teas sold well.",
+    "year": 2025,
+    "week_number": 35,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Colombo_Consolidated_W35_2025"
+  },
+  {
+    "title": "Limbe Consolidated Report - Week 35, 2025",
+    "description": "Consolidated report for Sale 35 (27th Aug 2025). Fair demand for the 977,064 kilos on offer. Overall absorption similar to last sale.",
+    "year": 2025,
+    "week_number": 35,
+    "auction_centre": "Limbe",
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Limbe_Consolidated_W35_2025"
+  },
+  {
+    "title": "Kolkata Consolidated Report - Week 34, 2025",
+    "description": "Kolkata summary for Week 34 (Ending 23rd Aug 2025). CTC: Good demand, Assams irregular, Dooars easier. ORTH: Strong demand. Includes World Crop data.",
+    "year": 2025,
+    "week_number": 34,
+    "auction_centre": "Kolkata",
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Kolkata_Consolidated_W34_2025"
+  },
+  {
+    "title": "Guwahati Consolidated Report - Week 34, 2025",
+    "description": "Guwahati summary for Week 34 (Ending 23rd Aug 2025). CTC: Strong demand, good liquoring sorts firm to dearer. Avg: INR 212.05.",
+    "year": 2025,
+    "week_number": 34,
+    "auction_centre": "Guwahati",
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Guwahati_Consolidated_W34_2025"
+  },
+  {
+    "title": "Siliguri Consolidated Report - Week 34, 2025",
+    "description": "Siliguri summary for Week 34 (Ending 23rd Aug 2025). CTC: Fair demand. Prices irregular following quality. Avg: INR 192.42.",
+    "year": 2025,
+    "week_number": 34,
+    "auction_centre": "Siliguri",
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Siliguri_Consolidated_W34_2025"
+  },
+  {
+    "title": "South India Consolidated Report - Week 34, 2025",
+    "description": "South India summary (Cochin, Coonoor, Coimbatore) for Week 34 (Ending 23rd Aug 2025). Generally good demand across centers, mostly firm to dearer.",
+    "year": 2025,
+    "week_number": 34,
+    "auction_centre": "South India",
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=SouthIndia_Consolidated_W34_2025"
+  },
+  {
+    "title": "Mombasa Consolidated Report - Week 34, 2025",
+    "description": "Consolidated report for Sale 34 (27th Aug 2025). Good demand at irregular rates. Auction Avg: $1.97.",
+    "year": 2025,
+    "week_number": 34,
+    "auction_centre": "Mombasa",
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Mombasa_Consolidated_W34_2025"
+  },
+  {
+    "title": "Colombo Consolidated Report - Week 34, 2025",
+    "description": "Consolidated report for Sale 32 (19th/20th Aug 2025). Total Quantity Sold: 5.19 M/Kgs. Auction Avg: LKR 1404.86. Good general demand.",
+    "year": 2025,
+    "week_number": 34,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Colombo_Consolidated_W34_2025"
+  },
+  {
+    "title": "Colombo Consolidated Report - Week 33, 2025",
+    "description": "Consolidated report for Sale 33 (26th/27th Aug 2025). Total offerings: 5.19 M/Kgs. Good general demand.",
+    "year": 2025,
+    "week_number": 33,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Colombo_Consolidated_W33_2025"
+  },
+  {
+    "title": "Mombasa Consolidated Report - Week 33, 2025",
+    "description": "Consolidated report for Sale 33 (18th/19th Aug 2025). Total offerings: 10.27 M/Kgs. Good general demand prevailed; 32.13% remained unsold.",
+    "year": 2025,
+    "week_number": 33,
+    "auction_centre": "Mombasa",
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Mombasa_Consolidated_W33_2025"
+  },
+  {
+    "title": "Jakarta Consolidated Report - Week 33, 2025",
+    "description": "Consolidated report for Sale 33 (27th Aug 2025). Better demand with 71% sold. Includes detailed buyer activity.",
+    "year": 2025,
+    "week_number": 33,
+    "auction_centre": "Jakarta",
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Jakarta_Consolidated_W33_2025"
+  },
+  {
+    "title": "Colombo Consolidated Report - Week 32, 2025",
+    "description": "Consolidated analysis for Sale No. 32 (19th/20th August 2025). Synthesized data from Forbes & Walker, Asia Siyaka, and TMR. Total offerings: 5.5 M/Kgs. Fair demand for Low Growns; improved activity for High/Mid Growns. Uva seasonal run continues.",
+    "year": 2025,
+    "week_number": 32,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Colombo_Consolidated_W32_2025"
+  },
+  {
+    "title": "Kolkata Consolidated Report - Week 32, 2025",
+    "description": "Consolidated report for Sale 32. CTC: Good demand. Liquoring Assams tended irregularly easier. Orthodox: Strong demand.",
+    "year": 2025,
+    "week_number": 32,
+    "auction_centre": "Kolkata",
+    "source": "TeaTrade Consolidated",
+    "report_link": "report-viewer.html?dataset=Kolkata_Consolidated_W32_2025"
+  }
+]
