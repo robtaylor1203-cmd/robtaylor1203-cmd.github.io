@@ -70,14 +70,14 @@
                 <div class="analysis-grid">
                     <div class="analysis-block" id="country-volume-chart-wrapper" style="display: none;">
                         <h4>Offerings vs Sold by Country (kg)</h4>
-                        <div class="chart-wrapper"><canvas id="countryVolumeChart"></canvas></div>
+                        <div style="position: relative; height: 350px;"><canvas id="countryVolumeChart"></canvas></div>
                     </div>
                     <div class="analysis-block" id="grade-stats-table-wrapper" style="display: none;">
-                        <h4>Detailed Grade/Category Statistics</h4>
-                        <div class="data-table-container">
+                         <h4>Detailed Grade/Category Statistics</h4>
+                         <div class="data-table-container">
                             <table class="data-table stats-table" id="grade-stats-table">
                                 <thead>
-                                </thead>
+                                    </thead>
                                 <tbody></tbody>
                             </table>
                         </div>
@@ -89,12 +89,12 @@
                 <h3>Buyer Activity & Market Share</h3>
                  <div class="analysis-grid">
                     <div class="analysis-block">
-                        <h4>Buyer Market Share (%)</h4>
-                       <div class="chart-wrapper"><canvas id="buyerChart"></canvas></div>
+                         <h4>Buyer Market Share (%)</h4>
+                        <div style="position: relative; height: 400px;"><canvas id="buyerChart"></canvas></div>
                     </div>
                     <div class="analysis-block">
                         <h4>Top Buyers & Regional Activity</h4>
-                        <div class="data-table-container">
+                         <div class="data-table-container">
                             <table class="data-table stats-table" id="buyer-activity-table">
                                 <thead>
                                     <tr>
@@ -114,7 +114,7 @@
                 <h3>Comparative Analysis</h3>
                 <div class="comparison-container">
                     <div class="comparison-block" id="country-comparison-wrapper" style="display: none;">
-                        <h4>Country Average Prices (Year-on-Year)</h4>
+                         <h4>Country Average Prices (Year-on-Year)</h4>
                         <div class="data-table-container">
                             <table class="data-table stats-table" id="country-comparison-table">
                                 <thead>
@@ -139,11 +139,11 @@
                     </div>
                     <div class="comparison-block" id="auction-avg-chart-wrapper" style="display: none;">
                         <h4>Auction Average Visualization</h4>
-                        <div class="chart-wrapper"><canvas id="auctionAvgChart"></canvas></div>
+                        <div style="position: relative; height: 300px;"><canvas id="auctionAvgChart"></canvas></div>
                     </div>
                      <div class="comparison-block" id="generic-comparison-wrapper" style="display: none;">
                          <div class="data-table-container" id="generic-comparison-container">
-                         </div>
+                            </div>
                     </div>
                 </div>
             </section>
@@ -165,7 +165,7 @@
                         </thead>
                         <tbody></tbody>
                     </table>
-                 </div>
+                </div>
             </section>
 
             <section class="report-section" id="price-quotations-section" style="display: none;">
@@ -260,7 +260,7 @@
             }
         };
 
-        // --- Utility Functions ---
+        // --- Utility Functions (Enhanced) ---
         const formatNumber = (num, decimals = 0) => {
             if (num === null || num === undefined || isNaN(num)) return 'N/A';
             return num.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
@@ -276,31 +276,36 @@
 
         const formatPriceRange = (min, max, currency = 'USD') => {
              if ((min === null || min === undefined) && (max === null || max === undefined)) return 'N/A';
+             // Handle cases where min or max might be missing
              if (max === null || max === undefined) return formatCurrency(min, currency);
              if (min === null || min === undefined) return formatCurrency(max, currency);
              return `${formatCurrency(min, currency)} - ${formatCurrency(max, currency)}`;
         }
 
-        const formatDiff = (value, decimals = 2, invertColor = false) => {
+        // Enhanced formatDiff for financial visualization (Bloomberg Style)
+         const formatDiff = (value, decimals = 2, invertColor = false) => {
             if (value === null || value === undefined || isNaN(value)) return 'N/A';
             
             const formatted = formatNumber(value, decimals);
             let className;
 
+            // Standard financial colors: Green for positive, Red for negative
             if (value > 0) {
                 className = invertColor ? 'diff-negative' : 'diff-positive';
             } else if (value < 0) {
                 className = invertColor ? 'diff-positive' : 'diff-negative';
             } else {
-                className = ''; 
+                className = ''; // No color for zero change
             }
 
+            // Add +/- sign explicitly for non-zero values
             const sign = value > 0 ? '+' : ''; 
             return `<span class="${className}">${sign}${formatted}</span>`;
         }
 
         // Helper to calculate midpoint of a range for price movement calculation
         const getMidpoint = (min, max) => {
+            // Ensure both values are present and numeric before calculating midpoint
             if (min === null || min === undefined || max === null || max === undefined) return null;
             return (min + max) / 2;
         }
@@ -328,6 +333,7 @@
 
             stats.forEach(stat => {
                 if (stat.value !== undefined && stat.value !== null) {
+                    // Determine format dynamically if not specified (for currency)
                     const format = stat.format !== undefined ? stat.format : (stat.label.includes('Price') ? (meta.currency === 'USD' || meta.currency === 'USc' ? 2 : 0) : 0);
                     
                     const card = document.createElement('div');
@@ -340,8 +346,10 @@
                 }
             });
 
+            // Use synthesized commentary if available, otherwise fall back to market_comment
             document.getElementById('market-comment').textContent = summary.commentary_synthesized || summary.market_comment || 'Commentary not available.';
 
+            // Highest Prices Table
             if (summary.highest_prices && summary.highest_prices.length > 0) {
                 document.getElementById('highest-prices-wrapper').style.display = 'block';
                 const highestPricesTbody = document.getElementById('highest-prices-table').querySelector('tbody');
@@ -397,7 +405,7 @@
                 });
             }
 
-            // Table: By Grade/Category Detailed
+            // Table: By Grade/Category Detailed (Dynamically adapts to available data fields)
             if (volumeData.by_grade_detailed && volumeData.by_grade_detailed.length > 0) {
                 document.getElementById('volume-analysis-section').style.display = 'block';
                 document.getElementById('grade-stats-table-wrapper').style.display = 'block';
@@ -407,14 +415,18 @@
                 tbody.innerHTML = '';
                 thead.innerHTML = '';
 
+                // Determine available columns based on data structure
                 const hasPackages = data.some(item => item.offered_packages !== undefined || item.sold_packages !== undefined || item.packages !== undefined);
                 const hasKg = data.some(item => item.offered_kg !== undefined || item.sold_kg !== undefined || item.quantity_kg !== undefined);
                 const hasLots = data.some(item => item.lots !== undefined);
                 const hasPercent = data.some(item => item.percent_unsold !== undefined);
                 const hasAvgPrice = data.some(item => item.average_price !== undefined);
                 const showSoldPkg = data.some(item => item.sold_packages !== undefined);
+                // NEW: Check for Week-on-Week movement data
                 const hasMovement = data.some(item => item.movement_vs_last_week !== undefined);
 
+
+                // Build Header
                 let headerHtml = '<tr><th>Category/Grade</th>';
                 if (hasLots) headerHtml += '<th>Lots</th>';
                 if (hasPackages) {
@@ -428,16 +440,19 @@
                 }
                 if (hasPercent) headerHtml += '<th>Unsold (%)</th>';
                 if (hasAvgPrice) headerHtml += '<th>Avg Price</th>';
-                if (hasMovement) headerHtml += '<th>vs Last Week</th>';
+                if (hasMovement) headerHtml += '<th>vs Last Week</th>'; // NEW Header
                 headerHtml += '</tr>';
                 thead.innerHTML = headerHtml;
 
+                // Build Rows
                 data.forEach(item => {
+                    // Use 'grade' or 'category' for the first column
                     let rowHtml = `<tr><td>${item.grade || item.category}</td>`;
                     
                     if (hasLots) rowHtml += `<td>${formatNumber(item.lots)}</td>`;
                     
                     if (hasPackages) {
+                        // Handle potential missing offered_packages by checking 'packages' as fallback
                         const offeredPkg = item.offered_packages !== undefined ? item.offered_packages : item.packages;
                         rowHtml += `<td>${formatNumber(offeredPkg)}</td>`;
                         if (showSoldPkg) {
@@ -446,6 +461,7 @@
                     }
                     
                     if (hasKg) {
+                        // Handle different key names (prioritize offered_kg, fallback to quantity_kg)
                         const quantity = item.offered_kg !== undefined ? item.offered_kg : item.quantity_kg;
                         rowHtml += `<td>${formatNumber(quantity)}</td>`;
                     }
@@ -453,6 +469,7 @@
                     if (hasPercent) rowHtml += `<td>${formatNumber(item.percent_unsold, 1)}%</td>`;
                     if (hasAvgPrice) rowHtml += `<td>${formatCurrency(item.average_price, meta.currency)}</td>`;
                     
+                    // NEW: Display movement vs last week with color coding
                     if (hasMovement) {
                         const decimals = (meta.currency === 'USD' || meta.currency === 'USc') ? 2 : 0;
                         rowHtml += `<td>${formatDiff(item.movement_vs_last_week, decimals)}</td>`;
@@ -469,8 +486,10 @@
             if (!activity || activity.length === 0) return;
             document.getElementById('buyer-activity-section').style.display = 'block';
 
+            // Table: Top Buyers
             const tbody = document.getElementById('buyer-activity-table').querySelector('tbody');
             tbody.innerHTML = '';
+            // Display top 15 buyers
             const top15 = activity.slice(0, 15); 
             top15.forEach(item => {
                 const row = document.createElement('tr');
@@ -482,9 +501,13 @@
                 tbody.appendChild(row);
             });
 
+            // Chart: Market Share (Pie Chart)
             const ctx = document.getElementById('buyerChart').getContext('2d');
+
+            // Prepare data for pie chart: Top 9 + Others
             const sortedActivity = [...activity].sort((a, b) => b.market_share - a.market_share);
             
+            // Filter out explicit "Others" categories if they exist in the source data to avoid duplication
             const primaryActivity = sortedActivity.filter(item => !item.buyer.toLowerCase().includes("others (local/misc)") && !item.buyer.toLowerCase().includes("others (calculated)"));
             
             const top9 = primaryActivity.slice(0, 9);
@@ -493,6 +516,7 @@
             const chartData = [...top9];
             if (others.length > 0) {
                 const othersTotal = others.reduce((sum, item) => sum + item.market_share, 0);
+                 // Ensure 'Others' total is meaningful before adding
                 if (othersTotal > 0.1) {
                     chartData.push({ buyer: 'Others (Calculated)', market_share: othersTotal });
                 }
@@ -517,7 +541,7 @@
             });
         };
 
-        // 4. Comparative Analysis
+        // 4. Comparative Analysis (Handles both structured YoY and generic comparisons - Enhanced with Diffs)
         const renderComparativeAnalysis = (comparison, meta) => {
             if (!comparison) return;
             
@@ -525,10 +549,12 @@
             const prevYear = currentYear - 1;
             const currencyDecimals = (meta.currency === 'USD' || meta.currency === 'USc') ? 2 : 0;
 
+            // A. Structured YoY Comparison (e.g., Mombasa)
             if (comparison.country_averages_yoy && comparison.country_averages_yoy.length > 0) {
                 document.getElementById('comparative-analysis-section').style.display = 'block';
                 document.getElementById('country-comparison-wrapper').style.display = 'block';
 
+                // Update Headers
                 document.getElementById('header-current-year-sale').textContent = currentYear;
                 document.getElementById('header-prev-year-sale').textContent = prevYear;
                 document.getElementById('header-current-year-ytd').textContent = currentYear;
@@ -538,14 +564,17 @@
                 tbody.innerHTML = '';
                 comparison.country_averages_yoy.forEach(item => {
                     const row = document.createElement('tr');
+                    // Dynamically access properties based on year
                     const avgCurrent = item[`avg_${currentYear}`];
                     const avgPrev = item[`avg_${prevYear}`];
                     const ytdCurrent = item[`ytd_${currentYear}`];
                     const ytdPrev = item[`ytd_${prevYear}`];
 
+                    // Calculate differences
                     const diffSale = (avgCurrent !== undefined && avgPrev !== undefined) ? avgCurrent - avgPrev : null;
                     const diffYtd = (ytdCurrent !== undefined && ytdPrev !== undefined) ? ytdCurrent - ytdPrev : null;
 
+                    // Build Row with Diffs
                     row.innerHTML = `
                         <td>${item.country}</td>
                         <td>${formatCurrency(avgCurrent, meta.currency)}</td>
@@ -559,6 +588,7 @@
                 });
             }
 
+             // Footer and Chart: Total Auction Average Visualization
             if (comparison.auction_average_yoy) {
                 document.getElementById('comparative-analysis-section').style.display = 'block';
                 const avg = comparison.auction_average_yoy;
@@ -567,12 +597,14 @@
                 const ytdCurrent = avg[`ytd_${currentYear}`];
                 const ytdPrev = avg[`ytd_${prevYear}`];
 
+                // Update Footer if Country Table exists
                 if (comparison.country_averages_yoy && comparison.country_averages_yoy.length > 0) {
                     const tfoot = document.getElementById('country-comparison-table').querySelector('tfoot');
                     
                     const diffSale = (avgCurrent !== undefined && avgPrev !== undefined) ? avgCurrent - avgPrev : null;
                     const diffYtd = (ytdCurrent !== undefined && ytdPrev !== undefined) ? ytdCurrent - ytdPrev : null;
 
+                    // Build Footer with Diffs
                     tfoot.innerHTML = `
                         <tr style="font-weight: bold; background-color: #f1f3f4;">
                             <td>AUCTION AVERAGE</td>
@@ -586,10 +618,12 @@
                     `;
                 }
 
+                // Render Chart
                 document.getElementById('auction-avg-chart-wrapper').style.display = 'block';
                 const ctx = document.getElementById('auctionAvgChart').getContext('2d');
                 
                 const labels = ['Current Sale', 'Year-to-Date'];
+                // Handle cases where YTD might not be present
                 const currentYearData = [avgCurrent, ytdCurrent].filter(v => v !== undefined);
                 const prevYearData = [avgPrev, ytdPrev].filter(v => v !== undefined);
 
@@ -621,11 +655,12 @@
             }
 
 
+            // B. Generic Comparison Tables (e.g., Colombo Quantity Sold, India Averages)
             if (comparison.generic_tables && comparison.generic_tables.length > 0) {
                 document.getElementById('comparative-analysis-section').style.display = 'block';
                 document.getElementById('generic-comparison-wrapper').style.display = 'block';
                 const container = document.getElementById('generic-comparison-container');
-                container.innerHTML = ''; 
+                container.innerHTML = ''; // Clear previous content
 
                 comparison.generic_tables.forEach(tableData => {
                     const wrapper = document.createElement('div');
@@ -637,6 +672,7 @@
                     const table = document.createElement('table');
                     table.className = 'data-table stats-table';
 
+                    // Header (Handles multi-level headers if defined)
                     let headerHtml = '<thead>';
                     tableData.headers.forEach(headerRow => {
                         headerHtml += '<tr>';
@@ -648,26 +684,32 @@
                     headerHtml += '</thead>';
                     table.innerHTML = headerHtml;
 
+                    // Body
                     const tbody = document.createElement('tbody');
                     tableData.rows.forEach(rowData => {
                         const row = document.createElement('tr');
                         if (rowData.is_total) {
                              row.style.fontWeight = 'bold';
+                             // Slightly different shade for subtotals vs grand totals
                              row.style.backgroundColor = '#f8f9fa'; 
                         }
 
+                        // Iterate over the keys defined in the data_keys map
                         tableData.data_keys.forEach(keyInfo => {
                             const value = rowData[keyInfo.key];
                             let displayValue = value;
 
+                            // Apply formatting based on type
                             if (keyInfo.format === 'currency') {
                                 displayValue = formatCurrency(value, meta.currency);
                             } else if (keyInfo.format === 'number') {
                                 displayValue = formatNumber(value, keyInfo.decimals || 0);
                             } else if (keyInfo.format === 'diff') {
+                                 // Use dynamic decimals for diffs if not specified
                                  const decimals = keyInfo.decimals !== undefined ? keyInfo.decimals : currencyDecimals;
                                  displayValue = formatDiff(value, decimals);
                             }
+                            // Add cell
                             row.innerHTML += `<td>${displayValue}</td>`;
                         });
                         tbody.appendChild(row);
@@ -689,6 +731,7 @@
             const tbody = document.getElementById('factory-performance-table').querySelector('tbody');
             tbody.innerHTML = '';
 
+            // Display Top 50 (or fewer if data is limited)
             const top50 = performance.slice(0, 50);
 
             top50.forEach((item, index) => {
@@ -705,7 +748,7 @@
             });
         };
 
-        // 6. Price Quotations
+        // 6. Price Quotations (Enhanced with Movement Calculation)
          const renderPriceQuotations = (quotations, currency) => {
             if (!quotations || quotations.length === 0) return;
 
@@ -718,21 +761,25 @@
             tbody.innerHTML = '';
             thead.innerHTML = '';
 
+            // Determine available columns
             const hasElevation = quotations.some(item => item.elevation !== undefined);
             const hasCategory = quotations.some(item => item.category !== undefined);
+            // Check if previous data exists and is complete enough for comparison
             const hasPrevious = quotations.some(item => item.previous_min !== undefined && item.previous_max !== undefined);
             
+            // Build Header
             let headerHtml = '<tr>';
             if (hasElevation) headerHtml += '<th>Elevation</th>';
             if (hasCategory) headerHtml += '<th>Category/Region</th>';
             headerHtml += '<th>Grade</th><th>Current (Low-High)</th>';
             if (hasPrevious) {
                 headerHtml += '<th>Previous (Low-High)</th>';
-                headerHtml += '<th>Movement</th>'; 
+                headerHtml += '<th>Movement</th>'; // New Column
             }
             headerHtml += '</tr>';
             thead.innerHTML = headerHtml;
 
+            // Build Rows
             quotations.forEach(item => {
                 let rowHtml = '<tr>';
                 if (hasElevation) rowHtml += `<td>${item.elevation}</td>`;
@@ -742,6 +789,7 @@
                 if (hasPrevious) {
                     rowHtml += `<td>${formatPriceRange(item.previous_min, item.previous_max, currency)}</td>`;
                     
+                    // Calculate Movement based on midpoints
                     const currentMid = getMidpoint(item.current_min, item.current_max);
                     const previousMid = getMidpoint(item.previous_min, item.previous_max);
                     let movementHtml = 'N/A';
@@ -759,7 +807,7 @@
             });
         };
 
-        // 7. Forecast Analysis
+        // 7. Forecast Analysis (NEW)
         const renderForecastAnalysis = (forecast) => {
             if (!forecast || forecast.length === 0) return;
             document.getElementById('forecast-section').style.display = 'block';
@@ -770,6 +818,7 @@
                 const block = document.createElement('div');
                 block.className = 'forecast-block';
 
+                // Determine color coding based on sentiment
                 let sentimentClass = '';
                 if (item.sentiment === 'Positive') sentimentClass = 'sentiment-positive';
                 else if (item.sentiment === 'Negative') sentimentClass = 'sentiment-negative';
@@ -794,6 +843,7 @@
             if (!weatherExists && !upcomingExists) return;
             document.getElementById('forward-look-section').style.display = 'block';
 
+            // Weather Analysis
             if (weatherExists) {
                 document.getElementById('weather-section').style.display = 'block';
                 const tbody = document.getElementById('weather-table').querySelector('tbody');
@@ -809,6 +859,7 @@
                 });
             }
 
+            // Upcoming Offerings
             if (upcomingExists) {
                 document.getElementById('upcoming-section').style.display = 'block';
                 const container = document.getElementById('upcoming-container');
@@ -823,17 +874,19 @@
 
                     let html = `<h4>Sale ${saleNumber} (${saleData.date})</h4>`;
 
+                    // Handle different metrics (Packages vs M/Kgs)
                     const metric = saleData.total_packages ? 'Packages' : (saleData.total_m_kgs ? 'M/Kgs' : '');
                     const value = saleData.total_packages || saleData.total_m_kgs;
 
                     if (metric && value) {
                          html += `<p><strong>Total Estimated: ${formatNumber(value, metric === 'M/Kgs' ? 2 : 0)} ${metric}</strong></p>`;
                     }
+                   
                     
-                    
+                    // Check if country breakdown exists (Mombasa)
                     if (saleData.by_country && saleData.by_country.length > 0) {
-                         html += `<div class="data-table-container"><table class="data-table compact-table">
-                                <thead><tr><th>Country</th><th>Packages</th></tr></thead><tbody>`;
+                        html += `<div class="data-table-container"><table class="data-table compact-table">
+                                    <thead><tr><th>Country</th><th>Packages</th></tr></thead><tbody>`;
                         
                         saleData.by_country.forEach(item => {
                             html += `<tr><td>${item.country}</td><td>${formatNumber(item.packages)}</td></tr>`;
@@ -841,9 +894,10 @@
 
                         html += `</tbody></table></div>`;
                     }
+                     // Check if elevation breakdown exists (Colombo)
                     else if (saleData.by_elevation && saleData.by_elevation.length > 0) {
                         html += `<div class="data-table-container"><table class="data-table compact-table">
-                                <thead><tr><th>Elevation</th><th>M/Kgs</th></tr></thead><tbody>`;
+                                    <thead><tr><th>Elevation</th><th>M/Kgs</th></tr></thead><tbody>`;
                         
                         saleData.by_elevation.forEach(item => {
                             html += `<tr><td>${item.elevation}</td><td>${formatNumber(item.m_kgs, 2)}</td></tr>`;
@@ -876,6 +930,7 @@
                                        <p style="font-size: 13px; color: #5f6368;">${summary.date || ''}</p>
                                        <p>${summary.summary || 'Summary not available.'}</p>`;
                     
+                    // Handle structured data if present (e.g., Mombasa details)
                     if (summary.structured_data && summary.structured_data.currency) {
                         contentHtml += `<p><strong>Quotations (${summary.structured_data.currency}):</strong></p>`;
                         
@@ -919,6 +974,7 @@
             
             let metaText = `Week: ${meta.week_number || 'N/A'}`;
             
+            // Date formatting
             const startDate = meta.sale_date_start;
             const endDate = meta.sale_date_end;
             if (startDate && endDate && startDate !== endDate) {
@@ -938,14 +994,14 @@
 
             document.getElementById('report-meta').textContent = metaText;
 
-            // 2. Render Sections
+            // 2. Render Sections (Order based on typical importance)
             renderOverview(data.summary, meta);
             renderVolumeAnalysis(data.volume_analysis, meta);
             renderBuyerActivity(data.buyer_activity);
             renderComparativeAnalysis(data.comparative_analysis, meta);
             renderFactoryPerformance(data.factory_performance, meta);
             renderPriceQuotations(data.price_quotations, meta.currency);
-            renderForecastAnalysis(data.forecast_analysis); 
+            renderForecastAnalysis(data.forecast_analysis); // NEW
             renderForwardLook(data.weather_analysis, data.upcoming_offerings);
             renderInternationalSummaries(data.international_summaries);
         };
