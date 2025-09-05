@@ -7,15 +7,14 @@
     "month": "August",
     "currency": "USD",
     "data_sources": [
-      "Tea Directorate",
-      "EATTA"
+      "EATTA",
+      "Tea Directorate"
     ]
   },
   "summary": {
     "total_offered_packages": 777699,
     "auction_average_price": 2.06,
-    "commentary_synthesized": "Total packages offered at the Mombasa auction for the month of August 2025 amounted to 777,699 packages, with an average price of US$ 2.06. This compares with 737,014 packages at an average of US$ 2.10 for the corresponding period last year. The increased offerings exerted some pressure on prices, particularly for PF1s which saw a decline against 2024. However, BP1 grades showed notable strength, with Best and Good categories trading at a premium over the previous year. Production figures for January-June 2025 show a significant decline for Kenya (-37.81 M/Kgs) which may support prices in the future if this trend continues.",
-    "highest_prices": []
+    "commentary_synthesized": "Total packages offered at the Mombasa auction for the month of August 2025 amounted to 777,699 packages, with an average price of US$ 2.06. This compares with 737,014 packages at an average of US$ 2.10 for the corresponding period last year. The increased offerings exerted some pressure on prices, particularly for PF1s which saw a decline against 2024. However, BP1 grades showed notable strength, with Best and Good categories trading at a premium over the previous year. Production figures for January-June 2025 show a significant decline for Kenya (-37.81 M/Kgs) which may support prices in the future if this trend continues."
   },
   "forecast_analysis": [
     {
@@ -45,19 +44,19 @@
           ]
         ],
         "data_keys": [
-            {"key": "sale_no"},
-            {"key": "best_bp1", "format": "currency"},
-            {"key": "good_bp1", "format": "currency"},
-            {"key": "best_pf1", "format": "currency"},
-            {"key": "good_pf1", "format": "currency"}
+          {"key": "sale_no"},
+          {"key": "best_bp1", "format": "currency"},
+          {"key": "good_bp1", "format": "currency"},
+          {"key": "best_pf1", "format": "currency"},
+          {"key": "good_pf1", "format": "currency"}
         ],
         "rows": [
-            {"sale_no": "Sale 31", "best_bp1": 3.01, "good_bp1": 2.65, "best_pf1": 2.50, "good_pf1": 2.40},
-            {"sale_no": "Sale 32", "best_bp1": 3.03, "good_bp1": 2.62, "best_pf1": 2.50, "good_pf1": 2.40},
-            {"sale_no": "Sale 33", "best_bp1": 2.90, "good_bp1": 2.55, "best_pf1": 2.40, "good_pf1": 2.36},
-            {"sale_no": "Sale 34", "best_bp1": 2.92, "good_bp1": 2.56, "best_pf1": 2.40, "good_pf1": 2.37},
-            {"sale_no": "Average 2025", "is_total": true, "best_bp1": 2.97, "good_bp1": 2.60, "best_pf1": 2.45, "good_pf1": 2.38},
-            {"sale_no": "Average 2024", "is_total": true, "best_bp1": 2.84, "good_bp1": 2.49, "best_pf1": 2.59, "good_pf1": 2.51}
+          {"sale_no": "Sale 31", "best_bp1": 3.01, "good_bp1": 2.65, "best_pf1": 2.50, "good_pf1": 2.40},
+          {"sale_no": "Sale 32", "best_bp1": 3.03, "good_bp1": 2.62, "best_pf1": 2.50, "good_pf1": 2.40},
+          {"sale_no": "Sale 33", "best_bp1": 2.90, "good_bp1": 2.55, "best_pf1": 2.40, "good_pf1": 2.36},
+          {"sale_no": "Sale 34", "best_bp1": 2.92, "good_bp1": 2.56, "best_pf1": 2.40, "good_pf1": 2.37},
+          {"sale_no": "Average 2025", "is_total": true, "best_bp1": 2.97, "good_bp1": 2.60, "best_pf1": 2.45, "good_pf1": 2.38},
+          {"sale_no": "Average 2024", "is_total": true, "best_bp1": 2.84, "good_bp1": 2.49, "best_pf1": 2.59, "good_pf1": 2.51}
         ]
       },
       {
@@ -91,9 +90,7 @@
     ]
   },
   "production_analysis": {
-    "monthly_period": "June 2025",
-    "cumulative_period": "January-June 2025",
-    "analysis": "Kenya's production shows a significant cumulative deficit of 37.81 M/Kgs compared to the same period in 2024. Uganda has seen a substantial percentage increase, while other key regional producers like Tanzania and Rwanda show minor deficits.",
+    "analysis": "Kenya's cumulative production for the first half of the year shows a significant deficit of -37.81 M/Kgs compared to the same period in 2024. Uganda has seen a substantial percentage increase, while other key regional producers like Tanzania and Rwanda show minor deficits.",
     "generic_tables": [
       {
         "title": "Regional Production (Kgs) - January-June 2025 vs 2024",
