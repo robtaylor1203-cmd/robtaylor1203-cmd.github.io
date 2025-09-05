@@ -18,112 +18,129 @@
     "total_offered_kg": 5105188,
     "reprints_lots": 1039,
     "reprints_kg": 503557,
-    "commentary_synthesized": "Auction offerings declined to 5.1 M/Kgs. Good general demand prevailed, particularly for Ex-Estate teas which met with good demand at mostly firm to dearer rates. [Ex-Estate] Overall quality from Western slopes was marginally improved. Best Western BOP/BOPFs gained up to Rs. 50/kg and Rs. 20-40/kg respectively, with Below Best and Plainer sorts also appreciating. Nuwara Eliyas were a weak feature, mostly remaining unsold. Uva's were limited to non-seasonal teas which sold around last week's levels. [Low Growns] Comprising 2.1 M/Kgs, this segment met with fair but lower demand. In the Leafy/Semi-Leafy catalogues, well-made BOP1s were firm while others appreciated. OP1s were firm to dearer. In the Tippy catalogue, FBOPs and FF1s were generally lower to easier. [CTC] High & Medium grown PF1s were mostly firm while Low Growns sold well. [Source: Forbes & Walker, TMR]",
+    "commentary_synthesized": "Auction offerings declined to 5.1 M/Kgs, with good general demand prevailing, likely triggered by the restricted availability. [Ex-Estate] Quality from the Western slopes was selectively brighter. Best Western BOPs saw select invoices gain up to Rs. 50/kg, with BOPFs firm to dearer by Rs. 20-40/kg. Below Best and Plainer sorts also appreciated. Nuwara Eliyas were a weak feature and mostly unsold. Uva's were limited to non-seasonal teas which sold around last week's levels. [Low Growns] Approximately 2.1 M/Kgs on offer met with fair demand. In the Leafy catalogues, well-made BOP1s/OP1s were firm to dearer, while OPs/OPAs were easier. Pekoe/Pekoe1s were irregular and mostly lower. In the Tippy catalogues, FBOPs/FF1s were generally easier. [CTC] High & Medium grown PF1s were mostly firm, while Low Growns sold well. [Source: 1, 3634]",
     "highest_prices": [
+      {"price": 6000.00, "grade": "FBOPFEXSP", "mark": "New Batuwangala", "country": "Sri Lanka"},
       {"price": 3100.00, "grade": "OP1", "mark": "Mulatiyana Hills", "country": "Sri Lanka"},
       {"price": 2950.00, "grade": "BOP1", "mark": "Pothotuwa", "country": "Sri Lanka"},
       {"price": 2850.00, "grade": "PEK1", "mark": "Liyonta", "country": "Sri Lanka"},
       {"price": 2500.00, "grade": "FBOP", "mark": "Sithaka", "country": "Sri Lanka"},
-      {"price": 2500.00, "grade": "PEK", "mark": "Lumbini", "country": "Sri Lanka"},
-      {"price": 5850.00, "grade": "FBOPFEXSP1", "mark": "New Vithanakande", "country": "Sri Lanka"},
-      {"price": 1950.00, "grade": "BOP1", "mark": "Harangalla", "country": "Sri Lanka"},
-      {"price": 1900.00, "grade": "BOP", "mark": "Harangalla", "country": "Sri Lanka"},
-      {"price": 2100.00, "grade": "FBOP/FBOP1", "mark": "Dartry Valley", "country": "Sri Lanka"},
+      {"price": 1440.00, "grade": "BOP", "mark": "Norwood", "country": "Sri Lanka"},
+      {"price": 1550.00, "grade": "BOPF/BOPFSP", "mark": "Alton", "country": "Sri Lanka"},
       {"price": 1800.00, "grade": "DUST1", "mark": "Mattakelle", "country": "Sri Lanka"}
     ]
   },
-    "forecast_analysis": [
+  "forecast_analysis": [
     {
-      "factor": "Supply Volume & Demand",
+      "factor": "Weather & Crop Intake",
       "sentiment": "Neutral",
-      "outlook": "Limited availability is supporting prices, though underlying demand for certain categories is weak.",
-      "analysis": "Auction offerings have declined further to 5.1 M/Kgs. This limited availability has likely triggered the improved demand seen in the Ex-Estate sector. However, demand for Low Growns was noted as being lower, suggesting price sensitivity in that segment."
+      "outlook": "Stable to slightly declining crop levels may lend support to the market.",
+      "analysis": "Bright conditions and evening showers were reported across most growing regions. While the Western and Nuwara Eliya regions maintained their crop intakes, a decline was noted in the Uva/Udapussellawa and Low Grown districts. The forecast for continued showers could impact production in the short term."
     },
     {
-      "factor": "High Grown Quality Teas",
-      "sentiment": "Bullish (Segment Specific)",
-      "outlook": "A clear flight to quality is evident, with top-tier Westerns commanding significant premiums.",
-      "analysis": "Select best Western BOPs appreciated by up to Rs. 50/kg, with BOPFs also gaining. This indicates strong buyer interest for the best available quality teas. Conversely, Nuwara Eliyas were almost entirely unsold, showing a sharp divergence in demand based on quality and origin."
+      "factor": "High Grown Market",
+      "sentiment": "Mixed",
+      "outlook": "A highly selective market with a clear premium for quality.",
+      "analysis": "The substantial gains for the best available Westerns (up to Rs. 50/kg) alongside the almost complete lack of demand for Nuwara Eliyas highlights a strong flight to quality. Buyers are willing to pay for good leaf appearance and liquor, while plainer sorts struggle."
     },
     {
-        "factor": "Low Grown Leafy vs. Tippy Grades",
-        "sentiment": "Mixed",
-        "outlook": "Leafy grades show more stability while Tippy grades are under pressure.",
-        "analysis": "In the Low Grown catalogues, Leafy and Semi-Leafy grades like BOP1 and OP1 were generally firm to dearer. However, in the Tippy catalogue, FBOPs and FF1s were noted as being lower to easier, indicating a shift in buyer preference or demand away from tippy varieties this week."
+      "factor": "Low Grown Market",
+      "sentiment": "Bearish",
+      "outlook": "Prices for smaller leaf and tippy grades are likely to remain under pressure.",
+      "analysis": "While leafy grades (BOP1/OP1) saw firm to dearer rates, the majority of other categories, especially Pekoe/Pekoe1s and FBOP/FF1s, were reported as irregular and mostly easier. This suggests an oversupply or waning demand for these specific grades."
     }
   ],
   "statistical_summaries": {
-      "national_sale_averages": {
-          "description": "National Tea Sale Averages for August 2025 vs August 2024. Source: Forbes & Walker",
-          "monthly": {
-              "period": "August",
-              "data": [
-                  {"elevation": "High Grown", "2025": 1106.20, "2024": 1142.30},
-                  {"elevation": "Medium Grown", "2025": 1029.10, "2024": 1032.38},
-                  {"elevation": "Low Grown", "2025": 1251.09, "2024": 1256.62},
-                  {"elevation": "TOTAL", "2025": 1182.27, "2024": 1188.49}
-              ]
-          },
-          "cumulative": {
-              "period": "January-August",
-              "data": [
-                  {"elevation": "High Grown", "2025": 1074.61, "2024": 1152.04},
-                  {"elevation": "Medium Grown", "2025": 1022.06, "2024": 1085.59},
-                  {"elevation": "Low Grown", "2025": 1228.04, "2024": 1337.77},
-                  {"elevation": "TOTAL", "2025": 1156.37, "2024": 1249.99}
-              ]
-          }
+    "national_sale_averages": {
+      "description": "National Tea Sale Averages for August 2025 vs Previous Years. Source: Forbes & Walker, TMR",
+      "monthly": {
+        "period": "August",
+        "data": [
+          {"elevation": "High Grown", "2025": 1106.20, "2024": 1142.30, "2023": 944.14},
+          {"elevation": "Medium Grown", "2025": 1029.10, "2024": 1032.38, "2023": 953.99},
+          {"elevation": "Low Grown", "2025": 1251.09, "2024": 1256.62, "2023": 1211.46},
+          {"elevation": "TOTAL", "2025": 1182.27, "2024": 1188.49, "2023": 1110.54}
+        ]
       },
-       "quantity_sold_comparison": {
+      "cumulative": {
+        "period": "January-August",
+        "data": [
+          {"elevation": "High Grown", "2025": 1074.61, "2024": 1152.04, "2023": 1090.60},
+          {"elevation": "Medium Grown", "2025": 1022.06, "2024": 1085.59, "2023": 1018.93},
+          {"elevation": "Low Grown", "2025": 1228.04, "2024": 1337.77, "2023": 1261.43},
+          {"elevation": "TOTAL", "2025": 1156.37, "2024": 1249.99, "2023": 1182.03}
+        ]
+      }
+    },
+    "quantity_sold_comparison": {
       "description": "Comparison of Quantity Sold (Weekly and To Date) vs Previous Year. Source: Asia Siyaka",
        "data": [
-          {
-            "category": "Private Sale",
-            "weekly_current_year": 165981,
-            "todate_current_year": 7111186,
-            "weekly_previous_year": 89524,
-            "todate_previous_year": 4276320
-          },
-          {
-            "category": "Public Auction",
-            "weekly_current_year": 4541661,
-            "todate_current_year": 166249998,
-            "weekly_previous_year": 4754930,
-            "todate_previous_year": 163068336
-          },
-          {
-            "category": "Forward Contracts",
-            "weekly_current_year": 20000,
-            "todate_current_year": 1615231,
-            "weekly_previous_year": 73980,
-            "todate_previous_year": 1507230
-          },
-          {
-            "category": "Total",
-            "weekly_current_year": 4727642,
-            "todate_current_year": 174976415,
-            "weekly_previous_year": 4918434,
-            "todate_previous_year": 168851886
-          }
+          {"category": "Private Sale", "weekly_current_year": 165981, "todate_current_year": 7111186, "weekly_previous_year": 89524, "todate_previous_year": 4276320},
+          {"category": "Public Auction", "weekly_current_year": 4541661, "todate_current_year": 166249998, "weekly_previous_year": 4754930, "todate_previous_year": 163068336},
+          {"category": "Forward Contracts", "weekly_current_year": 20000, "todate_current_year": 1615231, "weekly_previous_year": 73980, "todate_previous_year": 1507230},
+          {"category": "Total", "weekly_current_year": 4727642, "todate_current_year": 174976415, "weekly_previous_year": 4918434, "todate_previous_year": 168851886}
+        ]
+    },
+    "world_production_comparison": {
+        "description": "World Production Figures - Major Producer Exporting Countries (M/Kgs). Source: Asia Siyaka",
+        "data": [
+            {"country": "Sri Lanka", "month": "July", "ytd_2025": 157.11, "ytd_2024": 151.14, "yoy_change": 5.97},
+            {"country": "North India", "month": "June", "ytd_2025": 352.80, "ytd_2024": 313.78, "yoy_change": 39.02},
+            {"country": "South India", "month": "June", "ytd_2025": 116.92, "ytd_2024": 100.38, "yoy_change": 16.54},
+            {"country": "Kenya", "month": "June", "ytd_2025": 283.25, "ytd_2024": 323.3, "yoy_change": -40.05},
+            {"country": "Malawi", "month": "June", "ytd_2025": 31.50, "ytd_2024": 33.4, "yoy_change": -1.90}
         ]
     }
   },
   "price_quotations": [
-    {"elevation": "High Grown", "grade": "BOP", "category": "Best Westerns", "current_min": 1300.00, "current_max": 1440.00, "previous_min": 1260.00, "previous_max": 1380.00},
-    {"elevation": "High Grown", "grade": "BOP", "category": "Below Best Westerns", "current_min": 1200.00, "current_max": 1280.00, "previous_min": 1140.00, "previous_max": 1220.00},
+    {"elevation": "High Grown", "grade": "BOP", "category": "Best Westerns", "current_min": 1300.00, "current_max": 1450.00, "previous_min": 1250.00, "previous_max": 1380.00},
+    {"elevation": "High Grown", "grade": "BOP", "category": "Below Best Westerns", "current_min": 1200.00, "current_max": 1280.00, "previous_min": 1150.00, "previous_max": 1220.00},
     {"elevation": "High Grown", "grade": "BOP", "category": "Plainer Westerns", "current_min": 1000.00, "current_max": 1180.00, "previous_min": 1000.00, "previous_max": 1120.00},
+    {"elevation": "High Grown", "grade": "BOP", "category": "Nuwara Eliyas", "current_min": null, "current_max": null, "previous_min": null, "previous_max": null},
+    {"elevation": "High Grown", "grade": "BOP", "category": "Uda Pussellawas", "current_min": 1050.00, "current_max": 1320.00, "previous_min": 980.00, "previous_max": 1020.00},
+    {"elevation": "High Grown", "grade": "BOP", "category": "Uvas", "current_min": 1180.00, "current_max": 1480.00, "previous_min": 1160.00, "previous_max": 2950.00},
     {"elevation": "High Grown", "grade": "BOPF", "category": "Best Westerns", "current_min": 1360.00, "current_max": 1550.00, "previous_min": 1320.00, "previous_max": 1550.00},
-    {"elevation": "High Grown", "grade": "BOPF", "category": "Below Best Westerns", "current_min": 1240.00, "current_max": 1340.00, "previous_min": 1200.00, "previous_max": 1300.00},
+    {"elevation": "High Grown", "grade": "BOPF", "category": "Below Best Westerns", "current_min": 1240.00, "current_max": 1340.00, "previous_min": 1200.00, "previous_max": 1280.00},
     {"elevation": "High Grown", "grade": "BOPF", "category": "Plainer Westerns", "current_min": 1100.00, "current_max": 1220.00, "previous_min": 1040.00, "previous_max": 1180.00},
-    {"elevation": "Medium Grown", "grade": "BOP", "category": "Good Mediums", "current_min": 1440.00, "current_max": 1900.00, "previous_min": 1550.00, "previous_max": 1850.00},
+    {"elevation": "High Grown", "grade": "BOPF", "category": "Nuwara Eliyas", "current_min": null, "current_max": null, "previous_min": null, "previous_max": null},
+    {"elevation": "High Grown", "grade": "BOPF", "category": "Uda Pussellawas", "current_min": 1120.00, "current_max": 1220.00, "previous_min": 1100.00, "previous_max": 1180.00},
+    {"elevation": "High Grown", "grade": "BOPF", "category": "Uvas", "current_min": 1200.00, "current_max": 1300.00, "previous_min": 1200.00, "previous_max": 1300.00},
+    {"elevation": "Medium Grown", "grade": "BOP", "category": "Good Mediums", "current_min": 1420.00, "current_max": 1900.00, "previous_min": 1500.00, "previous_max": 1850.00},
     {"elevation": "Medium Grown", "grade": "BOPF", "category": "Good Mediums", "current_min": 1180.00, "current_max": 1260.00, "previous_min": 1180.00, "previous_max": 1200.00},
     {"elevation": "Low Grown", "grade": "BOP1", "category": "SELECT BEST", "current_min": 2400.00, "current_max": 2950.00, "previous_min": 2400.00, "previous_max": 2900.00},
     {"elevation": "Low Grown", "grade": "OP1", "category": "SELECT BEST", "current_min": 2450.00, "current_max": 3100.00, "previous_min": 2400.00, "previous_max": 3150.00},
+    {"elevation": "Low Grown", "grade": "OP/OPA", "category": "SELECT BEST", "current_min": 1420.00, "current_max": 2000.00, "previous_min": 1440.00, "previous_max": 2000.00},
     {"elevation": "Low Grown", "grade": "PEKOE", "category": "SELECT BEST", "current_min": 1600.00, "current_max": 2500.00, "previous_min": 1600.00, "previous_max": 3000.00},
     {"elevation": "Low Grown", "grade": "PEK1", "category": "SELECT BEST", "current_min": 1800.00, "current_max": 2850.00, "previous_min": 1800.00, "previous_max": 2950.00},
-    {"elevation": "Low Grown", "grade": "FBOP", "category": "SELECT BEST", "current_min": 1800.00, "current_max": 2400.00, "previous_min": 1900.00, "previous_max": 2400.00},
-    {"elevation": "Low Grown", "grade": "FBOP1", "category": "SELECT BEST", "current_min": 1800.00, "current_max": 1900.00, "previous_min": 1800.00, "previous_max": 1900.00},
-    {"elevation": "Unorthodox (CTC)", "grade": "BP1 Low Grown", "category": "All", "current_min": 1380.00, "current_max": 1420.00, "previous_min": 1200.00, "previous_max": 1420.00},
-    {"elevation": "Unorthodox (CTC)", "grade": "PF1 Low Grown", "category": "All", "current_min": 1220.00, "current_max": 1460.00, "previous_min": 1240.00, "previous_max": 1480.00}
-  ]
+    {"elevation": "Low Grown", "grade": "FBOP", "category": "SELECT BEST", "current_min": 1800.00, "current_max": 2400.00, "previous_min": 2000.00, "previous_max": 2100.00},
+    {"elevation": "Low Grown", "grade": "FBOP1", "category": "SELECT BEST", "current_min": 1750.00, "current_max": 1850.00, "previous_min": 1800.00, "previous_max": 1900.00},
+    {"elevation": "Low Grown", "grade": "FBOPF/FBOPFSP", "category": "SELECT BEST", "current_min": 4300.00, "current_max": 5500.00, "previous_min": 4500.00, "previous_max": 5200.00},
+    {"elevation": "Unorthodox (CTC)", "grade": "BP1", "category": "All Low Grown", "current_min": 1380.00, "current_max": 1420.00, "previous_min": 1200.00, "previous_max": 1420.00},
+    {"elevation": "Unorthodox (CTC)", "grade": "PF1", "category": "All High Grown", "current_min": 1000.00, "current_max": 1180.00, "previous_min": 1100.00, "previous_max": 1180.00},
+    {"elevation": "Unorthodox (CTC)", "grade": "PF1", "category": "All Medium Grown", "current_min": 980.00, "current_max": 1180.00, "previous_min": 960.00, "previous_max": 1200.00},
+    {"elevation": "Unorthodox (CTC)", "grade": "PF1", "category": "All Low Grown", "current_min": 1220.00, "current_max": 1460.00, "previous_min": 1240.00, "previous_max": 1480.00},
+    {"elevation": "Off Grades", "grade": "FGS/FGS1", "category": "All", "current_min": 520.00, "current_max": 1280.00, "previous_min": 530.00, "previous_max": 1280.00},
+    {"elevation": "Dusts", "grade": "DUST1", "category": "All", "current_min": 760.00, "current_max": 1800.00, "previous_min": 700.00, "previous_max": 1700.00}
+  ],
+  "weather_analysis": {
+      "period": "27th August - 01st September 2025",
+      "conditions": [
+          {"region": "Western/Nuwara Eliya", "summary": "Bright conditions followed by evening showers. Forecast: Scattered showers."},
+          {"region": "Uva/Udapussellawa", "summary": "Sunny conditions. Forecast: Rain expected."},
+          {"region": "Low Growns", "summary": "Bright conditions with occasional showers. Forecast: Showers expected."}
+      ],
+      "crop_intake": "The Western and Nuwara Eliya's maintained their crop intakes whilst the Uva/Udapussellawa and Low grown districts reported a decline."
+  },
+  "upcoming_offerings": {
+      "sale_35": {
+          "date": "09th/10th September 2025",
+          "lots": 10763,
+          "quantity_kg": 5183611
+      },
+      "sale_36": {
+          "date": "16th/17th September 2025",
+          "lots": 10562,
+          "quantity_kg": 5082669
+      }
+  }
 }
