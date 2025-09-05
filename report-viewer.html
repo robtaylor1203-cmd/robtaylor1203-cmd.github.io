@@ -33,92 +33,185 @@
 
     <main class="page-container">
         <div class="dashboard-header">
-            <h2 class="page-title" id="report-title">Loading Report...</h2>
+            <h2 class="page-title" id="report-title">Loading Consolidated Report...</h2>
         </div>
-        <p id="report-meta" class="report-meta"></p>
+        <p id="report-meta" style="margin-bottom: 24px; color: #5f6368;"></p>
 
         <div id="report-content" style="display: none;">
             
-            <section class="report-section" id="commentary-section" style="display: none;">
-                <h3>Market Commentary</h3>
-                <p id="synthesized-commentary"></p>
-            </section>
-
-            <section class="report-section" id="drivers-forecast-section" style="display: none;">
-                <h3 id="drivers-forecast-title">Market Forecast & Drivers</h3>
-                <div class="analysis-grid" id="drivers-forecast-container">
+            <section class="report-section" id="overview-section" style="display: none;">
+                <h3>Auction Overview</h3>
+                <div class="stat-cards-container" id="summary-stats"></div>
+                
+                <div class="overview-grid">
+                    <div class="commentary-block">
+                        <h4>Market Synopsis</h4>
+                        <p id="market-comment"></p>
                     </div>
-            </section>
-
-            <section class="report-section" id="supply-offerings-section" style="display: none;">
-                <h3 id="supply-offerings-title">Supply & Offerings Analysis</h3>
-                <div class="analysis-text">
-                     <p id="supply-offerings-analysis-text"></p>
-                </div>
-                <div class="data-table-container" id="offerings-wow-table-container" style="display: none; max-width: 700px; margin-top: 16px;">
-                    <table class="data-table stats-table" id="offerings-wow-table">
-                        <thead>
-                            <tr>
-                                <th>Metric</th>
-                                <th>Current Week</th>
-                                <th>Previous Week</th>
-                                <th>WoW Change</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <section class="report-section" id="demand-price-section" style="display: none;">
-                <h3 id="demand-price-title">Demand & Price Analysis</h3>
-                <div class="analysis-grid" id="price-analysis-grid-container">
-                </div>
-                <div class="analysis-text" id="demand-analysis-text-container">
-                </div>
-            </section>
-
-            <section class="report-section" id="visualizations-section" style="display: none;">
-                <h3>Market Visualizations</h3>
-                <div class="visualizations-grid" id="visualizations-container">
-                </div>
-            </section>
-
-            <section class="report-section" id="production-analysis-section" style="display: none;">
-                <h3>Production Analysis Summary</h3>
-                 <div class="analysis-layout">
-                    <div class="analysis-text" style="flex: 1;">
-                        <p id="production-analysis-text"></p>
+                    <div class="highest-prices-block" id="highest-prices-wrapper" style="display: none;">
+                        <h4>Highest Achieved Prices</h4>
+                        <table class="data-table compact-table" id="highest-prices-table">
+                            <thead>
+                                <tr>
+                                    <th>Price</th>
+                                    <th>Grade</th>
+                                    <th>Mark (Factory)</th>
+                                    <th>Country</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
                     </div>
-                    <div class="analysis-visual" style="flex: 0 0 350px;">
-                         <div class="data-table-container">
-                            <table class="data-table stats-table" id="production-table">
+                </div>
+            </section>
+
+            <section class="report-section" id="volume-analysis-section" style="display: none;">
+                <h3>Volume Analysis</h3>
+                <div class="analysis-grid">
+                    <div class="analysis-block" id="country-volume-chart-wrapper" style="display: none;">
+                        <h4>Offerings vs Sold by Country (kg)</h4>
+                        <div class="chart-wrapper"><canvas id="countryVolumeChart"></canvas></div>
+                    </div>
+                    <div class="analysis-block" id="grade-stats-table-wrapper" style="display: none;">
+                        <h4>Detailed Grade/Category Statistics</h4>
+                        <div class="data-table-container">
+                            <table class="data-table stats-table" id="grade-stats-table">
                                 <thead>
-                                    <tr>
-                                        <th>Period</th>
-                                        <th>Total (M/Kgs)</th>
-                                        <th>YoY Change (M/Kgs)</th>
-                                    </tr>
                                 </thead>
-                                <tbody>
-                                    </tbody>
+                                <tbody></tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="report-section" id="statistical-summaries-section" style="display: none;">
-                <h3>Detailed Statistics</h3>
-                <div id="statistical-summaries-container">
+            <section class="report-section" id="buyer-activity-section" style="display: none;">
+                <h3>Buyer Activity & Market Share</h3>
+                 <div class="analysis-grid">
+                    <div class="analysis-block">
+                        <h4>Buyer Market Share (%)</h4>
+                       <div class="chart-wrapper"><canvas id="buyerChart"></canvas></div>
                     </div>
+                    <div class="analysis-block">
+                        <h4>Top Buyers & Regional Activity</h4>
+                        <div class="data-table-container">
+                            <table class="data-table stats-table" id="buyer-activity-table">
+                                <thead>
+                                    <tr>
+                                        <th>Buyer/Region</th>
+                                        <th>Volume (kg)</th>
+                                        <th>Market Share (%)</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </section>
 
-            <section class="report-section" id="prices-section" style="display: none;">
+            <section class="report-section" id="comparative-analysis-section" style="display: none;">
+                <h3>Comparative Analysis</h3>
+                <div class="comparison-container">
+                    <div class="comparison-block" id="country-comparison-wrapper" style="display: none;">
+                        <h4>Country Average Prices (Year-on-Year)</h4>
+                        <div class="data-table-container">
+                            <table class="data-table stats-table" id="country-comparison-table">
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2" class="header-main">Country</th>
+                                        <th colspan="3" class="header-main">Current Sale Avg</th>
+                                        <th colspan="3" class="header-main">Year-to-Date Avg</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="header-sub" id="header-current-year-sale"></th>
+                                        <th class="header-sub" id="header-prev-year-sale"></th>
+                                        <th class="header-sub">Change</th>
+                                        <th class="header-sub" id="header-current-year-ytd"></th>
+                                        <th class="header-sub" id="header-prev-year-ytd"></th>
+                                        <th class="header-sub">Change</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                                <tfoot></tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="comparison-block" id="auction-avg-chart-wrapper" style="display: none;">
+                        <h4>Auction Average Visualization</h4>
+                        <div class="chart-wrapper"><canvas id="auctionAvgChart"></canvas></div>
+                    </div>
+                     <div class="comparison-block" id="generic-comparison-wrapper" style="display: none;">
+                         <div class="data-table-container" id="generic-comparison-container">
+                         </div>
+                    </div>
+                </div>
+            </section>
+
+             <section class="report-section" id="factory-performance-section" style="display: none;">
+                <h3>Factory (Mark) Performance Ranking</h3>
+                <p>Top Factories ranked by Average Price achieved during the sale.</p>
+                 <div class="data-table-container">
+                    <table class="data-table stats-table" id="factory-performance-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Mark (Factory)</th>
+                                <th>Country</th>
+                                <th>Average Price</th>
+                                <th>Top Grade</th>
+                                <th>Top Price</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                 </div>
+            </section>
+
+            <section class="report-section" id="price-quotations-section" style="display: none;">
                 <h3 id="price-quotations-title">Price Quotations</h3>
-                <div class="data-table-container" id="prices-container">
-                     </div>
+                 <div class="data-table-container">
+                    <table class="data-table" id="price-quotations-table">
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="report-section" id="forecast-section" style="display: none;">
+                <h3>Market Forecast & Outlook</h3>
+                <div class="forecast-container" id="forecast-container">
+                </div>
+            </section>
+
+            <section class="report-section" id="forward-look-section" style="display: none;">
+                <h3>Weather Impact & Upcoming Offerings</h3>
+                <div class="analysis-grid">
+                    <div class="analysis-block" id="weather-section" style="display: none;">
+                        <h4>Regional Weather & Crop Conditions</h4>
+                        <div class="data-table-container">
+                            <table class="data-table stats-table" id="weather-table">
+                                <thead>
+                                    <tr>
+                                        <th>Region</th>
+                                        <th>Conditions</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="analysis-block" id="upcoming-section" style="display: none;">
+                        <h4>Upcoming Auction Offerings</h4>
+                        <div class="upcoming-container" id="upcoming-container">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+             <section class="report-section" id="international-section" style="display: none;">
+                <h3>International Summaries</h3>
+                <div id="international-container"></div>
             </section>
 
         </div>
@@ -129,663 +222,753 @@
     <script>
         // --- Configuration ---
         const CHART_COLORS = {
-            // Using distinct colors suitable for both line and bar charts
-            primary: '#1a73e8',
-            secondary: 'rgba(128, 178, 247, 0.9)',
-            accent1: '#fbbc05',
-            accent2: '#34a853',
-            neutral: 'rgba(160, 160, 160, 0.9)',
-            dark: 'rgba(32, 33, 36, 0.9)'
+            primary: 'rgba(26, 115, 232, 0.8)', // Blue
+            secondary: 'rgba(128, 178, 247, 0.8)', // Lighter Blue
+            accent1: 'rgba(251, 188, 4, 0.8)', 
+            accent2: 'rgba(52, 168, 83, 0.8)', 
+            neutral: 'rgba(160, 160, 160, 0.8)'
         };
 
-         const BAR_CHART_OPTIONS = {
+        const PIE_COLORS = [
+            '#1a73e8', '#34a853', '#fbbc05', '#ea4335', '#9b59b6', 
+            '#3498db', '#16a085', '#f39c12', '#d35400', '#7f8c8d'
+        ];
+
+        const CHART_OPTIONS_BAR = {
             responsive: true,
             maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true,
-                    title: { display: true, text: 'Volume (M/Kgs)' }
+                    title: { display: true, text: 'Value' }
                 },
                 x: {
-                    ticks: { autoSkip: false, maxRotation: 45, minRotation: 0 }
+                    ticks: { autoSkip: false, maxRotation: 45, minRotation: 45 }
                 }
             },
-            plugins: { legend: { display: true, position: 'top' } }
+            plugins: { legend: { display: false } }
         };
 
-        // --- Utility Functions (Robust) ---
-        // Robust number formatting
+         const CHART_OPTIONS_PIE = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { 
+                legend: { 
+                    display: true,
+                    position: 'right',
+                } 
+            }
+        };
+
+        // --- Utility Functions ---
         const formatNumber = (num, decimals = 0) => {
-            const parsed = parseFloat(num);
-            if (isNaN(parsed)) return 'N/A';
-            return parsed.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+            if (num === null || num === undefined || isNaN(num)) return 'N/A';
+            return num.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
         };
 
-        // Robust price range formatting
-        const formatPriceRange = (min, max) => {
-             const numMin = parseFloat(min);
-             const numMax = parseFloat(max);
-
-             if (isNaN(numMin) && isNaN(numMax)) return 'N/A';
-             if (isNaN(numMax)) return formatNumber(numMin, 2);
-             if (isNaN(numMin)) return formatNumber(numMax, 2);
-             return `${formatNumber(numMin, 2)} - ${formatNumber(numMax, 2)}`;
+        // Format currency dynamically based on the report's currency
+        const formatCurrency = (num, currency = 'USD') => {
+             if (num === null || num === undefined || isNaN(num)) return 'N/A';
+             // Use 2 decimals for USD/USc, 0 decimals for LKR/INR etc.
+             const decimals = (currency === 'USD' || currency === 'USc') ? 2 : 0;
+             return formatNumber(num, decimals);
         }
 
-        // Robust differential formatting
-        const formatDiff = (num, decimals = 2, forceSign = false) => {
-            const parsed = parseFloat(num);
-            if (isNaN(parsed) || parsed === 0) return `<span class="diff-neutral">-</span>`;
-            
-            const formatted = formatNumber(Math.abs(parsed), decimals);
-            const className = parsed > 0 ? 'diff-positive' : 'diff-negative';
-            const arrow = parsed > 0 ? '▲' : '▼';
-            const sign = forceSign ? (parsed > 0 ? '+' : '-') : '';
-            
-            return `<span class="${className}">${arrow} ${sign}${formatted}</span>`;
+        const formatPriceRange = (min, max, currency = 'USD') => {
+             if ((min === null || min === undefined) && (max === null || max === undefined)) return 'N/A';
+             if (max === null || max === undefined) return formatCurrency(min, currency);
+             if (min === null || min === undefined) return formatCurrency(max, currency);
+             return `${formatCurrency(min, currency)} - ${formatCurrency(max, currency)}`;
         }
 
-        // Robust average calculation
-        const calculateAverage = (min, max) => {
-             const numMin = parseFloat(min);
-             const numMax = parseFloat(max);
-            if (isNaN(numMin) || isNaN(numMax)) return null;
-            return (numMin + numMax) / 2;
+        const formatDiff = (value, decimals = 2, invertColor = false) => {
+            if (value === null || value === undefined || isNaN(value)) return 'N/A';
+            
+            const formatted = formatNumber(value, decimals);
+            let className;
+
+            if (value > 0) {
+                className = invertColor ? 'diff-negative' : 'diff-positive';
+            } else if (value < 0) {
+                className = invertColor ? 'diff-positive' : 'diff-negative';
+            } else {
+                className = ''; 
+            }
+
+            const sign = value > 0 ? '+' : ''; 
+            return `<span class="${className}">${sign}${formatted}</span>`;
         }
-        
-        // Helper to safely get elevation name (handles case differences)
-        const getElevationName = (item) => (item && (item.elevation || item.Elevation)) || 'N/A';
+
+        // Helper to calculate midpoint of a range for price movement calculation
+        const getMidpoint = (min, max) => {
+            if (min === null || min === undefined || max === null || max === undefined) return null;
+            return (min + max) / 2;
+        }
 
 
-        // --- Universal Rendering Functions ---
+        // --- Rendering Functions (Optimized for Consolidated Format) ---
 
-        // 1. Render Synthesized Commentary
-        const renderCommentary = (summary) => {
-            if (summary && typeof summary.commentary_synthesized === 'string') {
-                document.getElementById('commentary-section').style.display = 'block';
-                document.getElementById('synthesized-commentary').textContent = summary.commentary_synthesized;
+        // 1. Overview and Commentary
+        const renderOverview = (summary, meta) => {
+            if (!summary) return;
+            document.getElementById('overview-section').style.display = 'block';
+
+            const statsContainer = document.getElementById('summary-stats');
+            statsContainer.innerHTML = '';
+
+            const stats = [
+                { label: 'Total Offered (kg)', value: summary.total_offered_kg, format: 0 },
+                { label: 'Total Sold (kg)', value: summary.total_sold_kg, format: 0 },
+                { label: 'Offered (Packages)', value: summary.total_offered_packages, format: 0 },
+                { label: 'Total Lots', value: summary.total_lots, format: 0 },
+                { label: 'Unsold (%)', value: summary.percent_unsold, format: 1, suffix: '%' },
+                { label: 'Sold (%)', value: summary.percent_sold, format: 1, suffix: '%' },
+                { label: 'Auction Average Price', value: summary.auction_average_price, prefix: meta.currency + ' '},
+            ];
+
+            stats.forEach(stat => {
+                if (stat.value !== undefined && stat.value !== null) {
+                    const format = stat.format !== undefined ? stat.format : (stat.label.includes('Price') ? (meta.currency === 'USD' || meta.currency === 'USc' ? 2 : 0) : 0);
+                    
+                    const card = document.createElement('div');
+                    card.className = 'stat-card';
+                    card.innerHTML = `
+                        <span class="stat-value">${stat.prefix || ''}${formatNumber(stat.value, format)}${stat.suffix || ''}</span>
+                        <span class="stat-label">${stat.label}</span>
+                    `;
+                    statsContainer.appendChild(card);
+                }
+            });
+
+            document.getElementById('market-comment').textContent = summary.commentary_synthesized || summary.market_comment || 'Commentary not available.';
+
+            if (summary.highest_prices && summary.highest_prices.length > 0) {
+                document.getElementById('highest-prices-wrapper').style.display = 'block';
+                const highestPricesTbody = document.getElementById('highest-prices-table').querySelector('tbody');
+                highestPricesTbody.innerHTML = '';
+                summary.highest_prices.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${formatCurrency(item.price, meta.currency)}</td>
+                        <td>${item.grade}</td>
+                        <td>${item.mark}</td>
+                        <td>${item.country || ''}</td>
+                    `;
+                    highestPricesTbody.appendChild(row);
+                });
             }
         };
 
-        // 2. Render Forecast and Drivers (Universal)
-        const renderUnifiedForecastAndDrivers = (data) => {
-            // Defensively check for existence and array type
-            const forecastData = Array.isArray(data.forecast_analysis) ? data.forecast_analysis : [];
-            const driversData = Array.isArray(data.market_drivers) ? data.market_drivers : [];
-
-            if (forecastData.length === 0 && driversData.length === 0) {
-                return;
-            }
-
-            const section = document.getElementById('drivers-forecast-section');
-            section.style.display = 'block';
-            const container = document.getElementById('drivers-forecast-container');
-            container.innerHTML = '';
-
-            const renderCard = (item) => {
-                if (!item) return;
-
-                const card = document.createElement('div');
-                card.className = 'analysis-card';
-                
-                let sentimentHtml = '';
-                if (item.sentiment) {
-                    let sentimentClass = '';
-                    if (item.sentiment.includes("Bullish")) sentimentClass = 'sentiment-bullish';
-                    if (item.sentiment.includes("Negative") || item.sentiment.includes("Bearish")) sentimentClass = 'sentiment-negative';
-                    sentimentHtml = `<p class="sentiment ${sentimentClass}">${item.sentiment}</p>`;
-                }
-
-                const title = item.driver || item.factor || 'N/A';
-                
-                let analysis = '';
-                if (item.impact) {
-                    // Mombasa style
-                    analysis = `<strong>Impact:</strong> ${item.impact}`;
-                } else {
-                    // Colombo style
-                    if (item.outlook) {
-                        analysis += `<strong>Outlook:</strong> ${item.outlook}<br>`;
-                    }
-                    if (item.analysis) {
-                        analysis += `<strong>Analysis:</strong> ${item.analysis}`;
-                    }
-                }
-
-                card.innerHTML = `
-                    <h4>${title}</h4>
-                    ${sentimentHtml}
-                    <p>${analysis}</p>
-                `;
-                container.appendChild(card);
-            };
-
-            // Render whichever data source is present
-            if (forecastData.length > 0) {
-                forecastData.forEach(renderCard);
-            } else if (driversData.length > 0) {
-                driversData.forEach(renderCard);
-            }
-        };
-
-        // 3. Render Supply & Offerings Analysis (Universal)
-        const renderUnifiedSupplyAnalysis = (data) => {
-            const offeringsData = data.offerings_analysis;
-            const supplyData = data.supply_analysis;
-
-            if (!offeringsData && !supplyData) {
-                return;
-            }
-
-            const section = document.getElementById('supply-offerings-section');
-            section.style.display = 'block';
-            const analysisTextElement = document.getElementById('supply-offerings-analysis-text');
-            analysisTextElement.innerHTML = '';
-
-            let analysisText = '';
-            if (offeringsData && offeringsData.analysis) {
-                analysisText = offeringsData.analysis;
-            } else if (supplyData && supplyData.analysis) {
-                analysisText = supplyData.analysis;
-            }
+        // 2. Volume Analysis (Dynamic Table Rendering - Enhanced with WoW Movement)
+        const renderVolumeAnalysis = (volumeData, meta) => {
+            if (!volumeData) return;
             
-            // Add detailed breakdown if available (Mombasa style)
-            if (supplyData && Array.isArray(supplyData.details) && supplyData.details.length > 0) {
-                analysisText += '<br><br><strong>Details:</strong><ul>';
-                supplyData.details.forEach(detail => {
-                    if (detail) analysisText += `<li>${detail}</li>`;
-                });
-                analysisText += '</ul>';
-            }
-            
-            analysisTextElement.innerHTML = analysisText;
+            // Chart: By Country
+            if (volumeData.by_country && volumeData.by_country.length > 0) {
+                document.getElementById('volume-analysis-section').style.display = 'block';
+                document.getElementById('country-volume-chart-wrapper').style.display = 'block';
+                const ctx = document.getElementById('countryVolumeChart').getContext('2d');
+                const labels = volumeData.by_country.map(item => item.country);
+                const offered = volumeData.by_country.map(item => item.offered_kg);
+                const sold = volumeData.by_country.map(item => item.sold_kg);
 
-            // Render WoW Table if data exists (Standardized style)
-            if (offeringsData && offeringsData.current_week_kg !== undefined) {
-                document.getElementById('offerings-wow-table-container').style.display = 'block';
-                const tableBody = document.querySelector('#offerings-wow-table tbody');
-                tableBody.innerHTML = `
-                    <tr>
-                        <td>Total Quantity (Kg)</td>
-                        <td>${formatNumber(offeringsData.current_week_kg)}</td>
-                        <td>${formatNumber(offeringsData.previous_week_kg)}</td>
-                        <td>${formatDiff(offeringsData.wow_change_kg, 0)} (${formatDiff(offeringsData.wow_change_percent, 2)}%)</td>
-                    </tr>
-                `;
-            }
-        };
-
-        // 4. Render Demand & Price Analysis (Universal)
-        const renderUnifiedDemandAndPriceAnalysis = (data) => {
-            const priceData = data.price_analysis;
-            const demandData = data.demand_analysis;
-
-            if (!priceData && !demandData) {
-                return;
-            }
-
-            const section = document.getElementById('demand-price-section');
-            section.style.display = 'block';
-            const gridContainer = document.getElementById('price-analysis-grid-container');
-            const textContainer = document.getElementById('demand-analysis-text-container');
-            gridContainer.innerHTML = '';
-            textContainer.innerHTML = '';
-
-            // Render Grid-based analysis (Colombo style)
-            if (priceData) {
-                const analysisPoints = [
-                    { title: "High Grown", text: priceData.analysis_high_grown },
-                    { title: "Medium Grown", text: priceData.analysis_medium_grown },
-                    { title: "Low Grown", text: priceData.analysis_low_grown },
-                    { title: "CTC", text: priceData.analysis_ctc }
-                ];
-
-                analysisPoints.forEach(item => {
-                    if (item.text) {
-                        const card = document.createElement('div');
-                        card.className = 'analysis-card';
-                        card.innerHTML = `
-                            <h4>${item.title}</h4>
-                            <p>${item.text}</p>
-                        `;
-                        gridContainer.appendChild(card);
-                    }
-                });
-            }
-
-            // Render Narrative-based analysis (Mombasa style)
-            if (demandData && demandData.analysis) {
-                let analysisText = `<p>${demandData.analysis}</p>`;
-                
-                if (Array.isArray(demandData.details) && demandData.details.length > 0) {
-                    analysisText += '<br><strong>Details:</strong><ul>';
-                    demandData.details.forEach(detail => {
-                         if (detail) analysisText += `<li>${detail}</li>`;
-                    });
-                    analysisText += '</ul>';
-                }
-                textContainer.innerHTML = analysisText;
-            }
-        };
-
-        // 5. Render Visualizations (Line Charts - Mombasa Gold Standard)
-        const renderVisualizations = (vizData) => {
-            // Ensure vizData is a valid array
-            if (!vizData || !Array.isArray(vizData) || vizData.length === 0) {
-                return;
-            }
-
-            const section = document.getElementById('visualizations-section');
-            section.style.display = 'block';
-            const container = document.getElementById('visualizations-container');
-            container.innerHTML = '';
-
-            vizData.forEach((viz, index) => {
-                // Defensive checks for required visualization properties
-                if (!viz || !viz.data || !viz.labels) return;
-
-                const wrapper = document.createElement('div');
-                wrapper.className = 'visualization-block';
-                const canvasId = `vizChart-${index}`;
-                wrapper.innerHTML = `
-                    <h4>${viz.title || 'Visualization'}</h4>
-                    <div class="chart-container-line">
-                        <canvas id="${canvasId}"></canvas>
-                    </div>
-                `;
-                container.appendChild(wrapper);
-
-                const ctx = document.getElementById(canvasId).getContext('2d');
-                
-                const datasets = viz.data.map((series, i) => {
-                    const colors = [CHART_COLORS.primary, CHART_COLORS.accent2, CHART_COLORS.accent1, CHART_COLORS.neutral];
-                    const color = colors[i % colors.length];
-                    return {
-                        label: series.label || 'Series ' + (i+1),
-                        data: series.values || [],
-                        borderColor: color,
-                        backgroundColor: color, // Solid color for points/legend
-                        tension: 0.1,
-                        fill: false
-                    };
-                });
+                const options = JSON.parse(JSON.stringify(CHART_OPTIONS_BAR));
+                options.scales.y.title.text = 'Quantity (kg)';
+                options.plugins.legend.display = true;
 
                 new Chart(ctx, {
-                    type: 'line',
+                    type: 'bar',
                     data: {
-                        labels: viz.labels,
-                        datasets: datasets
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Offered (kg)',
+                                data: offered,
+                                backgroundColor: CHART_COLORS.secondary,
+                            },
+                            {
+                                label: 'Sold (kg)',
+                                data: sold,
+                                backgroundColor: CHART_COLORS.primary,
+                            }
+                        ]
                     },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                position: 'top',
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: false,
-                                title: {
-                                    display: true,
-                                    text: viz.y_axis_label || 'Value'
-                                }
-                            }
+                    options: options
+                });
+            }
+
+            // Table: By Grade/Category Detailed
+            if (volumeData.by_grade_detailed && volumeData.by_grade_detailed.length > 0) {
+                document.getElementById('volume-analysis-section').style.display = 'block';
+                document.getElementById('grade-stats-table-wrapper').style.display = 'block';
+                const data = volumeData.by_grade_detailed;
+                const thead = document.getElementById('grade-stats-table').querySelector('thead');
+                const tbody = document.getElementById('grade-stats-table').querySelector('tbody');
+                tbody.innerHTML = '';
+                thead.innerHTML = '';
+
+                const hasPackages = data.some(item => item.offered_packages !== undefined || item.sold_packages !== undefined || item.packages !== undefined);
+                const hasKg = data.some(item => item.offered_kg !== undefined || item.sold_kg !== undefined || item.quantity_kg !== undefined);
+                const hasLots = data.some(item => item.lots !== undefined);
+                const hasPercent = data.some(item => item.percent_unsold !== undefined);
+                const hasAvgPrice = data.some(item => item.average_price !== undefined);
+                const showSoldPkg = data.some(item => item.sold_packages !== undefined);
+                const hasMovement = data.some(item => item.movement_vs_last_week !== undefined);
+
+                let headerHtml = '<tr><th>Category/Grade</th>';
+                if (hasLots) headerHtml += '<th>Lots</th>';
+                if (hasPackages) {
+                    headerHtml += '<th>Offered (Pkg)</th>';
+                    if (showSoldPkg) {
+                        headerHtml += '<th>Sold (Pkg)</th>';
+                    }
+                }
+                if (hasKg) {
+                     headerHtml += '<th>Quantity (kg)</th>';
+                }
+                if (hasPercent) headerHtml += '<th>Unsold (%)</th>';
+                if (hasAvgPrice) headerHtml += '<th>Avg Price</th>';
+                if (hasMovement) headerHtml += '<th>vs Last Week</th>';
+                headerHtml += '</tr>';
+                thead.innerHTML = headerHtml;
+
+                data.forEach(item => {
+                    let rowHtml = `<tr><td>${item.grade || item.category}</td>`;
+                    
+                    if (hasLots) rowHtml += `<td>${formatNumber(item.lots)}</td>`;
+                    
+                    if (hasPackages) {
+                        const offeredPkg = item.offered_packages !== undefined ? item.offered_packages : item.packages;
+                        rowHtml += `<td>${formatNumber(offeredPkg)}</td>`;
+                        if (showSoldPkg) {
+                             rowHtml += `<td>${formatNumber(item.sold_packages)}</td>`;
                         }
                     }
+                    
+                    if (hasKg) {
+                        const quantity = item.offered_kg !== undefined ? item.offered_kg : item.quantity_kg;
+                        rowHtml += `<td>${formatNumber(quantity)}</td>`;
+                    }
+
+                    if (hasPercent) rowHtml += `<td>${formatNumber(item.percent_unsold, 1)}%</td>`;
+                    if (hasAvgPrice) rowHtml += `<td>${formatCurrency(item.average_price, meta.currency)}</td>`;
+                    
+                    if (hasMovement) {
+                        const decimals = (meta.currency === 'USD' || meta.currency === 'USc') ? 2 : 0;
+                        rowHtml += `<td>${formatDiff(item.movement_vs_last_week, decimals)}</td>`;
+                    }
+
+                    rowHtml += '</tr>';
+                    tbody.innerHTML += rowHtml;
                 });
+            }
+        };
+
+        // 3. Buyer Activity
+        const renderBuyerActivity = (activity) => {
+            if (!activity || activity.length === 0) return;
+            document.getElementById('buyer-activity-section').style.display = 'block';
+
+            const tbody = document.getElementById('buyer-activity-table').querySelector('tbody');
+            tbody.innerHTML = '';
+            const top15 = activity.slice(0, 15); 
+            top15.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.buyer}</td>
+                    <td>${formatNumber(item.volume_kg)}</td>
+                    <td>${formatNumber(item.market_share, 2)}%</td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            const ctx = document.getElementById('buyerChart').getContext('2d');
+            const sortedActivity = [...activity].sort((a, b) => b.market_share - a.market_share);
+            
+            const primaryActivity = sortedActivity.filter(item => !item.buyer.toLowerCase().includes("others (local/misc)") && !item.buyer.toLowerCase().includes("others (calculated)"));
+            
+            const top9 = primaryActivity.slice(0, 9);
+            const others = primaryActivity.slice(9);
+            
+            const chartData = [...top9];
+            if (others.length > 0) {
+                const othersTotal = others.reduce((sum, item) => sum + item.market_share, 0);
+                if (othersTotal > 0.1) {
+                    chartData.push({ buyer: 'Others (Calculated)', market_share: othersTotal });
+                }
+            }
+
+            const labels = chartData.map(item => item.buyer);
+            const values = chartData.map(item => item.market_share);
+
+            const options = JSON.parse(JSON.stringify(CHART_OPTIONS_PIE));
+
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Market Share (%)',
+                        data: values,
+                        backgroundColor: PIE_COLORS,
+                    }]
+                },
+                options: options
+            });
+        };
+
+        // 4. Comparative Analysis
+        const renderComparativeAnalysis = (comparison, meta) => {
+            if (!comparison) return;
+            
+            const currentYear = meta.year;
+            const prevYear = currentYear - 1;
+            const currencyDecimals = (meta.currency === 'USD' || meta.currency === 'USc') ? 2 : 0;
+
+            if (comparison.country_averages_yoy && comparison.country_averages_yoy.length > 0) {
+                document.getElementById('comparative-analysis-section').style.display = 'block';
+                document.getElementById('country-comparison-wrapper').style.display = 'block';
+
+                document.getElementById('header-current-year-sale').textContent = currentYear;
+                document.getElementById('header-prev-year-sale').textContent = prevYear;
+                document.getElementById('header-current-year-ytd').textContent = currentYear;
+                document.getElementById('header-prev-year-ytd').textContent = prevYear;
+
+                const tbody = document.getElementById('country-comparison-table').querySelector('tbody');
+                tbody.innerHTML = '';
+                comparison.country_averages_yoy.forEach(item => {
+                    const row = document.createElement('tr');
+                    const avgCurrent = item[`avg_${currentYear}`];
+                    const avgPrev = item[`avg_${prevYear}`];
+                    const ytdCurrent = item[`ytd_${currentYear}`];
+                    const ytdPrev = item[`ytd_${prevYear}`];
+
+                    const diffSale = (avgCurrent !== undefined && avgPrev !== undefined) ? avgCurrent - avgPrev : null;
+                    const diffYtd = (ytdCurrent !== undefined && ytdPrev !== undefined) ? ytdCurrent - ytdPrev : null;
+
+                    row.innerHTML = `
+                        <td>${item.country}</td>
+                        <td>${formatCurrency(avgCurrent, meta.currency)}</td>
+                        <td>${formatCurrency(avgPrev, meta.currency)}</td>
+                        <td>${formatDiff(diffSale, currencyDecimals)}</td>
+                        <td>${formatCurrency(ytdCurrent, meta.currency)}</td>
+                        <td>${formatCurrency(ytdPrev, meta.currency)}</td>
+                        <td>${formatDiff(diffYtd, currencyDecimals)}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            }
+
+            if (comparison.auction_average_yoy) {
+                document.getElementById('comparative-analysis-section').style.display = 'block';
+                const avg = comparison.auction_average_yoy;
+                const avgCurrent = avg[`avg_${currentYear}`];
+                const avgPrev = avg[`avg_${prevYear}`];
+                const ytdCurrent = avg[`ytd_${currentYear}`];
+                const ytdPrev = avg[`ytd_${prevYear}`];
+
+                if (comparison.country_averages_yoy && comparison.country_averages_yoy.length > 0) {
+                    const tfoot = document.getElementById('country-comparison-table').querySelector('tfoot');
+                    
+                    const diffSale = (avgCurrent !== undefined && avgPrev !== undefined) ? avgCurrent - avgPrev : null;
+                    const diffYtd = (ytdCurrent !== undefined && ytdPrev !== undefined) ? ytdCurrent - ytdPrev : null;
+
+                    tfoot.innerHTML = `
+                        <tr style="font-weight: bold; background-color: #f1f3f4;">
+                            <td>AUCTION AVERAGE</td>
+                            <td>${formatCurrency(avgCurrent, meta.currency)}</td>
+                            <td>${formatCurrency(avgPrev, meta.currency)}</td>
+                            <td>${formatDiff(diffSale, currencyDecimals)}</td>
+                            <td>${formatCurrency(ytdCurrent, meta.currency)}</td>
+                            <td>${formatCurrency(ytdPrev, meta.currency)}</td>
+                            <td>${formatDiff(diffYtd, currencyDecimals)}</td>
+                        </tr>
+                    `;
+                }
+
+                document.getElementById('auction-avg-chart-wrapper').style.display = 'block';
+                const ctx = document.getElementById('auctionAvgChart').getContext('2d');
+                
+                const labels = ['Current Sale', 'Year-to-Date'];
+                const currentYearData = [avgCurrent, ytdCurrent].filter(v => v !== undefined);
+                const prevYearData = [avgPrev, ytdPrev].filter(v => v !== undefined);
+
+                const chartLabels = currentYearData.length === 2 ? labels : ['Current Sale'];
+
+                const options = JSON.parse(JSON.stringify(CHART_OPTIONS_BAR));
+                options.scales.y.title.text = `Price (${meta.currency})`;
+                options.plugins.legend.display = true;
+
+                 new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: chartLabels,
+                        datasets: [
+                            {
+                                label: prevYear,
+                                data: prevYearData,
+                                backgroundColor: CHART_COLORS.secondary,
+                            },
+                            {
+                                label: currentYear,
+                                data: currentYearData,
+                                backgroundColor: CHART_COLORS.primary,
+                            }
+                        ]
+                    },
+                    options: options
+                });
+            }
+
+
+            if (comparison.generic_tables && comparison.generic_tables.length > 0) {
+                document.getElementById('comparative-analysis-section').style.display = 'block';
+                document.getElementById('generic-comparison-wrapper').style.display = 'block';
+                const container = document.getElementById('generic-comparison-container');
+                container.innerHTML = ''; 
+
+                comparison.generic_tables.forEach(tableData => {
+                    const wrapper = document.createElement('div');
+                    wrapper.style.marginBottom = '24px';
+                    wrapper.innerHTML = `<h4>${tableData.title}</h4>`;
+
+                    const tableContainer = document.createElement('div');
+                    tableContainer.className = 'data-table-container';
+                    const table = document.createElement('table');
+                    table.className = 'data-table stats-table';
+
+                    let headerHtml = '<thead>';
+                    tableData.headers.forEach(headerRow => {
+                        headerHtml += '<tr>';
+                        headerRow.forEach(cell => {
+                            headerHtml += `<th rowspan="${cell.rowspan || 1}" colspan="${cell.colspan || 1}" class="${cell.class || ''}">${cell.label}</th>`;
+                        });
+                        headerHtml += '</tr>';
+                    });
+                    headerHtml += '</thead>';
+                    table.innerHTML = headerHtml;
+
+                    const tbody = document.createElement('tbody');
+                    tableData.rows.forEach(rowData => {
+                        const row = document.createElement('tr');
+                        if (rowData.is_total) {
+                             row.style.fontWeight = 'bold';
+                             row.style.backgroundColor = '#f8f9fa'; 
+                        }
+
+                        tableData.data_keys.forEach(keyInfo => {
+                            const value = rowData[keyInfo.key];
+                            let displayValue = value;
+
+                            if (keyInfo.format === 'currency') {
+                                displayValue = formatCurrency(value, meta.currency);
+                            } else if (keyInfo.format === 'number') {
+                                displayValue = formatNumber(value, keyInfo.decimals || 0);
+                            } else if (keyInfo.format === 'diff') {
+                                 const decimals = keyInfo.decimals !== undefined ? keyInfo.decimals : currencyDecimals;
+                                 displayValue = formatDiff(value, decimals);
+                            }
+                            row.innerHTML += `<td>${displayValue}</td>`;
+                        });
+                        tbody.appendChild(row);
+                    });
+
+                    table.appendChild(tbody);
+                    tableContainer.appendChild(table);
+                    wrapper.appendChild(tableContainer);
+                    container.appendChild(wrapper);
+                });
+            }
+        };
+
+        // 5. Factory Performance
+        const renderFactoryPerformance = (performance, meta) => {
+            if (!performance || performance.length === 0) return;
+            document.getElementById('factory-performance-section').style.display = 'block';
+
+            const tbody = document.getElementById('factory-performance-table').querySelector('tbody');
+            tbody.innerHTML = '';
+
+            const top50 = performance.slice(0, 50);
+
+            top50.forEach((item, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${item.mark}</td>
+                    <td>${item.country}</td>
+                    <td>${formatCurrency(item.average_price, meta.currency)}</td>
+                    <td>${item.top_grade}</td>
+                    <td>${formatCurrency(item.top_price, meta.currency)}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        };
+
+        // 6. Price Quotations
+         const renderPriceQuotations = (quotations, currency) => {
+            if (!quotations || quotations.length === 0) return;
+
+            document.getElementById('price-quotations-section').style.display = 'block';
+            document.getElementById('price-quotations-title').textContent = `Price Quotations & Movement (${currency}/kg)`;
+
+            const table = document.getElementById('price-quotations-table');
+            const thead = table.querySelector('thead');
+            const tbody = table.querySelector('tbody');
+            tbody.innerHTML = '';
+            thead.innerHTML = '';
+
+            const hasElevation = quotations.some(item => item.elevation !== undefined);
+            const hasCategory = quotations.some(item => item.category !== undefined);
+            const hasPrevious = quotations.some(item => item.previous_min !== undefined && item.previous_max !== undefined);
+            
+            let headerHtml = '<tr>';
+            if (hasElevation) headerHtml += '<th>Elevation</th>';
+            if (hasCategory) headerHtml += '<th>Category/Region</th>';
+            headerHtml += '<th>Grade</th><th>Current (Low-High)</th>';
+            if (hasPrevious) {
+                headerHtml += '<th>Previous (Low-High)</th>';
+                headerHtml += '<th>Movement</th>'; 
+            }
+            headerHtml += '</tr>';
+            thead.innerHTML = headerHtml;
+
+            quotations.forEach(item => {
+                let rowHtml = '<tr>';
+                if (hasElevation) rowHtml += `<td>${item.elevation}</td>`;
+                if (hasCategory) rowHtml += `<td>${item.category}</td>`;
+                rowHtml += `<td>${item.grade}</td><td>${formatPriceRange(item.current_min, item.current_max, currency)}</td>`;
+                
+                if (hasPrevious) {
+                    rowHtml += `<td>${formatPriceRange(item.previous_min, item.previous_max, currency)}</td>`;
+                    
+                    const currentMid = getMidpoint(item.current_min, item.current_max);
+                    const previousMid = getMidpoint(item.previous_min, item.previous_max);
+                    let movementHtml = 'N/A';
+
+                    if (currentMid !== null && previousMid !== null) {
+                        const diff = currentMid - previousMid;
+                        const decimals = (currency === 'USD' || currency === 'USc') ? 2 : 0;
+                        movementHtml = formatDiff(diff, decimals);
+                    }
+                    rowHtml += `<td>${movementHtml}</td>`;
+                }
+                
+                rowHtml += '</tr>';
+                tbody.innerHTML += rowHtml;
+            });
+        };
+
+        // 7. Forecast Analysis
+        const renderForecastAnalysis = (forecast) => {
+            if (!forecast || forecast.length === 0) return;
+            document.getElementById('forecast-section').style.display = 'block';
+            const container = document.getElementById('forecast-container');
+            container.innerHTML = '';
+
+            forecast.forEach(item => {
+                const block = document.createElement('div');
+                block.className = 'forecast-block';
+
+                let sentimentClass = '';
+                if (item.sentiment === 'Positive') sentimentClass = 'sentiment-positive';
+                else if (item.sentiment === 'Negative') sentimentClass = 'sentiment-negative';
+                else if (item.sentiment === 'Neutral') sentimentClass = 'sentiment-neutral';
+
+                block.innerHTML = `
+                    <h4>${item.factor}</h4>
+                    <p><strong class="${sentimentClass}">Outlook: ${item.outlook}</strong></p>
+                    <p>${item.analysis}</p>
+                `;
+                container.appendChild(block);
             });
         };
 
 
-        // 6. Render Production Analysis (Summary Table)
-        const renderProductionAnalysis = (prodData) => {
-            if (!prodData || !prodData.analysis) {
-                return;
-            }
+        // 8. Weather and Upcoming Offerings
+        const renderForwardLook = (weather, upcoming) => {
             
-            document.getElementById('production-analysis-section').style.display = 'block';
+            const weatherExists = weather && weather.length > 0;
+            const upcomingExists = upcoming && Object.keys(upcoming).length > 0;
 
-            // Text Analysis
-            document.getElementById('production-analysis-text').textContent = prodData.analysis;
+            if (!weatherExists && !upcomingExists) return;
+            document.getElementById('forward-look-section').style.display = 'block';
 
-            // Table
-            const tableBody = document.querySelector('#production-table tbody');
-            // Clear previous content defensively
-            tableBody.innerHTML = ''; 
+            if (weatherExists) {
+                document.getElementById('weather-section').style.display = 'block';
+                const tbody = document.getElementById('weather-table').querySelector('tbody');
+                tbody.innerHTML = '';
 
-            if (prodData.monthly_total !== undefined) {
-                tableBody.innerHTML += `
-                    <tr>
-                        <td>${prodData.monthly_period || 'Monthly'}</td>
-                        <td>${formatNumber(prodData.monthly_total, 2)}</td>
-                        <td>${formatDiff(prodData.yoy_monthly_change, 2)}</td>
-                    </tr>`;
-            }
-             if (prodData.cumulative_total !== undefined) {
-                tableBody.innerHTML += `
-                     <tr>
-                        <td>${prodData.cumulative_period || 'Cumulative'}</td>
-                        <td>${formatNumber(prodData.cumulative_total, 2)}</td>
-                        <td>${formatDiff(prodData.yoy_cumulative_change, 2)}</td>
-                    </tr>
-                `;
-            }
-        };
-
-        // 7. Render Detailed Statistical Summaries (Enhanced with Bar Charts)
-        const renderStatisticalSummaries = (stats, meta) => {
-            if (!stats || typeof stats !== 'object') return;
-
-            const section = document.getElementById('statistical-summaries-section');
-            const container = document.getElementById('statistical-summaries-container');
-            container.innerHTML = '';
-            
-            let renderedStats = false;
-
-            // 7.1 Elevation Averages
-            if (stats.elevation_averages && Array.isArray(stats.elevation_averages.data)) {
-                // (Table rendering logic omitted for brevity - see full code)
-                // ... renders table ...
-                renderedStats = true;
+                weather.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${item.region}</td>
+                        <td>${item.conditions}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
             }
 
-            // 7.2 Quantity Sold Comparison
-            if (stats.quantity_sold_comparison && Array.isArray(stats.quantity_sold_comparison.data)) {
-                 // (Table rendering logic omitted for brevity - see full code)
-                // ... renders table ...
-                renderedStats = true;
-            }
-            
-            // 7.3 Production Statistics (Enhanced with Bar Charts)
-             if (stats.production_statistics) {
-                const prodStats = stats.production_statistics;
+            if (upcomingExists) {
+                document.getElementById('upcoming-section').style.display = 'block';
+                const container = document.getElementById('upcoming-container');
+                container.innerHTML = '';
 
-                // Function to render both Table and Bar Chart
-                const renderProdBlock = (dataObj, titlePrefix, blockId) => {
-                    if (!dataObj || !Array.isArray(dataObj.data) || dataObj.data.length === 0) return;
-                    
-                    const data = dataObj.data;
-                    const title = `${titlePrefix} (${dataObj.period})`;
+                for (const saleKey in upcoming) {
+                    const saleData = upcoming[saleKey];
+                    const saleNumber = saleKey.replace('sale_', '');
 
-                    const wrapper = document.createElement('div');
-                    // Use analysis-layout for side-by-side table and chart (requires corresponding CSS in style.css)
-                    wrapper.className = 'stat-summary-block analysis-layout';
-                    wrapper.innerHTML = `<h4 style="flex-basis: 100%;">${title}</h4>`;
+                    const block = document.createElement('div');
+                    block.className = 'upcoming-block';
 
-                    // --- Table Rendering ---
-                    const tableContainer = document.createElement('div');
-                    tableContainer.className = 'data-table-container';
-                    tableContainer.style.flex = '1'; // Allow table to grow
-                    const table = document.createElement('table');
-                    table.className = 'data-table stats-table';
+                    let html = `<h4>Sale ${saleNumber} (${saleData.date})</h4>`;
 
-                    // Dynamically identify years
-                    const years = Object.keys(data[0]).filter(k => k !== 'elevation' && k !== 'Elevation').sort((a, b) => b - a);
-                    
-                    let headerHtml = `<thead><tr><th>Elevation</th>`;
-                    years.forEach(year => headerHtml += `<th>${year}</th>`);
-                    if (years.length > 1) {
-                        headerHtml += `<th>YoY Change</th>`;
+                    const metric = saleData.total_packages ? 'Packages' : (saleData.total_m_kgs ? 'M/Kgs' : '');
+                    const value = saleData.total_packages || saleData.total_m_kgs;
+
+                    if (metric && value) {
+                         html += `<p><strong>Total Estimated: ${formatNumber(value, metric === 'M/Kgs' ? 2 : 0)} ${metric}</strong></p>`;
                     }
-                    headerHtml += `</tr></thead><tbody></tbody>`;
-                    table.innerHTML = headerHtml;
-
-                    const tbody = table.querySelector('tbody');
-                    data.forEach(item => {
-                        const elevationName = getElevationName(item);
-                        let rowHtml = `<tr ${elevationName === 'TOTAL' ? 'class="total-row"' : ''}><td>${elevationName}</td>`;
-                        years.forEach(year => {
-                            rowHtml += `<td>${formatNumber(item[year], 2)}</td>`;
+                    
+                    
+                    if (saleData.by_country && saleData.by_country.length > 0) {
+                         html += `<div class="data-table-container"><table class="data-table compact-table">
+                                <thead><tr><th>Country</th><th>Packages</th></tr></thead><tbody>`;
+                        
+                        saleData.by_country.forEach(item => {
+                            html += `<tr><td>${item.country}</td><td>${formatNumber(item.packages)}</td></tr>`;
                         });
+
+                        html += `</tbody></table></div>`;
+                    }
+                    else if (saleData.by_elevation && saleData.by_elevation.length > 0) {
+                        html += `<div class="data-table-container"><table class="data-table compact-table">
+                                <thead><tr><th>Elevation</th><th>M/Kgs</th></tr></thead><tbody>`;
                         
-                        if (years.length > 1) {
-                            const currentVal = item[years[0]];
-                            const previousVal = item[years[1]];
-                            const yoyChange = (currentVal !== undefined && previousVal !== undefined) ? (currentVal - previousVal) : null;
-                            rowHtml += `<td>${formatDiff(yoyChange, 2)}</td>`;
-                        }
-                        
-                        rowHtml += `</tr>`;
-                        tbody.innerHTML += rowHtml;
-                    });
-                    
-                    tableContainer.appendChild(table);
-                    wrapper.appendChild(tableContainer);
+                        saleData.by_elevation.forEach(item => {
+                            html += `<tr><td>${item.elevation}</td><td>${formatNumber(item.m_kgs, 2)}</td></tr>`;
+                        });
 
-                    // --- Bar Chart Rendering (ENHANCEMENT) ---
-                    const chartWrapper = document.createElement('div');
-                    // Use standard chart container styling
-                    chartWrapper.className = 'chart-container-bar'; 
-                    chartWrapper.style.flex = '1'; // Allow chart to grow
-                    const canvasId = `chart-prod-${blockId}`;
-                    chartWrapper.innerHTML = `<canvas id="${canvasId}"></canvas>`;
-                    wrapper.appendChild(chartWrapper);
+                        html += `</tbody></table></div>`;
+                    }
 
-                    container.appendChild(wrapper);
-                    renderedStats = true;
-
-                    // Generate Chart Data
-                    const ctx = document.getElementById(canvasId).getContext('2d');
-                    // Exclude Total row for visualization
-                    const chartData = data.filter(item => getElevationName(item) !== 'TOTAL');
-                    const labels = chartData.map(item => getElevationName(item));
-                    
-                    const datasets = years.map((year, index) => {
-                        const colorMap = [CHART_COLORS.primary, CHART_COLORS.secondary, CHART_COLORS.neutral];
-                        const color = colorMap[index] || CHART_COLORS.dark;
-                        return {
-                            label: year,
-                            data: chartData.map(item => item[year]),
-                            backgroundColor: color
-                        };
-                    });
-
-                    // Use the predefined options
-                    const options = JSON.parse(JSON.stringify(BAR_CHART_OPTIONS));
-                    
-                    new Chart(ctx, {
-                        type: 'bar',
-                        data: { labels: labels, datasets: datasets },
-                        options: options
-                    });
-                };
-
-                // Render description if present
-                if (prodStats.description && (prodStats.monthly || prodStats.cumulative)) {
-                    const desc = document.createElement('p');
-                    desc.textContent = prodStats.description;
-                    container.appendChild(desc);
-                    // renderedStats=true will be set by the render function below
+                    block.innerHTML = html;
+                    container.appendChild(block);
                 }
-                
-                renderProdBlock(prodStats.monthly, "Monthly Production (M/Kgs)", "monthly");
-                renderProdBlock(prodStats.cumulative, "Cumulative Production (M/Kgs)", "cumulative");
-            }
-
-            if (renderedStats) {
-                section.style.display = 'block';
             }
         };
 
+         // 9. International Summaries
+        const renderInternationalSummaries = (summaries) => {
+             const section = document.getElementById('international-section');
+             const container = document.getElementById('international-container');
 
-        // 8. Render Price Quotations (Universal and Stable)
-        const renderPriceQuotations = (quotations, currency) => {
-            // Defensive check for input validity
-            if (!quotations || !Array.isArray(quotations) || quotations.length === 0) return;
-
-            const section = document.getElementById('prices-section');
-            const container = document.getElementById('prices-container');
-            container.innerHTML = '';
-            document.getElementById('price-quotations-title').textContent = `Price Quotations (${currency}/kg)`;
+            if (!summaries || summaries.length === 0) return;
+            
             section.style.display = 'block';
+            container.innerHTML = '';
 
-            // Check structure: Structured data (Mombasa) vs Flat array (Colombo).
-            // Added extra check to ensure quotations[0] is an object and not null
-            if (typeof quotations[0] === 'object' && quotations[0] !== null && quotations[0].structured_data) {
-                // Mombasa/Structured CTC Rendering (Restored functionality)
-                quotations.forEach(auction => {
-                    const data = auction.structured_data;
-                    if (!data) return;
+             summaries.forEach(summary => {
+                    const summaryDiv = document.createElement('div');
+                    summaryDiv.className = 'international-summary-item';
 
-                    const renderGradeTable = (grades, title) => {
-                        if (!grades || !Array.isArray(grades) || grades.length === 0) return;
-
-                        const wrapper = document.createElement('div');
-                        wrapper.className = 'stat-summary-block';
-                        wrapper.innerHTML = `<h4>${title}</h4>`;
-
-                        const table = document.createElement('table');
-                        table.className = 'data-table';
-                        table.innerHTML = `<thead><tr><th>Category</th><th>Grade</th><th>Low</th><th>High</th></tr></thead><tbody></tbody>`;
-                        
-                        const tbody = table.querySelector('tbody');
-                        grades.forEach(item => {
-                            tbody.innerHTML += `
-                                <tr>
-                                    <td>${item.category || ''}</td>
-                                    <td>${item.grade || ''}</td>
-                                    <td>${formatNumber(item.low, 2)}</td>
-                                    <td>${formatNumber(item.high, 2)}</td>
-                                </tr>
-                            `;
-                        });
-                        wrapper.appendChild(table);
-                        container.appendChild(wrapper);
-                    };
-
-                    renderGradeTable(data.ctc_leaf_grades, "CTC Leaf Grades");
-                    renderGradeTable(data.ctc_dust_grades, "CTC Dust Grades");
-                });
-
-            } else {
-                // Colombo/Simple Range Rendering (Maintained functionality)
-                const table = document.createElement('table');
-                table.className = 'data-table';
-                const thead = document.createElement('thead');
-                const tbody = document.createElement('tbody');
-                
-                const hasElevation = quotations.some(item => item && item.elevation !== undefined);
-                const hasCategory = quotations.some(item => item && item.category !== undefined);
-                const hasPrevious = quotations.some(item => item && (item.previous_min !== undefined || item.previous_max !== undefined));
-                
-                let headerHtml = '<tr>';
-                if (hasElevation) headerHtml += '<th>Elevation</th>';
-                if (hasCategory) headerHtml += '<th>Category/Region</th>';
-                headerHtml += '<th>Grade</th><th>Current Range</th>';
-                
-                if (hasPrevious) {
-                    headerHtml += '<th>Previous Range</th><th style="text-align: center;">WoW Change (Avg)</th>';
-                }
-                headerHtml += '</tr>';
-                thead.innerHTML = headerHtml;
-
-                quotations.forEach(item => {
-                    if (!item) return; // Skip null items defensively
-
-                    let rowHtml = '<tr>';
-                    if (hasElevation) rowHtml += `<td>${item.elevation || ''}</td>`;
-                    if (hasCategory) rowHtml += `<td>${item.category || ''}</td>`;
-                    rowHtml += `<td>${item.grade || ''}</td><td>${formatPriceRange(item.current_min, item.current_max)}</td>`;
+                    let contentHtml = `<h4>${summary.centre} (Sale ${summary.sale_no || 'N/A'})</h4>
+                                       <p style="font-size: 13px; color: #5f6368;">${summary.date || ''}</p>
+                                       <p>${summary.summary || 'Summary not available.'}</p>`;
                     
-                    if (hasPrevious) {
-                        rowHtml += `<td>${formatPriceRange(item.previous_min, item.previous_max)}</td>`;
+                    if (summary.structured_data && summary.structured_data.currency) {
+                        contentHtml += `<p><strong>Quotations (${summary.structured_data.currency}):</strong></p>`;
                         
-                        const currentAvg = calculateAverage(item.current_min, item.current_max);
-                        const previousAvg = calculateAverage(item.previous_min, item.previous_max);
-                        
-                        let diffHtml = '<td style="text-align: center;">N/A</td>';
-                        if (currentAvg !== null && previousAvg !== null) {
-                            const diff = currentAvg - previousAvg;
-                            diffHtml = `<td style="text-align: center;">${formatDiff(diff)}</td>`;
-                        }
-                        rowHtml += diffHtml;
-                    }
-                    rowHtml += '</tr>';
-                    tbody.innerHTML += rowHtml;
-                });
+                        const renderTable = (grades, title) => {
+                            if (!grades || grades.length === 0) return '';
+                            let tableHtml = `<div class="data-table-container" style="margin-bottom: 16px; max-width: 500px;">
+                                             <p style="font-weight: 500; margin-bottom: 8px;">${title}</p>
+                                             <table class="data-table">
+                                             <thead><tr><th>Category</th><th>Grade</th><th>Low</th><th>High</th></tr></thead><tbody>`;
+                            grades.forEach(grade => {
+                                tableHtml += `<tr>
+                                                <td>${grade.category}</td>
+                                                <td>${grade.grade}</td>
+                                                <td>${formatNumber(grade.low, 2)}</td>
+                                                <td>${formatNumber(grade.high, 2)}</td>
+                                              </tr>`;
+                            });
+                            tableHtml += `</tbody></table></div>`;
+                            return tableHtml;
+                        };
 
-                table.appendChild(thead);
-                table.appendChild(tbody);
-                container.appendChild(table);
-            }
+                        contentHtml += renderTable(summary.structured_data.ctc_leaf_grades, "CTC Leaf");
+                        contentHtml += renderTable(summary.structured_data.ctc_dust_grades, "CTC Dust");
+                    }
+
+                    summaryDiv.innerHTML = contentHtml;
+                    container.appendChild(summaryDiv);
+                });
         };
+
 
         // Main Report Rendering Logic (Orchestration)
         const renderReport = (data) => {
-            if (!data || !data.metadata) {
-                console.error("Invalid report data structure.");
-                return;
-            }
             const meta = data.metadata;
 
-            // 0. Metadata and Title
-            const titlePrefix = meta.report_title || `${meta.auction_centre || meta.region || ''} Consolidated Report`;
-            document.getElementById('report-title').textContent = `${titlePrefix} - Week ${meta.week_number} (${meta.year})`;
+            // 1. Metadata and Title
+            const titlePrefix = meta.report_title || `${meta.auction_centre} Consolidated Auction Report`;
+            const weekOrSale = meta.sale_number ? `Sale ${meta.sale_number}` : (meta.week_number ? `Week ${meta.week_number}` : '');
             
-            // Handle data sources flexibly and defensively
-            let dataSourceText = 'N/A';
-            if (Array.isArray(meta.data_sources) && meta.data_sources.length > 0) {
-                dataSourceText = meta.data_sources.join(', ');
-            } else if (meta.broker) {
-                dataSourceText = meta.broker;
-            }
-
-            let metaText = `Data Sources: ${dataSourceText}`;
-            if (meta.sale_number) metaText += ` | Sale No: ${meta.sale_number}`;
+            document.getElementById('report-title').textContent = `${titlePrefix} - ${weekOrSale} (${meta.year})`;
+            
+            let metaText = `Week: ${meta.week_number || 'N/A'}`;
             
             const startDate = meta.sale_date_start;
             const endDate = meta.sale_date_end;
-
             if (startDate && endDate && startDate !== endDate) {
                 metaText += ` | Dates: ${startDate} to ${endDate}`;
             } else if (endDate) {
                  metaText += ` | Date: ${endDate}`;
             }
+
+            if (meta.prompt_date) {
+                metaText += ` | Prompt Date: ${meta.prompt_date}`;
+            }
+            metaText += ` | Currency: ${meta.currency}`;
+            
+            if (meta.exchange_rate_note) {
+                metaText += ` | Exchange: ${meta.exchange_rate_note}`;
+            }
+
             document.getElementById('report-meta').textContent = metaText;
 
-            // Render Sections (following the standardized order)
-            try {
-                renderCommentary(data.summary);
-                renderUnifiedForecastAndDrivers(data);
-                renderUnifiedSupplyAnalysis(data);
-                renderUnifiedDemandAndPriceAnalysis(data);
-                renderVisualizations(data.visualizations); // Handles Mombasa Line Charts
-                renderProductionAnalysis(data.production_analysis);
-                renderStatisticalSummaries(data.statistical_summaries, meta); // Handles Tables and Colombo Bar Charts
-                
-                // Use 'international_summaries' for Mombasa structure if 'price_quotations' is absent
-                const priceData = data.price_quotations || data.international_summaries;
-                renderPriceQuotations(priceData, meta.currency);
-
-            } catch (error) {
-                console.error("Error during report rendering:", error);
-                alert("An error occurred while rendering the report sections. Some visualizations may be incomplete.");
-            }
+            // 2. Render Sections
+            renderOverview(data.summary, meta);
+            renderVolumeAnalysis(data.volume_analysis, meta);
+            renderBuyerActivity(data.buyer_activity);
+            renderComparativeAnalysis(data.comparative_analysis, meta);
+            renderFactoryPerformance(data.factory_performance, meta);
+            renderPriceQuotations(data.price_quotations, meta.currency);
+            renderForecastAnalysis(data.forecast_analysis); 
+            renderForwardLook(data.weather_analysis, data.upcoming_offerings);
+            renderInternationalSummaries(data.international_summaries);
         };
 
         // --- Data Loading ---
         document.addEventListener('DOMContentLoaded', async () => {
-            // Initialize mobile menu toggle (from script.js)
+            // Initialize mobile menu toggle
              if (typeof initializeMobileMenu === 'function') {
                 initializeMobileMenu();
             }
             
             const params = new URLSearchParams(window.location.search);
-            const datasetFile = params.get('dataset');
-            
+            let datasetFile = params.get('dataset');
+
             if (!datasetFile) {
                 document.getElementById('report-title').textContent = 'Error: No report selected.';
                 document.getElementById('loading-indicator').style.display = 'none';
                 return;
             }
-
-            // Ensure correct directory pathing
-            const directory = datasetFile.includes("Consolidated") ? "Data/Consolidated/" : "Data/Market_Reports/";
-
+            
             try {
-                const response = await fetch(`${directory}${datasetFile}.json`);
+                // Fetch data from the Consolidated directory structure
+                const response = await fetch(`Data/Consolidated/${datasetFile}.json`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -798,9 +981,9 @@
                 document.getElementById('report-content').style.display = 'block';
 
             } catch (error) {
-                console.error('Error fetching report data:', error);
+                console.error('Error fetching consolidated report data:', error);
                 document.getElementById('report-title').textContent = 'Error loading report.';
-                document.getElementById('loading-indicator').textContent = `Could not load the dataset: ${directory}${datasetFile}.json. Error: ${error.message}`;
+                document.getElementById('loading-indicator').textContent = `Could not load the dataset: ${datasetFile}.json. Error: ${error.message}`;
             }
         });
     </script>
