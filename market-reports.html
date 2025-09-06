@@ -67,41 +67,53 @@
 
     <script src="script.js"></script>
     <script>
-        let allReports = [];
+        let allReports = []; // This will hold our final, flat list of reports
 
         document.addEventListener('DOMContentLoaded', () => {
-            // CRITICAL FIX: Initialize mobile menu safely
-            // This check prevents the page from crashing if script.js is missing or empty.
             if (typeof initializeMobileMenu === 'function') {
                 initializeMobileMenu();
             } else {
                 console.error("Global script.js not loaded or initializeMobileMenu not defined.");
             }
 
-            fetchAndRenderReports();
+            fetchAndProcessReports(); // Changed function name for clarity
             
-            // Add event listeners for filters and search
-            document.getElementById('filter-year').addEventListener('change', filterReports);
-            document.getElementById('filter-centre').addEventListener('change', filterReports);
-            document.getElementById('filter-source').addEventListener('change', filterReports);
-            // Use 'input' for live search
-            document.getElementById('search-reports').addEventListener('input', filterReports);
+            document.getElementById('filter-year').addEventListener('change', filterAndRenderReports);
+            document.getElementById('filter-centre').addEventListener('change', filterAndRenderReports);
+            document.getElementById('filter-source').addEventListener('change', filterAndRenderReports);
+            document.getElementById('search-reports').addEventListener('input', filterAndRenderReports);
         });
 
-        async function fetchAndRenderReports() {
+        async function fetchAndProcessReports() {
             try {
                 const response = await fetch('market-reports-library.json');
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                allReports = await response.json();
+                const data = await response.json(); // This is our OBJECT from the library file
                 
-                // Sort reports: Newest first (by Year, then Week Number)
+                // --- THIS IS THE NEW LOGIC ---
+                const flatReportList = [];
+                for (const location in data) {
+                    for (const reportTitle in data[location]) {
+                        const report = data[location][reportTitle];
+                        // This ensures the final object has a title and location for sorting/display
+                        // which is crucial for data coming from the migrate.py script.
+                        report.title = report.title || reportTitle;
+                        report.location = report.location || location;
+                        report.auction_centre = report.auction_centre || location;
+                        flatReportList.push(report);
+                    }
+                }
+                // --- END OF NEW LOGIC ---
+                
+                allReports = flatReportList; // Store the processed list in our global variable
+                
+                // Now we can sort, because 'allReports' is an Array
                 allReports.sort((a, b) => {
                     if (b.year !== a.year) {
                         return b.year - a.year;
                     }
-                    // Handle cases where week_number might be missing or non-numeric (e.g., Monthly reports)
                     const weekA = parseInt(a.week_number) || 0;
                     const weekB = parseInt(b.week_number) || 0;
                     return weekB - weekA;
@@ -142,22 +154,20 @@
             });
         }
 
-        function filterReports() {
+        function filterAndRenderReports() { // Renamed for clarity
             const selectedYear = document.getElementById('filter-year').value;
             const selectedCentre = document.getElementById('filter-centre').value;
             const selectedSource = document.getElementById('filter-source').value;
             const searchTerm = document.getElementById('search-reports').value.toLowerCase();
 
             const filteredReports = allReports.filter(report => {
-                // Check filters
                 if (selectedYear !== 'all' && report.year != selectedYear) return false;
                 if (selectedCentre !== 'all' && report.auction_centre !== selectedCentre) return false;
                 if (selectedSource !== 'all' && report.source !== selectedSource) return false;
 
-                // Check search term
                 if (searchTerm) {
-                    const titleMatch = report.title.toLowerCase().includes(searchTerm);
-                    const descriptionMatch = report.description.toLowerCase().includes(searchTerm);
+                    const titleMatch = (report.title || '').toLowerCase().includes(searchTerm);
+                    const descriptionMatch = (report.description || '').toLowerCase().includes(searchTerm);
                     if (!titleMatch && !descriptionMatch) return false;
                 }
 
@@ -180,7 +190,6 @@
                 const item = document.createElement('div');
                 item.className = 'dataset-item';
                 
-                // Determine the period text (Week vs Monthly/Other)
                 let periodText = '';
                 if (report.week_number) {
                     periodText = `Week ${report.week_number}, ${report.year}`;
@@ -188,13 +197,18 @@
                     periodText = `${report.year}`;
                 }
 
+                // IMPORTANT: Generate the correct link for the report viewer
+                // We'll create a simple identifier from the title for the URL
+                const datasetId = (report.title || '').replace(/\s+/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
+                const reportLink = report.report_link || `report-viewer.html?dataset=${datasetId}`;
+
                 item.innerHTML = `
-                    <a href="${report.report_link}">
-                        <h3 class="dataset-title">${report.title} <span class="dataset-period">(${periodText})</span></h3>
-                        <p class="dataset-description">${report.description}</p>
+                    <a href="${reportLink}">
+                        <h3 class="dataset-title">${report.title || 'Untitled Report'} <span class="dataset-period">(${periodText})</span></h3>
+                        <p class="dataset-description">${report.description || 'No description available.'}</p>
                         <div class="dataset-meta">
-                            <span>Centre: ${report.auction_centre}</span>
-                            <span>Source: ${report.source}</span>
+                            <span>Centre: ${report.auction_centre || 'N/A'}</span>
+                            <span>Source: ${report.source || 'N/A'}</span>
                         </div>
                     </a>
                 `;
