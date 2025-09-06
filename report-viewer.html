@@ -1208,6 +1208,8 @@
             // If only buyer names are present without stats (as in the initial W34 data), we check if any data exists.
             // If no quantitative data exists, we skip rendering the section entirely.
              if (!hasVolume && !hasPackages && !hasShare) {
+                // Note: We used to render a list of names here, but it provides little value without stats.
+                // We now skip rendering the section entirely if no quantitative data is present.
                 return;
             }
 
