@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Market Reports - TeaTrade</title>
+    <title>Market Reports Library - TeaTrade</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
@@ -29,126 +29,178 @@
             </ul>
         </nav>
     </header>
+
     <main class="page-container">
-        <h2 class="page-title">Market Reports Library</h2>
-        
+        <div class="dashboard-header">
+            <h2 class="page-title">Market Reports Library</h2>
+        </div>
+
         <div class="filter-controls-wrapper">
             <div class="filter-group">
                 <label for="filter-year" class="filter-label">Year</label>
                 <select id="filter-year" class="filter-dropdown">
-                    <option value="">All Years</option>
+                    <option value="all">All Years</option>
                 </select>
             </div>
             <div class="filter-group">
                 <label for="filter-centre" class="filter-label">Auction Centre</label>
                 <select id="filter-centre" class="filter-dropdown">
-                    <option value="">All Centres</option>
+                    <option value="all">All Centres</option>
                 </select>
             </div>
             <div class="filter-group">
-                <label for="filter-week" class="filter-label">Week Number</label>
-                <select id="filter-week" class="filter-dropdown">
-                    <option value="">All Weeks</option>
+                <label for="filter-source" class="filter-label">Source/Broker</label>
+                <select id="filter-source" class="filter-dropdown">
+                    <option value="all">All Sources</option>
                 </select>
             </div>
+             <div class="filter-group">
+                <label for="search-reports" class="filter-label">Search</label>
+                <input type="text" id="search-reports" class="page-search-bar" placeholder="Search titles and descriptions..." style="margin-bottom: 0;">
+            </div>
         </div>
-
-        <div class="data-list-container" id="report-list-container">
-            <p>Loading market reports...</p>
+        
+        <div id="reports-list">
+            <p>Loading reports...</p>
         </div>
     </main>
+
     <script src="script.js"></script>
     <script>
-        // JavaScript for dynamic filtering
+        let allReports = [];
+
         document.addEventListener('DOMContentLoaded', () => {
-            const reportListContainer = document.getElementById('report-list-container');
-            const filterYear = document.getElementById('filter-year');
-            const filterCentre = document.getElementById('filter-centre');
-            const filterWeek = document.getElementById('filter-week');
-            let allReports = [];
+            // CRITICAL FIX: Initialize mobile menu safely
+            if (typeof initializeMobileMenu === 'function') {
+                initializeMobileMenu();
+            } else {
+                // This prevents the page from crashing if script.js is missing
+                console.error("Global script.js not loaded or initializeMobileMenu not defined.");
+            }
 
-            const populateFilters = (reports) => {
-                const years = new Set();
-                const centres = new Set();
-                const weeks = new Set();
-
-                reports.forEach(report => {
-                    years.add(report.year);
-                    centres.add(report.auction_centre);
-                    weeks.add(report.week_number);
-                });
-
-                Array.from(years).sort((a, b) => b - a).forEach(year => {
-                    filterYear.add(new Option(year, year));
-                });
-                Array.from(centres).sort().forEach(centre => {
-                    filterCentre.add(new Option(centre, centre));
-                });
-                Array.from(weeks).sort((a, b) => a - b).forEach(week => {
-                    filterWeek.add(new Option(`Week ${week}`, week));
-                });
-            };
-
-            const renderReports = (reports) => {
-                reportListContainer.innerHTML = '';
-                if (reports.length === 0) {
-                    reportListContainer.innerHTML = '<p style="padding: 16px;">No reports match the selected criteria.</p>';
-                    return;
-                }
-                reports.forEach(report => {
-                    const item = document.createElement('div');
-                    item.className = 'dataset-item';
-                    item.innerHTML = `
-                        <a href="${report.report_link}">
-                            <h3 class="dataset-title">${report.title}</h3>
-                            <p class="dataset-description">${report.description}</p>
-                            <div class="dataset-meta">
-                                <span>Broker: ${report.source}</span>
-                                <span>Centre: ${report.auction_centre}</span>
-                                <span>Year: ${report.year}</span>
-                                <span>Week: ${report.week_number}</span>
-                            </div>
-                        </a>
-                    `;
-                    reportListContainer.appendChild(item);
-                });
-            };
-
-            const applyFilters = () => {
-                const selectedYear = filterYear.value;
-                const selectedCentre = filterCentre.value;
-                const selectedWeek = filterWeek.value;
-
-                const filteredReports = allReports.filter(report => {
-                    return (!selectedYear || report.year == selectedYear) &&
-                           (!selectedCentre || report.auction_centre === selectedCentre) &&
-                           (!selectedWeek || report.week_number == selectedWeek);
-                });
-                renderReports(filteredReports);
-            };
-
-            filterYear.addEventListener('change', applyFilters);
-            filterCentre.addEventListener('change', applyFilters);
-            filterWeek.addEventListener('change', applyFilters);
-
-            fetch('market-reports-library.json')
-                .then(response => response.json())
-                .then(reports => {
-                    // Sort reports by Year, then Week Number (Newest first)
-                    allReports = reports.sort((a, b) => {
-                        if (b.year !== a.year) {
-                            return b.year - a.year;
-                        }
-                        return b.week_number - a.week_number;
-                    });
-                    populateFilters(allReports);
-                    renderReports(allReports);
-                })
-                .catch(error => {
-                    console.error("Error loading market reports library:", error);
-                    reportListContainer.innerHTML = '<p>Error loading reports. Please check the data file.</p>';
-                });
+            fetchAndRenderReports();
+            
+            // Add event listeners for filters and search
+            document.getElementById('filter-year').addEventListener('change', filterReports);
+            document.getElementById('filter-centre').addEventListener('change', filterReports);
+            document.getElementById('filter-source').addEventListener('change', filterReports);
+            // Use 'input' for live search
+            document.getElementById('search-reports').addEventListener('input', filterReports);
         });
+
+        async function fetchAndRenderReports() {
+            try {
+                const response = await fetch('market-reports-library.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                allReports = await response.json();
+                
+                // Sort reports: Newest first (by Year, then Week Number)
+                allReports.sort((a, b) => {
+                    if (b.year !== a.year) {
+                        return b.year - a.year;
+                    }
+                    // Handle cases where week_number might be missing or non-numeric (e.g., Monthly reports)
+                    const weekA = parseInt(a.week_number) || 0;
+                    const weekB = parseInt(b.week_number) || 0;
+                    return weekB - weekA;
+                });
+
+                populateFilters(allReports);
+                renderReports(allReports);
+            } catch (error) {
+                console.error('Error fetching reports library:', error);
+                document.getElementById('reports-list').innerHTML = `<p>Error loading reports. Please check the connection and file path. ${error.message}</p>`;
+            }
+        }
+
+        function populateFilters(reports) {
+            const years = new Set();
+            const centres = new Set();
+            const sources = new Set();
+
+            reports.forEach(report => {
+                if (report.year) years.add(report.year);
+                if (report.auction_centre) centres.add(report.auction_centre);
+                if (report.source) sources.add(report.source);
+            });
+
+            const yearSelect = document.getElementById('filter-year');
+            Array.from(years).sort((a, b) => b - a).forEach(year => {
+                yearSelect.add(new Option(year, year));
+            });
+
+            const centreSelect = document.getElementById('filter-centre');
+            Array.from(centres).sort().forEach(centre => {
+                centreSelect.add(new Option(centre, centre));
+            });
+
+            const sourceSelect = document.getElementById('filter-source');
+            Array.from(sources).sort().forEach(source => {
+                sourceSelect.add(new Option(source, source));
+            });
+        }
+
+        function filterReports() {
+            const selectedYear = document.getElementById('filter-year').value;
+            const selectedCentre = document.getElementById('filter-centre').value;
+            const selectedSource = document.getElementById('filter-source').value;
+            const searchTerm = document.getElementById('search-reports').value.toLowerCase();
+
+            const filteredReports = allReports.filter(report => {
+                // Check filters
+                if (selectedYear !== 'all' && report.year != selectedYear) return false;
+                if (selectedCentre !== 'all' && report.auction_centre !== selectedCentre) return false;
+                if (selectedSource !== 'all' && report.source !== selectedSource) return false;
+
+                // Check search term
+                if (searchTerm) {
+                    const titleMatch = report.title.toLowerCase().includes(searchTerm);
+                    const descriptionMatch = report.description.toLowerCase().includes(searchTerm);
+                    if (!titleMatch && !descriptionMatch) return false;
+                }
+
+                return true;
+            });
+
+            renderReports(filteredReports);
+        }
+
+        function renderReports(reports) {
+            const listContainer = document.getElementById('reports-list');
+            listContainer.innerHTML = '';
+
+            if (reports.length === 0) {
+                listContainer.innerHTML = '<p>No reports found matching the selected criteria.</p>';
+                return;
+            }
+
+            reports.forEach(report => {
+                const item = document.createElement('div');
+                item.className = 'dataset-item';
+                
+                // Determine the period text (Week vs Monthly/Other)
+                let periodText = '';
+                if (report.week_number) {
+                    periodText = `Week ${report.week_number}, ${report.year}`;
+                } else if (report.year) {
+                    periodText = `${report.year}`;
+                }
+
+                item.innerHTML = `
+                    <a href="${report.report_link}">
+                        <h3 class="dataset-title">${report.title} <span class="dataset-period">(${periodText})</span></h3>
+                        <p class="dataset-description">${report.description}</p>
+                        <div class="dataset-meta">
+                            <span>Centre: ${report.auction_centre}</span>
+                            <span>Source: ${report.source}</span>
+                        </div>
+                    </a>
+                `;
+                listContainer.appendChild(item);
+            });
+        }
     </script>
 </body>
 </html>
