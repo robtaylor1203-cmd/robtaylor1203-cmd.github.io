@@ -49,9 +49,9 @@
                 </select>
             </div>
             <div class="filter-group">
-                <label for="filter-source" class="filter-label">Source/Broker</label>
-                <select id="filter-source" class="filter-dropdown">
-                    <option value="all">All Sources</option>
+                <label for="filter-week" class="filter-label">Week Number</label>
+                <select id="filter-week" class="filter-dropdown">
+                    <option value="all">All Weeks</option>
                 </select>
             </div>
              <div class="filter-group">
@@ -67,20 +67,18 @@
 
     <script src="script.js"></script>
     <script>
-        let allReports = []; // This will hold our final, flat list of reports
+        let allReports = []; 
 
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof initializeMobileMenu === 'function') {
                 initializeMobileMenu();
-            } else {
-                console.error("Global script.js not loaded or initializeMobileMenu not defined.");
             }
 
-            fetchAndProcessReports(); // Changed function name for clarity
+            fetchAndProcessReports(); 
             
             document.getElementById('filter-year').addEventListener('change', filterAndRenderReports);
             document.getElementById('filter-centre').addEventListener('change', filterAndRenderReports);
-            document.getElementById('filter-source').addEventListener('change', filterAndRenderReports);
+            document.getElementById('filter-week').addEventListener('change', filterAndRenderReports);
             document.getElementById('search-reports').addEventListener('input', filterAndRenderReports);
         });
 
@@ -90,26 +88,21 @@
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                const data = await response.json(); // This is our OBJECT from the library file
+                const data = await response.json();
                 
-                // --- THIS IS THE NEW LOGIC ---
                 const flatReportList = [];
                 for (const location in data) {
                     for (const reportTitle in data[location]) {
                         const report = data[location][reportTitle];
-                        // This ensures the final object has a title and location for sorting/display
-                        // which is crucial for data coming from the migrate.py script.
                         report.title = report.title || reportTitle;
                         report.location = report.location || location;
                         report.auction_centre = report.auction_centre || location;
                         flatReportList.push(report);
                     }
                 }
-                // --- END OF NEW LOGIC ---
                 
-                allReports = flatReportList; // Store the processed list in our global variable
+                allReports = flatReportList;
                 
-                // Now we can sort, because 'allReports' is an Array
                 allReports.sort((a, b) => {
                     if (b.year !== a.year) {
                         return b.year - a.year;
@@ -130,12 +123,12 @@
         function populateFilters(reports) {
             const years = new Set();
             const centres = new Set();
-            const sources = new Set();
+            const weeks = new Set();
 
             reports.forEach(report => {
                 if (report.year) years.add(report.year);
                 if (report.auction_centre) centres.add(report.auction_centre);
-                if (report.source) sources.add(report.source);
+                if (report.week_number) weeks.add(report.week_number);
             });
 
             const yearSelect = document.getElementById('filter-year');
@@ -148,22 +141,22 @@
                 centreSelect.add(new Option(centre, centre));
             });
 
-            const sourceSelect = document.getElementById('filter-source');
-            Array.from(sources).sort().forEach(source => {
-                sourceSelect.add(new Option(source, source));
+            const weekSelect = document.getElementById('filter-week');
+            Array.from(weeks).sort((a, b) => b - a).forEach(week => {
+                weekSelect.add(new Option(`Week ${week}`, week));
             });
         }
 
-        function filterAndRenderReports() { // Renamed for clarity
+        function filterAndRenderReports() {
             const selectedYear = document.getElementById('filter-year').value;
             const selectedCentre = document.getElementById('filter-centre').value;
-            const selectedSource = document.getElementById('filter-source').value;
+            const selectedWeek = document.getElementById('filter-week').value;
             const searchTerm = document.getElementById('search-reports').value.toLowerCase();
 
             const filteredReports = allReports.filter(report => {
                 if (selectedYear !== 'all' && report.year != selectedYear) return false;
                 if (selectedCentre !== 'all' && report.auction_centre !== selectedCentre) return false;
-                if (selectedSource !== 'all' && report.source !== selectedSource) return false;
+                if (selectedWeek !== 'all' && report.week_number != selectedWeek) return false;
 
                 if (searchTerm) {
                     const titleMatch = (report.title || '').toLowerCase().includes(searchTerm);
@@ -197,10 +190,7 @@
                     periodText = `${report.year}`;
                 }
 
-                // IMPORTANT: Generate the correct link for the report viewer
-                // We'll create a simple identifier from the title for the URL
-                const datasetId = (report.title || '').replace(/\s+/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
-                const reportLink = report.report_link || `report-viewer.html?dataset=${datasetId}`;
+                const reportLink = report.report_link || '#'; // Use the link from our data
 
                 item.innerHTML = `
                     <a href="${reportLink}">

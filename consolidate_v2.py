@@ -11,7 +11,6 @@ def consolidate_reports_append_only():
     into the existing output file without overwriting existing entries.
     """
     
-    # 1. READ: Load the existing library, or start with an empty one if it doesn't exist.
     try:
         with open(OUTPUT_FILE, 'r', encoding='utf-8') as f:
             consolidated_data = json.load(f)
@@ -20,7 +19,6 @@ def consolidate_reports_append_only():
         consolidated_data = {}
         print(f"'{OUTPUT_FILE}' not found. Starting with a new library.")
 
-    # 2. MERGE: Scan source folders and merge new reports.
     for source_path in SOURCE_DIR.iterdir():
         if source_path.is_dir():
             manifest_file = source_path / "manifest.json"
@@ -55,20 +53,17 @@ def consolidate_reports_append_only():
                         "year": manifest.get('year'),
                         "week_number": manifest.get('week_number'),
                         "source": manifest.get('source', 'Consolidated'),
-                        "report_link": f"report-viewer.html?dataset={location}_{manifest.get('sale_number', 'report')}",
+                        "report_link": f"report-viewer.html?title={title}",
                         "data": report_data_amalgamated
                     }
                 else:
                     print(f"  - Skipping report '{title}' as it already exists in the library.")
 
-    # 3. WRITE: Save the entire, updated library back to the file.
-    # This block is now CORRECTLY INSIDE the function.
     print(f"\nSaving updated library to '{OUTPUT_FILE}'...")
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         json.dump(consolidated_data, f, ensure_ascii=False, indent=4)
         
     print("Consolidation complete!")
 
-# --- Run the main function ---
 if __name__ == "__main__":
     consolidate_reports_append_only()
