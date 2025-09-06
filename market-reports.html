@@ -71,10 +71,10 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             // CRITICAL FIX: Initialize mobile menu safely
+            // This check prevents the page from crashing if script.js is missing or empty.
             if (typeof initializeMobileMenu === 'function') {
                 initializeMobileMenu();
             } else {
-                // This prevents the page from crashing if script.js is missing
                 console.error("Global script.js not loaded or initializeMobileMenu not defined.");
             }
 

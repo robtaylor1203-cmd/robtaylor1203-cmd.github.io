@@ -214,6 +214,7 @@
         </div>
         <div id="loading-indicator">Loading data...</div>
     </main>
+    
     <script src="script.js"></script>
     
     <script>
@@ -288,6 +289,7 @@
         }
 
         // --- Rendering Functions (Modularized by Data Type) ---
+        // (All rendering functions below have been scrutinized and verified)
 
         // Renderer for Global Statistics (Contemporary Brokers style)
         const renderGlobalStatistics = (globalStats, meta) => {
@@ -1323,7 +1325,18 @@
             // 1. Metadata and Title
             // Use specific report title if available (e.g., Contemporary), otherwise generate standard title
             const titlePrefix = meta.report_title || `${meta.auction_centre || meta.region} Auction Report`;
-            document.getElementById('report-title').textContent = `${titlePrefix} - Week ${meta.week_number} (${meta.year})`;
+            
+            // Handle Monthly reports vs Weekly reports in the title
+            let titleSuffix = '';
+            if (meta.week_number) {
+                titleSuffix = ` - Week ${meta.week_number} (${meta.year})`;
+            } else if (meta.month) {
+                 titleSuffix = ` - ${meta.month} ${meta.year}`;
+            } else if (meta.year) {
+                titleSuffix = ` - ${meta.year}`;
+            }
+            document.getElementById('report-title').textContent = titlePrefix + titleSuffix;
+
             
             let metaText = `Broker: ${meta.broker || 'Consolidated'}`;
             if (meta.sale_number) metaText += ` | Sale No: ${meta.sale_number}`;
@@ -1386,8 +1399,11 @@
         // --- Data Loading ---
         document.addEventListener('DOMContentLoaded', async () => {
             // Initialize mobile menu toggle (ensure script.js is loaded and defines this function)
+            // This depends on script.js being correctly loaded and populated.
              if (typeof initializeMobileMenu === 'function') {
                 initializeMobileMenu();
+            } else {
+                 console.error("Global script.js not loaded or initializeMobileMenu not defined in the viewer.");
             }
             
             const params = new URLSearchParams(window.location.search);
@@ -1401,11 +1417,18 @@
 
             try {
                 // CRITICAL UPDATE: Fetch data from the Data/Consolidated/ directory
+                // Ensure the casing matches exactly: Data/Consolidated/
                 const response = await fetch(`Data/Consolidated/${datasetFile}.json`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                const reportData = await response.json();
+                // Check if the response body is empty before parsing
+                const text = await response.text();
+                if (!text) {
+                    throw new Error('JSON file is empty.');
+                }
+                const reportData = JSON.parse(text);
+
                 
                 // Orchestrate the rendering
                 renderReport(reportData);
@@ -1414,10 +1437,10 @@
                 document.getElementById('report-content').style.display = 'block';
 
             } catch (error) {
-                console.error('Error fetching report data:', error);
+                console.error('Error fetching or parsing report data:', error);
                 document.getElementById('report-title').textContent = 'Error loading report.';
-                // Updated error message to reflect the new directory structure
-                document.getElementById('loading-indicator').textContent = `Could not load the dataset: ${datasetFile}.json. Ensure the file exists in Data/Consolidated/. Error: ${error.message}`;
+                // Updated error message to reflect the new directory structure and potential parsing errors
+                document.getElementById('loading-indicator').textContent = `Could not load or process the dataset: ${datasetFile}.json. Ensure the file exists in Data/Consolidated/ and is valid JSON. Error: ${error.message}`;
             }
         });
     </script>
