@@ -1,0 +1,4 @@
+[
+  { "grade": "BP1", "price_usd": 4.15, "quantity_kg": 5500 },
+  { "grade": "PF1", "price_usd": 3.80, "quantity_kg": 12000 }
+]
