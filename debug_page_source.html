@@ -1,0 +1,536 @@
+<!DOCTYPE html><html lang="en-US" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths" style="height: auto; overflow: auto;"><head><meta http-equiv="content-type" content="text/html;charset=UTF-8">
+
+<meta charset="UTF-8">
+<title>J Thomas | Auction Prices</title>
+<link rel="stylesheet" href="wp-content/plugins/sitepress-multilingual-cms/res/css/language-selectore2c9.css?v=2.9.2" type="text/css" media="all">			
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">	
+<link rel="shortcut icon" type="image/x-icon" href="wp-content/themes/bridge/img/favicon.ico">
+<link rel="apple-touch-icon" href="wp-content/themes/bridge/img/favicon.ico">
+
+<link href="http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900,400italic|Questrial:100,200,300,400,500,600,700,800,900,400italic|Montserrat:100,200,300,400,500,600,700,800,900,400italic&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet" type="text/css">
+<link rel="stylesheet" id="ls-google-fonts-css" href="http://fonts.googleapis.com/css?family=Lato:100,300,regular,700,900%7COpen+Sans:300%7CIndie+Flower:regular%7COswald:300,regular,700&amp;subset=latin%2Clatin-ext" type="text/css" media="all">
+<link rel="stylesheet" id="default_style-css" href="wp-content/themes/bridge/style4189.css?ver=4.2.4" type="text/css" media="all">
+<link rel="stylesheet" id="qode-font-awesome-css" href="wp-content/themes/bridge/css/font-awesome/css/font-awesome.min4189.css?ver=4.2.4" type="text/css" media="all">
+<link rel="stylesheet" id="stylesheet-css" href="wp-content/themes/bridge/css/stylesheet.min4189.css?ver=4.2.4" type="text/css" media="all">
+<link rel="stylesheet" id="style_dynamic-css" href="wp-content/themes/bridge/css/style_dynamicf374.css?ver=1481191828" type="text/css" media="all">
+<link rel="stylesheet" id="responsive-css" href="wp-content/themes/bridge/css/responsive.min4189.css?ver=4.2.4" type="text/css" media="all">
+<link rel="stylesheet" id="style_dynamic_responsive-css" href="wp-content/themes/bridge/css/style_dynamic_responsivef374.css?ver=1481191828" type="text/css" media="all">
+<link rel="stylesheet" id="custom_css-css" href="wp-content/themes/bridge/css/custom_cssf374.css?ver=1481191828" type="text/css" media="all">
+<div class="fit-vids-style" id="fit-vids-style" style="display: none;">­<style>                 .fluid-width-video-wrapper {                   width: 100%;                                position: relative;                         padding: 0;                      					 min-height: 1px;                         }                                                                                       .fluid-width-video-wrapper iframe,          .fluid-width-video-wrapper object,          .fluid-width-video-wrapper embed {             position: absolute;                         top: 0;                                     left: 0;                                    width: 100%;                                height: 100%;                            }                                         </style></div><script type="text/javascript" src="wp-includes/js/jquery/jquery4a80.js?ver=1.11.2"></script>
+<script src="wp-content/themes/bridge/js/jquery.min.js"></script>
+<script type="text/javascript">
+	var x = $.noConflict();
+	x(document).ready(function(){
+		x(document).bind("contextmenu",function(e){
+		   return false;
+		});
+		x('#cbocentre').change(function(){
+			x('#showdata').hide();
+			x('#cbosale').val("");
+			x('#cbobroker').val("");
+			x('#cbocat').val("");
+			x('#cbogarden').val("");
+			x('#filter').val("");
+			x('#sessiontimings').hide();
+			x('#filter').hide();
+			var centre = x('#cbocentre').val();
+			if(centre=="")
+			{
+				x('#cbosale').val("");
+				x('#cbosale').hide();
+				x('#cbobroker').val("");
+				x('#cbobroker').hide();
+				x('#cbocat').val("");
+				x('#cbocat').hide();
+				x('#cbogarden').val("");
+				x('#cbogarden').hide();
+				x('#filter').val("");
+				x('#filter').hide();
+			}
+			else
+			{
+				x.ajax({
+					type: 'POST',
+					url: 'get_prices_sale.php',
+					data: 'centre='+centre,
+					success: function(html){
+						x('#cbosale').show();
+						x('#cbosale').html(html);
+					}
+				});
+			}
+		});
+
+		x('#cbosale').change(function(){
+			var centre = x('#cbocentre').val();
+			var sale = x('#cbosale').val();
+			if(sale=="")
+			{
+				x('#cbobroker').val("");
+				x('#cbobroker').hide();
+				x('#cbocat').val("");
+				x('#cbocat').hide();
+				x('#cbogarden').val("");
+				x('#cbogarden').hide();
+				x('#filter').val("");
+				x('#filter').hide();
+			}
+			else
+			{
+				x('#cbobroker').show();
+				x('#cbocat').show();
+				x('#cbogarden').show();
+				x('#filter').show();
+				x.ajax({
+	      			type: 'POST',
+	      			url: 'getsession_timings.php',
+	      			data: 'sale='+sale+'&centre='+centre,
+	      			success: function(html){
+	      				x('#sessiontimings').html(html);
+	      				x('#sessiontimings').show();
+	      			}
+	      		});
+
+	      		x.ajax({
+	      			type: 'POST',
+	      			url: 'get_prices_broker.php',
+	      			data: 'centre='+centre+'&sale='+sale,
+	      			success: function(html){
+	      				x('#cbobroker').html(html);
+	      			}
+	      		});
+
+	      		x.ajax({
+	      			type: 'POST',
+	      			url: 'get_prices_cat.php',
+	      			data: 'centre='+centre+'&sale='+sale,
+	      			success: function(html){
+	      				x('#cbocat').html(html);
+	      			}
+	      		});
+
+	      		x.ajax({
+	      			type: 'POST',
+	      			url: 'get_prices_garden.php',
+	      			data: 'centre='+centre+'&sale='+sale,
+	      			success: function(html){
+	      				x('#cbogarden').html(html);
+	      			}
+	      		});
+			}
+		});
+
+		x('#filter').click(function(){
+			x('#filterwait').css('display', 'inline-block');
+			x('#filter').hide();
+			var centre = x('#cbocentre').val();
+			var sale = x('#cbosale').val();
+			var broker = x('#cbobroker').val();
+			var ttype = x('#cbocat').val();
+			var garden = x('#cbogarden').val();
+			x.ajax({
+				type: 'POST',
+				url: 'details.php',
+				data: 'centre='+centre+'&sale='+sale+'&broker='+broker+'&ttype='+ttype+'&garden='+garden,
+				success: function(html){
+					x('#filterwait').hide();
+					x('#filter').show();
+					x('#showdata').show();
+					x('#showdata').html(html);
+				}
+			});
+		});
+	});
+</script>
+<style>
+.alink{
+	color: #333;
+}
+.alink:hover{
+	color: blue;
+}
+.selbox{
+	font-family: 'Questrial', sans-serif;
+	font-weight: 400;
+	min-width: 150px;
+	height: 30px;
+	background-color: #E4E4E4;
+	border: none;
+	padding: 5px;
+	outline: none;
+	margin-right: 10px;
+	cursor: pointer;
+	text-transform: uppercase;
+	font-size: 12px;
+}
+.showbutton{
+	font-family: 'Questrial', sans-serif;
+	width: 110px;
+	font-size: 12px;
+	height: 29px;
+	cursor: pointer;
+	background-color: #093E6A;
+	border: 1px solid #093E6A;
+	color: white;
+	outline: none;
+}
+.showbutton1{
+	font-family: 'Questrial', sans-serif;
+	width: 110px;
+	font-size: 12px;
+	height: 30px;
+	cursor: pointer;
+	background-color: #FFF;
+	border: 1px solid #FFF;
+	color: #333;
+	outline: none;
+	display: inline-block;
+	position: absolute;
+}
+.sessiontimings{
+	background-color: #093E6A;
+	font-size: 12px;
+	padding: 10px;
+	color: white;
+}
+</style>
+</head>
+
+<body class="page page-id-15466 page-template page-template-full_width page-template-full_width-php ajax_fade  qode-title-hidden side_menu_slide_from_right qode-theme-ver-7.2 wpb-js-composer js-comp-ver-4.5.1 vc_responsive" style="height: auto; overflow: auto;">
+
+<div class="ajax_loader"><div class="ajax_loader_1"><div class="cube"></div></div></div>
+
+<div class="wrapper"><div class="cover"></div>
+	<div class="wrapper_inner">
+
+		<header class="has_top scroll_top  fixed scrolled_not_transparent page_header" style="top: 0px; margin-top: 0px;">
+    <div class="header_inner clearfix">		
+		<div class="header_top_bottom_holder">
+			<div class="header_top clearfix" style="background-color: #2196F3;">
+				<div class="container" style="background-color: #2196F3;">
+					<div class="container_inner clearfix">
+						<div class="left">
+							<div class="inner">
+								<div class="header-widget widget_text header-left-widget">
+									<div class="textwidget">
+										<span data-type="normal" class="qode_icon_shortcode  q_font_awsome_icon fa-lg" style="margin: 0 3px 5px 0; ">
+											<a href="javascript:void(0);" target="_blank"><i class="qode_icon_element fa fa-calendar" style="font-size: 14px;color: #ffffff;"></i></a>
+										</span> Saturday, 06 September 2025									</div>
+								</div>
+							</div>
+						</div>
+						<div class="right">
+							<div class="inner">
+								<!--<div class="header-widget widget_text header-right-widget">
+									<div class="textwidget">
+										<span class='q_social_icon_holder normal_social' data-hover-color=#2F2F2F>
+											<a href='https://twitter.com/' target='_blank' style='color: #ffffff;margin: 0 13px 0px 0;'>Login &nbsp;&nbsp;&nbsp;|</a>
+										</span>
+										<span class='q_social_icon_holder normal_social' data-hover-color=#2F2F2F>
+											<a href='https://instagram.com/' target='_blank' style=''>Sign Up</a>
+											
+										</span>
+									</div>
+								</div>-->
+								<div class="header-widget widget_text header-right-widget">
+									<div class="textwidget">
+										<span style="float:left;padding-right: 20px;">Follow us</span>
+										<span class="q_social_icon_holder normal_social" data-hover-color="#2F2F2F"><a href="https://www.instagram.com/jthomasandcompany/" target="_blank"><i class="fa fa-instagram fa-lg simple_social" style="color: #ffffff;margin: 0 20px 20px 0;font-size: 14px;"></i></a></span>
+										<span class="q_social_icon_holder normal_social" data-hover-color="#2F2F2F"><a href="https://www.facebook.com/JThomasAndCo" target="_blank"><i class="fa fa-facebook fa-lg simple_social" style="color: #ffffff;margin: 0 20px 20px 0;font-size: 14px;"></i></a></span>
+										<span class="q_social_icon_holder normal_social" data-hover-color="#2F2F2F">
+											<a href="https://www.linkedin.com/company/j-thomas-company-private-limited/" target="_blank"><i class="fa fa-linkedin fa-lg simple_social" style="color: #ffffffmargin: 0 0 20px 0;font-size: 14px;"></i></a></span>
+										<!--<span class='q_social_icon_holder normal_social' data-hover-color=#2F2F2F>
+											<a href='https://twitter.com/' target='_blank'><i class='fa fa-twitter fa-lg simple_social' style='color: #ffffff;margin: 0 20px 20px 0;font-size: 14px;'></i></a></span>
+										-->
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="header_bottom clearfix" style="background-color:#093E6A;">
+		    	<div class="container">
+					<div class="container_inner clearfix">
+			            <div class="header_inner_left">
+	                        <div class="mobile_menu_button"><span><i class="fa fa-bars"></i></span></div>
+							<div class="logo_wrapper" style="height: 120px;">
+	                            <div class="q_logo">
+									<a href="index.php" style="height: 110px; visibility: visible;">
+										<img class="normal" src="wp-content/uploads/2015/05/logo.png" alt="Logo" style="height: 100%;">
+										<img class="light" src="wp-content/uploads/2015/05/logo.png" alt="Logo" style="height: 100%;">
+										<img class="dark" src="wp-content/uploads/2015/05/logo.png" alt="Logo" style="height: 100%;">
+										<img class="sticky" src="wp-content/uploads/2015/05/logo.png" alt="Logo" style="height: 100%;">
+										<img class="mobile" src="wp-content/uploads/2015/05/logo.png" alt="Logo" style="height: 100%;">
+									</a>
+								</div>
+	                        </div>
+                        </div>
+                    	<div class="header_inner_right">
+                            <div class="side_menu_button_wrapper right">
+								<div class="side_menu_button" style="height: 120px;">
+									<a class="side_menu_button_link normal" href="javascript:void(0)"><i class="fa fa-bars" style="color: #2196F3;"></i></a>
+								</div>
+                            </div>
+						</div>
+						<nav class="main_menu drop_down right">
+							<ul id="menu-fullscreen-menu" class="">
+								<li id="nav-menu-item-15288" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-15254 current_page_item  narrow">
+																		<a href="index.php" style="line-height: 120px;"><i class="menu_icon fa blank"></i><span>Home</span></a>
+																	</li>
+								<li id="nav-menu-item-15523" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  has_sub wide icons">
+																			<a href="#" class="" style="line-height: 120px;"><i class="menu_icon fa blank"></i><span>About</span></a>
+																		<div class="second" style="left: -84.1875px; height: 0px;">
+										<div class="inner">
+											<ul style="width: 540px;">
+												<li id="nav-menu-item-15536" class="menu-item menu-item-type-custom menu-item-object-custom" style="height: 44px;">
+													<a href="about.php" class=""><i class="menu_icon fa fa-book"></i><span style="color: white">About Us</span></a>
+												</li>
+												<li id="nav-menu-item-15536" class="menu-item menu-item-type-custom menu-item-object-custom" style="height: 44px;">
+													<a href="contacts.php" class=""><i class="menu_icon fa fa-book"></i><span style="color: white">Contact Us</span></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</li>
+								<li id="nav-menu-item-15523" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children  has_sub wide icons">
+																		<a href="#" class="" style="line-height: 120px;"><i class="menu_icon fa blank"></i><span>Market</span></a>
+									<div class="second" style="left: -413.391px; height: 0px;">
+										<div class="inner">
+											<ul style="width: 1080px;">
+												<li id="nav-menu-item-15536" class="menu-item menu-item-type-custom menu-item-object-custom" style="height: 44px;">
+													<a href="market_report.php" class=""><i class="menu_icon fa fa-book"></i><span style="color: white">Market Report</span></a>
+												</li>
+												<li id="nav-menu-item-15536" class="menu-item menu-item-type-custom menu-item-object-custom" style="height: 44px;">
+													<a href="market_synopsis.php" class=""><i class="menu_icon fa fa-book"></i><span style="color: white">Market Synopsis</span></a>
+												</li>
+												<li id="nav-menu-item-15536" class="menu-item menu-item-type-custom menu-item-object-custom" style="height: 44px;">
+													<a href="district_average.php" class=""><i class="menu_icon fa fa-book"></i><span style="color: white">District Avg</span></a>
+												</li>
+												<li id="nav-menu-item-15536" class="menu-item menu-item-type-custom menu-item-object-custom" style="height: 44px;">
+													<a href="" class=""><i class="menu_icon fa fa-book"></i><span style="color: white">Others</span></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+																	</li>
+								<li id="nav-menu-item-15531" class="menu-item menu-item-type-post_type menu-item-object-page  narrow">
+									<a href="#" class="" style="line-height: 120px;"><i class="menu_icon fa blank"></i><span>Catalogue</span><!--<img src="https://jthomasonline.com/poc/img/NEW.gif" alt="NEW" style="width:25px;height:25px;">--></a>
+																		<div class="second" style="height: 0px;">
+										<div class="inner">
+											<ul>
+												<li id="nav-menu-item-15536" class="menu-item menu-item-type-custom menu-item-object-custom">
+													<a href="catalogue.php" class=""><i class="menu_icon fa fa-book"></i><span style="color: white">Catalogue</span></a>
+												</li>
+												<li id="nav-menu-item-15536" class="menu-item menu-item-type-custom menu-item-object-custom">
+													<a href="itd_spl_auc23.php" class=""><i class="menu_icon fa fa-book"></i><span style="color: white">ITD Special Catalogue 2023</span></a>
+												</li>
+												<li id="nav-menu-item-15536" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="#" class=""><i class="menu_icon fa fa-book"></i><span style="color: white">ITD Special Catalogue Archive</span></a>
+													<ul>
+													<li id="nav-menu-item-15536" class="menu-item menu-item-type-custom menu-item-object-custom">
+													<a href="itd_spl_auc22.php" class=""><i class="menu_icon fa fa-book"></i><span style="color: white">ITD Special Catalogue 2022</span></a>
+													</li>
+													<li id="nav-menu-item-15536" class="menu-item menu-item-type-custom menu-item-object-custom">
+														<a href="itd_spl_auc21.php" class=""><i class="menu_icon fa fa-book"></i><span style="color: white">ITD Special Catalogue 2021</span></a>
+													</li>
+													<li id="nav-menu-item-15536" class="menu-item menu-item-type-custom menu-item-object-custom">
+														<a href="itd_spl_auc20.php" class=""><i class="menu_icon fa fa-book"></i><span style="color: white">ITD Special Catalogue 2020</span></a>
+													</li>
+													</ul>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</li>
+						<!-- AUCTION PRICES
+								<li id="nav-menu-item-15530" class="menu-item menu-item-type-post_type menu-item-object-page  narrow">
+																		<a href="auction_prices.php" class=" current "><i class="menu_icon fa blank"></i><span>Auction Prices</span></a>
+																		<a href="auction_prices.php" class=""><i class="menu_icon fa blank"></i><span>Auction Prices</span></a>
+																	</li>-->
+								<li id="nav-menu-item-15531" class="menu-item menu-item-type-post_type menu-item-object-page  narrow">
+									<a href="#" class="" style="line-height: 120px;"><i class="menu_icon fa blank"></i><span>Auction Prices</span></a>
+									<div class="second" style="height: 0px;">
+										<div class="inner">
+											<ul>
+												<li id="nav-menu-item-15536" class="menu-item menu-item-type-custom menu-item-object-custom">
+													<a href="auction_prices.php" class=""><i class="menu_icon fa fa-book"></i><span style="color: white">Auction Prices</span></a>
+												</li>
+												<li id="nav-menu-item-15536" class="menu-item menu-item-type-custom menu-item-object-custom">
+													<a href="https://jthomasonline.com/poc/time/poc_sale_dates.php" class=""><i class="menu_icon fa fa-book"></i><span style="color: white">Sale Timing's</span><img src="https://jthomasonline.com/poc/img/NEW.gif" alt="NEW" style="width:25px;height:25px;"></a>
+												</li>
+												<!--<li id="nav-menu-item-15536" class="menu-item menu-item-type-custom menu-item-object-custom ">
+													<a href="itd_spl_auc20.php" class=""><i class="menu_icon fa fa-book"></i><span style="color: white">ITD Special Catalogue</span></a>
+												</li>-->
+											</ul>
+										</div>
+									</div>
+								</li>
+								<li id="nav-menu-item-15530" class="menu-item menu-item-type-post_type menu-item-object-page  narrow">
+																		<a href="https://jthomasindia.com/Honours_List/HL.php" class="" style="line-height: 120px;"><i class="menu_icon fa blank"></i><span>Honours List</span></a>
+																	</li>
+								
+								<li id="nav-menu-item-15531" class="menu-item menu-item-type-post_type menu-item-object-page  narrow">
+									<a href="#" class="" style="line-height: 120px;"><i class="menu_icon fa blank"></i><span>Statistics</span></a>
+									<div class="second" style="height: 0px;">
+										<div class="inner">
+											<ul>
+												<li id="nav-menu-item-15536" class="menu-item menu-item-type-custom menu-item-object-custom">
+													<a href="https://jthomasindia.com/stats/PR.php" class=""><i class="menu_icon fa fa-book"></i><span style="color: white">PRICE RANGE COMPARISON</span></a>
+												</li>
+												<li id="nav-menu-item-15536" class="menu-item menu-item-type-custom menu-item-object-custom">
+													<a href="https://jthomasindia.com/stats/BOL.php" class=""><i class="menu_icon fa fa-book"></i><span style="color: white">BATTING ORDER</span></a>
+												</li>
+												
+											
+												
+												
+												<!--<li id="nav-menu-item-15536" class="menu-item menu-item-type-custom menu-item-object-custom ">
+													<a href="itd_spl_auc20.php" class=""><i class="menu_icon fa fa-book"></i><span style="color: white">ITD Special Catalogue</span></a>
+												</li>-->
+											</ul>
+										</div>
+									</div>
+								</li>
+								
+								<li id="nav-menu-item-15525" class="menu-item menu-item-type-post_type menu-item-object-page  narrow">
+																		<a href="teacourses.php" class="" style="line-height: 120px;"><i class="menu_icon fa blank"></i><span>Tea Courses</span></a>
+																	</li>
+								<li id="nav-menu-item-15525" class="menu-item menu-item-type-post_type menu-item-object-page  narrow">
+								<a href="https://thaat.in/" class="" style="line-height: 120px;"><i class="menu_icon fa blank"></i><span>Tea Haat</span></a><img src="https://jthomasonline.com/poc/img/NEW.gif" alt="NEW" style="width:25px;height:25px;">
+									</li>
+							</ul>
+						</nav>
+						<nav class="mobile_menu">
+                        	<ul id="menu-fullscreen-menu-1" class="">
+                        		<li id="mobile-menu-item-15288" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-15254 current_page_item active">
+                        			<a href="index.php" class="current"><span>Home</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span>
+                        		</li>
+								<li id="mobile-menu-item-15524" class="menu-item menu-item-type-post_type menu-item-object-page">
+									<a href="about.php" class=""><span>About</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span>
+								</li>
+								<li id="mobile-menu-item-15523" class="menu-item menu-item-type-post_type menu-item-object-page">
+									<a href="market_report.php" class=""><span>Market Report</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span>
+								</li>
+								<li id="mobile-menu-item-15531" class="menu-item menu-item-type-post_type menu-item-object-page">
+									<a href="catalogue.php" class=""><span>Catalogue</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span>
+								</li>
+								<li id="mobile-menu-item-15530" class="menu-item menu-item-type-post_type menu-item-object-page">
+									<a href="auction_prices.php" target="_blank" class=""><span>Auction Prices</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span>
+								</li>
+								<li id="nav-menu-item-15530" class="menu-item menu-item-type-post_type menu-item-object-page  narrow">
+									<a href="https://jthomasindia.com/Honours_List/HL.php" target="_blank" class=""><i class="menu_icon fa blank"></i><span>Honours List</span></a>
+								</li>
+								<li id="nav-menu-item-15530" class="menu-item menu-item-type-post_type menu-item-object-page  narrow">
+									<a href="https://jthomasindia.com/stats/PR.php" target="_blank" class=""><i class="menu_icon fa blank"></i><span>PRICE RANGE COMPARISON</span></a>
+								</li>
+								<li id="mobile-menu-item-15525" class="menu-item menu-item-type-post_type menu-item-object-page">
+									<a href="https://jthomasindia.com/contacts.php" class=""><span>Contact</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+   		<a id="back_to_top" href="#">
+			<span class="fa-stack">
+				<i class="fa fa-arrow-up" style=""></i>
+			</span>
+		</a>
+	    	
+		<div class="content content_top_margin" style="min-height: 469px;">
+			<div class="meta">
+				<div class="seo_title">J Thomas | Auction Prices</div>
+				<span id="qode_page_id">15466</span>
+				<div class="body_classes">page,page-id-15466,page-template,page-template-full_width,page-template-full_width-php,ajax_fade,page_not_loaded,,qode-title-hidden,side_menu_slide_from_right,qode-theme-ver-7.2,wpb-js-composer js-comp-ver-4.5.1,vc_responsive</div>
+			</div>
+			<div class="content_inner">
+				<div class="full_width">
+					<div class="full_width_inner">
+						<div class="vc_row wpb_row section vc_row-fluid grid_section" style=" padding-top:35px; padding-bottom:0px; text-align:left;">
+							<div class=" section_inner clearfix">
+								<div class="section_inner_margin clearfix">
+									<div class="vc_col-sm-12 wpb_column vc_column_container">
+										<div class="wpb_wrapper" style="">
+				
+											<div class="wpb_text_column wpb_content_element">
+												<div class="wpb_wrapper">
+													<h2>Auction Prices</h2>
+												</div> 
+											</div> 
+											<div class="separator  transparent center" style="margin-top: 15px;margin-bottom: 0px;"></div>
+											<div class="wpb_text_column wpb_content_element" style="color: #333; font-size: 16px;">
+												<select class="selbox" id="cbocentre">
+													<option value="">Select Centre</option>
+																										<option value="1">COCHIN</option>
+																										<option value="2">COIMBATORE</option>
+																										<option value="3">COONOOR</option>
+																										<option value="4">GUWAHATI</option>
+																										<option value="5">KOLKATA</option>
+																										<option value="6">SILIGURI</option>
+																										<option value="7">JALPAIGURI</option>
+																									</select>
+												<select class="selbox" id="cbosale" style="display: none;"></select>
+												<select class="selbox" id="cbobroker" style="display: none;"></select>
+												<select class="selbox" id="cbocat" style="display: none;">
+													<option value="">All Category</option>
+																										<option value="ORTHODOX">ORTHODOX</option>
+																										<option value="LEAF">LEAF</option>
+																										<option value="DUST">DUST</option>
+																									</select>
+												<select class="selbox" id="cbogarden" style="display: none;"></select>
+											    <div class="showbutton1" id="filterwait" style="display: none;"><font style="float:right; line-height: 29px;">PLEASE WAIT</font><img src="wp-content/uploads/2015/05/loader.gif" style=""></div>
+											    <button class="showbutton" id="filter" style="display: none;">SHOW PRICES</button>
+											</div>
+											<div class="separator transparent center" style="margin-top: 20px;margin-bottom: 0px;"></div>
+											<label class="sessiontimings" id="sessiontimings" style="display: none;"></label>
+											<div class="separator transparent center" style="margin-top: 20px;margin-bottom: 0px;"></div>
+											<div id="showdata" style="max-height: 360px; overflow: auto;"></div>
+											<div class="separator transparent center" style="margin-top: 50px;margin-bottom: 0px;"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="content_bottom"></div>
+			</div>
+		</div>
+			<footer>
+		<div class="footer_inner clearfix">
+			<div class="footer_bottom_holder" style="background-color: #093E6A;">
+                <div class="footer_bottom">
+                	<div style="float: left; padding: 10px; margin-left: 100px;">
+                		<img src="wp-content/JtLogo1.png" width="150">
+                	</div>
+					<div class="textwidget" style="width: 80%;"><div class="separator  transparent center  " style="margin-top: 32px;margin-bottom: 0px;height: 0px;"></div>
+						J THOMAS &amp; COMPANY PVT. LTD. 2018
+						<div class="separator  transparent center  " style="margin-top: 32px;margin-bottom: 0px;height: 0px;"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>	</div>
+</div>
+<link rel="stylesheet" id="prettyphoto-css" href="wp-content/plugins/js_composer/assets/lib/prettyphoto/css/prettyPhoto8686.css?ver=4.5.1" type="text/css" media="screen">
+<script type="text/javascript" src="wp-content/plugins/contact-form-7/includes/js/jquery.form.mind03d.js?ver=3.51.0-2014.06.20"></script>
+<script type="text/javascript" src="wp-content/themes/bridge/js/qode-like5152.js?ver=1.0"></script>
+<script type="text/javascript" src="wp-content/themes/bridge/js/plugins4189.js?ver=4.2.4"></script>
+<script type="text/javascript" src="wp-content/themes/bridge/js/jquery.carouFredSel-6.2.1.min4189.js?ver=4.2.4"></script>
+<script type="text/javascript" src="wp-content/themes/bridge/js/jquery.fullPage.min4189.js?ver=4.2.4"></script>
+<script type="text/javascript" src="wp-content/themes/bridge/js/jquery.mousewheel.min4189.js?ver=4.2.4"></script>
+<script type="text/javascript" src="wp-content/themes/bridge/js/jquery.touchSwipe.min4189.js?ver=4.2.4"></script>
+<script type="text/javascript" src="wp-content/plugins/js_composer/assets/lib/bower/isotope/dist/isotope.pkgd.min8686.js?ver=4.5.1"></script>
+<script type="text/javascript" src="wp-content/themes/bridge/js/TweenLite.min4189.js?ver=4.2.4"></script>
+<script type="text/javascript" src="wp-content/themes/bridge/js/ScrollToPlugin.min4189.js?ver=4.2.4"></script>
+<script type="text/javascript" src="wp-content/themes/bridge/js/default_dynamicf374.js?ver=1481191828"></script>
+<script type="text/javascript" src="wp-content/themes/bridge/js/default.min4189.js?ver=4.2.4"></script>
+<script type="text/javascript" src="wp-content/themes/bridge/js/custom_jsf374.js?ver=1481191828"></script>
+<script type="text/javascript" src="wp-content/themes/bridge/js/ajax.min4189.js?ver=4.2.4"></script>
+
+</body></html>

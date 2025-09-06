@@ -1,0 +1,10 @@
+{
+    "location": "Kolkata",
+    "report_type": "Kolkata Auction Prices",
+    "sale_number": 37,
+    "year": 2025,
+    "currency": "INR",
+    "week_number": 37,
+    "date_range": "2025-09-15 to 2025-09-16",
+    "prompt_date": "2025-09-29"
+}
