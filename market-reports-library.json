@@ -159,8 +159,7 @@
                         "grade": "PF1",
                         "price_usd": 3.8,
                         "quantity_kg": 12000
-                    }
-                ],
+                    }                ],
                 "buyer_summary_S36": {
                     "total_lots": 450,
                     "lots_sold": 425,
@@ -171,7 +170,7 @@
     },
     "Kolkata": {
         "Kolkata Kolkata Auction Prices - Sale 37 (2025)": {
-            "title": "Kolkata Kolkata Auction Prices - Sale 37 (2025)",
+            "title": "Kolkata Auction Prices - Sale 37 (2025)",
             "description": "Week: 37 | Dates: 2025-09-15 to 2025-09-16 | Prompt Date: 2025-09-29 | Currency: INR",
             "location": "Kolkata",
             "auction_centre": "Kolkata",
