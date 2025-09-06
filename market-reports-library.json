@@ -7,7 +7,7 @@
             "week_number": 35,
             "auction_centre": "Mombasa",
             "source": "TeaTrade Consolidated",
-            "report_link": "report-viewer.html?dataset=Mombasa_Consolidated_August_2025",
+            "report_link": "report-viewer.html?title=Mombasa Consolidated Monthly Report - August 2025",
             "highlight": true
         },
         "Mombasa Consolidated Report - Week 35, 2025": {
@@ -17,7 +17,7 @@
             "week_number": 35,
             "auction_centre": "Mombasa",
             "source": "TeaTrade Consolidated",
-            "report_link": "report-viewer.html?dataset=Mombasa_Consolidated_W35_2025",
+            "report_link": "report-viewer.html?title=Mombasa Consolidated Report - Week 35, 2025",
             "highlight": true
         },
         "Colombo Consolidated Report - Week 35, 2025": {
@@ -27,7 +27,7 @@
             "week_number": 35,
             "auction_centre": "Colombo",
             "source": "TeaTrade Consolidated",
-            "report_link": "report-viewer.html?dataset=Colombo_Consolidated_W35_2025"
+            "report_link": "report-viewer.html?title=Colombo Consolidated Report - Week 35, 2025"
         },
         "Limbe Consolidated Report - Week 35, 2025": {
             "title": "Limbe Consolidated Report - Week 35, 2025",
@@ -36,7 +36,7 @@
             "week_number": 35,
             "auction_centre": "Limbe",
             "source": "TeaTrade Consolidated",
-            "report_link": "report-viewer.html?dataset=Limbe_Consolidated_W35_2025"
+            "report_link": "report-viewer.html?title=Limbe Consolidated Report - Week 35, 2025"
         },
         "Kolkata Consolidated Report - Week 34, 2025": {
             "title": "Kolkata Consolidated Report - Week 34, 2025",
@@ -45,7 +45,7 @@
             "week_number": 34,
             "auction_centre": "Kolkata",
             "source": "TeaTrade Consolidated",
-            "report_link": "report-viewer.html?dataset=Kolkata_Consolidated_W34_2025"
+            "report_link": "report-viewer.html?title=Kolkata Consolidated Report - Week 34, 2025"
         },
         "Guwahati Consolidated Report - Week 34, 2025": {
             "title": "Guwahati Consolidated Report - Week 34, 2025",
@@ -54,7 +54,7 @@
             "week_number": 34,
             "auction_centre": "Guwahati",
             "source": "TeaTrade Consolidated",
-            "report_link": "report-viewer.html?dataset=Guwahati_Consolidated_W34_2025"
+            "report_link": "report-viewer.html?title=Guwahati Consolidated Report - Week 34, 2025"
         },
         "Siliguri Consolidated Report - Week 34, 2025": {
             "title": "Siliguri Consolidated Report - Week 34, 2025",
@@ -63,7 +63,7 @@
             "week_number": 34,
             "auction_centre": "Siliguri",
             "source": "TeaTrade Consolidated",
-            "report_link": "report-viewer.html?dataset=Siliguri_Consolidated_W34_2025"
+            "report_link": "report-viewer.html?title=Siliguri Consolidated Report - Week 34, 2025"
         },
         "South India Consolidated Report - Week 34, 2025": {
             "title": "South India Consolidated Report - Week 34, 2025",
@@ -72,7 +72,7 @@
             "week_number": 34,
             "auction_centre": "South India",
             "source": "TeaTrade Consolidated",
-            "report_link": "report-viewer.html?dataset=SouthIndia_Consolidated_W34_2025"
+            "report_link": "report-viewer.html?title=South India Consolidated Report - Week 34, 2025"
         },
         "Mombasa Consolidated Report - Week 34, 2025": {
             "title": "Mombasa Consolidated Report - Week 34, 2025",
@@ -81,7 +81,7 @@
             "week_number": 34,
             "auction_centre": "Mombasa",
             "source": "TeaTrade Consolidated",
-            "report_link": "report-viewer.html?dataset=Mombasa_Consolidated_W34_2025"
+            "report_link": "report-viewer.html?title=Mombasa Consolidated Report - Week 34, 2025"
         },
         "Colombo Consolidated Report - Week 34, 2025": {
             "title": "Colombo Consolidated Report - Week 34, 2025",
@@ -90,7 +90,7 @@
             "week_number": 34,
             "auction_centre": "Colombo",
             "source": "TeaTrade Consolidated",
-            "report_link": "report-viewer.html?dataset=Colombo_Consolidated_W34_2025"
+            "report_link": "report-viewer.html?title=Colombo Consolidated Report - Week 34, 2025"
         },
         "Colombo Consolidated Report - Week 33, 2025": {
             "title": "Colombo Consolidated Report - Week 33, 2025",
@@ -99,7 +99,7 @@
             "week_number": 33,
             "auction_centre": "Colombo",
             "source": "TeaTrade Consolidated",
-            "report_link": "report-viewer.html?dataset=Colombo_Consolidated_W33_2025"
+            "report_link": "report-viewer.html?title=Colombo Consolidated Report - Week 33, 2025"
         },
         "Mombasa Consolidated Report - Week 33, 2025": {
             "title": "Mombasa Consolidated Report - Week 33, 2025",
@@ -108,7 +108,7 @@
             "week_number": 33,
             "auction_centre": "Mombasa",
             "source": "TeaTrade Consolidated",
-            "report_link": "report-viewer.html?dataset=Mombasa_Consolidated_W33_2025"
+            "report_link": "report-viewer.html?title=Mombasa Consolidated Report - Week 33, 2025"
         },
         "Jakarta Consolidated Report - Week 33, 2025": {
             "title": "Jakarta Consolidated Report - Week 33, 2025",
@@ -117,7 +117,7 @@
             "week_number": 33,
             "auction_centre": "Jakarta",
             "source": "TeaTrade Consolidated",
-            "report_link": "report-viewer.html?dataset=Jakarta_Consolidated_W33_2025"
+            "report_link": "report-viewer.html?title=Jakarta Consolidated Report - Week 33, 2025"
         },
         "Colombo Consolidated Report - Week 32, 2025": {
             "title": "Colombo Consolidated Report - Week 32, 2025",
@@ -126,7 +126,7 @@
             "week_number": 32,
             "auction_centre": "Colombo",
             "source": "TeaTrade Consolidated",
-            "report_link": "report-viewer.html?dataset=Colombo_Consolidated_W32_2025"
+            "report_link": "report-viewer.html?title=Colombo Consolidated Report - Week 32, 2025"
         },
         "Kolkata Consolidated Report - Week 32, 2025": {
             "title": "Kolkata Consolidated Report - Week 32, 2025",
@@ -135,7 +135,7 @@
             "week_number": 32,
             "auction_centre": "Kolkata",
             "source": "TeaTrade Consolidated",
-            "report_link": "report-viewer.html?dataset=Kolkata_Consolidated_W32_2025"
+            "report_link": "report-viewer.html?title=Kolkata Consolidated Report - Week 32, 2025"
         }
     },
     "Mombasa": {
