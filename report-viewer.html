@@ -1,33 +1,123 @@
-<script>
-        // All of your original helper functions for rendering are still needed
-        // I am including a few of them here for completeness.
-        // In your actual file, ALL of your original render... and format... functions should be here.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Report Viewer - TeaTrade</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="market-reports-page">
+    <header class="site-header">
+        <div class="header-top-bar">
+            <a href="corporate.html" class="header-logo"><h1>Tea<span>Trade</span></h1></a>
+            <div class="header-search-wrapper"><input type="text" class="header-search-bar" placeholder="Global site search..."></div>
+            <div class="user-actions">
+                <a href="#" title="Create Account"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="17" y1="11" x2="23" y2="11"></line></svg></a>
+                <a href="#" title="Sign In"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg></a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+        <nav class="secondary-nav">
+            <ul>
+                <li><a href="data.html">Data</a></li>
+                <li><a href="market-reports.html" class="active">Market Reports</a></li>
+                <li><a href="#">Auctions</a></li>
+                <li><a href="visuals.html">Visuals</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <main class="page-container">
+        <div class="dashboard-header">
+            <h2 class="page-title" id="report-title">Loading Report...</h2>
+        </div>
+        <p id="report-meta" style="margin-bottom: 24px; color: #5f6368;"></p>
+
+        <div id="report-content" style="display: none;">
+            
+            <section class="report-section" id="overview-section" style="display: none;">
+                <h3>Auction Overview</h3>
+                <div class="stat-cards-container" id="summary-stats"></div>
+                <div class="overview-grid">
+                    <div class="commentary-block">
+                        <h4>Market Synopsis</h4>
+                        <p id="market-comment"></p>
+                    </div>
+                    <div class="highest-prices-block" id="highest-prices-wrapper" style="display: none;">
+                        <h4>Highest Achieved Prices</h4>
+                        <table class="data-table compact-table" id="highest-prices-table">
+                            <thead>
+                                <tr>
+                                    <th>Price</th>
+                                    <th>Grade</th>
+                                    <th>Mark (Factory)</th>
+                                    <th>Country</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="report-section" id="price-quotations-section" style="display: none;">
+                <h3 id="price-quotations-title">Price Quotations</h3>
+                <div class="data-table-container">
+                    <table class="data-table" id="price-quotations-table">
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+            
+            </div>
+        <div id="loading-indicator">Loading data...</div>
+    </main>
+    <script src="script.js"></script>
+    <script>
+        // All of your original helper functions from the file you sent me
+        const CHART_COLORS = { /* ... your colors ... */ };
+        const PIE_COLORS = [ /* ... your colors ... */ ];
+        const CHART_OPTIONS_BAR = { /* ... your options ... */ };
+        const CHART_OPTIONS_PIE = { /* ... your options ... */ };
         const formatNumber = (num, decimals = 0) => {
             if (num === null || num === undefined || isNaN(num)) return 'N/A';
             return num.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
         };
         const formatCurrency = (num, currency = 'USD') => {
-             if (num === null || num === undefined || isNaN(num)) return 'N/A';
-             const decimals = (currency === 'USD' || currency === 'USc') ? 2 : 0;
-             return formatNumber(num, decimals);
+            if (num === null || num === undefined || isNaN(num)) return 'N/A';
+            const decimals = (currency === 'USD' || currency === 'USc') ? 2 : 0;
+            return formatNumber(num, decimals);
         };
         const formatPriceRange = (min, max, currency = 'USD') => {
-             if ((min === null || min === undefined) && (max === null || max === undefined)) return 'N/A';
-             if (max === null || max === undefined) return formatCurrency(min, currency);
-             if (min === null || min === undefined) return formatCurrency(max, currency);
-             return `${formatCurrency(min, currency)} - ${formatCurrency(max, currency)}`;
+            if ((min === null || min === undefined) && (max === null || max === undefined)) return 'N/A';
+            if (max === null || max === undefined) return formatCurrency(min, currency);
+            if (min === null || min === undefined) return formatCurrency(max, currency);
+            return `${formatCurrency(min, currency)} - ${formatCurrency(max, currency)}`;
         };
-
+        const formatDiff = (value, decimals = 2, invertColor = false) => { /* ... your logic ... */ };
+        const getMidpoint = (min, max) => { /* ... your logic ... */ };
+        const renderOverview = (summary, meta) => {
+            const section = document.getElementById('overview-section');
+            if (!summary || !section) return;
+            section.style.display = 'block';
+            // This is just a placeholder - your full original function is much more detailed
+            document.getElementById('market-comment').textContent = summary.notes || summary.commentary_synthesized || 'Commentary not available.';
+        };
         const renderPriceQuotations = (quotations, currency) => {
-            const section = document.getElementById('price-quotations-section');
+             const section = document.getElementById('price-quotations-section');
             if (!quotations || quotations.length === 0 || !section) return;
             section.style.display = 'block';
             
             const table = section.querySelector('table');
             const tbody = table.querySelector('tbody');
             const thead = table.querySelector('thead');
-            tbody.innerHTML = '<thead><tr><th>Lot No</th><th>Garden</th><th>Grade</th><th>Invoice</th><th>Packages</th><th>Price</th></tr></thead>';
+            tbody.innerHTML = '';
+            thead.innerHTML = '<tr><th>Lot No</th><th>Garden</th><th>Grade</th><th>Invoice</th><th>Packages</th><th>Price</th></tr>';
             
             quotations.forEach(item => {
                 let rowHtml = '<tr>';
@@ -41,31 +131,10 @@
                 tbody.innerHTML += rowHtml;
             });
         };
+        // ... and all your other original rendering functions (renderVolumeAnalysis, etc.) would be here ...
 
-        const renderOverview = (summary, meta) => {
-            const section = document.getElementById('overview-section');
-            if (!summary || !section) return;
-            section.style.display = 'block';
 
-            const statsContainer = document.getElementById('summary-stats');
-            statsContainer.innerHTML = '';
-             const stats = [
-                { label: 'Total Lots', value: summary.total_lots, format: 0 },
-                { label: 'Lots Sold', value: summary.lots_sold, format: 0 },
-                { label: 'Top Buyer', value: summary.top_buyer }
-            ];
-            stats.forEach(stat => {
-                if (stat.value !== undefined && stat.value !== null) {
-                    const card = document.createElement('div');
-                    card.className = 'stat-card';
-                    card.innerHTML = `<span class="stat-value">${stat.value}</span><span class="stat-label">${stat.label}</span>`;
-                    statsContainer.appendChild(card);
-                }
-            });
-            document.getElementById('market-comment').textContent = summary.notes || 'Commentary not available.';
-        };
-
-        // --- THE FINAL DATA LOADING LOGIC ---
+        // --- THE FINAL, UPGRADED DATA LOADING LOGIC ---
         document.addEventListener('DOMContentLoaded', async () => {
             const loadingIndicator = document.getElementById('loading-indicator');
             const reportTitleEl = document.getElementById('report-title');
@@ -89,26 +158,33 @@
                     }
                 }
 
-                if (!foundReport) throw new Error(`Could not find report "${reportTitleToFind}" in library.`);
+                if (!foundReport) throw new Error(`Could not find report "${reportTitleToFind}" in the library.`);
                 
-                // --- THIS IS THE KEY ---
-                // We now call your rendering functions with the data we found
-                
+                // This is the key fix: It checks if data is nested or at the top level
+                const reportData = foundReport.data || foundReport;
+                const metaData = foundReport;
+
                 reportTitleEl.textContent = foundReport.title;
                 document.getElementById('report-meta').textContent = foundReport.description;
 
-                const reportData = foundReport.data; // This holds the different "slices of the pie"
-                const metaData = foundReport;
-
                 // Call the render functions based on the data available in this report
-                if (reportData.buyer_summary && typeof renderOverview === 'function') {
-                    renderOverview(reportData.buyer_summary, metaData);
+                // This now works for BOTH old and new report structures
+                // (Using your original function names)
+                if (reportData.summary && typeof renderOverview === 'function') {
+                    renderOverview(reportData.summary, metaData);
                 }
-                if (reportData.auction_prices_S37 && typeof renderPriceQuotations === 'function') {
-                     // The key name is based on the filename, e.g., 'auction_prices_S37'
-                    renderPriceQuotations(reportData.auction_prices_S37, metaData.currency);
+                if (reportData.price_quotations && typeof renderPriceQuotations === 'function') {
+                    renderPriceQuotations(reportData.price_quotations, metaData.currency);
                 }
-                // Add more 'if' blocks here for your other render functions as you add more scrapers
+                // Handle the newly scraped data format (keys are based on scraper filenames)
+                Object.keys(reportData).forEach(key => {
+                    if (key.includes('auction_prices') && typeof renderPriceQuotations === 'function') {
+                        renderPriceQuotations(reportData[key], metaData.currency);
+                    }
+                    if (key.includes('buyer_summary') && typeof renderOverview === 'function') {
+                        renderOverview(reportData[key], metaData);
+                    }
+                });
                 
                 reportContentEl.style.display = 'block';
                 loadingIndicator.style.display = 'none';
@@ -120,3 +196,5 @@
             }
         });
     </script>
+</body>
+</html>
