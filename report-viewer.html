@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="market-reports-page">
-        <header class="site-header">
+    <header class="site-header">
         <div class="header-top-bar">
             <a href="corporate.html" class="header-logo"><h1>Tea<span>Trade</span></h1></a>
             <div class="header-search-wrapper"><input type="text" class="header-search-bar" placeholder="Global site search..."></div>
@@ -31,7 +31,7 @@
         </nav>
     </header>
 
-        <main class="page-container">
+    <main class="page-container">
         <div class="dashboard-header">
             <h2 class="page-title" id="report-title">Loading Consolidated Report...</h2>
         </div>
@@ -219,7 +219,7 @@
     </main>
     <script src="script.js"></script>
     
-        <script>
+    <script>
         // --- Configuration ---
         const CHART_COLORS = {
             primary: 'rgba(26, 115, 232, 0.8)', // Blue
@@ -316,12 +316,9 @@
         // 1. Overview and Commentary
         const renderOverview = (summary, meta) => {
             if (!summary) return;
-            const currency = (meta && meta.currency) ? meta.currency : 'USD';
-
             document.getElementById('overview-section').style.display = 'block';
 
             const statsContainer = document.getElementById('summary-stats');
-            if (!statsContainer) return;
             statsContainer.innerHTML = '';
 
             const stats = [
@@ -331,13 +328,13 @@
                 { label: 'Total Lots', value: summary.total_lots, format: 0 },
                 { label: 'Unsold (%)', value: summary.percent_unsold, format: 1, suffix: '%' },
                 { label: 'Sold (%)', value: summary.percent_sold, format: 1, suffix: '%' },
-                { label: 'Auction Average Price', value: summary.auction_average_price, prefix: currency + ' '},
+                { label: 'Auction Average Price', value: summary.auction_average_price, prefix: meta.currency + ' '},
             ];
 
             stats.forEach(stat => {
                 if (stat.value !== undefined && stat.value !== null) {
                     // Determine format dynamically if not specified (for currency)
-                    const format = stat.format !== undefined ? stat.format : (stat.label.includes('Price') ? (currency === 'USD' || currency === 'USc' ? 2 : 0) : 0);
+                    const format = stat.format !== undefined ? stat.format : (stat.label.includes('Price') ? (meta.currency === 'USD' || meta.currency === 'USc' ? 2 : 0) : 0);
                     
                     const card = document.createElement('div');
                     card.className = 'stat-card';
@@ -356,62 +353,56 @@
             if (summary.highest_prices && summary.highest_prices.length > 0) {
                 document.getElementById('highest-prices-wrapper').style.display = 'block';
                 const highestPricesTbody = document.getElementById('highest-prices-table').querySelector('tbody');
-                if (highestPricesTbody) {
-                    highestPricesTbody.innerHTML = '';
-                    summary.highest_prices.forEach(item => {
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${formatCurrency(item.price, currency)}</td>
-                            <td>${item.grade}</td>
-                            <td>${item.mark}</td>
-                            <td>${item.country || ''}</td>
-                        `;
-                        highestPricesTbody.appendChild(row);
-                    });
-                }
+                highestPricesTbody.innerHTML = '';
+                summary.highest_prices.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${formatCurrency(item.price, meta.currency)}</td>
+                        <td>${item.grade}</td>
+                        <td>${item.mark}</td>
+                        <td>${item.country || ''}</td>
+                    `;
+                    highestPricesTbody.appendChild(row);
+                });
             }
         };
 
         // 2. Volume Analysis (Dynamic Table Rendering - Enhanced with WoW Movement)
         const renderVolumeAnalysis = (volumeData, meta) => {
             if (!volumeData) return;
-            const currency = (meta && meta.currency) ? meta.currency : 'USD';
             
             // Chart: By Country
             if (volumeData.by_country && volumeData.by_country.length > 0) {
                 document.getElementById('volume-analysis-section').style.display = 'block';
                 document.getElementById('country-volume-chart-wrapper').style.display = 'block';
-                const ctx = document.getElementById('countryVolumeChart') ? document.getElementById('countryVolumeChart').getContext('2d') : null;
-                
-                if (ctx) {
-                    const labels = volumeData.by_country.map(item => item.country);
-                    const offered = volumeData.by_country.map(item => item.offered_kg);
-                    const sold = volumeData.by_country.map(item => item.sold_kg);
+                const ctx = document.getElementById('countryVolumeChart').getContext('2d');
+                const labels = volumeData.by_country.map(item => item.country);
+                const offered = volumeData.by_country.map(item => item.offered_kg);
+                const sold = volumeData.by_country.map(item => item.sold_kg);
 
-                    const options = JSON.parse(JSON.stringify(CHART_OPTIONS_BAR));
-                    options.scales.y.title.text = 'Quantity (kg)';
-                    options.plugins.legend.display = true;
+                const options = JSON.parse(JSON.stringify(CHART_OPTIONS_BAR));
+                options.scales.y.title.text = 'Quantity (kg)';
+                options.plugins.legend.display = true;
 
-                    new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: labels,
-                            datasets: [
-                                {
-                                    label: 'Offered (kg)',
-                                    data: offered,
-                                    backgroundColor: CHART_COLORS.secondary,
-                                },
-                                {
-                                    label: 'Sold (kg)',
-                                    data: sold,
-                                    backgroundColor: CHART_COLORS.primary,
-                                }
-                            ]
-                        },
-                        options: options
-                    });
-                }
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Offered (kg)',
+                                data: offered,
+                                backgroundColor: CHART_COLORS.secondary,
+                            },
+                            {
+                                label: 'Sold (kg)',
+                                data: sold,
+                                backgroundColor: CHART_COLORS.primary,
+                            }
+                        ]
+                    },
+                    options: options
+                });
             }
 
             // Table: By Grade/Category Detailed (Dynamically adapts to available data fields)
@@ -421,10 +412,7 @@
                 const data = volumeData.by_grade_detailed;
                 const thead = document.getElementById('grade-stats-table').querySelector('thead');
                 const tbody = document.getElementById('grade-stats-table').querySelector('tbody');
-                
-                if (!thead || !tbody) return;
-
-                tbody.innerHTML = '';
+                tbody.innerHTML = '';
                 thead.innerHTML = '';
 
                 // Determine available columns based on data structure
@@ -479,11 +467,11 @@
                     }
 
                     if (hasPercent) rowHtml += `<td>${formatNumber(item.percent_unsold, 1)}%</td>`;
-                    if (hasAvgPrice) rowHtml += `<td>${formatCurrency(item.average_price, currency)}</td>`;
+                    if (hasAvgPrice) rowHtml += `<td>${formatCurrency(item.average_price, meta.currency)}</td>`;
                     
                     // NEW: Display movement vs last week with color coding
                     if (hasMovement) {
-                        const decimals = (currency === 'USD' || currency === 'USc') ? 2 : 0;
+                        const decimals = (meta.currency === 'USD' || meta.currency === 'USc') ? 2 : 0;
                         rowHtml += `<td>${formatDiff(item.movement_vs_last_week, decimals)}</td>`;
                     }
 
@@ -500,7 +488,6 @@
 
             // Table: Top Buyers
             const tbody = document.getElementById('buyer-activity-table').querySelector('tbody');
-            if (!tbody) return;
             tbody.innerHTML = '';
             // Display top 15 buyers
             const top15 = activity.slice(0, 15); 
@@ -515,56 +502,52 @@
             });
 
             // Chart: Market Share (Pie Chart)
-            const ctx = document.getElementById('buyerChart') ? document.getElementById('buyerChart').getContext('2d') : null;
+            const ctx = document.getElementById('buyerChart').getContext('2d');
 
-            if (ctx) {
-                // Prepare data for pie chart: Top 9 + Others
-                const sortedActivity = [...activity].sort((a, b) => b.market_share - a.market_share);
+            // Prepare data for pie chart: Top 9 + Others
+            const sortedActivity = [...activity].sort((a, b) => b.market_share - a.market_share);
             
-                // Filter out explicit "Others" categories if they exist in the source data to avoid duplication
-                const primaryActivity = sortedActivity.filter(item => !item.buyer.toLowerCase().includes("others (local/misc)") && !item.buyer.toLowerCase().includes("others (calculated)"));
+            // Filter out explicit "Others" categories if they exist in the source data to avoid duplication
+            const primaryActivity = sortedActivity.filter(item => !item.buyer.toLowerCase().includes("others (local/misc)") && !item.buyer.toLowerCase().includes("others (calculated)"));
             
-                const top9 = primaryActivity.slice(0, 9);
-                const others = primaryActivity.slice(9);
+            const top9 = primaryActivity.slice(0, 9);
+            const others = primaryActivity.slice(9);
             
-                const chartData = [...top9];
-                if (others.length > 0) {
-                    const othersTotal = others.reduce((sum, item) => sum + item.market_share, 0);
-                     // Ensure 'Others' total is meaningful before adding
-                    if (othersTotal > 0.1) {
-                        chartData.push({ buyer: 'Others (Calculated)', market_share: othersTotal });
-                    }
-                }
+            const chartData = [...top9];
+            if (others.length > 0) {
+                const othersTotal = others.reduce((sum, item) => sum + item.market_share, 0);
+                 // Ensure 'Others' total is meaningful before adding
+                if (othersTotal > 0.1) {
+                    chartData.push({ buyer: 'Others (Calculated)', market_share: othersTotal });
+                }
+            }
 
-                const labels = chartData.map(item => item.buyer);
-                const values = chartData.map(item => item.market_share);
+            const labels = chartData.map(item => item.buyer);
+            const values = chartData.map(item => item.market_share);
 
-                const options = JSON.parse(JSON.stringify(CHART_OPTIONS_PIE));
+            const options = JSON.parse(JSON.stringify(CHART_OPTIONS_PIE));
 
-                new Chart(ctx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            label: 'Market Share (%)',
-                            data: values,
-                            backgroundColor: PIE_COLORS,
-                        }]
-                    },
-                    options: options
-                });
-            }
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Market Share (%)',
+                        data: values,
+                        backgroundColor: PIE_COLORS,
+                    }]
+                },
+                options: options
+            });
         };
 
         // 4. Comparative Analysis (Handles both structured YoY and generic comparisons - Enhanced with Diffs)
         const renderComparativeAnalysis = (comparison, meta) => {
             if (!comparison) return;
             
-            // Use defaults if meta is missing, though ideally meta should always be present
-            const currentYear = (meta && meta.year) ? meta.year : new Date().getFullYear();
+            const currentYear = meta.year;
             const prevYear = currentYear - 1;
-            const currency = (meta && meta.currency) ? meta.currency : 'USD';
-            const currencyDecimals = (currency === 'USD' || currency === 'USc') ? 2 : 0;
+            const currencyDecimals = (meta.currency === 'USD' || meta.currency === 'USc') ? 2 : 0;
 
             // A. Structured YoY Comparison (e.g., Mombasa)
             if (comparison.country_averages_yoy && comparison.country_averages_yoy.length > 0) {
@@ -572,39 +555,37 @@
                 document.getElementById('country-comparison-wrapper').style.display = 'block';
 
                 // Update Headers
-                if(document.getElementById('header-current-year-sale')) document.getElementById('header-current-year-sale').textContent = currentYear;
-                if(document.getElementById('header-prev-year-sale')) document.getElementById('header-prev-year-sale').textContent = prevYear;
-                if(document.getElementById('header-current-year-ytd')) document.getElementById('header-current-year-ytd').textContent = currentYear;
-                if(document.getElementById('header-prev-year-ytd')) document.getElementById('header-prev-year-ytd').textContent = prevYear;
+                document.getElementById('header-current-year-sale').textContent = currentYear;
+                document.getElementById('header-prev-year-sale').textContent = prevYear;
+                document.getElementById('header-current-year-ytd').textContent = currentYear;
+                document.getElementById('header-prev-year-ytd').textContent = prevYear;
 
                 const tbody = document.getElementById('country-comparison-table').querySelector('tbody');
-                if (tbody) {
-                    tbody.innerHTML = '';
-                    comparison.country_averages_yoy.forEach(item => {
-                        const row = document.createElement('tr');
-                        // Dynamically access properties based on year
-                        const avgCurrent = item[`avg_${currentYear}`];
-                        const avgPrev = item[`avg_${prevYear}`];
-                        const ytdCurrent = item[`ytd_${currentYear}`];
-                        const ytdPrev = item[`ytd_${prevYear}`];
+                tbody.innerHTML = '';
+                comparison.country_averages_yoy.forEach(item => {
+                    const row = document.createElement('tr');
+                    // Dynamically access properties based on year
+                    const avgCurrent = item[`avg_${currentYear}`];
+                    const avgPrev = item[`avg_${prevYear}`];
+                    const ytdCurrent = item[`ytd_${currentYear}`];
+                    const ytdPrev = item[`ytd_${prevYear}`];
 
-                        // Calculate differences
-                        const diffSale = (avgCurrent !== undefined && avgPrev !== undefined) ? avgCurrent - avgPrev : null;
-                        const diffYtd = (ytdCurrent !== undefined && ytdPrev !== undefined) ? ytdCurrent - ytdPrev : null;
+                    // Calculate differences
+                    const diffSale = (avgCurrent !== undefined && avgPrev !== undefined) ? avgCurrent - avgPrev : null;
+                    const diffYtd = (ytdCurrent !== undefined && ytdPrev !== undefined) ? ytdCurrent - ytdPrev : null;
 
-                        // Build Row with Diffs
-                        row.innerHTML = `
-                            <td>${item.country}</td>
-                            <td>${formatCurrency(avgCurrent, currency)}</td>
-                            <td>${formatCurrency(avgPrev, currency)}</td>
-                            <td>${formatDiff(diffSale, currencyDecimals)}</td>
-                            <td>${formatCurrency(ytdCurrent, currency)}</td>
-                            <td>${formatCurrency(ytdPrev, currency)}</td>
-                            <td>${formatDiff(diffYtd, currencyDecimals)}</td>
-                        `;
-                        tbody.appendChild(row);
-                    });
-                }
+                    // Build Row with Diffs
+                    row.innerHTML = `
+                        <td>${item.country}</td>
+                        <td>${formatCurrency(avgCurrent, meta.currency)}</td>
+                        <td>${formatCurrency(avgPrev, meta.currency)}</td>
+                        <td>${formatDiff(diffSale, currencyDecimals)}</td>
+                        <td>${formatCurrency(ytdCurrent, meta.currency)}</td>
+                        <td>${formatCurrency(ytdPrev, meta.currency)}</td>
+                        <td>${formatDiff(diffYtd, currencyDecimals)}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
             }
 
              // Footer and Chart: Total Auction Average Visualization
@@ -620,61 +601,57 @@
                 if (comparison.country_averages_yoy && comparison.country_averages_yoy.length > 0) {
                     const tfoot = document.getElementById('country-comparison-table').querySelector('tfoot');
                     
-                    if (tfoot) {
-                        const diffSale = (avgCurrent !== undefined && avgPrev !== undefined) ? avgCurrent - avgPrev : null;
-                        const diffYtd = (ytdCurrent !== undefined && ytdPrev !== undefined) ? ytdCurrent - ytdPrev : null;
+                    const diffSale = (avgCurrent !== undefined && avgPrev !== undefined) ? avgCurrent - avgPrev : null;
+                    const diffYtd = (ytdCurrent !== undefined && ytdPrev !== undefined) ? ytdCurrent - ytdPrev : null;
 
-                        // Build Footer with Diffs
-                        tfoot.innerHTML = `
-                            <tr style="font-weight: bold; background-color: #f1f3f4;">
-                                <td>AUCTION AVERAGE</td>
-                                <td>${formatCurrency(avgCurrent, currency)}</td>
-                                <td>${formatCurrency(avgPrev, currency)}</td>
-                                <td>${formatDiff(diffSale, currencyDecimals)}</td>
-                                <td>${formatCurrency(ytdCurrent, currency)}</td>
-                                <td>${formatCurrency(ytdPrev, currency)}</td>
-                                <td>${formatDiff(diffYtd, currencyDecimals)}</td>
-                            </tr>
-                        `;
-                    }
+                    // Build Footer with Diffs
+                    tfoot.innerHTML = `
+                        <tr style="font-weight: bold; background-color: #f1f3f4;">
+                            <td>AUCTION AVERAGE</td>
+                            <td>${formatCurrency(avgCurrent, meta.currency)}</td>
+                            <td>${formatCurrency(avgPrev, meta.currency)}</td>
+                            <td>${formatDiff(diffSale, currencyDecimals)}</td>
+                            <td>${formatCurrency(ytdCurrent, meta.currency)}</td>
+                            <td>${formatCurrency(ytdPrev, meta.currency)}</td>
+                            <td>${formatDiff(diffYtd, currencyDecimals)}</td>
+                        </tr>
+                    `;
                 }
 
                 // Render Chart
                 document.getElementById('auction-avg-chart-wrapper').style.display = 'block';
-                const ctx = document.getElementById('auctionAvgChart') ? document.getElementById('auctionAvgChart').getContext('2d') : null;
+                const ctx = document.getElementById('auctionAvgChart').getContext('2d');
                 
-                if (ctx) {
-                    const labels = ['Current Sale', 'Year-to-Date'];
-                    // Handle cases where YTD might not be present
-                    const currentYearData = [avgCurrent, ytdCurrent].filter(v => v !== undefined);
-                    const prevYearData = [avgPrev, ytdPrev].filter(v => v !== undefined);
+                const labels = ['Current Sale', 'Year-to-Date'];
+                // Handle cases where YTD might not be present
+                const currentYearData = [avgCurrent, ytdCurrent].filter(v => v !== undefined);
+                const prevYearData = [avgPrev, ytdPrev].filter(v => v !== undefined);
 
-                    const chartLabels = currentYearData.length === 2 ? labels : ['Current Sale'];
+                const chartLabels = currentYearData.length === 2 ? labels : ['Current Sale'];
 
-                    const options = JSON.parse(JSON.stringify(CHART_OPTIONS_BAR));
-                    options.scales.y.title.text = `Price (${currency})`;
-                    options.plugins.legend.display = true;
+                const options = JSON.parse(JSON.stringify(CHART_OPTIONS_BAR));
+                options.scales.y.title.text = `Price (${meta.currency})`;
+                options.plugins.legend.display = true;
 
-                     new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: chartLabels,
-                            datasets: [
-                                {
-                                    label: prevYear,
-                                    data: prevYearData,
-                                    backgroundColor: CHART_COLORS.secondary,
-                                },
-                                {
-                                    label: currentYear,
-                                    data: currentYearData,
-                                    backgroundColor: CHART_COLORS.primary,
-                                }
-                            ]
-                        },
-                        options: options
-                    });
-                }
+                 new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: chartLabels,
+                        datasets: [
+                            {
+                                label: prevYear,
+                                data: prevYearData,
+                                backgroundColor: CHART_COLORS.secondary,
+                            },
+                            {
+                                label: currentYear,
+                                data: currentYearData,
+                                backgroundColor: CHART_COLORS.primary,
+                            }
+                        ]
+                    },
+                    options: options
+                });
             }
 
 
@@ -683,7 +660,6 @@
                 document.getElementById('comparative-analysis-section').style.display = 'block';
                 document.getElementById('generic-comparison-wrapper').style.display = 'block';
                 const container = document.getElementById('generic-comparison-container');
-                if (!container) return;
                 container.innerHTML = ''; // Clear previous content
 
                 comparison.generic_tables.forEach(tableData => {
@@ -725,7 +701,7 @@
 
                             // Apply formatting based on type
                             if (keyInfo.format === 'currency') {
-                                displayValue = formatCurrency(value, currency);
+                                displayValue = formatCurrency(value, meta.currency);
                             } else if (keyInfo.format === 'number') {
                                 displayValue = formatNumber(value, keyInfo.decimals || 0);
                             } else if (keyInfo.format === 'diff') {
@@ -752,10 +728,7 @@
             if (!performance || performance.length === 0) return;
             document.getElementById('factory-performance-section').style.display = 'block';
 
-            const currency = (meta && meta.currency) ? meta.currency : 'USD';
-
             const tbody = document.getElementById('factory-performance-table').querySelector('tbody');
-            if (!tbody) return;
             tbody.innerHTML = '';
 
             // Display Top 50 (or fewer if data is limited)
@@ -767,9 +740,9 @@
                     <td>${index + 1}</td>
                     <td>${item.mark}</td>
                     <td>${item.country}</td>
-                    <td>${formatCurrency(item.average_price, currency)}</td>
+                    <td>${formatCurrency(item.average_price, meta.currency)}</td>
                     <td>${item.top_grade}</td>
-                    <td>${formatCurrency(item.top_price, currency)}</td>
+                    <td>${formatCurrency(item.top_price, meta.currency)}</td>
                 `;
                 tbody.appendChild(row);
             });
@@ -783,7 +756,6 @@
             document.getElementById('price-quotations-title').textContent = `Price Quotations & Movement (${currency}/kg)`;
 
             const table = document.getElementById('price-quotations-table');
-            if (!table) return;
             const thead = table.querySelector('thead');
             const tbody = table.querySelector('tbody');
             tbody.innerHTML = '';
@@ -840,7 +812,6 @@
             if (!forecast || forecast.length === 0) return;
             document.getElementById('forecast-section').style.display = 'block';
             const container = document.getElementById('forecast-container');
-            if (!container) return;
             container.innerHTML = '';
 
             forecast.forEach(item => {
@@ -876,72 +847,68 @@
             if (weatherExists) {
                 document.getElementById('weather-section').style.display = 'block';
                 const tbody = document.getElementById('weather-table').querySelector('tbody');
-                if (tbody) {
-                    tbody.innerHTML = '';
+                tbody.innerHTML = '';
 
-                    weather.forEach(item => {
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${item.region}</td>
-                            <td>${item.conditions}</td>
-                        `;
-                        tbody.appendChild(row);
-                    });
-                }
+                weather.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${item.region}</td>
+                        <td>${item.conditions}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
             }
 
             // Upcoming Offerings
             if (upcomingExists) {
                 document.getElementById('upcoming-section').style.display = 'block';
                 const container = document.getElementById('upcoming-container');
-                if (container) {
-                    container.innerHTML = '';
+                container.innerHTML = '';
 
-                    for (const saleKey in upcoming) {
-                        const saleData = upcoming[saleKey];
-                        const saleNumber = saleKey.replace('sale_', '');
+                for (const saleKey in upcoming) {
+                    const saleData = upcoming[saleKey];
+                    const saleNumber = saleKey.replace('sale_', '');
 
-                        const block = document.createElement('div');
-                        block.className = 'upcoming-block';
+                    const block = document.createElement('div');
+                    block.className = 'upcoming-block';
 
-                        let html = `<h4>Sale ${saleNumber} (${saleData.date})</h4>`;
+                    let html = `<h4>Sale ${saleNumber} (${saleData.date})</h4>`;
 
-                        // Handle different metrics (Packages vs M/Kgs)
-                        const metric = saleData.total_packages ? 'Packages' : (saleData.total_m_kgs ? 'M/Kgs' : '');
-                        const value = saleData.total_packages || saleData.total_m_kgs;
+                    // Handle different metrics (Packages vs M/Kgs)
+                    const metric = saleData.total_packages ? 'Packages' : (saleData.total_m_kgs ? 'M/Kgs' : '');
+                    const value = saleData.total_packages || saleData.total_m_kgs;
 
-                        if (metric && value) {
-                             html += `<p><strong>Total Estimated: ${formatNumber(value, metric === 'M/Kgs' ? 2 : 0)} ${metric}</strong></p>`;
-                        }
+                    if (metric && value) {
+                         html += `<p><strong>Total Estimated: ${formatNumber(value, metric === 'M/Kgs' ? 2 : 0)} ${metric}</strong></p>`;
+                    }
                    
                     
-                        // Check if country breakdown exists (Mombasa)
-                        if (saleData.by_country && saleData.by_country.length > 0) {
-                            html += `<div class="data-table-container"><table class="data-table compact-table">
-                                        <thead><tr><th>Country</th><th>Packages</th></tr></thead><tbody>`;
+                    // Check if country breakdown exists (Mombasa)
+                    if (saleData.by_country && saleData.by_country.length > 0) {
+                        html += `<div class="data-table-container"><table class="data-table compact-table">
+                                    <thead><tr><th>Country</th><th>Packages</th></tr></thead><tbody>`;
                         
-                            saleData.by_country.forEach(item => {
-                                html += `<tr><td>${item.country}</td><td>${formatNumber(item.packages)}</td></tr>`;
-                            });
+                        saleData.by_country.forEach(item => {
+                            html += `<tr><td>${item.country}</td><td>${formatNumber(item.packages)}</td></tr>`;
+                        });
 
-                            html += `</tbody></table></div>`;
-                        }
-                         // Check if elevation breakdown exists (Colombo)
-                        else if (saleData.by_elevation && saleData.by_elevation.length > 0) {
-                            html += `<div class="data-table-container"><table class="data-table compact-table">
-                                        <thead><tr><th>Elevation</th><th>M/Kgs</th></tr></thead><tbody>`;
+                        html += `</tbody></table></div>`;
+                    }
+                     // Check if elevation breakdown exists (Colombo)
+                    else if (saleData.by_elevation && saleData.by_elevation.length > 0) {
+                        html += `<div class="data-table-container"><table class="data-table compact-table">
+                                    <thead><tr><th>Elevation</th><th>M/Kgs</th></tr></thead><tbody>`;
                         
-                            saleData.by_elevation.forEach(item => {
-                                html += `<tr><td>${item.elevation}</td><td>${formatNumber(item.m_kgs, 2)}</td></tr>`;
-                            });
+                        saleData.by_elevation.forEach(item => {
+                            html += `<tr><td>${item.elevation}</td><td>${formatNumber(item.m_kgs, 2)}</td></tr>`;
+                        });
 
-                            html += `</tbody></table></div>`;
-                        }
+                        html += `</tbody></table></div>`;
+                    }
 
-                        block.innerHTML = html;
-                        container.appendChild(block);
-                    }
-                }
+                    block.innerHTML = html;
+                    container.appendChild(block);
+                }
             }
         };
 
@@ -950,7 +917,7 @@
              const section = document.getElementById('international-section');
              const container = document.getElementById('international-container');
 
-            if (!summaries || summaries.length === 0 || !container) return;
+            if (!summaries || summaries.length === 0) return;
             
             section.style.display = 'block';
             container.innerHTML = '';
@@ -996,22 +963,24 @@
 
 
         // Main Report Rendering Logic (Orchestration)
-        // Updated to handle potentially nested data structures from the library
         const renderReport = (data) => {
-            // Handle potential nesting if the library returns structured data
+            // !! CHANGE START: Adapt to potential nesting when loading from the library !!
+            // We attempt to find the data and metadata robustly
             const reportData = data.data || data;
-            const meta = data.metadata || reportData.metadata || data;
+            const meta = reportData.metadata || data.metadata;
 
-            if (!meta || !meta.year || !meta.currency) {
-                 console.error("Critical metadata (like year or currency) is missing.", data);
-                 // We allow rendering to continue with defaults where possible, but log the error.
+            if (!meta) {
+                console.error("Metadata not found in the report data structure.", data);
+                document.getElementById('report-title').textContent = 'Error: Invalid report structure (Metadata missing).';
+                return;
             }
+            // !! CHANGE END !!
 
             // 1. Metadata and Title
-            const titlePrefix = meta.report_title || (meta.auction_centre ? `${meta.auction_centre} Consolidated Auction Report` : 'Market Report');
+            const titlePrefix = meta.report_title || `${meta.auction_centre} Consolidated Auction Report`;
             const weekOrSale = meta.sale_number ? `Sale ${meta.sale_number}` : (meta.week_number ? `Week ${meta.week_number}` : '');
             
-            document.getElementById('report-title').textContent = `${titlePrefix} - ${weekOrSale} (${meta.year || 'N/A'})`;
+            document.getElementById('report-title').textContent = `${titlePrefix} - ${weekOrSale} (${meta.year})`;
             
             let metaText = `Week: ${meta.week_number || 'N/A'}`;
             
@@ -1027,7 +996,7 @@
             if (meta.prompt_date) {
                 metaText += ` | Prompt Date: ${meta.prompt_date}`;
             }
-            metaText += ` | Currency: ${meta.currency || 'N/A'}`;
+            metaText += ` | Currency: ${meta.currency}`;
             
             if (meta.exchange_rate_note) {
                 metaText += ` | Exchange: ${meta.exchange_rate_note}`;
@@ -1036,76 +1005,69 @@
             document.getElementById('report-meta').textContent = metaText;
 
             // 2. Render Sections (Order based on typical importance)
+            // We use reportData here for the content sections
             renderOverview(reportData.summary, meta);
             renderVolumeAnalysis(reportData.volume_analysis, meta);
             renderBuyerActivity(reportData.buyer_activity);
             renderComparativeAnalysis(reportData.comparative_analysis, meta);
             renderFactoryPerformance(reportData.factory_performance, meta);
-
-            // Handle variations in the key name for price quotations
-            const priceKey = Object.keys(reportData).find(k => k.includes('prices'));
-            if (reportData.price_quotations) {
-                renderPriceQuotations(reportData.price_quotations, meta.currency);
-            } else if (priceKey) {
-                renderPriceQuotations(reportData[priceKey], meta.currency);
-            }
-
-            renderForecastAnalysis(reportData.forecast_analysis);
+            renderPriceQuotations(reportData.price_quotations, meta.currency);
+            renderForecastAnalysis(reportData.forecast_analysis); // NEW
             renderForwardLook(reportData.weather_analysis, reportData.upcoming_offerings);
             renderInternationalSummaries(reportData.international_summaries);
         };
 
-        // --- Data Loading (!! MERGED/NEW LOGIC !!) ---
-        // This replaces the original data loading block.
+        // --- Data Loading ---
+        // !! REPLACED LOGIC START - This section replaces the original data loader !!
         document.addEventListener('DOMContentLoaded', async () => {
-            // Initialize mobile menu toggle (if script.js provides it)
+            // Initialize mobile menu toggle
              if (typeof initializeMobileMenu === 'function') {
                 initializeMobileMenu();
             }
-            
+
             const loadingIndicator = document.getElementById('loading-indicator');
             const reportContentEl = document.getElementById('report-content');
-
-            try {
-                // 1. Get the report identifier from the URL parameter 'title'
+            
+            try {
+                // 1. Get the report identifier from the URL parameter 'title' (replacing 'dataset')
                 const params = new URLSearchParams(window.location.search);
                 const reportTitleToFind = params.get('title');
 
                 if (!reportTitleToFind) {
-                    // This specifically addresses the error the user saw.
-                    throw new Error("No report selected.");
+                    // This specifically addresses the error the user originally saw.
+                    throw new Error("No report selected (URL parameter 'title' is missing).");
                 }
 
-                // 2. Fetch the central library
+                // 2. Fetch the central library (instead of the Consolidated directory)
                 const response = await fetch('market-reports-library.json');
                 if (!response.ok) {
                     throw new Error(`Failed to load library (market-reports-library.json). Status: ${response.status}`);
                 }
                 const library = await response.json();
 
-                // 3. Find the report in the library
+                // 3. Find the report within the library
                 let foundReport = null;
                 
                 // Search nested structure (e.g., { "Location": { "Title": data } })
                 for (const key in library) {
                     const entry = library[key];
-                    // Ensure the entry is a valid object before searching within it
-                    if (typeof entry === 'object' && entry !== null && entry[reportTitleToFind]) {
+                    // Check if the entry is an object (and not an array/null) and contains the report title
+                    if (typeof entry === 'object' && entry !== null && !Array.isArray(entry) && entry[reportTitleToFind]) {
                         foundReport = entry[reportTitleToFind];
                         break;
                     }
                 }
 
-                // Also check if the report is at the top level (e.g., { "Title": data })
+                // Also check if the report is at the top level (if the library structure happens to be flat)
                 if (!foundReport && library[reportTitleToFind]) {
                     foundReport = library[reportTitleToFind];
                 }
 
                 if (!foundReport) {
-                    throw new Error(`Report "${reportTitleToFind}" not found in library.`);
+                    throw new Error(`Report "${reportTitleToFind}" not found in the library.`);
                 }
-
-                // 4. Render the report
+                
+                // 4. Orchestrate the rendering
                 renderReport(foundReport);
                 
                 // 5. Display content
@@ -1119,6 +1081,7 @@
                 loadingIndicator.textContent = `Error: ${error.message}`;
             }
         });
+        // !! REPLACED LOGIC END !!
     </script>
 </body>
 </html>
