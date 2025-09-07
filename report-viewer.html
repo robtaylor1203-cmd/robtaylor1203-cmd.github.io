@@ -74,7 +74,7 @@
                     </div>
                     <div class="analysis-block" id="grade-stats-table-wrapper" style="display: none;">
                          <h4>Detailed Grade/Category Statistics</h4>
-                         <div class="data-table-container">
+                        <div class="data-table-container">
                             <table class="data-table stats-table" id="grade-stats-table">
                                 <thead>
                                     </thead>
@@ -88,19 +88,18 @@
             <section class="report-section" id="buyer-activity-section" style="display: none;">
                 <h3>Buyer Activity & Market Share</h3>
                  <div class="analysis-grid">
-                    <div class="analysis-block">
+                    <div class="analysis-block" id="buyer-chart-wrapper" style="display: none;">
                          <h4>Buyer Market Share (%)</h4>
                         <div style="position: relative; height: 400px;"><canvas id="buyerChart"></canvas></div>
                     </div>
-                    <div class="analysis-block">
+                    <div class="analysis-block" id="buyer-activity-table-wrapper" style="display: none;">
                         <h4>Top Buyers & Regional Activity</h4>
                          <div class="data-table-container">
                             <table class="data-table stats-table" id="buyer-activity-table">
                                 <thead>
                                     <tr>
                                         <th>Buyer/Region</th>
-                                        <th>Volume (kg)</th>
-                                        <th>Market Share (%)</th>
+                                        <th>Activity/Purchases</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -110,938 +109,397 @@
                 </div>
             </section>
 
-            <section class="report-section" id="comparative-analysis-section" style="display: none;">
-                <h3>Comparative Analysis</h3>
-                <div class="comparison-container">
-                    <div class="comparison-block" id="country-comparison-wrapper" style="display: none;">
-                         <h4>Country Average Prices (Year-on-Year)</h4>
-                        <div class="data-table-container">
-                            <table class="data-table stats-table" id="country-comparison-table">
-                                <thead>
-                                    <tr>
-                                        <th rowspan="2" class="header-main">Country</th>
-                                        <th colspan="3" class="header-main">Current Sale Avg</th>
-                                        <th colspan="3" class="header-main">Year-to-Date Avg</th>
-                                    </tr>
-                                    <tr>
-                                        <th class="header-sub" id="header-current-year-sale"></th>
-                                        <th class="header-sub" id="header-prev-year-sale"></th>
-                                        <th class="header-sub">Change</th>
-                                        <th class="header-sub" id="header-current-year-ytd"></th>
-                                        <th class="header-sub" id="header-prev-year-ytd"></th>
-                                        <th class="header-sub">Change</th>
-                                    </tr>
-                                </thead>
-                                <tbody></tbody>
-                                <tfoot></tfoot>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="comparison-block" id="auction-avg-chart-wrapper" style="display: none;">
-                        <h4>Auction Average Visualization</h4>
-                        <div style="position: relative; height: 300px;"><canvas id="auctionAvgChart"></canvas></div>
-                    </div>
-                     <div class="comparison-block" id="generic-comparison-wrapper" style="display: none;">
-                         <div class="data-table-container" id="generic-comparison-container">
-                            </div>
-                    </div>
-                </div>
-            </section>
-
-             <section class="report-section" id="factory-performance-section" style="display: none;">
-                <h3>Factory (Mark) Performance Ranking</h3>
-                <p>Top Factories ranked by Average Price achieved during the sale.</p>
-                 <div class="data-table-container">
-                    <table class="data-table stats-table" id="factory-performance-table">
-                        <thead>
-                            <tr>
-                                <th>Rank</th>
-                                <th>Mark (Factory)</th>
-                                <th>Country</th>
-                                <th>Average Price</th>
-                                <th>Top Grade</th>
-                                <th>Top Price</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-            </section>
-
-            <section class="report-section" id="price-quotations-section" style="display: none;">
-                <h3 id="price-quotations-title">Price Quotations</h3>
-                 <div class="data-table-container">
-                    <table class="data-table" id="price-quotations-table">
-                        <thead></thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-            </section>
-
-            <section class="report-section" id="forecast-section" style="display: none;">
-                <h3>Market Forecast & Outlook</h3>
-                <div class="forecast-container" id="forecast-container">
-                </div>
-            </section>
-
-            <section class="report-section" id="forward-look-section" style="display: none;">
-                <h3>Weather Impact & Upcoming Offerings</h3>
-                <div class="analysis-grid">
-                    <div class="analysis-block" id="weather-section" style="display: none;">
-                        <h4>Regional Weather & Crop Conditions</h4>
-                        <div class="data-table-container">
-                            <table class="data-table stats-table" id="weather-table">
-                                <thead>
-                                    <tr>
-                                        <th>Region</th>
-                                        <th>Conditions</th>
-                                    </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="analysis-block" id="upcoming-section" style="display: none;">
-                        <h4>Upcoming Auction Offerings</h4>
-                        <div class="upcoming-container" id="upcoming-container">
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-             <section class="report-section" id="international-section" style="display: none;">
-                <h3>International Summaries</h3>
-                <div id="international-container"></div>
+            <section class="report-section" id="raw-data-section" style="display: none;">
+                <h3>Raw Data Components (Debug View)</h3>
+                <div id="raw-data-container"></div>
             </section>
 
         </div>
-        <div id="loading-indicator">Loading data...</div>
+        <div id="loading-indicator">Loading report data...</div>
+        <div id="error-message" style="color: red; display: none;"></div>
     </main>
+
     <script src="script.js"></script>
     
     <script>
-        // --- Configuration ---
-        const CHART_COLORS = {
-            primary: 'rgba(26, 115, 232, 0.8)', // Blue
-            secondary: 'rgba(128, 178, 247, 0.8)', // Lighter Blue
-            accent1: 'rgba(251, 188, 4, 0.8)', 
-            accent2: 'rgba(52, 168, 83, 0.8)', 
-            neutral: 'rgba(160, 160, 160, 0.8)'
-        };
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize mobile menu (assuming this function exists in script.js)
+            if (typeof initializeMobileMenu === 'function') {
+                initializeMobileMenu();
+            }
+            loadReportLibrary();
+        });
 
-        const PIE_COLORS = [
-            '#1a73e8', '#34a853', '#fbbc05', '#ea4335', '#9b59b6', 
-            '#3498db', '#16a085', '#f39c12', '#d35400', '#7f8c8d'
-        ];
+        async function loadReportLibrary() {
+            try {
+                const response = await fetch('market-reports-library.json');
+                if (!response.ok) throw new Error('Failed to fetch report library.');
+                
+                // The libraryData is now an Object (dictionary)
+                const libraryData = await response.json();
+                const report = findTargetReport(libraryData);
 
-        const CHART_OPTIONS_BAR = {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    title: { display: true, text: 'Value' }
-                },
-                x: {
-                    ticks: { autoSkip: false, maxRotation: 45, minRotation: 45 }
+                if (report) {
+                    renderConsolidatedReport(report);
+                    document.getElementById('loading-indicator').style.display = 'none';
+                    document.getElementById('report-content').style.display = 'block';
+                } else {
+                    // If no specific report is found via URL parameters, maybe show a default or an error
+                    throw new Error('Report not found in library or invalid URL parameters (requires ?location=X&reportTitle=Y).');
                 }
-            },
-            plugins: { legend: { display: false } }
-        };
 
-         const CHART_OPTIONS_PIE = {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { 
-                legend: { 
-                    display: true,
-                    position: 'right',
-                } 
+            } catch (error) {
+                console.error('Error loading reports:', error);
+                document.getElementById('loading-indicator').style.display = 'none';
+                document.getElementById('report-title').textContent = 'Error Loading Report';
+                document.getElementById('error-message').textContent = `Error: ${error.message}`;
+                document.getElementById('error-message').style.display = 'block';
             }
-        };
+        }
 
-        // --- Utility Functions (Enhanced) ---
+        // *** THE CRITICAL FIX ***
+        // This function knows how to navigate the new Object structure using the keys provided in the URL.
+        function findTargetReport(libraryData) {
+            const params = new URLSearchParams(window.location.search);
+            const reportTitle = params.get('reportTitle');
+            const location = params.get('location');
+
+            if (!reportTitle || !location) return null;
+
+            // Check if the location exists, and then if the report title exists within that location
+            if (libraryData.hasOwnProperty(location) && libraryData[location].hasOwnProperty(reportTitle)) {
+                const reportData = libraryData[location][reportTitle];
+                // Add the title and location back into the object for easy access during rendering
+                reportData.title = reportTitle;
+                reportData.location = location;
+                return reportData;
+            }
+
+            return null;
+        }
+
+
+        // --- Utility Functions ---
         const formatNumber = (num, decimals = 0) => {
-            if (num === null || num === undefined || isNaN(num)) return 'N/A';
-            return num.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+            if (num === null || num === undefined || isNaN(parseFloat(num))) return 'N/A';
+            return parseFloat(num).toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
         };
 
-        // Format currency dynamically based on the report's currency
         const formatCurrency = (num, currency = 'USD') => {
-             if (num === null || num === undefined || isNaN(num)) return 'N/A';
-             // Use 2 decimals for USD/USc, 0 decimals for LKR/INR etc.
-             const decimals = (currency === 'USD' || currency === 'USc') ? 2 : 0;
-             return formatNumber(num, decimals);
-        }
+             if (num === null || num === undefined || isNaN(parseFloat(num))) return 'N/A';
+             // Simple currency formatting.
+             return `${currency} ${formatNumber(num, 2)}`;
+        };
 
-        const formatPriceRange = (min, max, currency = 'USD') => {
-             if ((min === null || min === undefined) && (max === null || max === undefined)) return 'N/A';
-             // Handle cases where min or max might be missing
-             if (max === null || max === undefined) return formatCurrency(min, currency);
-             if (min === null || min === undefined) return formatCurrency(max, currency);
-             return `${formatCurrency(min, currency)} - ${formatCurrency(max, currency)}`;
-        }
 
-        // Enhanced formatDiff for financial visualization (Bloomberg Style)
-         const formatDiff = (value, decimals = 2, invertColor = false) => {
-            if (value === null || value === undefined || isNaN(value)) return 'N/A';
+        // --- Rendering Logic ---
+        // This function orchestrates the display of the consolidated report data.
+        function renderConsolidatedReport(report) {
+            // 1. Metadata and Title
+            document.getElementById('report-title').textContent = report.title;
+            document.getElementById('report-meta').textContent = report.description || '';
+
+            // 2. Extract Data Components (The amalgamated data from consolidate_v2.py)
+            const data = report.data || {};
             
-            const formatted = formatNumber(value, decimals);
-            let className;
+            // Determine the primary currency from the description if available
+            const currencyMatch = report.description.match(/Currency: (\w+)/);
+            const primaryCurrency = currencyMatch ? currencyMatch[1] : 'USD';
 
-            // Standard financial colors: Green for positive, Red for negative
-            if (value > 0) {
-                className = invertColor ? 'diff-negative' : 'diff-positive';
-            } else if (value < 0) {
-                className = invertColor ? 'diff-positive' : 'diff-negative';
-            } else {
-                className = ''; // No color for zero change
-            }
 
-            // Add +/- sign explicitly for non-zero values
-            const sign = value > 0 ? '+' : ''; 
-            return `<span class="${className}">${sign}${formatted}</span>`;
+            // 3. Render Sections based on available data components
+            renderOverview(data, primaryCurrency);
+            renderVolumeAnalysis(data);
+            renderBuyerActivity(data);
+            
+            // Uncomment the line below if you want to see the raw JSON components for debugging
+            // renderRawData(data); 
         }
 
-        // Helper to calculate midpoint of a range for price movement calculation
-        const getMidpoint = (min, max) => {
-            // Ensure both values are present and numeric before calculating midpoint
-            if (min === null || min === undefined || max === null || max === undefined) return null;
-            return (min + max) / 2;
-        }
+        // Rendering functions (Overview, Volume, Buyer Activity) remain the same as established previously.
+        // They read the specific keys within the 'data' object.
+        function renderOverview(data, currency) {
+            const section = document.getElementById('overview-section');
+            let contentExists = false;
 
-
-        // --- Rendering Functions (Optimized for Consolidated Format) ---
-
-        // 1. Overview and Commentary
-        const renderOverview = (summary, meta) => {
-            if (!summary) return;
-            document.getElementById('overview-section').style.display = 'block';
-
-            const statsContainer = document.getElementById('summary-stats');
-            statsContainer.innerHTML = '';
-
-            const stats = [
-                { label: 'Total Offered (kg)', value: summary.total_offered_kg, format: 0 },
-                { label: 'Total Sold (kg)', value: summary.total_sold_kg, format: 0 },
-                { label: 'Offered (Packages)', value: summary.total_offered_packages, format: 0 },
-                { label: 'Total Lots', value: summary.total_lots, format: 0 },
-                { label: 'Unsold (%)', value: summary.percent_unsold, format: 1, suffix: '%' },
-                { label: 'Sold (%)', value: summary.percent_sold, format: 1, suffix: '%' },
-                { label: 'Auction Average Price', value: summary.auction_average_price, prefix: meta.currency + ' '},
-            ];
-
-            stats.forEach(stat => {
-                if (stat.value !== undefined && stat.value !== null) {
-                    // Determine format dynamically if not specified (for currency)
-                    const format = stat.format !== undefined ? stat.format : (stat.label.includes('Price') ? (meta.currency === 'USD' || meta.currency === 'USc' ? 2 : 0) : 0);
-                    
+            // A. Summary Stats (e.g., from an 'auction_summary.json' input file)
+            if (data.summary_statistics && data.summary_statistics.length > 0) {
+                contentExists = true;
+                const statsContainer = document.getElementById('summary-stats');
+                statsContainer.innerHTML = '';
+                data.summary_statistics.forEach(stat => {
                     const card = document.createElement('div');
                     card.className = 'stat-card';
                     card.innerHTML = `
-                        <span class="stat-value">${stat.prefix || ''}${formatNumber(stat.value, format)}${stat.suffix || ''}</span>
-                        <span class="stat-label">${stat.label}</span>
+                        <span class="stat-value">${stat.value}</span>
+                        <span class="stat-label">${stat.metric}</span>
                     `;
                     statsContainer.appendChild(card);
+                });
+            }
+
+            // B. Market Commentary (e.g., from a 'market_synopsis.json' input file)
+            if (data.market_commentary && data.market_commentary.length > 0) {
+                contentExists = true;
+                // Assuming the first commentary is the main synopsis
+                document.getElementById('market-comment').textContent = data.market_commentary[0].comment;
+            } else {
+                // Fallback for simple structures like the test 'buyer_summary_S36.json'
+                if (data.buyer_summary_S36 && data.buyer_summary_S36.notes) {
+                    contentExists = true;
+                    document.getElementById('market-comment').textContent = data.buyer_summary_S36.notes;
                 }
-            });
+            }
 
-            // Use synthesized commentary if available, otherwise fall back to market_comment
-            document.getElementById('market-comment').textContent = summary.commentary_synthesized || summary.market_comment || 'Commentary not available.';
-
-            // Highest Prices Table
-            if (summary.highest_prices && summary.highest_prices.length > 0) {
+            // C. Highest Prices (e.g., from a 'top_prices.json' input file)
+            if (data.highest_achieved_prices && data.highest_achieved_prices.length > 0) {
+                contentExists = true;
                 document.getElementById('highest-prices-wrapper').style.display = 'block';
-                const highestPricesTbody = document.getElementById('highest-prices-table').querySelector('tbody');
-                highestPricesTbody.innerHTML = '';
-                summary.highest_prices.forEach(item => {
+                const tbody = document.querySelector('#highest-prices-table tbody');
+                tbody.innerHTML = '';
+                // Display top 10
+                const topPrices = data.highest_achieved_prices.slice(0, 10); 
+
+                topPrices.forEach(item => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${formatCurrency(item.price, meta.currency)}</td>
+                        <td>${formatCurrency(item.price, currency)}</td>
                         <td>${item.grade}</td>
                         <td>${item.mark}</td>
-                        <td>${item.country || ''}</td>
-                    `;
-                    highestPricesTbody.appendChild(row);
-                });
-            }
-        };
-
-        // 2. Volume Analysis (Dynamic Table Rendering - Enhanced with WoW Movement)
-        const renderVolumeAnalysis = (volumeData, meta) => {
-            if (!volumeData) return;
-            
-            // Chart: By Country
-            if (volumeData.by_country && volumeData.by_country.length > 0) {
-                document.getElementById('volume-analysis-section').style.display = 'block';
-                document.getElementById('country-volume-chart-wrapper').style.display = 'block';
-                const ctx = document.getElementById('countryVolumeChart').getContext('2d');
-                const labels = volumeData.by_country.map(item => item.country);
-                const offered = volumeData.by_country.map(item => item.offered_kg);
-                const sold = volumeData.by_country.map(item => item.sold_kg);
-
-                const options = JSON.parse(JSON.stringify(CHART_OPTIONS_BAR));
-                options.scales.y.title.text = 'Quantity (kg)';
-                options.plugins.legend.display = true;
-
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: labels,
-                        datasets: [
-                            {
-                                label: 'Offered (kg)',
-                                data: offered,
-                                backgroundColor: CHART_COLORS.secondary,
-                            },
-                            {
-                                label: 'Sold (kg)',
-                                data: sold,
-                                backgroundColor: CHART_COLORS.primary,
-                            }
-                        ]
-                    },
-                    options: options
-                });
-            }
-
-            // Table: By Grade/Category Detailed (Dynamically adapts to available data fields)
-            if (volumeData.by_grade_detailed && volumeData.by_grade_detailed.length > 0) {
-                document.getElementById('volume-analysis-section').style.display = 'block';
-                document.getElementById('grade-stats-table-wrapper').style.display = 'block';
-                const data = volumeData.by_grade_detailed;
-                const thead = document.getElementById('grade-stats-table').querySelector('thead');
-                const tbody = document.getElementById('grade-stats-table').querySelector('tbody');
-                tbody.innerHTML = '';
-                thead.innerHTML = '';
-
-                // Determine available columns based on data structure
-                const hasPackages = data.some(item => item.offered_packages !== undefined || item.sold_packages !== undefined || item.packages !== undefined);
-                const hasKg = data.some(item => item.offered_kg !== undefined || item.sold_kg !== undefined || item.quantity_kg !== undefined);
-                const hasLots = data.some(item => item.lots !== undefined);
-                const hasPercent = data.some(item => item.percent_unsold !== undefined);
-                const hasAvgPrice = data.some(item => item.average_price !== undefined);
-                const showSoldPkg = data.some(item => item.sold_packages !== undefined);
-                // NEW: Check for Week-on-Week movement data
-                const hasMovement = data.some(item => item.movement_vs_last_week !== undefined);
-
-
-                // Build Header
-                let headerHtml = '<tr><th>Category/Grade</th>';
-                if (hasLots) headerHtml += '<th>Lots</th>';
-                if (hasPackages) {
-                    headerHtml += '<th>Offered (Pkg)</th>';
-                    if (showSoldPkg) {
-                        headerHtml += '<th>Sold (Pkg)</th>';
-                    }
-                }
-                if (hasKg) {
-                     headerHtml += '<th>Quantity (kg)</th>';
-                }
-                if (hasPercent) headerHtml += '<th>Unsold (%)</th>';
-                if (hasAvgPrice) headerHtml += '<th>Avg Price</th>';
-                if (hasMovement) headerHtml += '<th>vs Last Week</th>'; // NEW Header
-                headerHtml += '</tr>';
-                thead.innerHTML = headerHtml;
-
-                // Build Rows
-                data.forEach(item => {
-                    // Use 'grade' or 'category' for the first column
-                    let rowHtml = `<tr><td>${item.grade || item.category}</td>`;
-                    
-                    if (hasLots) rowHtml += `<td>${formatNumber(item.lots)}</td>`;
-                    
-                    if (hasPackages) {
-                        // Handle potential missing offered_packages by checking 'packages' as fallback
-                        const offeredPkg = item.offered_packages !== undefined ? item.offered_packages : item.packages;
-                        rowHtml += `<td>${formatNumber(offeredPkg)}</td>`;
-                        if (showSoldPkg) {
-                             rowHtml += `<td>${formatNumber(item.sold_packages)}</td>`;
-                        }
-                    }
-                    
-                    if (hasKg) {
-                        // Handle different key names (prioritize offered_kg, fallback to quantity_kg)
-                        const quantity = item.offered_kg !== undefined ? item.offered_kg : item.quantity_kg;
-                        rowHtml += `<td>${formatNumber(quantity)}</td>`;
-                    }
-
-                    if (hasPercent) rowHtml += `<td>${formatNumber(item.percent_unsold, 1)}%</td>`;
-                    if (hasAvgPrice) rowHtml += `<td>${formatCurrency(item.average_price, meta.currency)}</td>`;
-                    
-                    // NEW: Display movement vs last week with color coding
-                    if (hasMovement) {
-                        const decimals = (meta.currency === 'USD' || meta.currency === 'USc') ? 2 : 0;
-                        rowHtml += `<td>${formatDiff(item.movement_vs_last_week, decimals)}</td>`;
-                    }
-
-                    rowHtml += '</tr>';
-                    tbody.innerHTML += rowHtml;
-                });
-            }
-        };
-
-        // 3. Buyer Activity
-        const renderBuyerActivity = (activity) => {
-            if (!activity || activity.length === 0) return;
-            document.getElementById('buyer-activity-section').style.display = 'block';
-
-            // Table: Top Buyers
-            const tbody = document.getElementById('buyer-activity-table').querySelector('tbody');
-            tbody.innerHTML = '';
-            // Display top 15 buyers
-            const top15 = activity.slice(0, 15); 
-            top15.forEach(item => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${item.buyer}</td>
-                    <td>${formatNumber(item.volume_kg)}</td>
-                    <td>${formatNumber(item.market_share, 2)}%</td>
-                `;
-                tbody.appendChild(row);
-            });
-
-            // Chart: Market Share (Pie Chart)
-            const ctx = document.getElementById('buyerChart').getContext('2d');
-
-            // Prepare data for pie chart: Top 9 + Others
-            const sortedActivity = [...activity].sort((a, b) => b.market_share - a.market_share);
-            
-            // Filter out explicit "Others" categories if they exist in the source data to avoid duplication
-            const primaryActivity = sortedActivity.filter(item => !item.buyer.toLowerCase().includes("others (local/misc)") && !item.buyer.toLowerCase().includes("others (calculated)"));
-            
-            const top9 = primaryActivity.slice(0, 9);
-            const others = primaryActivity.slice(9);
-            
-            const chartData = [...top9];
-            if (others.length > 0) {
-                const othersTotal = others.reduce((sum, item) => sum + item.market_share, 0);
-                 // Ensure 'Others' total is meaningful before adding
-                if (othersTotal > 0.1) {
-                    chartData.push({ buyer: 'Others (Calculated)', market_share: othersTotal });
-                }
-            }
-
-            const labels = chartData.map(item => item.buyer);
-            const values = chartData.map(item => item.market_share);
-
-            const options = JSON.parse(JSON.stringify(CHART_OPTIONS_PIE));
-
-            new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Market Share (%)',
-                        data: values,
-                        backgroundColor: PIE_COLORS,
-                    }]
-                },
-                options: options
-            });
-        };
-
-        // 4. Comparative Analysis (Handles both structured YoY and generic comparisons - Enhanced with Diffs)
-        const renderComparativeAnalysis = (comparison, meta) => {
-            if (!comparison) return;
-            
-            const currentYear = meta.year;
-            const prevYear = currentYear - 1;
-            const currencyDecimals = (meta.currency === 'USD' || meta.currency === 'USc') ? 2 : 0;
-
-            // A. Structured YoY Comparison (e.g., Mombasa)
-            if (comparison.country_averages_yoy && comparison.country_averages_yoy.length > 0) {
-                document.getElementById('comparative-analysis-section').style.display = 'block';
-                document.getElementById('country-comparison-wrapper').style.display = 'block';
-
-                // Update Headers
-                document.getElementById('header-current-year-sale').textContent = currentYear;
-                document.getElementById('header-prev-year-sale').textContent = prevYear;
-                document.getElementById('header-current-year-ytd').textContent = currentYear;
-                document.getElementById('header-prev-year-ytd').textContent = prevYear;
-
-                const tbody = document.getElementById('country-comparison-table').querySelector('tbody');
-                tbody.innerHTML = '';
-                comparison.country_averages_yoy.forEach(item => {
-                    const row = document.createElement('tr');
-                    // Dynamically access properties based on year
-                    const avgCurrent = item[`avg_${currentYear}`];
-                    const avgPrev = item[`avg_${prevYear}`];
-                    const ytdCurrent = item[`ytd_${currentYear}`];
-                    const ytdPrev = item[`ytd_${prevYear}`];
-
-                    // Calculate differences
-                    const diffSale = (avgCurrent !== undefined && avgPrev !== undefined) ? avgCurrent - avgPrev : null;
-                    const diffYtd = (ytdCurrent !== undefined && ytdPrev !== undefined) ? ytdCurrent - ytdPrev : null;
-
-                    // Build Row with Diffs
-                    row.innerHTML = `
-                        <td>${item.country}</td>
-                        <td>${formatCurrency(avgCurrent, meta.currency)}</td>
-                        <td>${formatCurrency(avgPrev, meta.currency)}</td>
-                        <td>${formatDiff(diffSale, currencyDecimals)}</td>
-                        <td>${formatCurrency(ytdCurrent, meta.currency)}</td>
-                        <td>${formatCurrency(ytdPrev, meta.currency)}</td>
-                        <td>${formatDiff(diffYtd, currencyDecimals)}</td>
+                        <td>${item.country || 'N/A'}</td>
                     `;
                     tbody.appendChild(row);
                 });
             }
 
-             // Footer and Chart: Total Auction Average Visualization
-            if (comparison.auction_average_yoy) {
-                document.getElementById('comparative-analysis-section').style.display = 'block';
-                const avg = comparison.auction_average_yoy;
-                const avgCurrent = avg[`avg_${currentYear}`];
-                const avgPrev = avg[`avg_${prevYear}`];
-                const ytdCurrent = avg[`ytd_${currentYear}`];
-                const ytdPrev = avg[`ytd_${prevYear}`];
+            if (contentExists) section.style.display = 'block';
+        }
 
-                // Update Footer if Country Table exists
-                if (comparison.country_averages_yoy && comparison.country_averages_yoy.length > 0) {
-                    const tfoot = document.getElementById('country-comparison-table').querySelector('tfoot');
-                    
-                    const diffSale = (avgCurrent !== undefined && avgPrev !== undefined) ? avgCurrent - avgPrev : null;
-                    const diffYtd = (ytdCurrent !== undefined && ytdPrev !== undefined) ? ytdCurrent - ytdPrev : null;
+        function renderVolumeAnalysis(data) {
+            const section = document.getElementById('volume-analysis-section');
+            let contentExists = false;
 
-                    // Build Footer with Diffs
-                    tfoot.innerHTML = `
-                        <tr style="font-weight: bold; background-color: #f1f3f4;">
-                            <td>AUCTION AVERAGE</td>
-                            <td>${formatCurrency(avgCurrent, meta.currency)}</td>
-                            <td>${formatCurrency(avgPrev, meta.currency)}</td>
-                            <td>${formatDiff(diffSale, currencyDecimals)}</td>
-                            <td>${formatCurrency(ytdCurrent, meta.currency)}</td>
-                            <td>${formatCurrency(ytdPrev, meta.currency)}</td>
-                            <td>${formatDiff(diffYtd, currencyDecimals)}</td>
-                        </tr>
-                    `;
-                }
+            // A. Country Volume Chart (e.g., from 'country_analysis.json')
+            if (data.country_volume_analysis && data.country_volume_analysis.length > 0) {
+                contentExists = true;
+                document.getElementById('country-volume-chart-wrapper').style.display = 'block';
+                renderCountryVolumeChart(data.country_volume_analysis);
+            }
 
-                // Render Chart
-                document.getElementById('auction-avg-chart-wrapper').style.display = 'block';
-                const ctx = document.getElementById('auctionAvgChart').getContext('2d');
-                
-                const labels = ['Current Sale', 'Year-to-Date'];
-                // Handle cases where YTD might not be present
-                const currentYearData = [avgCurrent, ytdCurrent].filter(v => v !== undefined);
-                const prevYearData = [avgPrev, ytdPrev].filter(v => v !== undefined);
+             // B. Detailed Grade/Category Statistics Table (e.g., from 'grade_stats.json' or 'auction_prices_S36.json')
+            let gradeStatsData = null;
+            if (data.grade_category_statistics && data.grade_category_statistics.length > 0) {
+                gradeStatsData = data.grade_category_statistics;
+            } else if (data.auction_prices_S36 && data.auction_prices_S36.length > 0) {
+                // Fallback for the test structure in auction_prices_S36.json
+                gradeStatsData = data.auction_prices_S36;
+            }
 
-                const chartLabels = currentYearData.length === 2 ? labels : ['Current Sale'];
-
-                const options = JSON.parse(JSON.stringify(CHART_OPTIONS_BAR));
-                options.scales.y.title.text = `Price (${meta.currency})`;
-                options.plugins.legend.display = true;
-
-                 new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: chartLabels,
-                        datasets: [
-                            {
-                                label: prevYear,
-                                data: prevYearData,
-                                backgroundColor: CHART_COLORS.secondary,
-                            },
-                            {
-                                label: currentYear,
-                                data: currentYearData,
-                                backgroundColor: CHART_COLORS.primary,
-                            }
-                        ]
-                    },
-                    options: options
-                });
+            if (gradeStatsData) {
+                 contentExists = true;
+                document.getElementById('grade-stats-table-wrapper').style.display = 'block';
+                renderGradeStatsTable(gradeStatsData);
             }
 
 
-            // B. Generic Comparison Tables (e.g., Colombo Quantity Sold, India Averages)
-            if (comparison.generic_tables && comparison.generic_tables.length > 0) {
-                document.getElementById('comparative-analysis-section').style.display = 'block';
-                document.getElementById('generic-comparison-wrapper').style.display = 'block';
-                const container = document.getElementById('generic-comparison-container');
-                container.innerHTML = ''; // Clear previous content
+            if (contentExists) section.style.display = 'block';
+        }
 
-                comparison.generic_tables.forEach(tableData => {
-                    const wrapper = document.createElement('div');
-                    wrapper.style.marginBottom = '24px';
-                    wrapper.innerHTML = `<h4>${tableData.title}</h4>`;
+        function renderCountryVolumeChart(chartData) {
+            const ctx = document.getElementById('countryVolumeChart').getContext('2d');
+            const labels = chartData.map(item => item.country);
+            const offered = chartData.map(item => parseFloat(item.offered_kg));
+            const sold = chartData.map(item => parseFloat(item.sold_kg));
 
-                    const tableContainer = document.createElement('div');
-                    tableContainer.className = 'data-table-container';
-                    const table = document.createElement('table');
-                    table.className = 'data-table stats-table';
-
-                    // Header (Handles multi-level headers if defined)
-                    let headerHtml = '<thead>';
-                    tableData.headers.forEach(headerRow => {
-                        headerHtml += '<tr>';
-                        headerRow.forEach(cell => {
-                            headerHtml += `<th rowspan="${cell.rowspan || 1}" colspan="${cell.colspan || 1}" class="${cell.class || ''}">${cell.label}</th>`;
-                        });
-                        headerHtml += '</tr>';
-                    });
-                    headerHtml += '</thead>';
-                    table.innerHTML = headerHtml;
-
-                    // Body
-                    const tbody = document.createElement('tbody');
-                    tableData.rows.forEach(rowData => {
-                        const row = document.createElement('tr');
-                        if (rowData.is_total) {
-                             row.style.fontWeight = 'bold';
-                             // Slightly different shade for subtotals vs grand totals
-                             row.style.backgroundColor = '#f8f9fa'; 
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Offered (kg)',
+                            data: offered,
+                            backgroundColor: 'rgba(128, 178, 247, 0.8)', // Lighter Blue
+                        },
+                        {
+                            label: 'Sold (kg)',
+                            data: sold,
+                            backgroundColor: 'rgba(26, 115, 232, 0.8)', // Primary Blue
                         }
-
-                        // Iterate over the keys defined in the data_keys map
-                        tableData.data_keys.forEach(keyInfo => {
-                            const value = rowData[keyInfo.key];
-                            let displayValue = value;
-
-                            // Apply formatting based on type
-                            if (keyInfo.format === 'currency') {
-                                displayValue = formatCurrency(value, meta.currency);
-                            } else if (keyInfo.format === 'number') {
-                                displayValue = formatNumber(value, keyInfo.decimals || 0);
-                            } else if (keyInfo.format === 'diff') {
-                                 // Use dynamic decimals for diffs if not specified
-                                 const decimals = keyInfo.decimals !== undefined ? keyInfo.decimals : currencyDecimals;
-                                 displayValue = formatDiff(value, decimals);
-                            }
-                            // Add cell
-                            row.innerHTML += `<td>${displayValue}</td>`;
-                        });
-                        tbody.appendChild(row);
-                    });
-
-                    table.appendChild(tbody);
-                    tableContainer.appendChild(table);
-                    wrapper.appendChild(tableContainer);
-                    container.appendChild(wrapper);
-                });
-            }
-        };
-
-        // 5. Factory Performance
-        const renderFactoryPerformance = (performance, meta) => {
-            if (!performance || performance.length === 0) return;
-            document.getElementById('factory-performance-section').style.display = 'block';
-
-            const tbody = document.getElementById('factory-performance-table').querySelector('tbody');
-            tbody.innerHTML = '';
-
-            // Display Top 50 (or fewer if data is limited)
-            const top50 = performance.slice(0, 50);
-
-            top50.forEach((item, index) => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${item.mark}</td>
-                    <td>${item.country}</td>
-                    <td>${formatCurrency(item.average_price, meta.currency)}</td>
-                    <td>${item.top_grade}</td>
-                    <td>${formatCurrency(item.top_price, meta.currency)}</td>
-                `;
-                tbody.appendChild(row);
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Quantity (kg)' }
+                        }
+                    },
+                    plugins: { legend: { display: true } }
+                }
             });
-        };
+        }
 
-        // 6. Price Quotations (Enhanced with Movement Calculation)
-         const renderPriceQuotations = (quotations, currency) => {
-            if (!quotations || quotations.length === 0) return;
-
-            document.getElementById('price-quotations-section').style.display = 'block';
-            document.getElementById('price-quotations-title').textContent = `Price Quotations & Movement (${currency}/kg)`;
-
-            const table = document.getElementById('price-quotations-table');
+        function renderGradeStatsTable(statsData) {
+            const table = document.getElementById('grade-stats-table');
             const thead = table.querySelector('thead');
             const tbody = table.querySelector('tbody');
             tbody.innerHTML = '';
             thead.innerHTML = '';
 
-            // Determine available columns
-            const hasElevation = quotations.some(item => item.elevation !== undefined);
-            const hasCategory = quotations.some(item => item.category !== undefined);
-            // Check if previous data exists and is complete enough for comparison
-            const hasPrevious = quotations.some(item => item.previous_min !== undefined && item.previous_max !== undefined);
-            
-            // Build Header
+            if (statsData.length === 0) return;
+
+            // Dynamically generate headers based on the keys of the first object
+            const headers = Object.keys(statsData[0]);
             let headerHtml = '<tr>';
-            if (hasElevation) headerHtml += '<th>Elevation</th>';
-            if (hasCategory) headerHtml += '<th>Category/Region</th>';
-            headerHtml += '<th>Grade</th><th>Current (Low-High)</th>';
-            if (hasPrevious) {
-                headerHtml += '<th>Previous (Low-High)</th>';
-                headerHtml += '<th>Movement</th>'; // New Column
-            }
+            headers.forEach(header => {
+                // Replace underscores with spaces and capitalize for display
+                const formattedHeader = header.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                headerHtml += `<th>${formattedHeader}</th>`;
+            });
             headerHtml += '</tr>';
             thead.innerHTML = headerHtml;
 
-            // Build Rows
-            quotations.forEach(item => {
+            // Populate rows
+            statsData.forEach(item => {
                 let rowHtml = '<tr>';
-                if (hasElevation) rowHtml += `<td>${item.elevation}</td>`;
-                if (hasCategory) rowHtml += `<td>${item.category}</td>`;
-                rowHtml += `<td>${item.grade}</td><td>${formatPriceRange(item.current_min, item.current_max, currency)}</td>`;
-                
-                if (hasPrevious) {
-                    rowHtml += `<td>${formatPriceRange(item.previous_min, item.previous_max, currency)}</td>`;
+                headers.forEach(header => {
+                    const value = item[header];
+                    // Attempt to format numbers if they look numeric (excluding the identifier columns)
+                    const isNumeric = !isNaN(parseFloat(value)) && isFinite(value);
+                    const isIdentifier = (header === 'category' || header === 'grade');
                     
-                    // Calculate Movement based on midpoints
-                    const currentMid = getMidpoint(item.current_min, item.current_max);
-                    const previousMid = getMidpoint(item.previous_min, item.previous_max);
-                    let movementHtml = 'N/A';
-
-                    if (currentMid !== null && previousMid !== null) {
-                        const diff = currentMid - previousMid;
-                        const decimals = (currency === 'USD' || currency === 'USc') ? 2 : 0;
-                        movementHtml = formatDiff(diff, decimals);
-                    }
-                    rowHtml += `<td>${movementHtml}</td>`;
-                }
-                
+                    const formattedValue = (isNumeric && !isIdentifier) ? formatNumber(value) : value;
+                    rowHtml += `<td>${formattedValue}</td>`;
+                });
                 rowHtml += '</tr>';
                 tbody.innerHTML += rowHtml;
             });
-        };
-
-        // 7. Forecast Analysis (NEW)
-        const renderForecastAnalysis = (forecast) => {
-            if (!forecast || forecast.length === 0) return;
-            document.getElementById('forecast-section').style.display = 'block';
-            const container = document.getElementById('forecast-container');
-            container.innerHTML = '';
-
-            forecast.forEach(item => {
-                const block = document.createElement('div');
-                block.className = 'forecast-block';
-
-                // Determine color coding based on sentiment
-                let sentimentClass = '';
-                if (item.sentiment === 'Positive') sentimentClass = 'sentiment-positive';
-                else if (item.sentiment === 'Negative') sentimentClass = 'sentiment-negative';
-                else if (item.sentiment === 'Neutral') sentimentClass = 'sentiment-neutral';
-
-                block.innerHTML = `
-                    <h4>${item.factor}</h4>
-                    <p><strong class="${sentimentClass}">Outlook: ${item.outlook}</strong></p>
-                    <p>${item.analysis}</p>
-                `;
-                container.appendChild(block);
-            });
-        };
+        }
 
 
-        // 8. Weather and Upcoming Offerings
-        const renderForwardLook = (weather, upcoming) => {
-            
-            const weatherExists = weather && weather.length > 0;
-            const upcomingExists = upcoming && Object.keys(upcoming).length > 0;
+        function renderBuyerActivity(data) {
+            const section = document.getElementById('buyer-activity-section');
+            let contentExists = false;
 
-            if (!weatherExists && !upcomingExists) return;
-            document.getElementById('forward-look-section').style.display = 'block';
+            // A. Buyer Market Share Chart (e.g., from 'market_share.json')
+            if (data.buyer_market_share && data.buyer_market_share.length > 0) {
+                contentExists = true;
+                document.getElementById('buyer-chart-wrapper').style.display = 'block';
+                renderBuyerChart(data.buyer_market_share);
+            }
 
-            // Weather Analysis
-            if (weatherExists) {
-                document.getElementById('weather-section').style.display = 'block';
-                const tbody = document.getElementById('weather-table').querySelector('tbody');
+            // B. Buyer Activity Table (e.g., from 'buyer_activity.json' or 'buyer_summary_S36.json')
+            let activityData = null;
+            if (data.buyer_activity && data.buyer_activity.length > 0) {
+                activityData = data.buyer_activity;
+            } else if (data.buyer_summary_S36) {
+                // Fallback for the test structure in buyer_summary_S36.json
+                activityData = [
+                    { buyer_or_region: 'Top Buyer', activity_or_purchases: data.buyer_summary_S36.top_buyer },
+                    { buyer_or_region: 'Total Lots', activity_or_purchases: data.buyer_summary_S36.total_lots },
+                    { buyer_or_region: 'Lots Sold', activity_or_purchases: data.buyer_summary_S36.lots_sold }
+                ];
+            }
+
+             if (activityData) {
+                contentExists = true;
+                document.getElementById('buyer-activity-table-wrapper').style.display = 'block';
+                const tbody = document.querySelector('#buyer-activity-table tbody');
                 tbody.innerHTML = '';
 
-                weather.forEach(item => {
+                activityData.forEach(item => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${item.region}</td>
-                        <td>${item.conditions}</td>
+                        <td>${item.buyer_or_region}</td>
+                        <td>${item.activity_or_purchases}</td>
                     `;
                     tbody.appendChild(row);
                 });
             }
 
-            // Upcoming Offerings
-            if (upcomingExists) {
-                document.getElementById('upcoming-section').style.display = 'block';
-                const container = document.getElementById('upcoming-container');
-                container.innerHTML = '';
+            if (contentExists) section.style.display = 'block';
+        }
 
-                for (const saleKey in upcoming) {
-                    const saleData = upcoming[saleKey];
-                    const saleNumber = saleKey.replace('sale_', '');
-
-                    const block = document.createElement('div');
-                    block.className = 'upcoming-block';
-
-                    let html = `<h4>Sale ${saleNumber} (${saleData.date})</h4>`;
-
-                    // Handle different metrics (Packages vs M/Kgs)
-                    const metric = saleData.total_packages ? 'Packages' : (saleData.total_m_kgs ? 'M/Kgs' : '');
-                    const value = saleData.total_packages || saleData.total_m_kgs;
-
-                    if (metric && value) {
-                         html += `<p><strong>Total Estimated: ${formatNumber(value, metric === 'M/Kgs' ? 2 : 0)} ${metric}</strong></p>`;
-                    }
-                   
-                    
-                    // Check if country breakdown exists (Mombasa)
-                    if (saleData.by_country && saleData.by_country.length > 0) {
-                        html += `<div class="data-table-container"><table class="data-table compact-table">
-                                    <thead><tr><th>Country</th><th>Packages</th></tr></thead><tbody>`;
-                        
-                        saleData.by_country.forEach(item => {
-                            html += `<tr><td>${item.country}</td><td>${formatNumber(item.packages)}</td></tr>`;
-                        });
-
-                        html += `</tbody></table></div>`;
-                    }
-                     // Check if elevation breakdown exists (Colombo)
-                    else if (saleData.by_elevation && saleData.by_elevation.length > 0) {
-                        html += `<div class="data-table-container"><table class="data-table compact-table">
-                                    <thead><tr><th>Elevation</th><th>M/Kgs</th></tr></thead><tbody>`;
-                        
-                        saleData.by_elevation.forEach(item => {
-                            html += `<tr><td>${item.elevation}</td><td>${formatNumber(item.m_kgs, 2)}</td></tr>`;
-                        });
-
-                        html += `</tbody></table></div>`;
-                    }
-
-                    block.innerHTML = html;
-                    container.appendChild(block);
-                }
-            }
-        };
-
-         // 9. International Summaries
-        const renderInternationalSummaries = (summaries) => {
-             const section = document.getElementById('international-section');
-             const container = document.getElementById('international-container');
-
-            if (!summaries || summaries.length === 0) return;
+        function renderBuyerChart(chartData) {
+            const ctx = document.getElementById('buyerChart').getContext('2d');
             
+            // Sort and prepare data for the Pie chart
+            const sortedData = [...chartData].sort((a, b) => parseFloat(b.percentage) - parseFloat(a.percentage));
+            
+            // Group smaller slices into "Others" if needed (e.g., more than 10 buyers)
+            let processedData = sortedData;
+            if (sortedData.length > 10) {
+                const top9 = sortedData.slice(0, 9);
+                const others = sortedData.slice(9);
+                const othersPercentage = others.reduce((sum, item) => sum + parseFloat(item.percentage), 0);
+                processedData = [...top9, { buyer: 'Others', percentage: othersPercentage.toFixed(2) }];
+            }
+
+            const labels = processedData.map(item => item.buyer);
+            const percentages = processedData.map(item => parseFloat(item.percentage));
+
+            // A nice color palette
+            const colors = [
+                '#3366cc', '#dc3912', '#ff9900', '#109618', '#990099', 
+                '#0099c6', '#dd4477', '#66aa00', '#b82e2e', '#316395'
+            ];
+
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Market Share (%)',
+                        data: percentages,
+                        backgroundColor: colors.slice(0, processedData.length),
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { 
+                        legend: { 
+                            display: true,
+                            position: 'right'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += context.parsed + '%';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+         // Render raw data components for debugging or verification
+        function renderRawData(data) {
+            const section = document.getElementById('raw-data-section');
             section.style.display = 'block';
+            const container = document.getElementById('raw-data-container');
             container.innerHTML = '';
 
-             summaries.forEach(summary => {
-                    const summaryDiv = document.createElement('div');
-                    summaryDiv.className = 'international-summary-item';
-
-                    let contentHtml = `<h4>${summary.centre} (Sale ${summary.sale_no || 'N/A'})</h4>
-                                       <p style="font-size: 13px; color: #5f6368;">${summary.date || ''}</p>
-                                       <p>${summary.summary || 'Summary not available.'}</p>`;
-                    
-                    // Handle structured data if present (e.g., Mombasa details)
-                    if (summary.structured_data && summary.structured_data.currency) {
-                        contentHtml += `<p><strong>Quotations (${summary.structured_data.currency}):</strong></p>`;
-                        
-                        const renderTable = (grades, title) => {
-                            if (!grades || grades.length === 0) return '';
-                            let tableHtml = `<div class="data-table-container" style="margin-bottom: 16px; max-width: 500px;">
-                                             <p style="font-weight: 500; margin-bottom: 8px;">${title}</p>
-                                             <table class="data-table">
-                                             <thead><tr><th>Category</th><th>Grade</th><th>Low</th><th>High</th></tr></thead><tbody>`;
-                            grades.forEach(grade => {
-                                tableHtml += `<tr>
-                                                <td>${grade.category}</td>
-                                                <td>${grade.grade}</td>
-                                                <td>${formatNumber(grade.low, 2)}</td>
-                                                <td>${formatNumber(grade.high, 2)}</td>
-                                              </tr>`;
-                            });
-                            tableHtml += `</tbody></table></div>`;
-                            return tableHtml;
-                        };
-
-                        contentHtml += renderTable(summary.structured_data.ctc_leaf_grades, "CTC Leaf");
-                        contentHtml += renderTable(summary.structured_data.ctc_dust_grades, "CTC Dust");
-                    }
-
-                    summaryDiv.innerHTML = contentHtml;
-                    container.appendChild(summaryDiv);
-                });
-        };
-
-
-        // Main Report Rendering Logic (Orchestration)
-        const renderReport = (data) => {
-            const meta = data.metadata;
-
-            // 1. Metadata and Title
-            const titlePrefix = meta.report_title || `${meta.auction_centre} Consolidated Auction Report`;
-            const weekOrSale = meta.sale_number ? `Sale ${meta.sale_number}` : (meta.week_number ? `Week ${meta.week_number}` : '');
-            
-            document.getElementById('report-title').textContent = `${titlePrefix} - ${weekOrSale} (${meta.year})`;
-            
-            let metaText = `Week: ${meta.week_number || 'N/A'}`;
-            
-            // Date formatting
-            const startDate = meta.sale_date_start;
-            const endDate = meta.sale_date_end;
-            if (startDate && endDate && startDate !== endDate) {
-                metaText += ` | Dates: ${startDate} to ${endDate}`;
-            } else if (endDate) {
-                 metaText += ` | Date: ${endDate}`;
+            for (const key in data) {
+                const wrapper = document.createElement('div');
+                wrapper.style.marginBottom = '16px';
+                // Display the key name (which is the original filename stem)
+                wrapper.innerHTML = `<h4>${key}</h4><pre style="background-color: #f1f3f4; padding: 8px; border-radius: 4px; overflow-x: auto;">${JSON.stringify(data[key], null, 2)}</pre>`;
+                container.appendChild(wrapper);
             }
+        }
 
-            if (meta.prompt_date) {
-                metaText += ` | Prompt Date: ${meta.prompt_date}`;
-            }
-            metaText += ` | Currency: ${meta.currency}`;
-            
-            if (meta.exchange_rate_note) {
-                metaText += ` | Exchange: ${meta.exchange_rate_note}`;
-            }
-
-            document.getElementById('report-meta').textContent = metaText;
-
-            // 2. Render Sections (Order based on typical importance)
-            renderOverview(data.summary, meta);
-            renderVolumeAnalysis(data.volume_analysis, meta);
-            renderBuyerActivity(data.buyer_activity);
-            renderComparativeAnalysis(data.comparative_analysis, meta);
-            renderFactoryPerformance(data.factory_performance, meta);
-            renderPriceQuotations(data.price_quotations, meta.currency);
-            renderForecastAnalysis(data.forecast_analysis); // NEW
-            renderForwardLook(data.weather_analysis, data.upcoming_offerings);
-            renderInternationalSummaries(data.international_summaries);
-        };
-
-        // --- Data Loading ---
-        document.addEventListener('DOMContentLoaded', async () => {
-            // Initialize mobile menu toggle
-             if (typeof initializeMobileMenu === 'function') {
-                initializeMobileMenu();
-            }
-            
-            const params = new URLSearchParams(window.location.search);
-            let datasetFile = params.get('dataset');
-
-            if (!datasetFile) {
-                document.getElementById('report-title').textContent = 'Error: No report selected.';
-                document.getElementById('loading-indicator').style.display = 'none';
-                return;
-            }
-            
-            try {
-                // Fetch data from the Consolidated directory structure
-                const response = await fetch(`Data/Consolidated/${datasetFile}.json`);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const reportData = await response.json();
-                
-                // Orchestrate the rendering
-                renderReport(reportData);
-                
-                document.getElementById('loading-indicator').style.display = 'none';
-                document.getElementById('report-content').style.display = 'block';
-
-            } catch (error) {
-                console.error('Error fetching consolidated report data:', error);
-                document.getElementById('report-title').textContent = 'Error loading report.';
-                document.getElementById('loading-indicator').textContent = `Could not load the dataset: ${datasetFile}.json. Error: ${error.message}`;
-            }
-        });
     </script>
 </body>
 </html>
