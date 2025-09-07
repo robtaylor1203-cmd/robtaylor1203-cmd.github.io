@@ -1,0 +1,8 @@
+[
+    {"grade": "BP1", "category": "Best", "avg_price_usd": 3.50, "quantity_kg": 500000},
+    {"grade": "BP1", "category": "Below Best", "avg_price_usd": 2.80, "quantity_kg": 800000},
+    {"grade": "PF1", "category": "Best", "avg_price_usd": 2.60, "quantity_kg": 1200000},
+    {"grade": "PF1", "category": "Medium", "avg_price_usd": 2.10, "quantity_kg": 2500000},
+    {"grade": "PD", "category": "All", "avg_price_usd": 1.95, "quantity_kg": 1800000},
+    {"grade": "D1", "category": "All", "avg_price_usd": 1.85, "quantity_kg": 900000}
+]

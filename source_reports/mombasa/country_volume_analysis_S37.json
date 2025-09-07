@@ -1,0 +1,7 @@
+[
+    {"country": "Kenya", "offered_kg": 6200000, "sold_kg": 5456000},
+    {"country": "Uganda", "offered_kg": 1500000, "sold_kg": 1275000},
+    {"country": "Rwanda", "offered_kg": 950000, "sold_kg": 855000},
+    {"country": "Tanzania", "offered_kg": 600000, "sold_kg": 450000},
+    {"country": "Burundi", "offered_kg": 300120, "sold_kg": 177103}
+]

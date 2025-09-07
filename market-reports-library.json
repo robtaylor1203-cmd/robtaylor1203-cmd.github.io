@@ -90,6 +90,171 @@
                     "top_buyer": "Global Tea Co"
                 }
             }
+        },
+        "Mombasa Consolidated Auction Report - Sale 37 (2025)": {
+            "title": "Mombasa Consolidated Auction Report - Sale 37 (2025)",
+            "description": "Week: 37 | Dates: 2025-09-15 to 2025-09-16 | Prompt Date: 2025-09-29 | Currency: USD",
+            "location": "Mombasa",
+            "auction_centre": "Mombasa",
+            "year": 2025,
+            "week_number": 37,
+            "source": "Consolidated",
+            "report_link": "report-viewer.html?title=Mombasa Consolidated Auction Report - Sale 37 (2025)",
+            "data": {
+                "summary_statistics_S37": [
+                    {
+                        "metric": "Total Offered (Kg)",
+                        "value": "9,550,120"
+                    },
+                    {
+                        "metric": "Total Sold (Kg)",
+                        "value": "8,213,103"
+                    },
+                    {
+                        "metric": "Total Packages",
+                        "value": "145,200"
+                    },
+                    {
+                        "metric": "Unsold (%)",
+                        "value": "14.0%"
+                    },
+                    {
+                        "metric": "Auction Average (USD)",
+                        "value": "$2.15"
+                    }
+                ],
+                "market_commentary_S37": [
+                    {
+                        "type": "Synopsis",
+                        "comment": "There was strong general demand for the 9.55 M/Kgs (145,200 packages) on offer this week. The unsold rate decreased significantly to 14.0%, reflecting improved absorption. Prices across most categories saw modest gains, driven by renewed activity from key markets."
+                    }
+                ],
+                "country_volume_analysis_S37": [
+                    {
+                        "country": "Kenya",
+                        "offered_kg": 6200000,
+                        "sold_kg": 5456000
+                    },
+                    {
+                        "country": "Uganda",
+                        "offered_kg": 1500000,
+                        "sold_kg": 1275000
+                    },
+                    {
+                        "country": "Rwanda",
+                        "offered_kg": 950000,
+                        "sold_kg": 855000
+                    },
+                    {
+                        "country": "Tanzania",
+                        "offered_kg": 600000,
+                        "sold_kg": 450000
+                    },
+                    {
+                        "country": "Burundi",
+                        "offered_kg": 300120,
+                        "sold_kg": 177103
+                    }
+                ],
+                "grade_category_statistics_S37": [
+                    {
+                        "grade": "BP1",
+                        "category": "Best",
+                        "avg_price_usd": 3.5,
+                        "quantity_kg": 500000
+                    },
+                    {
+                        "grade": "BP1",
+                        "category": "Below Best",
+                        "avg_price_usd": 2.8,
+                        "quantity_kg": 800000
+                    },
+                    {
+                        "grade": "PF1",
+                        "category": "Best",
+                        "avg_price_usd": 2.6,
+                        "quantity_kg": 1200000
+                    },
+                    {
+                        "grade": "PF1",
+                        "category": "Medium",
+                        "avg_price_usd": 2.1,
+                        "quantity_kg": 2500000
+                    },
+                    {
+                        "grade": "PD",
+                        "category": "All",
+                        "avg_price_usd": 1.95,
+                        "quantity_kg": 1800000
+                    },
+                    {
+                        "grade": "D1",
+                        "category": "All",
+                        "avg_price_usd": 1.85,
+                        "quantity_kg": 900000
+                    }
+                ],
+                "buyer_market_share_S37": [
+                    {
+                        "buyer": "Pakistan Packers",
+                        "percentage": 28.5
+                    },
+                    {
+                        "buyer": "Egypt GASC",
+                        "percentage": 15.2
+                    },
+                    {
+                        "buyer": "UK & Ireland",
+                        "percentage": 12.1
+                    },
+                    {
+                        "buyer": "Sudan",
+                        "percentage": 9.5
+                    },
+                    {
+                        "buyer": "Yemen/A.G.O.",
+                        "percentage": 8.0
+                    },
+                    {
+                        "buyer": "Kazakhstan/CIS",
+                        "percentage": 7.5
+                    },
+                    {
+                        "buyer": "Local Packers",
+                        "percentage": 6.2
+                    },
+                    {
+                        "buyer": "Others",
+                        "percentage": 13.0
+                    }
+                ],
+                "highest_achieved_prices_S37": [
+                    {
+                        "price": 4.1,
+                        "grade": "BP1",
+                        "mark": "Kibwari",
+                        "country": "Rwanda"
+                    },
+                    {
+                        "price": 3.95,
+                        "grade": "BP1",
+                        "mark": "Kaitet",
+                        "country": "Kenya"
+                    },
+                    {
+                        "price": 3.8,
+                        "grade": "BP1",
+                        "mark": "Nyamata Hills",
+                        "country": "Burundi"
+                    },
+                    {
+                        "price": 2.9,
+                        "grade": "PF1",
+                        "mark": "Rungwe Select",
+                        "country": "Tanzania"
+                    }
+                ]
+            }
         }
     },
     "Colombo": {
