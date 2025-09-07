@@ -32,145 +32,186 @@
 
     <main class="page-container">
         <div class="dashboard-header">
-            <h2 class="page-title">Market Reports Library</h2>
+            <h2 class="page-title">Global Market Reports Library</h2>
         </div>
-
+        
         <div class="filter-controls-wrapper">
             <div class="filter-group">
                 <label for="filter-year" class="filter-label">Year</label>
                 <select id="filter-year" class="filter-dropdown">
-                    <option value="all">All Years</option>
+                    <option value="ALL">All Years</option>
+                </select>
+            </div>
+             <div class="filter-group">
+                <label for="filter-week" class="filter-label">Week/Sale No.</label>
+                <select id="filter-week" class="filter-dropdown">
+                    <option value="ALL">All</option>
                 </select>
             </div>
             <div class="filter-group">
                 <label for="filter-centre" class="filter-label">Auction Centre</label>
                 <select id="filter-centre" class="filter-dropdown">
-                    <option value="all">All Centres</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label for="filter-week" class="filter-label">Week Number</label>
-                <select id="filter-week" class="filter-dropdown">
-                    <option value="all">All Weeks</option>
+                    <option value="ALL">All Centres</option>
                 </select>
             </div>
              <div class="filter-group">
-                <label for="search-reports" class="filter-label">Search</label>
-                <input type="text" id="search-reports" class="page-search-bar" placeholder="Search titles and descriptions..." style="margin-bottom: 0;">
+                <label for="filter-search" class="filter-label">Search</label>
+                <input type="text" id="filter-search" class="page-search-bar" placeholder="Search titles or descriptions..." style="height: 44px; border-radius: 8px;">
             </div>
         </div>
-        
+
         <div id="reports-list">
-            <p>Loading reports...</p>
-        </div>
+            </div>
+        <div id="loading-indicator">Loading reports...</div>
+        <div id="error-message" style="color: red; display: none;"></div>
     </main>
 
     <script src="script.js"></script>
     <script>
-        let allReports = []; 
+        let allReports = [];
 
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize mobile menu (assuming this function exists in script.js)
             if (typeof initializeMobileMenu === 'function') {
                 initializeMobileMenu();
             }
-
-            fetchAndProcessReports(); 
+            loadReports();
             
-            document.getElementById('filter-year').addEventListener('change', filterAndRenderReports);
-            document.getElementById('filter-centre').addEventListener('change', filterAndRenderReports);
-            document.getElementById('filter-week').addEventListener('change', filterAndRenderReports);
-            document.getElementById('search-reports').addEventListener('input', filterAndRenderReports);
+            // Add event listeners for filters
+            document.getElementById('filter-year').addEventListener('change', applyFilters);
+            document.getElementById('filter-week').addEventListener('change', applyFilters);
+            document.getElementById('filter-centre').addEventListener('change', applyFilters);
+            document.getElementById('filter-search').addEventListener('input', applyFilters);
         });
 
-        async function fetchAndProcessReports() {
+        async function loadReports() {
             try {
                 const response = await fetch('market-reports-library.json');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = await response.json();
+                if (!response.ok) throw new Error('Failed to fetch report library.');
                 
-                const flatReportList = [];
-                for (const location in data) {
-                    for (const reportTitle in data[location]) {
-                        const report = data[location][reportTitle];
-                        report.title = report.title || reportTitle;
-                        report.location = report.location || location;
-                        report.auction_centre = report.auction_centre || location;
-                        flatReportList.push(report);
-                    }
-                }
-                
-                allReports = flatReportList;
-                
+                // *** THE FIX: Process the Object structure ***
+                const libraryData = await response.json();
+                allReports = flattenAndProcessData(libraryData);
+
+                // Sort reports: Newest first (By Year, then by Week/Sale Number)
                 allReports.sort((a, b) => {
                     if (b.year !== a.year) {
                         return b.year - a.year;
                     }
-                    const weekA = parseInt(a.week_number) || 0;
-                    const weekB = parseInt(b.week_number) || 0;
-                    return weekB - weekA;
+                    return b.week_number - a.week_number;
                 });
 
                 populateFilters(allReports);
-                renderReports(allReports);
+                applyFilters(); // Initial render
+                document.getElementById('loading-indicator').style.display = 'none';
+
             } catch (error) {
-                console.error('Error fetching reports library:', error);
-                document.getElementById('reports-list').innerHTML = `<p>Error loading reports. Please check the connection and file path. ${error.message}</p>`;
+                console.error('Error loading reports:', error);
+                document.getElementById('loading-indicator').style.display = 'none';
+                document.getElementById('error-message').textContent = 'Error loading reports. Please check the connection and file path.';
+                document.getElementById('error-message').style.display = 'block';
             }
+        }
+
+        // Converts the new Object structure into a flat Array and extracts metadata
+        function flattenAndProcessData(dataObject) {
+            const flattenedReports = [];
+            for (const location in dataObject) {
+                for (const reportTitle in dataObject[location]) {
+                    const report = dataObject[location][reportTitle];
+                    
+                    // Robustly extract Year and Week Number for sorting/filtering
+                    // We check both the title and the description as formats vary.
+
+                    // 1. Check Title (e.g., "Sale 36 (2025)")
+                    const titleYearMatch = reportTitle.match(/\((\d{4})\)/);
+                    // Matches "Sale 36" OR "Week 36"
+                    const titleWeekMatch = reportTitle.match(/Sale (\d+)|Week (\d+)/i);
+
+                    // 2. Check Description (e.g., "Week: 36 | ...")
+                    const descYearMatch = report.description ? report.description.match(/(\d{4})/) : null;
+                    const descWeekMatch = report.description ? report.description.match(/Week: (\d+)/i) : null;
+
+                    // Assign the extracted values, prioritizing Title match, then Description match, defaulting to 0.
+                    let year = 0;
+                    if (titleYearMatch) {
+                        year = parseInt(titleYearMatch[1]);
+                    } else if (descYearMatch) {
+                        // Use the first 4-digit number found in the description if title fails
+                        year = parseInt(descYearMatch[0]);
+                    }
+
+                    let weekNumber = 0;
+                    if (titleWeekMatch) {
+                        // Handles both groups from the regex (Sale OR Week)
+                        weekNumber = parseInt(titleWeekMatch[1] || titleWeekMatch[2]);
+                    } else if (descWeekMatch) {
+                        weekNumber = parseInt(descWeekMatch[1]);
+                    }
+
+                    // Create a unified object structure
+                    const reportEntry = {
+                        title: reportTitle,
+                        location: location,
+                        description: report.description || '',
+                        year: year,
+                        week_number: weekNumber
+                    };
+                    flattenedReports.push(reportEntry);
+                }
+            }
+            return flattenedReports;
         }
 
         function populateFilters(reports) {
             const years = new Set();
-            const centres = new Set();
             const weeks = new Set();
+            const centres = new Set();
 
             reports.forEach(report => {
-                if (report.year) years.add(report.year);
-                if (report.auction_centre) centres.add(report.auction_centre);
-                if (report.week_number) weeks.add(report.week_number);
+                if (report.year && report.year !== 0) years.add(report.year);
+                if (report.week_number && report.week_number !== 0) weeks.add(report.week_number);
+                if (report.location) centres.add(report.location);
             });
 
             const yearSelect = document.getElementById('filter-year');
+            // Sort years descending
             Array.from(years).sort((a, b) => b - a).forEach(year => {
-                yearSelect.add(new Option(year, year));
-            });
-
-            const centreSelect = document.getElementById('filter-centre');
-            Array.from(centres).sort().forEach(centre => {
-                centreSelect.add(new Option(centre, centre));
+                yearSelect.innerHTML += `<option value="${year}">${year}</option>`;
             });
 
             const weekSelect = document.getElementById('filter-week');
-            Array.from(weeks).sort((a, b) => b - a).forEach(week => {
-                weekSelect.add(new Option(`Week ${week}`, week));
+            // Sort weeks ascending
+            Array.from(weeks).sort((a, b) => a - b).forEach(week => {
+                weekSelect.innerHTML += `<option value="${week}">${week}</option>`;
+            });
+
+            const centreSelect = document.getElementById('filter-centre');
+            // Sort centres alphabetically
+            Array.from(centres).sort().forEach(centre => {
+                centreSelect.innerHTML += `<option value="${centre}">${centre}</option>`;
             });
         }
 
-        function filterAndRenderReports() {
+        function applyFilters() {
             const selectedYear = document.getElementById('filter-year').value;
-            const selectedCentre = document.getElementById('filter-centre').value;
             const selectedWeek = document.getElementById('filter-week').value;
-            const searchTerm = document.getElementById('search-reports').value.toLowerCase();
+            const selectedCentre = document.getElementById('filter-centre').value;
+            const searchQuery = document.getElementById('filter-search').value.toLowerCase();
 
             const filteredReports = allReports.filter(report => {
-                if (selectedYear !== 'all' && report.year != selectedYear) return false;
-                if (selectedCentre !== 'all' && report.auction_centre !== selectedCentre) return false;
-                if (selectedWeek !== 'all' && report.week_number != selectedWeek) return false;
+                const yearMatch = (selectedYear === 'ALL' || report.year.toString() === selectedYear);
+                const weekMatch = (selectedWeek === 'ALL' || report.week_number.toString() === selectedWeek);
+                const centreMatch = (selectedCentre === 'ALL' || report.location === selectedCentre);
+                const searchMatch = (report.title.toLowerCase().includes(searchQuery) || report.description.toLowerCase().includes(searchQuery));
 
-                if (searchTerm) {
-                    const titleMatch = (report.title || '').toLowerCase().includes(searchTerm);
-                    const descriptionMatch = (report.description || '').toLowerCase().includes(searchTerm);
-                    if (!titleMatch && !descriptionMatch) return false;
-                }
-
-                return true;
+                return yearMatch && weekMatch && centreMatch && searchMatch;
             });
 
-            renderReports(filteredReports);
+            renderReportsList(filteredReports);
         }
 
-        function renderReports(reports) {
+        function renderReportsList(reports) {
             const listContainer = document.getElementById('reports-list');
             listContainer.innerHTML = '';
 
@@ -180,29 +221,27 @@
             }
 
             reports.forEach(report => {
-                const item = document.createElement('div');
-                item.className = 'dataset-item';
+                // *** THE FIX: Generate the correct URL parameters ***
+                // We must encode the title and location because they contain spaces and special characters
+                const encodedTitle = encodeURIComponent(report.title);
+                const encodedLocation = encodeURIComponent(report.location);
+                const reportLink = `report-viewer.html?location=${encodedLocation}&reportTitle=${encodedTitle}`;
+
+                const reportElement = document.createElement('div');
+                reportElement.className = 'dataset-item';
                 
-                let periodText = '';
-                if (report.week_number) {
-                    periodText = `Week ${report.week_number}, ${report.year}`;
-                } else if (report.year) {
-                    periodText = `${report.year}`;
-                }
-
-                const reportLink = report.report_link || '#'; // Use the link from our data
-
-                item.innerHTML = `
+                reportElement.innerHTML = `
                     <a href="${reportLink}">
-                        <h3 class="dataset-title">${report.title || 'Untitled Report'} <span class="dataset-period">(${periodText})</span></h3>
-                        <p class="dataset-description">${report.description || 'No description available.'}</p>
+                        <h3 class="dataset-title">${report.title}</h3>
+                        <p class="dataset-description">${report.description}</p>
                         <div class="dataset-meta">
-                            <span>Centre: ${report.auction_centre || 'N/A'}</span>
-                            <span>Source: ${report.source || 'N/A'}</span>
+                            <span>Centre: ${report.location}</span>
+                            <span>Year: ${report.year || 'N/A'}</span>
+                            <span>Week/Sale No: ${report.week_number || 'N/A'}</span>
                         </div>
                     </a>
                 `;
-                listContainer.appendChild(item);
+                listContainer.appendChild(reportElement);
             });
         }
     </script>
