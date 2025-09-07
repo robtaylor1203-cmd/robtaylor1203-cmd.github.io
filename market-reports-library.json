@@ -92,16 +92,9 @@
             }
         },
         "Mombasa Consolidated Auction Report - Sale 37 (2025)": {
-            "title": "Mombasa Consolidated Auction Report - Sale 37 (2025)",
             "description": "Week: 37 | Dates: 2025-09-15 to 2025-09-16 | Prompt Date: 2025-09-29 | Currency: USD",
-            "location": "Mombasa",
-            "auction_centre": "Mombasa",
-            "year": 2025,
-            "week_number": 37,
-            "source": "Consolidated",
-            "report_link": "report-viewer.html?title=Mombasa Consolidated Auction Report - Sale 37 (2025)",
             "data": {
-                "summary_statistics_S37": [
+                "summary_statistics": [
                     {
                         "metric": "Total Offered (Kg)",
                         "value": "9,550,120"
@@ -123,13 +116,13 @@
                         "value": "$2.15"
                     }
                 ],
-                "market_commentary_S37": [
+                "market_commentary": [
                     {
                         "type": "Synopsis",
                         "comment": "There was strong general demand for the 9.55 M/Kgs (145,200 packages) on offer this week. The unsold rate decreased significantly to 14.0%, reflecting improved absorption. Prices across most categories saw modest gains, driven by renewed activity from key markets."
                     }
                 ],
-                "country_volume_analysis_S37": [
+                "country_volume_analysis": [
                     {
                         "country": "Kenya",
                         "offered_kg": 6200000,
@@ -156,7 +149,7 @@
                         "sold_kg": 177103
                     }
                 ],
-                "grade_category_statistics_S37": [
+                "grade_category_statistics": [
                     {
                         "grade": "BP1",
                         "category": "Best",
@@ -194,7 +187,7 @@
                         "quantity_kg": 900000
                     }
                 ],
-                "buyer_market_share_S37": [
+                "buyer_market_share": [
                     {
                         "buyer": "Pakistan Packers",
                         "percentage": 28.5
@@ -228,7 +221,7 @@
                         "percentage": 13.0
                     }
                 ],
-                "highest_achieved_prices_S37": [
+                "highest_achieved_prices": [
                     {
                         "price": 4.1,
                         "grade": "BP1",
@@ -368,14 +361,7 @@
             "report_link": "report-viewer.html?title=Kolkata Consolidated Report - Week 32, 2025"
         },
         "Kolkata Auction Prices - Sale 37 (2025)": {
-            "title": "Kolkata Auction Prices - Sale 37 (2025)",
             "description": "Week: 37 | Dates: 2025-09-15 to 2025-09-16 | Prompt Date: 2025-09-29 | Currency: INR",
-            "location": "Kolkata",
-            "auction_centre": "Kolkata",
-            "year": 2025,
-            "week_number": 37,
-            "source": "Consolidated",
-            "report_link": "report-viewer.html?title=Kolkata Auction Prices - Sale 37 (2025)",
             "data": {
                 "raw_data_kolkata_prices_2025-09-06": [
                     {
