@@ -33,59 +33,35 @@
 
     <main class="page-container">
         <div class="dashboard-header">
-            <h2 class="page-title" id="report-.title">Loading Report...</h2>
+            <h2 class="page-title" id="report-title">Loading Report...</h2>
         </div>
         <p id="report-meta" style="margin-bottom: 24px; color: #5f6368;"></p>
 
         <div id="report-content" style="display: none;">
-            <section class="report-section" id="overview-section" style="display: none;">
-                <h3>Auction Overview</h3>
-                <div class="stat-cards-container" id="summary-stats"></div>
-                <div class="overview-grid">
-                    <div class="commentary-block">
-                        <h4>Market Synopsis</h4>
-                        <p id="market-comment"></p>
-                    </div>
-                    <div class="highest-prices-block" id="highest-prices-wrapper" style="display: none;">
-                        <h4>Highest Achieved Prices</h4>
-                        <table class="data-table compact-table" id="highest-prices-table">
-                            <thead>
-                                <tr>
-                                    <th>Price</th>
-                                    <th>Grade</th>
-                                    <th>Mark (Factory)</th>
-                                    <th>Country</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-            <section class="report-section" id="price-quotations-section" style="display: none;">
-                <h3 id="price-quotations-title">Price Quotations</h3>
-                <div class="data-table-container">
-                    <table class="data-table" id="price-quotations-table">
-                        <thead></thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-            </section>
-            </div>
+            <section class="report-section" id="overview-section" style="display: none;"></section>
+            <section class="report-section" id="volume-analysis-section" style="display: none;"></section>
+            <section class="report-section" id="buyer-activity-section" style="display: none;"></section>
+            <section class="report-section" id="comparative-analysis-section" style="display: none;"></section>
+            <section class="report-section" id="factory-performance-section" style="display: none;"></section>
+            <section class="report-section" id="price-quotations-section" style="display: none;"></section>
+            <section class="report-section" id="forecast-section" style="display: none;"></section>
+            <section class="report-section" id="forward-look-section" style="display: none;"></section>
+            <section class="report-section" id="international-section" style="display: none;"></section>
+        </div>
         <div id="loading-indicator">Loading data...</div>
     </main>
     <script src="script.js"></script>
     <script>
         // --- YOUR FULL, ORIGINAL RENDERING FUNCTIONS ---
-        // (I have included the ones you sent, plus placeholders for others)
+        // (This block contains all the functions from the first file you sent me)
         const CHART_COLORS = { primary: 'rgba(26, 115, 232, 0.8)', secondary: 'rgba(128, 178, 247, 0.8)', accent1: 'rgba(251, 188, 4, 0.8)', accent2: 'rgba(52, 168, 83, 0.8)', neutral: 'rgba(160, 160, 160, 0.8)' };
-        const PIE_COLORS = [ '#1a73e8', '#34a853', '#fbbc05', '#ea4335', '#9b59b6', '#3498db', '#16a085', '#f39c12', '#d35400', '#7f8c8d' ];
+        const PIE_COLORS = ['#1a73e8', '#34a853', '#fbbc05', '#ea4335', '#9b59b6', '#3498db', '#16a085', '#f39c12', '#d35400', '#7f8c8d'];
         const CHART_OPTIONS_BAR = { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, title: { display: true, text: 'Value' } }, x: { ticks: { autoSkip: false, maxRotation: 45, minRotation: 45 } } }, plugins: { legend: { display: false } } };
-        const CHART_OPTIONS_PIE = { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'right', } } };
+        const CHART_OPTIONS_PIE = { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'right' } } };
         const formatNumber = (num, decimals = 0) => { if (num === null || num === undefined || isNaN(num)) return 'N/A'; return num.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals }); };
-        const formatCurrency = (num, currency = 'USD') => { if (num === null || num === undefined || isNaN(num)) return 'N/A'; const decimals = (currency === 'USD' || currency === 'USc') ? 2 : 0; return formatNumber(num, decimals); }
-        const formatPriceRange = (min, max, currency = 'USD') => { if ((min === null || min === undefined) && (max === null || max === undefined)) return 'N/A'; if (max === null || max === undefined) return formatCurrency(min, currency); if (min === null || min === undefined) return formatCurrency(max, currency); return `${formatCurrency(min, currency)} - ${formatCurrency(max, currency)}`; }
-        const formatDiff = (value, decimals = 2, invertColor = false) => { if (value === null || value === undefined || isNaN(value)) return 'N/A'; const formatted = formatNumber(value, decimals); let className; if (value > 0) { className = invertColor ? 'diff-negative' : 'diff-positive'; } else if (value < 0) { className = invertColor ? 'diff-positive' : 'diff-negative'; } else { className = ''; } const sign = value > 0 ? '+' : ''; return `<span class="${className}">${sign}${formatted}</span>`; }
+        const formatCurrency = (num, currency = 'USD') => { if (num === null || num === undefined || isNaN(num)) return 'N/A'; const decimals = (currency === 'USD' || currency === 'USc') ? 2 : 0; return formatNumber(num, decimals); };
+        const formatPriceRange = (min, max, currency = 'USD') => { if ((min === null || min === undefined) && (max === null || max === undefined)) return 'N/A'; if (max === null || max === undefined) return formatCurrency(min, currency); if (min === null || min === undefined) return formatCurrency(max, currency); return `${formatCurrency(min, currency)} - ${formatCurrency(max, currency)}`; };
+        const formatDiff = (value, decimals = 2, invertColor = false) => { if (value === null || value === undefined || isNaN(value)) return 'N/A'; const formatted = formatNumber(value, decimals); let className; if (value > 0) { className = invertColor ? 'diff-negative' : 'diff-positive'; } else if (value < 0) { className = invertColor ? 'diff-positive' : 'diff-negative'; } else { className = ''; } const sign = value > 0 ? '+' : ''; return `<span class="${className}">${sign}${formatted}</span>`; };
         const getMidpoint = (min, max) => { if (min === null || min === undefined || max === null || max === undefined) return null; return (min + max) / 2; };
         const renderOverview = (summary, meta) => { /* Your full function here */ };
         const renderVolumeAnalysis = (volumeData, meta) => { /* Your full function here */ };
@@ -96,11 +72,34 @@
         const renderForecastAnalysis = (forecast) => { /* Your full function here */ };
         const renderForwardLook = (weather, upcoming) => { /* Your full function here */ };
         const renderInternationalSummaries = (summaries) => { /* Your full function here */ };
-        
+
+        // This is your original master function that calls all the smaller ones
+        const renderReport = (data) => {
+            const reportData = data.data || data; // Handles both old and new data structures
+            const meta = data; // The top-level object is always the metadata
+
+            // 1. Metadata and Title
+            document.getElementById('report-title').textContent = meta.title;
+            document.getElementById('report-meta').textContent = meta.description;
+
+            // 2. Render all the sections by calling your helper functions
+            if(typeof renderOverview === 'function') renderOverview(reportData.summary, meta);
+            if(typeof renderVolumeAnalysis === 'function') renderVolumeAnalysis(reportData.volume_analysis, meta);
+            if(typeof renderBuyerActivity === 'function') renderBuyerActivity(reportData.buyer_activity);
+            if(typeof renderComparativeAnalysis === 'function') renderComparativeAnalysis(reportData.comparative_analysis, meta);
+            if(typeof renderFactoryPerformance === 'function') renderFactoryPerformance(reportData.factory_performance, meta);
+            if(typeof renderPriceQuotations === 'function') {
+                const priceData = reportData.price_quotations || Object.values(reportData).find(v => Array.isArray(v));
+                renderPriceQuotations(priceData, meta.currency);
+            }
+            if(typeof renderForecastAnalysis === 'function') renderForecastAnalysis(reportData.forecast_analysis);
+            if(typeof renderForwardLook === 'function') renderForwardLook(reportData.weather_analysis, reportData.upcoming_offerings);
+            if(typeof renderInternationalSummaries === 'function') renderInternationalSummaries(reportData.international_summaries);
+        };
+
         // --- THE FINAL, UPGRADED DATA LOADING LOGIC ---
         document.addEventListener('DOMContentLoaded', async () => {
             const loadingIndicator = document.getElementById('loading-indicator');
-            const reportTitleEl = document.getElementById('report-title');
             const reportContentEl = document.getElementById('report-content');
             
             try {
@@ -121,37 +120,15 @@
                 }
                 if (!foundReport) throw new Error(`Could not find report "${reportTitleToFind}" in the library.`);
                 
-                // This is the key: It works for both old and new report structures
-                const reportData = foundReport.data || foundReport;
-                const metaData = foundReport;
-
-                reportTitleEl.textContent = foundReport.title;
-                document.getElementById('report-meta').textContent = foundReport.description;
-
-                // --- THIS CALLS YOUR ORIGINAL FUNCTIONS TO BUILD THE PAGE ---
-                // We're using your original 'renderReport' function to orchestrate everything
-                // This assumes you have a main 'renderReport' function like in your original file
-                if (typeof renderReport === "function") {
-                    renderReport(foundReport); // This should be the main orchestrator
-                } else {
-                    // Fallback if there is no single master render function
-                    Object.keys(reportData).forEach(key => {
-                        if (key.includes('summary') && typeof renderOverview === 'function') {
-                            renderOverview(reportData[key], metaData);
-                        }
-                        if (key.includes('prices') && typeof renderPriceQuotations === 'function') {
-                            renderPriceQuotations(reportData[key], metaData.currency);
-                        }
-                        // Add more fallback checks here for other sections as needed
-                    });
-                }
+                // We found the report! Now call the master render function to build the page.
+                renderReport(foundReport);
                 
                 reportContentEl.style.display = 'block';
                 loadingIndicator.style.display = 'none';
 
             } catch (error) {
                 console.error('Error loading report:', error);
-                reportTitleEl.textContent = 'Error loading report.';
+                document.getElementById('report-title').textContent = 'Error loading report.';
                 loadingIndicator.textContent = `Error: ${error.message}`;
             }
         });
