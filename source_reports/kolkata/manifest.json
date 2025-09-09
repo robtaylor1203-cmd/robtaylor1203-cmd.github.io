@@ -1,10 +1,10 @@
 {
     "location": "Kolkata",
-    "report_type": "Auction Prices",
-    "sale_number": 37,
+    "report_type": "Consolidated Auction Report",
+    "sale_number": 36, 
     "year": 2025,
     "currency": "INR",
-    "week_number": 37,
-    "date_range": "2025-09-15 to 2025-09-16",
-    "prompt_date": "2025-09-29"
+    "week_number": 36,
+    "date_range": "2025-09-08 to 2025-09-09",
+    "prompt_date": "2025-09-22"
 }

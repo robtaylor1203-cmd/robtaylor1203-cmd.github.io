@@ -1,0 +1,378 @@
+[
+    {
+        "grade": "BOP",
+        "avg_price_inr": "268.43"
+    },
+    {
+        "grade": "BOP(O)",
+        "avg_price_inr": "302.66"
+    },
+    {
+        "grade": "BOP1",
+        "avg_price_inr": "221.08"
+    },
+    {
+        "grade": "BOP1(O)",
+        "avg_price_inr": "201.88"
+    },
+    {
+        "grade": "BOPF",
+        "avg_price_inr": "201.40"
+    },
+    {
+        "grade": "BOPF(SPL)",
+        "avg_price_inr": "177.50"
+    },
+    {
+        "grade": "BOPFCL",
+        "avg_price_inr": "265.50"
+    },
+    {
+        "grade": "BOPL",
+        "avg_price_inr": "203.84"
+    },
+    {
+        "grade": "BOPSM",
+        "avg_price_inr": "238.41"
+    },
+    {
+        "grade": "BOPSM1",
+        "avg_price_inr": "139.52"
+    },
+    {
+        "grade": "BP",
+        "avg_price_inr": "235.41"
+    },
+    {
+        "grade": "BP1",
+        "avg_price_inr": "176.52"
+    },
+    {
+        "grade": "BPS",
+        "avg_price_inr": "262.10"
+    },
+    {
+        "grade": "BPS(O)",
+        "avg_price_inr": "323.92"
+    },
+    {
+        "grade": "BPS1",
+        "avg_price_inr": "226.90"
+    },
+    {
+        "grade": "BPSM",
+        "avg_price_inr": "215.98"
+    },
+    {
+        "grade": "CD",
+        "avg_price_inr": "270.01"
+    },
+    {
+        "grade": "CD1",
+        "avg_price_inr": "173.62"
+    },
+    {
+        "grade": "CLONALDELIGHT",
+        "avg_price_inr": "901.00"
+    },
+    {
+        "grade": "D",
+        "avg_price_inr": "253.94"
+    },
+    {
+        "grade": "D1",
+        "avg_price_inr": "175.81"
+    },
+    {
+        "grade": "DUST1",
+        "avg_price_inr": "198.14"
+    },
+    {
+        "grade": "Dust",
+        "avg_price_inr": "235.47"
+    },
+    {
+        "grade": "ENIGMA",
+        "avg_price_inr": "650.00"
+    },
+    {
+        "grade": "FBOP",
+        "avg_price_inr": "307.65"
+    },
+    {
+        "grade": "FBOP(SPL)",
+        "avg_price_inr": "398.85"
+    },
+    {
+        "grade": "FBOP1",
+        "avg_price_inr": "217.01"
+    },
+    {
+        "grade": "FLOWERYCLONAL",
+        "avg_price_inr": "781.50"
+    },
+    {
+        "grade": "FOF",
+        "avg_price_inr": "154.09"
+    },
+    {
+        "grade": "FOF1",
+        "avg_price_inr": "76.86"
+    },
+    {
+        "grade": "FOP",
+        "avg_price_inr": "246.68"
+    },
+    {
+        "grade": "FOP CL",
+        "avg_price_inr": "243.00"
+    },
+    {
+        "grade": "FOP1",
+        "avg_price_inr": "186.97"
+    },
+    {
+        "grade": "FTGFOP",
+        "avg_price_inr": "269.22"
+    },
+    {
+        "grade": "FTGFOP1",
+        "avg_price_inr": "521.57"
+    },
+    {
+        "grade": "FTGFOP1(CH)",
+        "avg_price_inr": "582.39"
+    },
+    {
+        "grade": "FTGFOP1(CL)",
+        "avg_price_inr": "512.60"
+    },
+    {
+        "grade": "FTGFOP1(MUSCATEL)",
+        "avg_price_inr": "890.00"
+    },
+    {
+        "grade": "FTGFOP1TIPPYCLONAL",
+        "avg_price_inr": "830.94"
+    },
+    {
+        "grade": "GBOP",
+        "avg_price_inr": "287.86"
+    },
+    {
+        "grade": "GBOP(SPL)",
+        "avg_price_inr": "337.47"
+    },
+    {
+        "grade": "GBOP1",
+        "avg_price_inr": "208.61"
+    },
+    {
+        "grade": "GFBOP",
+        "avg_price_inr": "295.05"
+    },
+    {
+        "grade": "GFBOP(S)",
+        "avg_price_inr": "252.42"
+    },
+    {
+        "grade": "GFBOP(SPL)",
+        "avg_price_inr": "417.28"
+    },
+    {
+        "grade": "GFBOP1",
+        "avg_price_inr": "198.78"
+    },
+    {
+        "grade": "GFBOPS",
+        "avg_price_inr": "320.89"
+    },
+    {
+        "grade": "GFOP",
+        "avg_price_inr": "313.17"
+    },
+    {
+        "grade": "GFOP(S)",
+        "avg_price_inr": "210.32"
+    },
+    {
+        "grade": "GFOP1",
+        "avg_price_inr": "216.33"
+    },
+    {
+        "grade": "GFOPCL",
+        "avg_price_inr": "264.57"
+    },
+    {
+        "grade": "GOF",
+        "avg_price_inr": "172.08"
+    },
+    {
+        "grade": "GOF1",
+        "avg_price_inr": "126.89"
+    },
+    {
+        "grade": "GTGFOP",
+        "avg_price_inr": "365.00"
+    },
+    {
+        "grade": "GTGFOP1",
+        "avg_price_inr": "389.64"
+    },
+    {
+        "grade": "GUNPOWDER",
+        "avg_price_inr": "601.00"
+    },
+    {
+        "grade": "LACHHA",
+        "avg_price_inr": "345.67"
+    },
+    {
+        "grade": "MASDANA",
+        "avg_price_inr": "341.00"
+    },
+    {
+        "grade": "OBPS",
+        "avg_price_inr": "358.39"
+    },
+    {
+        "grade": "OCD",
+        "avg_price_inr": "87.27"
+    },
+    {
+        "grade": "OD",
+        "avg_price_inr": "95.20"
+    },
+    {
+        "grade": "OD1",
+        "avg_price_inr": "69.71"
+    },
+    {
+        "grade": "OF",
+        "avg_price_inr": "175.06"
+    },
+    {
+        "grade": "OF1",
+        "avg_price_inr": "140.04"
+    },
+    {
+        "grade": "OP",
+        "avg_price_inr": "237.18"
+    },
+    {
+        "grade": "OP-A",
+        "avg_price_inr": "225.31"
+    },
+    {
+        "grade": "OP1",
+        "avg_price_inr": "219.45"
+    },
+    {
+        "grade": "OPCL",
+        "avg_price_inr": "238.00"
+    },
+    {
+        "grade": "OPD",
+        "avg_price_inr": "183.50"
+    },
+    {
+        "grade": "PD",
+        "avg_price_inr": "224.63"
+    },
+    {
+        "grade": "PD1",
+        "avg_price_inr": "170.99"
+    },
+    {
+        "grade": "PF",
+        "avg_price_inr": "242.79"
+    },
+    {
+        "grade": "PF1",
+        "avg_price_inr": "173.06"
+    },
+    {
+        "grade": "RD",
+        "avg_price_inr": "151.00"
+    },
+    {
+        "grade": "RD1",
+        "avg_price_inr": "109.20"
+    },
+    {
+        "grade": "RUBY",
+        "avg_price_inr": "597.68"
+    },
+    {
+        "grade": "SFTGFOP1",
+        "avg_price_inr": "305.94"
+    },
+    {
+        "grade": "STGFOP",
+        "avg_price_inr": "363.77"
+    },
+    {
+        "grade": "STGFOP(SPL)",
+        "avg_price_inr": "450.00"
+    },
+    {
+        "grade": "STGFOP1",
+        "avg_price_inr": "405.53"
+    },
+    {
+        "grade": "STGFOP1(S)",
+        "avg_price_inr": "400.00"
+    },
+    {
+        "grade": "STGFOP1S",
+        "avg_price_inr": "415.43"
+    },
+    {
+        "grade": "SUPERLACCHA",
+        "avg_price_inr": "353.00"
+    },
+    {
+        "grade": "TFBOP",
+        "avg_price_inr": "274.46"
+    },
+    {
+        "grade": "TGBOP",
+        "avg_price_inr": "216.71"
+    },
+    {
+        "grade": "TGBOP1",
+        "avg_price_inr": "137.96"
+    },
+    {
+        "grade": "TGFBOP",
+        "avg_price_inr": "229.00"
+    },
+    {
+        "grade": "TGFOP",
+        "avg_price_inr": "343.26"
+    },
+    {
+        "grade": "TGFOP(S)",
+        "avg_price_inr": "234.81"
+    },
+    {
+        "grade": "TGFOP(SPL)",
+        "avg_price_inr": "521.00"
+    },
+    {
+        "grade": "TGFOP1",
+        "avg_price_inr": "389.21"
+    },
+    {
+        "grade": "TGFOP1(SPL)",
+        "avg_price_inr": "500.50"
+    },
+    {
+        "grade": "TGFOPCL",
+        "avg_price_inr": "370.00"
+    },
+    {
+        "grade": "TGOF",
+        "avg_price_inr": "151.11"
+    }
+]

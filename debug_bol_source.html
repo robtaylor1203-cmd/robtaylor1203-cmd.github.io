@@ -1,0 +1,303 @@
+<!DOCTYPE html><html lang="en-US"><head><meta http-equiv="content-type" content="text/html;charset=UTF-8">
+
+<meta charset="UTF-8">
+<title>J Thomas | Batting Order</title>
+
+<link rel="shortcut icon" type="image/x-icon" href="https://jthomasindia.com/wp-content/themes/bridge/img/favicon.ico">
+<link rel="apple-touch-icon" href="https://jthomasindia.com/wp-content/themes/bridge/img/favicon.ico">
+
+  <!-- Bootstrap CSS-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <!-- JQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+  <!-- jQuery Mobile -->
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
+  
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+  
+  	
+<style>
+</style>
+<style>
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    flex-direction: column; /* Ensure the loader and text are stacked vertically */
+}
+
+.loader {
+    border-radius: 50%;
+    width: 48px;  /* Default size for desktop (medium) */
+    height: 48px; /* Default size for desktop (medium) */
+    color: #fff;
+}
+
+.loader img {
+    width: 100%;  /* Default size for desktop (medium) */
+    height: 100%; /* Default size for desktop (medium) */
+}
+
+h5 {
+    position: relative;
+    color: rgba(0, 0, 0, 0.3);
+    font-size: 1em;
+    margin-top: 20px; /* Adjust margin to ensure proper spacing */
+    text-align: center; /* Center the text */
+}
+
+h5:before {
+    content: attr(data-text);
+    position: absolute;
+    overflow: hidden;
+    max-width: 7em;
+    white-space: nowrap;
+    color: #fff;
+    animation: loading 8s linear;
+}
+
+@keyframes loading {
+    0% {
+        max-width: 0;
+    }
+    100% {
+        max-width: 7em;
+    }
+}
+
+/* For mobile screens */
+@media (max-width: 1000px) {
+    .loader {
+        width: 200px;  /* Bigger size for mobile */
+        height: 200px; /* Bigger size for mobile */
+    }
+
+    .loader img {
+        width: 100%;  /* Adjust image size proportionally */
+        height: 100%; /* Adjust image size proportionally */
+    }
+
+    h5 {
+       font-size: 2.8em; /* Slightly larger text for mobile */
+        margin-top: 30px; /* Adjust margin for proper spacing */
+    }
+}
+
+/* For larger screens if needed, you can also add */
+@media (min-width: 1200px) {
+    .loader {
+        width: 36px;  /* Smaller size for larger screens */
+        height: 36px; /* Smaller size for larger screens */
+    }
+
+    .loader img {
+        width: 100%;  /* Adjust image size proportionally */
+        height: 100%; /* Adjust image size proportionally */
+    }
+
+    h5 {
+        font-size: 0.8em; /* Slightly smaller text for larger screens */
+        margin-top: 10px; /* Adjust margin for proper spacing */
+    }
+}
+	 
+</style></head>
+
+	
+	 
+<body>
+
+	     <div class="loader-container" id="loader" style="display:none">
+        <div class="loader">
+            <img src="logo.gif" alt="Loading...">
+        </div>
+	   <h5 data-text="loading…">loading…</h5>          
+    </div>
+	
+	
+
+	<link rel="shortcut icon" type="image/x-icon" href="https://jthomasindia.com/wp-content/themes/bridge/img/favicon.ico">
+	<link rel="apple-touch-icon" href="https://jthomasindia.com/wp-content/themes/bridge/img/favicon.ico">
+
+ 
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color:#0000cc">
+    <a class="navbar-brand" href="https://jthomasindia.com/index.php">
+		<img alt="JT_logo" src="https://jthomasindia.com/wp-content/Honours_List/logo.png" height="80">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor03">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="https://jthomasindia.com/index.php" style="font-family: 'Times New Roman', Times, serif;; color: white; font-size: 16px; font-weight: bold; padding: 15px">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://jthomasindia.com/about.php" style="font-family: 'Times New Roman', Times, serif;; color: white; font-size: 16px; font-weight: bold; padding: 15px">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://jthomasindia.com/market_report.php" style="font-family: 'Times New Roman', Times, serif;; color: white; font-size: 16px; font-weight: bold; padding: 15px">Market Info.</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://jthomasindia.com/catalogue.php" style="font-family: 'Times New Roman', Times, serif;; color: white; font-size: 16px; font-weight: bold; padding: 15px">Catalogue</a>
+        </li>
+		<li class="nav-item active">
+          <a class="nav-link" href="https://jthomasindia.com/auction_prices.php" style="font-family: 'Times New Roman', Times, serif;; color: white; font-size: 16px; font-weight: bold; padding: 15px">Auction Prices</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://jthomasindia.com/Honours_List/HL.php" style="font-family: 'Times New Roman', Times, serif;; color: white; font-size: 16px; font-weight: bold; padding: 15px">Honours List</a>
+        </li>
+		  <li class="nav-item">
+          <a class="nav-link" href="https://jthomasindia.com/stats/PR.php" style="font-family: 'Times New Roman', Times, serif;; color: white; font-size: 16px; font-weight: bold; padding: 15px">Statistics</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://jthomasindia.com/teacourses.php" style="font-family: 'Times New Roman', Times, serif;; color: white; font-size: 16px; font-weight: bold; padding: 15px">Tea Courses</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+<br>
+<center><h2>BATTING ORDER</h2></center>
+<center><font style="font-style:italic; color:red; text-align:center; padding-right:5vh">*Click on Image to Expand</font></center>
+<br>
+<br>
+<div class="container">
+<div class="row">
+<div class="col-sm-2"></div>
+<div class="col-sm-4">
+	<div class="row" data-toggle="collapse" data-target="#demo_NI">
+	  <div class="col-sm-4"><img src="https://jthomasindia.com/wp-content/Honours_List/NI_Icon.png" alt="NI" width="65" height="65"></div>
+	  <div class="col-sm-8">
+	  <b><span style="color:#888888;">N.INDIA</span>&nbsp;&nbsp;<br>BATTING ORDER</b>
+	  <div id="demo_NI" class="collapse">
+	  <br>
+	  <ul>
+	  <li><a href="https://jthomasindia.com/stats/BO.php?ID=9"><b>DARJEELING</b></a><!--style="padding-left:5vh" --></li>
+      <li><a href="https://jthomasindia.com/stats/BO.php"><b>CTC</b></a></li>
+	  <li><a href="https://jthomasindia.com/stats/BO.php?ID=10"><b>ORTHODOX</b></a></li>
+	  </ul>
+      </div>
+	  </div>
+	</div>
+</div>
+<div class="col-sm-2"></div>
+<div class="col-sm-4">
+	<div class="row" data-toggle="collapse" data-target="#demo_ctta">
+	  <div class="col-sm-4"><img src="https://jthomasindia.com/wp-content/Honours_List/ctta_logo.png" alt="CTTA" width="65" height="45"></div>
+	  <div class="col-sm-8">
+	  <b><span style="color:#888888;"></span>BATTING ORDER</b>
+	   <div id="demo_ctta" class="collapse">
+	  <br>
+	  <ul>
+	  <li><a href="https://jthomasindia.com/stats/BO.php?ID=9"><b>DARJEELING</b></a><!--style="padding-left:5vh" --></li>
+      <li><a href="https://jthomasindia.com/stats/BO.php?ID=4"><b>CTC</b></a></li>
+	  <li><a href="https://jthomasindia.com/stats/BO.php?ID=5"><b>ORTHODOX</b></a></li>
+	  </ul>
+	  </div>
+	  </div>
+	</div>
+</div>
+
+</div>
+
+<br><br><br><br><br>
+
+<div class="row">
+<div class="col-sm-2"></div>
+<div class="col-sm-4">
+	<div class="row" data-toggle="collapse" data-target="#demo_GTAC">
+	  <div class="col-sm-4"><img src="https://jthomasindia.com/wp-content/Honours_List/gtac_logo.png" alt="GTAC" width="65" height="65"></div>
+	  <div class="col-sm-8">
+	  <b><span style="color:#888888;"></span>&nbsp;&nbsp;<br>BATTING ORDER</b>
+	  <div id="demo_GTAC" class="collapse">
+	  <br>
+	  <ul>
+      <li><a href="https://jthomasindia.com/stats/BO.php?ID=6"><b>CTC</b></a></li>
+	  <li><a href="https://jthomasindia.com/stats/BO.php?ID=7"><b>ORTHODOX</b></a></li>
+	  </ul>
+      </div>
+	  </div>
+	</div>	
+</div>
+<div class="col-sm-2"></div>
+<div class="col-sm-4">
+	<div class="row" data-toggle="collapse" data-target="#demo_stac">
+	  <div class="col-sm-4"><img src="https://jthomasonline.com/poc/img/stac.png" alt="STAC" height="65"></div>
+	  <div class="col-sm-8">
+	  <b><span style="color:#888888;"></span>&nbsp;&nbsp;<br>BATTING ORDER</b>
+	   <div id="demo_stac" class="collapse">
+	  <br>
+	  <ul>
+      <li><a href="https://jthomasindia.com/stats/BO.php?ID=8"><b>CTC</b></a></li>
+	  </ul>
+	  </div>
+	  </div>
+	</div>
+</div>
+</div>
+
+</div>
+
+<br><br><br>
+<center><a href="https://jthomasindia.com/stats/BOL_LY.php"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
+	</svg><br></a><h5><a href="https://jthomasindia.com/stats/BOL_LY.php">LAST YEAR BATTING ORDER(2024-25)</a></h5></center>
+
+<div id="overlay" style="display:none;">
+    <div class="spinner"></div>
+    <br>
+    Loading...
+</div>
+<script>
+$(document).ready(function() {
+	$('#next').click(function(){
+		$('#overlay').fadeIn().delay(2000).fadeOut();
+	});
+});
+
+</script>
+
+
+
+<script>
+$(document).ready(function() {
+	
+$("a").on("click", function(event) {
+    event.preventDefault();
+    $("#loader").show();
+    var href = $(this).attr("href");
+    window.location.href = href;
+});
+
+$(window).on("pageshow", function(event) {
+    if (event.originalEvent.persisted) {
+        $("#loader").hide();
+    }
+});
+
+    $(window).on("load", function() {
+        $("#loader").hide();
+    });
+
+
+	
+});
+
+	
+
+</script></body></html>

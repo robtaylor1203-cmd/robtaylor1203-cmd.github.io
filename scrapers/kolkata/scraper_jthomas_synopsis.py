@@ -1,0 +1,150 @@
+from playwright.sync_api import sync_playwright
+import datetime
+import os
+import json
+from urllib.parse import urljoin
+from bs4 import BeautifulSoup
+import fitz # PyMuPDF
+import requests
+from pathlib import Path
+
+# --- Configuration (Adapted for Project Structure) ---
+REPO_BASE = Path(__file__).resolve().parent.parent.parent
+LANDING_PAGE_URL = "https://jthomasindia.com/market_synopsis.php"
+BASE_URL = "https://jthomasindia.com/"
+# Adapted paths
+TEMP_PDF_DIR = REPO_BASE / "temp_downloads"
+RAW_DOWNLOAD_DIR = REPO_BASE / "raw_downloads" / "kolkata"
+FINAL_OUTPUT_DIR = REPO_BASE / "source_reports" / "kolkata"
+
+def process_jthomas_synopsis():
+    print("--- Starting Full J. Thomas Synopsis Process ---")
+    os.makedirs(TEMP_PDF_DIR, exist_ok=True)
+    os.makedirs(FINAL_OUTPUT_DIR, exist_ok=True)
+    os.makedirs(RAW_DOWNLOAD_DIR, exist_ok=True)
+    
+    downloaded_pdf_path = None
+    latest_sale_no = "Unknown"
+
+    # --- PART 1: SCRAPING (Using Playwright) ---
+    print("\n[PART 1/2] Finding and downloading the latest PDF...")
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        page = browser.new_page()
+        # Anti-bot evasion
+        page.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+
+        try:
+            page.goto(LANDING_PAGE_URL, wait_until="networkidle", timeout=90000)
+            
+            # Select Centre
+            # Note: market_synopsis.php uses ID 'cbocenter'
+            page.select_option("#cbocenter", label="KOLKATA")
+            
+            # Wait for Sale dropdown to update (AJAX)
+            # We use a robust wait for the options to load via JavaScript/AJAX
+            page.wait_for_function("document.querySelectorAll('#cbosale option').length > 1", timeout=30000)
+            
+            # Determine Sale Number
+            SALE_SELECTOR = "#cbosale"
+            try:
+                latest_sale_value = page.eval_on_selector(SALE_SELECTOR, 
+                    "(select) => select.options[1].value")
+                if latest_sale_value:
+                    # Handle "36/2025" format
+                    latest_sale_no = latest_sale_value.split('/')[0]
+            except Exception as e:
+                print(f"Warning: Could not determine sale number dynamically: {e}")
+
+            # Select Sale (Latest)
+            page.select_option(SALE_SELECTOR, index=1)
+            
+            # Click Refresh and handle the new tab
+            with page.context.expect_page() as new_page_info:
+                # The button ID on this page is 'refresh'
+                page.click("#refresh")
+
+            report_page = new_page_info.value
+            report_page.wait_for_load_state("networkidle")
+
+            # Find the PDF URL
+            report_page_html = report_page.content()
+            # Use lxml as in the original script
+            soup = BeautifulSoup(report_page_html, 'lxml')
+
+            pdf_tag = soup.find('embed') or soup.find('iframe')
+            if not pdf_tag: raise Exception("Could not find <embed> or <iframe> tag on report page.")
+
+            pdf_relative_url = pdf_tag.get('src')
+            if not pdf_relative_url: raise Exception("Found tag but it has no 'src' link.")
+
+            pdf_full_url = urljoin(BASE_URL, pdf_relative_url)
+            print(f"Found PDF download link: {pdf_full_url}")
+
+            # Download PDF using requests
+            headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'}
+            response_pdf = requests.get(pdf_full_url, headers=headers, timeout=90)
+            response_pdf.raise_for_status()
+
+            # Save PDF
+            today = datetime.date.today().strftime("%Y%m%d")
+            sale_suffix = f"S{str(latest_sale_no).zfill(2)}"
+            pdf_filename = f"JThomas_Synopsis_{sale_suffix}_{today}.pdf"
+            
+            raw_pdf_path = RAW_DOWNLOAD_DIR / pdf_filename
+            downloaded_pdf_path = TEMP_PDF_DIR / pdf_filename
+
+            # Save to raw archive
+            with open(raw_pdf_path, 'wb') as f:
+                f.write(response_pdf.content)
+            # Save to temp processing location
+            with open(downloaded_pdf_path, 'wb') as f:
+                f.write(response_pdf.content)
+                
+            print(f"Downloaded PDF to: {raw_pdf_path}")
+
+        except Exception as e:
+            print(f"!!! An error occurred during the scraping phase: {e}")
+            # Save screenshot to the repository base
+            page.screenshot(path=str(REPO_BASE / 'error_screenshot_synopsis.png'))
+            print("Saved an error screenshot.")
+        finally:
+            browser.close()
+
+    # --- PART 2: PARSING (Using PyMuPDF) ---
+    if downloaded_pdf_path and downloaded_pdf_path.exists():
+        print("\n[PART 2/2] Parsing the downloaded PDF to extract text...")
+        try:
+            doc = fitz.open(downloaded_pdf_path)
+            full_text = ""
+            for page_num in range(doc.page_count):
+                page = doc.load_page(page_num)
+                full_text += page.get_text()
+            doc.close()
+
+            # Wrap the raw text into the standardized 'market_commentary' format.
+            output_data = [
+                {
+                    "type": "Market Synopsis (Raw Text)",
+                    "comment": full_text
+                }
+            ]
+
+            # Standardized output filename (e.g., market_synopsis_S36.json)
+            output_filename = f"market_synopsis_{sale_suffix}.json"
+            output_path = FINAL_OUTPUT_DIR / output_filename
+
+            with open(output_path, 'w', encoding='utf-8') as f:
+                json.dump(output_data, f, indent=4, ensure_ascii=False)
+
+            print(f"\n--- PROCESS COMPLETE ---")
+            print(f"Successfully saved final parsed data to: {output_path}")
+
+            # Clean up the temporary file
+            os.remove(downloaded_pdf_path)
+
+        except Exception as e:
+            print(f"!!! An error occurred during the parsing phase: {e}")
+
+if __name__ == "__main__":
+    process_jthomas_synopsis()
