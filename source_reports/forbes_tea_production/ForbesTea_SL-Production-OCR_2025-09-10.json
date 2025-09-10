@@ -1,0 +1,94 @@
+{
+    "report_title": "Forbes Tea - Sri Lanka Tea Production (In Kilos)",
+    "source_url": "https://web.forbestea.com/statistics/sri-lankan-statistics/65-sri-lanka-tea-production/1301-sri-lanka-tea-production",
+    "retrieval_date": "2025-09-10T09:28:33.228967+00:00",
+    "monthly_production": [
+        {
+            "DESCRIPTION": "High",
+            "JAN": "4579128",
+            "FEB": "3,359,208",
+            "MAR": "5,550,715",
+            "APR": "6,237,546",
+            "MAY": "5,840,302",
+            "JUN": "4,159,203"
+        },
+        {
+            "DESCRIPTION": "Medium",
+            "JAN": "3,995,023",
+            "FEB": "2,622,925",
+            "MAR": "4,821,600",
+            "APR": "5,286,384",
+            "MAY": "4,980,563",
+            "JUN": "3,808,081"
+        },
+        {
+            "DESCRIPTION": "Low",
+            "JAN": "13,207,657",
+            "FEB": "9,555,790",
+            "MAR": "13,819,257",
+            "APR": "14,648,183",
+            "MAY": "14,320,661",
+            "JUN": "13,455,861"
+        },
+        {
+            "DESCRIPTION": "Green Tea",
+            "JAN": "191206",
+            "FEB": "158205",
+            "MAR": "272",
+            "APR": "220,423",
+            "MAY": "24,702",
+            "JUN": "184,460"
+        },
+        {
+            "DESCRIPTION": "TOTAL",
+            "JAN": "21,463,013",
+            "FEB": "15,596,129",
+            "MAR": "24,428,783",
+            "APR": "26,392,537",
+            "MAY": "25,365,319",
+            "JUN": "21,687,605"
+        }
+    ],
+    "cumulative_production": [
+        {
+            "DESCRIPTION": "High",
+            "JAN/FEB": "7,938,336",
+            "JAN/MAR": "13,539,599",
+            "JAN/APR": "19,803,635",
+            "JAN/MAY": "25,644,356",
+            "JAN/JUN": "29,003,559"
+        },
+        {
+            "DESCRIPTION": "Medium",
+            "JAN/FEB": "591798",
+            "JAN/MAR": "10,739547",
+            "JAN/APR": "16,106,984",
+            "JAN/MAY": "21,253,526",
+            "JAN/JUN": "25,141,606,"
+        },
+        {
+            "DESCRIPTION": "Low",
+            "JAN/FEB": "22,958,701",
+            "JAN/MAR": "26,910,800",
+            "JAN/APR": "51,684,523",
+            "JAN/MAY": "66,040,165",
+            "JAN/JUN": "79,586,756"
+        },
+        {
+            "DESCRIPTION": "Green Tea",
+            "JAN/FEB": "49",
+            "JAN/MAR": "586,622",
+            "JAN/APR": "807045",
+            "JAN/MAY": "1,021,748",
+            "JAN/JUN": "1,206,208"
+        },
+        {
+            "DESCRIPTION": "TOTAL,",
+            "JAN/FEB": "37,164,395",
+            "JAN/MAR": "61,776,568",
+            "JAN/APR": "88,382,137",
+            "JAN/MAY": "113,959,795",
+            "JAN/JUN": "135,738,130"
+        }
+    ]
+}

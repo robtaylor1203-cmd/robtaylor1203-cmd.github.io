@@ -1,0 +1,335 @@
+{
+    "report_title": "Forbes Tea - Sri Lanka Tea Exports",
+    "source_url": "https://web.forbestea.com/statistics/sri-lankan-statistics/64-sri-lanka-tea-exports/1302-sri-lanka-tea",
+    "retrieval_date": "2025-09-10T11:08:22.821222+00:00",
+    "export_data_by_table": {
+        "MONTHLY_QUANTITY": [
+            {
+                "DESCRIPTION": "Tea In Bulk",
+                "JAN": "8,241,565",
+                "FEB": "8,973,112",
+                "MAR": "10,491,518",
+                "APR": "6,880,618",
+                "MAY": "9,187,288",
+                "JUN": "8,569,783"
+            },
+            {
+                "DESCRIPTION": "Tea In Packets",
+                "JAN": "8,492,407",
+                "FEB": "641,200",
+                "MAR": "9,864,073",
+                "APR": "8,840,030",
+                "MAY": "10,127,404",
+                "JUN": "11,833,155"
+            },
+            {
+                "DESCRIPTION": "Tea In Bags",
+                "JAN": "2,106,253",
+                "FEB": "2,138,240",
+                "MAR": "2,415,808",
+                "APR": "1,879,015",
+                "MAY": "1,834,177",
+                "JUN": "2,086,653"
+            },
+            {
+                "DESCRIPTION": "Instant Tea",
+                "JAN": "199,866",
+                "FEB": "259,163",
+                "MAR": "245,107",
+                "APR": "236,705",
+                "MAY": "389,302",
+                "JUN": "322,637"
+            },
+            {
+                "DESCRIPTION": "Green Tea",
+                "JAN": "334,337",
+                "FEB": "386504",
+                "MAR": "416,540",
+                "APR": "368,452",
+                "MAY": "334,308",
+                "JUN": "453,969,"
+            },
+            {
+                "DESCRIPTION": "TOTAL",
+                "JAN": "19,374,528",
+                "FEB": "20,308,208",
+                "MAR": "23,433,044",
+                "APR": "18,204,821",
+                "MAY": "21,872,480",
+                "JUN": "23,266,197"
+            }
+        ],
+        "MONTHLY_VALUE": [
+            {
+                "DESCRIPTION": "Tea In Bulk",
+                "JAN": "8,241,565",
+                "FEB": "8,973,112",
+                "MAR": "10,491,518",
+                "APR": "6,880,618",
+                "MAY": "9,187,288",
+                "JUN": "8,569,783"
+            },
+            {
+                "DESCRIPTION": "Tea In Packets",
+                "JAN": "8,492,407",
+                "FEB": "641,200",
+                "MAR": "9,864,073",
+                "APR": "8,840,030",
+                "MAY": "10,127,404",
+                "JUN": "11,833,155"
+            },
+            {
+                "DESCRIPTION": "Tea In Bags",
+                "JAN": "2,106,253",
+                "FEB": "2,138,240",
+                "MAR": "2,415,808",
+                "APR": "1,879,015",
+                "MAY": "1,834,177",
+                "JUN": "2,086,653"
+            },
+            {
+                "DESCRIPTION": "Instant Tea",
+                "JAN": "199,866",
+                "FEB": "259,163",
+                "MAR": "245,107",
+                "APR": "236,705",
+                "MAY": "389,302",
+                "JUN": "322,637"
+            },
+            {
+                "DESCRIPTION": "Green Tea",
+                "JAN": "334,337",
+                "FEB": "386504",
+                "MAR": "416,540",
+                "APR": "368,452",
+                "MAY": "334,308",
+                "JUN": "453,969,"
+            },
+            {
+                "DESCRIPTION": "TOTAL",
+                "JAN": "19,374,528",
+                "FEB": "20,308,208",
+                "MAR": "23,433,044",
+                "APR": "18,204,821",
+                "MAY": "21,872,480",
+                "JUN": "23,266,197"
+            },
+            {
+                "DESCRIPTION": "Instant Tea",
+                "JAN": "697,603,843",
+                "FEB": "949,179,533",
+                "MAR": "788,441,033",
+                "APR": "850,885,736",
+                "MAY": "1,430,243,249",
+                "JUN": "1,294,001,894"
+            },
+            {
+                "DESCRIPTION": "Green Tea",
+                "JAN": "1,243,725,273",
+                "FEB": "1,848,478,864",
+                "MAR": "1,649,160,615",
+                "APR": "1,27,252,725",
+                "MAY": "1,493,925,948",
+                "JUN": "1,622,038,181"
+            },
+            {
+                "DESCRIPTION": "TOTAL",
+                "JAN": "33,378,000,921",
+                "FEB": "35,442,378,428",
+                "MAR": "41,081,889,336",
+                "APR": "32,046,089,976",
+                "MAY": "39,464,830,365",
+                "JUN": "39,880,091,673"
+            }
+        ],
+        "CUMULATIVE_QUANTITY": [
+            {
+                "DESCRIPTION": "Instant Tea",
+                "JAN/FEB": "697,603,843",
+                "JAN/MAR": "949,179,533",
+                "JAN/APR": "788,441,033",
+                "JAN/MAY": "850,885,736",
+                "JAN/JUN": "1,430,243,249",
+                "JAN/JUL": "1,294,001,894"
+            },
+            {
+                "DESCRIPTION": "Green Tea",
+                "JAN/FEB": "1,243,725,273",
+                "JAN/MAR": "1,848,478,864",
+                "JAN/APR": "1,649,160,615",
+                "JAN/MAY": "1,27,252,725",
+                "JAN/JUN": "1,493,925,948",
+                "JAN/JUL": "1,622,038,181"
+            },
+            {
+                "DESCRIPTION": "TOTAL",
+                "JAN/FEB": "33,378,000,921",
+                "JAN/MAR": "35,442,378,428",
+                "JAN/APR": "41,081,889,336",
+                "JAN/MAY": "32,046,089,976",
+                "JAN/JUN": "39,464,830,365",
+                "JAN/JUL": "39,880,091,673"
+            },
+            {
+                "DESCRIPTION": "Tea In Bulk",
+                "JAN/FEB": "17,214,676",
+                "JAN/MAR": "27,706,195",
+                "JAN/APR": "34,586,813",
+                "JAN/MAY": "43,774,101",
+                "JAN/JUN": "52,488,300"
+            },
+            {
+                "DESCRIPTION": "Tea In Packets",
+                "JAN/FEB": "17,133,608",
+                "JAN/MAR": "26,997,679",
+                "JAN/APR": "25,837,709",
+                "JAN/MAY": "45,965,113",
+                "JAN/JUN": "87,814,080"
+            },
+            {
+                "DESCRIPTION": "Tea In Bags",
+                "JAN/FEB": "4,284,593",
+                "JAN/MAR": "6,660,209",
+                "JAN/APR": "8,539,414",
+                "JAN/MAY": "10,373,501",
+                "JAN/JUN": "12,543,345"
+            },
+            {
+                "DESCRIPTION": "Instant Tea",
+                "JAN/FEB": "459,029",
+                "JAN/MAR": "704,136",
+                "JAN/APR": "940,842",
+                "JAN/MAY": "1,880,144",
+                "JAN/JUN": "1,653,928"
+            },
+            {
+                "DESCRIPTION": "Green Tea",
+                "JAN/FEB": "720",
+                "JAN/MAR": "9381",
+                "JAN/APR": "1,137,472",
+                "JAN/MAY": "1,505,924",
+                "JAN/JUN": "1,840,232",
+                "JAN/JUL": "2,308,934"
+            },
+            {
+                "DESCRIPTION": "TOTAL",
+                "JAN/FEB": "39,772,836",
+                "JAN/MAR": "63,205,881",
+                "JAN/APR": "81,410,702",
+                "JAN/MAY": "103,283,181",
+                "JAN/JUN": "126,808,582"
+            }
+        ],
+        "CUMULATIVE_VALUE": [
+            {
+                "DESCRIPTION": "Instant Tea",
+                "JAN/FEB": "697,603,843",
+                "JAN/MAR": "949,179,533",
+                "JAN/APR": "788,441,033",
+                "JAN/MAY": "850,885,736",
+                "JAN/JUN": "1,430,243,249",
+                "JAN/JUL": "1,294,001,894"
+            },
+            {
+                "DESCRIPTION": "Green Tea",
+                "JAN/FEB": "1,243,725,273",
+                "JAN/MAR": "1,848,478,864",
+                "JAN/APR": "1,649,160,615",
+                "JAN/MAY": "1,27,252,725",
+                "JAN/JUN": "1,493,925,948",
+                "JAN/JUL": "1,622,038,181"
+            },
+            {
+                "DESCRIPTION": "TOTAL",
+                "JAN/FEB": "33,378,000,921",
+                "JAN/MAR": "35,442,378,428",
+                "JAN/APR": "41,081,889,336",
+                "JAN/MAY": "32,046,089,976",
+                "JAN/JUN": "39,464,830,365",
+                "JAN/JUL": "39,880,091,673"
+            },
+            {
+                "DESCRIPTION": "Tea In Bulk",
+                "JAN/FEB": "17,214,676",
+                "JAN/MAR": "27,706,195",
+                "JAN/APR": "34,586,813",
+                "JAN/MAY": "43,774,101",
+                "JAN/JUN": "52,488,300"
+            },
+            {
+                "DESCRIPTION": "Tea In Packets",
+                "JAN/FEB": "17,133,608",
+                "JAN/MAR": "26,997,679",
+                "JAN/APR": "25,837,709",
+                "JAN/MAY": "45,965,113",
+                "JAN/JUN": "87,814,080"
+            },
+            {
+                "DESCRIPTION": "Tea In Bags",
+                "JAN/FEB": "4,284,593",
+                "JAN/MAR": "6,660,209",
+                "JAN/APR": "8,539,414",
+                "JAN/MAY": "10,373,501",
+                "JAN/JUN": "12,543,345"
+            },
+            {
+                "DESCRIPTION": "Instant Tea",
+                "JAN/FEB": "459,029",
+                "JAN/MAR": "704,136",
+                "JAN/APR": "940,842",
+                "JAN/MAY": "1,880,144",
+                "JAN/JUN": "1,653,928"
+            },
+            {
+                "DESCRIPTION": "Green Tea",
+                "JAN/FEB": "720",
+                "JAN/MAR": "9381",
+                "JAN/APR": "1,137,472",
+                "JAN/MAY": "1,505,924",
+                "JAN/JUN": "1,840,232",
+                "JAN/JUL": "2,308,934"
+            },
+            {
+                "DESCRIPTION": "TOTAL",
+                "JAN/FEB": "39,772,836",
+                "JAN/MAR": "63,205,881",
+                "JAN/APR": "81,410,702",
+                "JAN/MAY": "103,283,181",
+                "JAN/JUN": "126,808,582"
+            },
+            {
+                "DESCRIPTION": "Tea In Bags",
+                "JAN/FEB": "11,202,472,252",
+                "JAN/MAR": "17,794,005,084",
+                "JAN/APR": "22,984,985,352",
+                "JAN/MAY": "28,311,221,984",
+                "JAN/JUN": "34053,713,478"
+            },
+            {
+                "DESCRIPTION": "Instant Tea",
+                "JAN/FEB": "1,886,783,376",
+                "JAN/MAR": "2,435,224,409",
+                "JAN/APR": "3,286,110,145",
+                "JAN/MAY": "4,716,953,304",
+                "JAN/JUN": "6,010,355,288"
+            },
+            {
+                "DESCRIPTION": "Green Tea",
+                "JAN/FEB": "2,792,208,137",
+                "JAN/MAR": "4,401,384,752",
+                "JAN/APR": ",718,617,",
+                "JAN/MAY": "477",
+                "JAN/JUN": "7,172,543425",
+                "JAN/JUL": "8,794,581,606"
+            },
+            {
+                "DESCRIPTION": "TOTAL",
+                "JAN/FEB": "68,820,379,349",
+                "JAN/MAR": "109,902,268,685",
+                "JAN/APR": "141,948,358,661",
+                "JAN/MAY": "181,413,198,026",
+                "JAN/JUN": "221,203,20,600"
+            }
+        ]
+    }
+}
