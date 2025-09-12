@@ -8,11 +8,10 @@ import fitz # PyMuPDF
 import requests
 from pathlib import Path
 
-# --- Configuration (Adapted for Project Structure) ---
+# --- Configuration ---
 REPO_BASE = Path(__file__).resolve().parent.parent.parent
 LANDING_PAGE_URL = "https://jthomasindia.com/market_synopsis.php"
 BASE_URL = "https://jthomasindia.com/"
-# Adapted paths
 TEMP_PDF_DIR = REPO_BASE / "temp_downloads"
 RAW_DOWNLOAD_DIR = REPO_BASE / "raw_downloads" / "kolkata"
 FINAL_OUTPUT_DIR = REPO_BASE / "source_reports" / "kolkata"
@@ -25,38 +24,45 @@ def process_jthomas_synopsis():
     
     downloaded_pdf_path = None
     latest_sale_no = "Unknown"
+    sale_suffix = "SUnknown"
 
     # --- PART 1: SCRAPING (Using Playwright) ---
     print("\n[PART 1/2] Finding and downloading the latest PDF...")
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         page = browser.new_page()
-        # Anti-bot evasion
         page.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
 
         try:
             page.goto(LANDING_PAGE_URL, wait_until="networkidle", timeout=90000)
             
-            # Select Centre
-            # Note: market_synopsis.php uses ID 'cbocenter'
+            # Select Centre (ID: 'cbocenter')
             page.select_option("#cbocenter", label="KOLKATA")
             
             # Wait for Sale dropdown to update (AJAX)
-            # We use a robust wait for the options to load via JavaScript/AJAX
-            page.wait_for_function("document.querySelectorAll('#cbosale option').length > 1", timeout=30000)
+            page.wait_for_function("document.querySelectorAll('#cbosale option').length > 1", timeout=60000)
             
-            # Determine Sale Number
+            # Determine Sale Number (Robust Capture)
             SALE_SELECTOR = "#cbosale"
-            try:
-                latest_sale_value = page.eval_on_selector(SALE_SELECTOR, 
-                    "(select) => select.options[1].value")
-                if latest_sale_value:
-                    # Handle "36/2025" format
-                    latest_sale_no = latest_sale_value.split('/')[0]
-            except Exception as e:
-                print(f"Warning: Could not determine sale number dynamically: {e}")
+            
+            # !!! THE FIX: Read the innerText (e.g., "36/2025") instead of the value (e.g., "711")
+            latest_sale_text = page.eval_on_selector(SALE_SELECTOR, 
+                "(select) => select.options[1].innerText")
+            
+            if latest_sale_text:
+                # Parse the Sale No from the text
+                try:
+                    latest_sale_no = latest_sale_text.strip().split('/')[0]
+                    # Ensure it's a valid number
+                    int(latest_sale_no) 
+                    sale_suffix = f"S{str(latest_sale_no).zfill(2)}"
+                    print(f"Latest Sale No identified: {latest_sale_no}")
+                except (IndexError, ValueError):
+                    print(f"Warning: Extracted sale text '{latest_sale_text}' is not a valid number.")
+            else:
+                 print("Warning: Could not determine sale number dynamically.")
 
-            # Select Sale (Latest)
+            # Select Sale (Latest) - selection by index still works
             page.select_option(SALE_SELECTOR, index=1)
             
             # Click Refresh and handle the new tab
@@ -67,13 +73,12 @@ def process_jthomas_synopsis():
             report_page = new_page_info.value
             report_page.wait_for_load_state("networkidle")
 
-            # Find the PDF URL
+            # Find the PDF URL (Use lxml)
             report_page_html = report_page.content()
-            # Use lxml as in the original script
             soup = BeautifulSoup(report_page_html, 'lxml')
 
             pdf_tag = soup.find('embed') or soup.find('iframe')
-            if not pdf_tag: raise Exception("Could not find <embed> or <iframe> tag on report page.")
+            if not pdf_tag: raise Exception("Could not find <embed> or <iframe> tag.")
 
             pdf_relative_url = pdf_tag.get('src')
             if not pdf_relative_url: raise Exception("Found tag but it has no 'src' link.")
@@ -86,18 +91,16 @@ def process_jthomas_synopsis():
             response_pdf = requests.get(pdf_full_url, headers=headers, timeout=90)
             response_pdf.raise_for_status()
 
-            # Save PDF
+            # Save PDF (using the correctly determined suffix)
             today = datetime.date.today().strftime("%Y%m%d")
-            sale_suffix = f"S{str(latest_sale_no).zfill(2)}"
             pdf_filename = f"JThomas_Synopsis_{sale_suffix}_{today}.pdf"
             
             raw_pdf_path = RAW_DOWNLOAD_DIR / pdf_filename
             downloaded_pdf_path = TEMP_PDF_DIR / pdf_filename
 
-            # Save to raw archive
+            # Save to raw archive and temp location
             with open(raw_pdf_path, 'wb') as f:
                 f.write(response_pdf.content)
-            # Save to temp processing location
             with open(downloaded_pdf_path, 'wb') as f:
                 f.write(response_pdf.content)
                 
@@ -105,7 +108,6 @@ def process_jthomas_synopsis():
 
         except Exception as e:
             print(f"!!! An error occurred during the scraping phase: {e}")
-            # Save screenshot to the repository base
             page.screenshot(path=str(REPO_BASE / 'error_screenshot_synopsis.png'))
             print("Saved an error screenshot.")
         finally:
@@ -122,7 +124,7 @@ def process_jthomas_synopsis():
                 full_text += page.get_text()
             doc.close()
 
-            # Wrap the raw text into the standardized 'market_commentary' format.
+            # Wrap the raw text into the standardized format.
             output_data = [
                 {
                     "type": "Market Synopsis (Raw Text)",
@@ -130,7 +132,7 @@ def process_jthomas_synopsis():
                 }
             ]
 
-            # Standardized output filename (e.g., market_synopsis_S36.json)
+            # Standardized output filename (using the correctly determined suffix)
             output_filename = f"market_synopsis_{sale_suffix}.json"
             output_path = FINAL_OUTPUT_DIR / output_filename
 
@@ -141,7 +143,10 @@ def process_jthomas_synopsis():
             print(f"Successfully saved final parsed data to: {output_path}")
 
             # Clean up the temporary file
-            os.remove(downloaded_pdf_path)
+            try:
+                os.remove(downloaded_pdf_path)
+            except OSError as e:
+                print(f"Warning: Could not remove temporary file: {e}")
 
         except Exception as e:
             print(f"!!! An error occurred during the parsing phase: {e}")
