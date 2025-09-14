@@ -1,122 +1,24 @@
-name: TeaTrade Market Data Automation
-
-on:
-  workflow_dispatch:
-    inputs:
-      run_mode:
-        description: 'Select automation mode'
-        required: true
-        default: 'test-only'
-        type: choice
-        options:
-          - test-only
-          - full
-          - data-only
-      
-      force_update:
-        description: 'Force complete update'
-        required: false
-        default: false
-        type: boolean
-
-  schedule:
-    - cron: '0 6 * * *'
-
-jobs:
-  teatrade-automation:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
-    
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-      
-      - name: Environment Check
+- name: Run TeaTrade Data Collection
         run: |
-          echo "=== TeaTrade Automation Start ==="
-          echo "Run Mode: ${{ github.event.inputs.run_mode || 'scheduled' }}"
-          echo "Force Update: ${{ github.event.inputs.force_update || 'false' }}"
-          echo "Python Version: $(python --version)"
-          echo "Working Directory: $(pwd)"
-          echo "=================================="
-      
-      - name: Create Data Directories
-        run: |
-          mkdir -p data/latest
-          mkdir -p automation/logs
-          echo "Created data directories"
-      
-      - name: Generate Sample Data
-        run: |
-          echo "Generating sample TeaTrade data..."
+          echo "Starting TeaTrade automation with existing scrapers..."
           
-          echo '{"last_updated":"2025-09-14T20:30:00Z","total_auctions":175,"total_news":18,"active_centers":["Kolkata","Guwahati","Colombo","Kandy","Mombasa"],"status":"automated","run_mode":"test","collection_time":"2025-09-14 20:30 UTC"}' > data/latest/summary.json
+          # Install dependencies
+          cd automation
+          pip install -r requirements.txt || echo "Installing basic dependencies..."
+          pip install requests beautifulsoup4 pandas selenium playwright || true
           
-          echo '[{"lot_no":"L1234","location":"Kolkata","grade":"BOP","price":245.50,"price_usd":2.95,"quantity":125,"auction_date":"2025-09-14T15:00:00Z","garden":"Estate A"},{"lot_no":"L1235","location":"Colombo","grade":"PEKOE","price":520.75,"price_usd":5.25,"quantity":80,"auction_date":"2025-09-14T14:30:00Z","garden":"Estate B"}]' > data/latest/auction_data.json
-          
-          echo '[{"title":"Tea auction prices show strong performance","source":"Tea Industry News","url":"#article-1","summary":"Recent auction results indicate positive price trends.","publish_date":"2025-09-14T18:00:00Z","category":"market"},{"title":"Weather conditions impact tea production","source":"Market Intelligence","url":"#article-2","summary":"Current weather patterns affecting tea regions.","publish_date":"2025-09-14T16:00:00Z","category":"production"}]' > data/latest/news_data.json
-          
-          echo "Sample data generated successfully"
-      
-      - name: Validate Data Files
-        run: |
-          echo "Validating data files..."
-          
-          for file in data/latest/summary.json data/latest/auction_data.json data/latest/news_data.json; do
-            if [ -f "$file" ]; then
-              if python -m json.tool "$file" > /dev/null 2>&1; then
-                size=$(stat -c%s "$file")
-                echo "VALID: $file (${size} bytes)"
-              else
-                echo "ERROR: $file has JSON errors"
-                exit 1
-              fi
-            else
-              echo "ERROR: $file is missing"
-              exit 1
-            fi
-          done
-          
-          echo "All data files validated successfully"
-      
-      - name: Generate Summary Report
-        run: |
-          echo "## TeaTrade Automation Summary" >> $GITHUB_STEP_SUMMARY
-          echo "==============================" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Run Time**: $(date '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
-          echo "**Mode**: ${{ github.event.inputs.run_mode || 'scheduled' }}" >> $GITHUB_STEP_SUMMARY
-          echo "**Force Update**: ${{ github.event.inputs.force_update || 'false' }}" >> $GITHUB_STEP_SUMMARY
-          echo "**Status**: SUCCESS - Test completed" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Generated Files**:" >> $GITHUB_STEP_SUMMARY
-          echo "- summary.json (market summary)" >> $GITHUB_STEP_SUMMARY
-          echo "- auction_data.json (sample auctions)" >> $GITHUB_STEP_SUMMARY
-          echo "- news_data.json (sample news)" >> $GITHUB_STEP_SUMMARY
-      
-      - name: Commit Changes
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "TeaTrade Automation"
-          
-          git add data/latest/
-          
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Test automation data update $(date -u '+%Y-%m-%d %H:%M UTC')"
-            git push
-            echo "SUCCESS: Changes committed"
+          # Install browser dependencies if available
+          if command -v playwright &> /dev/null; then
+            playwright install chromium --with-deps || true
           fi
+          
+          # Set environment variables
+          export GITHUB_ACTIONS=true
+          export RUN_MODE="${{ github.event.inputs.run_mode || 'full' }}"
+          export FORCE_UPDATE="${{ github.event.inputs.force_update || 'false' }}"
+          export PYTHONPATH="${PWD}"
+          
+          # Run your complete automation system
+          python run_complete_automation.py
+          
+          echo "Your automation system completed"
