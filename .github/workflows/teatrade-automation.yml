@@ -1,4 +1,4 @@
-name: TeaTrade Market Data Automation
+name: TeaTrade Enterprise Automation System
 
 on:
   workflow_dispatch:
@@ -6,11 +6,12 @@ on:
       run_mode:
         description: 'Select automation mode'
         required: true
-        default: 'test-only'
+        default: 'full'
         type: choice
         options:
-          - test-only
           - full
+          - test-only
+          - database-only
       
       debug_mode:
         description: 'Enable debug mode'
@@ -22,9 +23,24 @@ on:
     - cron: '0 6 * * *'
 
 jobs:
-  teatrade-automation:
+  teatrade-enterprise-automation:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
+    
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_PASSWORD: secure_password_123
+          POSTGRES_USER: tea_admin
+          POSTGRES_DB: tea_trade_data
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
     
     permissions:
       contents: write
@@ -41,85 +57,165 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
+          cache: 'pip'
       
-      - name: Environment Check
+      - name: Install System Dependencies
         run: |
-          echo "TeaTrade Automation Starting..."
-          echo "Mode: ${{ github.event.inputs.run_mode || 'scheduled' }}"
-          echo "Debug: ${{ github.event.inputs.debug_mode || 'false' }}"
-          echo "Repository structure:"
-          ls -la
-          echo "Automation directory:"
-          ls -la automation/ || echo "No automation directory found"
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
       
-      - name: Install Dependencies
+      - name: Install Python Dependencies
         run: |
           pip install --upgrade pip
-          if [ -f "automation/requirements.txt" ]; then
-            echo "Installing from requirements.txt..."
-            pip install -r automation/requirements.txt || echo "Some dependencies failed to install"
-          else
-            echo "Installing basic dependencies..."
-            pip install requests beautifulsoup4 pandas lxml || true
-          fi
+          pip install -r automation/requirements.txt
+          pip install flask flask-cors psycopg2-binary
       
-      - name: Run TeaTrade Automation System
+      - name: Initialize Database
+        env:
+          PGHOST: localhost
+          PGPORT: 5432
+          PGUSER: tea_admin
+          PGPASSWORD: secure_password_123
+          PGDATABASE: tea_trade_data
         run: |
-          if [ -f "automation/run_complete_automation.py" ]; then
-            echo "Running your real automation system..."
-            cd automation
-            export GITHUB_ACTIONS=true
-            export RUN_MODE="${{ github.event.inputs.run_mode || 'full' }}"
-            export PYTHONPATH="${PWD}"
-            python run_complete_automation.py || echo "Automation completed with warnings"
-            cd ..
-          else
-            echo "Creating sample data for testing..."
-            mkdir -p data/latest
-            echo '{"status":"test_run","timestamp":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","mode":"${{ github.event.inputs.run_mode || 'scheduled' }}"}' > data/latest/summary.json
-          fi
+          echo "Waiting for PostgreSQL to be ready..."
+          until pg_isready -h localhost -p 5432 -U tea_admin; do
+            echo "Waiting for database..."
+            sleep 2
+          done
+          
+          echo "Setting up database schema..."
+          psql -h localhost -U tea_admin -d tea_trade_data -f automation/data_warehouse/schema.sql
+          
+          echo "Database initialized successfully"
       
-      - name: Validate Results
+      - name: Run Enterprise Automation System
+        env:
+          GITHUB_ACTIONS: true
+          RUN_MODE: ${{ github.event.inputs.run_mode || 'full' }}
+          DEBUG_MODE: ${{ github.event.inputs.debug_mode || 'false' }}
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_USER: tea_admin
+          DB_PASSWORD: secure_password_123
+          DB_NAME: tea_trade_data
         run: |
-          echo "Checking generated data..."
-          if [ -d "data/latest" ]; then
-            echo "Data directory contents:"
-            ls -la data/latest/
-            for file in data/latest/*.json; do
-              if [ -f "$file" ]; then
-                echo "Validating $file..."
-                python -m json.tool "$file" > /dev/null && echo "Valid JSON" || echo "Invalid JSON"
-              fi
-            done
-          else
-            echo "No data directory found"
-          fi
+          echo "Starting TeaTrade Enterprise Automation..."
+          echo "Mode: $RUN_MODE"
+          echo "Debug: $DEBUG_MODE"
+          
+          cd automation
+          python run_complete_automation.py
+          
+          echo "Enterprise automation completed"
       
-      - name: Generate Summary
+      - name: Export Data for Website
+        env:
+          PGHOST: localhost
+          PGPORT: 5432
+          PGUSER: tea_admin
+          PGPASSWORD: secure_password_123
+          PGDATABASE: tea_trade_data
         run: |
-          echo "## TeaTrade Automation Summary" >> $GITHUB_STEP_SUMMARY
-          echo "==============================" >> $GITHUB_STEP_SUMMARY
+          echo "Exporting data for website..."
+          mkdir -p data/latest
+          
+          # Export auction data
+          psql -h localhost -U tea_admin -d tea_trade_data -c "
+          COPY (
+            SELECT jsonb_agg(
+              jsonb_build_object(
+                'lot_no', al.lot_no,
+                'location', ac.centre_name,
+                'garden_name', al.garden_name,
+                'grade', al.grade,
+                'price', al.price,
+                'price_usd', al.price_usd,
+                'quantity', al.quantity,
+                'currency', al.currency,
+                'auction_date', al.auction_date,
+                'broker', al.broker
+              )
+            ) FROM auction_lots al 
+            JOIN auction_centres ac ON al.centre_id = ac.id 
+            WHERE al.auction_date >= CURRENT_DATE - INTERVAL '7 days'
+          ) TO STDOUT
+          " > data/latest/auction_data.json
+          
+          # Export news data
+          psql -h localhost -U tea_admin -d tea_trade_data -c "
+          COPY (
+            SELECT jsonb_agg(
+              jsonb_build_object(
+                'title', title,
+                'source', source,
+                'url', url,
+                'summary', summary,
+                'publish_date', publish_date,
+                'category', category,
+                'importance', importance
+              )
+            ) FROM news_articles 
+            WHERE publish_date >= CURRENT_DATE - INTERVAL '7 days'
+          ) TO STDOUT
+          " > data/latest/news_data.json
+          
+          # Generate summary
+          python3 -c "
+import json
+from datetime import datetime
+summary = {
+  'last_updated': datetime.now().isoformat() + 'Z',
+  'status': 'production',
+  'enterprise_mode': True,
+  'database_enabled': True,
+  'api_enabled': True,
+  'run_mode': '${{ github.event.inputs.run_mode || 'full' }}',
+  'collection_time': datetime.now().strftime('%Y-%m-%d %H:%M UTC')
+}
+with open('data/latest/summary.json', 'w') as f:
+  json.dump(summary, f, indent=2)
+          "
+          
+          echo "Data export completed"
+      
+      - name: Generate Enterprise Report
+        run: |
+          echo "## TeaTrade Enterprise Automation Report" >> $GITHUB_STEP_SUMMARY
+          echo "=========================================" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Run Time**: $(date '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "**Execution Time**: $(date '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
           echo "**Mode**: ${{ github.event.inputs.run_mode || 'scheduled' }}" >> $GITHUB_STEP_SUMMARY
-          echo "**Debug**: ${{ github.event.inputs.debug_mode || 'false' }}" >> $GITHUB_STEP_SUMMARY
+          echo "**System Type**: Enterprise with PostgreSQL Database" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Enterprise Features**:" >> $GITHUB_STEP_SUMMARY
+          echo "- PostgreSQL data warehouse with analytics views" >> $GITHUB_STEP_SUMMARY
+          echo "- RESTful API with advanced endpoints" >> $GITHUB_STEP_SUMMARY
+          echo "- Master automation controller" >> $GITHUB_STEP_SUMMARY
+          echo "- Enhanced data consolidation pipeline" >> $GITHUB_STEP_SUMMARY
+          echo "- Data quality metrics and validation" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           if [ -f "data/latest/summary.json" ]; then
-            echo "**Status**: Automation completed successfully" >> $GITHUB_STEP_SUMMARY
+            echo "**Status**: Enterprise automation completed successfully" >> $GITHUB_STEP_SUMMARY
           else
-            echo "**Status**: No data generated" >> $GITHUB_STEP_SUMMARY
+            echo "**Status**: Automation completed with warnings" >> $GITHUB_STEP_SUMMARY
           fi
       
-      - name: Commit Results
+      - name: Commit Enterprise Results
         run: |
           git config --local user.email "action@github.com"
-          git config --local user.name "TeaTrade Automation"
+          git config --local user.name "TeaTrade Enterprise System"
           
-          git add data/ || true
+          git add data/latest/
           
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Automation update $(date -u '+%Y-%m-%d %H:%M UTC')"
-            git push || echo "Push completed"
+            git commit -m "Enterprise automation update $(date -u '+%Y-%m-%d %H:%M UTC')
+
+            Features: PostgreSQL database, RESTful API, analytics views
+            Mode: ${{ github.event.inputs.run_mode || 'scheduled' }}
+            System: Enterprise-grade with full data warehouse"
+            git push
+            echo "Enterprise results committed successfully"
           fi

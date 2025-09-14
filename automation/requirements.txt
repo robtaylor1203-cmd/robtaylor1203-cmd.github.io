@@ -36,3 +36,8 @@ webdriver-manager>=4.0.0
 
 # Development and testing
 nest-asyncio>=1.5.0
+
+# Enterprise system dependencies
+flask>=2.3.0
+flask-cors>=4.0.0
+psycopg2-binary>=2.9.0
