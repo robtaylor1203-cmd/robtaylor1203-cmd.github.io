@@ -1,0 +1,18 @@
+# TeaTrade.co.uk - Tea Industry Search Engine
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://teatrade.co.uk/sitemap.xml
+
+# Allow search engines to index our tea market data
+Allow: /news.html
+Allow: /jobs.html
+Allow: /products.html
+Allow: /market-data.html
+Allow: /corporate.html
+Allow: /data/latest/
+
+# Disallow automation directories (not for public access)
+Disallow: /automation/
+Disallow: /.github/

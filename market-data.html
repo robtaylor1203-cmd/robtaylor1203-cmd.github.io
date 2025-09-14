@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Market Data - TeaTrade</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chart.js for visualizations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js"></script>
+</head>
+<body class="market-data-page">
+    <!-- Header matching your existing design -->
+    <header class="site-header">
+        <div class="header-top-bar">
+            <a href="index.html" class="header-logo">
+                <h1>Tea<span>Trade</span></h1>
+            </a>
+            <div class="header-search-wrapper">
+                <input type="text" class="header-search-bar" placeholder="Search market data...">
+            </div>
+            <div class="user-actions">
+                <a href="#" title="Create Account">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="8.5" cy="7" r="4"></circle>
+                        <line x1="20" y1="8" x2="20" y2="14"></line>
+                        <line x1="17" y1="11" x2="23" y2="11"></line>
+                    </svg>
+                </a>
+                <a href="#" title="Sign In">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                        <polyline points="10 17 15 12 10 7"></polyline>
+                        <line x1="15" y1="12" x2="3" y2="12"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <!-- Secondary navigation -->
+        <nav class="secondary-nav">
+            <ul>
+                <li><a href="news.html">News</a></li>
+                <li><a href="jobs.html">Jobs</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="market-data.html" class="active">Market Data</a></li>
+                <li><a href="corporate.html">Corporate</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="market-data-container">
+        <h1 class="page-title">Live Tea Market Data</h1>
+        
+        <!-- Status and Last Update -->
+        <div class="data-status">
+            <div class="system-status">
+                <span class="status-indicator"></span>
+                <span class="status-text" id="data-status">Loading market data...</span>
+            </div>
+        </div>
+
+        <!-- Market Summary Cards -->
+        <div class="data-section">
+            <div class="section-header">
+                <h2 class="section-title">Market Overview</h2>
+            </div>
+            <div class="section-content">
+                <div class="quick-stats" id="market-summary">
+                    <div class="stat-item">
+                        <span class="stat-value" id="active-auctions">-</span>
+                        <span class="stat-label">Active Auctions</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="avg-price">-</span>
+                        <span class="stat-label">Avg Price (USD)</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="total-volume">-</span>
+                        <span class="stat-label">Volume (kg)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Price Trends Chart -->
+        <div class="data-section">
+            <div class="section-header">
+                <h2 class="section-title">Price Trends (Last 7 Days)</h2>
+            </div>
+            <div class="section-content">
+                <div class="chart-container">
+                    <canvas id="priceChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Auction Data -->
+        <div class="data-section">
+            <div class="section-header">
+                <h2 class="section-title">Recent Auction Results</h2>
+            </div>
+            <div class="section-content">
+                <div class="table-wrapper">
+                    <table class="data-table" id="auction-data-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Location</th>
+                                <th>Grade</th>
+                                <th>Garden</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody id="auction-data-body">
+                            <tr>
+                                <td colspan="6" style="text-align: center; padding: 40px; color: #5f6368;">
+                                    Loading auction data...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Volume by Location Chart -->
+        <div class="data-section">
+            <div class="section-header">
+                <h2 class="section-title">Volume by Location</h2>
+            </div>
+            <div class="section-content">
+                <div class="chart-container">
+                    <canvas id="volumeChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Latest News Integration -->
+        <div class="data-section">
+            <div class="section-header">
+                <h2 class="section-title">Latest Market News</h2>
+            </div>
+            <div class="section-content">
+                <ul class="news-list" id="market-news">
+                    <li class="news-item">
+                        <div class="text-content">
+                            <div class="source">Loading...</div>
+                            <div class="main-link">
+                                <h3>Loading market news...</h3>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="margin-top: 40px;">
+        <p>&copy; 2025 TeaTrade. All rights reserved.</p>
+        <p style="margin-top: 8px; font-size: 11px;">Data updated automatically every 6 hours via GitHub Actions</p>
+    </footer>
+
+    <!-- JavaScript for data loading and charts -->
+    <script src="assets/js/market-data.js"></script>
+</body>
+</html>

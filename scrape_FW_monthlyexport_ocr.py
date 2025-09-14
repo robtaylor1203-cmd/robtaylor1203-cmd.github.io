@@ -8,8 +8,10 @@ from pathlib import Path
 import io
 import cv2
 import numpy as np
+# Import the updated utility
+from pipeline_utils import generate_manifest
 
-# --- Standardized Configuration (Adapted for Proven Script) ---
+# --- Standardized Configuration ---
 REPO_ROOT = Path(__file__).resolve().parent
 LOCATION = "colombo"
 OUTPUT_DIR = REPO_ROOT / "source_reports" / LOCATION
@@ -108,8 +110,7 @@ def parse_exports_from_ocr_definitive(ocr_text):
 def scrape_forbes_exports_ocr():
     print(f"--- Starting Definitive OCR Scraper for Forbes Tea Exports (Enhanced) ---")
     
-    # (FIX): Determine the report period using the current system date
-    # Due to persistent OCR errors (e.g., 1881), we rely on the current system date as requested.
+    # Determine the report period using the current system date
     report_period = datetime.date.today().strftime("%Y_%m")
     print(f"Using Current System Date for Report Period: {report_period}")
     
@@ -151,7 +152,7 @@ def scrape_forbes_exports_ocr():
                 "export_data_by_table": structured_data
             }
 
-            # --- Standardized Saving Mechanism ---
+            # --- Standardized Saving & Auto-Manifest Mechanism ---
             # We use the YYYY_MM format
             file_prefix = "FW_monthly_export_ocr_parsed"
             output_filename = f"{file_prefix}_{report_period}.json"
@@ -162,6 +163,10 @@ def scrape_forbes_exports_ocr():
 
             print(f"\n--- PROCESS COMPLETE ---")
             print(f"Successfully saved parsed data to: {output_path}")
+            
+            # Generate the manifest automatically (Colombo uses LKR)
+            # Note: We pass REPO_ROOT and use the period format YYYY_MM
+            generate_manifest(REPO_ROOT, LOCATION, report_period, currency="LKR", report_type="Monthly/Weekly Statistics")
 
         except Exception as e:
             print(f"!!! An unexpected error occurred: {e}")

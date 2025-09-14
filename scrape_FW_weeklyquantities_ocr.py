@@ -5,8 +5,10 @@ import pytesseract
 from PIL import Image
 from playwright.sync_api import sync_playwright
 from pathlib import Path
+# Import the updated utility
+from pipeline_utils import generate_manifest
 
-# --- Standardized Configuration (Adapted for Proven Script) ---
+# --- Standardized Configuration ---
 REPO_ROOT = Path(__file__).resolve().parent
 LOCATION = "colombo"
 OUTPUT_DIR = REPO_ROOT / "source_reports" / LOCATION
@@ -30,8 +32,7 @@ def clean_ocr_value(value_str):
 
 def parse_quantities_from_ocr_final(ocr_text):
     """
-    Parses the raw OCR text, correctly separates columns, and standardizes
-    the date to YYYY-MM-DD format. (Restored Logic)
+    Parses the raw OCR text. (Restored Logic)
     """
     lines = ocr_text.strip().split('\n')
     structured_data = []
@@ -74,8 +75,7 @@ def parse_quantities_from_ocr_final(ocr_text):
 
 def scrape_forbes_quantities_ocr():
     """
-    Automates scraping the long quantities table by taking a full-page
-    screenshot and using the definitive OCR text parser. (Restored Logic)
+    Automates scraping the long quantities table. (Restored Logic)
     """
     print(f"--- Starting Definitive OCR Scraper for Forbes Quantities ---")
     
@@ -114,12 +114,15 @@ def scrape_forbes_quantities_ocr():
                 "auction_data": structured_data
             }
 
-            # --- Standardized Saving Mechanism ---
-            # Since this is weekly data covering many dates, we use the scrape date (YYYY_MM_DD) for the filename
-            date_str = datetime.date.today().strftime('%Y_%m_%d')
+            # --- Standardized Saving & Auto-Manifest Mechanism ---
+            # Since this covers many dates, we use the scrape date (YYYY_MM_DD) for the filename
+            # And we use the current YYYY_MM for the manifest period.
+            date_str_file = datetime.date.today().strftime('%Y_%m_%d')
+            date_str_period = datetime.date.today().strftime('%Y_%m')
+            
             file_prefix = "FW_weekly_quantities_ocr_parsed"
             
-            output_filename = f"{file_prefix}_{date_str}.json"
+            output_filename = f"{file_prefix}_{date_str_file}.json"
             output_path = OUTPUT_DIR / output_filename
 
             with open(output_path, 'w', encoding='utf-8') as f:
@@ -127,6 +130,10 @@ def scrape_forbes_quantities_ocr():
 
             print(f"\n--- PROCESS COMPLETE ---")
             print(f"Successfully saved parsed data to: {output_path}")
+            
+            # Generate the manifest automatically (Colombo uses LKR)
+            # Note: We pass REPO_ROOT and use the period format YYYY_MM
+            generate_manifest(REPO_ROOT, LOCATION, date_str_period, currency="LKR", report_type="Monthly/Weekly Statistics")
 
         except Exception as e:
             print(f"!!! An unexpected error occurred: {e}")

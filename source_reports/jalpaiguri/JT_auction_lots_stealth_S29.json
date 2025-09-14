@@ -1,0 +1,742 @@
+[
+    {
+        "lot_no": "GP0001",
+        "garden": "DURANTOEXCLUSIVE",
+        "grade": "BP",
+        "invoice": "C592",
+        "packages": "12",
+        "price_inr": "186",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "GP0002",
+        "garden": "SHIBBARI",
+        "grade": "BP",
+        "invoice": "C168",
+        "packages": "20",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "GP0003",
+        "garden": "MEBELBREWGOLD",
+        "grade": "BP",
+        "invoice": "C289",
+        "packages": "35",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "GP0004",
+        "garden": "SONIROYAL",
+        "grade": "BOPSM",
+        "invoice": "C928",
+        "packages": "34",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "JT0001",
+        "garden": "DURANTOSPECIAL",
+        "grade": "BP",
+        "invoice": "C578",
+        "packages": "20",
+        "price_inr": "198",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "JT0002",
+        "garden": "MOHINIPUR",
+        "grade": "OF",
+        "invoice": "C664",
+        "packages": "20",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "JT0003",
+        "garden": "SANTOSHROYAL",
+        "grade": "OF",
+        "invoice": "C553",
+        "packages": "31",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "JT0004",
+        "garden": "SANTOSH",
+        "grade": "BP",
+        "invoice": "C558",
+        "packages": "31",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "JT0005",
+        "garden": "SONIROYAL",
+        "grade": "BP",
+        "invoice": "C965",
+        "packages": "40",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "JT0006",
+        "garden": "SONIROYAL",
+        "grade": "OF",
+        "invoice": "C984",
+        "packages": "40",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "JT0007",
+        "garden": "SHIBBARI",
+        "grade": "BP",
+        "invoice": "C166",
+        "packages": "20",
+        "price_inr": "150",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "JT0008",
+        "garden": "SAHEBBARIROYAL",
+        "grade": "BP",
+        "invoice": "C502",
+        "packages": "25",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "PC0001",
+        "garden": "NIRCHABARIGARDENLEAF",
+        "grade": "BOP",
+        "invoice": "C515",
+        "packages": "16",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "PC0002",
+        "garden": "NIRCHABARIGARDENLEAF",
+        "grade": "BOPSM",
+        "invoice": "C514",
+        "packages": "30",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "PC0003",
+        "garden": "NIRCHABARIGARDENLEAF",
+        "grade": "BP",
+        "invoice": "C512",
+        "packages": "25",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "PC0004",
+        "garden": "NIRCHABARIGARDENLEAF",
+        "grade": "BP",
+        "invoice": "C513",
+        "packages": "26",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "PC0005",
+        "garden": "MOHINIPUR",
+        "grade": "BP",
+        "invoice": "C657",
+        "packages": "25",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "PC0006",
+        "garden": "SARODAMONI",
+        "grade": "BP",
+        "invoice": "C1395",
+        "packages": "40",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "PC0007",
+        "garden": "SARODAMONI",
+        "grade": "BP",
+        "invoice": "C1396",
+        "packages": "40",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "PC0008",
+        "garden": "SARODAMONI",
+        "grade": "BP",
+        "invoice": "C1408",
+        "packages": "40",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "PC0009",
+        "garden": "SARODAMONI",
+        "grade": "OF",
+        "invoice": "C1397",
+        "packages": "40",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "PC0010",
+        "garden": "MANJIRA",
+        "grade": "BP",
+        "invoice": "C1446",
+        "packages": "35",
+        "price_inr": "105",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "PC0011",
+        "garden": "MANJIRA",
+        "grade": "OF",
+        "invoice": "C1447",
+        "packages": "35",
+        "price_inr": "105",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "PC0012",
+        "garden": "SAHEBBARIROYAL",
+        "grade": "BOPSM",
+        "invoice": "C503",
+        "packages": "25",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "PC0013",
+        "garden": "KUMARPARAGOLD",
+        "grade": "OF",
+        "invoice": "C635",
+        "packages": "20",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "PC0014",
+        "garden": "SANTOSHROYAL",
+        "grade": "BOPSM",
+        "invoice": "C554",
+        "packages": "31",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "PC0015",
+        "garden": "SHIBBARI",
+        "grade": "BP",
+        "invoice": "C167",
+        "packages": "20",
+        "price_inr": "146",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "SC0001",
+        "garden": "PHOOLJHORAROYAL",
+        "grade": "BP",
+        "invoice": "C675",
+        "packages": "20",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "SC0002",
+        "garden": "PHOOLJHORAGOLD",
+        "grade": "BOPSM",
+        "invoice": "C664",
+        "packages": "20",
+        "price_inr": "120",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "SC0003",
+        "garden": "PHOOLJHORAGOLD",
+        "grade": "BP",
+        "invoice": "C668",
+        "packages": "20",
+        "price_inr": "139",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "SC0004",
+        "garden": "PHOOLJHORAGOLD",
+        "grade": "BP",
+        "invoice": "C671",
+        "packages": "18",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "SC0005",
+        "garden": "PHOOLJHORAGOLD",
+        "grade": "BP",
+        "invoice": "C673",
+        "packages": "18",
+        "price_inr": "133",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "SC0006",
+        "garden": "PHOOLJHORAGOLD",
+        "grade": "BP",
+        "invoice": "C674",
+        "packages": "20",
+        "price_inr": "230",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "SC0007",
+        "garden": "PHOOLJHORAGOLD",
+        "grade": "OF",
+        "invoice": "C672",
+        "packages": "17",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "SC0008",
+        "garden": "PHOOLJHORA",
+        "grade": "BP",
+        "invoice": "C582",
+        "packages": "8",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "SC0009",
+        "garden": "PHOOLJHORA",
+        "grade": "OF1",
+        "invoice": "C572",
+        "packages": "8",
+        "price_inr": "91",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0001",
+        "garden": "PHOOLJHORAROYAL",
+        "grade": "BOPSM",
+        "invoice": "C676",
+        "packages": "13",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0002",
+        "garden": "PHOOLJHORAROYAL",
+        "grade": "BOPSM",
+        "invoice": "C679",
+        "packages": "20",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0003",
+        "garden": "PHOOLJHORAROYAL",
+        "grade": "BP",
+        "invoice": "C677",
+        "packages": "20",
+        "price_inr": "186",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0004",
+        "garden": "PHOOLJHORAROYAL",
+        "grade": "BP",
+        "invoice": "C678",
+        "packages": "20",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0005",
+        "garden": "PHOOLJHORAGOLD",
+        "grade": "BOPSM",
+        "invoice": "C670",
+        "packages": "20",
+        "price_inr": "121",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0006",
+        "garden": "NOYYALPREMIUM",
+        "grade": "BP",
+        "invoice": "C1050",
+        "packages": "35",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0007",
+        "garden": "NOYYALPREMIUM",
+        "grade": "BP",
+        "invoice": "C1051",
+        "packages": "35",
+        "price_inr": "108",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0008",
+        "garden": "NOYYALPREMIUM",
+        "grade": "OF",
+        "invoice": "C1060",
+        "packages": "25",
+        "price_inr": "97",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0009",
+        "garden": "NOYYALPREMIUM",
+        "grade": "OF",
+        "invoice": "C1061",
+        "packages": "25",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0010",
+        "garden": "NOYYAL",
+        "grade": "BOPSM",
+        "invoice": "C1052",
+        "packages": "30",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0011",
+        "garden": "NOYYAL",
+        "grade": "BP",
+        "invoice": "C1058",
+        "packages": "20",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0012",
+        "garden": "NOYYAL",
+        "grade": "BP",
+        "invoice": "C1059",
+        "packages": "20",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0013",
+        "garden": "PHOOLJHORA",
+        "grade": "BOPSM",
+        "invoice": "C593",
+        "packages": "15",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0014",
+        "garden": "MOHINIPUR",
+        "grade": "BP",
+        "invoice": "C672",
+        "packages": "30",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0015",
+        "garden": "SAKAMBARIEGOLD",
+        "grade": "BOPSM",
+        "invoice": "C123",
+        "packages": "27",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0016",
+        "garden": "SAKAMBARIEGOLD",
+        "grade": "BOPSM",
+        "invoice": "C125",
+        "packages": "35",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0017",
+        "garden": "SAKAMBARIEGOLD",
+        "grade": "BOPSM",
+        "invoice": "C126",
+        "packages": "30",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0018",
+        "garden": "SAKAMBARIEGOLD",
+        "grade": "BP",
+        "invoice": "C124",
+        "packages": "35",
+        "price_inr": "92",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0019",
+        "garden": "SONIROYAL",
+        "grade": "BP",
+        "invoice": "C1011",
+        "packages": "40",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0020",
+        "garden": "SONIROYAL",
+        "grade": "OF",
+        "invoice": "C964",
+        "packages": "36",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0021",
+        "garden": "SAWARASUPREME",
+        "grade": "BOP",
+        "invoice": "C351",
+        "packages": "40",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0022",
+        "garden": "SAWARASUPREME",
+        "grade": "BOP",
+        "invoice": "C370",
+        "packages": "40",
+        "price_inr": "88",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0023",
+        "garden": "SAWARASUPREME",
+        "grade": "BOP",
+        "invoice": "C376",
+        "packages": "66",
+        "price_inr": "88",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0024",
+        "garden": "SAWARASUPREME",
+        "grade": "BP",
+        "invoice": "C252",
+        "packages": "20",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0025",
+        "garden": "SAWARASUPREME",
+        "grade": "OF",
+        "invoice": "C194",
+        "packages": "40",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0026",
+        "garden": "SAWARASUPREME",
+        "grade": "OF",
+        "invoice": "C212",
+        "packages": "40",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0027",
+        "garden": "SAWARASUPREME",
+        "grade": "OF",
+        "invoice": "C263",
+        "packages": "40",
+        "price_inr": "90",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0028",
+        "garden": "SAWARASUPREME",
+        "grade": "OF",
+        "invoice": "C267",
+        "packages": "40",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0029",
+        "garden": "SAWARASUPREME",
+        "grade": "OF",
+        "invoice": "C268",
+        "packages": "40",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0030",
+        "garden": "SAWARASUPREME",
+        "grade": "OF",
+        "invoice": "C377",
+        "packages": "40",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0031",
+        "garden": "SAWARASUPREME",
+        "grade": "OF",
+        "invoice": "C82",
+        "packages": "25",
+        "price_inr": "94",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0032",
+        "garden": "SHIVGOURISUPER",
+        "grade": "BOPSM",
+        "invoice": "C109",
+        "packages": "25",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0033",
+        "garden": "SHIVGOURISUPER",
+        "grade": "BP",
+        "invoice": "C110",
+        "packages": "25",
+        "price_inr": "96",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0034",
+        "garden": "SHIVGOURISUPER",
+        "grade": "BP1",
+        "invoice": "C112",
+        "packages": "25",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0035",
+        "garden": "SHIVGOURISUPER",
+        "grade": "OF",
+        "invoice": "C111",
+        "packages": "25",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0036",
+        "garden": "KAIRASUPREME",
+        "grade": "BOP",
+        "invoice": "C386",
+        "packages": "13",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC0037",
+        "garden": "KAIRASUPREME",
+        "grade": "OF",
+        "invoice": "C388",
+        "packages": "12",
+        "price_inr": "OUT",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    },
+    {
+        "lot_no": "TC3001",
+        "garden": "SHIVGOURISUPER",
+        "grade": "PD",
+        "invoice": "D110",
+        "packages": "25",
+        "price_inr": "95",
+        "centre": "JALPAIGURI",
+        "sale_number": "29"
+    }
+]
