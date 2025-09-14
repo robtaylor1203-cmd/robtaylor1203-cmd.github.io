@@ -62,11 +62,18 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y postgresql-client
       
-      - name: Install Python Dependencies
+- name: Install Python Dependencies
         run: |
           pip install --upgrade pip
           pip install -r automation/requirements.txt
           pip install psycopg2-binary flask flask-cors
+          
+          # Install Playwright and browsers for scrapers
+          pip install playwright
+          playwright install chromium --with-deps
+          
+          # Install additional scraping dependencies
+          pip install selenium webdriver-manager
       
       - name: Initialize Database
         env:
