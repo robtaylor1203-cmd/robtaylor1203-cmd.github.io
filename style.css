@@ -695,3 +695,82 @@ input[placeholder="Search titles or descriptions..."]:focus,
     padding-bottom: 24px;
     border-bottom: 1px solid #ebebeb;
 }
+# Add enhanced styles to your existing CSS (at the end of the file)
+echo "
+
+/* ====================================== */
+/* TEATRADE ENHANCED FEATURES (NEW ONLY) */
+/* ====================================== */
+
+/* Live status indicator (matches your Google-like design) */
+.system-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px 0;
+    font-size: 14px;
+    color: #5f6368;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #34a853;
+    margin-right: 8px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Quick stats (using your existing design language) */
+.quick-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 20px 0;
+    padding: 16px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #ebebeb;
+    max-width: 584px;
+    width: 100%;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 24px;
+    font-weight: 500;
+    color: #1a73e8;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #5f6368;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Mobile responsive for new features */
+@media (max-width: 600px) {
+    .quick-stats {
+        gap: 20px;
+        max-width: 100%;
+        margin: 16px 20px;
+    }
+    
+    .stat-value {
+        font-size: 20px;
+    }
+}" >> style.css
+
+echo "✅ Enhanced styles added to your existing CSS!"

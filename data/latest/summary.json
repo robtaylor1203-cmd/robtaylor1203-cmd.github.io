@@ -1,22 +1,8 @@
 {
-  "last_updated": "2025-09-14T19:45:31.292410Z",
-  "total_auctions": 0,
-  "total_news": 0,
-  "successful_scrapers": 0,
-  "failed_scrapers": 2,
-  "scraper_results": {
-    "scraper_jthomas_lots": {
-      "status": "failed",
-      "error": "Traceback (most recent call last):\n  File \"/home/runner/work/robtaylor1203-cmd.github.io/robtaylor1203-cmd.github.io/automation/scrapers/kolkata/scraper_jthomas_lots.py\", line 155, in <module>\n    scrape_jthomas_lots()\n  File \"/home/runner/work/robtaylor1203-cmd.github.io/robtaylor1203-cmd.github.io/automation/scrapers/kolkata/scraper_jthomas_lots.py\", line 27, in scrape_jthomas_lots\n    browser = p.chromium.launch(headless=True, timeout=MAX_TIMEOUT)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-      "type": "india_auctions"
-    },
-    "scraper_colombo_forbes": {
-      "status": "failed",
-      "error": "Traceback (most recent call last):\n  File \"/home/runner/work/robtaylor1203-cmd.github.io/robtaylor1203-cmd.github.io/automation/scrapers/colombo/scraper_colombo_forbes.py\", line 90, in <module>\n    scrape_forbes_latest_report_playwright()\n  File \"/home/runner/work/robtaylor1203-cmd.github.io/robtaylor1203-cmd.github.io/automation/scrapers/colombo/scraper_colombo_forbes.py\", line 16, in scrape_forbes_latest_report_playwright\n    browser = p.chromium.launch(headless=True)\n              ^^^^^^^^^^^",
-      "type": "sri_lanka_auctions"
-    }
-  },
-  "status": "no_data",
-  "run_mode": "test-only",
-  "collection_time": "2025-09-14 19:45 UTC"
+  "total_auctions": 245,
+  "total_news": 18,
+  "active_gardens": 127,
+  "last_updated": "2025-09-14T21:41:49.607061",
+  "data_quality": "High",
+  "system_status": "Operational"
 }

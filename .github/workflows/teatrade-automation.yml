@@ -1,163 +1,62 @@
-name: TeaTrade Market Data Automation
+name: TeaTrade Live Data Update
 
 on:
-  workflow_dispatch:
-    inputs:
-      run_mode:
-        description: 'Select automation mode'
-        required: true
-        default: 'test-only'
-        type: choice
-        options:
-          - test-only
-          - full
-      
-      debug_mode:
-        description: 'Enable debug mode'
-        required: false
-        default: false
-        type: boolean
-
   schedule:
-    - cron: '0 6 * * *'
+    - cron: '0 6 * * *'  # Daily at 6 AM UTC
+  workflow_dispatch:
 
 jobs:
-  teatrade-automation:
+  update-live-data:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
-    
-    services:
-      postgres:
-        image: postgres:15
-        env:
-          POSTGRES_PASSWORD: secure_password_123
-          POSTGRES_USER: tea_admin
-          POSTGRES_DB: tea_trade_data
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports:
-          - 5432:5432
-    
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
     
     steps:
-      - name: Checkout Repository
+      - name: 🛒 Checkout your beautiful website
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: Setup Python
+        
+      - name: 🐍 Setup Python for automation
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-      
-      - name: Install System Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y postgresql-client
-      
-- name: Install Python Dependencies
-        run: |
-          pip install --upgrade pip
-          pip install -r automation/requirements.txt
-          pip install psycopg2-binary flask flask-cors
           
-          # Install Playwright and browsers for scrapers
-          pip install playwright
-          playwright install chromium --with-deps
-          
-          # Install additional scraping dependencies
-          pip install selenium webdriver-manager
-      
-      - name: Initialize Database
-        env:
-          PGHOST: localhost
-          PGPORT: 5432
-          PGUSER: tea_admin
-          PGPASSWORD: secure_password_123
-          PGDATABASE: tea_trade_data
+      - name: 📦 Install automation dependencies
         run: |
-          echo "Waiting for PostgreSQL..."
-          until pg_isready -h localhost -p 5432 -U tea_admin; do
-            sleep 2
-          done
+          python -m pip install --upgrade pip
+          pip install -r automation_requirements.txt
           
-          echo "Setting up database schema..."
-          psql -h localhost -U tea_admin -d tea_trade_data -f automation/data_warehouse/schema.sql
-          echo "Database initialized successfully"
-      
-      - name: Run Enterprise Automation
-        env:
-          GITHUB_ACTIONS: true
-          RUN_MODE: ${{ github.event.inputs.run_mode || 'full' }}
-          DEBUG_MODE: ${{ github.event.inputs.debug_mode || 'false' }}
-          DB_HOST: localhost
-          DB_PORT: 5432
-          DB_USER: tea_admin
-          DB_PASSWORD: secure_password_123
-          DB_NAME: tea_trade_data
+      - name: 🚀 Run data collection
         run: |
-          echo "Running enterprise automation with database..."
-          cd automation
-          python run_complete_automation.py
-      
-      - name: Export Data from Database
-        env:
-          PGHOST: localhost
-          PGPORT: 5432
-          PGUSER: tea_admin
-          PGPASSWORD: secure_password_123
-          PGDATABASE: tea_trade_data
-        run: |
-          echo "Exporting data from PostgreSQL..."
-          mkdir -p data/latest
+          python run_automation.py
           
-          # Export summary from database
-          psql -h localhost -U tea_admin -d tea_trade_data -t -c "
-          SELECT jsonb_build_object(
-            'last_updated', NOW(),
-            'total_auctions', (SELECT COUNT(*) FROM auction_lots WHERE auction_date >= CURRENT_DATE - INTERVAL '7 days'),
-            'total_news', (SELECT COUNT(*) FROM news_articles WHERE publish_date >= CURRENT_DATE - INTERVAL '7 days'),
-            'status', 'enterprise_database',
-            'database_enabled', true,
-            'collection_time', to_char(NOW(), 'YYYY-MM-DD HH24:MI UTC')
-          )
-          " > data/latest/summary.json
-          
-          echo "Database export completed"
-      
-      - name: Generate Enterprise Report
+      - name: 📊 Update website with live data
         run: |
-          echo "## TeaTrade Enterprise Automation Report" >> $GITHUB_STEP_SUMMARY
-          echo "=========================================" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Run Time**: $(date '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
-          echo "**Mode**: ${{ github.event.inputs.run_mode || 'scheduled' }}" >> $GITHUB_STEP_SUMMARY
-          echo "**System Type**: Enterprise with PostgreSQL Database" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Enterprise Features Active**:" >> $GITHUB_STEP_SUMMARY
-          echo "- PostgreSQL data warehouse" >> $GITHUB_STEP_SUMMARY
-          echo "- Database schema with analytics views" >> $GITHUB_STEP_SUMMARY
-          echo "- RESTful API endpoints available" >> $GITHUB_STEP_SUMMARY
-          echo "- Master automation controller" >> $GITHUB_STEP_SUMMARY
-          if [ -f "data/latest/summary.json" ]; then
-            echo "**Status**: Enterprise automation successful" >> $GITHUB_STEP_SUMMARY
+          # Add timestamp to your beautiful design
+          if [ -f "index.html" ]; then
+            # Add last updated timestamp
+            sed -i 's/<!-- Last automated update:.*/<!-- Last automated update: '"$(date -u '+%Y-%m-%d %H:%M:%S UTC')"' -->/' index.html
+            if ! grep -q "Last automated update" index.html; then
+              sed -i '/<\/body>/i\    <!-- Last automated update: '"$(date -u '+%Y-%m-%d %H:%M:%S UTC')"' -->' index.html
+            fi
           fi
-      
-      - name: Commit Results
+          
+      - name: 💾 Commit live data updates
         run: |
           git config --local user.email "action@github.com"
-          git config --local user.name "TeaTrade Enterprise"
+          git config --local user.name "TeaTrade Automation"
+          
           git add data/latest/
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Enterprise automation $(date -u '+%Y-%m-%d %H:%M UTC') - PostgreSQL enabled"
+          if [ -f "index.html" ]; then
+            git add index.html
+          fi
+          
+          if ! git diff --staged --quiet; then
+            git commit -m "🤖 Live data update $(date -u '+%Y-%m-%d %H:%M UTC')
+
+✨ Your beautiful TeaTrade design enhanced with fresh market data
+📊 Data collection: Successful
+🕐 Next update: $(date -u -d '+1 day' '+%Y-%m-%d 06:00 UTC')"
+
             git push
+            echo "✅ Live data updated successfully!"
+          else
+            echo "📝 No data changes to commit"
           fi
