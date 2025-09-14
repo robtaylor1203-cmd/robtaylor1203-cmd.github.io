@@ -1,0 +1,39 @@
+{
+  "last_updated": "2025-09-14T23:24:43.252751",
+  "total_auctions": 1379,
+  "active_gardens": 52,
+  "avg_price": 244.67918781725888,
+  "sources": [
+    {
+      "source": "FORBES",
+      "lots": 180,
+      "avg_price": 331.0833333333333
+    },
+    {
+      "source": "J_THOMAS",
+      "lots": 660,
+      "avg_price": 235.38636363636363
+    },
+    {
+      "source": "TBEA",
+      "lots": 80,
+      "avg_price": 4.58625
+    },
+    {
+      "source": "CEYLON",
+      "lots": 15,
+      "avg_price": 280.0
+    },
+    {
+      "source": "J_THOMAS_LIVE",
+      "lots": 374,
+      "avg_price": 314.38770053475935
+    },
+    {
+      "source": "ATB",
+      "lots": 70,
+      "avg_price": 4.4957142857142856
+    }
+  ],
+  "system_status": "operational"
+}

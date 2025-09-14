@@ -1,0 +1,44 @@
+[
+  {
+    "date": "2025-09-14",
+    "source": "J_THOMAS",
+    "avg_price": 235.38636363636363,
+    "total_quantity": 365400,
+    "lots_count": 660
+  },
+  {
+    "date": "2025-09-14",
+    "source": "ATB",
+    "avg_price": 4.4957142857142856,
+    "total_quantity": 180000,
+    "lots_count": 70
+  },
+  {
+    "date": "2025-09-14",
+    "source": "FORBES",
+    "avg_price": 331.0833333333333,
+    "total_quantity": 100980,
+    "lots_count": 180
+  },
+  {
+    "date": "2025-09-14",
+    "source": "CEYLON",
+    "avg_price": 280.0,
+    "total_quantity": 4125,
+    "lots_count": 15
+  },
+  {
+    "date": "2025-09-14",
+    "source": "J_THOMAS_LIVE",
+    "avg_price": 314.38770053475935,
+    "total_quantity": 390956,
+    "lots_count": 374
+  },
+  {
+    "date": "2025-09-14",
+    "source": "TBEA",
+    "avg_price": 4.58625,
+    "total_quantity": 190050,
+    "lots_count": 80
+  }
+]

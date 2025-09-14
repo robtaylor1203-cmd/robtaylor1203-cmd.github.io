@@ -1,0 +1,4502 @@
+[
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Kericho Gold Estate",
+    "grade": "Fannings",
+    "quantity_kg": 3475,
+    "price_per_kg": 5.25,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "James Finlay Tea",
+    "grade": "BOP",
+    "quantity_kg": 3410,
+    "price_per_kg": 5.19,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Kipkebe Estate",
+    "grade": "FBOP",
+    "quantity_kg": 3345,
+    "price_per_kg": 5.13,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Nyayo Tea Estate",
+    "grade": "BP1",
+    "quantity_kg": 3280,
+    "price_per_kg": 5.07,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Mau Forest Estate",
+    "grade": "PEKOE",
+    "quantity_kg": 3215,
+    "price_per_kg": 5.01,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Kericho Gold Estate",
+    "grade": "CTC",
+    "quantity_kg": 3150,
+    "price_per_kg": 4.95,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "James Finlay Tea",
+    "grade": "Dust",
+    "quantity_kg": 3085,
+    "price_per_kg": 4.89,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Kipkebe Estate",
+    "grade": "Fannings",
+    "quantity_kg": 3020,
+    "price_per_kg": 4.83,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Nyayo Tea Estate",
+    "grade": "BOP",
+    "quantity_kg": 2955,
+    "price_per_kg": 4.77,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Mau Forest Estate",
+    "grade": "FBOP",
+    "quantity_kg": 2890,
+    "price_per_kg": 4.71,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Kericho Gold Estate",
+    "grade": "BP1",
+    "quantity_kg": 2825,
+    "price_per_kg": 4.65,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "James Finlay Tea",
+    "grade": "PEKOE",
+    "quantity_kg": 2760,
+    "price_per_kg": 4.59,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Kipkebe Estate",
+    "grade": "CTC",
+    "quantity_kg": 2695,
+    "price_per_kg": 4.53,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Nyayo Tea Estate",
+    "grade": "Dust",
+    "quantity_kg": 2630,
+    "price_per_kg": 4.47,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Mau Forest Estate",
+    "grade": "Fannings",
+    "quantity_kg": 2565,
+    "price_per_kg": 4.41,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Kericho Gold Estate",
+    "grade": "BOP",
+    "quantity_kg": 2500,
+    "price_per_kg": 4.35,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "James Finlay Tea",
+    "grade": "FBOP",
+    "quantity_kg": 2435,
+    "price_per_kg": 4.29,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Kipkebe Estate",
+    "grade": "BP1",
+    "quantity_kg": 2370,
+    "price_per_kg": 4.23,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Nyayo Tea Estate",
+    "grade": "PEKOE",
+    "quantity_kg": 2305,
+    "price_per_kg": 4.17,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Mau Forest Estate",
+    "grade": "CTC",
+    "quantity_kg": 2240,
+    "price_per_kg": 4.11,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Kericho Gold Estate",
+    "grade": "Dust",
+    "quantity_kg": 2175,
+    "price_per_kg": 4.05,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "James Finlay Tea",
+    "grade": "Fannings",
+    "quantity_kg": 2110,
+    "price_per_kg": 3.99,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Kipkebe Estate",
+    "grade": "BOP",
+    "quantity_kg": 2045,
+    "price_per_kg": 3.93,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Nyayo Tea Estate",
+    "grade": "FBOP",
+    "quantity_kg": 1980,
+    "price_per_kg": 3.87,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Mau Forest Estate",
+    "grade": "BP1",
+    "quantity_kg": 1915,
+    "price_per_kg": 3.81,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kangaita Estate",
+    "grade": "PEKOE",
+    "quantity_kg": 3800,
+    "price_per_kg": 5.85,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Sotik Tea",
+    "grade": "Dust",
+    "quantity_kg": 3715,
+    "price_per_kg": 5.77,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kericho Gold",
+    "grade": "Fannings",
+    "quantity_kg": 3630,
+    "price_per_kg": 5.69,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Nandi Hills Estate",
+    "grade": "BOP",
+    "quantity_kg": 3545,
+    "price_per_kg": 5.61,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kiambaa Estate",
+    "grade": "FBOP",
+    "quantity_kg": 3460,
+    "price_per_kg": 5.53,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kangaita Estate",
+    "grade": "BP1",
+    "quantity_kg": 3375,
+    "price_per_kg": 5.45,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Sotik Tea",
+    "grade": "PEKOE",
+    "quantity_kg": 3290,
+    "price_per_kg": 5.37,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kericho Gold",
+    "grade": "Dust",
+    "quantity_kg": 3205,
+    "price_per_kg": 5.29,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Nandi Hills Estate",
+    "grade": "Fannings",
+    "quantity_kg": 3120,
+    "price_per_kg": 5.21,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kiambaa Estate",
+    "grade": "BOP",
+    "quantity_kg": 3035,
+    "price_per_kg": 5.13,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kangaita Estate",
+    "grade": "FBOP",
+    "quantity_kg": 2950,
+    "price_per_kg": 5.05,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Sotik Tea",
+    "grade": "BP1",
+    "quantity_kg": 2865,
+    "price_per_kg": 4.97,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kericho Gold",
+    "grade": "PEKOE",
+    "quantity_kg": 2780,
+    "price_per_kg": 4.89,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Nandi Hills Estate",
+    "grade": "Dust",
+    "quantity_kg": 2695,
+    "price_per_kg": 4.81,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kiambaa Estate",
+    "grade": "Fannings",
+    "quantity_kg": 2610,
+    "price_per_kg": 4.73,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kangaita Estate",
+    "grade": "BOP",
+    "quantity_kg": 2525,
+    "price_per_kg": 4.65,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Sotik Tea",
+    "grade": "FBOP",
+    "quantity_kg": 2440,
+    "price_per_kg": 4.57,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kericho Gold",
+    "grade": "BP1",
+    "quantity_kg": 2355,
+    "price_per_kg": 4.49,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Nandi Hills Estate",
+    "grade": "PEKOE",
+    "quantity_kg": 2270,
+    "price_per_kg": 4.41,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kiambaa Estate",
+    "grade": "Dust",
+    "quantity_kg": 2185,
+    "price_per_kg": 4.33,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kangaita Estate",
+    "grade": "Fannings",
+    "quantity_kg": 2100,
+    "price_per_kg": 4.25,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Sotik Tea",
+    "grade": "BOP",
+    "quantity_kg": 2015,
+    "price_per_kg": 4.17,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kericho Gold",
+    "grade": "FBOP",
+    "quantity_kg": 1930,
+    "price_per_kg": 4.09,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Nandi Hills Estate",
+    "grade": "BP1",
+    "quantity_kg": 1845,
+    "price_per_kg": 4.01,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kiambaa Estate",
+    "grade": "PEKOE",
+    "quantity_kg": 1760,
+    "price_per_kg": 3.93,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kangaita Estate",
+    "grade": "Dust",
+    "quantity_kg": 1675,
+    "price_per_kg": 3.85,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Sotik Tea",
+    "grade": "Fannings",
+    "quantity_kg": 1590,
+    "price_per_kg": 3.77,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kericho Gold",
+    "grade": "BOP",
+    "quantity_kg": 1505,
+    "price_per_kg": 3.69,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Nandi Hills Estate",
+    "grade": "FBOP",
+    "quantity_kg": 1420,
+    "price_per_kg": 3.61,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kiambaa Estate",
+    "grade": "BP1",
+    "quantity_kg": 1335,
+    "price_per_kg": 3.53,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Forbes Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 1240,
+    "price_per_kg": 590.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Sapphire Tea",
+    "grade": "BOPF",
+    "quantity_kg": 1222,
+    "price_per_kg": 583.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Golden Valley",
+    "grade": "OP",
+    "quantity_kg": 1204,
+    "price_per_kg": 577.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Premium Lanka",
+    "grade": "PEKOE",
+    "quantity_kg": 1186,
+    "price_per_kg": 570.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Highland Ceylon",
+    "grade": "BOP",
+    "quantity_kg": 1168,
+    "price_per_kg": 564.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Forbes Estate",
+    "grade": "Flowery Pekoe",
+    "quantity_kg": 1150,
+    "price_per_kg": 557.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Sapphire Tea",
+    "grade": "Silver Tips",
+    "quantity_kg": 1132,
+    "price_per_kg": 551.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Golden Valley",
+    "grade": "Golden Tips",
+    "quantity_kg": 1114,
+    "price_per_kg": 544.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Premium Lanka",
+    "grade": "BOPF",
+    "quantity_kg": 1096,
+    "price_per_kg": 538.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Highland Ceylon",
+    "grade": "OP",
+    "quantity_kg": 1078,
+    "price_per_kg": 531.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Forbes Estate",
+    "grade": "PEKOE",
+    "quantity_kg": 1060,
+    "price_per_kg": 525.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Sapphire Tea",
+    "grade": "BOP",
+    "quantity_kg": 1042,
+    "price_per_kg": 518.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Golden Valley",
+    "grade": "Flowery Pekoe",
+    "quantity_kg": 1024,
+    "price_per_kg": 512.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Premium Lanka",
+    "grade": "Silver Tips",
+    "quantity_kg": 1006,
+    "price_per_kg": 505.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Highland Ceylon",
+    "grade": "Golden Tips",
+    "quantity_kg": 988,
+    "price_per_kg": 499.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Forbes Estate",
+    "grade": "BOPF",
+    "quantity_kg": 970,
+    "price_per_kg": 492.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Sapphire Tea",
+    "grade": "OP",
+    "quantity_kg": 952,
+    "price_per_kg": 486.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Golden Valley",
+    "grade": "PEKOE",
+    "quantity_kg": 934,
+    "price_per_kg": 479.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Premium Lanka",
+    "grade": "BOP",
+    "quantity_kg": 916,
+    "price_per_kg": 473.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Highland Ceylon",
+    "grade": "Flowery Pekoe",
+    "quantity_kg": 898,
+    "price_per_kg": 466.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Forbes Estate",
+    "grade": "Silver Tips",
+    "quantity_kg": 880,
+    "price_per_kg": 460.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Sapphire Tea",
+    "grade": "Golden Tips",
+    "quantity_kg": 862,
+    "price_per_kg": 453.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Golden Valley",
+    "grade": "BOPF",
+    "quantity_kg": 844,
+    "price_per_kg": 447.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Premium Lanka",
+    "grade": "OP",
+    "quantity_kg": 826,
+    "price_per_kg": 440.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Highland Ceylon",
+    "grade": "PEKOE",
+    "quantity_kg": 808,
+    "price_per_kg": 434.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Forbes Estate",
+    "grade": "BOP",
+    "quantity_kg": 790,
+    "price_per_kg": 427.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Sapphire Tea",
+    "grade": "Flowery Pekoe",
+    "quantity_kg": 772,
+    "price_per_kg": 421.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Golden Valley",
+    "grade": "Silver Tips",
+    "quantity_kg": 754,
+    "price_per_kg": 414.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Premium Lanka",
+    "grade": "Golden Tips",
+    "quantity_kg": 736,
+    "price_per_kg": 408.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Highland Ceylon",
+    "grade": "BOPF",
+    "quantity_kg": 718,
+    "price_per_kg": 401.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Forbes Estate",
+    "grade": "OP",
+    "quantity_kg": 700,
+    "price_per_kg": 395.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Sapphire Tea",
+    "grade": "PEKOE",
+    "quantity_kg": 682,
+    "price_per_kg": 388.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Golden Valley",
+    "grade": "BOP",
+    "quantity_kg": 664,
+    "price_per_kg": 382.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Premium Lanka",
+    "grade": "Flowery Pekoe",
+    "quantity_kg": 646,
+    "price_per_kg": 375.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Highland Ceylon",
+    "grade": "Silver Tips",
+    "quantity_kg": 628,
+    "price_per_kg": 369.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Forbes Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 610,
+    "price_per_kg": 362.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Sapphire Tea",
+    "grade": "BOPF",
+    "quantity_kg": 592,
+    "price_per_kg": 356.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Golden Valley",
+    "grade": "OP",
+    "quantity_kg": 574,
+    "price_per_kg": 349.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Premium Lanka",
+    "grade": "PEKOE",
+    "quantity_kg": 556,
+    "price_per_kg": 343.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Highland Ceylon",
+    "grade": "BOP",
+    "quantity_kg": 538,
+    "price_per_kg": 336.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Forbes Estate",
+    "grade": "Flowery Pekoe",
+    "quantity_kg": 520,
+    "price_per_kg": 330.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Sapphire Tea",
+    "grade": "Silver Tips",
+    "quantity_kg": 502,
+    "price_per_kg": 323.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Golden Valley",
+    "grade": "Golden Tips",
+    "quantity_kg": 484,
+    "price_per_kg": 317.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Premium Lanka",
+    "grade": "BOPF",
+    "quantity_kg": 466,
+    "price_per_kg": 310.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Highland Ceylon",
+    "grade": "OP",
+    "quantity_kg": 448,
+    "price_per_kg": 304.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Forbes Estate",
+    "grade": "PEKOE",
+    "quantity_kg": 430,
+    "price_per_kg": 297.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Tea Co",
+    "grade": "Fannings",
+    "quantity_kg": 905,
+    "price_per_kg": 314.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Estate",
+    "grade": "BOP",
+    "quantity_kg": 920,
+    "price_per_kg": 318.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 935,
+    "price_per_kg": 321.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Gardens",
+    "grade": "OP",
+    "quantity_kg": 950,
+    "price_per_kg": 325.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 215,
+    "price_per_kg": 153.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Gardens",
+    "grade": "OP",
+    "quantity_kg": 230,
+    "price_per_kg": 157.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Tea Co",
+    "grade": "BOPF",
+    "quantity_kg": 245,
+    "price_per_kg": 160.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 260,
+    "price_per_kg": 164.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Premium",
+    "grade": "Fannings",
+    "quantity_kg": 275,
+    "price_per_kg": 167.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Gardens",
+    "grade": "BOP",
+    "quantity_kg": 290,
+    "price_per_kg": 171.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Tea Co",
+    "grade": "PEKOE",
+    "quantity_kg": 305,
+    "price_per_kg": 174.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Estate",
+    "grade": "OP",
+    "quantity_kg": 320,
+    "price_per_kg": 178.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Premium",
+    "grade": "BOPF",
+    "quantity_kg": 335,
+    "price_per_kg": 181.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Gardens",
+    "grade": "Golden Tips",
+    "quantity_kg": 350,
+    "price_per_kg": 185.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Tea Co",
+    "grade": "Fannings",
+    "quantity_kg": 365,
+    "price_per_kg": 188.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Estate",
+    "grade": "BOP",
+    "quantity_kg": 380,
+    "price_per_kg": 192.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 395,
+    "price_per_kg": 195.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Gardens",
+    "grade": "OP",
+    "quantity_kg": 410,
+    "price_per_kg": 199.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Tea Co",
+    "grade": "BOPF",
+    "quantity_kg": 425,
+    "price_per_kg": 202.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 440,
+    "price_per_kg": 206.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Premium",
+    "grade": "Fannings",
+    "quantity_kg": 455,
+    "price_per_kg": 209.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Gardens",
+    "grade": "BOP",
+    "quantity_kg": 470,
+    "price_per_kg": 213.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Tea Co",
+    "grade": "PEKOE",
+    "quantity_kg": 485,
+    "price_per_kg": 216.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Estate",
+    "grade": "OP",
+    "quantity_kg": 500,
+    "price_per_kg": 220.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Premium",
+    "grade": "BOPF",
+    "quantity_kg": 515,
+    "price_per_kg": 223.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Gardens",
+    "grade": "Golden Tips",
+    "quantity_kg": 530,
+    "price_per_kg": 227.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Tea Co",
+    "grade": "Fannings",
+    "quantity_kg": 545,
+    "price_per_kg": 230.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Estate",
+    "grade": "BOP",
+    "quantity_kg": 560,
+    "price_per_kg": 234.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 575,
+    "price_per_kg": 237.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Gardens",
+    "grade": "OP",
+    "quantity_kg": 590,
+    "price_per_kg": 241.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Tea Co",
+    "grade": "BOPF",
+    "quantity_kg": 605,
+    "price_per_kg": 244.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 620,
+    "price_per_kg": 248.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Premium",
+    "grade": "Fannings",
+    "quantity_kg": 635,
+    "price_per_kg": 251.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Gardens",
+    "grade": "BOP",
+    "quantity_kg": 650,
+    "price_per_kg": 255.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Tea Co",
+    "grade": "PEKOE",
+    "quantity_kg": 665,
+    "price_per_kg": 258.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Estate",
+    "grade": "OP",
+    "quantity_kg": 680,
+    "price_per_kg": 262.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Premium",
+    "grade": "BOPF",
+    "quantity_kg": 695,
+    "price_per_kg": 265.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Gardens",
+    "grade": "Golden Tips",
+    "quantity_kg": 710,
+    "price_per_kg": 269.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Tea Co",
+    "grade": "Fannings",
+    "quantity_kg": 725,
+    "price_per_kg": 272.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Estate",
+    "grade": "BOP",
+    "quantity_kg": 740,
+    "price_per_kg": 276.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 755,
+    "price_per_kg": 279.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Gardens",
+    "grade": "OP",
+    "quantity_kg": 770,
+    "price_per_kg": 283.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Tea Co",
+    "grade": "BOPF",
+    "quantity_kg": 785,
+    "price_per_kg": 286.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 800,
+    "price_per_kg": 290.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Premium",
+    "grade": "Fannings",
+    "quantity_kg": 815,
+    "price_per_kg": 293.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Gardens",
+    "grade": "BOP",
+    "quantity_kg": 830,
+    "price_per_kg": 297.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Tea Co",
+    "grade": "PEKOE",
+    "quantity_kg": 845,
+    "price_per_kg": 300.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Estate",
+    "grade": "OP",
+    "quantity_kg": 860,
+    "price_per_kg": 304.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Premium",
+    "grade": "BOPF",
+    "quantity_kg": 875,
+    "price_per_kg": 307.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Gardens",
+    "grade": "Golden Tips",
+    "quantity_kg": 890,
+    "price_per_kg": 311.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Tea Co",
+    "grade": "Fannings",
+    "quantity_kg": 905,
+    "price_per_kg": 314.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Estate",
+    "grade": "BOP",
+    "quantity_kg": 920,
+    "price_per_kg": 318.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 935,
+    "price_per_kg": 321.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Coimbatore",
+    "garden": "Coimbatore Gardens",
+    "grade": "OP",
+    "quantity_kg": 950,
+    "price_per_kg": 325.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 215,
+    "price_per_kg": 153.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Gardens",
+    "grade": "OP",
+    "quantity_kg": 230,
+    "price_per_kg": 157.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Tea Co",
+    "grade": "BOPF",
+    "quantity_kg": 245,
+    "price_per_kg": 160.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 260,
+    "price_per_kg": 164.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Premium",
+    "grade": "Fannings",
+    "quantity_kg": 275,
+    "price_per_kg": 167.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Gardens",
+    "grade": "BOP",
+    "quantity_kg": 290,
+    "price_per_kg": 171.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Tea Co",
+    "grade": "PEKOE",
+    "quantity_kg": 305,
+    "price_per_kg": 174.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Estate",
+    "grade": "OP",
+    "quantity_kg": 320,
+    "price_per_kg": 178.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Premium",
+    "grade": "BOPF",
+    "quantity_kg": 335,
+    "price_per_kg": 181.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Gardens",
+    "grade": "Golden Tips",
+    "quantity_kg": 350,
+    "price_per_kg": 185.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Tea Co",
+    "grade": "Fannings",
+    "quantity_kg": 365,
+    "price_per_kg": 188.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Estate",
+    "grade": "BOP",
+    "quantity_kg": 380,
+    "price_per_kg": 192.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 395,
+    "price_per_kg": 195.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Gardens",
+    "grade": "OP",
+    "quantity_kg": 410,
+    "price_per_kg": 199.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Tea Co",
+    "grade": "BOPF",
+    "quantity_kg": 425,
+    "price_per_kg": 202.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 440,
+    "price_per_kg": 206.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Premium",
+    "grade": "Fannings",
+    "quantity_kg": 455,
+    "price_per_kg": 209.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Gardens",
+    "grade": "BOP",
+    "quantity_kg": 470,
+    "price_per_kg": 213.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Tea Co",
+    "grade": "PEKOE",
+    "quantity_kg": 485,
+    "price_per_kg": 216.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Estate",
+    "grade": "OP",
+    "quantity_kg": 500,
+    "price_per_kg": 220.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Premium",
+    "grade": "BOPF",
+    "quantity_kg": 515,
+    "price_per_kg": 223.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Gardens",
+    "grade": "Golden Tips",
+    "quantity_kg": 530,
+    "price_per_kg": 227.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Tea Co",
+    "grade": "Fannings",
+    "quantity_kg": 545,
+    "price_per_kg": 230.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Estate",
+    "grade": "BOP",
+    "quantity_kg": 560,
+    "price_per_kg": 234.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 575,
+    "price_per_kg": 237.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Gardens",
+    "grade": "OP",
+    "quantity_kg": 590,
+    "price_per_kg": 241.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Tea Co",
+    "grade": "BOPF",
+    "quantity_kg": 605,
+    "price_per_kg": 244.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 620,
+    "price_per_kg": 248.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Premium",
+    "grade": "Fannings",
+    "quantity_kg": 635,
+    "price_per_kg": 251.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Gardens",
+    "grade": "BOP",
+    "quantity_kg": 650,
+    "price_per_kg": 255.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Tea Co",
+    "grade": "PEKOE",
+    "quantity_kg": 665,
+    "price_per_kg": 258.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Estate",
+    "grade": "OP",
+    "quantity_kg": 680,
+    "price_per_kg": 262.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Premium",
+    "grade": "BOPF",
+    "quantity_kg": 695,
+    "price_per_kg": 265.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Gardens",
+    "grade": "Golden Tips",
+    "quantity_kg": 710,
+    "price_per_kg": 269.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Tea Co",
+    "grade": "Fannings",
+    "quantity_kg": 725,
+    "price_per_kg": 272.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Estate",
+    "grade": "BOP",
+    "quantity_kg": 740,
+    "price_per_kg": 276.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 755,
+    "price_per_kg": 279.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Gardens",
+    "grade": "OP",
+    "quantity_kg": 770,
+    "price_per_kg": 283.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Tea Co",
+    "grade": "BOPF",
+    "quantity_kg": 785,
+    "price_per_kg": 286.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 800,
+    "price_per_kg": 290.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Premium",
+    "grade": "Fannings",
+    "quantity_kg": 815,
+    "price_per_kg": 293.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Gardens",
+    "grade": "BOP",
+    "quantity_kg": 830,
+    "price_per_kg": 297.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Tea Co",
+    "grade": "PEKOE",
+    "quantity_kg": 845,
+    "price_per_kg": 300.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Estate",
+    "grade": "OP",
+    "quantity_kg": 860,
+    "price_per_kg": 304.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Premium",
+    "grade": "BOPF",
+    "quantity_kg": 875,
+    "price_per_kg": 307.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Gardens",
+    "grade": "Golden Tips",
+    "quantity_kg": 890,
+    "price_per_kg": 311.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Tea Co",
+    "grade": "Fannings",
+    "quantity_kg": 905,
+    "price_per_kg": 314.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Estate",
+    "grade": "BOP",
+    "quantity_kg": 920,
+    "price_per_kg": 318.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 935,
+    "price_per_kg": 321.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kochi",
+    "garden": "Kochi Gardens",
+    "grade": "OP",
+    "quantity_kg": 950,
+    "price_per_kg": 325.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 215,
+    "price_per_kg": 153.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Gardens",
+    "grade": "OP",
+    "quantity_kg": 230,
+    "price_per_kg": 157.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Tea Co",
+    "grade": "BOPF",
+    "quantity_kg": 245,
+    "price_per_kg": 160.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 260,
+    "price_per_kg": 164.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Premium",
+    "grade": "Fannings",
+    "quantity_kg": 275,
+    "price_per_kg": 167.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Gardens",
+    "grade": "BOP",
+    "quantity_kg": 290,
+    "price_per_kg": 171.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Tea Co",
+    "grade": "PEKOE",
+    "quantity_kg": 305,
+    "price_per_kg": 174.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Estate",
+    "grade": "OP",
+    "quantity_kg": 320,
+    "price_per_kg": 178.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Premium",
+    "grade": "BOPF",
+    "quantity_kg": 335,
+    "price_per_kg": 181.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Gardens",
+    "grade": "Golden Tips",
+    "quantity_kg": 350,
+    "price_per_kg": 185.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Tea Co",
+    "grade": "Fannings",
+    "quantity_kg": 365,
+    "price_per_kg": 188.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Estate",
+    "grade": "BOP",
+    "quantity_kg": 380,
+    "price_per_kg": 192.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 395,
+    "price_per_kg": 195.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Gardens",
+    "grade": "OP",
+    "quantity_kg": 410,
+    "price_per_kg": 199.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Tea Co",
+    "grade": "BOPF",
+    "quantity_kg": 425,
+    "price_per_kg": 202.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 440,
+    "price_per_kg": 206.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Premium",
+    "grade": "Fannings",
+    "quantity_kg": 455,
+    "price_per_kg": 209.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Gardens",
+    "grade": "BOP",
+    "quantity_kg": 470,
+    "price_per_kg": 213.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Tea Co",
+    "grade": "PEKOE",
+    "quantity_kg": 485,
+    "price_per_kg": 216.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Estate",
+    "grade": "OP",
+    "quantity_kg": 500,
+    "price_per_kg": 220.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Premium",
+    "grade": "BOPF",
+    "quantity_kg": 515,
+    "price_per_kg": 223.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Gardens",
+    "grade": "Golden Tips",
+    "quantity_kg": 530,
+    "price_per_kg": 227.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Tea Co",
+    "grade": "Fannings",
+    "quantity_kg": 545,
+    "price_per_kg": 230.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Estate",
+    "grade": "BOP",
+    "quantity_kg": 560,
+    "price_per_kg": 234.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 575,
+    "price_per_kg": 237.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Gardens",
+    "grade": "OP",
+    "quantity_kg": 590,
+    "price_per_kg": 241.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Tea Co",
+    "grade": "BOPF",
+    "quantity_kg": 605,
+    "price_per_kg": 244.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 620,
+    "price_per_kg": 248.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Premium",
+    "grade": "Fannings",
+    "quantity_kg": 635,
+    "price_per_kg": 251.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Gardens",
+    "grade": "BOP",
+    "quantity_kg": 650,
+    "price_per_kg": 255.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Tea Co",
+    "grade": "PEKOE",
+    "quantity_kg": 665,
+    "price_per_kg": 258.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Estate",
+    "grade": "OP",
+    "quantity_kg": 680,
+    "price_per_kg": 262.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Premium",
+    "grade": "BOPF",
+    "quantity_kg": 695,
+    "price_per_kg": 265.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Gardens",
+    "grade": "Golden Tips",
+    "quantity_kg": 710,
+    "price_per_kg": 269.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Tea Co",
+    "grade": "Fannings",
+    "quantity_kg": 725,
+    "price_per_kg": 272.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Estate",
+    "grade": "BOP",
+    "quantity_kg": 740,
+    "price_per_kg": 276.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 755,
+    "price_per_kg": 279.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Gardens",
+    "grade": "OP",
+    "quantity_kg": 770,
+    "price_per_kg": 283.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Tea Co",
+    "grade": "BOPF",
+    "quantity_kg": 785,
+    "price_per_kg": 286.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 800,
+    "price_per_kg": 290.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Premium",
+    "grade": "Fannings",
+    "quantity_kg": 815,
+    "price_per_kg": 293.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Gardens",
+    "grade": "BOP",
+    "quantity_kg": 830,
+    "price_per_kg": 297.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Tea Co",
+    "grade": "PEKOE",
+    "quantity_kg": 845,
+    "price_per_kg": 300.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Estate",
+    "grade": "OP",
+    "quantity_kg": 860,
+    "price_per_kg": 304.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Premium",
+    "grade": "BOPF",
+    "quantity_kg": 875,
+    "price_per_kg": 307.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Gardens",
+    "grade": "Golden Tips",
+    "quantity_kg": 890,
+    "price_per_kg": 311.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Tea Co",
+    "grade": "Fannings",
+    "quantity_kg": 905,
+    "price_per_kg": 314.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Estate",
+    "grade": "BOP",
+    "quantity_kg": 920,
+    "price_per_kg": 318.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 935,
+    "price_per_kg": 321.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Cochin",
+    "garden": "Cochin Gardens",
+    "grade": "OP",
+    "quantity_kg": 950,
+    "price_per_kg": 325.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Highland Ceylon",
+    "grade": "PEKOE",
+    "quantity_kg": 178,
+    "price_per_kg": 206.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Premium Lanka",
+    "grade": "OP",
+    "quantity_kg": 196,
+    "price_per_kg": 213.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Golden Valley",
+    "grade": "BOPF",
+    "quantity_kg": 214,
+    "price_per_kg": 219.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Sapphire Tea",
+    "grade": "Golden Tips",
+    "quantity_kg": 232,
+    "price_per_kg": 226.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Forbes Estate",
+    "grade": "Silver Tips",
+    "quantity_kg": 250,
+    "price_per_kg": 232.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Highland Ceylon",
+    "grade": "Flowery Pekoe",
+    "quantity_kg": 268,
+    "price_per_kg": 239.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Premium Lanka",
+    "grade": "BOP",
+    "quantity_kg": 286,
+    "price_per_kg": 245.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Golden Valley",
+    "grade": "PEKOE",
+    "quantity_kg": 304,
+    "price_per_kg": 252.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Sapphire Tea",
+    "grade": "OP",
+    "quantity_kg": 322,
+    "price_per_kg": 258.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Forbes Estate",
+    "grade": "BOPF",
+    "quantity_kg": 340,
+    "price_per_kg": 265.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Highland Ceylon",
+    "grade": "Golden Tips",
+    "quantity_kg": 358,
+    "price_per_kg": 271.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Premium Lanka",
+    "grade": "Silver Tips",
+    "quantity_kg": 376,
+    "price_per_kg": 278.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Golden Valley",
+    "grade": "Flowery Pekoe",
+    "quantity_kg": 394,
+    "price_per_kg": 284.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Sapphire Tea",
+    "grade": "BOP",
+    "quantity_kg": 412,
+    "price_per_kg": 291.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Forbes Estate",
+    "grade": "Silver Tips",
+    "quantity_kg": 880,
+    "price_per_kg": 460.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Highland Ceylon",
+    "grade": "Flowery Pekoe",
+    "quantity_kg": 898,
+    "price_per_kg": 466.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Premium Lanka",
+    "grade": "BOP",
+    "quantity_kg": 916,
+    "price_per_kg": 473.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Golden Valley",
+    "grade": "PEKOE",
+    "quantity_kg": 934,
+    "price_per_kg": 479.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Sapphire Tea",
+    "grade": "OP",
+    "quantity_kg": 952,
+    "price_per_kg": 486.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Forbes Estate",
+    "grade": "BOPF",
+    "quantity_kg": 970,
+    "price_per_kg": 492.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Highland Ceylon",
+    "grade": "Golden Tips",
+    "quantity_kg": 988,
+    "price_per_kg": 499.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Premium Lanka",
+    "grade": "Silver Tips",
+    "quantity_kg": 1006,
+    "price_per_kg": 505.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Golden Valley",
+    "grade": "Flowery Pekoe",
+    "quantity_kg": 1024,
+    "price_per_kg": 512.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Sapphire Tea",
+    "grade": "BOP",
+    "quantity_kg": 1042,
+    "price_per_kg": 518.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Forbes Estate",
+    "grade": "PEKOE",
+    "quantity_kg": 1060,
+    "price_per_kg": 525.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Highland Ceylon",
+    "grade": "OP",
+    "quantity_kg": 1078,
+    "price_per_kg": 531.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Premium Lanka",
+    "grade": "BOPF",
+    "quantity_kg": 1096,
+    "price_per_kg": 538.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Golden Valley",
+    "grade": "Golden Tips",
+    "quantity_kg": 1114,
+    "price_per_kg": 544.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Sapphire Tea",
+    "grade": "Silver Tips",
+    "quantity_kg": 1132,
+    "price_per_kg": 551.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Forbes Estate",
+    "grade": "Flowery Pekoe",
+    "quantity_kg": 1150,
+    "price_per_kg": 557.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Highland Ceylon",
+    "grade": "BOP",
+    "quantity_kg": 1168,
+    "price_per_kg": 564.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Premium Lanka",
+    "grade": "PEKOE",
+    "quantity_kg": 1186,
+    "price_per_kg": 570.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Golden Valley",
+    "grade": "OP",
+    "quantity_kg": 1204,
+    "price_per_kg": 577.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Sapphire Tea",
+    "grade": "BOPF",
+    "quantity_kg": 1222,
+    "price_per_kg": 583.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "FORBES",
+    "auction_centre": "Colombo",
+    "garden": "Forbes Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 1240,
+    "price_per_kg": 590.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kiambaa Estate",
+    "grade": "BP1",
+    "quantity_kg": 1335,
+    "price_per_kg": 3.53,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Nandi Hills Estate",
+    "grade": "FBOP",
+    "quantity_kg": 1420,
+    "price_per_kg": 3.61,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kericho Gold",
+    "grade": "BOP",
+    "quantity_kg": 1505,
+    "price_per_kg": 3.69,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Sotik Tea",
+    "grade": "Fannings",
+    "quantity_kg": 1590,
+    "price_per_kg": 3.77,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kangaita Estate",
+    "grade": "Dust",
+    "quantity_kg": 1675,
+    "price_per_kg": 3.85,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kiambaa Estate",
+    "grade": "PEKOE",
+    "quantity_kg": 1760,
+    "price_per_kg": 3.93,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Nandi Hills Estate",
+    "grade": "BP1",
+    "quantity_kg": 1845,
+    "price_per_kg": 4.01,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kericho Gold",
+    "grade": "FBOP",
+    "quantity_kg": 1930,
+    "price_per_kg": 4.09,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Sotik Tea",
+    "grade": "BOP",
+    "quantity_kg": 2015,
+    "price_per_kg": 4.17,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kangaita Estate",
+    "grade": "Fannings",
+    "quantity_kg": 2100,
+    "price_per_kg": 4.25,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kiambaa Estate",
+    "grade": "Dust",
+    "quantity_kg": 2185,
+    "price_per_kg": 4.33,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Nandi Hills Estate",
+    "grade": "PEKOE",
+    "quantity_kg": 2270,
+    "price_per_kg": 4.41,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kericho Gold",
+    "grade": "BP1",
+    "quantity_kg": 2355,
+    "price_per_kg": 4.49,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Sotik Tea",
+    "grade": "FBOP",
+    "quantity_kg": 2440,
+    "price_per_kg": 4.57,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kangaita Estate",
+    "grade": "BOP",
+    "quantity_kg": 2525,
+    "price_per_kg": 4.65,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kiambaa Estate",
+    "grade": "Fannings",
+    "quantity_kg": 2610,
+    "price_per_kg": 4.73,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Nandi Hills Estate",
+    "grade": "Dust",
+    "quantity_kg": 2695,
+    "price_per_kg": 4.81,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kericho Gold",
+    "grade": "PEKOE",
+    "quantity_kg": 2780,
+    "price_per_kg": 4.89,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Sotik Tea",
+    "grade": "BP1",
+    "quantity_kg": 2865,
+    "price_per_kg": 4.97,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kangaita Estate",
+    "grade": "FBOP",
+    "quantity_kg": 2950,
+    "price_per_kg": 5.05,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kiambaa Estate",
+    "grade": "BOP",
+    "quantity_kg": 3035,
+    "price_per_kg": 5.13,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Nandi Hills Estate",
+    "grade": "Fannings",
+    "quantity_kg": 3120,
+    "price_per_kg": 5.21,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kericho Gold",
+    "grade": "Dust",
+    "quantity_kg": 3205,
+    "price_per_kg": 5.29,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Sotik Tea",
+    "grade": "PEKOE",
+    "quantity_kg": 3290,
+    "price_per_kg": 5.37,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kangaita Estate",
+    "grade": "BP1",
+    "quantity_kg": 3375,
+    "price_per_kg": 5.45,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kiambaa Estate",
+    "grade": "FBOP",
+    "quantity_kg": 3460,
+    "price_per_kg": 5.53,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Nandi Hills Estate",
+    "grade": "BOP",
+    "quantity_kg": 3545,
+    "price_per_kg": 5.61,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kericho Gold",
+    "grade": "Fannings",
+    "quantity_kg": 3630,
+    "price_per_kg": 5.69,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Sotik Tea",
+    "grade": "Dust",
+    "quantity_kg": 3715,
+    "price_per_kg": 5.77,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "TBEA",
+    "auction_centre": "Mombasa",
+    "garden": "Kangaita Estate",
+    "grade": "PEKOE",
+    "quantity_kg": 3800,
+    "price_per_kg": 5.85,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Mau Forest Estate",
+    "grade": "BP1",
+    "quantity_kg": 1915,
+    "price_per_kg": 3.81,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Nyayo Tea Estate",
+    "grade": "FBOP",
+    "quantity_kg": 1980,
+    "price_per_kg": 3.87,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Kipkebe Estate",
+    "grade": "BOP",
+    "quantity_kg": 2045,
+    "price_per_kg": 3.93,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "James Finlay Tea",
+    "grade": "Fannings",
+    "quantity_kg": 2110,
+    "price_per_kg": 3.99,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Kericho Gold Estate",
+    "grade": "Dust",
+    "quantity_kg": 2175,
+    "price_per_kg": 4.05,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Mau Forest Estate",
+    "grade": "CTC",
+    "quantity_kg": 2240,
+    "price_per_kg": 4.11,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Nyayo Tea Estate",
+    "grade": "PEKOE",
+    "quantity_kg": 2305,
+    "price_per_kg": 4.17,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Kipkebe Estate",
+    "grade": "BP1",
+    "quantity_kg": 2370,
+    "price_per_kg": 4.23,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "James Finlay Tea",
+    "grade": "FBOP",
+    "quantity_kg": 2435,
+    "price_per_kg": 4.29,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Kericho Gold Estate",
+    "grade": "BOP",
+    "quantity_kg": 2500,
+    "price_per_kg": 4.35,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Mau Forest Estate",
+    "grade": "Fannings",
+    "quantity_kg": 2565,
+    "price_per_kg": 4.41,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Nyayo Tea Estate",
+    "grade": "Dust",
+    "quantity_kg": 2630,
+    "price_per_kg": 4.47,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Kipkebe Estate",
+    "grade": "CTC",
+    "quantity_kg": 2695,
+    "price_per_kg": 4.53,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "James Finlay Tea",
+    "grade": "PEKOE",
+    "quantity_kg": 2760,
+    "price_per_kg": 4.59,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Kericho Gold Estate",
+    "grade": "BP1",
+    "quantity_kg": 2825,
+    "price_per_kg": 4.65,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Mau Forest Estate",
+    "grade": "FBOP",
+    "quantity_kg": 2890,
+    "price_per_kg": 4.71,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Nyayo Tea Estate",
+    "grade": "BOP",
+    "quantity_kg": 2955,
+    "price_per_kg": 4.77,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Kipkebe Estate",
+    "grade": "Fannings",
+    "quantity_kg": 3020,
+    "price_per_kg": 4.83,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "James Finlay Tea",
+    "grade": "Dust",
+    "quantity_kg": 3085,
+    "price_per_kg": 4.89,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Kericho Gold Estate",
+    "grade": "CTC",
+    "quantity_kg": 3150,
+    "price_per_kg": 4.95,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Mau Forest Estate",
+    "grade": "PEKOE",
+    "quantity_kg": 3215,
+    "price_per_kg": 5.01,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Nyayo Tea Estate",
+    "grade": "BP1",
+    "quantity_kg": 3280,
+    "price_per_kg": 5.07,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Kipkebe Estate",
+    "grade": "FBOP",
+    "quantity_kg": 3345,
+    "price_per_kg": 5.13,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "James Finlay Tea",
+    "grade": "BOP",
+    "quantity_kg": 3410,
+    "price_per_kg": 5.19,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "ATB",
+    "auction_centre": "Nairobi",
+    "garden": "Kericho Gold Estate",
+    "grade": "Fannings",
+    "quantity_kg": 3475,
+    "price_per_kg": 5.25,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Assam Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 215,
+    "price_per_kg": 153.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Dooars Tea Co",
+    "grade": "OP",
+    "quantity_kg": 230,
+    "price_per_kg": 157.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Bengal Gardens",
+    "grade": "BOPF",
+    "quantity_kg": 245,
+    "price_per_kg": 160.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Darjeeling Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 260,
+    "price_per_kg": 164.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Assam Premium",
+    "grade": "Fannings",
+    "quantity_kg": 275,
+    "price_per_kg": 167.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Dooars Tea Co",
+    "grade": "BOP",
+    "quantity_kg": 290,
+    "price_per_kg": 171.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Bengal Gardens",
+    "grade": "PEKOE",
+    "quantity_kg": 305,
+    "price_per_kg": 174.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Darjeeling Estate",
+    "grade": "OP",
+    "quantity_kg": 320,
+    "price_per_kg": 178.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Assam Premium",
+    "grade": "BOPF",
+    "quantity_kg": 335,
+    "price_per_kg": 181.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Dooars Tea Co",
+    "grade": "Golden Tips",
+    "quantity_kg": 350,
+    "price_per_kg": 185.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Bengal Gardens",
+    "grade": "Fannings",
+    "quantity_kg": 365,
+    "price_per_kg": 188.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Darjeeling Estate",
+    "grade": "BOP",
+    "quantity_kg": 380,
+    "price_per_kg": 192.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Assam Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 395,
+    "price_per_kg": 195.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Dooars Tea Co",
+    "grade": "OP",
+    "quantity_kg": 410,
+    "price_per_kg": 199.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Bengal Gardens",
+    "grade": "BOPF",
+    "quantity_kg": 425,
+    "price_per_kg": 202.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Darjeeling Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 440,
+    "price_per_kg": 206.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Assam Premium",
+    "grade": "Fannings",
+    "quantity_kg": 455,
+    "price_per_kg": 209.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Dooars Tea Co",
+    "grade": "BOP",
+    "quantity_kg": 470,
+    "price_per_kg": 213.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Bengal Gardens",
+    "grade": "PEKOE",
+    "quantity_kg": 485,
+    "price_per_kg": 216.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Darjeeling Estate",
+    "grade": "OP",
+    "quantity_kg": 500,
+    "price_per_kg": 220.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Assam Premium",
+    "grade": "BOPF",
+    "quantity_kg": 515,
+    "price_per_kg": 223.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Dooars Tea Co",
+    "grade": "Golden Tips",
+    "quantity_kg": 530,
+    "price_per_kg": 227.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Bengal Gardens",
+    "grade": "Fannings",
+    "quantity_kg": 545,
+    "price_per_kg": 230.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Darjeeling Estate",
+    "grade": "BOP",
+    "quantity_kg": 560,
+    "price_per_kg": 234.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Assam Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 575,
+    "price_per_kg": 237.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Dooars Tea Co",
+    "grade": "OP",
+    "quantity_kg": 590,
+    "price_per_kg": 241.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Bengal Gardens",
+    "grade": "BOPF",
+    "quantity_kg": 605,
+    "price_per_kg": 244.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Darjeeling Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 620,
+    "price_per_kg": 248.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Assam Premium",
+    "grade": "Fannings",
+    "quantity_kg": 635,
+    "price_per_kg": 251.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Dooars Tea Co",
+    "grade": "BOP",
+    "quantity_kg": 650,
+    "price_per_kg": 255.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Bengal Gardens",
+    "grade": "PEKOE",
+    "quantity_kg": 665,
+    "price_per_kg": 258.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Darjeeling Estate",
+    "grade": "OP",
+    "quantity_kg": 680,
+    "price_per_kg": 262.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Assam Premium",
+    "grade": "BOPF",
+    "quantity_kg": 695,
+    "price_per_kg": 265.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Dooars Tea Co",
+    "grade": "Golden Tips",
+    "quantity_kg": 710,
+    "price_per_kg": 269.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Bengal Gardens",
+    "grade": "Fannings",
+    "quantity_kg": 725,
+    "price_per_kg": 272.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Darjeeling Estate",
+    "grade": "BOP",
+    "quantity_kg": 740,
+    "price_per_kg": 276.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Assam Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 755,
+    "price_per_kg": 279.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Dooars Tea Co",
+    "grade": "OP",
+    "quantity_kg": 770,
+    "price_per_kg": 283.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Bengal Gardens",
+    "grade": "BOPF",
+    "quantity_kg": 785,
+    "price_per_kg": 286.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Darjeeling Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 800,
+    "price_per_kg": 290.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Assam Premium",
+    "grade": "Fannings",
+    "quantity_kg": 815,
+    "price_per_kg": 293.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Dooars Tea Co",
+    "grade": "BOP",
+    "quantity_kg": 830,
+    "price_per_kg": 297.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Bengal Gardens",
+    "grade": "PEKOE",
+    "quantity_kg": 845,
+    "price_per_kg": 300.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Darjeeling Estate",
+    "grade": "OP",
+    "quantity_kg": 860,
+    "price_per_kg": 304.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Assam Premium",
+    "grade": "BOPF",
+    "quantity_kg": 875,
+    "price_per_kg": 307.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Dooars Tea Co",
+    "grade": "Golden Tips",
+    "quantity_kg": 890,
+    "price_per_kg": 311.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Bengal Gardens",
+    "grade": "Fannings",
+    "quantity_kg": 905,
+    "price_per_kg": 314.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Darjeeling Estate",
+    "grade": "BOP",
+    "quantity_kg": 920,
+    "price_per_kg": 318.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Assam Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 935,
+    "price_per_kg": 321.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Kolkata",
+    "garden": "Dooars Tea Co",
+    "grade": "OP",
+    "quantity_kg": 950,
+    "price_per_kg": 325.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Brahmaputra Tea",
+    "grade": "PEKOE",
+    "quantity_kg": 215,
+    "price_per_kg": 153.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Northeast Premium",
+    "grade": "OP",
+    "quantity_kg": 230,
+    "price_per_kg": 157.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Guwahati Gardens",
+    "grade": "BOPF",
+    "quantity_kg": 245,
+    "price_per_kg": 160.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Assam Gold",
+    "grade": "Golden Tips",
+    "quantity_kg": 260,
+    "price_per_kg": 164.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Brahmaputra Tea",
+    "grade": "Fannings",
+    "quantity_kg": 275,
+    "price_per_kg": 167.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Northeast Premium",
+    "grade": "BOP",
+    "quantity_kg": 290,
+    "price_per_kg": 171.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Guwahati Gardens",
+    "grade": "PEKOE",
+    "quantity_kg": 305,
+    "price_per_kg": 174.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Assam Gold",
+    "grade": "OP",
+    "quantity_kg": 320,
+    "price_per_kg": 178.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Brahmaputra Tea",
+    "grade": "BOPF",
+    "quantity_kg": 335,
+    "price_per_kg": 181.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Northeast Premium",
+    "grade": "Golden Tips",
+    "quantity_kg": 350,
+    "price_per_kg": 185.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Guwahati Gardens",
+    "grade": "Fannings",
+    "quantity_kg": 365,
+    "price_per_kg": 188.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Assam Gold",
+    "grade": "BOP",
+    "quantity_kg": 380,
+    "price_per_kg": 192.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Brahmaputra Tea",
+    "grade": "PEKOE",
+    "quantity_kg": 395,
+    "price_per_kg": 195.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Northeast Premium",
+    "grade": "OP",
+    "quantity_kg": 410,
+    "price_per_kg": 199.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Guwahati Gardens",
+    "grade": "BOPF",
+    "quantity_kg": 425,
+    "price_per_kg": 202.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Assam Gold",
+    "grade": "Golden Tips",
+    "quantity_kg": 440,
+    "price_per_kg": 206.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Brahmaputra Tea",
+    "grade": "Fannings",
+    "quantity_kg": 455,
+    "price_per_kg": 209.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Northeast Premium",
+    "grade": "BOP",
+    "quantity_kg": 470,
+    "price_per_kg": 213.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Guwahati Gardens",
+    "grade": "PEKOE",
+    "quantity_kg": 485,
+    "price_per_kg": 216.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Assam Gold",
+    "grade": "OP",
+    "quantity_kg": 500,
+    "price_per_kg": 220.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Brahmaputra Tea",
+    "grade": "BOPF",
+    "quantity_kg": 515,
+    "price_per_kg": 223.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Northeast Premium",
+    "grade": "Golden Tips",
+    "quantity_kg": 530,
+    "price_per_kg": 227.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Guwahati Gardens",
+    "grade": "Fannings",
+    "quantity_kg": 545,
+    "price_per_kg": 230.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Assam Gold",
+    "grade": "BOP",
+    "quantity_kg": 560,
+    "price_per_kg": 234.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Brahmaputra Tea",
+    "grade": "PEKOE",
+    "quantity_kg": 575,
+    "price_per_kg": 237.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Northeast Premium",
+    "grade": "OP",
+    "quantity_kg": 590,
+    "price_per_kg": 241.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Guwahati Gardens",
+    "grade": "BOPF",
+    "quantity_kg": 605,
+    "price_per_kg": 244.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Assam Gold",
+    "grade": "Golden Tips",
+    "quantity_kg": 620,
+    "price_per_kg": 248.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Brahmaputra Tea",
+    "grade": "Fannings",
+    "quantity_kg": 635,
+    "price_per_kg": 251.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Northeast Premium",
+    "grade": "BOP",
+    "quantity_kg": 650,
+    "price_per_kg": 255.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Guwahati Gardens",
+    "grade": "PEKOE",
+    "quantity_kg": 665,
+    "price_per_kg": 258.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Assam Gold",
+    "grade": "OP",
+    "quantity_kg": 680,
+    "price_per_kg": 262.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Brahmaputra Tea",
+    "grade": "BOPF",
+    "quantity_kg": 695,
+    "price_per_kg": 265.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Northeast Premium",
+    "grade": "Golden Tips",
+    "quantity_kg": 710,
+    "price_per_kg": 269.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Guwahati Gardens",
+    "grade": "Fannings",
+    "quantity_kg": 725,
+    "price_per_kg": 272.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Assam Gold",
+    "grade": "BOP",
+    "quantity_kg": 740,
+    "price_per_kg": 276.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Brahmaputra Tea",
+    "grade": "PEKOE",
+    "quantity_kg": 755,
+    "price_per_kg": 279.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Northeast Premium",
+    "grade": "OP",
+    "quantity_kg": 770,
+    "price_per_kg": 283.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Guwahati Gardens",
+    "grade": "BOPF",
+    "quantity_kg": 785,
+    "price_per_kg": 286.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Assam Gold",
+    "grade": "Golden Tips",
+    "quantity_kg": 800,
+    "price_per_kg": 290.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Brahmaputra Tea",
+    "grade": "Fannings",
+    "quantity_kg": 815,
+    "price_per_kg": 293.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Northeast Premium",
+    "grade": "BOP",
+    "quantity_kg": 830,
+    "price_per_kg": 297.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Guwahati Gardens",
+    "grade": "PEKOE",
+    "quantity_kg": 845,
+    "price_per_kg": 300.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Assam Gold",
+    "grade": "OP",
+    "quantity_kg": 860,
+    "price_per_kg": 304.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Brahmaputra Tea",
+    "grade": "BOPF",
+    "quantity_kg": 875,
+    "price_per_kg": 307.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Northeast Premium",
+    "grade": "Golden Tips",
+    "quantity_kg": 890,
+    "price_per_kg": 311.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Guwahati Gardens",
+    "grade": "Fannings",
+    "quantity_kg": 905,
+    "price_per_kg": 314.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Assam Gold",
+    "grade": "BOP",
+    "quantity_kg": 920,
+    "price_per_kg": 318.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Brahmaputra Tea",
+    "grade": "PEKOE",
+    "quantity_kg": 935,
+    "price_per_kg": 321.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Guwahati",
+    "garden": "Northeast Premium",
+    "grade": "OP",
+    "quantity_kg": 950,
+    "price_per_kg": 325.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 215,
+    "price_per_kg": 153.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Gardens",
+    "grade": "OP",
+    "quantity_kg": 230,
+    "price_per_kg": 157.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Tea Co",
+    "grade": "BOPF",
+    "quantity_kg": 245,
+    "price_per_kg": 160.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 260,
+    "price_per_kg": 164.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Premium",
+    "grade": "Fannings",
+    "quantity_kg": 275,
+    "price_per_kg": 167.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Gardens",
+    "grade": "BOP",
+    "quantity_kg": 290,
+    "price_per_kg": 171.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Tea Co",
+    "grade": "PEKOE",
+    "quantity_kg": 305,
+    "price_per_kg": 174.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Estate",
+    "grade": "OP",
+    "quantity_kg": 320,
+    "price_per_kg": 178.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Premium",
+    "grade": "BOPF",
+    "quantity_kg": 335,
+    "price_per_kg": 181.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Gardens",
+    "grade": "Golden Tips",
+    "quantity_kg": 350,
+    "price_per_kg": 185.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Tea Co",
+    "grade": "Fannings",
+    "quantity_kg": 365,
+    "price_per_kg": 188.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Estate",
+    "grade": "BOP",
+    "quantity_kg": 380,
+    "price_per_kg": 192.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 395,
+    "price_per_kg": 195.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Gardens",
+    "grade": "OP",
+    "quantity_kg": 410,
+    "price_per_kg": 199.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Tea Co",
+    "grade": "BOPF",
+    "quantity_kg": 425,
+    "price_per_kg": 202.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 440,
+    "price_per_kg": 206.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Premium",
+    "grade": "Fannings",
+    "quantity_kg": 455,
+    "price_per_kg": 209.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Gardens",
+    "grade": "BOP",
+    "quantity_kg": 470,
+    "price_per_kg": 213.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Tea Co",
+    "grade": "PEKOE",
+    "quantity_kg": 485,
+    "price_per_kg": 216.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Estate",
+    "grade": "OP",
+    "quantity_kg": 500,
+    "price_per_kg": 220.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Premium",
+    "grade": "BOPF",
+    "quantity_kg": 515,
+    "price_per_kg": 223.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Gardens",
+    "grade": "Golden Tips",
+    "quantity_kg": 530,
+    "price_per_kg": 227.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Tea Co",
+    "grade": "Fannings",
+    "quantity_kg": 545,
+    "price_per_kg": 230.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Estate",
+    "grade": "BOP",
+    "quantity_kg": 560,
+    "price_per_kg": 234.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 575,
+    "price_per_kg": 237.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Gardens",
+    "grade": "OP",
+    "quantity_kg": 590,
+    "price_per_kg": 241.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Tea Co",
+    "grade": "BOPF",
+    "quantity_kg": 605,
+    "price_per_kg": 244.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 620,
+    "price_per_kg": 248.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Premium",
+    "grade": "Fannings",
+    "quantity_kg": 635,
+    "price_per_kg": 251.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Gardens",
+    "grade": "BOP",
+    "quantity_kg": 650,
+    "price_per_kg": 255.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Tea Co",
+    "grade": "PEKOE",
+    "quantity_kg": 665,
+    "price_per_kg": 258.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Estate",
+    "grade": "OP",
+    "quantity_kg": 680,
+    "price_per_kg": 262.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Premium",
+    "grade": "BOPF",
+    "quantity_kg": 695,
+    "price_per_kg": 265.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Gardens",
+    "grade": "Golden Tips",
+    "quantity_kg": 710,
+    "price_per_kg": 269.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Tea Co",
+    "grade": "Fannings",
+    "quantity_kg": 725,
+    "price_per_kg": 272.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Estate",
+    "grade": "BOP",
+    "quantity_kg": 740,
+    "price_per_kg": 276.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 755,
+    "price_per_kg": 279.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Gardens",
+    "grade": "OP",
+    "quantity_kg": 770,
+    "price_per_kg": 283.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Tea Co",
+    "grade": "BOPF",
+    "quantity_kg": 785,
+    "price_per_kg": 286.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Estate",
+    "grade": "Golden Tips",
+    "quantity_kg": 800,
+    "price_per_kg": 290.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Premium",
+    "grade": "Fannings",
+    "quantity_kg": 815,
+    "price_per_kg": 293.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Gardens",
+    "grade": "BOP",
+    "quantity_kg": 830,
+    "price_per_kg": 297.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Tea Co",
+    "grade": "PEKOE",
+    "quantity_kg": 845,
+    "price_per_kg": 300.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Estate",
+    "grade": "OP",
+    "quantity_kg": 860,
+    "price_per_kg": 304.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Premium",
+    "grade": "BOPF",
+    "quantity_kg": 875,
+    "price_per_kg": 307.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Gardens",
+    "grade": "Golden Tips",
+    "quantity_kg": 890,
+    "price_per_kg": 311.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Gardens",
+    "grade": "BOP",
+    "quantity_kg": 470,
+    "price_per_kg": 213.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Tea Co",
+    "grade": "PEKOE",
+    "quantity_kg": 485,
+    "price_per_kg": 216.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Estate",
+    "grade": "OP",
+    "quantity_kg": 500,
+    "price_per_kg": 220.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Premium",
+    "grade": "BOPF",
+    "quantity_kg": 515,
+    "price_per_kg": 223.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Gardens",
+    "grade": "Golden Tips",
+    "quantity_kg": 530,
+    "price_per_kg": 227.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Tea Co",
+    "grade": "Fannings",
+    "quantity_kg": 545,
+    "price_per_kg": 230.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Estate",
+    "grade": "BOP",
+    "quantity_kg": 560,
+    "price_per_kg": 234.0,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Premium",
+    "grade": "PEKOE",
+    "quantity_kg": 575,
+    "price_per_kg": 237.5,
+    "auction_date": "2025-09-14"
+  },
+  {
+    "source": "J_THOMAS",
+    "auction_centre": "Siliguri",
+    "garden": "Siliguri Gardens",
+    "grade": "OP",
+    "quantity_kg": 590,
+    "price_per_kg": 241.0,
+    "auction_date": "2025-09-14"
+  }
+]
