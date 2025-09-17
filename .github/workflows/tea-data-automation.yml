@@ -2,36 +2,37 @@ name: Tea Data Automation
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # Daily at 6:00 AM UTC
-  workflow_dispatch:  # Allow manual triggers
+    - cron: '0 6 * * *'  # Daily at 6 AM UTC
+  workflow_dispatch:  # Allow manual triggering
 
 jobs:
   scrape-and-process:
     runs-on: ubuntu-latest
-    timeout-minutes: 120  # 2 hour timeout
-    
+    timeout-minutes: 180  # 3 hours total timeout
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-      
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.11'
-        
+
     - name: Install system dependencies
       run: |
         sudo apt-get update
         sudo apt-get install -y tesseract-ocr libtesseract-dev
-        
+
     - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
         pip install playwright beautifulsoup4 aiohttp requests aiosqlite
         pip install opencv-python-headless pytesseract
         pip install pandas numpy
+        pip install PyMuPDF python-docx openpyxl
         playwright install chromium
-        
+
     - name: Create required directories
       run: |
         mkdir -p source_reports/colombo
@@ -39,36 +40,55 @@ jobs:
         mkdir -p source_reports/nairobi
         mkdir -p Data/Consolidated
         mkdir -p automation/logs
-        
-    - name: Run individual scrapers
+
+    - name: Run all 9 scrapers with timeout management
       run: |
-        echo "Running Ceylon scraper..."
-        timeout 1800 python3 scrape_CTB_marketreport.py || echo "Ceylon scraper completed/timeout"
+        echo "=== RUNNING ALL 9 TEATRADE SCRAPERS ==="
         
-        echo "Running Forbes production scraper..."
-        timeout 1800 python3 scrape_FW_monthlyproduction_ocr.py || echo "Forbes production scraper completed/timeout"
+        echo "1/9: J Thomas Auction Lots (India)"
+        timeout 1800 python3 scrape_JT_auctionlots.py || echo "JT auction lots completed/timeout"
         
-        echo "Running Mombasa processor..."
-        timeout 1800 python3 process_mombasa_inbox.py || echo "Mombasa processor completed/timeout"
+        echo "2/9: J Thomas Market Report (India)"
+        timeout 1800 python3 scrape_JT_marketreport.py || echo "JT market report completed/timeout"
         
-        echo "Running J Thomas district averages..."
+        echo "3/9: J Thomas Synopsis (India)"
+        timeout 1800 python3 scrape_JT_synopsis.py || echo "JT synopsis completed/timeout"
+        
+        echo "4/9: J Thomas District Averages (India)"
         timeout 1800 python3 scrape_JT_districtaverages.py || echo "JT district averages completed/timeout"
         
+        echo "5/9: Ceylon Tea Brokers (Sri Lanka)"
+        timeout 1800 python3 scrape_CTB_marketreport.py || echo "Ceylon scraper completed/timeout"
+        
+        echo "6/9: Forbes Market Report Direct (Sri Lanka)"
+        timeout 1800 python3 scrape_FW_marketreport_direct.py || echo "Forbes direct scraper completed/timeout"
+        
+        echo "7/9: Forbes Monthly Production OCR (Sri Lanka)"
+        timeout 1800 python3 scrape_FW_monthlyproduction_ocr.py || echo "Forbes production scraper completed/timeout"
+        
+        echo "8/9: Forbes Monthly Export OCR (Sri Lanka)"
+        timeout 1800 python3 scrape_FW_monthlyexport_ocr.py || echo "Forbes export scraper completed/timeout"
+        
+        echo "9/9: Mombasa Processor (Kenya)"
+        timeout 1800 python3 process_mombasa_inbox.py || echo "Mombasa processor completed/timeout"
+        
+        echo "=== ALL 9 SCRAPERS EXECUTION COMPLETE ==="
+
     - name: Run data aggregation
       run: |
         cd automation
         timeout 5400 python3 teatrade_aggregator_robust.py || echo "Aggregator completed with timeout"
-        
-    - name: Generate market intelligence
+
+    - name: Run intelligence enhancement
       run: |
         cd automation
         python3 teatrade_intelligence_aggregator.py
-        
-    - name: Verify output files
+
+    - name: Verify outputs
       run: |
         ls -la Data/Consolidated/ || echo "No consolidated data found"
         ls -la market-reports-library.json || echo "No library file found"
-        
+
     - name: Commit and push changes
       run: |
         git config --local user.email "action@github.com"
@@ -76,10 +96,9 @@ jobs:
         git add -A
         git diff --staged --quiet || git commit -m "Automated data update $(date)"
         git push
-        
+
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
-      if: always()
       with:
         name: tea-data-reports
         path: |
@@ -87,3 +106,4 @@ jobs:
           market-reports-library.json
           automation/logs/
         retention-days: 7
+        if-no-files-found: warn
