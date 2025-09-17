@@ -1,0 +1,75 @@
+{
+    "report_title": "Forbes Tea - Sri Lanka Tea Exports (Enhanced OCR)",
+    "period": "2025_09",
+    "source_url": "https://web.forbestea.com/statistics/sri-lankan-statistics/64-sri-lanka-tea-exports/1302-sri-lanka-tea-exports",
+    "retrieval_date": "2025-09-17T20:13:07.589992+00:00",
+    "ocr_method": "Enhanced Tesseract with OpenCV preprocessing",
+    "export_data_by_table": {
+        "MONTHLY_QUANTITY": [
+            {
+                "DESCRIPTION": "TOTAL",
+                "JAN": "19,374,52820,398,30823,433,04418,204,82121,872,48023,266,19724,038,394",
+                "FEB": "",
+                "MAR": "",
+                "APR": "",
+                "MAY": "",
+                "JUN": "",
+                "JUL": "",
+                "AUG": "",
+                "SEP": "",
+                "OCT": "",
+                "NOV": "",
+                "DEC": ""
+            }
+        ],
+        "MONTHLY_VALUE": [
+            {
+                "DESCRIPTION": "TOTAL",
+                "JAN": "33,378,000,92135,442,378,42841,081,889,33632,046,089,97639,464,839,36539,880,091,67342,464,094,904",
+                "FEB": "",
+                "MAR": "",
+                "APR": "",
+                "MAY": "",
+                "JUN": "",
+                "JUL": "",
+                "AUG": "",
+                "SEP": "",
+                "OCT": "",
+                "NOV": "",
+                "DEC": ""
+            }
+        ],
+        "CUMULATIVE_QUANTITY": [
+            {
+                "DESCRIPTION": "TOTAL",
+                "JAN/FEB": "39,772,83663,205,88181,410,702103,283,181126,808,582150,846,976",
+                "JAN/MAR": "",
+                "JAN/APR": "",
+                "JAN/MAY": "",
+                "JAN/JUN": "",
+                "JAN/JUL": "",
+                "AUG": "",
+                "SEP": "",
+                "OCT": "",
+                "NOV": "",
+                "DEC": ""
+            }
+        ],
+        "CUMULATIVE_VALUE": [
+            {
+                "DESCRIPTION": "TOTAL",
+                "JAN/FEB": "68,820,379,349109,902,268,685141,948,358,661181,413,198,026221,293,289,699263,757,384,603",
+                "JAN/MAR": "",
+                "JAN/APR": "",
+                "JAN/MAY": "",
+                "JAN/JUN": "",
+                "JAN/JUL": "",
+                "AUG": "",
+                "SEP": "",
+                "OCT": "",
+                "NOV": "",
+                "DEC": ""
+            }
+        ]
+    }
+}
