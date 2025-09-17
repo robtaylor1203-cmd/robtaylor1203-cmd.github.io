@@ -1,0 +1,11 @@
+2025-09-14 22:11:06,753 - ATB - INFO - 🚀 Starting ATB Kenya COMPLETE scraping
+2025-09-14 22:11:06,761 - ATB - INFO - 🔍 Searching for ATB Kenya sources
+2025-09-14 22:11:11,779 - ATB - WARNING - Error accessing https://www.afr-tea.co.ke/: HTTPSConnectionPool(host='www.afr-tea.co.ke', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f7f55c410>: Failed to resolve 'www.afr-tea.co.ke' ([Errno -2] Name or service not known)"))
+2025-09-14 22:11:11,852 - ATB - WARNING - Error accessing https://teaauction.ke/: HTTPSConnectionPool(host='teaauction.ke', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f7f55d950>: Failed to resolve 'teaauction.ke' ([Errno -2] Name or service not known)"))
+2025-09-14 22:11:11,881 - ATB - WARNING - Error accessing https://kenyateaauction.com/: HTTPSConnectionPool(host='kenyateaauction.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f7f55efd0>: Failed to resolve 'kenyateaauction.com' ([Errno -2] Name or service not known)"))
+2025-09-14 22:11:11,924 - ATB - WARNING - Error accessing https://agriculture.go.ke/tea-auction/: HTTPSConnectionPool(host='agriculture.go.ke', port=443): Max retries exceeded with url: /tea-auction/ (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f7f56c750>: Failed to resolve 'agriculture.go.ke' ([Errno -2] Name or service not known)"))
+2025-09-14 22:11:11,940 - ATB - WARNING - Error accessing https://ktda.com.ke/: HTTPSConnectionPool(host='ktda.com.ke', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f7f56ded0>: Failed to resolve 'ktda.com.ke' ([Errno -2] Name or service not known)"))
+2025-09-14 22:11:11,940 - ATB - INFO - 📋 Found 0 potential ATB sources
+2025-09-14 22:11:11,941 - ATB - WARNING - ⚠️ No ATB sources found
+2025-09-14 22:11:11,941 - ATB - INFO - 📊 Creating sample ATB data
+2025-09-14 22:11:12,018 - ATB - INFO - ✅ ATB sample data: 3 lots saved

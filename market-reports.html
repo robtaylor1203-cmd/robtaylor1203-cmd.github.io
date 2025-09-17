@@ -32,38 +32,37 @@
 
     <main class="page-container">
         <div class="dashboard-header">
-            <h2 class="page-title">Global Market Reports Library</h2>
+            <h2 class="page-title">Market Reports Library</h2>
         </div>
-        
+
         <div class="filter-controls-wrapper">
             <div class="filter-group">
                 <label for="filter-year" class="filter-label">Year</label>
                 <select id="filter-year" class="filter-dropdown">
-                    <option value="ALL">All Years</option>
-                </select>
-            </div>
-             <div class="filter-group">
-                <label for="filter-week" class="filter-label">Week/Sale No.</label>
-                <select id="filter-week" class="filter-dropdown">
-                    <option value="ALL">All</option>
+                    <option value="all">All Years</option>
                 </select>
             </div>
             <div class="filter-group">
                 <label for="filter-centre" class="filter-label">Auction Centre</label>
                 <select id="filter-centre" class="filter-dropdown">
-                    <option value="ALL">All Centres</option>
+                    <option value="all">All Centres</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="filter-source" class="filter-label">Source/Broker</label>
+                <select id="filter-source" class="filter-dropdown">
+                    <option value="all">All Sources</option>
                 </select>
             </div>
              <div class="filter-group">
-                <label for="filter-search" class="filter-label">Search</label>
-                <input type="text" id="filter-search" class="page-search-bar" placeholder="Search titles or descriptions..." style="height: 44px; border-radius: 8px;">
+                <label for="search-reports" class="filter-label">Search</label>
+                <input type="text" id="search-reports" class="page-search-bar" placeholder="Search titles and descriptions..." style="margin-bottom: 0;">
             </div>
         </div>
-
+        
         <div id="reports-list">
-            </div>
-        <div id="loading-indicator">Loading reports...</div>
-        <div id="error-message" style="color: red; display: none;"></div>
+            <p>Loading reports...</p>
+        </div>
     </main>
 
     <script src="script.js"></script>
@@ -71,147 +70,119 @@
         let allReports = [];
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize mobile menu (assuming this function exists in script.js)
+            // CRITICAL FIX: Initialize mobile menu safely
             if (typeof initializeMobileMenu === 'function') {
                 initializeMobileMenu();
+            } else {
+                console.log("Mobile menu initialization skipped - script.js not loaded");
             }
-            loadReports();
+
+            fetchAndRenderReports();
             
-            // Add event listeners for filters
-            document.getElementById('filter-year').addEventListener('change', applyFilters);
-            document.getElementById('filter-week').addEventListener('change', applyFilters);
-            document.getElementById('filter-centre').addEventListener('change', applyFilters);
-            document.getElementById('filter-search').addEventListener('input', applyFilters);
+            // Add event listeners for filters and search
+            document.getElementById('filter-year').addEventListener('change', filterReports);
+            document.getElementById('filter-centre').addEventListener('change', filterReports);
+            document.getElementById('filter-source').addEventListener('change', filterReports);
+            document.getElementById('search-reports').addEventListener('input', filterReports);
         });
 
-        async function loadReports() {
+        async function fetchAndRenderReports() {
             try {
-                const response = await fetch('market-reports-library.json');
-                if (!response.ok) throw new Error('Failed to fetch report library.');
+                console.log('Fetching market-reports-library.json...');
+                const response = await fetch('market-reports-library.json?v=' + Date.now());
                 
-                // *** THE FIX: Process the Object structure ***
-                const libraryData = await response.json();
-                allReports = flattenAndProcessData(libraryData);
-
-                // Sort reports: Newest first (By Year, then by Week/Sale Number)
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                allReports = await response.json();
+                console.log('Loaded reports:', allReports);
+                
+                if (!Array.isArray(allReports) || allReports.length === 0) {
+                    throw new Error('No reports found in library');
+                }
+                
+                // Sort reports: Newest first (by Year, then Week Number)
                 allReports.sort((a, b) => {
                     if (b.year !== a.year) {
                         return b.year - a.year;
                     }
-                    return b.week_number - a.week_number;
+                    const weekA = parseInt(a.week_number) || 0;
+                    const weekB = parseInt(b.week_number) || 0;
+                    return weekB - weekA;
                 });
 
                 populateFilters(allReports);
-                applyFilters(); // Initial render
-                document.getElementById('loading-indicator').style.display = 'none';
-
+                renderReports(allReports);
+                
             } catch (error) {
-                console.error('Error loading reports:', error);
-                document.getElementById('loading-indicator').style.display = 'none';
-                document.getElementById('error-message').textContent = 'Error loading reports. Please check the connection and file path.';
-                document.getElementById('error-message').style.display = 'block';
+                console.error('Error fetching reports library:', error);
+                document.getElementById('reports-list').innerHTML = `<p>Error loading reports. Please check the connection and file path. ${error.message}</p>`;
             }
-        }
-
-        // Converts the new Object structure into a flat Array and extracts metadata
-        function flattenAndProcessData(dataObject) {
-            const flattenedReports = [];
-            for (const location in dataObject) {
-                for (const reportTitle in dataObject[location]) {
-                    const report = dataObject[location][reportTitle];
-                    
-                    // Robustly extract Year and Week Number for sorting/filtering
-                    // We check both the title and the description as formats vary.
-
-                    // 1. Check Title (e.g., "Sale 36 (2025)")
-                    const titleYearMatch = reportTitle.match(/\((\d{4})\)/);
-                    // Matches "Sale 36" OR "Week 36"
-                    const titleWeekMatch = reportTitle.match(/Sale (\d+)|Week (\d+)/i);
-
-                    // 2. Check Description (e.g., "Week: 36 | ...")
-                    const descYearMatch = report.description ? report.description.match(/(\d{4})/) : null;
-                    const descWeekMatch = report.description ? report.description.match(/Week: (\d+)/i) : null;
-
-                    // Assign the extracted values, prioritizing Title match, then Description match, defaulting to 0.
-                    let year = 0;
-                    if (titleYearMatch) {
-                        year = parseInt(titleYearMatch[1]);
-                    } else if (descYearMatch) {
-                        // Use the first 4-digit number found in the description if title fails
-                        year = parseInt(descYearMatch[0]);
-                    }
-
-                    let weekNumber = 0;
-                    if (titleWeekMatch) {
-                        // Handles both groups from the regex (Sale OR Week)
-                        weekNumber = parseInt(titleWeekMatch[1] || titleWeekMatch[2]);
-                    } else if (descWeekMatch) {
-                        weekNumber = parseInt(descWeekMatch[1]);
-                    }
-
-                    // Create a unified object structure
-                    const reportEntry = {
-                        title: reportTitle,
-                        location: location,
-                        description: report.description || '',
-                        year: year,
-                        week_number: weekNumber
-                    };
-                    flattenedReports.push(reportEntry);
-                }
-            }
-            return flattenedReports;
         }
 
         function populateFilters(reports) {
             const years = new Set();
-            const weeks = new Set();
             const centres = new Set();
+            const sources = new Set();
 
             reports.forEach(report => {
-                if (report.year && report.year !== 0) years.add(report.year);
-                if (report.week_number && report.week_number !== 0) weeks.add(report.week_number);
-                if (report.location) centres.add(report.location);
+                if (report.year) years.add(report.year);
+                if (report.auction_centre) centres.add(report.auction_centre);
+                if (report.source) sources.add(report.source);
             });
 
             const yearSelect = document.getElementById('filter-year');
-            // Sort years descending
             Array.from(years).sort((a, b) => b - a).forEach(year => {
-                yearSelect.innerHTML += `<option value="${year}">${year}</option>`;
-            });
-
-            const weekSelect = document.getElementById('filter-week');
-            // Sort weeks ascending
-            Array.from(weeks).sort((a, b) => a - b).forEach(week => {
-                weekSelect.innerHTML += `<option value="${week}">${week}</option>`;
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                yearSelect.appendChild(option);
             });
 
             const centreSelect = document.getElementById('filter-centre');
-            // Sort centres alphabetically
             Array.from(centres).sort().forEach(centre => {
-                centreSelect.innerHTML += `<option value="${centre}">${centre}</option>`;
+                const option = document.createElement('option');
+                option.value = centre;
+                option.textContent = centre;
+                centreSelect.appendChild(option);
+            });
+
+            const sourceSelect = document.getElementById('filter-source');
+            Array.from(sources).sort().forEach(source => {
+                const option = document.createElement('option');
+                option.value = source;
+                option.textContent = source;
+                sourceSelect.appendChild(option);
             });
         }
 
-        function applyFilters() {
+        function filterReports() {
             const selectedYear = document.getElementById('filter-year').value;
-            const selectedWeek = document.getElementById('filter-week').value;
             const selectedCentre = document.getElementById('filter-centre').value;
-            const searchQuery = document.getElementById('filter-search').value.toLowerCase();
+            const selectedSource = document.getElementById('filter-source').value;
+            const searchTerm = document.getElementById('search-reports').value.toLowerCase();
 
             const filteredReports = allReports.filter(report => {
-                const yearMatch = (selectedYear === 'ALL' || report.year.toString() === selectedYear);
-                const weekMatch = (selectedWeek === 'ALL' || report.week_number.toString() === selectedWeek);
-                const centreMatch = (selectedCentre === 'ALL' || report.location === selectedCentre);
-                const searchMatch = (report.title.toLowerCase().includes(searchQuery) || report.description.toLowerCase().includes(searchQuery));
+                // Check filters
+                if (selectedYear !== 'all' && report.year != selectedYear) return false;
+                if (selectedCentre !== 'all' && report.auction_centre !== selectedCentre) return false;
+                if (selectedSource !== 'all' && report.source !== selectedSource) return false;
 
-                return yearMatch && weekMatch && centreMatch && searchMatch;
+                // Check search term
+                if (searchTerm) {
+                    const titleMatch = (report.title || '').toLowerCase().includes(searchTerm);
+                    const descriptionMatch = (report.description || '').toLowerCase().includes(searchTerm);
+                    if (!titleMatch && !descriptionMatch) return false;
+                }
+
+                return true;
             });
 
-            renderReportsList(filteredReports);
+            renderReports(filteredReports);
         }
 
-        function renderReportsList(reports) {
+        function renderReports(reports) {
             const listContainer = document.getElementById('reports-list');
             listContainer.innerHTML = '';
 
@@ -221,28 +192,31 @@
             }
 
             reports.forEach(report => {
-                // *** THE FIX: Generate the correct URL parameters ***
-                // We must encode the title and location because they contain spaces and special characters
-                const encodedTitle = encodeURIComponent(report.title);
-                const encodedLocation = encodeURIComponent(report.location);
-                const reportLink = `report-viewer.html?location=${encodedLocation}&reportTitle=${encodedTitle}`;
-
-                const reportElement = document.createElement('div');
-                reportElement.className = 'dataset-item';
+                const item = document.createElement('div');
+                item.className = 'dataset-item';
                 
-                reportElement.innerHTML = `
-                    <a href="${reportLink}">
-                        <h3 class="dataset-title">${report.title}</h3>
+                // Determine the period text (Week vs Monthly/Other)
+                let periodText = '';
+                if (report.week_number) {
+                    periodText = `Week ${report.week_number}, ${report.year}`;
+                } else if (report.year) {
+                    periodText = `${report.year}`;
+                }
+
+                item.innerHTML = `
+                    <a href="${report.report_link}">
+                        <h3 class="dataset-title">${report.title} <span class="dataset-period">(${periodText})</span></h3>
                         <p class="dataset-description">${report.description}</p>
                         <div class="dataset-meta">
-                            <span>Centre: ${report.location}</span>
-                            <span>Year: ${report.year || 'N/A'}</span>
-                            <span>Week/Sale No: ${report.week_number || 'N/A'}</span>
+                            <span>Centre: ${report.auction_centre}</span>
+                            <span>Source: ${report.source}</span>
                         </div>
                     </a>
                 `;
-                listContainer.appendChild(reportElement);
+                listContainer.appendChild(item);
             });
+            
+            console.log(`Successfully rendered ${reports.length} reports`);
         }
     </script>
 </body>

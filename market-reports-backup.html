@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Reports Library - TeaTrade</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="market-reports-page">
+    <header class="site-header">
+        <div class="header-top-bar">
+            <a href="corporate.html" class="header-logo"><h1>Tea<span>Trade</span></h1></a>
+            <div class="header-search-wrapper"><input type="text" class="header-search-bar" placeholder="Global site search..."></div>
+            <div class="user-actions">
+                <a href="#" title="Create Account"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="17" y1="11" x2="23" y2="11"></line></svg></a>
+                <a href="#" title="Sign In"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg></a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+        <nav class="secondary-nav">
+            <ul>
+                <li><a href="data.html">Data</a></li>
+                <li><a href="market-reports.html" class="active">Market Reports</a></li>
+                <li><a href="#">Auctions</a></li>
+                <li><a href="visuals.html">Visuals</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-container">
+        <div class="dashboard-header">
+            <h2 class="page-title">Market Reports Library</h2>
+            <p style="color: #5f6368; margin-top: 8px;">Comprehensive market intelligence from global tea auction centres</p>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-bar">
+            <div class="filter-group">
+                <label class="filter-label" for="filter-year">Year</label>
+                <select id="filter-year" class="filter-dropdown">
+                    <option value="all">All Years</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label" for="filter-centre">Centre</label>
+                <select id="filter-centre" class="filter-dropdown">
+                    <option value="all">All Centres</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label" for="filter-source">Source</label>
+                <select id="filter-source" class="filter-dropdown">
+                    <option value="all">All Sources</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label" for="search-reports">Search</label>
+                <input type="text" id="search-reports" class="filter-dropdown" placeholder="Search reports...">
+            </div>
+        </div>
+
+        <!-- Reports List -->
+        <div class="reports-container">
+            <div id="reports-list">
+                <div style="text-align:center; padding:40px;">
+                    <p>Loading market reports...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        let allReports = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Market reports page loaded');
+            fetchAndRenderReports();
+            
+            // Add event listeners for filters
+            document.getElementById('filter-year')?.addEventListener('change', filterReports);
+            document.getElementById('filter-centre')?.addEventListener('change', filterReports);
+            document.getElementById('filter-source')?.addEventListener('change', filterReports);
+            document.getElementById('search-reports')?.addEventListener('input', filterReports);
+        });
+
+        async function fetchAndRenderReports() {
+            try {
+                console.log('Fetching market-reports-library.json...');
+                const response = await fetch('market-reports-library.json?v=' + Date.now());
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const text = await response.text();
+                console.log('Raw library response:', text.substring(0, 200) + '...');
+                
+                allReports = JSON.parse(text);
+                console.log('Parsed reports:', allReports);
+                
+                if (!Array.isArray(allReports) || allReports.length === 0) {
+                    throw new Error('No reports found in library or library is not an array');
+                }
+                
+                // Sort reports: newest first
+                allReports.sort((a, b) => {
+                    if (b.year !== a.year) return b.year - a.year;
+                    return (parseInt(b.week_number) || 0) - (parseInt(a.week_number) || 0);
+                });
+                
+                populateFilters(allReports);
+                renderReports(allReports);
+                
+            } catch (error) {
+                console.error('Error fetching reports:', error);
+                const reportsContainer = document.getElementById('reports-list');
+                if (reportsContainer) {
+                    reportsContainer.innerHTML = `
+                        <div style="color:red; padding: 20px; border: 1px solid #red; border-radius: 5px; margin: 20px 0;">
+                            <h3>Error Loading Reports</h3>
+                            <p><strong>Error:</strong> ${error.message}</p>
+                            <p><strong>Troubleshooting:</strong></p>
+                            <ul>
+                                <li>Check that market-reports-library.json exists</li>
+                                <li>Check browser console for detailed error messages</li>
+                                <li>Verify the file contains a valid JSON array</li>
+                            </ul>
+                        </div>`;
+                }
+            }
+        }
+
+        function populateFilters(reports) {
+            const years = new Set();
+            const centres = new Set();
+            const sources = new Set();
+            
+            reports.forEach(report => {
+                if (report.year) years.add(report.year);
+                if (report.auction_centre) centres.add(report.auction_centre);
+                if (report.source) sources.add(report.source);
+            });
+            
+            // Populate year dropdown
+            const yearSelect = document.getElementById('filter-year');
+            if (yearSelect) {
+                Array.from(years).sort((a, b) => b - a).forEach(year => {
+                    const option = new Option(year, year);
+                    yearSelect.add(option);
+                });
+            }
+            
+            // Populate centre dropdown
+            const centreSelect = document.getElementById('filter-centre');
+            if (centreSelect) {
+                Array.from(centres).sort().forEach(centre => {
+                    const option = new Option(centre, centre);
+                    centreSelect.add(option);
+                });
+            }
+            
+            // Populate source dropdown
+            const sourceSelect = document.getElementById('filter-source');
+            if (sourceSelect) {
+                Array.from(sources).sort().forEach(source => {
+                    const option = new Option(source, source);
+                    sourceSelect.add(option);
+                });
+            }
+        }
+
+        function filterReports() {
+            const selectedYear = document.getElementById('filter-year')?.value || 'all';
+            const selectedCentre = document.getElementById('filter-centre')?.value || 'all';
+            const selectedSource = document.getElementById('filter-source')?.value || 'all';
+            const searchTerm = document.getElementById('search-reports')?.value.toLowerCase() || '';
+            
+            const filteredReports = allReports.filter(report => {
+                // Year filter
+                if (selectedYear !== 'all' && report.year != selectedYear) return false;
+                
+                // Centre filter  
+                if (selectedCentre !== 'all' && report.auction_centre !== selectedCentre) return false;
+                
+                // Source filter
+                if (selectedSource !== 'all' && report.source !== selectedSource) return false;
+                
+                // Search filter
+                if (searchTerm) {
+                    const titleMatch = (report.title || '').toLowerCase().includes(searchTerm);
+                    const descMatch = (report.description || '').toLowerCase().includes(searchTerm);
+                    if (!titleMatch && !descMatch) return false;
+                }
+                
+                return true;
+            });
+            
+            renderReports(filteredReports);
+        }
+
+        function renderReports(reports) {
+            const container = document.getElementById('reports-list');
+            if (!container) {
+                console.error('Reports list container not found');
+                return;
+            }
+            
+            if (reports.length === 0) {
+                container.innerHTML = '<p style="text-align:center; color:#5f6368; margin:40px 0;">No reports found matching the selected criteria.</p>';
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            reports.forEach(report => {
+                const item = document.createElement('div');
+                item.className = 'dataset-item';
+                
+                // Create period text
+                const periodText = report.week_number ? 
+                    `Week ${report.week_number}, ${report.year || 'N/A'}` : 
+                    `${report.year || 'N/A'}`;
+                
+                // Use the report_link from the library data
+                const reportLink = report.report_link || '#';
+                
+                item.innerHTML = `
+                    <a href="${reportLink}">
+                        <h3 class="dataset-title">
+                            ${report.title || 'Untitled Report'} 
+                            <span class="dataset-period">(${periodText})</span>
+                        </h3>
+                        <p class="dataset-description">${report.description || 'No description available'}</p>
+                        <div class="dataset-meta">
+                            <span>Centre: ${report.auction_centre || 'N/A'}</span>
+                            <span>Source: ${report.source || 'N/A'}</span>
+                            <span>Type: ${report.report_type || 'Market Report'}</span>
+                        </div>
+                    </a>
+                `;
+                
+                container.appendChild(item);
+            });
+            
+            console.log(`Rendered ${reports.length} reports`);
+        }
+    </script>
+</body>
+</html>

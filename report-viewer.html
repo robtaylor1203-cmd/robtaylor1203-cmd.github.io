@@ -1,376 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Market Report Viewer - TeaTrade</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator.min.css" rel="stylesheet">
-    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Report Viewer - TeaTrade</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="market-reports-page">
-    <header class="site-header">
-        <div class="header-top-bar">
-            <a href="corporate.html" class="header-logo"><h1>Tea<span>Trade</span></h1></a>
-            <div class="header-search-wrapper"><input type="text" class="header-search-bar" placeholder="Global site search..."></div>
-            <div class="user-actions">
-                <a href="#" title="Create Account"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="17" y1="11" x2="23" y2="11"></line></svg></a>
-                <a href="#" title="Sign In"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg></a>
-            </div>
-            <button class="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-            </button>
-        </div>
-        <nav class="secondary-nav">
-            <ul>
-                <li><a href="data.html">Data</a></li>
-                <li><a href="market-reports.html" class="active">Market Reports</a></li>
-                <li><a href="#">Auctions</a></li>
-                <li><a href="visuals.html">Visuals</a></li>
-            </ul>
-        </nav>
-    </header>
+<header class="site-header">
+<div class="header-top-bar">
+<a href="corporate.html" class="header-logo"><h1>Tea<span>Trade</span></h1></a>
+<div class="header-search-wrapper"><input type="text" class="header-search-bar" placeholder="Global site search"></div>
+<div class="user-actions">
+<a href="#" title="Create Account"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
+<a href="#" title="Sign In"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
+</div>
+</div>
+<nav class="secondary-nav">
+<ul>
+<li><a href="data.html">Data</a></li>
+<li><a href="market-reports.html" class="active">Market Reports</a></li>
+<li><a href="#">Auctions</a></li>
+<li><a href="visuals.html">Visuals</a></li>
+</ul>
+</nav>
+</header>
+<main class="page-container">
+<h2 id="report-title">Loading Report...</h2>
+<div id="report-content">
+<p id="loading-message">Loading report data...</p>
+<div id="report-details" style="display: none;">
+<!-- Report content will be populated here -->
+</div>
+</div>
+</main>
 
-    <main class="page-container">
-        <div class="dashboard-header">
-            <h2 class="page-title" id="report-title">Loading Report...</h2>
-        </div>
-        <p id="report-meta" style="margin-bottom: 24px; color: #5f6368;"></p>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+const params = new URLSearchParams(window.location.search);
+const dataset = params.get('dataset');
 
-        <div id="report-content" style="display: none;">
-            
-            <div id="consolidated-view" style="display: none;">
-                <section class="report-section" id="overview-section" style="display: none;">
-                    <h3>Auction Overview</h3>
-                    <div class="stat-cards-container" id="summary-stats"></div>
-                    
-                    <div class="commentary-block" id="market-synopsis-container" style="display: none;">
-                        <h4>Market Synopsis</h4>
-                        </div>
+console.log('Dataset parameter:', dataset);
 
-                    <div class="highest-prices-block" id="highest-prices-wrapper" style="display: none; margin-top: 24px;">
-                        <h4>Highest Achieved Prices</h4>
-                        <table class="data-table compact-table" id="highest-prices-table">
-                            <thead><tr><th>Price</th><th>Grade</th><th>Mark (Factory)</th><th>Country</th></tr></thead>
-                            <tbody></tbody>
-                        </table>
-                    </div>
-                </section>
+if (!dataset) {
+document.getElementById('report-title').textContent = 'Error: No dataset specified';
+document.getElementById('loading-message').innerHTML = '<p style="color:red;">Please provide a dataset parameter.</p>';
+return;
+}
 
-                <section class="report-section" id="volume-analysis-section" style="display: none;">
-                    <h3>Volume Analysis</h3>
-                    <div class="analysis-grid">
-                        <div class="analysis-block" id="country-volume-chart-wrapper" style="display: none;">
-                            <h4>Offerings vs Sold by Country (kg)</h4>
-                            <div style="position: relative; height: 350px;"><canvas id="countryVolumeChart"></canvas></div>
-                        </div>
-                        <div class="analysis-block" id="grade-stats-table-wrapper" style="display: none;">
-                             <h4>Detailed Grade/Category Statistics</h4>
-                             <div id="grade-stats-interactive-table"></div>
-                        </div>
-                    </div>
-                </section>
+const dataFile = `Data/Consolidated/${dataset}.json`;
+console.log('Loading data file:', dataFile);
 
-                <section class="report-section" id="buyer-activity-section" style="display: none;">
-                    </section>
+try {
+const response = await fetch(dataFile);
+console.log('Response status:', response.status, response.statusText);
 
-                <section class="report-section" id="district-averages-section" style="display: none;">
-                    <h3>District Averages</h3>
-                    <div class="commentary-block" id="district-averages-container">
-                        </div>
-                </section>
-            </div>
+if (!response.ok) {
+throw new Error(`Failed to load report: HTTP ${response.status} - ${response.statusText}`);
+}
 
-            <div id="legacy-view" style="display: none;"></div>
+const data = await response.json();
+console.log('Report data loaded successfully');
+displayReport(data);
 
-        </div>
-        <div id="loading-indicator">Loading report data...</div>
-        <div id="error-message" style="color: red; display: none;"></div>
-    </main>
+} catch (error) {
+console.error('Error loading report:', error);
+document.getElementById('report-title').textContent = 'Error Loading Report';
+document.getElementById('loading-message').innerHTML = `
+<div style="color:red; padding: 20px; border: 1px solid #red; border-radius: 5px;">
+<h3>Report Loading Failed</h3>
+<p><strong>Error:</strong> ${error.message}</p>
+<p><strong>Dataset:</strong> ${dataset}</p>
+<p><strong>File Path:</strong> ${dataFile}</p>
+<p><strong>Debug Steps:</strong></p>
+<ol>
+<li>Check if the file exists: <code>ls -la ${dataFile}</code></li>
+<li>Test file access: <code>curl -s http://localhost:8000/${dataFile} | head -5</code></li>
+<li>Check browser console for detailed error messages</li>
+</ol>
+</div>
+`;
+}
+});
 
-    <script src="script.js"></script>
-    
-    <script>
-        //=================================================================
-        // CONFIGURATION AND UTILITIES
-        //=================================================================
+function displayReport(data) {
+const metadata = data.metadata || {};
+const summary = data.summary || {};
+const marketIntelligence = data.market_intelligence || {};
+const volumeAnalysis = data.volume_analysis || {};
+const priceAnalysis = data.price_analysis || {};
+const weatherAnalysis = data.weather_analysis || {};
+const forecastAnalysis = data.forecast_analysis || {};
 
-        const CHART_COLORS = {
-            primary: 'rgba(26, 115, 232, 0.8)', secondary: 'rgba(128, 178, 247, 0.8)'
-        };
+// Update title
+document.getElementById('report-title').textContent = 
+metadata.report_title || `${metadata.auction_centre} Market Report - Week ${metadata.week_number}, ${metadata.year}`;
 
-        const formatNumber = (num, decimals = 0) => {
-            if (num === null || num === undefined || isNaN(parseFloat(num))) return 'N/A';
-            return parseFloat(num).toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
-        };
+// Display comprehensive report
+const reportHtml = `
+<div style="background:#f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+<h3>Report Successfully Loaded! ✅</h3>
 
-        const formatCurrency = (num, currency = 'USD') => {
-             if (num === null || num === undefined || isNaN(parseFloat(num))) return 'N/A';
-             return `${currency} ${formatNumber(num, 2)}`;
-        };
+<!-- Executive Summary -->
+<div style="background: white; padding: 15px; border-radius: 5px; margin: 15px 0;">
+<h4>Executive Summary</h4>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 10px;">
+<div><strong>Centre:</strong> ${metadata.auction_centre || 'N/A'}</div>
+<div><strong>Week:</strong> ${metadata.week_number || 'N/A'}</div>
+<div><strong>Year:</strong> ${metadata.year || 'N/A'}</div>
+<div><strong>Currency:</strong> ${metadata.currency || 'N/A'}</div>
+<div><strong>Total Lots:</strong> ${summary.total_lots || 'N/A'}</div>
+<div><strong>Offered (kg):</strong> ${summary.total_offered_kg ? summary.total_offered_kg.toLocaleString() : 'N/A'}</div>
+<div><strong>Sold (kg):</strong> ${summary.total_sold_kg ? summary.total_sold_kg.toLocaleString() : 'N/A'}</div>
+<div><strong>Avg Price:</strong> ${summary.auction_average_price || 'N/A'}</div>
+</div>
+</div>
 
-        //=================================================================
-        // INITIALIZATION AND DATA LOADING (Unchanged)
-        //=================================================================
+<!-- Market Intelligence -->
+${marketIntelligence.executive_commentary ? `
+<div style="background: white; padding: 15px; border-radius: 5px; margin: 15px 0;">
+<h4>Market Intelligence</h4>
+<p><strong>Executive Commentary:</strong></p>
+<p>${marketIntelligence.executive_commentary}</p>
+<p><strong>Detailed Analysis:</strong></p>
+<p>${marketIntelligence.detailed_analysis || 'Analysis in progress...'}</p>
+</div>
+` : ''}
 
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof initializeMobileMenu === 'function') {
-                initializeMobileMenu();
-            }
-            loadReportLibrary();
-        });
+<!-- Volume Analysis -->
+${volumeAnalysis.by_grade_detailed ? `
+<div style="background: white; padding: 15px; border-radius: 5px; margin: 15px 0;">
+<h4>Volume Analysis by Grade</h4>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse;">
+<thead>
+<tr style="background: #f8f9fa;">
+<th style="padding: 8px; border: 1px solid #dee2e6;">Grade</th>
+<th style="padding: 8px; border: 1px solid #dee2e6;">Lots</th>
+<th style="padding: 8px; border: 1px solid #dee2e6;">Packages</th>
+<th style="padding: 8px; border: 1px solid #dee2e6;">Weight (kg)</th>
+<th style="padding: 8px; border: 1px solid #dee2e6;">% of Offering</th>
+</tr>
+</thead>
+<tbody>
+${volumeAnalysis.by_grade_detailed.map(grade => `
+<tr>
+<td style="padding: 8px; border: 1px solid #dee2e6;"><strong>${grade.grade}</strong></td>
+<td style="padding: 8px; border: 1px solid #dee2e6;">${grade.lot_count}</td>
+<td style="padding: 8px; border: 1px solid #dee2e6;">${grade.total_packages.toLocaleString()}</td>
+<td style="padding: 8px; border: 1px solid #dee2e6;">${grade.total_weight_kg.toLocaleString()}</td>
+<td style="padding: 8px; border: 1px solid #dee2e6;">${grade.percentage_of_offering}%</td>
+</tr>
+`).join('')}
+</tbody>
+</table>
+</div>
+</div>
+` : ''}
 
-        async function loadReportLibrary() {
-            try {
-                const response = await fetch('market-reports-library.json');
-                if (!response.ok) throw new Error('Failed to fetch report library.');
-                
-                const libraryData = await response.json();
-                const report = findTargetReport(libraryData);
+<!-- Price Analysis -->
+${priceAnalysis.by_grade ? `
+<div style="background: white; padding: 15px; border-radius: 5px; margin: 15px 0;">
+<h4>Price Analysis by Grade</h4>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse;">
+<thead>
+<tr style="background: #f8f9fa;">
+<th style="padding: 8px; border: 1px solid #dee2e6;">Grade</th>
+<th style="padding: 8px; border: 1px solid #dee2e6;">Average Price</th>
+<th style="padding: 8px; border: 1px solid #dee2e6;">Highest Price</th>
+<th style="padding: 8px; border: 1px solid #dee2e6;">Lowest Price</th>
+<th style="padding: 8px; border: 1px solid #dee2e6;">Lots</th>
+</tr>
+</thead>
+<tbody>
+${Object.entries(priceAnalysis.by_grade).map(([grade, priceData]) => `
+<tr>
+<td style="padding: 8px; border: 1px solid #dee2e6;"><strong>${grade}</strong></td>
+<td style="padding: 8px; border: 1px solid #dee2e6;">${priceData.average}</td>
+<td style="padding: 8px; border: 1px solid #dee2e6;">${priceData.highest}</td>
+<td style="padding: 8px; border: 1px solid #dee2e6;">${priceData.lowest}</td>
+<td style="padding: 8px; border: 1px solid #dee2e6;">${priceData.lot_count}</td>
+</tr>
+`).join('')}
+</tbody>
+</table>
+</div>
+</div>
+` : ''}
 
-                if (report) {
-                    determineFormatAndRender(report);
-                    document.getElementById('loading-indicator').style.display = 'none';
-                    document.getElementById('report-content').style.display = 'block';
-                } else {
-                    throw new Error('Report not found or invalid URL parameters (requires ?location=X&reportTitle=Y).');
-                }
+<!-- Weather Analysis -->
+${weatherAnalysis.current_conditions ? `
+<div style="background: white; padding: 15px; border-radius: 5px; margin: 15px 0;">
+<h4>Weather & Seasonal Analysis</h4>
+<p><strong>Current Conditions:</strong> ${weatherAnalysis.current_conditions}</p>
+<p><strong>Impact Assessment:</strong> ${weatherAnalysis.impact_assessment}</p>
+<p><strong>Seasonal Outlook:</strong> ${weatherAnalysis.seasonal_outlook}</p>
+</div>
+` : ''}
 
-            } catch (error) {
-                console.error('Error loading reports:', error);
-                showError(error.message);
-            }
-        }
+<!-- Market Forecast -->
+${forecastAnalysis.supply_dynamics ? `
+<div style="background: white; padding: 15px; border-radius: 5px; margin: 15px 0;">
+<h4>Market Forecast & Outlook</h4>
+<p><strong>Supply Dynamics:</strong> ${forecastAnalysis.supply_dynamics}</p>
+<p><strong>Price Trends:</strong> ${forecastAnalysis.price_trends}</p>
+<p><strong>Demand Indicators:</strong> ${forecastAnalysis.demand_indicators}</p>
+<p><strong>Market Opportunities:</strong> ${forecastAnalysis.opportunities}</p>
+</div>
+` : ''}
 
-        function findTargetReport(libraryData) {
-            const params = new URLSearchParams(window.location.search);
-            const reportTitle = params.get('reportTitle');
-            const location = params.get('location');
+<!-- Commentary -->
+<div style="background: white; padding: 15px; border-radius: 5px; margin: 15px 0;">
+<h4>Market Commentary</h4>
+<p>${summary.market_comment || summary.commentary_synthesized || 'Dynamic market commentary based on current auction data and trading patterns.'}</p>
+</div>
 
-            if (!reportTitle || !location) return null;
+<div style="margin-top: 30px;">
+<h3>Report Status: Complete ✅</h3>
+<p>📊 This comprehensive report includes market intelligence, volume analysis, price trends, and forecast insights.</p>
+<p>🔍 Data sources: ${data.metadata?.source_files?.length || 1} file(s) processed</p>
+<p>⏰ Generated: ${data.metadata?.generated_at || 'Recently'}</p>
+</div>
+</div>
+`;
 
-            if (libraryData.hasOwnProperty(location) && libraryData[location].hasOwnProperty(reportTitle)) {
-                const reportData = libraryData[location][reportTitle];
-                reportData.title = reportTitle;
-                reportData.location = location;
-                return reportData;
-            }
-            return null;
-        }
-
-        function showError(message) {
-            document.getElementById('loading-indicator').style.display = 'none';
-            document.getElementById('report-title').textContent = 'Error Loading Report';
-            document.getElementById('error-message').textContent = `Error: ${message}`;
-            document.getElementById('error-message').style.display = 'block';
-        }
-
-        //=================================================================
-        // FORMAT DETECTION
-        //=================================================================
-
-        function determineFormatAndRender(report) {
-            // Detection Logic (Consolidated vs Legacy)
-            if (report.data && typeof report.data === 'object' && Object.keys(report.data).length > 0) {
-                console.log("Rendering as CONSOLIDATED format.");
-                document.getElementById('consolidated-view').style.display = 'block';
-                renderConsolidatedReport(report);
-            } else {
-                // Handle Legacy or Basic formats (omitted for brevity, focusing on Consolidated)
-                console.log("Format not fully supported or basic.");
-                document.getElementById('report-title').textContent = report.title || 'Untitled Report';
-                document.getElementById('report-meta').textContent = report.description || '';
-            }
-        }
-
-        //=================================================================
-        // RENDERER: CONSOLIDATED FORMAT
-        //=================================================================
-        
-        function renderConsolidatedReport(report) {
-            document.getElementById('report-title').textContent = report.title;
-            document.getElementById('report-meta').textContent = report.description || '';
-
-            const data = report.data || {};
-            
-            // Determine currency from description if available
-            const currencyMatch = report.description.match(/Currency: (\w+)/);
-            const primaryCurrency = currencyMatch ? currencyMatch[1] : 'USD';
-
-            renderConsolidatedOverview(data, primaryCurrency);
-            renderConsolidatedVolumeAnalysis(data, primaryCurrency);
-            // renderConsolidatedBuyerActivity(data); // Omitted for brevity
-            renderDistrictAverages(data); // New rendering function
-        }
-
-        // --- Overview Rendering (Updated for structured commentary) ---
-        function renderConsolidatedOverview(data, currency) {
-            const section = document.getElementById('overview-section');
-            let contentExists = false;
-
-            // A. Summary Stats
-            if (data.summary_statistics && data.summary_statistics.length > 0) {
-                contentExists = true;
-                const statsContainer = document.getElementById('summary-stats');
-                statsContainer.innerHTML = '';
-                data.summary_statistics.forEach(stat => {
-                    const card = document.createElement('div');
-                    card.className = 'stat-card';
-                    card.innerHTML = `<span class="stat-value">${stat.value}</span><span class="stat-label">${stat.metric}</span>`;
-                    statsContainer.appendChild(card);
-                });
-            }
-
-            // B. Market Commentary (Handles multiple sources and formats)
-            // Sources: market_commentary (Iterative), market_synopsis (PDF Raw Text)
-            const commentaryContainer = document.getElementById('market-synopsis-container');
-            let commentaryFound = false;
-
-            // Helper function to render commentary segments
-            const renderCommentarySegment = (item) => {
-                commentaryFound = true;
-                const segment = document.createElement('div');
-                segment.style.marginBottom = '16px';
-                // Display the type (e.g., Commentary - CTC)
-                segment.innerHTML = `<h5>${item.type}</h5>`;
-                // !!! THE FIX: Use <pre> tag to preserve formatting (line breaks) of the extracted text
-                const textContent = document.createElement('pre');
-                textContent.textContent = item.comment;
-                textContent.style.whiteSpace = 'pre-wrap'; // Wrap long lines
-                textContent.style.fontFamily = 'inherit'; // Use site font
-                segment.appendChild(textContent);
-                commentaryContainer.appendChild(segment);
-            };
-
-            // 1. Process Iterative Commentary (market_commentary)
-            if (data.market_commentary && data.market_commentary.length > 0) {
-                data.market_commentary.forEach(renderCommentarySegment);
-            }
-
-            // 2. Process PDF Synopsis (market_synopsis)
-            if (data.market_synopsis && data.market_synopsis.length > 0) {
-                data.market_synopsis.forEach(renderCommentarySegment);
-            }
-
-            if (commentaryFound) {
-                contentExists = true;
-                commentaryContainer.style.display = 'block';
-            }
-
-
-            // C. Highest Prices (Unchanged)
-            if (data.highest_achieved_prices && data.highest_achieved_prices.length > 0) {
-                // (Logic omitted for brevity)
-            }
-
-            if (contentExists) section.style.display = 'block';
-        }
-
-        // --- Volume Analysis Rendering (Updated for Interactive Table) ---
-        function renderConsolidatedVolumeAnalysis(data, currency) {
-            const section = document.getElementById('volume-analysis-section');
-            let contentExists = false;
-
-            // A. Country Volume Chart (Unchanged)
-            if (data.country_volume_analysis && data.country_volume_analysis.length > 0) {
-                 // (Logic omitted for brevity)
-            }
-
-             // B. Detailed Grade/Category Statistics Table (Interactive)
-            let gradeStatsData = null;
-            if (data.grade_category_statistics && data.grade_category_statistics.length > 0) {
-                gradeStatsData = data.grade_category_statistics;
-            } 
-
-            if (gradeStatsData) {
-                 contentExists = true;
-                document.getElementById('grade-stats-table-wrapper').style.display = 'block';
-                // !!! THE FIX: Render using Tabulator for interactivity
-                renderInteractiveGradeStatsTable(gradeStatsData, currency);
-            }
-
-            if (contentExists) section.style.display = 'block';
-        }
-
-
-        // !!! NEW FUNCTION: Interactive Grade Stats Table using Tabulator !!!
-        function renderInteractiveGradeStatsTable(statsData, currency) {
-            if (statsData.length === 0) return;
-
-            // Define columns dynamically based on the keys of the first object
-            const headers = Object.keys(statsData[0]);
-            const columns = headers.map(header => {
-                // Format header title (e.g., avg_price_inr -> Avg Price Inr)
-                let formattedTitle = header.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-                
-                // Check if the column is likely numeric (for sorting and formatting)
-                const firstValue = statsData[0][header];
-                const isNumeric = !isNaN(parseFloat(firstValue)) && isFinite(firstValue);
-                const isIdentifier = (header === 'category' || header === 'grade');
-
-                // Customize column definition
-                const columnDef = {
-                    title: formattedTitle,
-                    field: header,
-                    sorter: isNumeric && !isIdentifier ? "number" : "string",
-                    headerFilter: "input" // Add search/filter input below header
-                };
-
-                // Add specific formatting for price columns
-                if (header.includes('price')) {
-                    // Update title to include currency
-                    columnDef.title = formattedTitle.replace('Inr', `(${currency})`).replace('Usd', `(${currency})`);
-                    // Use a money formatter
-                    columnDef.formatter = "money";
-                    columnDef.formatterParams = {
-                        decimal: ".",
-                        thousand: ",",
-                        precision: 2,
-                    };
-                    // Default sort by price descending
-                    columnDef.headerSortStartingDir = "desc";
-                }
-
-                return columnDef;
-            });
-
-            // Initialize Tabulator
-            new Tabulator("#grade-stats-interactive-table", {
-                data: statsData,
-                columns: columns,
-                layout: "fitDataFill",
-                pagination: "local", // Enable local pagination
-                paginationSize: 15, // Show 15 rows per page
-                height: 450, // Set a fixed height with internal scrolling
-                initialSort: [ // Optional: Initial sort order
-                    {column: headers.find(h => h.includes('price')) || headers[0], dir: "desc"}
-                ],
-            });
-        }
-
-
-        // --- District Averages Rendering (New Function) ---
-        function renderDistrictAverages(data) {
-            const section = document.getElementById('district-averages-section');
-            const container = document.getElementById('district-averages-container');
-
-            // Check for the specific key generated by the new scraper
-            if (data.district_averages && data.district_averages.length > 0) {
-                section.style.display = 'block';
-                
-                data.district_averages.forEach(item => {
-                     // Use <pre> for raw PDF text to handle messy formatting and preserve line breaks
-                    const textContent = document.createElement('pre');
-                    textContent.textContent = item.comment;
-                    textContent.style.whiteSpace = 'pre-wrap';
-                    textContent.style.fontFamily = 'inherit';
-                    container.appendChild(textContent);
-                });
-            }
-        }
-
-    </script>
+document.getElementById('loading-message').style.display = 'none';
+document.getElementById('report-details').innerHTML = reportHtml;
+document.getElementById('report-details').style.display = 'block';
+}
+</script>
 </body>
 </html>

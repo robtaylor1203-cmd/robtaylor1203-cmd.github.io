@@ -1,0 +1,39 @@
+2025-09-14 22:09:33,956 - MASTER_CONTROLLER - INFO - 🚀 Starting COMPLETE Tea Trade Automation
+2025-09-14 22:09:34,050 - MASTER_CONTROLLER - INFO - ✅ Resources OK: 5.5% memory, 2.1GB free
+2025-09-14 22:09:34,050 - MASTER_CONTROLLER - INFO - 🔄 Running 6 scrapers in parallel
+2025-09-14 22:09:34,066 - MASTER_CONTROLLER - INFO - 🚀 Starting J Thomas India
+2025-09-14 22:09:34,076 - MASTER_CONTROLLER - INFO - 🚀 Starting Ceylon Tea Brokers
+2025-09-14 22:09:34,084 - MASTER_CONTROLLER - INFO - 🚀 Starting Forbes Tea
+2025-09-14 22:09:39,085 - MASTER_CONTROLLER - WARNING - ⚠️ Forbes Tea failed, retrying (1/2)
+2025-09-14 22:09:39,126 - MASTER_CONTROLLER - WARNING - ⚠️ Ceylon Tea Brokers failed, retrying (1/2)
+2025-09-14 22:10:14,801 - MASTER_CONTROLLER - WARNING - ⚠️ Forbes Tea failed, retrying (2/2)
+2025-09-14 22:10:16,538 - MASTER_CONTROLLER - WARNING - ⚠️ Ceylon Tea Brokers failed, retrying (2/2)
+2025-09-14 22:11:00,988 - MASTER_CONTROLLER - ERROR - ❌ Forbes Tea failed after 2 retries
+2025-09-14 22:11:01,016 - MASTER_CONTROLLER - INFO - 🚀 Starting TBEA Kenya
+2025-09-14 22:11:01,019 - MASTER_CONTROLLER - INFO - ❌ Forbes Tea: failed (0 records)
+2025-09-14 22:11:03,199 - MASTER_CONTROLLER - ERROR - ❌ Ceylon Tea Brokers failed after 2 retries
+2025-09-14 22:11:03,199 - MASTER_CONTROLLER - INFO - 🚀 Starting ATB Kenya
+2025-09-14 22:11:03,202 - MASTER_CONTROLLER - INFO - ❌ Ceylon Tea Brokers: failed (0 records)
+2025-09-14 22:11:09,468 - MASTER_CONTROLLER - INFO - ✅ TBEA Kenya completed successfully
+2025-09-14 22:11:09,471 - MASTER_CONTROLLER - INFO - 🚀 Starting Tea Industry News
+2025-09-14 22:11:09,473 - MASTER_CONTROLLER - INFO - ✅ TBEA Kenya: success (0 records)
+2025-09-14 22:11:10,523 - MASTER_CONTROLLER - WARNING - ⚠️ Tea Industry News failed, retrying (1/1)
+2025-09-14 22:11:12,408 - MASTER_CONTROLLER - INFO - ✅ ATB Kenya completed successfully
+2025-09-14 22:11:12,409 - MASTER_CONTROLLER - INFO - ✅ ATB Kenya: success (0 records)
+2025-09-14 22:11:41,801 - MASTER_CONTROLLER - ERROR - ❌ Tea Industry News failed after 1 retries
+2025-09-14 22:11:41,803 - MASTER_CONTROLLER - INFO - ❌ Tea Industry News: failed (0 records)
+2025-09-14 22:14:36,695 - MASTER_CONTROLLER - INFO - ✅ J Thomas India completed successfully
+2025-09-14 22:14:36,712 - MASTER_CONTROLLER - INFO - ✅ J Thomas India: success (0 records)
+2025-09-14 22:14:36,718 - MASTER_CONTROLLER - INFO - 🔄 Starting post-processing
+2025-09-14 22:14:36,823 - MASTER_CONTROLLER - WARNING - ⚠️ Weekly report generation failed
+2025-09-14 22:14:36,892 - MASTER_CONTROLLER - WARNING - Data quality update error: relation "data_quality_log" does not exist
+LINE 2:                     INSERT INTO data_quality_log (source, ch...
+                                        ^
+
+2025-09-14 22:14:36,952 - MASTER_CONTROLLER - WARNING - Website export error: column "source" does not exist
+LINE 3:                     source,
+                            ^
+
+2025-09-14 22:14:36,954 - MASTER_CONTROLLER - INFO - 🎉 Automation complete: partial_success
+2025-09-14 22:14:36,956 - MASTER_CONTROLLER - INFO - 📊 Total records: 0
+2025-09-14 22:14:36,957 - MASTER_CONTROLLER - INFO - ⏱️ Duration: 303.0 seconds

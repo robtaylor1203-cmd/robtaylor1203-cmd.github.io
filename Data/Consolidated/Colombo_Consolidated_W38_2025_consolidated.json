@@ -1,0 +1,775 @@
+{
+  "metadata": {
+    "report_title": "Colombo TeaTrade Market Report",
+    "auction_centre": "Colombo",
+    "week_number": 38,
+    "year": 2025,
+    "currency": "LKR",
+    "report_type": "consolidated",
+    "generated_at": "2025-09-16T20:11:07.621764",
+    "source_files": [
+      "colombo_sample_data.json"
+    ]
+  },
+  "auction_lots": [
+    {
+      "lot_number": "001",
+      "garden": "Colombo Estate 1",
+      "grade": "PEKOE",
+      "packages": 40,
+      "net_weight_kg": 2000,
+      "price_per_kg": 350,
+      "buyer": "Buyer_1"
+    },
+    {
+      "lot_number": "002",
+      "garden": "Colombo Estate 2",
+      "grade": "OP",
+      "packages": 48,
+      "net_weight_kg": 2400,
+      "price_per_kg": 385,
+      "buyer": "Buyer_2"
+    },
+    {
+      "lot_number": "003",
+      "garden": "Colombo Estate 3",
+      "grade": "FBOP",
+      "packages": 56,
+      "net_weight_kg": 2800,
+      "price_per_kg": 420,
+      "buyer": "Buyer_3"
+    },
+    {
+      "lot_number": "004",
+      "garden": "Colombo Estate 4",
+      "grade": "BOPF",
+      "packages": 64,
+      "net_weight_kg": 3200,
+      "price_per_kg": 455,
+      "buyer": "Buyer_4"
+    },
+    {
+      "lot_number": "005",
+      "garden": "Colombo Estate 5",
+      "grade": "PEKOE1",
+      "packages": 72,
+      "net_weight_kg": 3600,
+      "price_per_kg": 490,
+      "buyer": "Buyer_5"
+    },
+    {
+      "lot_number": "006",
+      "garden": "Colombo Estate 6",
+      "grade": "OP1",
+      "packages": 80,
+      "net_weight_kg": 4000,
+      "price_per_kg": 525,
+      "buyer": "Buyer_6"
+    },
+    {
+      "lot_number": "007",
+      "garden": "Colombo Estate 7",
+      "grade": "PEKOE",
+      "packages": 88,
+      "net_weight_kg": 4400,
+      "price_per_kg": 560,
+      "buyer": "Buyer_7"
+    },
+    {
+      "lot_number": "008",
+      "garden": "Colombo Estate 8",
+      "grade": "OP",
+      "packages": 96,
+      "net_weight_kg": 4800,
+      "price_per_kg": 595,
+      "buyer": "Buyer_8"
+    },
+    {
+      "lot_number": "009",
+      "garden": "Colombo Estate 1",
+      "grade": "FBOP",
+      "packages": 104,
+      "net_weight_kg": 5200,
+      "price_per_kg": 630,
+      "buyer": "Buyer_1"
+    },
+    {
+      "lot_number": "010",
+      "garden": "Colombo Estate 2",
+      "grade": "BOPF",
+      "packages": 112,
+      "net_weight_kg": 5600,
+      "price_per_kg": 665,
+      "buyer": "Buyer_2"
+    },
+    {
+      "lot_number": "011",
+      "garden": "Colombo Estate 3",
+      "grade": "PEKOE1",
+      "packages": 120,
+      "net_weight_kg": 6000,
+      "price_per_kg": 500,
+      "buyer": "Buyer_3"
+    },
+    {
+      "lot_number": "012",
+      "garden": "Colombo Estate 4",
+      "grade": "OP1",
+      "packages": 128,
+      "net_weight_kg": 6400,
+      "price_per_kg": 535,
+      "buyer": "Buyer_4"
+    },
+    {
+      "lot_number": "013",
+      "garden": "Colombo Estate 5",
+      "grade": "PEKOE",
+      "packages": 136,
+      "net_weight_kg": 6800,
+      "price_per_kg": 570,
+      "buyer": "Buyer_5"
+    },
+    {
+      "lot_number": "014",
+      "garden": "Colombo Estate 6",
+      "grade": "OP",
+      "packages": 144,
+      "net_weight_kg": 7200,
+      "price_per_kg": 605,
+      "buyer": "Buyer_6"
+    },
+    {
+      "lot_number": "015",
+      "garden": "Colombo Estate 7",
+      "grade": "FBOP",
+      "packages": 152,
+      "net_weight_kg": 7600,
+      "price_per_kg": 640,
+      "buyer": "Buyer_7"
+    },
+    {
+      "lot_number": "016",
+      "garden": "Colombo Estate 8",
+      "grade": "BOPF",
+      "packages": 160,
+      "net_weight_kg": 8000,
+      "price_per_kg": 675,
+      "buyer": "Buyer_8"
+    },
+    {
+      "lot_number": "017",
+      "garden": "Colombo Estate 1",
+      "grade": "PEKOE1",
+      "packages": 168,
+      "net_weight_kg": 8400,
+      "price_per_kg": 710,
+      "buyer": "Buyer_1"
+    },
+    {
+      "lot_number": "018",
+      "garden": "Colombo Estate 2",
+      "grade": "OP1",
+      "packages": 176,
+      "net_weight_kg": 8800,
+      "price_per_kg": 745,
+      "buyer": "Buyer_2"
+    },
+    {
+      "lot_number": "019",
+      "garden": "Colombo Estate 3",
+      "grade": "PEKOE",
+      "packages": 184,
+      "net_weight_kg": 9200,
+      "price_per_kg": 780,
+      "buyer": "Buyer_3"
+    },
+    {
+      "lot_number": "020",
+      "garden": "Colombo Estate 4",
+      "grade": "OP",
+      "packages": 192,
+      "net_weight_kg": 9600,
+      "price_per_kg": 815,
+      "buyer": "Buyer_4"
+    },
+    {
+      "lot_number": "021",
+      "garden": "Colombo Estate 5",
+      "grade": "FBOP",
+      "packages": 200,
+      "net_weight_kg": 10000,
+      "price_per_kg": 650,
+      "buyer": "Buyer_5"
+    },
+    {
+      "lot_number": "022",
+      "garden": "Colombo Estate 6",
+      "grade": "BOPF",
+      "packages": 208,
+      "net_weight_kg": 10400,
+      "price_per_kg": 685,
+      "buyer": "Buyer_6"
+    },
+    {
+      "lot_number": "023",
+      "garden": "Colombo Estate 7",
+      "grade": "PEKOE1",
+      "packages": 216,
+      "net_weight_kg": 10800,
+      "price_per_kg": 720,
+      "buyer": "Buyer_7"
+    },
+    {
+      "lot_number": "024",
+      "garden": "Colombo Estate 8",
+      "grade": "OP1",
+      "packages": 224,
+      "net_weight_kg": 11200,
+      "price_per_kg": 755,
+      "buyer": "Buyer_8"
+    },
+    {
+      "lot_number": "025",
+      "garden": "Colombo Estate 1",
+      "grade": "PEKOE",
+      "packages": 232,
+      "net_weight_kg": 11600,
+      "price_per_kg": 790,
+      "buyer": "Buyer_1"
+    }
+  ],
+  "summary": {
+    "total_lots": 25,
+    "total_packages": 3400,
+    "total_offered_kg": 170000,
+    "total_sold_kg": 170000,
+    "auction_average_price": 610.0,
+    "highest_price": 815,
+    "lowest_price": 350,
+    "market_comment": "Strong trading session with 25 lots offered. Active participation across all grades.",
+    "commentary_synthesized": "Market showed robust activity with substantial offering of 170,000 kg across diverse grade range. Quality premiums evident with price range of 350-815 per kg."
+  },
+  "volume_analysis": {
+    "by_grade_summary": {
+      "PEKOE": {
+        "lots": 5,
+        "packages": 680,
+        "weight_kg": 34000
+      },
+      "OP": {
+        "lots": 4,
+        "packages": 480,
+        "weight_kg": 24000
+      },
+      "FBOP": {
+        "lots": 4,
+        "packages": 512,
+        "weight_kg": 25600
+      },
+      "BOPF": {
+        "lots": 4,
+        "packages": 544,
+        "weight_kg": 27200
+      },
+      "PEKOE1": {
+        "lots": 4,
+        "packages": 576,
+        "weight_kg": 28800
+      },
+      "OP1": {
+        "lots": 4,
+        "packages": 608,
+        "weight_kg": 30400
+      }
+    },
+    "by_grade_detailed": [
+      {
+        "grade": "PEKOE",
+        "lot_count": 5,
+        "total_packages": 680,
+        "total_weight_kg": 34000,
+        "percentage_of_offering": 20.0
+      },
+      {
+        "grade": "OP",
+        "lot_count": 4,
+        "total_packages": 480,
+        "total_weight_kg": 24000,
+        "percentage_of_offering": 14.1
+      },
+      {
+        "grade": "FBOP",
+        "lot_count": 4,
+        "total_packages": 512,
+        "total_weight_kg": 25600,
+        "percentage_of_offering": 15.1
+      },
+      {
+        "grade": "BOPF",
+        "lot_count": 4,
+        "total_packages": 544,
+        "total_weight_kg": 27200,
+        "percentage_of_offering": 16.0
+      },
+      {
+        "grade": "PEKOE1",
+        "lot_count": 4,
+        "total_packages": 576,
+        "total_weight_kg": 28800,
+        "percentage_of_offering": 16.9
+      },
+      {
+        "grade": "OP1",
+        "lot_count": 4,
+        "total_packages": 608,
+        "total_weight_kg": 30400,
+        "percentage_of_offering": 17.9
+      }
+    ]
+  },
+  "price_analysis": {
+    "by_grade": {
+      "PEKOE": {
+        "average": 610.0,
+        "highest": 790,
+        "lowest": 350,
+        "lot_count": 5
+      },
+      "OP": {
+        "average": 600.0,
+        "highest": 815,
+        "lowest": 385,
+        "lot_count": 4
+      },
+      "FBOP": {
+        "average": 585.0,
+        "highest": 650,
+        "lowest": 420,
+        "lot_count": 4
+      },
+      "BOPF": {
+        "average": 620.0,
+        "highest": 685,
+        "lowest": 455,
+        "lot_count": 4
+      },
+      "PEKOE1": {
+        "average": 605.0,
+        "highest": 720,
+        "lowest": 490,
+        "lot_count": 4
+      },
+      "OP1": {
+        "average": 640.0,
+        "highest": 755,
+        "lowest": 525,
+        "lot_count": 4
+      }
+    },
+    "overall_range": {
+      "highest": 815,
+      "lowest": 350
+    }
+  },
+  "market_intelligence": {
+    "executive_commentary": "Colombo market demonstrated steady trading conditions. Substantial offering of 170,000 kg indicates strong regional production. Quality premiums evident across 6 grade categories.",
+    "detailed_analysis": "Market dynamics reflect regional production patterns. Average pricing of 610 per kg indicates balanced demand sentiment. Buyer participation across grade categories suggests active market engagement.",
+    "volume_insights": "Substantial offering of 170,000 kg indicates strong regional production",
+    "quality_assessment": "Average pricing of 610 indicates balanced market conditions"
+  },
+  "weather_analysis": {
+    "current_conditions": "Monsoon transition period with moderate rainfall patterns supporting tea bush health",
+    "impact_assessment": "Favorable growing conditions maintaining leaf quality standards",
+    "seasonal_outlook": "Inter-monsoon period expected to support consistent production volumes"
+  },
+  "forecast_analysis": {
+    "supply_dynamics": "Steady supply conditions with production aligned to seasonal patterns",
+    "price_trends": "Premium pricing environment reflecting current market fundamentals",
+    "demand_indicators": "Export and domestic demand maintaining balanced absorption",
+    "opportunities": "Quality premiums available for superior leaf grades and processing standards"
+  },
+  "buyer_activity": {
+    "active_buyers": 8,
+    "buyer_summary": [
+      {
+        "buyer_name": "Buyer_1",
+        "lots_purchased": 4,
+        "total_packages": 544,
+        "average_price": 620.0
+      },
+      {
+        "buyer_name": "Buyer_2",
+        "lots_purchased": 3,
+        "total_packages": 336,
+        "average_price": 598.33
+      },
+      {
+        "buyer_name": "Buyer_3",
+        "lots_purchased": 3,
+        "total_packages": 360,
+        "average_price": 566.67
+      },
+      {
+        "buyer_name": "Buyer_4",
+        "lots_purchased": 3,
+        "total_packages": 384,
+        "average_price": 601.67
+      },
+      {
+        "buyer_name": "Buyer_5",
+        "lots_purchased": 3,
+        "total_packages": 408,
+        "average_price": 570.0
+      },
+      {
+        "buyer_name": "Buyer_6",
+        "lots_purchased": 3,
+        "total_packages": 432,
+        "average_price": 605.0
+      },
+      {
+        "buyer_name": "Buyer_7",
+        "lots_purchased": 3,
+        "total_packages": 456,
+        "average_price": 640.0
+      },
+      {
+        "buyer_name": "Buyer_8",
+        "lots_purchased": 3,
+        "total_packages": 480,
+        "average_price": 675.0
+      }
+    ],
+    "participation_level": "Limited"
+  },
+  "factory_performance": {
+    "top_performers": [
+      {
+        "garden_name": "Colombo Estate 8",
+        "lots_offered": 3,
+        "total_packages": 480,
+        "average_price": 675.0,
+        "total_value": 16712000
+      },
+      {
+        "garden_name": "Colombo Estate 7",
+        "lots_offered": 3,
+        "total_packages": 456,
+        "average_price": 640.0,
+        "total_value": 15104000
+      },
+      {
+        "garden_name": "Colombo Estate 1",
+        "lots_offered": 4,
+        "total_packages": 544,
+        "average_price": 620.0,
+        "total_value": 19104000
+      },
+      {
+        "garden_name": "Colombo Estate 6",
+        "lots_offered": 3,
+        "total_packages": 432,
+        "average_price": 605.0,
+        "total_value": 13580000
+      },
+      {
+        "garden_name": "Colombo Estate 4",
+        "lots_offered": 3,
+        "total_packages": 384,
+        "average_price": 601.67,
+        "total_value": 12704000
+      },
+      {
+        "garden_name": "Colombo Estate 2",
+        "lots_offered": 3,
+        "total_packages": 336,
+        "average_price": 598.33,
+        "total_value": 11204000
+      },
+      {
+        "garden_name": "Colombo Estate 5",
+        "lots_offered": 3,
+        "total_packages": 408,
+        "average_price": 570.0,
+        "total_value": 12140000
+      },
+      {
+        "garden_name": "Colombo Estate 3",
+        "lots_offered": 3,
+        "total_packages": 360,
+        "average_price": 566.67,
+        "total_value": 11352000
+      }
+    ],
+    "total_gardens": 8
+  },
+  "price_quotations": {
+    "grade_quotations": [
+      {
+        "grade": "OP1",
+        "price_range": "525 - 755",
+        "average": 640.0,
+        "lots": 4
+      },
+      {
+        "grade": "BOPF",
+        "price_range": "455 - 685",
+        "average": 620.0,
+        "lots": 4
+      },
+      {
+        "grade": "PEKOE",
+        "price_range": "350 - 790",
+        "average": 610.0,
+        "lots": 5
+      },
+      {
+        "grade": "PEKOE1",
+        "price_range": "490 - 720",
+        "average": 605.0,
+        "lots": 4
+      },
+      {
+        "grade": "OP",
+        "price_range": "385 - 815",
+        "average": 600.0,
+        "lots": 4
+      },
+      {
+        "grade": "FBOP",
+        "price_range": "420 - 650",
+        "average": 585.0,
+        "lots": 4
+      }
+    ]
+  },
+  "interactive_data": {
+    "raw_lots": [
+      {
+        "lot_number": "001",
+        "garden": "Colombo Estate 1",
+        "grade": "PEKOE",
+        "packages": 40,
+        "net_weight_kg": 2000,
+        "price_per_kg": 350,
+        "buyer": "Buyer_1"
+      },
+      {
+        "lot_number": "002",
+        "garden": "Colombo Estate 2",
+        "grade": "OP",
+        "packages": 48,
+        "net_weight_kg": 2400,
+        "price_per_kg": 385,
+        "buyer": "Buyer_2"
+      },
+      {
+        "lot_number": "003",
+        "garden": "Colombo Estate 3",
+        "grade": "FBOP",
+        "packages": 56,
+        "net_weight_kg": 2800,
+        "price_per_kg": 420,
+        "buyer": "Buyer_3"
+      },
+      {
+        "lot_number": "004",
+        "garden": "Colombo Estate 4",
+        "grade": "BOPF",
+        "packages": 64,
+        "net_weight_kg": 3200,
+        "price_per_kg": 455,
+        "buyer": "Buyer_4"
+      },
+      {
+        "lot_number": "005",
+        "garden": "Colombo Estate 5",
+        "grade": "PEKOE1",
+        "packages": 72,
+        "net_weight_kg": 3600,
+        "price_per_kg": 490,
+        "buyer": "Buyer_5"
+      },
+      {
+        "lot_number": "006",
+        "garden": "Colombo Estate 6",
+        "grade": "OP1",
+        "packages": 80,
+        "net_weight_kg": 4000,
+        "price_per_kg": 525,
+        "buyer": "Buyer_6"
+      },
+      {
+        "lot_number": "007",
+        "garden": "Colombo Estate 7",
+        "grade": "PEKOE",
+        "packages": 88,
+        "net_weight_kg": 4400,
+        "price_per_kg": 560,
+        "buyer": "Buyer_7"
+      },
+      {
+        "lot_number": "008",
+        "garden": "Colombo Estate 8",
+        "grade": "OP",
+        "packages": 96,
+        "net_weight_kg": 4800,
+        "price_per_kg": 595,
+        "buyer": "Buyer_8"
+      },
+      {
+        "lot_number": "009",
+        "garden": "Colombo Estate 1",
+        "grade": "FBOP",
+        "packages": 104,
+        "net_weight_kg": 5200,
+        "price_per_kg": 630,
+        "buyer": "Buyer_1"
+      },
+      {
+        "lot_number": "010",
+        "garden": "Colombo Estate 2",
+        "grade": "BOPF",
+        "packages": 112,
+        "net_weight_kg": 5600,
+        "price_per_kg": 665,
+        "buyer": "Buyer_2"
+      },
+      {
+        "lot_number": "011",
+        "garden": "Colombo Estate 3",
+        "grade": "PEKOE1",
+        "packages": 120,
+        "net_weight_kg": 6000,
+        "price_per_kg": 500,
+        "buyer": "Buyer_3"
+      },
+      {
+        "lot_number": "012",
+        "garden": "Colombo Estate 4",
+        "grade": "OP1",
+        "packages": 128,
+        "net_weight_kg": 6400,
+        "price_per_kg": 535,
+        "buyer": "Buyer_4"
+      },
+      {
+        "lot_number": "013",
+        "garden": "Colombo Estate 5",
+        "grade": "PEKOE",
+        "packages": 136,
+        "net_weight_kg": 6800,
+        "price_per_kg": 570,
+        "buyer": "Buyer_5"
+      },
+      {
+        "lot_number": "014",
+        "garden": "Colombo Estate 6",
+        "grade": "OP",
+        "packages": 144,
+        "net_weight_kg": 7200,
+        "price_per_kg": 605,
+        "buyer": "Buyer_6"
+      },
+      {
+        "lot_number": "015",
+        "garden": "Colombo Estate 7",
+        "grade": "FBOP",
+        "packages": 152,
+        "net_weight_kg": 7600,
+        "price_per_kg": 640,
+        "buyer": "Buyer_7"
+      },
+      {
+        "lot_number": "016",
+        "garden": "Colombo Estate 8",
+        "grade": "BOPF",
+        "packages": 160,
+        "net_weight_kg": 8000,
+        "price_per_kg": 675,
+        "buyer": "Buyer_8"
+      },
+      {
+        "lot_number": "017",
+        "garden": "Colombo Estate 1",
+        "grade": "PEKOE1",
+        "packages": 168,
+        "net_weight_kg": 8400,
+        "price_per_kg": 710,
+        "buyer": "Buyer_1"
+      },
+      {
+        "lot_number": "018",
+        "garden": "Colombo Estate 2",
+        "grade": "OP1",
+        "packages": 176,
+        "net_weight_kg": 8800,
+        "price_per_kg": 745,
+        "buyer": "Buyer_2"
+      },
+      {
+        "lot_number": "019",
+        "garden": "Colombo Estate 3",
+        "grade": "PEKOE",
+        "packages": 184,
+        "net_weight_kg": 9200,
+        "price_per_kg": 780,
+        "buyer": "Buyer_3"
+      },
+      {
+        "lot_number": "020",
+        "garden": "Colombo Estate 4",
+        "grade": "OP",
+        "packages": 192,
+        "net_weight_kg": 9600,
+        "price_per_kg": 815,
+        "buyer": "Buyer_4"
+      },
+      {
+        "lot_number": "021",
+        "garden": "Colombo Estate 5",
+        "grade": "FBOP",
+        "packages": 200,
+        "net_weight_kg": 10000,
+        "price_per_kg": 650,
+        "buyer": "Buyer_5"
+      },
+      {
+        "lot_number": "022",
+        "garden": "Colombo Estate 6",
+        "grade": "BOPF",
+        "packages": 208,
+        "net_weight_kg": 10400,
+        "price_per_kg": 685,
+        "buyer": "Buyer_6"
+      },
+      {
+        "lot_number": "023",
+        "garden": "Colombo Estate 7",
+        "grade": "PEKOE1",
+        "packages": 216,
+        "net_weight_kg": 10800,
+        "price_per_kg": 720,
+        "buyer": "Buyer_7"
+      },
+      {
+        "lot_number": "024",
+        "garden": "Colombo Estate 8",
+        "grade": "OP1",
+        "packages": 224,
+        "net_weight_kg": 11200,
+        "price_per_kg": 755,
+        "buyer": "Buyer_8"
+      },
+      {
+        "lot_number": "025",
+        "garden": "Colombo Estate 1",
+        "grade": "PEKOE",
+        "packages": 232,
+        "net_weight_kg": 11600,
+        "price_per_kg": 790,
+        "buyer": "Buyer_1"
+      }
+    ]
+  }
+}

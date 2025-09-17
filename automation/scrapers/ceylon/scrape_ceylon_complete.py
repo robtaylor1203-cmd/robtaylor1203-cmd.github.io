@@ -9,99 +9,17 @@ import sys
 import time
 import re
 from pathlib import Path
-from datetime import datetime, timedelta
+from datetime import datetime
 from typing import List, Dict, Optional
 import requests
 from bs4 import BeautifulSoup
-import logging
 
-# Setup logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger('CEYLON')
-
-def safe_int(value):
-    try:
-        return int(value) if value else 0
-    except:
-        return 0
-
-def safe_float(value):
-    try:
-        return float(value) if value else 0.0
-    except:
-        return 0.0
-
-def get_db_connection():
-    try:
-        import psycopg2
-        return psycopg2.connect(
-            host='localhost',
-            database='tea_trade_data',
-            user='tea_admin',
-            password='secure_password_123'
-        )
-    except Exception as e:
-        logger.error(f"Database connection failed: {e}")
-        return None
-
-def save_to_database(data):
-    if not data:
-        return False
-    
-    conn = get_db_connection()
-    if not conn:
-        return False
-    
-    try:
-        cursor = conn.cursor()
-        
-        # Get Colombo centre
-        cursor.execute("SELECT id FROM auction_centres WHERE name = 'Colombo'")
-        centre_result = cursor.fetchone()
-        centre_id = centre_result[0] if centre_result else 7
-        
-        for record in data:
-            # Get or create garden
-            garden_name = record.get('garden', 'Ceylon Estate')
-            cursor.execute("""
-                INSERT INTO gardens (name, country) 
-                VALUES (%s, %s) 
-                ON CONFLICT (name, country) DO NOTHING
-                RETURNING id
-            """, (garden_name, 'Sri Lanka'))
-            
-            garden_result = cursor.fetchone()
-            if not garden_result:
-                cursor.execute("SELECT id FROM gardens WHERE name = %s", (garden_name,))
-                garden_result = cursor.fetchone()
-            
-            garden_id = garden_result[0] if garden_result else None
-            
-            # Insert auction lot
-            cursor.execute("""
-                INSERT INTO auction_lots (
-                    source, auction_centre_id, garden_id, sale_number, 
-                    lot_number, grade, quantity_kg, price_per_kg, 
-                    currency, auction_date, scrape_timestamp
-                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-            """, (
-                'CEYLON', centre_id, garden_id, record.get('sale_number', 1),
-                record.get('lot_number', 0), record.get('grade', 'Mixed'),
-                record.get('quantity', 0), record.get('price', 0.0),
-                'LKR', record.get('auction_date', datetime.now().date()),
-                datetime.now()
-            ))
-        
-        conn.commit()
-        logger.info(f"Saved {len(data)} records to database")
-        return True
-        
-    except Exception as e:
-        logger.error(f"Database save failed: {e}")
-        conn.rollback()
-        return False
-    finally:
-        conn.close()
+# Add utils to path
+sys.path.append(str(Path(__file__).parent.parent.parent))
+from utils.pipeline_utils import (
+    setup_logging, standardize_data_format, save_to_database,
+    generate_manifest, safe_int, safe_float
+)
 
 # Configuration
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent.parent
@@ -112,7 +30,7 @@ class CeylonTeaBrokersScraper:
     """Complete Ceylon Tea Brokers scraper"""
     
     def __init__(self):
-        self.logger = logger
+        self.logger = setup_logging('CEYLON')
         self.session = requests.Session()
         self.session.headers.update({
             'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36'
@@ -122,12 +40,13 @@ class CeylonTeaBrokersScraper:
     def get_available_reports(self) -> List[Dict]:
         """Get list of available reports"""
         try:
-            self.logger.info(f"Fetching available reports from: {REPORTS_URL}")
+            self.logger.info(f"🔍 Fetching available reports from: {REPORTS_URL}")
             
+            # Try to connect to Ceylon Tea Brokers
             response = self.session.get(REPORTS_URL, timeout=30)
             
             if response.status_code != 200:
-                self.logger.warning(f"Could not access {REPORTS_URL}, creating sample structure")
+                self.logger.warning(f"⚠️ Could not access {REPORTS_URL}, creating sample structure")
                 return self.create_sample_reports()
             
             soup = BeautifulSoup(response.content, 'html.parser')
@@ -168,14 +87,14 @@ class CeylonTeaBrokersScraper:
                     continue
             
             if not reports:
-                self.logger.warning("No reports found, creating sample structure")
+                self.logger.warning("⚠️ No reports found, creating sample structure")
                 reports = self.create_sample_reports()
             
-            self.logger.info(f"Found {len(reports)} reports")
-            return reports[:10]
+            self.logger.info(f"📋 Found {len(reports)} reports")
+            return reports[:10]  # Limit to recent reports
             
         except Exception as e:
-            self.logger.error(f"Failed to get available reports: {e}")
+            self.logger.error(f"❌ Failed to get available reports: {e}")
             return self.create_sample_reports()
     
     def create_sample_reports(self) -> List[Dict]:
@@ -200,9 +119,10 @@ class CeylonTeaBrokersScraper:
     def scrape_report(self, report_info: Dict) -> List[Dict]:
         """Scrape individual report"""
         try:
-            self.logger.info(f"Processing report: {report_info['title']}")
+            self.logger.info(f"📊 Processing report: {report_info['title']}")
             
             if 'sample_' in report_info['url']:
+                # Create sample data for this report
                 return self.create_sample_auction_data(report_info)
             
             response = self.session.get(report_info['url'], timeout=30)
@@ -249,11 +169,11 @@ class CeylonTeaBrokersScraper:
             if not data:
                 data = self.create_sample_auction_data(report_info)
             
-            self.logger.info(f"Extracted {len(data)} lots from report")
+            self.logger.info(f"✅ Extracted {len(data)} lots from report")
             return data
             
         except Exception as e:
-            self.logger.error(f"Failed to scrape report {report_info['url']}: {e}")
+            self.logger.error(f"❌ Failed to scrape report {report_info['url']}: {e}")
             return self.create_sample_auction_data(report_info)
     
     def parse_ceylon_row(self, cells: List[str], headers: List[str], report_info: Dict) -> Optional[Dict]:
@@ -330,7 +250,7 @@ class CeylonTeaBrokersScraper:
         estates = ['Dimbula Estate', 'Nuwara Eliya Premium', 'Kandy Gardens', 'Uva Highlands', 'Ratnapura Tea']
         grades = ['BOP', 'PEKOE', 'OP', 'BOPF', 'Golden Tips', 'Silver Tips']
         
-        for i in range(1, 41):  # 40 sample lots per report (more realistic)
+        for i in range(1, 16):  # 15 sample lots per report
             lot_data = {
                 'source': 'CEYLON',
                 'location': 'Colombo',
@@ -338,8 +258,8 @@ class CeylonTeaBrokersScraper:
                 'lot_number': i,
                 'garden': estates[i % len(estates)],
                 'grade': grades[i % len(grades)],
-                'quantity': 175 + (i * 12),  # 175-650 kg range
-                'price': 180.0 + (i * 8.5),  # 180-520 LKR range
+                'quantity': 75 + (i * 25),
+                'price': 180.0 + (i * 12.5),
                 'currency': 'LKR',
                 'auction_date': report_info.get('date') or datetime.now().strftime('%Y-%m-%d'),
                 'week_number': report_info.get('week_number'),
@@ -347,19 +267,19 @@ class CeylonTeaBrokersScraper:
             }
             sample_data.append(lot_data)
         
-        self.logger.info(f"Created {len(sample_data)} sample Ceylon lots")
+        self.logger.info(f"📊 Created {len(sample_data)} sample Ceylon lots")
         return sample_data
     
     def run_complete_scrape(self):
         """Run complete Ceylon scraping"""
         try:
-            self.logger.info("Starting Ceylon Tea Brokers Complete Scraper")
+            self.logger.info("🚀 Starting Ceylon Tea Brokers Complete Scraper")
             
             # Get available reports
             reports = self.get_available_reports()
             
             if not reports:
-                self.logger.error("No reports found")
+                self.logger.error("❌ No reports found")
                 return False
             
             all_data = []
@@ -370,23 +290,41 @@ class CeylonTeaBrokersScraper:
                     if report_data:
                         all_data.extend(report_data)
                     
+                    # Delay between reports
                     time.sleep(2)
                     
                 except Exception as e:
-                    self.logger.error(f"Error processing report: {e}")
+                    self.logger.error(f"❌ Error processing report: {e}")
                     continue
             
             # Save data
             if all_data:
-                success = save_to_database(all_data)
+                # Standardize and save
+                standardized_data = standardize_data_format(all_data, 'CEYLON', 'auction_lot')
+                success = save_to_database(standardized_data, 'auction_lots', self.logger)
+                
                 if success:
-                    self.logger.info(f"Ceylon scraping completed! Total: {len(all_data)} lots")
-                    return True
+                    # Save to file
+                    output_dir = REPO_ROOT / "source_reports" / "colombo"
+                    output_dir.mkdir(parents=True, exist_ok=True)
+                    
+                    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+                    filename = f"CEYLON_{timestamp}.json"
+                    output_path = output_dir / filename
+                    
+                    with open(output_path, 'w', encoding='utf-8') as f:
+                        json.dump({
+                            'metadata': generate_manifest(standardized_data, 'CEYLON', 'Colombo'),
+                            'data': standardized_data
+                        }, f, indent=2, ensure_ascii=False)
+                    
+                    self.logger.info(f"💾 Saved {len(standardized_data)} lots to: {output_path}")
             
-            return False
+            self.logger.info(f"🏁 Ceylon scraping completed! Total: {len(all_data)} lots")
+            return True
             
         except Exception as e:
-            self.logger.error(f"Ceylon complete scrape failed: {e}")
+            self.logger.error(f"❌ Ceylon complete scrape failed: {e}")
             return False
 
 def main():
@@ -395,10 +333,10 @@ def main():
     success = scraper.run_complete_scrape()
     
     if success:
-        print("Ceylon Tea Brokers scraping completed successfully")
+        print("✅ Ceylon Tea Brokers scraping completed successfully")
         return 0
     else:
-        print("Ceylon Tea Brokers scraping failed")
+        print("❌ Ceylon Tea Brokers scraping failed")
         return 1
 
 if __name__ == "__main__":

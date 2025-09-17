@@ -1,0 +1,12 @@
+2025-09-14 22:09:36,756 - FORBES - INFO - 🚀 Starting Forbes Tea COMPLETE scraping
+2025-09-14 22:09:36,757 - FORBES - INFO - 📅 Fetching available auction dates
+2025-09-14 22:09:38,542 - FORBES - ERROR - ❌ Error fetching auction dates: 404 Client Error: Not Found for url: https://web.forbestea.com/auction-results
+2025-09-14 22:09:38,543 - FORBES - WARNING - ⚠️ No auction dates found
+2025-09-14 22:10:13,055 - FORBES - INFO - 🚀 Starting Forbes Tea COMPLETE scraping
+2025-09-14 22:10:13,056 - FORBES - INFO - 📅 Fetching available auction dates
+2025-09-14 22:10:14,408 - FORBES - ERROR - ❌ Error fetching auction dates: 404 Client Error: Not Found for url: https://web.forbestea.com/auction-results
+2025-09-14 22:10:14,409 - FORBES - WARNING - ⚠️ No auction dates found
+2025-09-14 22:10:57,087 - FORBES - INFO - 🚀 Starting Forbes Tea COMPLETE scraping
+2025-09-14 22:10:57,090 - FORBES - INFO - 📅 Fetching available auction dates
+2025-09-14 22:10:59,098 - FORBES - ERROR - ❌ Error fetching auction dates: 404 Client Error: Not Found for url: https://web.forbestea.com/auction-results
+2025-09-14 22:10:59,099 - FORBES - WARNING - ⚠️ No auction dates found

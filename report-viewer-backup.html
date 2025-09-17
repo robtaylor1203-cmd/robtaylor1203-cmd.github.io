@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Report Viewer - TeaTrade</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="market-reports-page">
+    <header class="site-header">
+        <div class="header-top-bar">
+            <a href="corporate.html" class="header-logo"><h1>Tea<span>Trade</span></h1></a>
+            <div class="header-search-wrapper">
+                <input type="text" class="header-search-bar" placeholder="Global site search...">
+            </div>
+            <div class="user-actions">
+                <a href="#" title="Create Account">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </a>
+                <a href="#" title="Sign In">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                        <polyline points="10,17 15,12 10,7"></polyline>
+                        <line x1="15" y1="12" x2="3" y2="12"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <nav class="secondary-nav">
+            <ul>
+                <li><a href="data.html">Data</a></li>
+                <li><a href="market-reports.html" class="active">Market Reports</a></li>
+                <li><a href="#">Auctions</a></li>
+                <li><a href="visuals.html">Visuals</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-container">
+        <h2 id="report-title">Loading Report...</h2>
+        <div id="report-content">
+            <p id="loading-message">Loading report data...</p>
+            <div id="report-details" style="display: none;">
+                <!-- Report content will be populated here -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const params = new URLSearchParams(window.location.search);
+            const dataset = params.get('dataset');
+            
+            console.log('Dataset parameter:', dataset);
+            
+            if (!dataset) {
+                document.getElementById('report-title').textContent = 'Error: No dataset specified';
+                document.getElementById('loading-message').innerHTML = '<p style="color:red;">Please provide a dataset parameter.</p>';
+                return;
+            }
+
+            const dataFile = `Data/Consolidated/${dataset}.json`;
+            console.log('Loading data file:', dataFile);
+
+            try {
+                const response = await fetch(dataFile);
+                console.log('Response status:', response.status, response.statusText);
+                
+                if (!response.ok) {
+                    throw new Error(`Failed to load report: HTTP ${response.status} - ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                console.log('Report data loaded successfully');
+                displayReport(data);
+            } catch (error) {
+                console.error('Error loading report:', error);
+                document.getElementById('report-title').textContent = 'Error Loading Report';
+                document.getElementById('loading-message').innerHTML = `
+                    <div style="color:red; padding: 20px; border: 1px solid #red; border-radius: 5px;">
+                        <h3>Report Loading Failed</h3>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                        <p><strong>Dataset:</strong> ${dataset}</p>
+                        <p><strong>File Path:</strong> ${dataFile}</p>
+                        <p><strong>Debug Steps:</strong></p>
+                        <ol>
+                            <li>Check if the file exists: <code>ls -la ${dataFile}</code></li>
+                            <li>Test file access: <code>curl -s http://localhost:8000/${dataFile} | head -5</code></li>
+                            <li>Check browser console for detailed error messages</li>
+                        </ol>
+                    </div>
+                `;
+            }
+        });
+
+        function displayReport(data) {
+            const metadata = data.metadata || {};
+            const summary = data.summary || {};
+
+            // Update title
+            document.getElementById('report-title').textContent = 
+                metadata.report_title || `${metadata.auction_centre} Market Report - Week ${metadata.week_number}, ${metadata.year}`;
+
+            // Display report summary
+            const reportHtml = `
+                <div style="background:#f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                    <h3>Report Successfully Loaded! ✅</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+                        <div><strong>Centre:</strong> ${metadata.auction_centre || 'N/A'}</div>
+                        <div><strong>Week:</strong> ${metadata.week_number || 'N/A'}</div>
+                        <div><strong>Year:</strong> ${metadata.year || 'N/A'}</div>
+                        <div><strong>Currency:</strong> ${metadata.currency || 'N/A'}</div>
+                        <div><strong>Total Lots:</strong> ${summary.total_lots || 'N/A'}</div>
+                        <div><strong>Offered (kg):</strong> ${summary.total_offered_kg ? summary.total_offered_kg.toLocaleString() : 'N/A'}</div>
+                        <div><strong>Sold (kg):</strong> ${summary.total_sold_kg ? summary.total_sold_kg.toLocaleString() : 'N/A'}</div>
+                        <div><strong>Avg Price:</strong> ${summary.auction_average_price || 'N/A'}</div>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <strong>Market Comment:</strong><br>
+                        ${summary.market_comment || summary.commentary_synthesized || 'No commentary available.'}
+                    </div>
+                </div>
+                <div style="margin-top: 30px;">
+                    <h3>Next Steps</h3>
+                    <p>✅ Report data is loading successfully!</p>
+                    <p>🎯 <strong>TODO:</strong> Implement full report visualization with charts, tables, and interactive elements.</p>
+                    <p>📊 This data contains: ${Object.keys(data).join(', ')}</p>
+                </div>
+            `;
+
+            document.getElementById('loading-message').style.display = 'none';
+            document.getElementById('report-details').innerHTML = reportHtml;
+            document.getElementById('report-details').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
