@@ -40,7 +40,21 @@ jobs:
         mkdir -p Data/Consolidated
         mkdir -p automation/logs
         
-    - name: Run scraper system
+    - name: Run individual scrapers
+      run: |
+        echo "Running Ceylon scraper..."
+        timeout 1800 python3 scrape_CTB_marketreport.py || echo "Ceylon scraper completed/timeout"
+        
+        echo "Running Forbes production scraper..."
+        timeout 1800 python3 scrape_FW_monthlyproduction_ocr.py || echo "Forbes production scraper completed/timeout"
+        
+        echo "Running Mombasa processor..."
+        timeout 1800 python3 process_mombasa_inbox.py || echo "Mombasa processor completed/timeout"
+        
+        echo "Running J Thomas district averages..."
+        timeout 1800 python3 scrape_JT_districtaverages.py || echo "JT district averages completed/timeout"
+        
+    - name: Run data aggregation
       run: |
         cd automation
         timeout 5400 python3 teatrade_aggregator_robust.py || echo "Aggregator completed with timeout"
