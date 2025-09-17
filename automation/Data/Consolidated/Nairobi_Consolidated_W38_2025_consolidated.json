@@ -1,0 +1,685 @@
+{
+  "metadata": {
+    "report_title": "Nairobi TeaTrade Market Report",
+    "auction_centre": "Nairobi",
+    "week_number": 38,
+    "year": 2025,
+    "currency": "KES",
+    "report_type": "consolidated",
+    "generated_at": "2025-09-17T08:19:35.644372",
+    "source_files": [
+      "nairobi_sample_data.json"
+    ]
+  },
+  "auction_lots": [
+    {
+      "lot_number": "001",
+      "garden": "Nairobi Estate 1",
+      "grade": "BP1",
+      "packages": 40,
+      "net_weight_kg": 2000,
+      "price_per_kg": 330,
+      "buyer": "Buyer_1"
+    },
+    {
+      "lot_number": "002",
+      "garden": "Nairobi Estate 2",
+      "grade": "PF1",
+      "packages": 48,
+      "net_weight_kg": 2400,
+      "price_per_kg": 365,
+      "buyer": "Buyer_2"
+    },
+    {
+      "lot_number": "003",
+      "garden": "Nairobi Estate 3",
+      "grade": "PEKOE",
+      "packages": 56,
+      "net_weight_kg": 2800,
+      "price_per_kg": 400,
+      "buyer": "Buyer_3"
+    },
+    {
+      "lot_number": "004",
+      "garden": "Nairobi Estate 4",
+      "grade": "OP",
+      "packages": 64,
+      "net_weight_kg": 3200,
+      "price_per_kg": 435,
+      "buyer": "Buyer_4"
+    },
+    {
+      "lot_number": "005",
+      "garden": "Nairobi Estate 5",
+      "grade": "FBOP",
+      "packages": 72,
+      "net_weight_kg": 3600,
+      "price_per_kg": 470,
+      "buyer": "Buyer_5"
+    },
+    {
+      "lot_number": "006",
+      "garden": "Nairobi Estate 6",
+      "grade": "DUST",
+      "packages": 80,
+      "net_weight_kg": 4000,
+      "price_per_kg": 505,
+      "buyer": "Buyer_6"
+    },
+    {
+      "lot_number": "007",
+      "garden": "Nairobi Estate 7",
+      "grade": "BP1",
+      "packages": 88,
+      "net_weight_kg": 4400,
+      "price_per_kg": 540,
+      "buyer": "Buyer_7"
+    },
+    {
+      "lot_number": "008",
+      "garden": "Nairobi Estate 8",
+      "grade": "PF1",
+      "packages": 96,
+      "net_weight_kg": 4800,
+      "price_per_kg": 575,
+      "buyer": "Buyer_8"
+    },
+    {
+      "lot_number": "009",
+      "garden": "Nairobi Estate 1",
+      "grade": "PEKOE",
+      "packages": 104,
+      "net_weight_kg": 5200,
+      "price_per_kg": 610,
+      "buyer": "Buyer_1"
+    },
+    {
+      "lot_number": "010",
+      "garden": "Nairobi Estate 2",
+      "grade": "OP",
+      "packages": 112,
+      "net_weight_kg": 5600,
+      "price_per_kg": 645,
+      "buyer": "Buyer_2"
+    },
+    {
+      "lot_number": "011",
+      "garden": "Nairobi Estate 3",
+      "grade": "FBOP",
+      "packages": 120,
+      "net_weight_kg": 6000,
+      "price_per_kg": 480,
+      "buyer": "Buyer_3"
+    },
+    {
+      "lot_number": "012",
+      "garden": "Nairobi Estate 4",
+      "grade": "DUST",
+      "packages": 128,
+      "net_weight_kg": 6400,
+      "price_per_kg": 515,
+      "buyer": "Buyer_4"
+    },
+    {
+      "lot_number": "013",
+      "garden": "Nairobi Estate 5",
+      "grade": "BP1",
+      "packages": 136,
+      "net_weight_kg": 6800,
+      "price_per_kg": 550,
+      "buyer": "Buyer_5"
+    },
+    {
+      "lot_number": "014",
+      "garden": "Nairobi Estate 6",
+      "grade": "PF1",
+      "packages": 144,
+      "net_weight_kg": 7200,
+      "price_per_kg": 585,
+      "buyer": "Buyer_6"
+    },
+    {
+      "lot_number": "015",
+      "garden": "Nairobi Estate 7",
+      "grade": "PEKOE",
+      "packages": 152,
+      "net_weight_kg": 7600,
+      "price_per_kg": 620,
+      "buyer": "Buyer_7"
+    },
+    {
+      "lot_number": "016",
+      "garden": "Nairobi Estate 8",
+      "grade": "OP",
+      "packages": 160,
+      "net_weight_kg": 8000,
+      "price_per_kg": 655,
+      "buyer": "Buyer_8"
+    },
+    {
+      "lot_number": "017",
+      "garden": "Nairobi Estate 1",
+      "grade": "FBOP",
+      "packages": 168,
+      "net_weight_kg": 8400,
+      "price_per_kg": 690,
+      "buyer": "Buyer_1"
+    },
+    {
+      "lot_number": "018",
+      "garden": "Nairobi Estate 2",
+      "grade": "DUST",
+      "packages": 176,
+      "net_weight_kg": 8800,
+      "price_per_kg": 725,
+      "buyer": "Buyer_2"
+    },
+    {
+      "lot_number": "019",
+      "garden": "Nairobi Estate 3",
+      "grade": "BP1",
+      "packages": 184,
+      "net_weight_kg": 9200,
+      "price_per_kg": 760,
+      "buyer": "Buyer_3"
+    },
+    {
+      "lot_number": "020",
+      "garden": "Nairobi Estate 4",
+      "grade": "PF1",
+      "packages": 192,
+      "net_weight_kg": 9600,
+      "price_per_kg": 795,
+      "buyer": "Buyer_4"
+    }
+  ],
+  "summary": {
+    "total_lots": 20,
+    "total_packages": 2320,
+    "total_offered_kg": 116000,
+    "total_sold_kg": 116000,
+    "auction_average_price": 562.5,
+    "highest_price": 795,
+    "lowest_price": 330,
+    "market_comment": "Strong trading session with 20 lots offered. Active participation across all grades.",
+    "commentary_synthesized": "Market showed robust activity with substantial offering of 116,000 kg across diverse grade range. Quality premiums evident with price range of 330-795 per kg."
+  },
+  "volume_analysis": {
+    "by_grade_summary": {
+      "BP1": {
+        "lots": 4,
+        "packages": 448,
+        "weight_kg": 22400
+      },
+      "PF1": {
+        "lots": 4,
+        "packages": 480,
+        "weight_kg": 24000
+      },
+      "PEKOE": {
+        "lots": 3,
+        "packages": 312,
+        "weight_kg": 15600
+      },
+      "OP": {
+        "lots": 3,
+        "packages": 336,
+        "weight_kg": 16800
+      },
+      "FBOP": {
+        "lots": 3,
+        "packages": 360,
+        "weight_kg": 18000
+      },
+      "DUST": {
+        "lots": 3,
+        "packages": 384,
+        "weight_kg": 19200
+      }
+    },
+    "by_grade_detailed": [
+      {
+        "grade": "BP1",
+        "lot_count": 4,
+        "total_packages": 448,
+        "total_weight_kg": 22400,
+        "percentage_of_offering": 19.3
+      },
+      {
+        "grade": "PF1",
+        "lot_count": 4,
+        "total_packages": 480,
+        "total_weight_kg": 24000,
+        "percentage_of_offering": 20.7
+      },
+      {
+        "grade": "PEKOE",
+        "lot_count": 3,
+        "total_packages": 312,
+        "total_weight_kg": 15600,
+        "percentage_of_offering": 13.4
+      },
+      {
+        "grade": "OP",
+        "lot_count": 3,
+        "total_packages": 336,
+        "total_weight_kg": 16800,
+        "percentage_of_offering": 14.5
+      },
+      {
+        "grade": "FBOP",
+        "lot_count": 3,
+        "total_packages": 360,
+        "total_weight_kg": 18000,
+        "percentage_of_offering": 15.5
+      },
+      {
+        "grade": "DUST",
+        "lot_count": 3,
+        "total_packages": 384,
+        "total_weight_kg": 19200,
+        "percentage_of_offering": 16.6
+      }
+    ]
+  },
+  "price_analysis": {
+    "by_grade": {
+      "BP1": {
+        "average": 545.0,
+        "highest": 760,
+        "lowest": 330,
+        "lot_count": 4
+      },
+      "PF1": {
+        "average": 580.0,
+        "highest": 795,
+        "lowest": 365,
+        "lot_count": 4
+      },
+      "PEKOE": {
+        "average": 543.33,
+        "highest": 620,
+        "lowest": 400,
+        "lot_count": 3
+      },
+      "OP": {
+        "average": 578.33,
+        "highest": 655,
+        "lowest": 435,
+        "lot_count": 3
+      },
+      "FBOP": {
+        "average": 546.67,
+        "highest": 690,
+        "lowest": 470,
+        "lot_count": 3
+      },
+      "DUST": {
+        "average": 581.67,
+        "highest": 725,
+        "lowest": 505,
+        "lot_count": 3
+      }
+    },
+    "overall_range": {
+      "highest": 795,
+      "lowest": 330
+    }
+  },
+  "market_intelligence": {
+    "executive_commentary": "Nairobi market demonstrated steady trading conditions. Substantial offering of 116,000 kg indicates strong regional production. Quality premiums evident across 6 grade categories.",
+    "detailed_analysis": "Market dynamics reflect regional production patterns. Average pricing of 562 per kg indicates balanced demand sentiment. Buyer participation across grade categories suggests active market engagement.",
+    "volume_insights": "Substantial offering of 116,000 kg indicates strong regional production",
+    "quality_assessment": "Average pricing of 562 indicates balanced market conditions"
+  },
+  "weather_analysis": {
+    "current_conditions": "Highland conditions with cool temperatures benefiting quality production",
+    "impact_assessment": "Elevation and climate combination producing premium grade characteristics",
+    "seasonal_outlook": "Seasonal patterns favorable for sustained quality output"
+  },
+  "forecast_analysis": {
+    "supply_dynamics": "Steady supply conditions with production aligned to seasonal patterns",
+    "price_trends": "Premium pricing environment reflecting current market fundamentals",
+    "demand_indicators": "Export and domestic demand maintaining balanced absorption",
+    "opportunities": "Quality premiums available for superior leaf grades and processing standards"
+  },
+  "buyer_activity": {
+    "active_buyers": 8,
+    "buyer_summary": [
+      {
+        "buyer_name": "Buyer_1",
+        "lots_purchased": 3,
+        "total_packages": 312,
+        "average_price": 543.33
+      },
+      {
+        "buyer_name": "Buyer_2",
+        "lots_purchased": 3,
+        "total_packages": 336,
+        "average_price": 578.33
+      },
+      {
+        "buyer_name": "Buyer_3",
+        "lots_purchased": 3,
+        "total_packages": 360,
+        "average_price": 546.67
+      },
+      {
+        "buyer_name": "Buyer_4",
+        "lots_purchased": 3,
+        "total_packages": 384,
+        "average_price": 581.67
+      },
+      {
+        "buyer_name": "Buyer_5",
+        "lots_purchased": 2,
+        "total_packages": 208,
+        "average_price": 510.0
+      },
+      {
+        "buyer_name": "Buyer_6",
+        "lots_purchased": 2,
+        "total_packages": 224,
+        "average_price": 545.0
+      },
+      {
+        "buyer_name": "Buyer_7",
+        "lots_purchased": 2,
+        "total_packages": 240,
+        "average_price": 580.0
+      },
+      {
+        "buyer_name": "Buyer_8",
+        "lots_purchased": 2,
+        "total_packages": 256,
+        "average_price": 615.0
+      }
+    ],
+    "participation_level": "Limited"
+  },
+  "factory_performance": {
+    "top_performers": [
+      {
+        "garden_name": "Nairobi Estate 8",
+        "lots_offered": 2,
+        "total_packages": 256,
+        "average_price": 615.0,
+        "total_value": 8000000
+      },
+      {
+        "garden_name": "Nairobi Estate 4",
+        "lots_offered": 3,
+        "total_packages": 384,
+        "average_price": 581.67,
+        "total_value": 12320000
+      },
+      {
+        "garden_name": "Nairobi Estate 7",
+        "lots_offered": 2,
+        "total_packages": 240,
+        "average_price": 580.0,
+        "total_value": 7088000
+      },
+      {
+        "garden_name": "Nairobi Estate 2",
+        "lots_offered": 3,
+        "total_packages": 336,
+        "average_price": 578.33,
+        "total_value": 10868000
+      },
+      {
+        "garden_name": "Nairobi Estate 3",
+        "lots_offered": 3,
+        "total_packages": 360,
+        "average_price": 546.67,
+        "total_value": 10992000
+      },
+      {
+        "garden_name": "Nairobi Estate 6",
+        "lots_offered": 2,
+        "total_packages": 224,
+        "average_price": 545.0,
+        "total_value": 6232000
+      },
+      {
+        "garden_name": "Nairobi Estate 1",
+        "lots_offered": 3,
+        "total_packages": 312,
+        "average_price": 543.33,
+        "total_value": 9628000
+      },
+      {
+        "garden_name": "Nairobi Estate 5",
+        "lots_offered": 2,
+        "total_packages": 208,
+        "average_price": 510.0,
+        "total_value": 5432000
+      }
+    ],
+    "total_gardens": 8
+  },
+  "price_quotations": {
+    "grade_quotations": [
+      {
+        "grade": "DUST",
+        "price_range": "505 - 725",
+        "average": 581.67,
+        "lots": 3
+      },
+      {
+        "grade": "PF1",
+        "price_range": "365 - 795",
+        "average": 580.0,
+        "lots": 4
+      },
+      {
+        "grade": "OP",
+        "price_range": "435 - 655",
+        "average": 578.33,
+        "lots": 3
+      },
+      {
+        "grade": "FBOP",
+        "price_range": "470 - 690",
+        "average": 546.67,
+        "lots": 3
+      },
+      {
+        "grade": "BP1",
+        "price_range": "330 - 760",
+        "average": 545.0,
+        "lots": 4
+      },
+      {
+        "grade": "PEKOE",
+        "price_range": "400 - 620",
+        "average": 543.33,
+        "lots": 3
+      }
+    ]
+  },
+  "interactive_data": {
+    "raw_lots": [
+      {
+        "lot_number": "001",
+        "garden": "Nairobi Estate 1",
+        "grade": "BP1",
+        "packages": 40,
+        "net_weight_kg": 2000,
+        "price_per_kg": 330,
+        "buyer": "Buyer_1"
+      },
+      {
+        "lot_number": "002",
+        "garden": "Nairobi Estate 2",
+        "grade": "PF1",
+        "packages": 48,
+        "net_weight_kg": 2400,
+        "price_per_kg": 365,
+        "buyer": "Buyer_2"
+      },
+      {
+        "lot_number": "003",
+        "garden": "Nairobi Estate 3",
+        "grade": "PEKOE",
+        "packages": 56,
+        "net_weight_kg": 2800,
+        "price_per_kg": 400,
+        "buyer": "Buyer_3"
+      },
+      {
+        "lot_number": "004",
+        "garden": "Nairobi Estate 4",
+        "grade": "OP",
+        "packages": 64,
+        "net_weight_kg": 3200,
+        "price_per_kg": 435,
+        "buyer": "Buyer_4"
+      },
+      {
+        "lot_number": "005",
+        "garden": "Nairobi Estate 5",
+        "grade": "FBOP",
+        "packages": 72,
+        "net_weight_kg": 3600,
+        "price_per_kg": 470,
+        "buyer": "Buyer_5"
+      },
+      {
+        "lot_number": "006",
+        "garden": "Nairobi Estate 6",
+        "grade": "DUST",
+        "packages": 80,
+        "net_weight_kg": 4000,
+        "price_per_kg": 505,
+        "buyer": "Buyer_6"
+      },
+      {
+        "lot_number": "007",
+        "garden": "Nairobi Estate 7",
+        "grade": "BP1",
+        "packages": 88,
+        "net_weight_kg": 4400,
+        "price_per_kg": 540,
+        "buyer": "Buyer_7"
+      },
+      {
+        "lot_number": "008",
+        "garden": "Nairobi Estate 8",
+        "grade": "PF1",
+        "packages": 96,
+        "net_weight_kg": 4800,
+        "price_per_kg": 575,
+        "buyer": "Buyer_8"
+      },
+      {
+        "lot_number": "009",
+        "garden": "Nairobi Estate 1",
+        "grade": "PEKOE",
+        "packages": 104,
+        "net_weight_kg": 5200,
+        "price_per_kg": 610,
+        "buyer": "Buyer_1"
+      },
+      {
+        "lot_number": "010",
+        "garden": "Nairobi Estate 2",
+        "grade": "OP",
+        "packages": 112,
+        "net_weight_kg": 5600,
+        "price_per_kg": 645,
+        "buyer": "Buyer_2"
+      },
+      {
+        "lot_number": "011",
+        "garden": "Nairobi Estate 3",
+        "grade": "FBOP",
+        "packages": 120,
+        "net_weight_kg": 6000,
+        "price_per_kg": 480,
+        "buyer": "Buyer_3"
+      },
+      {
+        "lot_number": "012",
+        "garden": "Nairobi Estate 4",
+        "grade": "DUST",
+        "packages": 128,
+        "net_weight_kg": 6400,
+        "price_per_kg": 515,
+        "buyer": "Buyer_4"
+      },
+      {
+        "lot_number": "013",
+        "garden": "Nairobi Estate 5",
+        "grade": "BP1",
+        "packages": 136,
+        "net_weight_kg": 6800,
+        "price_per_kg": 550,
+        "buyer": "Buyer_5"
+      },
+      {
+        "lot_number": "014",
+        "garden": "Nairobi Estate 6",
+        "grade": "PF1",
+        "packages": 144,
+        "net_weight_kg": 7200,
+        "price_per_kg": 585,
+        "buyer": "Buyer_6"
+      },
+      {
+        "lot_number": "015",
+        "garden": "Nairobi Estate 7",
+        "grade": "PEKOE",
+        "packages": 152,
+        "net_weight_kg": 7600,
+        "price_per_kg": 620,
+        "buyer": "Buyer_7"
+      },
+      {
+        "lot_number": "016",
+        "garden": "Nairobi Estate 8",
+        "grade": "OP",
+        "packages": 160,
+        "net_weight_kg": 8000,
+        "price_per_kg": 655,
+        "buyer": "Buyer_8"
+      },
+      {
+        "lot_number": "017",
+        "garden": "Nairobi Estate 1",
+        "grade": "FBOP",
+        "packages": 168,
+        "net_weight_kg": 8400,
+        "price_per_kg": 690,
+        "buyer": "Buyer_1"
+      },
+      {
+        "lot_number": "018",
+        "garden": "Nairobi Estate 2",
+        "grade": "DUST",
+        "packages": 176,
+        "net_weight_kg": 8800,
+        "price_per_kg": 725,
+        "buyer": "Buyer_2"
+      },
+      {
+        "lot_number": "019",
+        "garden": "Nairobi Estate 3",
+        "grade": "BP1",
+        "packages": 184,
+        "net_weight_kg": 9200,
+        "price_per_kg": 760,
+        "buyer": "Buyer_3"
+      },
+      {
+        "lot_number": "020",
+        "garden": "Nairobi Estate 4",
+        "grade": "PF1",
+        "packages": 192,
+        "net_weight_kg": 9600,
+        "price_per_kg": 795,
+        "buyer": "Buyer_4"
+      }
+    ]
+  }
+}

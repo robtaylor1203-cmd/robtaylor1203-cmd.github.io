@@ -1,0 +1,35 @@
+[
+  {
+    "title": "Colombo TeaTrade Market Report",
+    "description": "Individual auction analysis for Colombo Week 38, 2025 with 25 lots offered totaling 170,000 kg",
+    "year": 2025,
+    "week_number": 38,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade",
+    "report_link": "report-viewer.html?dataset=Colombo_Consolidated_W38_2025_consolidated",
+    "highlight": true,
+    "report_type": "individual_auction"
+  },
+  {
+    "title": "Mombasa TeaTrade Market Report",
+    "description": "Individual auction analysis for Mombasa Week 38, 2025 with 30 lots offered totaling 234,000 kg",
+    "year": 2025,
+    "week_number": 38,
+    "auction_centre": "Mombasa",
+    "source": "TeaTrade",
+    "report_link": "report-viewer.html?dataset=Mombasa_Consolidated_W38_2025_consolidated",
+    "highlight": true,
+    "report_type": "individual_auction"
+  },
+  {
+    "title": "Nairobi TeaTrade Market Report",
+    "description": "Individual auction analysis for Nairobi Week 38, 2025 with 20 lots offered totaling 116,000 kg",
+    "year": 2025,
+    "week_number": 38,
+    "auction_centre": "Nairobi",
+    "source": "TeaTrade",
+    "report_link": "report-viewer.html?dataset=Nairobi_Consolidated_W38_2025_consolidated",
+    "highlight": true,
+    "report_type": "individual_auction"
+  }
+]
