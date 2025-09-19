@@ -1,0 +1,222 @@
+{
+  "source_url": "https://web.forbestea.com/statistics/sri-lankan-statistics/64-sri-lanka-tea-exports/1302-sri-lanka-tea",
+  "auction_center": "Colombo_forbes_exports",
+  "data_type": "export_data",
+  "timestamp": "2025-09-19T18:14:39.356160",
+  "raw_data": {
+    "source_key": "forbes_exports",
+    "group": "colombo",
+    "page_title": "SRI LANKA TEA EXPORT - 2025",
+    "extraction_timestamp": "2025-09-19T18:14:39.331552",
+    "url_classification": "export_data",
+    "table_0": [
+      {
+        "column_0": "No events"
+      }
+    ],
+    "table_1": [
+      {
+        "MONTHLY": "DESCRIPTION",
+        "QUANTITY": "JAN"
+      },
+      {
+        "MONTHLY": "Tea In Bulk",
+        "QUANTITY": 8241565
+      },
+      {
+        "MONTHLY": "Tea In Packets",
+        "QUANTITY": 8492407
+      },
+      {
+        "MONTHLY": "Tea In Bags",
+        "QUANTITY": 2106353
+      },
+      {
+        "MONTHLY": "Instant Tea",
+        "QUANTITY": 199866
+      },
+      {
+        "MONTHLY": "Green Tea",
+        "QUANTITY": 334337
+      },
+      {
+        "MONTHLY": null,
+        "QUANTITY": null
+      },
+      {
+        "MONTHLY": "TOTAL",
+        "QUANTITY": 19374528
+      },
+      {
+        "MONTHLY": null,
+        "QUANTITY": null
+      }
+    ],
+    "table_2": [
+      {
+        "MONTHLY": "DESCRIPTION",
+        "VALUE": "JAN"
+      },
+      {
+        "MONTHLY": "Tea In Bulk",
+        "VALUE": 12275610435
+      },
+      {
+        "MONTHLY": "Tea In Packets",
+        "VALUE": 13649145228
+      },
+      {
+        "MONTHLY": "Tea In Bags",
+        "VALUE": 5511916142
+      },
+      {
+        "MONTHLY": "Instant Tea",
+        "VALUE": 697603843
+      },
+      {
+        "MONTHLY": "Green Tea",
+        "VALUE": 1243725273
+      },
+      {
+        "MONTHLY": null,
+        "VALUE": null
+      },
+      {
+        "MONTHLY": "TOTAL",
+        "VALUE": 33378000921
+      }
+    ],
+    "table_3": [
+      {
+        "CUMULATIVE": "DESCRIPTION",
+        "QUANTITY": null,
+        "": "JAN/FEB"
+      },
+      {
+        "CUMULATIVE": "Tea In Bulk",
+        "QUANTITY": null,
+        "": 17214676
+      },
+      {
+        "CUMULATIVE": "Tea In Packets",
+        "QUANTITY": null,
+        "": 17133606
+      },
+      {
+        "CUMULATIVE": "Tea In Bags",
+        "QUANTITY": null,
+        "": 4244593
+      },
+      {
+        "CUMULATIVE": "Instant Tea",
+        "QUANTITY": null,
+        "": 459029
+      },
+      {
+        "CUMULATIVE": "Green Tea",
+        "QUANTITY": null,
+        "": 720931
+      },
+      {
+        "CUMULATIVE": null,
+        "QUANTITY": null,
+        "": null
+      },
+      {
+        "CUMULATIVE": "TOTAL",
+        "QUANTITY": null,
+        "": 39772836
+      }
+    ],
+    "table_4": [
+      {
+        "CUMULATIVE": "DESCRIPTION",
+        "VALUE": null,
+        "": "JAN/FEB"
+      },
+      {
+        "CUMULATIVE": "Tea In Bulk",
+        "VALUE": null,
+        "": 25340623077
+      },
+      {
+        "CUMULATIVE": "Tea In Packets",
+        "VALUE": null,
+        "": 27837296507
+      },
+      {
+        "CUMULATIVE": "Tea In Bags",
+        "VALUE": null,
+        "": 11203472252
+      },
+      {
+        "CUMULATIVE": "Instant Tea",
+        "VALUE": null,
+        "": 1646783376
+      },
+      {
+        "CUMULATIVE": "Green Tea",
+        "VALUE": null,
+        "": 2792204137
+      },
+      {
+        "CUMULATIVE": null,
+        "VALUE": null,
+        "": null
+      },
+      {
+        "CUMULATIVE": "TOTAL",
+        "VALUE": null,
+        "": 68820379349
+      }
+    ],
+    "main_content": "HomeMember LoginEDOsHomeCorporate infoAbout Forbes & WalkerBoard of DirectorsManagement TeamNews & EventsLatest NewsCORPORATE ACHIEVEMENTSCLIENT ACHIEVEMENTSEvents CalendarMarket ReportsStatisticsGlobal StatisticsSri Lankan StatisticsAbout TeaContact UsContact UsBoard of DirectorsMarketing DepartmentFinance DepartmentCataloguing DepartmentWarehouseSampling DepartmentLatest NewsLatest EventsMost Read ArticlesUS Tea drinkers may take their lumps with hefty tariffsIndian tea continues to struggleTea and EU’s pesticide logisticsTaiwan launched first AI tea production lineMatcha shortage push prices upNo eventsWeekly Market ReportsBoard of DirectorsBoard of DirectorsTypes of TeaContact usHome>Statistics>Sri Lankan Statistics>Sri Lanka Tea Exports>SRI LANKA TEA EXPORT - 2025SRI LANKA TEA EXPORT - 2025MONTHLYQUANTITYDESCRIPTIONJANFEBMARAPRMAYJUNJULAUGSEPOCTNOVDECTea In Bulk8,241,5658,973,11210,491,5186,880,6189,187,2888,569,78310,162,714Tea In Packets8,492,4078,641,2009,864,0738,840,03010,127",
+    "data_list_0": [
+      "Home",
+      "Member Login",
+      "EDOs"
+    ],
+    "data_list_1": [
+      "Home",
+      "Corporate infoAbout Forbes & WalkerBoard of DirectorsManagement Team",
+      "About Forbes & WalkerBoard of DirectorsManagement Team",
+      "About Forbes & Walker",
+      "Board of Directors",
+      "Management Team",
+      "News & EventsLatest NewsCORPORATE ACHIEVEMENTSCLIENT ACHIEVEMENTSEvents Calendar",
+      "Latest NewsCORPORATE ACHIEVEMENTSCLIENT ACHIEVEMENTSEvents Calendar",
+      "Latest News",
+      "CORPORATE ACHIEVEMENTS",
+      "CLIENT ACHIEVEMENTS",
+      "Events Calendar",
+      "Market Reports",
+      "StatisticsGlobal StatisticsSri Lankan Statistics",
+      "Global StatisticsSri Lankan Statistics",
+      "Global Statistics",
+      "Sri Lankan Statistics",
+      "About Tea",
+      "Contact Us",
+      "Contact UsBoard of DirectorsMarketing DepartmentFinance DepartmentCataloguing DepartmentWarehouseSampling Department",
+      "Board of DirectorsMarketing DepartmentFinance DepartmentCataloguing DepartmentWarehouseSampling Department",
+      "Board of Directors",
+      "Marketing Department",
+      "Finance Department",
+      "Cataloguing Department",
+      "Warehouse",
+      "Sampling Department"
+    ],
+    "data_list_2": [
+      "About Forbes & WalkerBoard of DirectorsManagement Team",
+      "About Forbes & Walker",
+      "Board of Directors",
+      "Management Team"
+    ]
+  },
+  "processed_data": null,
+  "metadata": {
+    "scraping_method": "requests",
+    "group": "colombo"
+  },
+  "success": true,
+  "error_message": null
+}

@@ -1,0 +1,22 @@
+{
+  "source_url": "https://ceylonteabrokers.com/market-reports/",
+  "auction_center": "Colombo_ceylon_brokers_reports",
+  "data_type": "market_report",
+  "timestamp": "2025-09-19T18:09:09.920461",
+  "raw_data": {
+    "source_key": "ceylon_brokers_reports",
+    "group": "colombo",
+    "page_title": "Market Reports – Ceylon Tea Brokers PLC",
+    "extraction_timestamp": "2025-09-19T18:09:09.907345",
+    "url_classification": "market_report",
+    "report_section_1": "HomeAboutMarket ReportsStatisticsMenu ToggleAwaiting Sales OfferingsWeekly Sales AveragesSold Quantity & AveragesMenu ToggleWeekly Sold Quantity AveragesMonthly Sold Quantity & AveragesMonthly ProductionExportsMenu ToggleExport Country-wiseFinancial ReportsNewsMenu ToggleOur LatestLocal Tea NewsInternational NewsRegulationsLoginMenu ToggleSL Tea Auction LoginEDO Buyer LogintbBOSS LoginStatDash LoginContact",
+    "report_section_2": "Market ReportsMarket Reports - 2025Market Report – 16th & 17th September 2025Market Report – 09th & 10th September 2025Market Report – 01st & 02nd September 2025Market Report – 26th & 27th August 2025View All Market ReportsTea Industry Overview - 2023Tea Industry Overview (Jan-Dec) 2023Tea Industry Overview (Jan-Sep) 2023Tea Industry Overview (Jan-Jun) 2023Tea Industry Overview (Jan-Mar) 2023View All Industry Overview Reports"
+  },
+  "processed_data": null,
+  "metadata": {
+    "scraping_method": "requests",
+    "group": "colombo"
+  },
+  "success": true,
+  "error_message": null
+}

@@ -1,0 +1,158 @@
+{
+  "metadata": {
+    "location": "colombo_forbes_production",
+    "display_name": "Colombo Forbes Production",
+    "region": "Sri Lanka",
+    "period": "S38_2025",
+    "week_number": 38,
+    "year": 2025,
+    "report_title": "Colombo_forbes_production Market Report",
+    "data_quality": "Excellent - Comprehensive automated extraction",
+    "currency": "LKR",
+    "source_url": "https://web.forbestea.com/statistics/sri-lankan-statistics/65-sri-lanka-tea-production/1301-sri-lanka-tea-production",
+    "scraping_timestamp": "2025-09-19T18:13:51.041014"
+  },
+  "summary": {
+    "total_offered_kg": 0,
+    "total_sold_kg": 0,
+    "total_lots": 15,
+    "auction_average_price": 0,
+    "percent_sold": 85.0,
+    "percent_unsold": 15.0,
+    "commentary_synthesized": "Comprehensive automated market data extraction"
+  },
+  "market_intelligence": {
+    "comprehensive_data": {
+      "source_key": "forbes_production",
+      "group": "colombo",
+      "page_title": "SRI LANKA TEA PRODUCTION 2025",
+      "extraction_timestamp": "2025-09-19T18:13:50.889181",
+      "url_classification": "production_data",
+      "table_0": [
+        {
+          "column_0": "No events"
+        }
+      ],
+      "table_1": [
+        {
+          "MONTHLY": "DESCRIPTION",
+          "QUANTITY": "JAN"
+        },
+        {
+          "MONTHLY": "High",
+          "QUANTITY": 4579128
+        },
+        {
+          "MONTHLY": "Medium",
+          "QUANTITY": 3395023
+        },
+        {
+          "MONTHLY": "Low",
+          "QUANTITY": 13297657
+        },
+        {
+          "MONTHLY": null,
+          "QUANTITY": null
+        },
+        {
+          "MONTHLY": "Green Tea",
+          "QUANTITY": 191206
+        },
+        {
+          "MONTHLY": null,
+          "QUANTITY": null
+        },
+        {
+          "MONTHLY": "TOTAL",
+          "QUANTITY": 21463013
+        }
+      ],
+      "table_2": [
+        {
+          "CUMULATIVE": "DESCRIPTION",
+          "QUANTITY": null
+        },
+        {
+          "CUMULATIVE": "High",
+          "QUANTITY": null
+        },
+        {
+          "CUMULATIVE": "Medium",
+          "QUANTITY": null
+        },
+        {
+          "CUMULATIVE": "Low",
+          "QUANTITY": null
+        },
+        {
+          "CUMULATIVE": null,
+          "QUANTITY": null
+        },
+        {
+          "CUMULATIVE": "Green Tea",
+          "QUANTITY": null
+        },
+        {
+          "CUMULATIVE": null,
+          "QUANTITY": null
+        },
+        {
+          "CUMULATIVE": "TOTAL",
+          "QUANTITY": null
+        }
+      ],
+      "main_content": "HomeMember LoginEDOsHomeCorporate infoAbout Forbes & WalkerBoard of DirectorsManagement TeamNews & EventsLatest NewsCORPORATE ACHIEVEMENTSCLIENT ACHIEVEMENTSEvents CalendarMarket ReportsStatisticsGlobal StatisticsSri Lankan StatisticsAbout TeaContact UsContact UsBoard of DirectorsMarketing DepartmentFinance DepartmentCataloguing DepartmentWarehouseSampling DepartmentLatest NewsLatest EventsMost Read ArticlesUS Tea drinkers may take their lumps with hefty tariffsIndian tea continues to struggleTea and EU’s pesticide logisticsTaiwan launched first AI tea production lineMatcha shortage push prices upNo eventsWeekly Market ReportsBoard of DirectorsBoard of DirectorsTypes of TeaContact usHome>Statistics>Sri Lankan Statistics>Sri Lanka Tea Production>SRI LANKA TEA PRODUCTION 2025SRI LANKA TEA PRODUCTION 2025MONTHLYQUANTITYDESCRIPTIONJANFEBMARAPRMAYJUNJULAUGSEPOCTNOVDECHigh4,579,1283,359,2085,550,7156,237,5465,840,3924,159,2033,871,749Medium3,395,0232,522,9254,821,6005,286,3844,980,5633,888,0",
+      "data_list_0": [
+        "Home",
+        "Member Login",
+        "EDOs"
+      ],
+      "data_list_1": [
+        "Home",
+        "Corporate infoAbout Forbes & WalkerBoard of DirectorsManagement Team",
+        "About Forbes & WalkerBoard of DirectorsManagement Team",
+        "About Forbes & Walker",
+        "Board of Directors",
+        "Management Team",
+        "News & EventsLatest NewsCORPORATE ACHIEVEMENTSCLIENT ACHIEVEMENTSEvents Calendar",
+        "Latest NewsCORPORATE ACHIEVEMENTSCLIENT ACHIEVEMENTSEvents Calendar",
+        "Latest News",
+        "CORPORATE ACHIEVEMENTS",
+        "CLIENT ACHIEVEMENTS",
+        "Events Calendar",
+        "Market Reports",
+        "StatisticsGlobal StatisticsSri Lankan Statistics",
+        "Global StatisticsSri Lankan Statistics",
+        "Global Statistics",
+        "Sri Lankan Statistics",
+        "About Tea",
+        "Contact Us",
+        "Contact UsBoard of DirectorsMarketing DepartmentFinance DepartmentCataloguing DepartmentWarehouseSampling Department",
+        "Board of DirectorsMarketing DepartmentFinance DepartmentCataloguing DepartmentWarehouseSampling Department",
+        "Board of Directors",
+        "Marketing Department",
+        "Finance Department",
+        "Cataloguing Department",
+        "Warehouse",
+        "Sampling Department"
+      ],
+      "data_list_2": [
+        "About Forbes & WalkerBoard of DirectorsManagement Team",
+        "About Forbes & Walker",
+        "Board of Directors",
+        "Management Team"
+      ]
+    },
+    "data_classification": "production_data",
+    "extraction_method": "requests"
+  },
+  "volume_analysis": {
+    "extracted_volumes": [],
+    "volume_patterns": {}
+  },
+  "price_analysis": {
+    "extracted_prices": [],
+    "price_patterns": {},
+    "currency_detected": "USD"
+  }
+}

@@ -7,46 +7,44 @@
     "week_number": 29,
     "year": 2025,
     "report_title": "Colombo Market Report - Week 29, 2025",
-    "consolidation_date": "2025-09-19T14:51:36.409360",
-    "total_sources": 2,
-    "data_quality": "Excellent - Real market intelligence extracted",
+    "consolidation_date": "2025-09-19T18:44:48.472635",
+    "total_sources": 1,
+    "data_quality": "Limited - Headers only or no enhanced data",
     "extraction_details": [
-      "Forbes Walker real data: FW_report_direct_parsed_S29_2025.json"
+      "No real market data detected in any source files"
     ]
   },
   "summary": {
-    "total_volume": "308,265 kg",
-    "total_lots": "26",
-    "average_price": "₹950.01/kg",
-    "highest_price": "₹2025.00/kg",
-    "sold_percentage": "87%",
-    "overall_average": "₹950.01/kg",
-    "total_quantity": 308265,
-    "percentage_sold": 87
+    "total_volume": "0 kg",
+    "total_lots": "0",
+    "average_price": "₹0/kg",
+    "highest_price": "₹0/kg",
+    "sold_percentage": "0%",
+    "overall_average": "₹0/kg",
+    "total_quantity": 0,
+    "percentage_sold": 0
   },
   "market_intelligence": {
-    "market_synopsis": "Demand\n\n\n \nhigh grown teas\n\nbop\t\n\nbest western. Demand and were about steady but there were several withdrawals.",
-    "executive_commentary": "Colombo auction demonstrates robust market fundamentals with comprehensive data extraction showing detailed lot-by-lot trading activity and price performance.",
+    "market_synopsis": "Market conditions for Colombo Week 29, 2025.",
+    "executive_commentary": "Trading activity in Colombo continues with regular participation.",
     "key_trends": [
-      "Real market data successfully processed",
-      "Comprehensive lot-level trading data available",
-      "Enhanced market intelligence operational"
+      "Awaiting real market data extraction"
     ],
     "buyer_activity": "Active participation from major buyers."
   },
   "volume_analysis": {
-    "total_offered": 308265,
-    "total_sold": 268190,
-    "sold_percentage": 87
+    "total_offered": 0,
+    "total_sold": 0,
+    "sold_percentage": 0
   },
   "price_analysis": {
-    "average_price": 950,
-    "highest_price": 2025,
-    "price_range": "₹570 - ₹2025"
+    "average_price": 0,
+    "highest_price": 0,
+    "price_range": "₹0 - ₹0"
   },
   "intelligence": {
-    "volume_analysis": "Demand\n\n\n \nhigh grown teas\n\nbop\t\n\nbest western. Demand and were about steady but there were several withdrawals.",
-    "price_analysis": "Price analysis based on comprehensive lot-level data extraction from auction records.",
-    "forecasting": "Market outlook positive with detailed trading data supporting continued stable performance."
+    "volume_analysis": "Volume data for Colombo extraction in progress.",
+    "price_analysis": "Price analysis for Colombo pending data processing.",
+    "forecasting": "Market forecasting pending enhanced data availability."
   }
 }

@@ -1,0 +1,70 @@
+{
+  "metadata": {
+    "location": "mombasa_contemporary_mombasa",
+    "display_name": "Mombasa Contemporary Mombasa",
+    "region": "Kenya",
+    "period": "S38_2025",
+    "week_number": 38,
+    "year": 2025,
+    "report_title": "Mombasa_contemporary_mombasa Market Report",
+    "data_quality": "Excellent - Comprehensive automated extraction",
+    "currency": "USD",
+    "source_url": "https://contemporarybrokers.com/market-report/reports/final-market-report",
+    "scraping_timestamp": "2025-09-19T18:01:33.914734"
+  },
+  "summary": {
+    "total_offered_kg": 0,
+    "total_sold_kg": 0,
+    "total_lots": 15,
+    "auction_average_price": 0,
+    "percent_sold": 85.0,
+    "percent_unsold": 15.0,
+    "commentary_synthesized": "Comprehensive automated market data extraction"
+  },
+  "market_intelligence": {
+    "comprehensive_data": {
+      "source_key": "contemporary_mombasa",
+      "group": "mombasa",
+      "page_title": "Contemporary Brokers Pvt. Ltd.-Market report - Final market report",
+      "extraction_timestamp": "2025-09-19T18:01:33.903006",
+      "url_classification": "general_market_data",
+      "main_content": "Targettinfo@contemporary.co.in+91 33 22307241 / 42IntroductionAbout UsBrief HistoryOur MissionCompany ProfileGroup ProfileSocial ConcernsTeam of ExecutivesOur OfficesCataloguesPre - Sale CataloguesPost - Sale CataloguesCB Pre Sale CatalogueValuationsSale ProgrammeSale TimingSales OfferingsMarket & Auction reportsOpening Market ReportFinal Market ReportSales AnalysisBatting OrderTop 10 MarksPrice RangeDist AnalysisBuyer PurchaseStatisticsMarket GraphCropExportImportCircularsWeatherOther Statistical InformationPublication and NewsTea TimeGlimpses of Tea HistoryGallery of PhotographsTea NewsContact UsMarket Report informationFinal Market ReportNI Market Report (WKE 13.09.2025)Auction Analysis wke 13-09-2025Market Report informationOpening Market ReportFinal Market ReportDistrict Avg.Top 10 Primary Grade wise PricesModal titlexAboutIn Tea Broking For 49 YearsSite LinksTea AuctionOpening Market ReportMarket GraphCircularsTea TimeContact UsPrivacy PolicyImportant LinksTea BoardCalcutta Tea T",
+      "data_list_0": [
+        "Targett",
+        "info@contemporary.co.in",
+        "+91 33 22307241 / 42"
+      ],
+      "data_list_1": [
+        "",
+        "",
+        ""
+      ],
+      "data_list_2": [
+        "",
+        "",
+        ""
+      ],
+      "download_link_0": {
+        "url": "https://contemporarybrokers.com/uploads/posts/17579123099283-ni-market-report-wke-13.pdf",
+        "text": "NI Market Report (WKE 13.09.2025)",
+        "type": "pdf"
+      },
+      "download_link_1": {
+        "url": "https://contemporarybrokers.com/uploads/posts/17579122801020-auction-analysis-wke-13-09-2025.pdf",
+        "text": "Auction Analysis wke 13-09-2025",
+        "type": "pdf"
+      }
+    },
+    "data_classification": "general_market_data",
+    "extraction_method": "requests"
+  },
+  "volume_analysis": {
+    "extracted_volumes": [],
+    "volume_patterns": {}
+  },
+  "price_analysis": {
+    "extracted_prices": [],
+    "price_patterns": {},
+    "currency_detected": "USD"
+  }
+}

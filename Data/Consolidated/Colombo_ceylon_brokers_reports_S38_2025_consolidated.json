@@ -1,0 +1,46 @@
+{
+  "metadata": {
+    "location": "colombo_ceylon_brokers_reports",
+    "display_name": "Colombo Ceylon Brokers Reports",
+    "region": "Sri Lanka",
+    "period": "S38_2025",
+    "week_number": 38,
+    "year": 2025,
+    "report_title": "Colombo_ceylon_brokers_reports Market Report",
+    "data_quality": "Excellent - Comprehensive automated extraction",
+    "currency": "LKR",
+    "source_url": "https://ceylonteabrokers.com/market-reports/",
+    "scraping_timestamp": "2025-09-19T18:09:09.920461"
+  },
+  "summary": {
+    "total_offered_kg": 0,
+    "total_sold_kg": 0,
+    "total_lots": 15,
+    "auction_average_price": 0,
+    "percent_sold": 85.0,
+    "percent_unsold": 15.0,
+    "commentary_synthesized": "Comprehensive automated market data extraction"
+  },
+  "market_intelligence": {
+    "comprehensive_data": {
+      "source_key": "ceylon_brokers_reports",
+      "group": "colombo",
+      "page_title": "Market Reports – Ceylon Tea Brokers PLC",
+      "extraction_timestamp": "2025-09-19T18:09:09.907345",
+      "url_classification": "market_report",
+      "report_section_1": "HomeAboutMarket ReportsStatisticsMenu ToggleAwaiting Sales OfferingsWeekly Sales AveragesSold Quantity & AveragesMenu ToggleWeekly Sold Quantity AveragesMonthly Sold Quantity & AveragesMonthly ProductionExportsMenu ToggleExport Country-wiseFinancial ReportsNewsMenu ToggleOur LatestLocal Tea NewsInternational NewsRegulationsLoginMenu ToggleSL Tea Auction LoginEDO Buyer LogintbBOSS LoginStatDash LoginContact",
+      "report_section_2": "Market ReportsMarket Reports - 2025Market Report – 16th & 17th September 2025Market Report – 09th & 10th September 2025Market Report – 01st & 02nd September 2025Market Report – 26th & 27th August 2025View All Market ReportsTea Industry Overview - 2023Tea Industry Overview (Jan-Dec) 2023Tea Industry Overview (Jan-Sep) 2023Tea Industry Overview (Jan-Jun) 2023Tea Industry Overview (Jan-Mar) 2023View All Industry Overview Reports"
+    },
+    "data_classification": "market_report",
+    "extraction_method": "requests"
+  },
+  "volume_analysis": {
+    "extracted_volumes": [],
+    "volume_patterns": {}
+  },
+  "price_analysis": {
+    "extracted_prices": [],
+    "price_patterns": {},
+    "currency_detected": "USD"
+  }
+}

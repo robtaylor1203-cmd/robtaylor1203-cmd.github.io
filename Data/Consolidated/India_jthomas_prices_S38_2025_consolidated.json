@@ -1,0 +1,55 @@
+{
+  "metadata": {
+    "location": "india_jthomas_prices",
+    "display_name": "India Jthomas Prices",
+    "region": "India",
+    "period": "S38_2025",
+    "week_number": 38,
+    "year": 2025,
+    "report_title": "India_jthomas_prices Market Report",
+    "data_quality": "Excellent - Comprehensive automated extraction",
+    "currency": "INR",
+    "source_url": "https://jthomasindia.com/auction_prices.php",
+    "scraping_timestamp": "2025-09-19T18:21:39.755257"
+  },
+  "summary": {
+    "total_offered_kg": 0,
+    "total_sold_kg": 0,
+    "total_lots": 15,
+    "auction_average_price": 5.75,
+    "percent_sold": 85.0,
+    "percent_unsold": 15.0,
+    "commentary_synthesized": "Comprehensive automated market data extraction"
+  },
+  "market_intelligence": {
+    "comprehensive_data": {
+      "source_key": "jthomas_prices",
+      "group": "india",
+      "page_title": "",
+      "extraction_timestamp": "2025-09-19T18:21:39.752123",
+      "url_classification": "auction_prices",
+      "cents_prices": [
+        4.0,
+        9.0,
+        4.0,
+        6.0
+      ]
+    },
+    "data_classification": "auction_prices",
+    "extraction_method": "requests"
+  },
+  "volume_analysis": {
+    "extracted_volumes": [],
+    "volume_patterns": {}
+  },
+  "price_analysis": {
+    "extracted_prices": [
+      4.0,
+      9.0,
+      4.0,
+      6.0
+    ],
+    "price_patterns": {},
+    "currency_detected": "USD"
+  }
+}

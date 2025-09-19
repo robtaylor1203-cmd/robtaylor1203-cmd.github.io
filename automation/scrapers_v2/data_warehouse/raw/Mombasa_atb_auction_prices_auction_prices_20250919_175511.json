@@ -1,0 +1,23 @@
+{
+  "source_url": "https://atbltd.com/Docs/auctionprices",
+  "auction_center": "Mombasa_atb_auction_prices",
+  "data_type": "auction_prices",
+  "timestamp": "2025-09-19T17:55:11.210200",
+  "raw_data": {
+    "source_key": "atb_auction_prices",
+    "group": "mombasa",
+    "page_title": "",
+    "extraction_timestamp": "2025-09-19T17:55:11.205395",
+    "url_classification": "auction_prices",
+    "cents_prices": [
+      9.0
+    ]
+  },
+  "processed_data": null,
+  "metadata": {
+    "scraping_method": "requests",
+    "group": "mombasa"
+  },
+  "success": true,
+  "error_message": null
+}

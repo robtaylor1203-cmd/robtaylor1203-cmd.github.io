@@ -1,0 +1,26 @@
+{
+  "source_url": "https://jthomasindia.com/auction_prices.php",
+  "auction_center": "India_jthomas_prices",
+  "data_type": "auction_prices",
+  "timestamp": "2025-09-19T18:21:39.755257",
+  "raw_data": {
+    "source_key": "jthomas_prices",
+    "group": "india",
+    "page_title": "",
+    "extraction_timestamp": "2025-09-19T18:21:39.752123",
+    "url_classification": "auction_prices",
+    "cents_prices": [
+      4.0,
+      9.0,
+      4.0,
+      6.0
+    ]
+  },
+  "processed_data": null,
+  "metadata": {
+    "scraping_method": "requests",
+    "group": "india"
+  },
+  "success": true,
+  "error_message": null
+}

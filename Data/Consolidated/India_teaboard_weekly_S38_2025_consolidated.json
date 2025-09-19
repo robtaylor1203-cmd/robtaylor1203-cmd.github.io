@@ -1,0 +1,1351 @@
+{
+  "metadata": {
+    "location": "india_teaboard_weekly",
+    "display_name": "India Teaboard Weekly",
+    "region": "India",
+    "period": "S38_2025",
+    "week_number": 38,
+    "year": 2025,
+    "report_title": "India_teaboard_weekly Market Report",
+    "data_quality": "Excellent - Comprehensive automated extraction",
+    "currency": "INR",
+    "source_url": "https://www.teaboard.gov.in/WEEKLYPRICES/2025",
+    "scraping_timestamp": "2025-09-19T18:26:05.785894"
+  },
+  "summary": {
+    "total_offered_kg": 0,
+    "total_sold_kg": 0,
+    "total_lots": 15,
+    "auction_average_price": 0,
+    "percent_sold": 85.0,
+    "percent_unsold": 15.0,
+    "commentary_synthesized": "Comprehensive automated market data extraction"
+  },
+  "market_intelligence": {
+    "comprehensive_data": {
+      "source_key": "teaboard_weekly",
+      "group": "india",
+      "page_title": "\r\n\tWeekly Prices | The Official Website of Tea Board India\r\n",
+      "extraction_timestamp": "2025-09-19T18:26:05.684629",
+      "url_classification": "general_market_data",
+      "table_0": [
+        {
+          "Week Ending/Date": 13092025,
+          "Kolkata": "222.99(296.64)",
+          "Guwahati": "195.97(262.17)",
+          "Siliguri": "159.53(216.34)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "167.00(246.09)",
+          "Cochin": "153.82(161.90)",
+          "Coonoor": "92.81(140.57)",
+          "Coimbatore": "126.10(150.35)",
+          "Tea Serve": "84.36(128.93)"
+        },
+        {
+          "Week Ending/Date": 6092025,
+          "Kolkata": "224.99(286.35)",
+          "Guwahati": "198.3(260.33)",
+          "Siliguri": "163.58(215.84)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "169.66(252.61)",
+          "Cochin": 161.67,
+          "Coonoor": "91.85(136.22)",
+          "Coimbatore": "123.67(146.53)",
+          "Tea Serve": "86.59(123.82)"
+        },
+        {
+          "Week Ending/Date": 30082025,
+          "Kolkata": "220.75(288.85)",
+          "Guwahati": "197.05(262.99)",
+          "Siliguri": "163.12(213.87)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "149.14(245.38)",
+          "Cochin": "152.83(161.20)",
+          "Coonoor": "90.37(132.65)",
+          "Coimbatore": "129.73(140.07)",
+          "Tea Serve": "84.39(116.50)"
+        },
+        {
+          "Week Ending/Date": 23082025,
+          "Kolkata": "225.51(281.30)",
+          "Guwahati": "196.44(264.90)",
+          "Siliguri": "156.41(216.73)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "170.94(234.83)",
+          "Cochin": "153.11(155.56)",
+          "Coonoor": "90.64(122.95)",
+          "Coimbatore": "129.76(129.37)",
+          "Tea Serve": "85.23(106.74)"
+        },
+        {
+          "Week Ending/Date": 16082025,
+          "Kolkata": "237.40(282.21)",
+          "Guwahati": "209.29(262.47)",
+          "Siliguri": "153.94(215.75)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "174.50(264.24)",
+          "Cochin": "151.25(149.35)",
+          "Coonoor": "90.72(113.91)",
+          "Coimbatore": "125.01(123.48)",
+          "Tea Serve": "84.01(101.88)"
+        },
+        {
+          "Week Ending/Date": 9082025,
+          "Kolkata": "238.21(275.65)",
+          "Guwahati": "215.02(255.80)",
+          "Siliguri": "163.93(197.05)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "178.63(233.00)",
+          "Cochin": "149.78(140.99)",
+          "Coonoor": "91.38(109.54)",
+          "Coimbatore": "117.18(117.35)",
+          "Tea Serve": "82.96(95.65)"
+        },
+        {
+          "Week Ending/Date": 2082025,
+          "Kolkata": "247.42(277.48)",
+          "Guwahati": "220.13(255.88)",
+          "Siliguri": "169.83(195.37)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "175.90(230.47)",
+          "Cochin": "145.76(139.75)",
+          "Coonoor": "90.05(105.87)",
+          "Coimbatore": "111.07(115.25)",
+          "Tea Serve": "80.86(92.70)"
+        },
+        {
+          "Week Ending/Date": 26072025,
+          "Kolkata": "252.80(279.12)",
+          "Guwahati": "225.55(255.31)",
+          "Siliguri": "168.46(192.18)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "175.70(257.64)",
+          "Cochin": "142.31(138.68)",
+          "Coonoor": "89.45(103.69)",
+          "Coimbatore": "112.72(113.22)",
+          "Tea Serve": "80.06(92.33)"
+        },
+        {
+          "Week Ending/Date": 19072025,
+          "Kolkata": "257.57(291.52)",
+          "Guwahati": "231.89(259.87)",
+          "Siliguri": "171.87(197.52)",
+          "Jalpaiguri": 115.48,
+          "mjunction": "203.36(228.47)",
+          "Cochin": "143.19(137.42)",
+          "Coonoor": "88.04(103.81)",
+          "Coimbatore": "114.42(115.01)",
+          "Tea Serve": "79.62(93.71)"
+        },
+        {
+          "Week Ending/Date": 12072025,
+          "Kolkata": "258.21(295.20)",
+          "Guwahati": "230.71(265.66)",
+          "Siliguri": "170.51(215.30)",
+          "Jalpaiguri": 107.53,
+          "mjunction": "212.11(257.19)",
+          "Cochin": "143.77(138.85)",
+          "Coonoor": "89.43(105.69)",
+          "Coimbatore": "117.24(117.51)",
+          "Tea Serve": "82.76(96.59)"
+        },
+        {
+          "Week Ending/Date": 5072025,
+          "Kolkata": "270.39(295.41)",
+          "Guwahati": "231.44(267.96)",
+          "Siliguri": "174.47(229.31)",
+          "Jalpaiguri": 116.67,
+          "mjunction": "205.88(245.20)",
+          "Cochin": "141.76(141.25)",
+          "Coonoor": "92.48(107.91)",
+          "Coimbatore": "120.29(118.18)",
+          "Tea Serve": "87.80(98.59)"
+        },
+        {
+          "Week Ending/Date": 28062025,
+          "Kolkata": "267.52(294.57)",
+          "Guwahati": "238.89(261.66)",
+          "Siliguri": "180.41(229.00)",
+          "Jalpaiguri": 114.39,
+          "mjunction": "184.18(275.62)",
+          "Cochin": "142.51(142.40)",
+          "Coonoor": "94.91(109.87)",
+          "Coimbatore": "121.20(119.90)",
+          "Tea Serve": "88.66(100.46)"
+        },
+        {
+          "Week Ending/Date": 21062025,
+          "Kolkata": "265.83(300.58)",
+          "Guwahati": "246.11(254.10)",
+          "Siliguri": "186.46(212.71)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "184.18(158.83)",
+          "Cochin": "142.73(142.75)",
+          "Coonoor": "96.58(111.86)_",
+          "Coimbatore": "126.15(119.77)",
+          "Tea Serve": "89.52(104.36)"
+        },
+        {
+          "Week Ending/Date": 14062025,
+          "Kolkata": "260.55(287.89)",
+          "Guwahati": "246.37(261.46)",
+          "Siliguri": "200.70(192.81)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "207.08(232.85)",
+          "Cochin": "144.37(144.85)",
+          "Coonoor": "99.74(113.16)",
+          "Coimbatore": "125.46(122.56)",
+          "Tea Serve": "91.22(104.99)"
+        },
+        {
+          "Week Ending/Date": 7062025,
+          "Kolkata": "243.85(256.88)",
+          "Guwahati": "242.07(244.72)",
+          "Siliguri": "191.33(188.70)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "207.08(212.44)",
+          "Cochin": "144.05(144.38)",
+          "Coonoor": "101.73(113.56)",
+          "Coimbatore": "126.41(122.45)",
+          "Tea Serve": "89.17(104.30)"
+        },
+        {
+          "Week Ending/Date": 31052025,
+          "Kolkata": "235.93(235.53)",
+          "Guwahati": "240.27(225.27)",
+          "Siliguri": "190.65(187.63)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "185.79(178.99)",
+          "Cochin": "145.96(141.08)",
+          "Coonoor": "102.80(109.85)",
+          "Coimbatore": "123.12(117.86)",
+          "Tea Serve": "89.97(97.31)"
+        },
+        {
+          "Week Ending/Date": 24052025,
+          "Kolkata": "235.19(233.85)",
+          "Guwahati": "222.15(213.84)",
+          "Siliguri": "175.50 (200.40)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "197.78(190.60)",
+          "Cochin": "147.23(146.84)",
+          "Coonoor": "103.69(103.55)",
+          "Coimbatore": "128.14(117.54)",
+          "Tea Serve": "91.33(94.35)"
+        },
+        {
+          "Week Ending/Date": 17052025,
+          "Kolkata": "232.58(232.84)",
+          "Guwahati": "207.00(209.08)",
+          "Siliguri": "178.43(194.90)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "176.03(168.80)",
+          "Cochin": "148.18(144.21)",
+          "Coonoor": "108.13(98.85)",
+          "Coimbatore": "127.98(117.58)",
+          "Tea Serve": "94.13(91.11)"
+        },
+        {
+          "Week Ending/Date": 10052025,
+          "Kolkata": "248.29(229.26)",
+          "Guwahati": "210.57(212.02)",
+          "Siliguri": "182.12(188.13)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "158.48(181.06)",
+          "Cochin": "150.32(144.29)",
+          "Coonoor": "112.47(97.06)",
+          "Coimbatore": "134.23(114.67)",
+          "Tea Serve": "103.89(92.13)"
+        },
+        {
+          "Week Ending/Date": 3052025,
+          "Kolkata": "243.96(234.45)",
+          "Guwahati": "215.34(232.82)",
+          "Siliguri": "192.37(194.41)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "157.67(176.91)",
+          "Cochin": "154.08(138.74)",
+          "Coonoor": "114.18(95.81)",
+          "Coimbatore": "134.60(113.42)",
+          "Tea Serve": "106.88(91.66)"
+        },
+        {
+          "Week Ending/Date": 26042025,
+          "Kolkata": "224.13(207.22)",
+          "Guwahati": "219.93(239.62)",
+          "Siliguri": "195.99(196.60)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "167.11(212.36)",
+          "Cochin": "156.48(138.54)",
+          "Coonoor": "118.63((96.96)",
+          "Coimbatore": "139.51(112.88)",
+          "Tea Serve": "109.56(92.32)"
+        },
+        {
+          "Week Ending/Date": 19042025,
+          "Kolkata": "232.03(237.64)",
+          "Guwahati": 226.9,
+          "Siliguri": "205.14(199.00)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "166.90 (209.59)",
+          "Cochin": 136.27,
+          "Coonoor": "120.02(96.77)",
+          "Coimbatore": "139.21(113.70)",
+          "Tea Serve": "109.78(92.58)"
+        },
+        {
+          "Week Ending/Date": 12042025,
+          "Kolkata": "181.77(181.92)",
+          "Guwahati": "237.25(260.07)",
+          "Siliguri": "202.31(210.89)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "185.49(276.55)",
+          "Cochin": "158.25(133.68)",
+          "Coonoor": "121.35(97.51)",
+          "Coimbatore": 114.04,
+          "Tea Serve": "109.63(93.31)"
+        },
+        {
+          "Week Ending/Date": 5042025,
+          "Kolkata": "182.16(143.92)",
+          "Guwahati": "241.43(200.92)",
+          "Siliguri": "197.97 (224.85)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "207.19(240.59)",
+          "Cochin": "157.19(134.44)",
+          "Coonoor": "121.21(97.54)",
+          "Coimbatore": "141.61(113.19)",
+          "Tea Serve": "113.05(92.07)"
+        },
+        {
+          "Week Ending/Date": 29032025,
+          "Kolkata": "NS(NS)",
+          "Guwahati": "151.72(117.59)",
+          "Siliguri": "184.49(123.20)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "NS(NS)",
+          "Cochin": 160.72,
+          "Coonoor": "119.39(98.84)",
+          "Coimbatore": "140.04(113.92)",
+          "Tea Serve": "111.57(92.09)"
+        },
+        {
+          "Week Ending/Date": 22032025,
+          "Kolkata": "138.04(124.38)",
+          "Guwahati": "NS(NS)",
+          "Siliguri": 160.86,
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "NS(NS)",
+          "Cochin": "160.76(135.71)",
+          "Coonoor": "116.51(101.70)",
+          "Coimbatore": "142.73(113.53)",
+          "Tea Serve": "115.04(91.85)"
+        },
+        {
+          "Week Ending/Date": 15032025,
+          "Kolkata": "NS(NS)",
+          "Guwahati": "NS(NS)",
+          "Siliguri": "NS(NS)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "NS(NS)",
+          "Cochin": "160.19(136.27)",
+          "Coonoor": "117.38(100.02)",
+          "Coimbatore": "141.67(110.90)",
+          "Tea Serve": "117.60(89.91)"
+        },
+        {
+          "Week Ending/Date": 8032025,
+          "Kolkata": 127.54,
+          "Guwahati": 118.36,
+          "Siliguri": 106.82,
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "143.70(110.00)",
+          "Cochin": "162.41(135.31)",
+          "Coonoor": "117.51(97.59)",
+          "Coimbatore": 111.73,
+          "Tea Serve": "117.17(87.79)"
+        },
+        {
+          "Week Ending/Date": 1032025,
+          "Kolkata": "NS(NS)",
+          "Guwahati": 149.13,
+          "Siliguri": 134.27,
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "NS(NS)",
+          "Cochin": "160.71(135.66)",
+          "Coonoor": "118.24(87.56)",
+          "Coimbatore": "140.96(109.14)",
+          "Tea Serve": "119.23(87.68)"
+        },
+        {
+          "Week Ending/Date": 22022025,
+          "Kolkata": "152.69(123.68)",
+          "Guwahati": 121.45,
+          "Siliguri": 112.03,
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "143.54(131.00)",
+          "Cochin": "161.78(134.63)",
+          "Coonoor": "118.65(93.94)",
+          "Coimbatore": "141.48(108.60)",
+          "Tea Serve": "119.87(90.66)"
+        },
+        {
+          "Week Ending/Date": 15022025,
+          "Kolkata": "152.69(135.33)",
+          "Guwahati": "143.53(128.09)",
+          "Siliguri": 114.67,
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": 115.0,
+          "Cochin": "162.92(134.30)",
+          "Coonoor": "120.54(92.43)",
+          "Coimbatore": "143.99(107.40)",
+          "Tea Serve": "118.55(87.97)"
+        },
+        {
+          "Week Ending/Date": 8022025,
+          "Kolkata": "139.20(134.24)",
+          "Guwahati": "150.31(123.19)",
+          "Siliguri": "135.98(114.29)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "164.63(112.91)",
+          "Cochin": "162.04(112.91)",
+          "Coonoor": "122.38(91.38)",
+          "Coimbatore": "143.54(106.70)",
+          "Tea Serve": "120.97(86.48)"
+        },
+        {
+          "Week Ending/Date": 1022025,
+          "Kolkata": "149.31(132.24)",
+          "Guwahati": "148.06(125.32)",
+          "Siliguri": "139.65(121.47)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": 134.32,
+          "Cochin": "166.39(133.86)",
+          "Coonoor": "122.91(91.26)",
+          "Coimbatore": "146.54(112.33)",
+          "Tea Serve": "119.00(83.85)"
+        },
+        {
+          "Week Ending/Date": 25012025,
+          "Kolkata": "150.50(133.35)",
+          "Guwahati": "142.37(127.05)",
+          "Siliguri": "149.26(116.95)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "142.49(113.27)",
+          "Cochin": "167.96(135.66)",
+          "Coonoor": "123.10(92.99)",
+          "Coimbatore": "149.11(106.56)",
+          "Tea Serve": "117.08(84.31)"
+        },
+        {
+          "Week Ending/Date": 18012025,
+          "Kolkata": "152.51(142.68)",
+          "Guwahati": "148.30(130.77)",
+          "Siliguri": "149.39(128.60)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "159.39(129.50)",
+          "Cochin": "164.99(135.88)",
+          "Coonoor": "123.61(93.19)",
+          "Coimbatore": "147.54(109.34)",
+          "Tea Serve": "116.02(85.34)"
+        },
+        {
+          "Week Ending/Date": 11012025,
+          "Kolkata": "165.53(152.62)",
+          "Guwahati": "155.07(136.48)",
+          "Siliguri": "150.88(133.02)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "156.77(125.94)",
+          "Cochin": "165.41(133.89)",
+          "Coonoor": "125.56(94.47)",
+          "Coimbatore": "148.99(109.21)",
+          "Tea Serve": "120.13(86.04)"
+        },
+        {
+          "Week Ending/Date": 4012025,
+          "Kolkata": "178.73(157.3)",
+          "Guwahati": "156.31(146.35)",
+          "Siliguri": "152.42(141.05)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "162.90(139.01)",
+          "Cochin": 132.37,
+          "Coonoor": "127.43(94.64)",
+          "Coimbatore": 107.94,
+          "Tea Serve": "121.24(131.00)"
+        }
+      ],
+      "table_1": [
+        {
+          "Week Ending/Date": 13092025,
+          "Kolkata": "240.11(307.22)",
+          "Guwahati": "198.50(263.56)",
+          "Siliguri": "159.53(216.34)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "167.00(246.09)",
+          "Cochin": "158.92(171.72)",
+          "Coonoor": "94.93(141.05)",
+          "Coimbatore": "125.77(150.83)",
+          "Tea Serve": "84.36(128.93)"
+        },
+        {
+          "Week Ending/Date": 6092025,
+          "Kolkata": "241.27(299.72)",
+          "Guwahati": "201.17(261.27)",
+          "Siliguri": "163.58(215.84)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "169.66(252.57)",
+          "Cochin": 168.71,
+          "Coonoor": "93.49(136.63)",
+          "Coimbatore": "123.53(147.04)",
+          "Tea Serve": "86.59(123.82)"
+        },
+        {
+          "Week Ending/Date": 30082025,
+          "Kolkata": "242.00(302.89)",
+          "Guwahati": "200.70(263.75)",
+          "Siliguri": "163.12(213.87)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "149.14(245.09)",
+          "Cochin": "159.13(166.93)",
+          "Coonoor": "92.39(132.83)",
+          "Coimbatore": "129.46(139.88)",
+          "Tea Serve": "84.39(116.50)"
+        },
+        {
+          "Week Ending/Date": 23082025,
+          "Kolkata": "251.98(294.94)",
+          "Guwahati": "200.42(265.83)",
+          "Siliguri": "156.41(216.73)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "170.99(234.83)",
+          "Cochin": "159.61(160.13)",
+          "Coonoor": "92.80(123.22)",
+          "Coimbatore": "129.56(128.83)",
+          "Tea Serve": "85.23(106.74)"
+        },
+        {
+          "Week Ending/Date": 16082025,
+          "Kolkata": "259.46(293.93)",
+          "Guwahati": "213.50(262.92)",
+          "Siliguri": "153.94(215.75)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "174.50(263.94)",
+          "Cochin": "158.14(156.11)",
+          "Coonoor": "92.47(114.35)",
+          "Coimbatore": "125.23(123.33)",
+          "Tea Serve": "84.01(101.88)"
+        },
+        {
+          "Week Ending/Date": 9082025,
+          "Kolkata": "267.78(286.43)",
+          "Guwahati": "217.99(256.71)",
+          "Siliguri": "163.93(197.05)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "178.63(233.00)",
+          "Cochin": "158.71(145.68)",
+          "Coonoor": "93.51(110.10)",
+          "Coimbatore": "117.36(117.48)",
+          "Tea Serve": "82.96(95.65)"
+        },
+        {
+          "Week Ending/Date": 2082025,
+          "Kolkata": "272.66(285.40)",
+          "Guwahati": "223.44(255.91)",
+          "Siliguri": "169.83(195.37)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "175.90(230.87)",
+          "Cochin": "154.78(146.44)",
+          "Coonoor": "91.88(106.60)",
+          "Coimbatore": "111.43(115.87)",
+          "Tea Serve": "80.86(92.70)"
+        },
+        {
+          "Week Ending/Date": 26072025,
+          "Kolkata": "277.81(291.37)",
+          "Guwahati": "228.06(255.98)",
+          "Siliguri": "168.46(192.18)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "175.70(257.64)",
+          "Cochin": "153.24(145.37)",
+          "Coonoor": "91.76(104.47)",
+          "Coimbatore": "113.72(114.62)",
+          "Tea Serve": "80.06(92.33)"
+        },
+        {
+          "Week Ending/Date": 19072025,
+          "Kolkata": "278.44(298.78)",
+          "Guwahati": "234.33(260.26)",
+          "Siliguri": "171.87(197.52)",
+          "Jalpaiguri": 115.48,
+          "mjunction": "203.36(228.52)",
+          "Cochin": "155.01(146.03)",
+          "Coonoor": "90.01(104.67)",
+          "Coimbatore": "115.37(116.78)",
+          "Tea Serve": "79.62(93.71)"
+        },
+        {
+          "Week Ending/Date": 12072025,
+          "Kolkata": "271.93(300.30)",
+          "Guwahati": "233.99(265.61)",
+          "Siliguri": "170.51(215.30)",
+          "Jalpaiguri": 107.53,
+          "mjunction": "212.11(257.14)",
+          "Cochin": "153.38(149.45)",
+          "Coonoor": "91.36(106.60)",
+          "Coimbatore": "118.17(118.52)",
+          "Tea Serve": "82.76(96.59)"
+        },
+        {
+          "Week Ending/Date": 5072025,
+          "Kolkata": "281.06(300.84)",
+          "Guwahati": "233.95(267.88)",
+          "Siliguri": "174.47(229.31)",
+          "Jalpaiguri": 116.67,
+          "mjunction": "205.88(245.20)",
+          "Cochin": "154.32(153.68)",
+          "Coonoor": "94.82(109.07)",
+          "Coimbatore": "120.91(118.19)",
+          "Tea Serve": "87.80(98.59)"
+        },
+        {
+          "Week Ending/Date": 28062025,
+          "Kolkata": "276.61(301.60)",
+          "Guwahati": "240.06(261.73)",
+          "Siliguri": "180.41(229.00)",
+          "Jalpaiguri": 114.39,
+          "mjunction": "184.18(275.61)",
+          "Cochin": "152.56(156.40)",
+          "Coonoor": "96.94(111.26)",
+          "Coimbatore": "122.00(120.07)",
+          "Tea Serve": "88.66(100.46)"
+        },
+        {
+          "Week Ending/Date": 21062025,
+          "Kolkata": "268.40(304.77)",
+          "Guwahati": "246.71(254.77)",
+          "Siliguri": "186.46(212.71)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "184.18(160.29)",
+          "Cochin": "150.91(156.48)",
+          "Coonoor": "98.82(113.60)",
+          "Coimbatore": "126.34(120.18)",
+          "Tea Serve": "89.52(104.36)"
+        },
+        {
+          "Week Ending/Date": 14062025,
+          "Kolkata": "284.28(297.10)",
+          "Guwahati": "248.83((262.05)",
+          "Siliguri": "200.70(192.81)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "207.15(232.85)",
+          "Cochin": "153.89(154.63)",
+          "Coonoor": "102.06(114.73)",
+          "Coimbatore": "125.82(122.85)",
+          "Tea Serve": "91.22(104.99)"
+        },
+        {
+          "Week Ending/Date": 7062025,
+          "Kolkata": "276.31(270.04)",
+          "Guwahati": "244.85(245.88)",
+          "Siliguri": "191.33(188.70)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "207.15(213.64)",
+          "Cochin": "155.71(153.25)",
+          "Coonoor": "103.61(115.30)",
+          "Coimbatore": "126.81(121.93)",
+          "Tea Serve": "89.17(104.30)"
+        },
+        {
+          "Week Ending/Date": 31052025,
+          "Kolkata": "265.09(251.79)",
+          "Guwahati": "243.12(226.36)",
+          "Siliguri": "190.65(187.63)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "185.79(180.17)",
+          "Cochin": "159.53(150.68)",
+          "Coonoor": "104.87(111.44)",
+          "Coimbatore": "124.26(118.79)",
+          "Tea Serve": "89.97(97.31)"
+        },
+        {
+          "Week Ending/Date": 24052025,
+          "Kolkata": "264.96(255.72)",
+          "Guwahati": "228.13(233.85)",
+          "Siliguri": "175.50(200.40)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "197.84(190.60)",
+          "Cochin": "161.33 (152.25)",
+          "Coonoor": "106.00 (105.16)",
+          "Coimbatore": "129.06(117.71)",
+          "Tea Serve": "91.33(94.35)"
+        },
+        {
+          "Week Ending/Date": 17052025,
+          "Kolkata": "271.65(261.77)",
+          "Guwahati": "214.20(211.29)",
+          "Siliguri": "178.43(194.90)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "176.03(171.87)",
+          "Cochin": "161.79(152.46)",
+          "Coonoor": "109.89(99.98)",
+          "Coimbatore": "128.14(117.56)",
+          "Tea Serve": "94.13(91.11)"
+        },
+        {
+          "Week Ending/Date": 10052025,
+          "Kolkata": "286.57261.74)",
+          "Guwahati": "218.57(213.86)",
+          "Siliguri": "182.12(188.13)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "158.48(192.90)",
+          "Cochin": "166.05(152.50)",
+          "Coonoor": "114.78(98.49)",
+          "Coimbatore": "134.89(114.74)",
+          "Tea Serve": "103.89(92.13)"
+        },
+        {
+          "Week Ending/Date": 3052025,
+          "Kolkata": "283.91(264.87)",
+          "Guwahati": "219.02(233.85)",
+          "Siliguri": "192.37(194.41)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "157.67(176.91)",
+          "Cochin": "166.03(149.89)",
+          "Coonoor": "116.62(97.19)",
+          "Coimbatore": "135.40(113.72)",
+          "Tea Serve": "106.88(91.66)"
+        },
+        {
+          "Week Ending/Date": 26042025,
+          "Kolkata": "262.48(256.32)",
+          "Guwahati": "222.25(241.29)",
+          "Siliguri": "195.99(196.60)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "167.22(213.09)",
+          "Cochin": "166.30(147.55)",
+          "Coonoor": "121.03(98.90)",
+          "Coimbatore": "140.14(113.28)",
+          "Tea Serve": "109.56(92.32)"
+        },
+        {
+          "Week Ending/Date": 19042025,
+          "Kolkata": "260.09(278.26)",
+          "Guwahati": 229.28,
+          "Siliguri": "205.14(199.00)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "166.90(214.32)",
+          "Cochin": 148.77,
+          "Coonoor": "122.39(98.21)",
+          "Coimbatore": "139.81(113.94)",
+          "Tea Serve": "109.78(92.58)"
+        },
+        {
+          "Week Ending/Date": 12042025,
+          "Kolkata": "207.11(218.21)",
+          "Guwahati": "238.77(261.73)",
+          "Siliguri": "202.31(210.89)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "185.49(276.55)",
+          "Cochin": "166.24(144.33)",
+          "Coonoor": "123.02(98.95)",
+          "Coimbatore": 114.25,
+          "Tea Serve": "109.63(93.31)"
+        },
+        {
+          "Week Ending/Date": 5042025,
+          "Kolkata": "213.18(169.57)",
+          "Guwahati": "243.49(203.19)",
+          "Siliguri": "197.97(224.85)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "207.19(240.59)",
+          "Cochin": "167.53(143.12)",
+          "Coonoor": "122.91(99.18)",
+          "Coimbatore": "142.26(113.09)",
+          "Tea Serve": "113.05(92.07)"
+        },
+        {
+          "Week Ending/Date": 29032025,
+          "Kolkata": "NS(NS)",
+          "Guwahati": "152.58(117.79)",
+          "Siliguri": "184.49(123.20)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "NS(NS)",
+          "Cochin": 170.28,
+          "Coonoor": "121.41(101.03)",
+          "Coimbatore": "140.82(113.79)",
+          "Tea Serve": "111.57 (92.09)"
+        },
+        {
+          "Week Ending/Date": 22032025,
+          "Kolkata": "143.84(134.35)",
+          "Guwahati": "NS(NS)",
+          "Siliguri": 160.93,
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "NS(NS)",
+          "Cochin": "167.54(143.21)",
+          "Coonoor": "118.86(103.44)",
+          "Coimbatore": "143.04(113.18)",
+          "Tea Serve": "115.04(91.85)"
+        },
+        {
+          "Week Ending/Date": 15032025,
+          "Kolkata": "NS(NS)",
+          "Guwahati": "NS(NS)",
+          "Siliguri": "NS(NS)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "NS(NS)",
+          "Cochin": "168.41(142.49)",
+          "Coonoor": "119.64(101.63)",
+          "Coimbatore": "141.85(111.09)",
+          "Tea Serve": "117.60(89.91)"
+        },
+        {
+          "Week Ending/Date": 8032025,
+          "Kolkata": 126.92,
+          "Guwahati": 118.72,
+          "Siliguri": 106.82,
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "143.70(110.00)",
+          "Cochin": "170.72(140.67)",
+          "Coonoor": "119.38(98.32)",
+          "Coimbatore": 112.35,
+          "Tea Serve": "117.17(87.79)"
+        },
+        {
+          "Week Ending/Date": 8032025,
+          "Kolkata": 126.92,
+          "Guwahati": 118.72,
+          "Siliguri": 106.82,
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "143.70(110.00)",
+          "Cochin": "170.72(140.67)",
+          "Coonoor": "119.38(98.32)",
+          "Coimbatore": 112.35,
+          "Tea Serve": "117.17(87.79)"
+        },
+        {
+          "Week Ending/Date": 1032025,
+          "Kolkata": "NS(NS)",
+          "Guwahati": "NS(NS)",
+          "Siliguri": 134.31,
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "NS(NS)",
+          "Cochin": "168.03(139.57)",
+          "Coonoor": "119.86(87.56)",
+          "Coimbatore": "141.31(110.57)",
+          "Tea Serve": "119.23(87.68)"
+        },
+        {
+          "Week Ending/Date": 22022025,
+          "Kolkata": "168.05(126.50)",
+          "Guwahati": 121.88,
+          "Siliguri": 112.03,
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "143.54(131.00)",
+          "Cochin": "170.82(137.68)",
+          "Coonoor": "119.96(94.73)",
+          "Coimbatore": "141.84(109.04)",
+          "Tea Serve": "119.87(90.66)"
+        },
+        {
+          "Week Ending/Date": 15022025,
+          "Kolkata": "159.77(137.54)",
+          "Guwahati": "143.83(128.36)",
+          "Siliguri": 114.67,
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": 114.67,
+          "Cochin": "170.69(137.18)",
+          "Coonoor": "121.94(93.19)",
+          "Coimbatore": "144.57(107.88)",
+          "Tea Serve": "118.55(87.97)"
+        },
+        {
+          "Week Ending/Date": 8022025,
+          "Kolkata": "145.65(137.20)",
+          "Guwahati": "151.74 (123.33)",
+          "Siliguri": "135.98 (114.29)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "164.64(112.91)",
+          "Cochin": "169.09(138.95)",
+          "Coonoor": "123.58(92.19)",
+          "Coimbatore": "143.65(107.70)",
+          "Tea Serve": "120.97(86.48)"
+        },
+        {
+          "Week Ending/Date": 1022025,
+          "Kolkata": "154.73(137.94)",
+          "Guwahati": "150.39(125.64)",
+          "Siliguri": "139.71(121.47)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": 134.32,
+          "Cochin": "171.40(137.56)",
+          "Coonoor": "124.01(92.12)",
+          "Coimbatore": "146.82(112.92)",
+          "Tea Serve": "119.00(83.85)"
+        },
+        {
+          "Week Ending/Date": 25012025,
+          "Kolkata": "159.22(141.00)",
+          "Guwahati": "147.23(127.80)",
+          "Siliguri": "149.26(116.95)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "143.30(113.27)",
+          "Cochin": "172.92(139.82)",
+          "Coonoor": "124.17(93.72)",
+          "Coimbatore": "149.49(108.16)",
+          "Tea Serve": "117.08(84.31)"
+        },
+        {
+          "Week Ending/Date": 18012025,
+          "Kolkata": "164.38(149.32)",
+          "Guwahati": "150.73(131.82)",
+          "Siliguri": "149.39(128.60)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "160.18(129.10)",
+          "Cochin": "172.42(140.53)",
+          "Coonoor": "124.73(93.94)",
+          "Coimbatore": "147.27(108.16)",
+          "Tea Serve": "116.02(85.34)"
+        },
+        {
+          "Week Ending/Date": 11012025,
+          "Kolkata": "177.59(156.24)",
+          "Guwahati": "157.15(147.22)",
+          "Siliguri": "150.88(141.05)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "156.77(125.94)",
+          "Cochin": "171.50(136.92)",
+          "Coonoor": "126.56(94.97)",
+          "Coimbatore": "148.74(110.02)",
+          "Tea Serve": "120.13(86.04)"
+        },
+        {
+          "Week Ending/Date": 4012025,
+          "Kolkata": "190.21(161.68)",
+          "Guwahati": "158.81(147.22)",
+          "Siliguri": "152.42(141.05)",
+          "Jalpaiguri": "NS(NS)",
+          "mjunction": "162.90(139.01)",
+          "Cochin": 135.6,
+          "Coonoor": "128.75(95.18)",
+          "Coimbatore": "151.06(108.72)",
+          "Tea Serve": "121.24(87.52)"
+        }
+      ],
+      "table_2": [
+        {
+          "Week Ending/Date": null,
+          "CTC Leaf & All Dust": "NORTH INDIA"
+        },
+        {
+          "Week Ending/Date": 13092025,
+          "CTC Leaf & All Dust": "191.64(254.80)"
+        },
+        {
+          "Week Ending/Date": 6092025,
+          "CTC Leaf & All Dust": "196.20(252.98)"
+        },
+        {
+          "Week Ending/Date": 30082025,
+          "CTC Leaf & All Dust": "192.36(252.95)"
+        },
+        {
+          "Week Ending/Date": 23082025,
+          "CTC Leaf & All Dust": "190.34(251.34)"
+        },
+        {
+          "Week Ending/Date": 16082025,
+          "CTC Leaf & All Dust": "198.39(251.42)"
+        },
+        {
+          "Week Ending/Date": 9082025,
+          "CTC Leaf & All Dust": "202.99(242.03)"
+        },
+        {
+          "Week Ending/Date": 2082025,
+          "CTC Leaf & All Dust": "209.65(239.68)"
+        },
+        {
+          "Week Ending/Date": 26072025,
+          "CTC Leaf & All Dust": "213.18(238.47)"
+        },
+        {
+          "Week Ending/Date": 19072025,
+          "CTC Leaf & All Dust": "218.03(245.33)"
+        },
+        {
+          "Week Ending/Date": 12072025,
+          "CTC Leaf & All Dust": "217.55(256.73)"
+        },
+        {
+          "Week Ending/Date": 5072025,
+          "CTC Leaf & All Dust": "222.49(262.77)"
+        },
+        {
+          "Week Ending/Date": 28062025,
+          "CTC Leaf & All Dust": "225.25(258.82)"
+        },
+        {
+          "Week Ending/Date": 21062025,
+          "CTC Leaf & All Dust": "231.39(252.03)"
+        },
+        {
+          "Week Ending/Date": 14062025,
+          "CTC Leaf & All Dust": "235.11(244.88)"
+        },
+        {
+          "Week Ending/Date": 7062025,
+          "CTC Leaf & All Dust": "225.64(230.69)"
+        },
+        {
+          "Week Ending/Date": 31052025,
+          "CTC Leaf & All Dust": "219.00(216.31)"
+        },
+        {
+          "Week Ending/Date": 24052025,
+          "CTC Leaf & All Dust": "208.62(215.21)"
+        },
+        {
+          "Week Ending/Date": 17052025,
+          "CTC Leaf & All Dust": "203.31(209.42)"
+        },
+        {
+          "Week Ending/Date": 10052025,
+          "CTC Leaf & All Dust": "208.30(206.09)"
+        },
+        {
+          "Week Ending/Date": 3052025,
+          "CTC Leaf & All Dust": "213.30(214.54)"
+        },
+        {
+          "Week Ending/Date": 26042025,
+          "CTC Leaf & All Dust": "211.86(211.68)"
+        },
+        {
+          "Week Ending/Date": 19042025,
+          "CTC Leaf & All Dust": "209.58(210.27)"
+        },
+        {
+          "Week Ending/Date": 12042025,
+          "CTC Leaf & All Dust": "209.22(217.96)"
+        },
+        {
+          "Week Ending/Date": 5042025,
+          "CTC Leaf & All Dust": "204.37(202.76)"
+        },
+        {
+          "Week Ending/Date": 29032025,
+          "CTC Leaf & All Dust": "168.01(120.30)"
+        },
+        {
+          "Week Ending/Date": 22032025,
+          "CTC Leaf & All Dust": "147.20(124.38)"
+        },
+        {
+          "Week Ending/Date": 15032025,
+          "CTC Leaf & All Dust": "NS(NS)"
+        },
+        {
+          "Week Ending/Date": 8032025,
+          "CTC Leaf & All Dust": "143.70(117.22)"
+        },
+        {
+          "Week Ending/Date": 1032025,
+          "CTC Leaf & All Dust": 140.44
+        },
+        {
+          "Week Ending/Date": 22022025,
+          "CTC Leaf & All Dust": "158.97(120.14)"
+        },
+        {
+          "Week Ending/Date": 15022025,
+          "CTC Leaf & All Dust": "147.25(127.87)"
+        },
+        {
+          "Week Ending/Date": 8022025,
+          "CTC Leaf & All Dust": "141.09(122.92)"
+        },
+        {
+          "Week Ending/Date": 1022025,
+          "CTC Leaf & All Dust": "144.61(125.22)"
+        },
+        {
+          "Week Ending/Date": 25012025,
+          "CTC Leaf & All Dust": "147.14(126.01)"
+        },
+        {
+          "Week Ending/Date": 18012025,
+          "CTC Leaf & All Dust": "149.80(133.63)"
+        },
+        {
+          "Week Ending/Date": 11012025,
+          "CTC Leaf & All Dust": "156.4(140.26)"
+        },
+        {
+          "Week Ending/Date": 4012025,
+          "CTC Leaf & All Dust": "161.18(147.64)"
+        }
+      ],
+      "table_3": [
+        {
+          "Week Ending/Date": null,
+          "TOTAL TEA": "NORTH INDIA"
+        },
+        {
+          "Week Ending/Date": 13092025,
+          "TOTAL TEA": "200.99(261.52)"
+        },
+        {
+          "Week Ending/Date": 6092025,
+          "TOTAL TEA": "205.91(260.46)"
+        },
+        {
+          "Week Ending/Date": 30082025,
+          "TOTAL TEA": "203.60(260.81)"
+        },
+        {
+          "Week Ending/Date": 23082025,
+          "TOTAL TEA": "204.10 (257.77)"
+        },
+        {
+          "Week Ending/Date": 16082025,
+          "TOTAL TEA": "211.48(257.41)"
+        },
+        {
+          "Week Ending/Date": 9082025,
+          "TOTAL TEA": "217.84(248.07)"
+        },
+        {
+          "Week Ending/Date": 2082025,
+          "TOTAL TEA": "223.22(245.64)"
+        },
+        {
+          "Week Ending/Date": 26072025,
+          "TOTAL TEA": "227.31(245.28)"
+        },
+        {
+          "Week Ending/Date": 19072025,
+          "TOTAL TEA": "231.84(250.94)"
+        },
+        {
+          "Week Ending/Date": 12072025,
+          "TOTAL TEA": "228.33(261.11)"
+        },
+        {
+          "Week Ending/Date": 5072025,
+          "TOTAL TEA": "232.26(267.24)"
+        },
+        {
+          "Week Ending/Date": 28062025,
+          "TOTAL TEA": "232.92(264.52)"
+        },
+        {
+          "Week Ending/Date": 21062025,
+          "TOTAL TEA": "235.15(258.90)"
+        },
+        {
+          "Week Ending/Date": 14062025,
+          "TOTAL TEA": "246.29(251.72)"
+        },
+        {
+          "Week Ending/Date": 7062025,
+          "TOTAL TEA": "237.17(238.02)"
+        },
+        {
+          "Week Ending/Date": 31052025,
+          "TOTAL TEA": "230.43(223.86)"
+        },
+        {
+          "Week Ending/Date": 24052025,
+          "TOTAL TEA": "223.93(233.88)"
+        },
+        {
+          "Week Ending/Date": 17052025,
+          "TOTAL TEA": "221.52(222.82)"
+        },
+        {
+          "Week Ending/Date": 10052025,
+          "TOTAL TEA": "231.33(218.97)"
+        },
+        {
+          "Week Ending/Date": 3052025,
+          "TOTAL TEA": "234.44(227.51)"
+        },
+        {
+          "Week Ending/Date": 26042025,
+          "TOTAL TEA": "223.70(223.75)"
+        },
+        {
+          "Week Ending/Date": 19042025,
+          "TOTAL TEA": "219.39(220.18)"
+        },
+        {
+          "Week Ending/Date": 12042025,
+          "TOTAL TEA": "213.52(222.32)"
+        },
+        {
+          "Week Ending/Date": 5042025,
+          "TOTAL TEA": "210.27(205.74)"
+        },
+        {
+          "Week Ending/Date": 29032025,
+          "TOTAL TEA": "168.01(120.30)"
+        },
+        {
+          "Week Ending/Date": 22032025,
+          "TOTAL TEA": "150.30 (134.35)"
+        },
+        {
+          "Week Ending/Date": 15032025,
+          "TOTAL TEA": "NS(NS)"
+        },
+        {
+          "Week Ending/Date": 8032025,
+          "TOTAL TEA": "143.70(117.26)"
+        },
+        {
+          "Week Ending/Date": 1032025,
+          "TOTAL TEA": 141.63
+        },
+        {
+          "Week Ending/Date": 22022025,
+          "TOTAL TEA": "167.86(121.49)"
+        },
+        {
+          "Week Ending/Date": 15022025,
+          "TOTAL TEA": "150.80(129.02)"
+        },
+        {
+          "Week Ending/Date": 8022025,
+          "TOTAL TEA": "144.28(124.45)"
+        },
+        {
+          "Week Ending/Date": 1022025,
+          "TOTAL TEA": "147.33(127.14)"
+        },
+        {
+          "Week Ending/Date": 25012025,
+          "TOTAL TEA": "156.18(129.68)"
+        },
+        {
+          "Week Ending/Date": 18012025,
+          "TOTAL TEA": "154.41(136.82)"
+        },
+        {
+          "Week Ending/Date": 11012025,
+          "TOTAL TEA": "161.25(142.57)"
+        },
+        {
+          "Week Ending/Date": 4012025,
+          "TOTAL TEA": "167.01(150.05)"
+        }
+      ],
+      "table_4": [
+        {
+          "Weekly Prices of": 1900
+        }
+      ],
+      "main_content": "Java Script is not enabled in your browser. Please enable Java Script to ensure proper functionality of the website.Welcome to TEA BOARD INDIAScreen reader accessA+AA-Skip to main contentAccessibility OptionsEnglishहिंदीHomeTea DevelopmentList of Small Tea GrowersActivitiesSchemesDetails  SchemesResearchPriority AreasNews / EventsTea For Healthy LivingPublications of DTR&DCDTRDCQuality Control LaboratoryPublications of UPASI TRFPublications of TRAPromotionInternational EventsDomestic EventsAbout TeaStandard Operating Procedures (SOPs)VarietiesDarjeelingAssamNilgiriKangraDooars-TeraiMasala TeaSikkim TeaTripuraStatisticsProductionExportImportPriceConsumptionAreaGlobal TeaMonthly Average Auction PricesRegulatory ActivitiesForm-E Monthly ReturnsLicense to Use Nilgiri OrthodoxLicense to Use Assam OrthodoxDarjeeling GI ProtectionEnlisted Inspect Agencies/LaboratoriesPermission to Use Assam LogoPermission to Use Dooars-Terai LogoPermission to Use Nilgiri LogoPermission to use India Tea LogoAn",
+      "data_list_0": [
+        "Home",
+        "Tea DevelopmentList of Small Tea GrowersActivities",
+        "List of Small Tea Growers",
+        "Activities",
+        "SchemesDetails  Schemes",
+        "Details  Schemes",
+        "ResearchPriority AreasNews / EventsTea For Healthy LivingPublications of DTR&DCDTRDCQuality Control LaboratoryPublications of UPASI TRFPublications of TRA",
+        "Priority Areas",
+        "News / Events",
+        "Tea For Healthy Living",
+        "Publications of DTR&DC",
+        "DTRDC",
+        "Quality Control Laboratory",
+        "Publications of UPASI TRF",
+        "Publications of TRA",
+        "PromotionInternational EventsDomestic EventsAbout TeaStandard Operating Procedures (SOPs)",
+        "International Events",
+        "Domestic Events",
+        "About Tea",
+        "Standard Operating Procedures (SOPs)",
+        "VarietiesDarjeelingAssamNilgiriKangraDooars-TeraiMasala TeaSikkim TeaTripura",
+        "Darjeeling",
+        "Assam",
+        "Nilgiri",
+        "Kangra",
+        "Dooars-Terai",
+        "Masala Tea",
+        "Sikkim Tea",
+        "Tripura",
+        "StatisticsProductionExportImportPriceConsumptionAreaGlobal TeaMonthly Average Auction Prices",
+        "Production",
+        "Export",
+        "Import",
+        "Price",
+        "Consumption",
+        "Area",
+        "Global Tea",
+        "Monthly Average Auction Prices",
+        "Regulatory ActivitiesForm-E Monthly ReturnsLicense to Use Nilgiri OrthodoxLicense to Use Assam OrthodoxDarjeeling GI ProtectionEnlisted Inspect Agencies/LaboratoriesPermission to Use Assam LogoPermission to Use Dooars-Terai LogoPermission to Use Nilgiri LogoPermission to use India Tea Logo",
+        "Form-E Monthly Returns",
+        "License to Use Nilgiri Orthodox",
+        "License to Use Assam Orthodox",
+        "Darjeeling GI Protection",
+        "Enlisted Inspect Agencies/Laboratories",
+        "Permission to Use Assam Logo",
+        "Permission to Use Dooars-Terai Logo",
+        "Permission to Use Nilgiri Logo",
+        "Permission to use India Tea Logo",
+        "AnnouncementNotices & CircularsVacancyTendersIndia Tea NewsPress ReleaseTea File",
+        "Notices & Circulars",
+        "Vacancy",
+        "Tenders",
+        "India Tea News",
+        "Press Release",
+        "Tea File"
+      ],
+      "data_list_1": [
+        "List of Small Tea Growers",
+        "Activities"
+      ],
+      "data_list_2": [
+        "Details  Schemes"
+      ],
+      "download_link_0": {
+        "url": "/pdf/Modalities_and_Scheme_guideline_TDPS_2017_18_TO_20_pdf6026.pdf",
+        "text": "Tea Development & Promotion Scheme ....[Details  Schemes...]",
+        "type": "pdf"
+      },
+      "download_link_1": {
+        "url": "/pdf/Details_of_Chai_Bondhu_under_RO_Palampur_SRO_Almora_pdf1437.pdf",
+        "text": "List of Chai-Bondhu's under RO, Pal....[Details  Schemes...]",
+        "type": "pdf"
+      },
+      "download_link_2": {
+        "url": "/pdf/NEZO_Guwahati_RCF_List_of_2024_25_pdf_pdf8848.pdf",
+        "text": "RCF Transaction details during 2024....[Details  Schemes...]",
+        "type": "pdf"
+      },
+      "download_link_3": {
+        "url": "/pdf/Coonoor_ZO_RCF_statement_details_pdf_pdf6570.pdf",
+        "text": "RCF Transaction details during 2024....[Details  Schemes...]",
+        "type": "pdf"
+      },
+      "download_link_4": {
+        "url": "/pdf/Palampur_Application_pertaining_to_Award_to_SHGFPOFPC_RFC_pdf_pdf302.pdf",
+        "text": "RCF Transaction details & List of A....[Details  Schemes...]",
+        "type": "pdf"
+      }
+    },
+    "data_classification": "general_market_data",
+    "extraction_method": "requests"
+  },
+  "volume_analysis": {
+    "extracted_volumes": [],
+    "volume_patterns": {}
+  },
+  "price_analysis": {
+    "extracted_prices": [],
+    "price_patterns": {},
+    "currency_detected": "USD"
+  }
+}

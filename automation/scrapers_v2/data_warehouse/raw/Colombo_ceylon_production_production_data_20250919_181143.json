@@ -1,0 +1,61 @@
+{
+  "source_url": "https://ceylonteabrokers.com/monthly-production/",
+  "auction_center": "Colombo_ceylon_production",
+  "data_type": "production_data",
+  "timestamp": "2025-09-19T18:11:43.105293",
+  "raw_data": {
+    "source_key": "ceylon_production",
+    "group": "colombo",
+    "page_title": "Monthly Production – Ceylon Tea Brokers PLC",
+    "extraction_timestamp": "2025-09-19T18:11:43.096298",
+    "url_classification": "production_data",
+    "main_content": "Skip to contentHomeAboutMarket ReportsStatisticsMenu ToggleAwaiting Sales OfferingsWeekly Sales AveragesSold Quantity & AveragesMenu ToggleWeekly Sold Quantity AveragesMonthly Sold Quantity & AveragesMonthly ProductionExportsMenu ToggleExport Country-wiseFinancial ReportsNewsMenu ToggleOur LatestLocal Tea NewsInternational NewsRegulationsLoginMenu ToggleSL Tea Auction LoginEDO Buyer LogintbBOSS LoginStatDash LoginContactMain MenuHomeAboutMarket ReportsStatisticsMenu ToggleAwaiting Sales OfferingsWeekly Sales AveragesSold Quantity & AveragesMenu ToggleWeekly Sold Quantity AveragesMonthly Sold Quantity & AveragesMonthly ProductionExportsMenu ToggleExport Country-wiseFinancial ReportsNewsMenu ToggleOur LatestLocal Tea NewsInternational NewsRegulationsLoginMenu ToggleSL Tea Auction LoginEDO Buyer LogintbBOSS LoginStatDash LoginContactStatistics - Monthly ProductionMonthly ProductionYearSelect Year2025202420232022MonthSelect MonthAugustJulyJuneMayAprilMarchFebruaryJanuaryJanuaryDecemberNove",
+    "data_list_0": [
+      "Home",
+      "About",
+      "Market Reports",
+      "StatisticsMenu ToggleAwaiting Sales OfferingsWeekly Sales AveragesSold Quantity & AveragesMenu ToggleWeekly Sold Quantity AveragesMonthly Sold Quantity & AveragesMonthly ProductionExportsMenu ToggleExport Country-wise",
+      "Awaiting Sales Offerings",
+      "Weekly Sales Averages",
+      "Sold Quantity & AveragesMenu ToggleWeekly Sold Quantity AveragesMonthly Sold Quantity & Averages",
+      "Weekly Sold Quantity Averages",
+      "Monthly Sold Quantity & Averages",
+      "Monthly Production",
+      "ExportsMenu ToggleExport Country-wise",
+      "Export Country-wise",
+      "Financial Reports",
+      "NewsMenu ToggleOur LatestLocal Tea NewsInternational News",
+      "Our Latest",
+      "Local Tea News",
+      "International News",
+      "Regulations",
+      "LoginMenu ToggleSL Tea Auction LoginEDO Buyer LogintbBOSS LoginStatDash Login",
+      "SL Tea Auction Login",
+      "EDO Buyer Login",
+      "tbBOSS Login",
+      "StatDash Login",
+      "Contact"
+    ],
+    "data_list_1": [
+      "Awaiting Sales Offerings",
+      "Weekly Sales Averages",
+      "Sold Quantity & AveragesMenu ToggleWeekly Sold Quantity AveragesMonthly Sold Quantity & Averages",
+      "Weekly Sold Quantity Averages",
+      "Monthly Sold Quantity & Averages",
+      "Monthly Production",
+      "ExportsMenu ToggleExport Country-wise",
+      "Export Country-wise"
+    ],
+    "data_list_2": [
+      "Weekly Sold Quantity Averages",
+      "Monthly Sold Quantity & Averages"
+    ]
+  },
+  "processed_data": null,
+  "metadata": {
+    "scraping_method": "requests",
+    "group": "colombo"
+  },
+  "success": true,
+  "error_message": null
+}

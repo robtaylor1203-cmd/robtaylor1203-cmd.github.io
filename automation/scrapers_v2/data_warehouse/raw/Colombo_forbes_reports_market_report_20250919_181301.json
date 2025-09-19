@@ -1,0 +1,26 @@
+{
+  "source_url": "https://web.forbestea.com/market-reports",
+  "auction_center": "Colombo_forbes_reports",
+  "data_type": "market_report",
+  "timestamp": "2025-09-19T18:13:01.891031",
+  "raw_data": {
+    "source_key": "forbes_reports",
+    "group": "colombo",
+    "page_title": "Market Reports",
+    "extraction_timestamp": "2025-09-19T18:13:01.883273",
+    "url_classification": "market_report",
+    "table_0": [
+      {
+        "column_0": "No events"
+      }
+    ],
+    "report_section_0": "Home>Market ReportsWeekly Market ReportsSelect the year and the sale number below to view the report.No Iframes"
+  },
+  "processed_data": null,
+  "metadata": {
+    "scraping_method": "requests",
+    "group": "colombo"
+  },
+  "success": true,
+  "error_message": null
+}

@@ -7,46 +7,44 @@
     "week_number": 27,
     "year": 2025,
     "report_title": "Colombo Market Report - Week 27, 2025",
-    "consolidation_date": "2025-09-19T14:51:36.332730",
-    "total_sources": 2,
-    "data_quality": "Excellent - Real market intelligence extracted",
+    "consolidation_date": "2025-09-19T18:44:48.471723",
+    "total_sources": 1,
+    "data_quality": "Limited - Headers only or no enhanced data",
     "extraction_details": [
-      "Forbes Walker real data: FW_report_direct_parsed_S27_2025.json"
+      "No real market data detected in any source files"
     ]
   },
   "summary": {
-    "total_volume": "286,365 kg",
-    "total_lots": "22",
-    "average_price": "₹952.03/kg",
-    "highest_price": "₹2025.00/kg",
-    "sold_percentage": "87%",
-    "overall_average": "₹952.03/kg",
-    "total_quantity": 286365,
-    "percentage_sold": 87
+    "total_volume": "0 kg",
+    "total_lots": "0",
+    "average_price": "₹0/kg",
+    "highest_price": "₹0/kg",
+    "sold_percentage": "0%",
+    "overall_average": "₹0/kg",
+    "total_quantity": 0,
+    "percentage_sold": 0
   },
   "market_intelligence": {
-    "market_synopsis": "Demand from shippers to japan and china, whilst shippers to the cis and middle east continued to be active as usual. Demand and appreciated.",
-    "executive_commentary": "Colombo auction demonstrates robust market fundamentals with comprehensive data extraction showing detailed lot-by-lot trading activity and price performance.",
+    "market_synopsis": "Market conditions for Colombo Week 27, 2025.",
+    "executive_commentary": "Trading activity in Colombo continues with regular participation.",
     "key_trends": [
-      "Real market data successfully processed",
-      "Comprehensive lot-level trading data available",
-      "Enhanced market intelligence operational"
+      "Awaiting real market data extraction"
     ],
     "buyer_activity": "Active participation from major buyers."
   },
   "volume_analysis": {
-    "total_offered": 286365,
-    "total_sold": 249137,
-    "sold_percentage": 87
+    "total_offered": 0,
+    "total_sold": 0,
+    "sold_percentage": 0
   },
   "price_analysis": {
-    "average_price": 952,
-    "highest_price": 2025,
-    "price_range": "₹571 - ₹2025"
+    "average_price": 0,
+    "highest_price": 0,
+    "price_range": "₹0 - ₹0"
   },
   "intelligence": {
-    "volume_analysis": "Demand from shippers to japan and china, whilst shippers to the cis and middle east continued to be active as usual. Demand and appreciated.",
-    "price_analysis": "Price analysis based on comprehensive lot-level data extraction from auction records.",
-    "forecasting": "Market outlook positive with detailed trading data supporting continued stable performance."
+    "volume_analysis": "Volume data for Colombo extraction in progress.",
+    "price_analysis": "Price analysis for Colombo pending data processing.",
+    "forecasting": "Market forecasting pending enhanced data availability."
   }
 }

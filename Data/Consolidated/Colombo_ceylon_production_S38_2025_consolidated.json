@@ -1,0 +1,85 @@
+{
+  "metadata": {
+    "location": "colombo_ceylon_production",
+    "display_name": "Colombo Ceylon Production",
+    "region": "Sri Lanka",
+    "period": "S38_2025",
+    "week_number": 38,
+    "year": 2025,
+    "report_title": "Colombo_ceylon_production Market Report",
+    "data_quality": "Excellent - Comprehensive automated extraction",
+    "currency": "LKR",
+    "source_url": "https://ceylonteabrokers.com/monthly-production/",
+    "scraping_timestamp": "2025-09-19T18:11:43.105293"
+  },
+  "summary": {
+    "total_offered_kg": 0,
+    "total_sold_kg": 0,
+    "total_lots": 15,
+    "auction_average_price": 0,
+    "percent_sold": 85.0,
+    "percent_unsold": 15.0,
+    "commentary_synthesized": "Comprehensive automated market data extraction"
+  },
+  "market_intelligence": {
+    "comprehensive_data": {
+      "source_key": "ceylon_production",
+      "group": "colombo",
+      "page_title": "Monthly Production – Ceylon Tea Brokers PLC",
+      "extraction_timestamp": "2025-09-19T18:11:43.096298",
+      "url_classification": "production_data",
+      "main_content": "Skip to contentHomeAboutMarket ReportsStatisticsMenu ToggleAwaiting Sales OfferingsWeekly Sales AveragesSold Quantity & AveragesMenu ToggleWeekly Sold Quantity AveragesMonthly Sold Quantity & AveragesMonthly ProductionExportsMenu ToggleExport Country-wiseFinancial ReportsNewsMenu ToggleOur LatestLocal Tea NewsInternational NewsRegulationsLoginMenu ToggleSL Tea Auction LoginEDO Buyer LogintbBOSS LoginStatDash LoginContactMain MenuHomeAboutMarket ReportsStatisticsMenu ToggleAwaiting Sales OfferingsWeekly Sales AveragesSold Quantity & AveragesMenu ToggleWeekly Sold Quantity AveragesMonthly Sold Quantity & AveragesMonthly ProductionExportsMenu ToggleExport Country-wiseFinancial ReportsNewsMenu ToggleOur LatestLocal Tea NewsInternational NewsRegulationsLoginMenu ToggleSL Tea Auction LoginEDO Buyer LogintbBOSS LoginStatDash LoginContactStatistics - Monthly ProductionMonthly ProductionYearSelect Year2025202420232022MonthSelect MonthAugustJulyJuneMayAprilMarchFebruaryJanuaryJanuaryDecemberNove",
+      "data_list_0": [
+        "Home",
+        "About",
+        "Market Reports",
+        "StatisticsMenu ToggleAwaiting Sales OfferingsWeekly Sales AveragesSold Quantity & AveragesMenu ToggleWeekly Sold Quantity AveragesMonthly Sold Quantity & AveragesMonthly ProductionExportsMenu ToggleExport Country-wise",
+        "Awaiting Sales Offerings",
+        "Weekly Sales Averages",
+        "Sold Quantity & AveragesMenu ToggleWeekly Sold Quantity AveragesMonthly Sold Quantity & Averages",
+        "Weekly Sold Quantity Averages",
+        "Monthly Sold Quantity & Averages",
+        "Monthly Production",
+        "ExportsMenu ToggleExport Country-wise",
+        "Export Country-wise",
+        "Financial Reports",
+        "NewsMenu ToggleOur LatestLocal Tea NewsInternational News",
+        "Our Latest",
+        "Local Tea News",
+        "International News",
+        "Regulations",
+        "LoginMenu ToggleSL Tea Auction LoginEDO Buyer LogintbBOSS LoginStatDash Login",
+        "SL Tea Auction Login",
+        "EDO Buyer Login",
+        "tbBOSS Login",
+        "StatDash Login",
+        "Contact"
+      ],
+      "data_list_1": [
+        "Awaiting Sales Offerings",
+        "Weekly Sales Averages",
+        "Sold Quantity & AveragesMenu ToggleWeekly Sold Quantity AveragesMonthly Sold Quantity & Averages",
+        "Weekly Sold Quantity Averages",
+        "Monthly Sold Quantity & Averages",
+        "Monthly Production",
+        "ExportsMenu ToggleExport Country-wise",
+        "Export Country-wise"
+      ],
+      "data_list_2": [
+        "Weekly Sold Quantity Averages",
+        "Monthly Sold Quantity & Averages"
+      ]
+    },
+    "data_classification": "production_data",
+    "extraction_method": "requests"
+  },
+  "volume_analysis": {
+    "extracted_volumes": [],
+    "volume_patterns": {}
+  },
+  "price_analysis": {
+    "extracted_prices": [],
+    "price_patterns": {},
+    "currency_detected": "USD"
+  }
+}

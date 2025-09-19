@@ -1,0 +1,332 @@
+{
+  "metadata": {
+    "location": "colombo_forbes_quantities",
+    "display_name": "Colombo Forbes Quantities",
+    "region": "Sri Lanka",
+    "period": "S38_2025",
+    "week_number": 38,
+    "year": 2025,
+    "report_title": "Colombo_forbes_quantities Market Report",
+    "data_quality": "Excellent - Comprehensive automated extraction",
+    "currency": "LKR",
+    "source_url": "https://web.forbestea.com/statistics/sri-lankan-statistics/90-weekly-tea-auction-quantities-averages/1299-sri-lanka-weekly-tea-auction-quantities-averages",
+    "scraping_timestamp": "2025-09-19T18:15:48.923559"
+  },
+  "summary": {
+    "total_offered_kg": 0,
+    "total_sold_kg": 0,
+    "total_lots": 15,
+    "auction_average_price": 0,
+    "percent_sold": 85.0,
+    "percent_unsold": 15.0,
+    "commentary_synthesized": "Comprehensive automated market data extraction"
+  },
+  "market_intelligence": {
+    "comprehensive_data": {
+      "source_key": "forbes_quantities",
+      "group": "colombo",
+      "page_title": "SRI LANKA WEEKLY TEA AUCTION QUANTITIES & AVERAGES - 2025",
+      "extraction_timestamp": "2025-09-19T18:15:48.886598",
+      "url_classification": "general_market_data",
+      "table_0": [
+        {
+          "column_0": "No events"
+        }
+      ],
+      "table_1": [
+        {
+          "column_0": null
+        },
+        {
+          "column_0": null,
+          "column_1": 0,
+          "column_2": null,
+          "column_3": null,
+          "column_4": "Avg. Rs.",
+          "column_5": null,
+          "column_6": null,
+          "column_7": null
+        },
+        {
+          "column_0": "Sale Date",
+          "column_1": "High",
+          "column_2": "Medium",
+          "column_3": "Low",
+          "column_4": "Total",
+          "column_5": "High",
+          "column_6": "Medium",
+          "column_7": "Low",
+          "column_8": "Total"
+        },
+        {
+          "column_0": "January",
+          "column_1": null,
+          "column_2": null,
+          "column_3": null,
+          "column_4": null,
+          "column_5": null,
+          "column_6": null,
+          "column_7": null,
+          "column_8": null
+        },
+        {
+          "column_0": "08-JAN-2025",
+          "column_1": 991,
+          "column_2": 998,
+          "column_3": 3299,
+          "column_4": 5288,
+          "column_5": 1106.59,
+          "column_6": 1023.36,
+          "column_7": 1245.83,
+          "column_8": 1177.74
+        },
+        {
+          "column_0": "15-JAN-2025",
+          "column_1": 651,
+          "column_2": 627,
+          "column_3": 2318,
+          "column_4": 3596,
+          "column_5": 1106.79,
+          "column_6": 1018.51,
+          "column_7": 1289.42,
+          "column_8": 1209.1
+        },
+        {
+          "column_0": "22-JAN-2025",
+          "column_1": 1028,
+          "column_2": 1028,
+          "column_3": 3933,
+          "column_4": 5989,
+          "column_5": 1118.14,
+          "column_6": 1053.15,
+          "column_7": 1285.86,
+          "column_8": 1217.12
+        },
+        {
+          "column_0": "29-JAN-2025",
+          "column_1": 1086,
+          "column_2": 959,
+          "column_3": 3484,
+          "column_4": 5529,
+          "column_5": 1129.37,
+          "column_6": 1072.25,
+          "column_7": 1299.41,
+          "column_8": 1226.61
+        },
+        {
+          "column_0": null,
+          "column_1": null,
+          "column_2": null,
+          "column_3": null,
+          "column_4": null,
+          "column_5": null,
+          "column_6": null,
+          "column_7": null,
+          "column_8": null
+        }
+      ],
+      "table_2": [
+        {
+          "February": "05-FEB-2025",
+          "": 1190.36
+        },
+        {
+          "February": "11-FEB-2025",
+          "": 1175.61
+        },
+        {
+          "February": "19-FEB-2025",
+          "": 1176.75
+        },
+        {
+          "February": "26-FEB-2025",
+          "": 1205.51
+        },
+        {
+          "February": null,
+          "": null
+        }
+      ],
+      "table_3": [
+        {
+          "March": "05-MAR-2025",
+          "": 1197.13
+        },
+        {
+          "March": "11-MAR-2025",
+          "": 1213.87
+        },
+        {
+          "March": "19-MAR-2025",
+          "": 1202.97
+        },
+        {
+          "March": "26-MAR-2025",
+          "": 1204.58
+        },
+        {
+          "March": null,
+          "": null
+        }
+      ],
+      "table_4": [
+        {
+          "April": "02-APR-2025",
+          "": 1185.06
+        },
+        {
+          "April": "08-APR-2025",
+          "": 1163.91
+        },
+        {
+          "April": "23-APR-2025",
+          "": 1193.47
+        },
+        {
+          "April": "29-APR-2025",
+          "": 1188.33
+        },
+        {
+          "April": null,
+          "": null
+        }
+      ],
+      "table_5": [
+        {
+          "May": "07-MAY-2025",
+          "": 1166.87
+        },
+        {
+          "May": "14-MAT-2025",
+          "": 1170.01
+        },
+        {
+          "May": "21-MAY-2025",
+          "": 1153.35
+        },
+        {
+          "May": "28-MAY-2025",
+          "": 1166.92
+        },
+        {
+          "May": null,
+          "": null
+        }
+      ],
+      "table_6": [
+        {
+          "June": "04-JUN-2025",
+          "": 1126.43
+        },
+        {
+          "June": "11-JUN-2025",
+          "": 1134.64
+        },
+        {
+          "June": "18-JUN-2025",
+          "": 1104.01
+        },
+        {
+          "June": "25-JUN-2025",
+          "": 1090.19
+        },
+        {
+          "June": null,
+          "": null
+        }
+      ],
+      "table_7": [
+        {
+          "July": "02-JUL-2025",
+          "": 1107.48
+        },
+        {
+          "July": "08-JUL-2025",
+          "": 1140.15
+        },
+        {
+          "July": "16-JUL-2025",
+          "": 1136.78
+        },
+        {
+          "July": "23-JUL-2025",
+          "": 1150.57
+        },
+        {
+          "July": "30-JUL-2025",
+          "": 1183.65
+        }
+      ],
+      "table_8": [
+        {
+          "August": "05-AUG-2025",
+          "": 1176.63
+        },
+        {
+          "August": "13-AUG-2025",
+          "": 1194.44
+        },
+        {
+          "August": "20-AUG-2025",
+          "": 1199.89
+        },
+        {
+          "August": "27-AUG-2025",
+          "": 1221.77
+        }
+      ],
+      "main_content": "HomeMember LoginEDOsHomeCorporate infoAbout Forbes & WalkerBoard of DirectorsManagement TeamNews & EventsLatest NewsCORPORATE ACHIEVEMENTSCLIENT ACHIEVEMENTSEvents CalendarMarket ReportsStatisticsGlobal StatisticsSri Lankan StatisticsAbout TeaContact UsContact UsBoard of DirectorsMarketing DepartmentFinance DepartmentCataloguing DepartmentWarehouseSampling DepartmentLatest NewsLatest EventsMost Read ArticlesUS Tea drinkers may take their lumps with hefty tariffsIndian tea continues to struggleTea and EU’s pesticide logisticsTaiwan launched first AI tea production lineMatcha shortage push prices upNo eventsWeekly Market ReportsBoard of DirectorsBoard of DirectorsTypes of TeaContact usHome>Statistics>Sri Lankan Statistics>Weekly Tea Auction Quantities & Averages>SRI LANKA WEEKLY TEA AUCTION QUANTITIES & AVERAGES - 2025SRI LANKA WEEKLY TEA AUCTION QUANTITIES & AVERAGES - 2025Qty Kg's 000'Avg. Rs.Sale DateHighMediumLowTotalHighMediumLowTotalJanuary08-JAN-20259919983,2995,2881106.591023.361",
+      "data_list_0": [
+        "Home",
+        "Member Login",
+        "EDOs"
+      ],
+      "data_list_1": [
+        "Home",
+        "Corporate infoAbout Forbes & WalkerBoard of DirectorsManagement Team",
+        "About Forbes & WalkerBoard of DirectorsManagement Team",
+        "About Forbes & Walker",
+        "Board of Directors",
+        "Management Team",
+        "News & EventsLatest NewsCORPORATE ACHIEVEMENTSCLIENT ACHIEVEMENTSEvents Calendar",
+        "Latest NewsCORPORATE ACHIEVEMENTSCLIENT ACHIEVEMENTSEvents Calendar",
+        "Latest News",
+        "CORPORATE ACHIEVEMENTS",
+        "CLIENT ACHIEVEMENTS",
+        "Events Calendar",
+        "Market Reports",
+        "StatisticsGlobal StatisticsSri Lankan Statistics",
+        "Global StatisticsSri Lankan Statistics",
+        "Global Statistics",
+        "Sri Lankan Statistics",
+        "About Tea",
+        "Contact Us",
+        "Contact UsBoard of DirectorsMarketing DepartmentFinance DepartmentCataloguing DepartmentWarehouseSampling Department",
+        "Board of DirectorsMarketing DepartmentFinance DepartmentCataloguing DepartmentWarehouseSampling Department",
+        "Board of Directors",
+        "Marketing Department",
+        "Finance Department",
+        "Cataloguing Department",
+        "Warehouse",
+        "Sampling Department"
+      ],
+      "data_list_2": [
+        "About Forbes & WalkerBoard of DirectorsManagement Team",
+        "About Forbes & Walker",
+        "Board of Directors",
+        "Management Team"
+      ]
+    },
+    "data_classification": "general_market_data",
+    "extraction_method": "requests"
+  },
+  "volume_analysis": {
+    "extracted_volumes": [],
+    "volume_patterns": {}
+  },
+  "price_analysis": {
+    "extracted_prices": [],
+    "price_patterns": {},
+    "currency_detected": "USD"
+  }
+}

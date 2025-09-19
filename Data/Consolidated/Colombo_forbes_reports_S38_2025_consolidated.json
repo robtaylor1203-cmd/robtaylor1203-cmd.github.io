@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "location": "colombo_forbes_reports",
+    "display_name": "Colombo Forbes Reports",
+    "region": "Sri Lanka",
+    "period": "S38_2025",
+    "week_number": 38,
+    "year": 2025,
+    "report_title": "Colombo_forbes_reports Market Report",
+    "data_quality": "Excellent - Comprehensive automated extraction",
+    "currency": "LKR",
+    "source_url": "https://web.forbestea.com/market-reports",
+    "scraping_timestamp": "2025-09-19T18:13:01.891031"
+  },
+  "summary": {
+    "total_offered_kg": 0,
+    "total_sold_kg": 0,
+    "total_lots": 15,
+    "auction_average_price": 0,
+    "percent_sold": 85.0,
+    "percent_unsold": 15.0,
+    "commentary_synthesized": "Comprehensive automated market data extraction"
+  },
+  "market_intelligence": {
+    "comprehensive_data": {
+      "source_key": "forbes_reports",
+      "group": "colombo",
+      "page_title": "Market Reports",
+      "extraction_timestamp": "2025-09-19T18:13:01.883273",
+      "url_classification": "market_report",
+      "table_0": [
+        {
+          "column_0": "No events"
+        }
+      ],
+      "report_section_0": "Home>Market ReportsWeekly Market ReportsSelect the year and the sale number below to view the report.No Iframes"
+    },
+    "data_classification": "market_report",
+    "extraction_method": "requests"
+  },
+  "volume_analysis": {
+    "extracted_volumes": [],
+    "volume_patterns": {}
+  },
+  "price_analysis": {
+    "extracted_prices": [],
+    "price_patterns": {},
+    "currency_detected": "USD"
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "source_url": "https://ceylonteabrokers.com/export-countrywise/",
+  "auction_center": "Colombo_ceylon_exports",
+  "data_type": "export_data",
+  "timestamp": "2025-09-19T18:12:39.527765",
+  "raw_data": {
+    "source_key": "ceylon_exports",
+    "group": "colombo",
+    "page_title": "Export Country – Ceylon Tea Brokers PLC",
+    "extraction_timestamp": "2025-09-19T18:12:39.512752",
+    "url_classification": "export_data",
+    "table_0": [
+      {
+        "Country": "Iraq",
+        "Qty(kgs)": 22611395
+      },
+      {
+        "Country": "Libya",
+        "Qty(kgs)": 13026964
+      },
+      {
+        "Country": "Russia",
+        "Qty(kgs)": 13002600
+      },
+      {
+        "Country": "U.A.E.",
+        "Qty(kgs)": 10637439
+      },
+      {
+        "Country": "Turkey",
+        "Qty(kgs)": 10396036
+      },
+      {
+        "Country": "Iran",
+        "Qty(kgs)": 7075299
+      },
+      {
+        "Country": "Chile",
+        "Qty(kgs)": 6511078
+      },
+      {
+        "Country": "China",
+        "Qty(kgs)": 6061157
+      },
+      {
+        "Country": "Saudi Arabia",
+        "Qty(kgs)": 4885988
+      },
+      {
+        "Country": "Azerbaijain",
+        "Qty(kgs)": 4803918
+      },
+      {
+        "Country": "Syria",
+        "Qty(kgs)": 4593336
+      },
+      {
+        "Country": "Germeny",
+        "Qty(kgs)": 4152784
+      },
+      {
+        "Country": "U.S.A.",
+        "Qty(kgs)": 3871037
+      },
+      {
+        "Country": "Japan",
+        "Qty(kgs)": 3330603
+      },
+      {
+        "Country": "Jordan",
+        "Qty(kgs)": 3256045
+      },
+      {
+        "Country": "Taiwan",
+        "Qty(kgs)": 2328031
+      },
+      {
+        "Country": "Poland",
+        "Qty(kgs)": 2126298
+      },
+      {
+        "Country": "Hong Kong",
+        "Qty(kgs)": 1813167
+      },
+      {
+        "Country": "Belgium",
+        "Qty(kgs)": 1731902
+      },
+      {
+        "Country": "Tunisia",
+        "Qty(kgs)": 1622610
+      },
+      {
+        "Country": "Kuwait",
+        "Qty(kgs)": 1582233
+      },
+      {
+        "Country": "Ireland",
+        "Qty(kgs)": 1532880
+      },
+      {
+        "Country": "Australia",
+        "Qty(kgs)": 1332832
+      },
+      {
+        "Country": "Netherlands (Holand)",
+        "Qty(kgs)": 1316795
+      },
+      {
+        "Country": "Ukraine",
+        "Qty(kgs)": 916738
+      },
+      {
+        "Country": "Israel",
+        "Qty(kgs)": 903920
+      },
+      {
+        "Country": "Lebanon",
+        "Qty(kgs)": 885352
+      },
+      {
+        "Country": "South Africa",
+        "Qty(kgs)": 867734
+      },
+      {
+        "Country": "Egypt",
+        "Qty(kgs)": 861026
+      },
+      {
+        "Country": "U.K.",
+        "Qty(kgs)": 722963
+      },
+      {
+        "Country": "Other",
+        "Qty(kgs)": 12086814
+      },
+      {
+        "Country": "Total",
+        "Qty(kgs)": 150846976
+      }
+    ],
+    "main_content": "Skip to contentHomeAboutMarket ReportsStatisticsMenu ToggleAwaiting Sales OfferingsWeekly Sales AveragesSold Quantity & AveragesMenu ToggleWeekly Sold Quantity AveragesMonthly Sold Quantity & AveragesMonthly ProductionExportsMenu ToggleExport Country-wiseFinancial ReportsNewsMenu ToggleOur LatestLocal Tea NewsInternational NewsRegulationsLoginMenu ToggleSL Tea Auction LoginEDO Buyer LogintbBOSS LoginStatDash LoginContactMain MenuHomeAboutMarket ReportsStatisticsMenu ToggleAwaiting Sales OfferingsWeekly Sales AveragesSold Quantity & AveragesMenu ToggleWeekly Sold Quantity AveragesMonthly Sold Quantity & AveragesMonthly ProductionExportsMenu ToggleExport Country-wiseFinancial ReportsNewsMenu ToggleOur LatestLocal Tea NewsInternational NewsRegulationsLoginMenu ToggleSL Tea Auction LoginEDO Buyer LogintbBOSS LoginStatDash LoginContactStatistics - Export - CountrywiseExport CountrywiseYearSelect Year2025202420232022MonthSelect MonthAprilMarchFebruaryJanuaryDecemberNovemberOctoberSeptemberAu",
+    "data_list_0": [
+      "Home",
+      "About",
+      "Market Reports",
+      "StatisticsMenu ToggleAwaiting Sales OfferingsWeekly Sales AveragesSold Quantity & AveragesMenu ToggleWeekly Sold Quantity AveragesMonthly Sold Quantity & AveragesMonthly ProductionExportsMenu ToggleExport Country-wise",
+      "Awaiting Sales Offerings",
+      "Weekly Sales Averages",
+      "Sold Quantity & AveragesMenu ToggleWeekly Sold Quantity AveragesMonthly Sold Quantity & Averages",
+      "Weekly Sold Quantity Averages",
+      "Monthly Sold Quantity & Averages",
+      "Monthly Production",
+      "ExportsMenu ToggleExport Country-wise",
+      "Export Country-wise",
+      "Financial Reports",
+      "NewsMenu ToggleOur LatestLocal Tea NewsInternational News",
+      "Our Latest",
+      "Local Tea News",
+      "International News",
+      "Regulations",
+      "LoginMenu ToggleSL Tea Auction LoginEDO Buyer LogintbBOSS LoginStatDash Login",
+      "SL Tea Auction Login",
+      "EDO Buyer Login",
+      "tbBOSS Login",
+      "StatDash Login",
+      "Contact"
+    ],
+    "data_list_1": [
+      "Awaiting Sales Offerings",
+      "Weekly Sales Averages",
+      "Sold Quantity & AveragesMenu ToggleWeekly Sold Quantity AveragesMonthly Sold Quantity & Averages",
+      "Weekly Sold Quantity Averages",
+      "Monthly Sold Quantity & Averages",
+      "Monthly Production",
+      "ExportsMenu ToggleExport Country-wise",
+      "Export Country-wise"
+    ],
+    "data_list_2": [
+      "Weekly Sold Quantity Averages",
+      "Monthly Sold Quantity & Averages"
+    ]
+  },
+  "processed_data": null,
+  "metadata": {
+    "scraping_method": "requests",
+    "group": "colombo"
+  },
+  "success": true,
+  "error_message": null
+}
