@@ -1,0 +1,615 @@
+2025-09-17 19:46:07,895 - INFO - Starting TeaTrade News Aggregation...
+2025-09-17 19:46:07,896 - INFO - Scraping tea_coffee_asia...
+2025-09-17 19:46:08,750 - INFO - Found 20 potential articles from tea_coffee_asia
+2025-09-17 19:46:08,784 - INFO - Successfully extracted 20 relevant articles from tea_coffee_asia
+2025-09-17 19:46:11,407 - INFO - Scraping world_tea_news...
+2025-09-17 19:46:12,199 - INFO - Found 0 potential articles from world_tea_news
+2025-09-17 19:46:12,199 - INFO - Successfully extracted 0 relevant articles from world_tea_news
+2025-09-17 19:46:13,478 - INFO - Scraping fresh_cup...
+2025-09-17 19:46:14,906 - ERROR - Error scraping fresh_cup: 403 Client Error: Forbidden for url: https://freshcup.com/category/tea/
+2025-09-17 19:46:14,909 - INFO - Scraping tea_journey...
+2025-09-17 19:46:17,078 - INFO - Found 8 potential articles from tea_journey
+2025-09-17 19:46:17,097 - INFO - Successfully extracted 8 relevant articles from tea_journey
+2025-09-17 19:46:19,371 - INFO - Scraping food_navigator...
+2025-09-17 19:46:20,927 - INFO - Found 0 potential articles from food_navigator
+2025-09-17 19:46:20,928 - INFO - Successfully extracted 0 relevant articles from food_navigator
+2025-09-17 19:46:23,189 - INFO - Scraping beverage_daily...
+2025-09-17 19:46:24,784 - INFO - Found 9 potential articles from beverage_daily
+2025-09-17 19:46:24,791 - INFO - Successfully extracted 0 relevant articles from beverage_daily
+2025-09-17 19:46:27,000 - INFO - Scraping specialty_food...
+2025-09-17 19:46:28,014 - INFO - Found 0 potential articles from specialty_food
+2025-09-17 19:46:28,014 - INFO - Successfully extracted 0 relevant articles from specialty_food
+2025-09-17 19:46:30,064 - INFO - Scraping nutrition_insight...
+2025-09-17 19:46:32,436 - ERROR - Error scraping nutrition_insight: 404 Client Error: Not Found for url: https://www.nutritioninsight.com/search.html?q=tea
+2025-09-17 19:46:32,437 - INFO - Scraping just_food...
+2025-09-17 19:46:32,897 - ERROR - Error scraping just_food: 403 Client Error: Forbidden for url: https://www.just-food.com/search/?q=tea
+2025-09-17 19:46:32,898 - INFO - Scraping agri_pulse...
+2025-09-17 19:46:34,616 - INFO - Found 0 potential articles from agri_pulse
+2025-09-17 19:46:34,616 - INFO - Successfully extracted 0 relevant articles from agri_pulse
+2025-09-17 19:46:36,012 - INFO - Scraping reuters_commodities...
+2025-09-17 19:46:36,330 - ERROR - Error scraping reuters_commodities: 401 Client Error: HTTP Forbidden for url: https://www.reuters.com/markets/commodities/
+2025-09-17 19:46:36,331 - INFO - Scraping bloomberg_agri...
+2025-09-17 19:46:37,242 - ERROR - Error scraping bloomberg_agri: 404 Client Error: Not Found for url: https://www.bloomberg.com/agriculture
+2025-09-17 19:46:37,243 - INFO - Scraping food_business...
+2025-09-17 19:46:40,632 - ERROR - Error scraping food_business: 404 Client Error: Not Found for url: https://www.foodbusinessmagazine.com/search?q=tea
+2025-09-17 19:46:40,638 - INFO - Scraping gtis...
+2025-09-17 19:47:10,812 - ERROR - Error scraping gtis: HTTPSConnectionPool(host='www.gtis.com', port=443): Max retries exceeded with url: /english/GTIS_tea.html (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7fa0a62c10>, 'Connection to www.gtis.com timed out. (connect timeout=30)'))
+2025-09-17 19:47:10,814 - INFO - Scraping sustainable_food...
+2025-09-17 19:47:14,089 - INFO - Found 1 potential articles from sustainable_food
+2025-09-17 19:47:14,111 - INFO - Successfully extracted 0 relevant articles from sustainable_food
+2025-09-17 19:47:16,708 - INFO - Scraping food_dive...
+2025-09-17 19:47:17,951 - INFO - Found 23 potential articles from food_dive
+2025-09-17 19:47:17,994 - INFO - Successfully extracted 17 relevant articles from food_dive
+2025-09-17 19:47:19,938 - INFO - Scraping packaging_world...
+2025-09-17 19:47:20,373 - ERROR - Error scraping packaging_world: 403 Client Error: Forbidden for url: https://www.packworld.com/search?q=tea
+2025-09-17 19:47:20,379 - INFO - Scraping grocery_dive...
+2025-09-17 19:47:21,364 - INFO - Found 23 potential articles from grocery_dive
+2025-09-17 19:47:21,381 - INFO - Successfully extracted 17 relevant articles from grocery_dive
+2025-09-17 19:47:23,927 - INFO - Scraping new_hope_network...
+2025-09-17 19:47:24,733 - INFO - Found 0 potential articles from new_hope_network
+2025-09-17 19:47:24,733 - INFO - Successfully extracted 0 relevant articles from new_hope_network
+2025-09-17 19:47:26,495 - INFO - Scraping supply_chain_dive...
+2025-09-17 19:47:27,892 - INFO - Found 19 potential articles from supply_chain_dive
+2025-09-17 19:47:27,909 - INFO - Successfully extracted 17 relevant articles from supply_chain_dive
+2025-09-17 19:47:30,227 - INFO - Scraped 79 new articles from 5/20 sources
+2025-09-17 19:47:30,242 - INFO - Saved 79 total articles to database
+2025-09-17 19:47:30,261 - INFO - Generated website news data with 50 recent articles
+2025-09-17 19:47:30,271 - INFO - News aggregation completed in 82.37 seconds
+2025-09-17 19:47:30,273 - INFO - Total new articles: 79
+2025-09-17 20:06:54,448 - INFO - Starting Enhanced TeaTrade News Aggregation...
+2025-09-17 20:06:54,449 - INFO - Scraping guardian_search...
+2025-09-17 20:06:54,960 - WARNING - Attempt 1 failed for guardian_search: 404 Client Error: Not Found for url: https://www.theguardian.com/search?q=tea
+2025-09-17 20:06:58,179 - WARNING - Attempt 2 failed for guardian_search: 404 Client Error: Not Found for url: https://www.theguardian.com/search?q=tea
+2025-09-17 20:06:58,181 - ERROR - Error scraping guardian_search: 404 Client Error: Not Found for url: https://www.theguardian.com/search?q=tea
+2025-09-17 20:06:58,187 - INFO - ○ guardian_search: 0 articles
+2025-09-17 20:06:58,189 - INFO - Scraping just_food...
+2025-09-17 20:06:58,643 - WARNING - Attempt 1 failed for just_food: 403 Client Error: Forbidden for url: https://www.just-food.com/search/?q=tea
+2025-09-17 20:07:01,924 - WARNING - Attempt 2 failed for just_food: 403 Client Error: Forbidden for url: https://www.just-food.com/search/?q=tea
+2025-09-17 20:07:01,926 - ERROR - Error scraping just_food: 403 Client Error: Forbidden for url: https://www.just-food.com/search/?q=tea
+2025-09-17 20:07:01,932 - INFO - ○ just_food: 0 articles
+2025-09-17 20:07:01,934 - INFO - Scraping times_search...
+2025-09-17 20:07:03,033 - INFO - Found 0 potential articles from times_search
+2025-09-17 20:07:03,034 - INFO - Successfully extracted 0 relevant articles from times_search
+2025-09-17 20:07:08,445 - INFO - ○ times_search: 0 articles
+2025-09-17 20:07:08,451 - INFO - Scraping reuters_rss_business...
+2025-09-17 20:07:08,647 - ERROR - Error parsing RSS feed reuters_rss_business: HTTPSConnectionPool(host='feeds.reuters.com', port=443): Max retries exceeded with url: /reuters/businessNews (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f8a901a90>: Failed to resolve 'feeds.reuters.com' ([Errno -2] Name or service not known)"))
+2025-09-17 20:07:08,648 - INFO - ○ reuters_rss_business: 0 articles
+2025-09-17 20:07:08,648 - INFO - Scraping nutrition_insight...
+2025-09-17 20:07:18,888 - WARNING - Attempt 1 failed for nutrition_insight: 404 Client Error: Not Found for url: https://www.nutritioninsight.com/search.html?q=tea
+2025-09-17 20:07:25,515 - WARNING - Attempt 2 failed for nutrition_insight: 404 Client Error: Not Found for url: https://www.nutritioninsight.com/search.html?q=tea
+2025-09-17 20:07:25,519 - ERROR - Error scraping nutrition_insight: 404 Client Error: Not Found for url: https://www.nutritioninsight.com/search.html?q=tea
+2025-09-17 20:07:25,531 - INFO - ○ nutrition_insight: 0 articles
+2025-09-17 20:07:25,533 - INFO - Scraping reuters_search...
+2025-09-17 20:07:26,219 - INFO - Found 0 potential articles from reuters_search
+2025-09-17 20:07:26,219 - INFO - Successfully extracted 0 relevant articles from reuters_search
+2025-09-17 20:07:30,668 - INFO - ○ reuters_search: 0 articles
+2025-09-17 20:07:30,669 - INFO - Scraping bbc_rss_business...
+2025-09-17 20:07:31,125 - INFO - Found 50 RSS items from bbc_rss_business
+2025-09-17 20:07:31,144 - INFO - ✓ bbc_rss_business: 2 articles
+2025-09-17 20:07:31,147 - INFO - Scraping agri_pulse...
+2025-09-17 20:07:32,363 - INFO - Found 0 potential articles from agri_pulse
+2025-09-17 20:07:32,363 - INFO - Successfully extracted 0 relevant articles from agri_pulse
+2025-09-17 20:07:35,397 - INFO - ○ agri_pulse: 0 articles
+2025-09-17 20:07:35,401 - INFO - Scraping times_of_india_search...
+2025-09-17 20:07:36,277 - INFO - Found 40 potential articles from times_of_india_search
+2025-09-17 20:07:36,291 - INFO - Successfully extracted 8 relevant articles from times_of_india_search
+2025-09-17 20:07:40,203 - INFO - ✓ times_of_india_search: 8 articles
+2025-09-17 20:07:40,204 - INFO - Scraping food_navigator...
+2025-09-17 20:07:42,561 - INFO - Found 0 potential articles from food_navigator
+2025-09-17 20:07:42,562 - INFO - Successfully extracted 0 relevant articles from food_navigator
+2025-09-17 20:07:45,153 - INFO - ○ food_navigator: 0 articles
+2025-09-17 20:07:45,156 - INFO - Scraping world_tea_news...
+2025-09-17 20:07:45,992 - INFO - Found 0 potential articles from world_tea_news
+2025-09-17 20:07:45,992 - INFO - Successfully extracted 0 relevant articles from world_tea_news
+2025-09-17 20:07:47,841 - INFO - ○ world_tea_news: 0 articles
+2025-09-17 20:07:47,843 - INFO - Scraping tea_journey...
+2025-09-17 20:07:49,573 - INFO - Found 8 potential articles from tea_journey
+2025-09-17 20:07:49,586 - INFO - Successfully extracted 0 relevant articles from tea_journey
+2025-09-17 20:07:51,410 - INFO - ○ tea_journey: 0 articles
+2025-09-17 20:07:51,416 - INFO - Scraping beverage_daily...
+2025-09-17 20:07:53,528 - INFO - Found 9 potential articles from beverage_daily
+2025-09-17 20:07:53,532 - INFO - Successfully extracted 0 relevant articles from beverage_daily
+2025-09-17 20:07:57,189 - INFO - ○ beverage_daily: 0 articles
+2025-09-17 20:07:57,191 - INFO - Scraping tea_coffee_asia...
+2025-09-17 20:07:57,806 - INFO - Found 20 potential articles from tea_coffee_asia
+2025-09-17 20:07:57,818 - INFO - Successfully extracted 0 relevant articles from tea_coffee_asia
+2025-09-17 20:08:00,384 - INFO - ○ tea_coffee_asia: 0 articles
+2025-09-17 20:08:00,388 - INFO - Scraping bloomberg_search...
+2025-09-17 20:08:01,841 - INFO - Found 0 potential articles from bloomberg_search
+2025-09-17 20:08:01,841 - INFO - Successfully extracted 0 relevant articles from bloomberg_search
+2025-09-17 20:08:09,661 - INFO - ○ bloomberg_search: 0 articles
+2025-09-17 20:08:09,663 - INFO - Scraping fresh_cup...
+2025-09-17 20:08:40,257 - WARNING - Attempt 1 failed for fresh_cup: HTTPSConnectionPool(host='www.freshcup.com', port=443): Read timed out. (read timeout=30)
+2025-09-17 20:08:52,021 - WARNING - Attempt 2 failed for fresh_cup: 403 Client Error: Forbidden for url: https://freshcup.com/category/tea/
+2025-09-17 20:08:52,023 - ERROR - Error scraping fresh_cup: 403 Client Error: Forbidden for url: https://freshcup.com/category/tea/
+2025-09-17 20:08:52,023 - INFO - ○ fresh_cup: 0 articles
+2025-09-17 20:08:52,024 - INFO - Scraping financial_times_search...
+2025-09-17 20:08:52,678 - INFO - Found 0 potential articles from financial_times_search
+2025-09-17 20:08:52,679 - INFO - Successfully extracted 0 relevant articles from financial_times_search
+2025-09-17 20:08:59,479 - INFO - ○ financial_times_search: 0 articles
+2025-09-17 20:08:59,482 - INFO - Scraping guardian_rss_business...
+2025-09-17 20:09:00,042 - INFO - Found 40 RSS items from guardian_rss_business
+2025-09-17 20:09:00,055 - INFO - ✓ guardian_rss_business: 7 articles
+2025-09-17 20:09:00,055 - INFO - Scraping specialty_food...
+2025-09-17 20:09:00,546 - INFO - Found 0 potential articles from specialty_food
+2025-09-17 20:09:00,546 - INFO - Successfully extracted 0 relevant articles from specialty_food
+2025-09-17 20:09:03,378 - INFO - ○ specialty_food: 0 articles
+2025-09-17 20:09:03,382 - INFO - Scraping bbc_news_search...
+2025-09-17 20:09:04,107 - INFO - Found 0 potential articles from bbc_news_search
+2025-09-17 20:09:04,108 - INFO - Successfully extracted 0 relevant articles from bbc_news_search
+2025-09-17 20:09:06,520 - INFO - ○ bbc_news_search: 0 articles
+2025-09-17 20:09:06,522 - INFO - Scraped 17 new articles from 3/20 sources
+2025-09-17 20:09:06,536 - INFO - Saved 96 total articles to database
+2025-09-17 20:09:06,537 - INFO - Added 17 new articles this run
+2025-09-17 20:09:06,555 - INFO - Generated website news data with 96 recent articles
+2025-09-17 20:09:06,556 - INFO - Categories: Industry News, Supply Chain, Retail, Food Marketing, Tea Culture, Times of India, Guardian Business, BBC Business
+2025-09-17 20:09:06,558 - INFO - Enhanced news aggregation completed in 132.11 seconds
+2025-09-17 20:09:06,559 - INFO - Total new articles: 17
+2025-09-17 20:19:00,683 - INFO - Starting Refined TeaTrade News Aggregation...
+2025-09-17 20:19:00,684 - INFO - Scraping tea_journey_news...
+2025-09-17 20:19:02,976 - INFO - Found 8 potential articles from tea_journey_news
+2025-09-17 20:19:02,984 - INFO - ✓ tea_journey_news: 0 articles
+2025-09-17 20:19:04,217 - INFO - ○ tea_journey_news: 0 articles
+2025-09-17 20:19:04,228 - INFO - Scraping natural_products_insider...
+2025-09-17 20:19:04,817 - WARNING - Failed to fetch natural_products_insider: 403 Client Error: Forbidden for url: https://www.supplysidesj.com/search?keys=tea
+2025-09-17 20:19:04,827 - INFO - ○ natural_products_insider: 0 articles
+2025-09-17 20:19:04,832 - INFO - Scraping farm_journal...
+2025-09-17 20:19:06,003 - WARNING - Failed to fetch farm_journal: 404 Client Error: Not Found for url: https://www.farmjournal.com/crops
+2025-09-17 20:19:06,009 - INFO - ○ farm_journal: 0 articles
+2025-09-17 20:19:06,011 - INFO - Scraping guardian_business_rss...
+2025-09-17 20:19:06,818 - INFO - Found 40 RSS items from guardian_business_rss
+2025-09-17 20:19:06,824 - INFO - ○ guardian_business_rss: 0 articles
+2025-09-17 20:19:06,827 - INFO - Scraping food_engineering_rss...
+2025-09-17 20:19:08,427 - WARNING - No entries found in RSS feed: food_engineering_rss
+2025-09-17 20:19:08,428 - INFO - ○ food_engineering_rss: 0 articles
+2025-09-17 20:19:08,428 - INFO - Scraping agweb_news...
+2025-09-17 20:19:08,783 - WARNING - Failed to fetch agweb_news: 403 Client Error: Forbidden for url: https://www.agweb.com/news
+2025-09-17 20:19:08,792 - INFO - ○ agweb_news: 0 articles
+2025-09-17 20:19:08,795 - INFO - Scraping retail_dive...
+2025-09-17 20:19:11,045 - INFO - Found 21 potential articles from retail_dive
+2025-09-17 20:19:11,057 - INFO - ✓ retail_dive: 0 articles
+2025-09-17 20:19:13,281 - INFO - ○ retail_dive: 0 articles
+2025-09-17 20:19:13,283 - INFO - Scraping packaging_world_rss...
+2025-09-17 20:19:14,422 - WARNING - No entries found in RSS feed: packaging_world_rss
+2025-09-17 20:19:14,423 - INFO - ○ packaging_world_rss: 0 articles
+2025-09-17 20:19:14,423 - INFO - Scraping yahoo_finance_rss...
+2025-09-17 20:19:14,775 - WARNING - No entries found in RSS feed: yahoo_finance_rss
+2025-09-17 20:19:14,782 - INFO - ○ yahoo_finance_rss: 0 articles
+2025-09-17 20:19:14,782 - INFO - Scraping convenience_store_news...
+2025-09-17 20:19:15,059 - WARNING - Failed to fetch convenience_store_news: 403 Client Error: Forbidden for url: https://csnews.com/category/beverages
+2025-09-17 20:19:15,065 - INFO - ○ convenience_store_news: 0 articles
+2025-09-17 20:19:15,067 - INFO - Scraping ft_companies_rss...
+2025-09-17 20:19:15,818 - INFO - Found 25 RSS items from ft_companies_rss
+2025-09-17 20:19:15,821 - INFO - Scraping reuters_business_rss...
+2025-09-17 20:19:16,040 - WARNING - No entries found in RSS feed: reuters_business_rss
+2025-09-17 20:19:16,040 - INFO - ○ reuters_business_rss: 0 articles
+2025-09-17 20:19:16,040 - INFO - Scraping supply_chain_dive...
+2025-09-17 20:19:17,141 - INFO - Found 19 potential articles from supply_chain_dive
+2025-09-17 20:19:17,148 - INFO - ✓ supply_chain_dive: 0 articles
+2025-09-17 20:19:20,611 - INFO - ○ supply_chain_dive: 0 articles
+2025-09-17 20:19:20,612 - INFO - Scraping bbc_business_rss...
+2025-09-17 20:19:21,128 - INFO - Found 50 RSS items from bbc_business_rss
+2025-09-17 20:19:21,130 - INFO - ○ bbc_business_rss: 0 articles
+2025-09-17 20:19:21,130 - INFO - Scraping economist_business_rss...
+2025-09-17 20:19:21,880 - INFO - Found 300 RSS items from economist_business_rss
+2025-09-17 20:19:21,883 - INFO - ○ economist_business_rss: 0 articles
+2025-09-17 20:19:21,883 - INFO - Scraping world_tea_news...
+2025-09-17 20:19:23,391 - WARNING - Failed to fetch world_tea_news: 404 Client Error: Not Found for url: https://www.worldteanews.com/category/news/
+2025-09-17 20:19:23,402 - INFO - ○ world_tea_news: 0 articles
+2025-09-17 20:19:23,403 - INFO - Scraping fresh_plaza_tea...
+2025-09-17 20:19:24,660 - WARNING - Failed to fetch fresh_plaza_tea: 404 Client Error: Not Found for url: https://www.freshplaza.com/europe/error/status/404/
+2025-09-17 20:19:24,661 - INFO - ○ fresh_plaza_tea: 0 articles
+2025-09-17 20:19:24,662 - INFO - Scraping cnbc_rss...
+2025-09-17 20:19:25,148 - INFO - Found 30 RSS items from cnbc_rss
+2025-09-17 20:19:25,151 - INFO - ○ cnbc_rss: 0 articles
+2025-09-17 20:19:25,151 - INFO - Scraping times_of_india_tea...
+2025-09-17 20:19:25,770 - INFO - Found 40 potential articles from times_of_india_tea
+2025-09-17 20:19:25,776 - INFO - ✓ times_of_india_tea: 0 articles
+2025-09-17 20:19:28,293 - INFO - ○ times_of_india_tea: 0 articles
+2025-09-17 20:19:28,294 - INFO - Scraping google_news_beverages...
+2025-09-17 20:19:29,510 - INFO - Found 100 RSS items from google_news_beverages
+2025-09-17 20:19:29,513 - INFO - Scraping tea_coffee_trade...
+2025-09-17 20:19:29,958 - INFO - Found 20 potential articles from tea_coffee_trade
+2025-09-17 20:19:29,966 - INFO - ✓ tea_coffee_trade: 0 articles
+2025-09-17 20:19:31,007 - INFO - ○ tea_coffee_trade: 0 articles
+2025-09-17 20:19:31,009 - INFO - Scraping google_news_tea...
+2025-09-17 20:19:31,974 - INFO - Found 100 RSS items from google_news_tea
+2025-09-17 20:19:31,976 - INFO - Scraping grocery_dive...
+2025-09-17 20:19:33,435 - INFO - Found 23 potential articles from grocery_dive
+2025-09-17 20:19:33,443 - INFO - ✓ grocery_dive: 0 articles
+2025-09-17 20:19:36,583 - INFO - ○ grocery_dive: 0 articles
+2025-09-17 20:19:36,584 - INFO - Scraping food_business_magazine...
+2025-09-17 20:19:43,079 - WARNING - Failed to fetch food_business_magazine: 404 Client Error: Not Found for url: https://www.foodbusinessmagazine.com/topics/2/beverages
+2025-09-17 20:19:43,085 - INFO - ○ food_business_magazine: 0 articles
+2025-09-17 20:19:43,093 - INFO - Scraping nutraingredients...
+2025-09-17 20:19:44,921 - INFO - Found 0 potential articles from nutraingredients
+2025-09-17 20:19:44,922 - INFO - ✓ nutraingredients: 0 articles
+2025-09-17 20:19:48,749 - INFO - ○ nutraingredients: 0 articles
+2025-09-17 20:19:48,758 - INFO - Scraping beverage_industry_news...
+2025-09-17 20:19:50,054 - WARNING - Failed to fetch beverage_industry_news: 404 Client Error: Not Found for url: https://www.bevindustry.com/topics/3106-tea
+2025-09-17 20:19:50,086 - INFO - ○ beverage_industry_news: 0 articles
+2025-09-17 20:19:50,096 - INFO - Scraping asia_one...
+2025-09-17 20:19:50,817 - WARNING - Failed to fetch asia_one: 404 Client Error: Not Found for url: https://www.asiaone.com/search?query=tea
+2025-09-17 20:19:50,827 - INFO - ○ asia_one: 0 articles
+2025-09-17 20:19:50,828 - INFO - Scraping food_dive...
+2025-09-17 20:19:52,052 - INFO - Found 23 potential articles from food_dive
+2025-09-17 20:19:52,062 - INFO - ✓ food_dive: 0 articles
+2025-09-17 20:19:55,442 - INFO - ○ food_dive: 0 articles
+2025-09-17 20:19:55,443 - INFO - Collected 19 new articles from 3/28 sources
+2025-09-17 20:19:55,458 - INFO - Saved 115 total articles to database
+2025-09-17 20:19:55,471 - INFO - Generated news_data.json with 50 articles for website
+2025-09-17 20:19:55,473 - INFO - Refined news aggregation completed in 54.79 seconds
+2025-09-17 20:24:35,388 - INFO - Starting Refined TeaTrade News Aggregation...
+2025-09-17 20:24:35,389 - INFO - Scraping guardian_business_rss...
+2025-09-17 20:24:36,293 - INFO - Found 40 RSS items from guardian_business_rss
+2025-09-17 20:24:36,298 - INFO - ○ guardian_business_rss: 0 articles
+2025-09-17 20:24:36,298 - INFO - Scraping bbc_business_rss...
+2025-09-17 20:24:36,656 - INFO - Found 50 RSS items from bbc_business_rss
+2025-09-17 20:24:36,658 - INFO - ○ bbc_business_rss: 0 articles
+2025-09-17 20:24:36,659 - INFO - Scraping google_news_tea...
+2025-09-17 20:24:37,625 - INFO - Found 100 RSS items from google_news_tea
+2025-09-17 20:24:37,628 - INFO - ○ google_news_tea: 0 articles
+2025-09-17 20:24:37,628 - INFO - Scraping tea_journey_news...
+2025-09-17 20:24:39,675 - INFO - Found 8 potential articles from tea_journey_news
+2025-09-17 20:24:39,683 - INFO - ✓ tea_journey_news: 0 articles
+2025-09-17 20:24:40,786 - INFO - ○ tea_journey_news: 0 articles
+2025-09-17 20:24:40,792 - INFO - Scraping times_of_india_tea...
+2025-09-17 20:24:41,442 - INFO - Found 40 potential articles from times_of_india_tea
+2025-09-17 20:24:41,448 - INFO - ✓ times_of_india_tea: 0 articles
+2025-09-17 20:24:44,449 - INFO - ○ times_of_india_tea: 0 articles
+2025-09-17 20:24:44,451 - INFO - Scraping supply_chain_dive...
+2025-09-17 20:24:45,463 - INFO - Found 19 potential articles from supply_chain_dive
+2025-09-17 20:24:45,470 - INFO - ✓ supply_chain_dive: 0 articles
+2025-09-17 20:24:48,564 - INFO - ○ supply_chain_dive: 0 articles
+2025-09-17 20:24:48,565 - INFO - Scraping beverage_industry_news...
+2025-09-17 20:24:49,868 - WARNING - Failed to fetch beverage_industry_news: 404 Client Error: Not Found for url: https://www.bevindustry.com/topics/3106-tea
+2025-09-17 20:24:49,873 - INFO - ○ beverage_industry_news: 0 articles
+2025-09-17 20:24:49,876 - INFO - Scraping fresh_plaza_tea...
+2025-09-17 20:24:50,438 - WARNING - Failed to fetch fresh_plaza_tea: 404 Client Error: Not Found for url: https://www.freshplaza.com/europe/error/status/404/
+2025-09-17 20:24:50,440 - INFO - ○ fresh_plaza_tea: 0 articles
+2025-09-17 20:24:50,446 - INFO - Scraping reuters_business_rss...
+2025-09-17 20:24:50,632 - WARNING - No entries found in RSS feed: reuters_business_rss
+2025-09-17 20:24:50,632 - INFO - ○ reuters_business_rss: 0 articles
+2025-09-17 20:24:50,633 - INFO - Scraping tea_coffee_trade...
+2025-09-17 20:24:51,098 - INFO - Found 20 potential articles from tea_coffee_trade
+2025-09-17 20:24:51,106 - INFO - ✓ tea_coffee_trade: 0 articles
+2025-09-17 20:24:52,866 - INFO - ○ tea_coffee_trade: 0 articles
+2025-09-17 20:24:52,867 - INFO - Scraping food_engineering_rss...
+2025-09-17 20:24:53,859 - WARNING - No entries found in RSS feed: food_engineering_rss
+2025-09-17 20:24:53,859 - INFO - ○ food_engineering_rss: 0 articles
+2025-09-17 20:24:53,860 - INFO - Scraping economist_business_rss...
+2025-09-17 20:24:54,686 - INFO - Found 300 RSS items from economist_business_rss
+2025-09-17 20:24:54,689 - INFO - ○ economist_business_rss: 0 articles
+2025-09-17 20:24:54,690 - INFO - Scraping food_business_magazine...
+2025-09-17 20:25:01,140 - WARNING - Failed to fetch food_business_magazine: 404 Client Error: Not Found for url: https://www.foodbusinessmagazine.com/topics/2/beverages
+2025-09-17 20:25:01,163 - INFO - ○ food_business_magazine: 0 articles
+2025-09-17 20:25:01,164 - INFO - Scraping natural_products_insider...
+2025-09-17 20:25:01,883 - WARNING - Failed to fetch natural_products_insider: 403 Client Error: Forbidden for url: https://www.supplysidesj.com/search?keys=tea
+2025-09-17 20:25:01,894 - INFO - ○ natural_products_insider: 0 articles
+2025-09-17 20:25:01,895 - INFO - Scraping world_tea_news...
+2025-09-17 20:25:03,387 - WARNING - Failed to fetch world_tea_news: 404 Client Error: Not Found for url: https://www.worldteanews.com/category/news/
+2025-09-17 20:25:03,405 - INFO - ○ world_tea_news: 0 articles
+2025-09-17 20:25:03,406 - INFO - Scraping convenience_store_news...
+2025-09-17 20:25:03,727 - WARNING - Failed to fetch convenience_store_news: 403 Client Error: Forbidden for url: https://csnews.com/category/beverages
+2025-09-17 20:25:03,732 - INFO - ○ convenience_store_news: 0 articles
+2025-09-17 20:25:03,734 - INFO - Scraping packaging_world_rss...
+2025-09-17 20:25:04,885 - WARNING - No entries found in RSS feed: packaging_world_rss
+2025-09-17 20:25:04,885 - INFO - ○ packaging_world_rss: 0 articles
+2025-09-17 20:25:04,886 - INFO - Scraping farm_journal...
+2025-09-17 20:25:06,048 - WARNING - Failed to fetch farm_journal: 404 Client Error: Not Found for url: https://www.farmjournal.com/crops
+2025-09-17 20:25:06,052 - INFO - ○ farm_journal: 0 articles
+2025-09-17 20:25:06,053 - INFO - Scraping grocery_dive...
+2025-09-17 20:25:07,128 - INFO - Found 23 potential articles from grocery_dive
+2025-09-17 20:25:07,135 - INFO - ✓ grocery_dive: 0 articles
+2025-09-17 20:25:10,361 - INFO - ○ grocery_dive: 0 articles
+2025-09-17 20:25:10,362 - INFO - Scraping google_news_beverages...
+2025-09-17 20:25:12,788 - INFO - Found 100 RSS items from google_news_beverages
+2025-09-17 20:25:12,791 - INFO - ○ google_news_beverages: 0 articles
+2025-09-17 20:25:12,792 - INFO - Scraping ft_companies_rss...
+2025-09-17 20:25:13,277 - INFO - Found 25 RSS items from ft_companies_rss
+2025-09-17 20:25:13,284 - INFO - ○ ft_companies_rss: 0 articles
+2025-09-17 20:25:13,285 - INFO - Scraping cnbc_rss...
+2025-09-17 20:25:14,185 - INFO - Found 30 RSS items from cnbc_rss
+2025-09-17 20:25:14,193 - INFO - ○ cnbc_rss: 0 articles
+2025-09-17 20:25:14,194 - INFO - Scraping yahoo_finance_rss...
+2025-09-17 20:25:14,528 - WARNING - No entries found in RSS feed: yahoo_finance_rss
+2025-09-17 20:25:14,528 - INFO - ○ yahoo_finance_rss: 0 articles
+2025-09-17 20:25:14,528 - INFO - Scraping agweb_news...
+2025-09-17 20:25:14,855 - WARNING - Failed to fetch agweb_news: 403 Client Error: Forbidden for url: https://www.agweb.com/news
+2025-09-17 20:25:14,861 - INFO - ○ agweb_news: 0 articles
+2025-09-17 20:25:14,863 - INFO - Scraping nutraingredients...
+2025-09-17 20:25:17,166 - INFO - Found 0 potential articles from nutraingredients
+2025-09-17 20:25:17,166 - INFO - ✓ nutraingredients: 0 articles
+2025-09-17 20:25:19,880 - INFO - ○ nutraingredients: 0 articles
+2025-09-17 20:25:19,892 - INFO - Scraping asia_one...
+2025-09-17 20:25:22,652 - WARNING - Failed to fetch asia_one: 404 Client Error: Not Found for url: https://www.asiaone.com/search?query=tea
+2025-09-17 20:25:22,659 - INFO - ○ asia_one: 0 articles
+2025-09-17 20:25:22,660 - INFO - Scraping retail_dive...
+2025-09-17 20:25:24,189 - INFO - Found 21 potential articles from retail_dive
+2025-09-17 20:25:24,213 - INFO - ✓ retail_dive: 0 articles
+2025-09-17 20:25:27,433 - INFO - ○ retail_dive: 0 articles
+2025-09-17 20:25:27,434 - INFO - Scraping food_dive...
+2025-09-17 20:25:28,562 - INFO - Found 23 potential articles from food_dive
+2025-09-17 20:25:28,570 - INFO - ✓ food_dive: 0 articles
+2025-09-17 20:25:30,966 - INFO - ○ food_dive: 0 articles
+2025-09-17 20:25:30,970 - INFO - Collected 0 new articles from 0/28 sources
+2025-09-17 20:25:30,971 - INFO - Refined news aggregation completed in 55.58 seconds
+2025-09-17 20:29:21,610 - INFO - Starting Refined TeaTrade News Aggregation...
+2025-09-17 20:29:21,611 - INFO - Scraping grocery_dive...
+2025-09-17 20:29:22,949 - INFO - Found 23 potential articles from grocery_dive
+2025-09-17 20:29:22,956 - INFO - ✓ grocery_dive: 0 articles
+2025-09-17 20:29:24,986 - INFO - ○ grocery_dive: 0 articles
+2025-09-17 20:29:24,988 - INFO - Scraping food_business_magazine...
+2025-09-17 20:29:31,368 - WARNING - Failed to fetch food_business_magazine: 404 Client Error: Not Found for url: https://www.foodbusinessmagazine.com/topics/2/beverages
+2025-09-17 20:29:31,375 - INFO - ○ food_business_magazine: 0 articles
+2025-09-17 20:29:31,378 - INFO - Scraping asia_one...
+2025-09-17 20:29:32,294 - WARNING - Failed to fetch asia_one: 404 Client Error: Not Found for url: https://www.asiaone.com/search?query=tea
+2025-09-17 20:29:32,302 - INFO - ○ asia_one: 0 articles
+2025-09-17 20:29:32,305 - INFO - Scraping guardian_business_rss...
+2025-09-17 20:29:33,117 - INFO - Found 40 RSS items from guardian_business_rss
+2025-09-17 20:29:33,121 - INFO - ○ guardian_business_rss: 0 articles
+2025-09-17 20:29:33,121 - INFO - Scraping cnbc_rss...
+2025-09-17 20:29:33,613 - INFO - Found 30 RSS items from cnbc_rss
+2025-09-17 20:29:33,615 - INFO - ○ cnbc_rss: 0 articles
+2025-09-17 20:29:33,615 - INFO - Scraping nutraingredients...
+2025-09-17 20:29:35,206 - INFO - Found 0 potential articles from nutraingredients
+2025-09-17 20:29:35,207 - INFO - ✓ nutraingredients: 0 articles
+2025-09-17 20:29:39,036 - INFO - ○ nutraingredients: 0 articles
+2025-09-17 20:29:39,039 - INFO - Scraping farm_journal...
+2025-09-17 20:29:40,586 - WARNING - Failed to fetch farm_journal: 404 Client Error: Not Found for url: https://www.farmjournal.com/crops
+2025-09-17 20:29:40,595 - INFO - ○ farm_journal: 0 articles
+2025-09-17 20:29:40,596 - INFO - Scraping google_news_beverages...
+2025-09-17 20:29:41,770 - INFO - Found 100 RSS items from google_news_beverages
+2025-09-17 20:29:41,773 - INFO - ○ google_news_beverages: 0 articles
+2025-09-17 20:29:41,774 - INFO - Scraping times_of_india_tea...
+2025-09-17 20:29:43,033 - INFO - Found 40 potential articles from times_of_india_tea
+2025-09-17 20:29:43,039 - INFO - ✓ times_of_india_tea: 0 articles
+2025-09-17 20:29:46,490 - INFO - ○ times_of_india_tea: 0 articles
+2025-09-17 20:29:46,491 - INFO - Scraping yahoo_finance_rss...
+2025-09-17 20:29:46,829 - WARNING - No entries found in RSS feed: yahoo_finance_rss
+2025-09-17 20:29:46,829 - INFO - ○ yahoo_finance_rss: 0 articles
+2025-09-17 20:29:46,830 - INFO - Scraping supply_chain_dive...
+2025-09-17 20:29:48,024 - INFO - Found 19 potential articles from supply_chain_dive
+2025-09-17 20:29:48,048 - INFO - ✓ supply_chain_dive: 0 articles
+2025-09-17 20:29:51,154 - INFO - ○ supply_chain_dive: 0 articles
+2025-09-17 20:29:51,159 - INFO - Scraping food_engineering_rss...
+2025-09-17 20:29:52,248 - WARNING - No entries found in RSS feed: food_engineering_rss
+2025-09-17 20:29:52,248 - INFO - ○ food_engineering_rss: 0 articles
+2025-09-17 20:29:52,248 - INFO - Scraping reuters_business_rss...
+2025-09-17 20:29:52,420 - WARNING - No entries found in RSS feed: reuters_business_rss
+2025-09-17 20:29:52,420 - INFO - ○ reuters_business_rss: 0 articles
+2025-09-17 20:29:52,421 - INFO - Scraping beverage_industry_news...
+2025-09-17 20:29:53,216 - WARNING - Failed to fetch beverage_industry_news: 404 Client Error: Not Found for url: https://www.bevindustry.com/topics/3106-tea
+2025-09-17 20:29:53,227 - INFO - ○ beverage_industry_news: 0 articles
+2025-09-17 20:29:53,228 - INFO - Scraping tea_coffee_trade...
+2025-09-17 20:29:53,666 - INFO - Found 20 potential articles from tea_coffee_trade
+2025-09-17 20:29:53,675 - INFO - ✓ tea_coffee_trade: 0 articles
+2025-09-17 20:29:55,874 - INFO - ○ tea_coffee_trade: 0 articles
+2025-09-17 20:29:55,876 - INFO - Scraping agweb_news...
+2025-09-17 20:29:56,359 - WARNING - Failed to fetch agweb_news: 403 Client Error: Forbidden for url: https://www.agweb.com/news
+2025-09-17 20:29:56,363 - INFO - ○ agweb_news: 0 articles
+2025-09-17 20:29:56,365 - INFO - Scraping economist_business_rss...
+2025-09-17 20:29:57,792 - INFO - Found 300 RSS items from economist_business_rss
+2025-09-17 20:29:57,796 - INFO - ○ economist_business_rss: 0 articles
+2025-09-17 20:29:57,799 - INFO - Scraping world_tea_news...
+2025-09-17 20:29:58,444 - WARNING - Failed to fetch world_tea_news: 404 Client Error: Not Found for url: https://www.worldteanews.com/category/news/
+2025-09-17 20:29:58,461 - INFO - ○ world_tea_news: 0 articles
+2025-09-17 20:29:58,462 - INFO - Scraping bbc_business_rss...
+2025-09-17 20:29:58,854 - INFO - Found 50 RSS items from bbc_business_rss
+2025-09-17 20:29:58,856 - INFO - ○ bbc_business_rss: 0 articles
+2025-09-17 20:29:58,857 - INFO - Scraping tea_journey_news...
+2025-09-17 20:30:00,766 - INFO - Found 8 potential articles from tea_journey_news
+2025-09-17 20:30:00,791 - INFO - ✓ tea_journey_news: 0 articles
+2025-09-17 20:30:02,452 - INFO - ○ tea_journey_news: 0 articles
+2025-09-17 20:30:02,462 - INFO - Scraping convenience_store_news...
+2025-09-17 20:30:02,730 - WARNING - Failed to fetch convenience_store_news: 403 Client Error: Forbidden for url: https://csnews.com/category/beverages
+2025-09-17 20:30:02,734 - INFO - ○ convenience_store_news: 0 articles
+2025-09-17 20:30:02,737 - INFO - Scraping google_news_tea...
+2025-09-17 20:30:03,720 - INFO - Found 100 RSS items from google_news_tea
+2025-09-17 20:30:03,723 - INFO - ○ google_news_tea: 0 articles
+2025-09-17 20:30:03,723 - INFO - Scraping natural_products_insider...
+2025-09-17 20:30:04,814 - WARNING - Failed to fetch natural_products_insider: 403 Client Error: Forbidden for url: https://www.supplysidesj.com/search?keys=tea
+2025-09-17 20:30:04,823 - INFO - ○ natural_products_insider: 0 articles
+2025-09-17 20:30:04,824 - INFO - Scraping packaging_world_rss...
+2025-09-17 20:30:05,912 - WARNING - No entries found in RSS feed: packaging_world_rss
+2025-09-17 20:30:05,912 - INFO - ○ packaging_world_rss: 0 articles
+2025-09-17 20:30:05,912 - INFO - Scraping food_dive...
+2025-09-17 20:30:06,998 - INFO - Found 23 potential articles from food_dive
+2025-09-17 20:30:07,008 - INFO - ✓ food_dive: 0 articles
+2025-09-17 20:30:10,004 - INFO - ○ food_dive: 0 articles
+2025-09-17 20:30:10,005 - INFO - Scraping retail_dive...
+2025-09-17 20:30:11,184 - INFO - Found 21 potential articles from retail_dive
+2025-09-17 20:30:11,201 - INFO - ✓ retail_dive: 0 articles
+2025-09-17 20:30:13,818 - INFO - ○ retail_dive: 0 articles
+2025-09-17 20:30:13,820 - INFO - Scraping ft_companies_rss...
+2025-09-17 20:30:14,957 - INFO - Found 25 RSS items from ft_companies_rss
+2025-09-17 20:30:14,960 - INFO - ○ ft_companies_rss: 0 articles
+2025-09-17 20:30:14,960 - INFO - Scraping fresh_plaza_tea...
+2025-09-17 20:30:15,604 - WARNING - Failed to fetch fresh_plaza_tea: 404 Client Error: Not Found for url: https://www.freshplaza.com/europe/error/status/404/
+2025-09-17 20:30:15,620 - INFO - ○ fresh_plaza_tea: 0 articles
+2025-09-17 20:30:15,620 - INFO - Collected 0 new articles from 0/28 sources
+2025-09-17 20:30:15,621 - INFO - Refined news aggregation completed in 54.01 seconds
+2025-09-17 20:31:41,613 - INFO - Starting Enhanced TeaTrade News Aggregation...
+2025-09-17 20:31:41,614 - INFO - Scraping times_of_india_search...
+2025-09-17 20:31:42,249 - INFO - Found 40 potential articles from times_of_india_search
+2025-09-17 20:31:42,261 - INFO - Successfully extracted 2 relevant articles from times_of_india_search
+2025-09-17 20:31:45,186 - INFO - ✓ times_of_india_search: 2 articles
+2025-09-17 20:31:45,190 - INFO - Scraping food_navigator...
+2025-09-17 20:31:46,693 - INFO - Found 0 potential articles from food_navigator
+2025-09-17 20:31:46,694 - INFO - Successfully extracted 0 relevant articles from food_navigator
+2025-09-17 20:31:49,341 - INFO - ○ food_navigator: 0 articles
+2025-09-17 20:31:49,344 - INFO - Scraping bbc_news_search...
+2025-09-17 20:31:50,041 - INFO - Found 0 potential articles from bbc_news_search
+2025-09-17 20:31:50,041 - INFO - Successfully extracted 0 relevant articles from bbc_news_search
+2025-09-17 20:31:52,546 - INFO - ○ bbc_news_search: 0 articles
+2025-09-17 20:31:52,548 - INFO - Scraping beverage_daily...
+2025-09-17 20:31:54,651 - INFO - Found 9 potential articles from beverage_daily
+2025-09-17 20:31:54,661 - INFO - Successfully extracted 0 relevant articles from beverage_daily
+2025-09-17 20:31:56,872 - INFO - ○ beverage_daily: 0 articles
+2025-09-17 20:31:56,876 - INFO - Scraping tea_coffee_asia...
+2025-09-17 20:31:57,384 - INFO - Found 20 potential articles from tea_coffee_asia
+2025-09-17 20:31:57,397 - INFO - Successfully extracted 0 relevant articles from tea_coffee_asia
+2025-09-17 20:31:59,087 - INFO - ○ tea_coffee_asia: 0 articles
+2025-09-17 20:31:59,094 - INFO - Scraping financial_times_search...
+2025-09-17 20:31:59,834 - INFO - Found 0 potential articles from financial_times_search
+2025-09-17 20:31:59,835 - INFO - Successfully extracted 0 relevant articles from financial_times_search
+2025-09-17 20:32:03,219 - INFO - ○ financial_times_search: 0 articles
+2025-09-17 20:32:03,220 - INFO - Scraping times_search...
+2025-09-17 20:32:04,968 - INFO - Found 0 potential articles from times_search
+2025-09-17 20:32:04,968 - INFO - Successfully extracted 0 relevant articles from times_search
+2025-09-17 20:32:09,175 - INFO - ○ times_search: 0 articles
+2025-09-17 20:32:09,180 - INFO - Scraping bloomberg_search...
+2025-09-17 20:32:10,494 - INFO - Found 0 potential articles from bloomberg_search
+2025-09-17 20:32:10,494 - INFO - Successfully extracted 0 relevant articles from bloomberg_search
+2025-09-17 20:32:16,603 - INFO - ○ bloomberg_search: 0 articles
+2025-09-17 20:32:16,604 - INFO - Scraping tea_journey...
+2025-09-17 20:32:18,452 - INFO - Found 8 potential articles from tea_journey
+2025-09-17 20:32:18,460 - INFO - Successfully extracted 0 relevant articles from tea_journey
+2025-09-17 20:32:19,618 - INFO - ○ tea_journey: 0 articles
+2025-09-17 20:32:19,621 - INFO - Scraping reuters_search...
+2025-09-17 20:32:20,245 - INFO - Found 0 potential articles from reuters_search
+2025-09-17 20:32:20,245 - INFO - Successfully extracted 0 relevant articles from reuters_search
+2025-09-17 20:32:23,278 - INFO - ○ reuters_search: 0 articles
+2025-09-17 20:32:23,280 - INFO - Scraping nutrition_insight...
+2025-09-17 20:32:29,361 - WARNING - Attempt 1 failed for nutrition_insight: 404 Client Error: Not Found for url: https://www.nutritioninsight.com/search.html?q=tea
+2025-09-17 20:32:36,072 - WARNING - Attempt 2 failed for nutrition_insight: 404 Client Error: Not Found for url: https://www.nutritioninsight.com/search.html?q=tea
+2025-09-17 20:32:36,074 - ERROR - Error scraping nutrition_insight: 404 Client Error: Not Found for url: https://www.nutritioninsight.com/search.html?q=tea
+2025-09-17 20:32:36,082 - INFO - ○ nutrition_insight: 0 articles
+2025-09-17 20:32:36,083 - INFO - Scraping guardian_search...
+2025-09-17 20:32:36,642 - WARNING - Attempt 1 failed for guardian_search: 404 Client Error: Not Found for url: https://www.theguardian.com/search?q=tea
+2025-09-17 20:32:41,813 - WARNING - Attempt 2 failed for guardian_search: 404 Client Error: Not Found for url: https://www.theguardian.com/search?q=tea
+2025-09-17 20:32:41,815 - ERROR - Error scraping guardian_search: 404 Client Error: Not Found for url: https://www.theguardian.com/search?q=tea
+2025-09-17 20:32:41,819 - INFO - ○ guardian_search: 0 articles
+2025-09-17 20:32:41,821 - INFO - Scraping just_food...
+2025-09-17 20:32:42,201 - WARNING - Attempt 1 failed for just_food: 403 Client Error: Forbidden for url: https://www.just-food.com/search/?q=tea
+2025-09-17 20:32:44,811 - WARNING - Attempt 2 failed for just_food: 403 Client Error: Forbidden for url: https://www.just-food.com/search/?q=tea
+2025-09-17 20:32:44,812 - ERROR - Error scraping just_food: 403 Client Error: Forbidden for url: https://www.just-food.com/search/?q=tea
+2025-09-17 20:32:44,819 - INFO - ○ just_food: 0 articles
+2025-09-17 20:32:44,821 - INFO - Scraping specialty_food...
+2025-09-17 20:32:45,763 - INFO - Found 0 potential articles from specialty_food
+2025-09-17 20:32:45,763 - INFO - Successfully extracted 0 relevant articles from specialty_food
+2025-09-17 20:32:48,738 - INFO - ○ specialty_food: 0 articles
+2025-09-17 20:32:48,739 - INFO - Scraping world_tea_news...
+2025-09-17 20:32:49,485 - INFO - Found 0 potential articles from world_tea_news
+2025-09-17 20:32:49,486 - INFO - Successfully extracted 0 relevant articles from world_tea_news
+2025-09-17 20:32:50,754 - INFO - ○ world_tea_news: 0 articles
+2025-09-17 20:32:50,755 - INFO - Scraping bbc_rss_business...
+2025-09-17 20:32:51,252 - INFO - Found 50 RSS items from bbc_rss_business
+2025-09-17 20:32:51,262 - INFO - ○ bbc_rss_business: 0 articles
+2025-09-17 20:32:51,263 - INFO - Scraping reuters_rss_business...
+2025-09-17 20:32:51,360 - ERROR - Error parsing RSS feed reuters_rss_business: HTTPSConnectionPool(host='feeds.reuters.com', port=443): Max retries exceeded with url: /reuters/businessNews (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7facbaa850>: Failed to resolve 'feeds.reuters.com' ([Errno -2] Name or service not known)"))
+2025-09-17 20:32:51,361 - INFO - ○ reuters_rss_business: 0 articles
+2025-09-17 20:32:51,363 - INFO - Scraping guardian_rss_business...
+2025-09-17 20:32:51,781 - INFO - Found 40 RSS items from guardian_rss_business
+2025-09-17 20:32:51,792 - INFO - ○ guardian_rss_business: 0 articles
+2025-09-17 20:32:51,793 - INFO - Scraping agri_pulse...
+2025-09-17 20:32:53,153 - INFO - Found 0 potential articles from agri_pulse
+2025-09-17 20:32:53,154 - INFO - Successfully extracted 0 relevant articles from agri_pulse
+2025-09-17 20:32:56,936 - INFO - ○ agri_pulse: 0 articles
+2025-09-17 20:32:56,939 - INFO - Scraping fresh_cup...
+2025-09-17 20:32:58,256 - WARNING - Attempt 1 failed for fresh_cup: 403 Client Error: Forbidden for url: https://freshcup.com/category/tea/
+2025-09-17 20:33:02,259 - WARNING - Attempt 2 failed for fresh_cup: 403 Client Error: Forbidden for url: https://freshcup.com/category/tea/
+2025-09-17 20:33:02,263 - ERROR - Error scraping fresh_cup: 403 Client Error: Forbidden for url: https://freshcup.com/category/tea/
+2025-09-17 20:33:02,274 - INFO - ○ fresh_cup: 0 articles
+2025-09-17 20:33:02,279 - INFO - Scraped 2 new articles from 1/20 sources
+2025-09-17 20:33:02,304 - INFO - Saved 117 total articles to database
+2025-09-17 20:33:02,305 - INFO - Added 2 new articles this run
+2025-09-17 20:33:02,323 - INFO - Generated website news data with 100 recent articles
+2025-09-17 20:33:02,324 - INFO - Categories: Google News, Supply Chain, Retail, Food Marketing, Times of India, Tea Culture, Guardian Business, Industry News, Financial Times, BBC Business
+2025-09-17 20:33:02,325 - INFO - Enhanced news aggregation completed in 80.71 seconds
+2025-09-17 20:33:02,326 - INFO - Total new articles: 2
+2025-09-17 20:37:06,661 - INFO - Starting Refined TeaTrade News Aggregation...
+2025-09-17 20:37:06,662 - INFO - Scraping agweb_news...
+2025-09-17 20:37:07,053 - WARNING - Failed to fetch agweb_news: 403 Client Error: Forbidden for url: https://www.agweb.com/news
+2025-09-17 20:37:07,057 - INFO - ○ agweb_news: 0 articles
+2025-09-17 20:37:07,059 - INFO - Scraping food_engineering_rss...
+2025-09-17 20:37:08,515 - WARNING - No entries found in RSS feed: food_engineering_rss
+2025-09-17 20:37:08,515 - INFO - ○ food_engineering_rss: 0 articles
+2025-09-17 20:37:08,516 - INFO - Scraping food_business_magazine...
+2025-09-17 20:37:15,053 - WARNING - Failed to fetch food_business_magazine: 404 Client Error: Not Found for url: https://www.foodbusinessmagazine.com/topics/2/beverages
+2025-09-17 20:37:15,056 - INFO - ○ food_business_magazine: 0 articles
+2025-09-17 20:37:15,058 - INFO - Scraping google_news_beverages...
+2025-09-17 20:37:16,116 - INFO - Found 100 RSS items from google_news_beverages
+2025-09-17 20:37:16,119 - INFO - ○ google_news_beverages: 0 articles
+2025-09-17 20:37:16,119 - INFO - Scraping grocery_dive...
+2025-09-17 20:37:17,722 - INFO - Found 23 potential articles from grocery_dive
+2025-09-17 20:37:17,746 - INFO - ✓ grocery_dive: 0 articles
+2025-09-17 20:37:19,895 - INFO - ○ grocery_dive: 0 articles
+2025-09-17 20:37:19,896 - INFO - Scraping world_tea_news...
+2025-09-17 20:37:21,354 - WARNING - Failed to fetch world_tea_news: 404 Client Error: Not Found for url: https://www.worldteanews.com/category/news/
+2025-09-17 20:37:21,362 - INFO - ○ world_tea_news: 0 articles
+2025-09-17 20:37:21,365 - INFO - Scraping times_of_india_tea...
+2025-09-17 20:37:22,081 - INFO - Found 40 potential articles from times_of_india_tea
+2025-09-17 20:37:22,094 - INFO - ✓ times_of_india_tea: 0 articles
+2025-09-17 20:37:24,420 - INFO - ○ times_of_india_tea: 0 articles
+2025-09-17 20:37:24,425 - INFO - Scraping tea_journey_news...
+2025-09-17 20:37:27,277 - INFO - Found 8 potential articles from tea_journey_news
+2025-09-17 20:37:27,300 - INFO - ✓ tea_journey_news: 0 articles
+2025-09-17 20:37:29,200 - INFO - ○ tea_journey_news: 0 articles
+2025-09-17 20:37:29,204 - INFO - Scraping nutraingredients...
+2025-09-17 20:37:31,021 - INFO - Found 0 potential articles from nutraingredients
+2025-09-17 20:37:31,021 - INFO - ✓ nutraingredients: 0 articles
+2025-09-17 20:37:34,857 - INFO - ○ nutraingredients: 0 articles
+2025-09-17 20:37:34,860 - INFO - Scraping guardian_business_rss...
+2025-09-17 20:37:35,548 - INFO - Found 40 RSS items from guardian_business_rss
+2025-09-17 20:37:35,556 - INFO - ○ guardian_business_rss: 0 articles
+2025-09-17 20:37:35,557 - INFO - Scraping beverage_industry_news...
+2025-09-17 20:37:36,858 - WARNING - Failed to fetch beverage_industry_news: 404 Client Error: Not Found for url: https://www.bevindustry.com/topics/3106-tea
+2025-09-17 20:37:36,866 - INFO - ○ beverage_industry_news: 0 articles
+2025-09-17 20:37:36,870 - INFO - Scraping farm_journal...
+2025-09-17 20:37:37,981 - WARNING - Failed to fetch farm_journal: 404 Client Error: Not Found for url: https://www.farmjournal.com/crops
+2025-09-17 20:37:37,985 - INFO - ○ farm_journal: 0 articles
+2025-09-17 20:37:37,988 - INFO - Scraping packaging_world_rss...
+2025-09-17 20:37:39,161 - WARNING - No entries found in RSS feed: packaging_world_rss
+2025-09-17 20:37:39,161 - INFO - ○ packaging_world_rss: 0 articles
+2025-09-17 20:37:39,161 - INFO - Scraping supply_chain_dive...
+2025-09-17 20:37:40,407 - INFO - Found 19 potential articles from supply_chain_dive
+2025-09-17 20:37:40,413 - INFO - ✓ supply_chain_dive: 0 articles
+2025-09-17 20:37:43,908 - INFO - ○ supply_chain_dive: 0 articles
+2025-09-17 20:37:43,912 - INFO - Scraping yahoo_finance_rss...
+2025-09-17 20:37:44,208 - WARNING - No entries found in RSS feed: yahoo_finance_rss
+2025-09-17 20:37:44,209 - INFO - ○ yahoo_finance_rss: 0 articles
+2025-09-17 20:37:44,210 - INFO - Scraping tea_coffee_trade...
+2025-09-17 20:37:44,943 - INFO - Found 20 potential articles from tea_coffee_trade
+2025-09-17 20:37:44,952 - INFO - ✓ tea_coffee_trade: 0 articles
+2025-09-17 20:37:47,488 - INFO - ○ tea_coffee_trade: 0 articles
+2025-09-17 20:37:47,502 - INFO - Scraping reuters_business_rss...
+2025-09-17 20:37:48,000 - WARNING - No entries found in RSS feed: reuters_business_rss
+2025-09-17 20:37:48,000 - INFO - ○ reuters_business_rss: 0 articles
+2025-09-17 20:37:48,001 - INFO - Scraping natural_products_insider...
+2025-09-17 20:37:48,538 - WARNING - Failed to fetch natural_products_insider: 403 Client Error: Forbidden for url: https://www.supplysidesj.com/search?keys=tea
+2025-09-17 20:37:48,544 - INFO - ○ natural_products_insider: 0 articles
+2025-09-17 20:37:48,547 - INFO - Scraping food_dive...
+2025-09-17 20:37:49,522 - INFO - Found 23 potential articles from food_dive
+2025-09-17 20:37:49,530 - INFO - ✓ food_dive: 0 articles
+2025-09-17 20:37:52,575 - INFO - ○ food_dive: 0 articles
+2025-09-17 20:37:52,578 - INFO - Scraping fresh_plaza_tea...
+2025-09-17 20:37:53,083 - WARNING - Failed to fetch fresh_plaza_tea: 404 Client Error: Not Found for url: https://www.freshplaza.com/europe/error/status/404/
+2025-09-17 20:37:53,084 - INFO - ○ fresh_plaza_tea: 0 articles
+2025-09-17 20:37:53,085 - INFO - Scraping economist_business_rss...
+2025-09-17 20:37:54,029 - INFO - Found 300 RSS items from economist_business_rss
+2025-09-17 20:37:54,040 - INFO - ○ economist_business_rss: 0 articles
+2025-09-17 20:37:54,041 - INFO - Scraping retail_dive...
+2025-09-17 20:37:55,474 - INFO - Found 21 potential articles from retail_dive
+2025-09-17 20:37:55,489 - INFO - ✓ retail_dive: 0 articles
+2025-09-17 20:37:58,573 - INFO - ○ retail_dive: 0 articles
+2025-09-17 20:37:58,574 - INFO - Scraping cnbc_rss...
+2025-09-17 20:37:59,085 - INFO - Found 30 RSS items from cnbc_rss
+2025-09-17 20:37:59,087 - INFO - ○ cnbc_rss: 0 articles
+2025-09-17 20:37:59,088 - INFO - Scraping ft_companies_rss...
+2025-09-17 20:37:59,716 - INFO - Found 25 RSS items from ft_companies_rss
+2025-09-17 20:37:59,721 - INFO - ○ ft_companies_rss: 0 articles
+2025-09-17 20:37:59,722 - INFO - Scraping convenience_store_news...
+2025-09-17 20:37:59,954 - WARNING - Failed to fetch convenience_store_news: 403 Client Error: Forbidden for url: https://csnews.com/category/beverages
+2025-09-17 20:37:59,957 - INFO - ○ convenience_store_news: 0 articles
+2025-09-17 20:37:59,959 - INFO - Scraping bbc_business_rss...
+2025-09-17 20:38:00,381 - INFO - Found 50 RSS items from bbc_business_rss
+2025-09-17 20:38:00,383 - INFO - ○ bbc_business_rss: 0 articles
+2025-09-17 20:38:00,384 - INFO - Scraping google_news_tea...
+2025-09-17 20:38:01,267 - INFO - Found 100 RSS items from google_news_tea
+2025-09-17 20:38:01,270 - INFO - ○ google_news_tea: 0 articles
+2025-09-17 20:38:01,270 - INFO - Scraping asia_one...
+2025-09-17 20:38:01,945 - WARNING - Failed to fetch asia_one: 404 Client Error: Not Found for url: https://www.asiaone.com/search?query=tea
+2025-09-17 20:38:01,954 - INFO - ○ asia_one: 0 articles
+2025-09-17 20:38:01,956 - INFO - Collected 0 new articles from 0/28 sources
+2025-09-17 20:38:01,957 - INFO - Refined news aggregation completed in 55.29 seconds

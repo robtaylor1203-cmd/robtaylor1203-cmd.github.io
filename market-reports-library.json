@@ -1,35 +1,353 @@
 [
   {
-    "title": "Colombo TeaTrade Market Report",
-    "description": "Individual auction analysis for Colombo Week 38, 2025 with 25 lots offered totaling 170,000 kg",
     "year": 2025,
     "week_number": 38,
+    "auction_centre": "Guwahati",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Guwahati Market Report",
+    "description": "Corrected market intelligence for Guwahati - Week 38, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Guwahati_S38_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 38,
+    "auction_centre": "Kolkata",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Kolkata Market Report",
+    "description": "Corrected market intelligence for Kolkata - Week 38, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Kolkata_S38_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 38,
+    "auction_centre": "Siliguri",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Siliguri Market Report",
+    "description": "Corrected market intelligence for Siliguri - Week 38, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Siliguri_S38_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 37,
     "auction_centre": "Colombo",
-    "source": "TeaTrade",
-    "report_link": "report-viewer.html?dataset=Colombo_Consolidated_W38_2025_consolidated",
-    "highlight": true,
-    "report_type": "individual_auction"
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 37, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Colombo_S37_2025_consolidated"
   },
   {
-    "title": "Mombasa TeaTrade Market Report",
-    "description": "Individual auction analysis for Mombasa Week 38, 2025 with 30 lots offered totaling 234,000 kg",
     "year": 2025,
-    "week_number": 38,
-    "auction_centre": "Mombasa",
-    "source": "TeaTrade",
-    "report_link": "report-viewer.html?dataset=Mombasa_Consolidated_W38_2025_consolidated",
-    "highlight": true,
-    "report_type": "individual_auction"
+    "week_number": 37,
+    "auction_centre": "India_Districts",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "India_Districts Market Report",
+    "description": "Corrected market intelligence for India_Districts - Week 37, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=India_Districts_S37_2025_consolidated"
   },
   {
-    "title": "Nairobi TeaTrade Market Report",
-    "description": "Individual auction analysis for Nairobi Week 38, 2025 with 20 lots offered totaling 116,000 kg",
     "year": 2025,
-    "week_number": 38,
-    "auction_centre": "Nairobi",
-    "source": "TeaTrade",
-    "report_link": "report-viewer.html?dataset=Nairobi_Consolidated_W38_2025_consolidated",
-    "highlight": true,
-    "report_type": "individual_auction"
+    "week_number": 37,
+    "auction_centre": "Guwahati",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Guwahati Market Report",
+    "description": "Corrected market intelligence for Guwahati - Week 37, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Guwahati_S37_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 37,
+    "auction_centre": "Kolkata",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Kolkata Market Report",
+    "description": "Corrected market intelligence for Kolkata - Week 37, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Kolkata_S37_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 37,
+    "auction_centre": "Siliguri",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Siliguri Market Report",
+    "description": "Corrected market intelligence for Siliguri - Week 37, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Siliguri_S37_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 36,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Excellent - Real market intelligence extracted)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 36, 2025 - Excellent - Real market intelligence extracted",
+    "report_link": "report-viewer.html?dataset=Colombo_S36_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 36,
+    "auction_centre": "India_Districts",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "India_Districts Market Report",
+    "description": "Corrected market intelligence for India_Districts - Week 36, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=India_Districts_S36_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 36,
+    "auction_centre": "Siliguri",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Siliguri Market Report",
+    "description": "Corrected market intelligence for Siliguri - Week 36, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Siliguri_S36_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 35,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Excellent - Real market intelligence extracted)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 35, 2025 - Excellent - Real market intelligence extracted",
+    "report_link": "report-viewer.html?dataset=Colombo_S35_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 35,
+    "auction_centre": "India_Districts",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "India_Districts Market Report",
+    "description": "Corrected market intelligence for India_Districts - Week 35, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=India_Districts_S35_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 34,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Excellent - Real market intelligence extracted)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 34, 2025 - Excellent - Real market intelligence extracted",
+    "report_link": "report-viewer.html?dataset=Colombo_S34_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 33,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Excellent - Real market intelligence extracted)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 33, 2025 - Excellent - Real market intelligence extracted",
+    "report_link": "report-viewer.html?dataset=Colombo_S33_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 32,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Excellent - Real market intelligence extracted)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 32, 2025 - Excellent - Real market intelligence extracted",
+    "report_link": "report-viewer.html?dataset=Colombo_S32_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 31,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Excellent - Real market intelligence extracted)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 31, 2025 - Excellent - Real market intelligence extracted",
+    "report_link": "report-viewer.html?dataset=Colombo_S31_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 30,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Excellent - Real market intelligence extracted)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 30, 2025 - Excellent - Real market intelligence extracted",
+    "report_link": "report-viewer.html?dataset=Colombo_S30_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 29,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Excellent - Real market intelligence extracted)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 29, 2025 - Excellent - Real market intelligence extracted",
+    "report_link": "report-viewer.html?dataset=Colombo_S29_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 29,
+    "auction_centre": "Jalpaiguri",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Jalpaiguri Market Report",
+    "description": "Corrected market intelligence for Jalpaiguri - Week 29, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Jalpaiguri_S29_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 28,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Excellent - Real market intelligence extracted)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 28, 2025 - Excellent - Real market intelligence extracted",
+    "report_link": "report-viewer.html?dataset=Colombo_S28_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 27,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Excellent - Real market intelligence extracted)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 27, 2025 - Excellent - Real market intelligence extracted",
+    "report_link": "report-viewer.html?dataset=Colombo_S27_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 26,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 26, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Colombo_S26_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 25,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 25, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Colombo_S25_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 24,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 24, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Colombo_S24_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 23,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 23, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Colombo_S23_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 22,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 22, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Colombo_S22_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 21,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 21, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Colombo_S21_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 20,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 20, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Colombo_S20_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 20,
+    "auction_centre": "Cochin",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Cochin Market Report",
+    "description": "Corrected market intelligence for Cochin - Week 20, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Cochin_S20_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 19,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 19, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Colombo_S19_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 19,
+    "auction_centre": "Cochin",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Cochin Market Report",
+    "description": "Corrected market intelligence for Cochin - Week 19, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Cochin_S19_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 18,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 18, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Colombo_S18_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 17,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 17, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Colombo_S17_2025_consolidated"
+  },
+  {
+    "year": 2025,
+    "week_number": 16,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Limited - Headers only or no enhanced data)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 16, 2025 - Limited - Headers only or no enhanced data",
+    "report_link": "report-viewer.html?dataset=Colombo_S16_2025_consolidated"
+  },
+  {
+    "year": 2024,
+    "week_number": 51,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Excellent - Real market intelligence extracted)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 51, 2024 - Excellent - Real market intelligence extracted",
+    "report_link": "report-viewer.html?dataset=Colombo_S51_2024_consolidated"
+  },
+  {
+    "year": 2024,
+    "week_number": 50,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Excellent - Real market intelligence extracted)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 50, 2024 - Excellent - Real market intelligence extracted",
+    "report_link": "report-viewer.html?dataset=Colombo_S50_2024_consolidated"
+  },
+  {
+    "year": 2024,
+    "week_number": 49,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Excellent - Real market intelligence extracted)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 49, 2024 - Excellent - Real market intelligence extracted",
+    "report_link": "report-viewer.html?dataset=Colombo_S49_2024_consolidated"
+  },
+  {
+    "year": 2024,
+    "week_number": 48,
+    "auction_centre": "Colombo",
+    "source": "TeaTrade Corrected (Excellent - Real market intelligence extracted)",
+    "title": "Colombo Market Report",
+    "description": "Corrected market intelligence for Colombo - Week 48, 2024 - Excellent - Real market intelligence extracted",
+    "report_link": "report-viewer.html?dataset=Colombo_S48_2024_consolidated"
   }
 ]

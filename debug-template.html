@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeaTrade DEBUG - Data Loading Test</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background: #f5f5f5;
+        }
+        .debug-box { 
+            background: white; 
+            border: 2px solid #007bff; 
+            padding: 20px; 
+            margin: 10px 0; 
+            border-radius: 8px;
+        }
+        .error { border-color: #dc3545; background: #fff5f5; }
+        .success { border-color: #28a745; background: #f8fff8; }
+        .warning { border-color: #ffc107; background: #fffdf0; }
+        pre { 
+            background: #f8f9fa; 
+            padding: 15px; 
+            border-radius: 4px; 
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        .big-numbers {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>TeaTrade Data Loading Debug</h1>
+    
+    <div id="url-info" class="debug-box">
+        <h3>URL Analysis</h3>
+        <div id="url-details">Checking URL parameters...</div>
+    </div>
+    
+    <div id="file-info" class="debug-box">
+        <h3>File Loading</h3>
+        <div id="file-details">Attempting to load data file...</div>
+    </div>
+    
+    <div id="data-structure" class="debug-box">
+        <h3>Data Structure Analysis</h3>
+        <div id="structure-details">Analyzing loaded data...</div>
+    </div>
+    
+    <div id="extracted-values" class="debug-box">
+        <h3>Extracted Values</h3>
+        <div id="values-details">
+            <div class="big-numbers">
+                Volume: <span id="debug-volume">Loading...</span><br>
+                Price: <span id="debug-price">Loading...</span>
+            </div>
+        </div>
+    </div>
+    
+    <div id="raw-data" class="debug-box">
+        <h3>Raw JSON Data (First 500 characters)</h3>
+        <pre id="raw-json">Loading...</pre>
+    </div>
+
+    <script>
+        function log(message, elementId, className = '') {
+            const element = document.getElementById(elementId);
+            if (className) element.parentElement.className = `debug-box ${className}`;
+            element.innerHTML += message + '<br>';
+            console.log('DEBUG:', message);
+        }
+
+        async function debugDataLoading() {
+            try {
+                // Step 1: Analyze URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const dataset = urlParams.get('dataset');
+                
+                log(`URL dataset parameter: "${dataset}"`, 'url-details');
+                
+                if (!dataset) {
+                    log('❌ NO dataset parameter found in URL!', 'url-details', 'error');
+                    return;
+                }
+                
+                // Step 2: Construct file path
+                const datasetFile = dataset.endsWith('_consolidated') ? dataset : dataset + '_consolidated';
+                const dataUrl = `Data/Consolidated/${datasetFile}.json?v=${Date.now()}`;
+                
+                log(`✅ Dataset: ${dataset}`, 'url-details', 'success');
+                log(`Constructed file path: ${dataUrl}`, 'file-details');
+                
+                // Step 3: Attempt to load file
+                log('🔄 Fetching data file...', 'file-details');
+                const response = await fetch(dataUrl);
+                
+                log(`HTTP Status: ${response.status} ${response.statusText}`, 'file-details');
+                
+                if (!response.ok) {
+                    log(`❌ HTTP Error: ${response.status}`, 'file-details', 'error');
+                    log('File might not exist or server error', 'file-details');
+                    return;
+                }
+                
+                // Step 4: Parse JSON
+                const rawText = await response.text();
+                log(`✅ File loaded successfully!`, 'file-details', 'success');
+                log(`File size: ${rawText.length} characters`, 'file-details');
+                
+                // Show first 500 chars of raw data
+                document.getElementById('raw-json').textContent = rawText.substring(0, 500) + '...';
+                
+                const reportData = JSON.parse(rawText);
+                
+                // Step 5: Analyze structure
+                log(`✅ JSON parsed successfully!`, 'structure-details', 'success');
+                log(`Top level keys: ${Object.keys(reportData).join(', ')}`, 'structure-details');
+                
+                if (reportData.summary) {
+                    log(`Summary keys: ${Object.keys(reportData.summary).join(', ')}`, 'structure-details');
+                } else {
+                    log(`❌ NO 'summary' key found!`, 'structure-details', 'error');
+                }
+                
+                if (reportData.metadata) {
+                    log(`Metadata keys: ${Object.keys(reportData.metadata).join(', ')}`, 'structure-details');
+                } else {
+                    log(`⚠️ NO 'metadata' key found`, 'structure-details', 'warning');
+                }
+                
+                // Step 6: Extract specific values
+                const volume = reportData.summary?.total_offered_kg;
+                const price = reportData.summary?.auction_average_price;
+                const title = reportData.metadata?.report_title;
+                
+                log(`Volume value: ${volume} (type: ${typeof volume})`, 'values-details');
+                log(`Price value: ${price} (type: ${typeof price})`, 'values-details');
+                log(`Title: ${title}`, 'values-details');
+                
+                // Step 7: Display final values
+                if (volume && price) {
+                    document.getElementById('debug-volume').textContent = `${volume.toLocaleString()} kg`;
+                    document.getElementById('debug-price').textContent = `₹${price.toFixed(2)}`;
+                    log(`✅ SUCCESS! Real data found!`, 'values-details', 'success');
+                } else {
+                    document.getElementById('debug-volume').textContent = 'NOT FOUND';
+                    document.getElementById('debug-price').textContent = 'NOT FOUND';
+                    log(`❌ PROBLEM! Volume or price missing!`, 'values-details', 'error');
+                }
+                
+            } catch (error) {
+                log(`❌ JavaScript Error: ${error.message}`, 'file-details', 'error');
+                console.error('Full error:', error);
+            }
+        }
+        
+        // Start debugging when page loads
+        window.addEventListener('DOMContentLoaded', debugDataLoading);
+    </script>
+</body>
+</html>

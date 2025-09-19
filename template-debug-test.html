@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head><title>Template Debug Test</title></head>
+<body>
+<h1>Template Debug Test</h1>
+<div id="results">Loading...</div>
+
+<script>
+async function testDataLoading() {
+    const results = document.getElementById('results');
+    
+    try {
+        // Test loading the same data the template should load
+        const response = await fetch('Data/Consolidated/Colombo_S32_2025_consolidated.json?v=' + Date.now());
+        const data = await response.json();
+        
+        results.innerHTML = `
+            <h2>✅ Data Loaded Successfully</h2>
+            <p><strong>Report Title:</strong> ${data.metadata.report_title}</p>
+            <p><strong>Data Quality:</strong> ${data.metadata.data_quality}</p>
+            <p><strong>Total Volume:</strong> ${data.summary.total_offered_kg.toLocaleString()} kg</p>
+            <p><strong>Average Price:</strong> ${data.summary.auction_average_price}</p>
+            <p><strong>Commentary:</strong> ${data.summary.commentary_synthesized}</p>
+            
+            <h3>Template Compatibility Check:</h3>
+            <p>✅ Has summary section: ${!!data.summary}</p>
+            <p>✅ Has volume data: ${!!data.summary.total_offered_kg}</p>
+            <p>✅ Has price data: ${!!data.summary.auction_average_price}</p>
+            <p>✅ Has commentary: ${!!data.summary.commentary_synthesized}</p>
+        `;
+        
+    } catch (error) {
+        results.innerHTML = `<h2>❌ Error Loading Data</h2><p>${error.message}</p>`;
+    }
+}
+
+testDataLoading();
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pipeline Test - Working Data Display</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .success { color: green; font-weight: bold; }
+        .data-box { border: 1px solid #ccc; padding: 15px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Pipeline Test - Real Data Display</h1>
+    
+    <div id="test-results">Loading real data...</div>
+    
+    <script>
+    async function displayRealData() {
+        try {
+            const response = await fetch('Data/Consolidated/Colombo_S36_2025_consolidated.json?v=' + Date.now());
+            const data = await response.json();
+            
+            const results = document.getElementById('test-results');
+            results.innerHTML = `
+                <div class="data-box">
+                    <h2 class="success">✅ REAL DATA LOADED SUCCESSFULLY</h2>
+                    <h3>${data.metadata.report_title}</h3>
+                    
+                    <h4>Key Metrics:</h4>
+                    <p><strong>Total Volume:</strong> ${data.summary.total_offered_kg.toLocaleString()} kg</p>
+                    <p><strong>Average Price:</strong> ${data.summary.auction_average_price}</p>
+                    <p><strong>Data Quality:</strong> ${data.metadata.data_quality}</p>
+                    
+                    <h4>Market Commentary:</h4>
+                    <p>${data.summary.commentary_synthesized}</p>
+                    
+                    <hr>
+                    <p><a href="report-viewer.html?dataset=Colombo_S36_2025" target="_blank">
+                       🔗 Open in Bloomberg Template</a></p>
+                    <p><a href="market-reports.html">📋 Back to Reports Library</a></p>
+                </div>
+            `;
+            
+        } catch (error) {
+            document.getElementById('test-results').innerHTML = `
+                <div class="data-box">
+                    <h2 style="color: red;">❌ ERROR LOADING DATA</h2>
+                    <p>Error: ${error.message}</p>
+                </div>
+            `;
+        }
+    }
+    
+    displayRealData();
+    </script>
+</body>
+</html>
