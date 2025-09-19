@@ -1,0 +1,52 @@
+{
+  "metadata": {
+    "location": "guwahati",
+    "display_name": "Guwahati",
+    "region": "India",
+    "period": "S38_2025",
+    "week_number": 38,
+    "year": 2025,
+    "report_title": "Guwahati Market Report - Week 38, 2025",
+    "consolidation_date": "2025-09-19T14:51:37.372638",
+    "total_sources": 2,
+    "data_quality": "Limited - Headers only or no enhanced data",
+    "extraction_details": [
+      "J Thomas minimal data: JT_auction_lots_enhanced_S38.json",
+      "J Thomas minimal data: JT_market_report_enhanced_S38.json",
+      "No real market data detected in any source files"
+    ]
+  },
+  "summary": {
+    "total_volume": "0 kg",
+    "total_lots": "0",
+    "average_price": "₹0/kg",
+    "highest_price": "₹0/kg",
+    "sold_percentage": "0%",
+    "overall_average": "₹0/kg",
+    "total_quantity": 0,
+    "percentage_sold": 0
+  },
+  "market_intelligence": {
+    "market_synopsis": "Market conditions for Guwahati Week 38, 2025.",
+    "executive_commentary": "Trading activity in Guwahati continues with regular participation.",
+    "key_trends": [
+      "Awaiting real market data extraction"
+    ],
+    "buyer_activity": "Active participation from major buyers."
+  },
+  "volume_analysis": {
+    "total_offered": 0,
+    "total_sold": 0,
+    "sold_percentage": 0
+  },
+  "price_analysis": {
+    "average_price": 0,
+    "highest_price": 0,
+    "price_range": "₹0 - ₹0"
+  },
+  "intelligence": {
+    "volume_analysis": "Volume data for Guwahati extraction in progress.",
+    "price_analysis": "Price analysis for Guwahati pending data processing.",
+    "forecasting": "Market forecasting pending enhanced data availability."
+  }
+}

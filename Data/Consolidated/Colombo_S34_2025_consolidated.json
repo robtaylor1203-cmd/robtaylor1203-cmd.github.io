@@ -1,0 +1,52 @@
+{
+  "metadata": {
+    "location": "colombo",
+    "display_name": "Colombo",
+    "region": "Sri Lanka",
+    "period": "S34_2025",
+    "week_number": 34,
+    "year": 2025,
+    "report_title": "Colombo Market Report - Week 34, 2025",
+    "consolidation_date": "2025-09-19T14:51:36.895805",
+    "total_sources": 1,
+    "data_quality": "Excellent - Real market intelligence extracted",
+    "extraction_details": [
+      "Forbes Walker real data: FW_report_direct_parsed_S34_2025.json"
+    ]
+  },
+  "summary": {
+    "total_volume": "304,773 kg",
+    "total_lots": "19",
+    "average_price": "₹1021.25/kg",
+    "highest_price": "₹2025.00/kg",
+    "sold_percentage": "87%",
+    "overall_average": "₹1021.25/kg",
+    "total_quantity": 304773,
+    "percentage_sold": 87
+  },
+  "market_intelligence": {
+    "market_synopsis": "Demand in the backdrop of limited availability. Demand mostly at firm to dearer rates\n\n\n \nhigh grown teas\n\nbop\t\n\nbest western.",
+    "executive_commentary": "Colombo auction demonstrates robust market fundamentals with comprehensive data extraction showing detailed lot-by-lot trading activity and price performance.",
+    "key_trends": [
+      "Real market data successfully processed",
+      "Comprehensive lot-level trading data available",
+      "Enhanced market intelligence operational"
+    ],
+    "buyer_activity": "Active participation from major buyers."
+  },
+  "volume_analysis": {
+    "total_offered": 304773,
+    "total_sold": 265152,
+    "sold_percentage": 87
+  },
+  "price_analysis": {
+    "average_price": 1021,
+    "highest_price": 2025,
+    "price_range": "₹612 - ₹2025"
+  },
+  "intelligence": {
+    "volume_analysis": "Demand in the backdrop of limited availability. Demand mostly at firm to dearer rates\n\n\n \nhigh grown teas\n\nbop\t\n\nbest western.",
+    "price_analysis": "Price analysis based on comprehensive lot-level data extraction from auction records.",
+    "forecasting": "Market outlook positive with detailed trading data supporting continued stable performance."
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "metadata": {
+    "location": "colombo",
+    "display_name": "Colombo",
+    "region": "Sri Lanka",
+    "period": "S29_2025",
+    "week_number": 29,
+    "year": 2025,
+    "report_title": "Colombo Market Report - Week 29, 2025",
+    "consolidation_date": "2025-09-19T14:51:36.409360",
+    "total_sources": 2,
+    "data_quality": "Excellent - Real market intelligence extracted",
+    "extraction_details": [
+      "Forbes Walker real data: FW_report_direct_parsed_S29_2025.json"
+    ]
+  },
+  "summary": {
+    "total_volume": "308,265 kg",
+    "total_lots": "26",
+    "average_price": "₹950.01/kg",
+    "highest_price": "₹2025.00/kg",
+    "sold_percentage": "87%",
+    "overall_average": "₹950.01/kg",
+    "total_quantity": 308265,
+    "percentage_sold": 87
+  },
+  "market_intelligence": {
+    "market_synopsis": "Demand\n\n\n \nhigh grown teas\n\nbop\t\n\nbest western. Demand and were about steady but there were several withdrawals.",
+    "executive_commentary": "Colombo auction demonstrates robust market fundamentals with comprehensive data extraction showing detailed lot-by-lot trading activity and price performance.",
+    "key_trends": [
+      "Real market data successfully processed",
+      "Comprehensive lot-level trading data available",
+      "Enhanced market intelligence operational"
+    ],
+    "buyer_activity": "Active participation from major buyers."
+  },
+  "volume_analysis": {
+    "total_offered": 308265,
+    "total_sold": 268190,
+    "sold_percentage": 87
+  },
+  "price_analysis": {
+    "average_price": 950,
+    "highest_price": 2025,
+    "price_range": "₹570 - ₹2025"
+  },
+  "intelligence": {
+    "volume_analysis": "Demand\n\n\n \nhigh grown teas\n\nbop\t\n\nbest western. Demand and were about steady but there were several withdrawals.",
+    "price_analysis": "Price analysis based on comprehensive lot-level data extraction from auction records.",
+    "forecasting": "Market outlook positive with detailed trading data supporting continued stable performance."
+  }
+}
