@@ -1,0 +1,42 @@
+name: TeaTrade Daily Automation
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Daily at 6 AM UTC
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  automated-scraping:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install selenium webdriver-manager pandas openpyxl python-docx PyPDF2 \
+                   beautifulsoup4 requests-html fake-useragent undetected-chromedriver \
+                   aiohttp asyncio python-dateutil lxml Pillow numpy matplotlib seaborn
+        pip install playwright
+        playwright install chromium
+        
+    - name: Run TeaTrade automation
+      run: |
+        cd $GITHUB_WORKSPACE
+        python automation/scrapers_v2/complete_automation.py
+        
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add Data/Consolidated/
+        git add automation/scrapers_v2/data_warehouse/
+        git add market-reports-library.json
+        git commit -m "🤖 Daily automated scraping update - $(date)" || exit 0
+        git push

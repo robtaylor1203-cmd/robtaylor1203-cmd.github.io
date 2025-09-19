@@ -1,0 +1,7 @@
+{
+  "error": "OCR text was extracted, but parser failed to find any data rows.",
+  "timestamp": "2025-09-19T08:53:04.877000",
+  "tesseract_available": true,
+  "playwright_available": true,
+  "url": "https://web.forbestea.com/statistics/sri-lankan-statistics/90-weekly-tea-auction-quantities-averages/1299-sri-lanka-weekly-tea-auction-quantities-averages"
+}

@@ -6,5 +6,9 @@
     "currency": "LKR",
     "week_number": 0,
     "date_range": "34_2025 (Monthly)",
+<<<<<<< HEAD
     "prompt_date": "2025-10-02"
+=======
+    "prompt_date": "2025-10-03"
+>>>>>>> 8878117c33571c68a9c7ddce15313cc7f9392ae2
 }
