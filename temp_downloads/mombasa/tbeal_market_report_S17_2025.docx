@@ -363,8 +363,8 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 <script type="text/javascript" src="https://www.tbeal.net/wp-content/plugins/photo-gallery/booster/assets/js/circle-progress.js?ver=1.2.2" id="twbbwg-circle-js"></script>
 <script type="text/javascript" id="twbbwg-global-js-extra">
 /* <![CDATA[ */
-var twb = {"nonce":"4b52a70c72","ajax_url":"https:\/\/www.tbeal.net\/wp-admin\/admin-ajax.php","plugin_url":"https:\/\/www.tbeal.net\/wp-content\/plugins\/photo-gallery\/booster","href":"https:\/\/www.tbeal.net\/wp-admin\/admin.php?page=twbbwg_photo-gallery"};
-var twb = {"nonce":"4b52a70c72","ajax_url":"https:\/\/www.tbeal.net\/wp-admin\/admin-ajax.php","plugin_url":"https:\/\/www.tbeal.net\/wp-content\/plugins\/photo-gallery\/booster","href":"https:\/\/www.tbeal.net\/wp-admin\/admin.php?page=twbbwg_photo-gallery"};
+var twb = {"nonce":"8eeb634aca","ajax_url":"https:\/\/www.tbeal.net\/wp-admin\/admin-ajax.php","plugin_url":"https:\/\/www.tbeal.net\/wp-content\/plugins\/photo-gallery\/booster","href":"https:\/\/www.tbeal.net\/wp-admin\/admin.php?page=twbbwg_photo-gallery"};
+var twb = {"nonce":"8eeb634aca","ajax_url":"https:\/\/www.tbeal.net\/wp-admin\/admin-ajax.php","plugin_url":"https:\/\/www.tbeal.net\/wp-content\/plugins\/photo-gallery\/booster","href":"https:\/\/www.tbeal.net\/wp-admin\/admin.php?page=twbbwg_photo-gallery"};
 /* ]]> */
 </script>
 <script type="text/javascript" src="https://www.tbeal.net/wp-content/plugins/photo-gallery/booster/assets/js/global.js?ver=1.0.0" id="twbbwg-global-js"></script>
@@ -379,7 +379,7 @@ var _ckyStyles = {"css":".cky-overlay{background: #000000; opacity: 0.4; positio
 <script type="text/javascript" id="wpdm-frontjs-js-extra">
 /* <![CDATA[ */
 var wpdm_url = {"home":"https:\/\/www.tbeal.net\/","site":"https:\/\/www.tbeal.net\/","ajax":"https:\/\/www.tbeal.net\/wp-admin\/admin-ajax.php"};
-var wpdm_js = {"spinner":"<i class=\"wpdm-icon wpdm-sun wpdm-spin\"><\/i>","client_id":"1e35477bd2e283b5508ff673d03e1d88"};
+var wpdm_js = {"spinner":"<i class=\"wpdm-icon wpdm-sun wpdm-spin\"><\/i>","client_id":"8bbb501b902e3f3eae397cb794037a81"};
 var wpdm_strings = {"pass_var":"Password Verified!","pass_var_q":"Please click following button to start download.","start_dl":"Start Download"};
 /* ]]> */
 </script>
@@ -389,7 +389,7 @@ var wpdm_strings = {"pass_var":"Password Verified!","pass_var_q":"Please click f
 var fuse_social = {"ajax_url":"https:\/\/www.tbeal.net\/wp-admin\/admin-ajax.php"};
 /* ]]> */
 </script>
-<script type="text/javascript" src="https://www.tbeal.net/wp-content/plugins/fuse-social-floating-sidebar/inc/js/fuse_script.js?ver=474236744" id="fuse-social-script-js"></script>
+<script type="text/javascript" src="https://www.tbeal.net/wp-content/plugins/fuse-social-floating-sidebar/inc/js/fuse_script.js?ver=1637191468" id="fuse-social-script-js"></script>
 <script type="text/javascript" src="https://www.tbeal.net/wp-content/plugins/photo-gallery/js/jquery.sumoselect.min.js?ver=3.4.6" id="sumoselect-js"></script>
 <script type="text/javascript" src="https://www.tbeal.net/wp-content/plugins/photo-gallery/js/tocca.min.js?ver=2.0.9" id="bwg_mobile-js"></script>
 <script type="text/javascript" src="https://www.tbeal.net/wp-content/plugins/photo-gallery/js/jquery.mCustomScrollbar.concat.min.js?ver=3.1.5" id="mCustomScrollbar-js"></script>
@@ -723,7 +723,7 @@ title="Search for:"/>
     </div>
     <div class="col-md-5">
         <div class="wpdm-button-area mb-3 p-3 card">
-            <a class='wpdm-download-link btn btn-primary ' rel='nofollow' href='https://www.tbeal.net/download/tea-market-report-sale-17-2025/?wpdmdl=8842&refresh=68cbc8aac9ff11758185642'>Download</a>
+            <a class='wpdm-download-link btn btn-primary ' rel='nofollow' href='https://www.tbeal.net/download/tea-market-report-sale-17-2025/?wpdmdl=8842&refresh=68cd1a722608f1758272114'>Download</a>
             <div class="alert alert-warning mt-2 wpdm_hide wpdm_remove_empty">
                 Download is available until [expire_date]
             </div>
@@ -1091,7 +1091,7 @@ title="Search for:"/>
                 jQuery(function($){
 
                                         setTimeout(function (){
-                        $.post(wpdm_url.ajax, { action: 'wpdm_view_count', __wpdm_view_count:'3adb912072', id: '8842' });
+                        $.post(wpdm_url.ajax, { action: 'wpdm_view_count', __wpdm_view_count:'d0b5ea30ee', id: '8842' });
                     }, 2000);
                     
                 });
@@ -1167,5 +1167,5 @@ var frontadminajax = {"ajax_url":"https:\/\/www.tbeal.net\/wp-admin\/admin-ajax.
 <script type="text/javascript" src="https://www.tbeal.net/wp-includes/js/dist/escape-html.min.js?ver=6561a406d2d232a6fbd2" id="wp-escape-html-js"></script>
 <script type="text/javascript" src="https://www.tbeal.net/wp-includes/js/dist/element.min.js?ver=a4eeeadd23c0d7ab1d2d" id="wp-element-js"></script>
 <script type="text/javascript" src="https://www.tbeal.net/wp-content/plugins/wp-whatsapp-chat/build/frontend/js/index.js?ver=88461af9c9ebe71c7a28" id="qlwapp-frontend-js"></script>
-<div id='icon_wrapper'><a target="_blank" class='fuse_social_icons_links' data-nonce='997216c85b' data-title='facebook' href='#' ><i class='fsf fuseicon-facebook facebook-awesome-social awesome-social'></i></a><a target="_blank" class='fuse_social_icons_links' data-nonce='997216c85b' data-title='twitter' href='#' ><i class='fsf fuseicon-twitter twitter-awesome-social awesome-social'></i></a><a target="_blank" class='fuse_social_icons_links' data-nonce='997216c85b' data-title='linkedin' href='#' ><i class='fsf fuseicon-linkedin linkedin-awesome-social awesome-social'></i></a><a target="_blank" class='fuse_social_icons_links' data-nonce='997216c85b' data-title='youtube' href='#' ><i class='fsf fuseicon-youtube youtube-awesome-social awesome-social'></i></a><a target="_blank" class='fuse_social_icons_links' data-nonce='997216c85b' data-title='instagram' href='#' ><i class='fsf fuseicon-instagram instagram-awesome-social awesome-social'></i></a><a target="_blank" class='fuse_social_icons_links' data-nonce='997216c85b' data-title='envelope' href='http://mail@tbeal.net' ><i class='fsf fuseicon-envelope envelope-awesome-social awesome-social'></i></a></div></body>
+<div id='icon_wrapper'><a target="_blank" class='fuse_social_icons_links' data-nonce='e70fc8caf9' data-title='facebook' href='#' ><i class='fsf fuseicon-facebook facebook-awesome-social awesome-social'></i></a><a target="_blank" class='fuse_social_icons_links' data-nonce='e70fc8caf9' data-title='twitter' href='#' ><i class='fsf fuseicon-twitter twitter-awesome-social awesome-social'></i></a><a target="_blank" class='fuse_social_icons_links' data-nonce='e70fc8caf9' data-title='linkedin' href='#' ><i class='fsf fuseicon-linkedin linkedin-awesome-social awesome-social'></i></a><a target="_blank" class='fuse_social_icons_links' data-nonce='e70fc8caf9' data-title='youtube' href='#' ><i class='fsf fuseicon-youtube youtube-awesome-social awesome-social'></i></a><a target="_blank" class='fuse_social_icons_links' data-nonce='e70fc8caf9' data-title='instagram' href='#' ><i class='fsf fuseicon-instagram instagram-awesome-social awesome-social'></i></a><a target="_blank" class='fuse_social_icons_links' data-nonce='e70fc8caf9' data-title='envelope' href='http://mail@tbeal.net' ><i class='fsf fuseicon-envelope envelope-awesome-social awesome-social'></i></a></div></body>
 </html>
