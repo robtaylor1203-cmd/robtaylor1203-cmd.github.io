@@ -1,10 +1,10 @@
 {
-    "location": "Cochin",
+    "location": "Kolkata",
     "report_type": "Consolidated Auction Report",
-    "sale_number": 20,
+    "sale_number": 38,
     "year": 2025,
     "currency": "INR",
-    "week_number": 20,
+    "week_number": 38,
     "date_range": "2025-09-20 (Auto-Generated)",
     "prompt_date": "2025-10-04"
 }

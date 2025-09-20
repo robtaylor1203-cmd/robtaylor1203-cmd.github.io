@@ -1,0 +1,622 @@
+{
+  "metadata": {
+    "auction_centre": "Mombasa",
+    "week_number": 37,
+    "year": 2025,
+    "generation_time": "2025-09-20T08:50:36.057314",
+    "source_files": [
+      "mombasa_sample_data.json"
+    ],
+    "data_sources_count": 1,
+    "has_district_averages": false
+  },
+  "market_data": [
+    {
+      "source_file": "mombasa_sample_data.json",
+      "data_type": "market_report",
+      "auction_data": {
+        "metadata": {
+          "auction_centre": "Mombasa",
+          "week_number": 38,
+          "year": 2025,
+          "currency": "KES",
+          "report_type": "auction_lots"
+        }
+      },
+      "price_data": {},
+      "volume_data": {
+        "auction_lots": [
+          {
+            "lot_number": "001",
+            "garden": "Mombasa Estate 1",
+            "grade": "BP1",
+            "packages": 40,
+            "net_weight_kg": 2000,
+            "price_per_kg": 270,
+            "buyer": "Buyer_1"
+          },
+          {
+            "lot_number": "002",
+            "garden": "Mombasa Estate 2",
+            "grade": "PF1",
+            "packages": 48,
+            "net_weight_kg": 2400,
+            "price_per_kg": 305,
+            "buyer": "Buyer_2"
+          },
+          {
+            "lot_number": "003",
+            "garden": "Mombasa Estate 3",
+            "grade": "DUST1",
+            "packages": 56,
+            "net_weight_kg": 2800,
+            "price_per_kg": 340,
+            "buyer": "Buyer_3"
+          },
+          {
+            "lot_number": "004",
+            "garden": "Mombasa Estate 4",
+            "grade": "FANN",
+            "packages": 64,
+            "net_weight_kg": 3200,
+            "price_per_kg": 375,
+            "buyer": "Buyer_4"
+          },
+          {
+            "lot_number": "005",
+            "garden": "Mombasa Estate 5",
+            "grade": "BP",
+            "packages": 72,
+            "net_weight_kg": 3600,
+            "price_per_kg": 410,
+            "buyer": "Buyer_5"
+          },
+          {
+            "lot_number": "006",
+            "garden": "Mombasa Estate 6",
+            "grade": "PF",
+            "packages": 80,
+            "net_weight_kg": 4000,
+            "price_per_kg": 445,
+            "buyer": "Buyer_6"
+          },
+          {
+            "lot_number": "007",
+            "garden": "Mombasa Estate 7",
+            "grade": "BP1",
+            "packages": 88,
+            "net_weight_kg": 4400,
+            "price_per_kg": 480,
+            "buyer": "Buyer_7"
+          },
+          {
+            "lot_number": "008",
+            "garden": "Mombasa Estate 8",
+            "grade": "PF1",
+            "packages": 96,
+            "net_weight_kg": 4800,
+            "price_per_kg": 515,
+            "buyer": "Buyer_8"
+          },
+          {
+            "lot_number": "009",
+            "garden": "Mombasa Estate 1",
+            "grade": "DUST1",
+            "packages": 104,
+            "net_weight_kg": 5200,
+            "price_per_kg": 550,
+            "buyer": "Buyer_1"
+          },
+          {
+            "lot_number": "010",
+            "garden": "Mombasa Estate 2",
+            "grade": "FANN",
+            "packages": 112,
+            "net_weight_kg": 5600,
+            "price_per_kg": 585,
+            "buyer": "Buyer_2"
+          },
+          {
+            "lot_number": "011",
+            "garden": "Mombasa Estate 3",
+            "grade": "BP",
+            "packages": 120,
+            "net_weight_kg": 6000,
+            "price_per_kg": 420,
+            "buyer": "Buyer_3"
+          },
+          {
+            "lot_number": "012",
+            "garden": "Mombasa Estate 4",
+            "grade": "PF",
+            "packages": 128,
+            "net_weight_kg": 6400,
+            "price_per_kg": 455,
+            "buyer": "Buyer_4"
+          },
+          {
+            "lot_number": "013",
+            "garden": "Mombasa Estate 5",
+            "grade": "BP1",
+            "packages": 136,
+            "net_weight_kg": 6800,
+            "price_per_kg": 490,
+            "buyer": "Buyer_5"
+          },
+          {
+            "lot_number": "014",
+            "garden": "Mombasa Estate 6",
+            "grade": "PF1",
+            "packages": 144,
+            "net_weight_kg": 7200,
+            "price_per_kg": 525,
+            "buyer": "Buyer_6"
+          },
+          {
+            "lot_number": "015",
+            "garden": "Mombasa Estate 7",
+            "grade": "DUST1",
+            "packages": 152,
+            "net_weight_kg": 7600,
+            "price_per_kg": 560,
+            "buyer": "Buyer_7"
+          },
+          {
+            "lot_number": "016",
+            "garden": "Mombasa Estate 8",
+            "grade": "FANN",
+            "packages": 160,
+            "net_weight_kg": 8000,
+            "price_per_kg": 595,
+            "buyer": "Buyer_8"
+          },
+          {
+            "lot_number": "017",
+            "garden": "Mombasa Estate 1",
+            "grade": "BP",
+            "packages": 168,
+            "net_weight_kg": 8400,
+            "price_per_kg": 630,
+            "buyer": "Buyer_1"
+          },
+          {
+            "lot_number": "018",
+            "garden": "Mombasa Estate 2",
+            "grade": "PF",
+            "packages": 176,
+            "net_weight_kg": 8800,
+            "price_per_kg": 665,
+            "buyer": "Buyer_2"
+          },
+          {
+            "lot_number": "019",
+            "garden": "Mombasa Estate 3",
+            "grade": "BP1",
+            "packages": 184,
+            "net_weight_kg": 9200,
+            "price_per_kg": 700,
+            "buyer": "Buyer_3"
+          },
+          {
+            "lot_number": "020",
+            "garden": "Mombasa Estate 4",
+            "grade": "PF1",
+            "packages": 192,
+            "net_weight_kg": 9600,
+            "price_per_kg": 735,
+            "buyer": "Buyer_4"
+          },
+          {
+            "lot_number": "021",
+            "garden": "Mombasa Estate 5",
+            "grade": "DUST1",
+            "packages": 200,
+            "net_weight_kg": 10000,
+            "price_per_kg": 570,
+            "buyer": "Buyer_5"
+          },
+          {
+            "lot_number": "022",
+            "garden": "Mombasa Estate 6",
+            "grade": "FANN",
+            "packages": 208,
+            "net_weight_kg": 10400,
+            "price_per_kg": 605,
+            "buyer": "Buyer_6"
+          },
+          {
+            "lot_number": "023",
+            "garden": "Mombasa Estate 7",
+            "grade": "BP",
+            "packages": 216,
+            "net_weight_kg": 10800,
+            "price_per_kg": 640,
+            "buyer": "Buyer_7"
+          },
+          {
+            "lot_number": "024",
+            "garden": "Mombasa Estate 8",
+            "grade": "PF",
+            "packages": 224,
+            "net_weight_kg": 11200,
+            "price_per_kg": 675,
+            "buyer": "Buyer_8"
+          },
+          {
+            "lot_number": "025",
+            "garden": "Mombasa Estate 1",
+            "grade": "BP1",
+            "packages": 232,
+            "net_weight_kg": 11600,
+            "price_per_kg": 710,
+            "buyer": "Buyer_1"
+          },
+          {
+            "lot_number": "026",
+            "garden": "Mombasa Estate 2",
+            "grade": "PF1",
+            "packages": 240,
+            "net_weight_kg": 12000,
+            "price_per_kg": 745,
+            "buyer": "Buyer_2"
+          },
+          {
+            "lot_number": "027",
+            "garden": "Mombasa Estate 3",
+            "grade": "DUST1",
+            "packages": 248,
+            "net_weight_kg": 12400,
+            "price_per_kg": 780,
+            "buyer": "Buyer_3"
+          },
+          {
+            "lot_number": "028",
+            "garden": "Mombasa Estate 4",
+            "grade": "FANN",
+            "packages": 256,
+            "net_weight_kg": 12800,
+            "price_per_kg": 815,
+            "buyer": "Buyer_4"
+          },
+          {
+            "lot_number": "029",
+            "garden": "Mombasa Estate 5",
+            "grade": "BP",
+            "packages": 264,
+            "net_weight_kg": 13200,
+            "price_per_kg": 850,
+            "buyer": "Buyer_5"
+          },
+          {
+            "lot_number": "030",
+            "garden": "Mombasa Estate 6",
+            "grade": "PF",
+            "packages": 272,
+            "net_weight_kg": 13600,
+            "price_per_kg": 885,
+            "buyer": "Buyer_6"
+          }
+        ]
+      },
+      "quality_data": {},
+      "raw_data": {
+        "metadata": {
+          "auction_centre": "Mombasa",
+          "week_number": 38,
+          "year": 2025,
+          "currency": "KES",
+          "report_type": "auction_lots"
+        },
+        "auction_lots": [
+          {
+            "lot_number": "001",
+            "garden": "Mombasa Estate 1",
+            "grade": "BP1",
+            "packages": 40,
+            "net_weight_kg": 2000,
+            "price_per_kg": 270,
+            "buyer": "Buyer_1"
+          },
+          {
+            "lot_number": "002",
+            "garden": "Mombasa Estate 2",
+            "grade": "PF1",
+            "packages": 48,
+            "net_weight_kg": 2400,
+            "price_per_kg": 305,
+            "buyer": "Buyer_2"
+          },
+          {
+            "lot_number": "003",
+            "garden": "Mombasa Estate 3",
+            "grade": "DUST1",
+            "packages": 56,
+            "net_weight_kg": 2800,
+            "price_per_kg": 340,
+            "buyer": "Buyer_3"
+          },
+          {
+            "lot_number": "004",
+            "garden": "Mombasa Estate 4",
+            "grade": "FANN",
+            "packages": 64,
+            "net_weight_kg": 3200,
+            "price_per_kg": 375,
+            "buyer": "Buyer_4"
+          },
+          {
+            "lot_number": "005",
+            "garden": "Mombasa Estate 5",
+            "grade": "BP",
+            "packages": 72,
+            "net_weight_kg": 3600,
+            "price_per_kg": 410,
+            "buyer": "Buyer_5"
+          },
+          {
+            "lot_number": "006",
+            "garden": "Mombasa Estate 6",
+            "grade": "PF",
+            "packages": 80,
+            "net_weight_kg": 4000,
+            "price_per_kg": 445,
+            "buyer": "Buyer_6"
+          },
+          {
+            "lot_number": "007",
+            "garden": "Mombasa Estate 7",
+            "grade": "BP1",
+            "packages": 88,
+            "net_weight_kg": 4400,
+            "price_per_kg": 480,
+            "buyer": "Buyer_7"
+          },
+          {
+            "lot_number": "008",
+            "garden": "Mombasa Estate 8",
+            "grade": "PF1",
+            "packages": 96,
+            "net_weight_kg": 4800,
+            "price_per_kg": 515,
+            "buyer": "Buyer_8"
+          },
+          {
+            "lot_number": "009",
+            "garden": "Mombasa Estate 1",
+            "grade": "DUST1",
+            "packages": 104,
+            "net_weight_kg": 5200,
+            "price_per_kg": 550,
+            "buyer": "Buyer_1"
+          },
+          {
+            "lot_number": "010",
+            "garden": "Mombasa Estate 2",
+            "grade": "FANN",
+            "packages": 112,
+            "net_weight_kg": 5600,
+            "price_per_kg": 585,
+            "buyer": "Buyer_2"
+          },
+          {
+            "lot_number": "011",
+            "garden": "Mombasa Estate 3",
+            "grade": "BP",
+            "packages": 120,
+            "net_weight_kg": 6000,
+            "price_per_kg": 420,
+            "buyer": "Buyer_3"
+          },
+          {
+            "lot_number": "012",
+            "garden": "Mombasa Estate 4",
+            "grade": "PF",
+            "packages": 128,
+            "net_weight_kg": 6400,
+            "price_per_kg": 455,
+            "buyer": "Buyer_4"
+          },
+          {
+            "lot_number": "013",
+            "garden": "Mombasa Estate 5",
+            "grade": "BP1",
+            "packages": 136,
+            "net_weight_kg": 6800,
+            "price_per_kg": 490,
+            "buyer": "Buyer_5"
+          },
+          {
+            "lot_number": "014",
+            "garden": "Mombasa Estate 6",
+            "grade": "PF1",
+            "packages": 144,
+            "net_weight_kg": 7200,
+            "price_per_kg": 525,
+            "buyer": "Buyer_6"
+          },
+          {
+            "lot_number": "015",
+            "garden": "Mombasa Estate 7",
+            "grade": "DUST1",
+            "packages": 152,
+            "net_weight_kg": 7600,
+            "price_per_kg": 560,
+            "buyer": "Buyer_7"
+          },
+          {
+            "lot_number": "016",
+            "garden": "Mombasa Estate 8",
+            "grade": "FANN",
+            "packages": 160,
+            "net_weight_kg": 8000,
+            "price_per_kg": 595,
+            "buyer": "Buyer_8"
+          },
+          {
+            "lot_number": "017",
+            "garden": "Mombasa Estate 1",
+            "grade": "BP",
+            "packages": 168,
+            "net_weight_kg": 8400,
+            "price_per_kg": 630,
+            "buyer": "Buyer_1"
+          },
+          {
+            "lot_number": "018",
+            "garden": "Mombasa Estate 2",
+            "grade": "PF",
+            "packages": 176,
+            "net_weight_kg": 8800,
+            "price_per_kg": 665,
+            "buyer": "Buyer_2"
+          },
+          {
+            "lot_number": "019",
+            "garden": "Mombasa Estate 3",
+            "grade": "BP1",
+            "packages": 184,
+            "net_weight_kg": 9200,
+            "price_per_kg": 700,
+            "buyer": "Buyer_3"
+          },
+          {
+            "lot_number": "020",
+            "garden": "Mombasa Estate 4",
+            "grade": "PF1",
+            "packages": 192,
+            "net_weight_kg": 9600,
+            "price_per_kg": 735,
+            "buyer": "Buyer_4"
+          },
+          {
+            "lot_number": "021",
+            "garden": "Mombasa Estate 5",
+            "grade": "DUST1",
+            "packages": 200,
+            "net_weight_kg": 10000,
+            "price_per_kg": 570,
+            "buyer": "Buyer_5"
+          },
+          {
+            "lot_number": "022",
+            "garden": "Mombasa Estate 6",
+            "grade": "FANN",
+            "packages": 208,
+            "net_weight_kg": 10400,
+            "price_per_kg": 605,
+            "buyer": "Buyer_6"
+          },
+          {
+            "lot_number": "023",
+            "garden": "Mombasa Estate 7",
+            "grade": "BP",
+            "packages": 216,
+            "net_weight_kg": 10800,
+            "price_per_kg": 640,
+            "buyer": "Buyer_7"
+          },
+          {
+            "lot_number": "024",
+            "garden": "Mombasa Estate 8",
+            "grade": "PF",
+            "packages": 224,
+            "net_weight_kg": 11200,
+            "price_per_kg": 675,
+            "buyer": "Buyer_8"
+          },
+          {
+            "lot_number": "025",
+            "garden": "Mombasa Estate 1",
+            "grade": "BP1",
+            "packages": 232,
+            "net_weight_kg": 11600,
+            "price_per_kg": 710,
+            "buyer": "Buyer_1"
+          },
+          {
+            "lot_number": "026",
+            "garden": "Mombasa Estate 2",
+            "grade": "PF1",
+            "packages": 240,
+            "net_weight_kg": 12000,
+            "price_per_kg": 745,
+            "buyer": "Buyer_2"
+          },
+          {
+            "lot_number": "027",
+            "garden": "Mombasa Estate 3",
+            "grade": "DUST1",
+            "packages": 248,
+            "net_weight_kg": 12400,
+            "price_per_kg": 780,
+            "buyer": "Buyer_3"
+          },
+          {
+            "lot_number": "028",
+            "garden": "Mombasa Estate 4",
+            "grade": "FANN",
+            "packages": 256,
+            "net_weight_kg": 12800,
+            "price_per_kg": 815,
+            "buyer": "Buyer_4"
+          },
+          {
+            "lot_number": "029",
+            "garden": "Mombasa Estate 5",
+            "grade": "BP",
+            "packages": 264,
+            "net_weight_kg": 13200,
+            "price_per_kg": 850,
+            "buyer": "Buyer_5"
+          },
+          {
+            "lot_number": "030",
+            "garden": "Mombasa Estate 6",
+            "grade": "PF",
+            "packages": 272,
+            "net_weight_kg": 13600,
+            "price_per_kg": 885,
+            "buyer": "Buyer_6"
+          }
+        ]
+      }
+    }
+  ],
+  "district_averages": null,
+  "summary_statistics": {
+    "total_sources": 1,
+    "data_quality": "verified"
+  },
+  "market_intelligence": {
+    "executive_commentary": "Mombasa market demonstrated steady trading conditions. Focused offering of 0 kg suggests selective marketing. Quality premiums evident across 0 grade categories.",
+    "detailed_analysis": "Market dynamics reflect regional production patterns. Average pricing of 0 per kg indicates balanced demand sentiment. Buyer participation across grade categories suggests active market engagement.",
+    "volume_insights": "Focused offering of 0 kg suggests selective marketing",
+    "quality_assessment": "Average pricing of 0 indicates balanced market conditions"
+  },
+  "weather_analysis": {
+    "current_conditions": "East African highland climate with optimal temperature ranges for CTC production",
+    "impact_assessment": "Stable weather patterns supporting continuous manufacturing operations",
+    "seasonal_outlook": "Regional climate stability expected to maintain production consistency"
+  },
+  "forecast_analysis": {
+    "supply_dynamics": "Tight supply conditions with production aligned to seasonal patterns",
+    "price_trends": "Competitive pricing environment reflecting current market fundamentals",
+    "demand_indicators": "Export and domestic demand maintaining balanced absorption",
+    "opportunities": "Quality premiums available for superior leaf grades and processing standards"
+  },
+  "buyer_activity": {
+    "active_buyers": 0,
+    "buyer_summary": [],
+    "participation_level": "Limited"
+  },
+  "factory_performance": {
+    "top_performers": [],
+    "total_gardens": 0
+  },
+  "price_quotations": {
+    "grade_quotations": []
+  },
+  "interactive_data": {
+    "raw_lots": []
+  }
+}

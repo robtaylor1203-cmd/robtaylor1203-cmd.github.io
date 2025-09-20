@@ -2,7 +2,7 @@
     "report_title": "Forbes Tea - Sri Lanka Tea Exports (Enhanced OCR)",
     "period": "2025_09",
     "source_url": "https://web.forbestea.com/statistics/sri-lankan-statistics/64-sri-lanka-tea-exports/1302-sri-lanka-tea-exports",
-    "retrieval_date": "2025-09-19T08:53:24.127523+00:00",
+    "retrieval_date": "2025-09-20T08:48:40.472084+00:00",
     "ocr_method": "Enhanced Tesseract with OpenCV preprocessing",
     "export_data_by_table": {
         "MONTHLY_QUANTITY": [
